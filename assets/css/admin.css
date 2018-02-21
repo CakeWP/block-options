@@ -1,0 +1,368 @@
+/** Modular Settings Page **/
+.blockopts-settings-desc{
+	margin: 20px 200px 20px 0;
+	min-height: 50px;
+	color: #555d66;
+	font-size: 15px;
+	line-height: 22px;
+}
+.blockopts-mascot{
+	display: block;
+	text-align: center;
+	height: 150px;
+	width: 150px;
+	background: url('../images/logo-mascot.png');
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.blockopts-badge-settings{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+.blockopts-poststuff #post-body #postbox-container-1, .blockopts-poststuff #post-body #postbox-container-2{
+	border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+.blockopts-poststuff #post-body #postbox-container-2{
+	border-right: 1px solid #ddd;
+    box-sizing: border-box;
+    padding-right: 20px;
+}
+.blockopts-poststuff #post-body #postbox-container-1{
+	box-sizing: border-box;
+    margin-right: -300px;
+    padding-left: 20px;
+    width: 300px;
+}
+.blockopts-module-section-heading{
+	display: block;
+	margin: 0 0 1em 0;
+    overflow: hidden;
+}
+.blockopts-settings-view-toggle{
+	float: left;
+	margin-right: 1em;
+	padding: .35em 0;
+}
+.blockopts-settings-view-toggle a{
+	text-decoration: none;
+	color: #b4b9be;
+}
+.blockopts-settings-view-toggle a.blockopts-selected{
+	color: #0073aa;
+}
+.blockopts-module-cards-container {
+    clear: both;
+    box-sizing: border-box;
+}
+.blockopts-module-cards{
+	text-align: justify;
+	font-size: 0.1px;
+}
+.blockopts-module-cards:after{
+	content: '';
+	display: inline-block;
+	width: 100%;
+}
+.blockopts-module-card{
+	font-size: 16px;
+	display: inline-block;
+	width: 100%;
+	max-width: 32%;
+	text-align: left;
+	margin-bottom: 12px;
+	vertical-align: top;
+}
+.blockopts-module-card-content{
+	font-size: 16px;
+	position: relative;
+	background: #fff;
+	border: 1px solid #ddd;
+	/*box-shadow: 1px 1px 0px rgba(0, 0, 0, .1);*/
+	padding: 1em;
+}
+.blockopts-module-type-enabled .blockopts-module-card-content{
+	background: #f7fcfe;
+    border-color: rgba( 0, 115, 179, 0.85 );
+    /*box-shadow: 1px 1px 0px rgba(0,0,0,.1);*/
+}
+.blockopts-module-type-disabled .blockopts-settings-section,
+.blockopts-module-type-disabled .blockopts-module-settings-save,
+.blockopts-module-card.blockopts-module-card-no-settings .blockopts-module-settings-save{
+	display: none;
+}
+#poststuff .blockopts-module-card h2{
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+}
+.blockopts-modal-background{
+	display: none;
+	position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.2);
+    z-index: 500;
+    cursor: pointer;
+}
+.grid .blockopts-module-settings-container{
+	display: none;
+	position: fixed;
+    top: 52px;
+    right: 20px;
+    bottom: 20px;
+    left: 20px;
+    margin-left: 160px;
+    background: #fff;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    z-index: 510;
+}
+.blockopts-modal-navigation{
+	position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    border-bottom: 1px solid #ddd;
+}
+.blockopts-modal-navigation button{
+	width: 40px;
+    height: 40px;
+    float: right;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-left: 1px solid #ddd;
+    font-family: dashicons;
+    font-size: 20px;
+}
+.blockopts-modal-navigation button:hover{
+	cursor: pointer;
+	background: #eee;
+}
+.blockopts-modal-navigation button.blockopts-close-modal:before{
+	content: '\f335';
+}
+.blockopts-modal-content-footer{
+	position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid #ddd;
+    padding: 15px;
+    background: #efefef;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+}
+.blockopts-modal-content-footer .align-right{
+	float: right;
+}
+.grid .blockopts-module-settings-content-container{
+	position: absolute;
+    top: 40px;
+    right: 0;
+    bottom: 60px;
+    left: 0;
+    overflow: auto;
+    padding: 25px 50px;
+}
+.blockopts-module-settings-content{
+	width: 100%;
+	max-width: 700px;
+	margin: 0 auto;
+}
+.blockopts-settings-section label{
+	font-weight: bold;
+}
+p.blockopts-settings-section{
+	font-style: italic;
+	color: #999;
+}
+#blockopts-settings-messages-container {
+    position: fixed;
+    padding: 2em;
+    top: -100px;
+    left: 0;
+    right: 0;
+    max-width: 300px;
+    width: 100%;
+    margin: auto;
+    z-index: 500;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    opacity: 0;
+    border-radius: 3px;
+    background: #fff;
+    box-shadow: 0px 0px 25px rgba( 0,0,0,0.4 );
+}
+#blockopts-settings-messages-container div, .blockopts-module-messages-container div{
+	background: #f1f1f1;
+}
+#blockopts-settings-messages-container.visible:not(.no-module) {
+    top: 52px;
+    opacity: 1;
+}
+#blockopts-settings-messages-container div:first-child {
+    margin-top: 0;
+}
+#blockopts-settings-messages-container div:last-child{
+	margin-bottom: 0px;
+}
+.blockopts-dashicons{
+	font-size: 180px;
+    position: absolute;
+    left: -27px;
+    top: -45px;
+    opacity: 0.1;
+}
+.blockopts-no-top{
+	top: 0px;
+}
+.blockopts-module-type-pro{
+	opacity: .5;
+}
+.blockopts-pro-upsell{
+	display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-decoration: none;
+}
+.blockopts-pro-label{
+	padding: 2px 0px;
+    position: absolute;
+    right: 6px;
+    top: 5px;
+	opacity: 0.6;
+
+	background: #ffb310;
+    /*box-shadow: 1px 1px 1px rgba(0,0,0,0.2);*/
+    font-size: 11px;
+    color: #5e5018;
+    text-transform: uppercase;
+}
+.blockopts-pro-label .dashicons{
+	font-size: 18px;
+}
+.grid .blockopts-list-content-footer, .grid #blockopts-save {
+    display: none;
+}
+
+/** list module view **/
+.list .blockopts-module-card{
+	max-width: 100%;
+    padding: 0;
+    float: none;
+    margin-bottom: 1px;
+}
+.list .blockopts-module-card:hover .blockopts-module-card-content{
+	background: #fafafa;
+}
+.list .blockopts-module-card-content{
+	cursor: pointer;
+	padding: .5em .5em .5em .75em;
+}
+.list .blockopts-module-card-content:after{
+	content: "";
+	display: table;
+	clear: both;
+}
+.list .blockopts-module-desc{
+	display: none;
+}
+#poststuff .list .blockopts-module-card h2{
+	float: left;
+    line-height: 1.8;
+    font-size: 14px;
+}
+.list .blockopts-module-card-content .blockopts-module-actions{
+	float: right;
+    margin-top: 0;
+}
+.list .blockopts-module-settings-container{
+	clear: both;
+    background: #fff;
+    padding: 2em 2em 4em 2em;
+    -moz-box-shadow: inset 0 8px 8px -8px #ddd, inset 0 -8px 8px -8px #ddd;
+    -webkit-box-shadow: inset 0 8px 8px -8px #ddd, inset 0 -8px 8px -8px #ddd;
+    box-shadow: inset 0 8px 8px -8px #ddd, inset 0 -8px 8px -8px #ddd;
+}
+.list .blockopts-modal-navigation, .list .blockopts-modal-content-footer, .list .blockopts-dashicons, .list .blockopts-modal-header{
+	display: none;
+}
+.list .blockopts-pro-label{
+	display: inline;
+    float: left;
+    font-size: 10px;
+    margin: 0em 0 0 10px;
+    padding: 0px 3px;
+    position: relative;
+}
+
+/** License form **/
+table.blockopts-settings-license td{
+	padding: 0px !important;
+}
+.blockopts-settings-license .td-right{
+	text-align: right;
+}
+.blockopts-settings-license .blockopts-even td{
+	padding-top: 5px !important;
+}
+.blockopts-settings-license .td-left{
+	font-size: 10px;
+}
+@media ( max-width: 1400px ) {
+	.blockopts-module-card {
+		max-width: 49%;
+	}
+}
+@media ( max-width: 782px ) {
+	.grid .blockopts-module-settings-container {
+		margin-left: 0px;
+		top: 0px;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 100000; /* to get above wp admin bar */
+	}
+	.grid .blockopts-module-settings-content-container {
+		padding: 15px 30px;
+	}
+	.blockopts-module-settings-content .blockopts-dashicons{
+		display: none;
+	}
+}
+@media (max-width: 500px){
+	.blockopts-module-card {
+	    max-width: 100%;
+	    padding-right: 0;
+	    padding-bottom: 10px;
+	}
+	.blockopts-settings-desc{
+		margin-right: 70px;
+	}
+	.blockopts-badge-settings{
+		top: 115px;
+	}
+	.blockopts-mascot{
+		height: 69px;
+		width: 69px;
+	}
+	.blockopts-poststuff #post-body #postbox-container-2{
+		padding-right: 0px;
+		border-right: 0px;
+	}
+	.blockopts-poststuff #post-body #postbox-container-1{
+		padding-left: 0px;
+	}
+	.grid .blockopts-module-settings-container{
+		margin-left: 0px;
+	}
+}

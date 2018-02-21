@@ -1,0 +1,42 @@
+@import "compass";
+
+.blockopts-badge{
+	position: absolute;
+	top: 0;
+	right: 0;
+	color: #999;
+	font-size: 21px;
+	text-align: center;
+	margin: 5px 0 0;
+	width: 150px;
+	.blockopts-mascot{
+		display: block;
+		text-align: center;
+		height: 150px;
+		width: 150px;
+		background: url('../images/logo-mascot.png');
+		@include background-size(cover);
+	}
+	.version{
+		line-height: 30px;
+	}
+}
+.about-wrap .blockopts-features-button{
+	font-size: 16px;
+	height: auto;
+	padding: 8px 25px;
+	margin-top: 20px;
+}
+.blockopts-about-wrap.about-wrap p{
+	max-width: 100%;
+}
+
+.about-wrap .blockopts-features{
+	img{
+		@include transition( opacity .15s ease-in-out );
+		@include opacity( 0.88 );
+		&:hover{
+			@include opacity( 1 );
+		}
+	}
+}
