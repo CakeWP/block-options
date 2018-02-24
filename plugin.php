@@ -15,38 +15,38 @@
  */
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) exit;
-if ( ! class_exists( 'WP_Block_Options' ) ) :
+if ( ! class_exists( 'BLOCKOPTS_Block_Options' ) ) :
 
 /**
- * Main WP_Block_Options Class.
+ * Main BLOCKOPTS_Block_Options Class.
  *
  * @since  1.0
  */
-final class WP_Block_Options {
+final class BLOCKOPTS_Block_Options {
 	/**
-	 * @var WP_Block_Options The one true WP_Block_Options
+	 * @var BLOCKOPTS_Block_Options The one true BLOCKOPTS_Block_Options
 	 * @since  1.0
 	 */
 	private static $instance;
 
 	/**
-	 * Main WP_Block_Options Instance.
+	 * Main BLOCKOPTS_Block_Options Instance.
 	 *
-	 * Insures that only one instance of WP_Block_Options exists in memory at any one
+	 * Insures that only one instance of BLOCKOPTS_Block_Options exists in memory at any one
 	 * time. Also prevents needing to define globals all over the place.
 	 *
 	 * @since  1.0
 	 * @static
 	 * @staticvar array $instance
-	 * @uses WP_Block_Options::setup_constants() Setup the constants needed.
-	 * @uses WP_Block_Options::includes() Include the required files.
-	 * @uses WP_Block_Options::load_textdomain() load the language files.
+	 * @uses BLOCKOPTS_Block_Options::setup_constants() Setup the constants needed.
+	 * @uses BLOCKOPTS_Block_Options::includes() Include the required files.
+	 * @uses BLOCKOPTS_Block_Options::load_textdomain() load the language files.
 	 * @see BLOCKOPTS()
-	 * @return object|WP_Block_Options The one true WP_Block_Options
+	 * @return object|BLOCKOPTS_Block_Options The one true BLOCKOPTS_Block_Options
 	 */
 	public static function instance() {
-		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof WP_Block_Options ) ) {
-			self::$instance = new WP_Block_Options;
+		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof BLOCKOPTS_Block_Options ) ) {
+			self::$instance = new BLOCKOPTS_Block_Options;
 			self::$instance->setup_constants();
 
 			self::$instance->includes();
@@ -141,29 +141,27 @@ endif; // End if class_exists check.
 
 
 /**
- * The main function for that returns WP_Block_Options
+ * The main function for that returns BLOCKOPTS_Block_Options
  *
- * The main function responsible for returning the one true WP_Block_Options
+ * The main function responsible for returning the one true BLOCKOPTS_Block_Options
  * Instance to functions everywhere.
  *
  * Use this function like you would a global variable, except without needing
  * to declare the global.
  *
- * Example: <?php $blockopts = WP_Block_Options(); ?>
+ * Example: <?php $blockopts = BLOCKOPTS_Block_Options(); ?>
  *
  * @since 1.0
- * @return object|WP_Block_Options The one true WP_Block_Options Instance.
+ * @return object|BLOCKOPTS_Block_Options The one true BLOCKOPTS_Block_Options Instance.
  */
-if( !function_exists( 'BLOCKOPTS' ) ){
-	function BLOCKOPTS() {
-		return WP_Block_Options::instance();
-	}
-	// Get Plugin Running.
-	if( function_exists( 'is_multisite' ) && is_multisite() ){
-		//loads on plugins_loaded action to avoid issue on multisite
-		add_action( 'plugins_loaded', 'BLOCKOPTS', apply_filters( 'blockopts_priority', 90 ) );
-	}else{
-		BLOCKOPTS();
-	}
+function blockopts_init() {
+	return BLOCKOPTS_Block_Options::instance();
+}
+// Get Plugin Running.
+if( function_exists( 'is_multisite' ) && is_multisite() ){
+	//loads on plugins_loaded action to avoid issue on multisite
+	add_action( 'plugins_loaded', 'blockopts_init', apply_filters( 'blockopts_priority', 90 ) );
+}else{
+	blockopts_init();
 }
 ?>
