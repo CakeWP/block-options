@@ -21,7 +21,7 @@ Manage your Gutenberg Editor Blocks better! Assign restrictions per devices and/
 <strong>More information</strong>
 
 * Follow the developer <a href="https://twitter.com/phpbits" target="_blank">@Twitter</a>
-* <a href="https://www.facebook.com/groups/WPwidgets/" target="_blank">Join Facebook Community Group</a>
+* <a href="https://www.facebook.com/groups/1306393256173179/" target="_blank">Join Facebook Community Group</a>
 
 == Installation ==
 

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Block Options
  * Plugin URI: https://block-options.com/
- * Description: Additional block options for better block control. Get <strong><a href="https://widget-options.com/block-options/" target="_blank" >Extended Block Options for WordPress</a></strong> for complete block controls. Thanks!
+ * Description: Additional block options for better block control. Get <strong><a href="https://block-options.com/" target="_blank" >Extended Block Options for WordPress</a></strong> for complete block controls. Thanks!
  * Version: 1.0
  * Author: Phpbits Creative Studio
  * Author URI: https://phpbits.net/
@@ -120,6 +120,7 @@ final class BLOCKOPTS_Block_Options {
 			if( in_array( $pagenow, array( 'options-general.php' ) ) ){
 				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/general.php';
 				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/devices.php';
+				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/state.php';
 				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/logic.php';
 				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/sidebar-upsell_pro.php';
 

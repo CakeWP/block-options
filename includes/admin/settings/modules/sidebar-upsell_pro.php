@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 if( !function_exists( 'blockopts_settings_upgrade_pro' ) ):
 	function blockopts_settings_upgrade_pro(){ ?>
 		<div id="blockopts-sidebar-widget-support" class="postbox blockopts-sidebar-widget" style="border-color: #ffb310; border-width: 3px;">
-			<h3 class="hndle ui-sortable-handle"><span><?php _e( 'Currently on Beta!', 'block-options' );?></span></h3>
+			<h3 class="hndle ui-sortable-handle"><span><?php _e( 'Thank you for your Feedback', 'block-options' );?></span></h3>
 			<div class="inside">
 				<p>
 					<?php _e( 'We are currently collecting feedback since Gutenberg WordPress Editor is not available on the core features yet. If you encounter any issues or have any suggestions please let us know. Thank you very much!', 'block-options' );?>

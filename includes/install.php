@@ -27,6 +27,7 @@ if( !function_exists( 'blockopts_register_defaults' ) ){
 				//activate free version modules
 				add_option( 'blockopts_tabmodule-devices', 'activate' );
 				add_option( 'blockopts_tabmodule-logic', 'activate' );
+				add_option( 'blockopts_tabmodule-state', 'activate' );
 				add_option( '_blockopts_default_registered_', '1' );
 				delete_option( 'blockopts_settings' );
 			}

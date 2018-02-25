@@ -140,6 +140,18 @@ if( !function_exists( 'blockopts_block_options_callback' ) ){
 				//wrap block
 				$block = $wrap_start . $block . $wrap_end;
 			}
+
+			//login state
+			if( 'activate' == $block_options['state'] ){
+				if( isset( $blockOpts['state'] ) && !empty( $blockOpts['state'] ) ){
+					//do state action here
+					if( $blockOpts['state'] == 'out' && is_user_logged_in() ){
+						return false;
+					}else if( $blockOpts['state'] == 'in' && !is_user_logged_in() ){
+						return false;
+					}
+				}
+			}
 			
 			//display logic
 			if( 'activate' == $block_options['logic'] ){
