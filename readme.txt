@@ -1,6 +1,6 @@
 === Block Options ===
 Contributors: phpbits
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FMKC2SLPTULP8
+Donate link: https://www.buymeacoffee.com/phpbits
 Tags: gutenberg, blocks, block, editor, WordPress editor, settings, miscellaneous
 Requires at least: 4.0
 Tested up to: 4.9
@@ -16,10 +16,11 @@ Manage your Gutenberg Editor Blocks better! Assign restrictions per devices and/
 
 <strong>Block Options</strong> feature-packed options below each block settings tab to help you better manage your editor blocks. It's main goal is to let you have better contents to serve your visitors on every devices and pages.
 
-[vimeo https://vimeo.com/256721009]
+[vimeo https://www.youtube.com/watch?v=_C1dXFz-uaA]
 
 <strong>More information</strong>
 
+* Visit the official <a href="https://block-options.com/" target="_blank">Block Options Website</a>
 * Follow the developer <a href="https://twitter.com/phpbits" target="_blank">@Twitter</a>
 * <a href="https://www.facebook.com/groups/1306393256173179/" target="_blank">Join Facebook Community Group</a>
 

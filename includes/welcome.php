@@ -74,7 +74,7 @@ if( !class_exists( 'BLOCKOPS_Welcome' ) ){
 					</div>
 					<div class="col">
 						<div class="feature-video">
-							<iframe width="495" height="278" src="https://player.vimeo.com/video/256721009" frameborder="0" allowfullscreen></iframe>
+							<iframe width="495" height="278" src="https://www.youtube.com/embed/_C1dXFz-uaA" frameborder="0" allowfullscreen></iframe>
 						</div>
 					</div>
 				</div>
