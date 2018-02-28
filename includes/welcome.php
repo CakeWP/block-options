@@ -70,7 +70,7 @@ if( !class_exists( 'BLOCKOPS_Welcome' ) ){
 				<div class="feature-section two-col">
 					<div class="col">
 						<h3><?php _e( 'Take full control over your Editor Blocks!' , 'block-options' ); ?></h3>
-						<p><?php printf( __( 'Block Options is your all-in-on plugin to take over your Gutenberg Editor Blocks like it was built as WordPress core functionality. You can follow the tutorial on the right to see how the plugin works but in reality it\'s so easy and integrated elegantly on each widgets. To manage the plugin settings page just go to  <a href="%s" target="_blank">Settings > Block Options</a>. Otherwise just go on and create new post or page and experience how easy it is to use Block Options\' features.', 'block-options' ), esc_url( admin_url( 'options-general.php?page=blockopts_plugin_settings' ) ) ); ?>
+						<p><?php printf( __( 'Block Options is your all-in-on plugin to take over your Gutenberg Editor Blocks like it was built as WordPress core functionality. You can follow the tutorial on the right to see how the plugin works but in reality it\'s so easy and integrated elegantly on each widgets. To manage the plugin settings page just go to  <a href="%s">Settings > Block Options</a>. Otherwise just go on and create new post or page and experience how easy it is to use Block Options\' features.', 'block-options' ), esc_url( admin_url( 'options-general.php?page=blockopts_plugin_settings' ) ) ); ?>
 					</div>
 					<div class="col">
 						<div class="feature-video">

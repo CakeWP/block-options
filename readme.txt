@@ -12,11 +12,11 @@ Manage your Gutenberg Editor Blocks better! Assign restrictions per devices and/
 
 == Description ==
 
-<strong>More controls over your WordPress Gutenberg Editor Blocks!</strong> Assign restrictions per devices and/or custom display logic.
+<strong>More controls over your WordPress Gutenberg Editor Blocks!</strong> Assign restrictions per devices, user logged-in/our state and custom display logic.
 
 <strong>Block Options</strong> feature-packed options below each block settings tab to help you better manage your editor blocks. It's main goal is to let you have better contents to serve your visitors on every devices and pages.
 
-[vimeo https://www.youtube.com/watch?v=_C1dXFz-uaA]
+[youtube https://www.youtube.com/watch?v=_C1dXFz-uaA]
 
 <strong>More information</strong>
 
@@ -44,14 +44,14 @@ e.g.
 
 
 = 1.0 =
-* Initial Plugin release
+* Initial Block Options for Gutenberg Plugin release
 
 == Upgrade Notice ==
 
 = 1.0 =
 
-* Initial Plugin release
+* Initial Block Options for Gutenberg Plugin release
 
 == Contact and Credits ==
 
-Widget Options for WordPress is maintained and developed by <a href="https://phpbits.net/">Phpbits Creative Studio</a>.
+Block Options for Gutenberg Editor is maintained and developed by <a href="https://phpbits.net/">Phpbits Creative Studio</a>.
