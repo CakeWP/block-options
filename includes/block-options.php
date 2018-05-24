@@ -23,7 +23,7 @@ if( !function_exists( 'blockopts_editor_assets' ) ):
 			'gutenberg-blockopts',
 			$js_dir .'block-options.js',
 			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-date' ), // Dependencies, defined above.
-			filemtime( BLOCKOPTS_PLUGIN_DIR .'assets/js/block-options.js' )
+			filemtime( BLOCKOPTS_PLUGIN_DIR .'assets/js/block-options.min.js' )
 		);
 
 		wp_enqueue_style(
