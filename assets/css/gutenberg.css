@@ -33,6 +33,12 @@ span.widgetopts-dropcap{
 .widgetopts-upgrademore p svg{
 	float: left; 
 }
+.blockopts-separator{
+	display: block;
+	clear: both;
+	border-bottom: 1px solid #e2e4e7;
+	margin: 20px 0px;
+}
 
 @media screen and (min-width: 769px){
 	.extendedwopts-md-right{

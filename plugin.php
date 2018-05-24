@@ -3,7 +3,7 @@
  * Plugin Name: Block Options
  * Plugin URI: https://block-options.com/
  * Description: Additional block options for better block control. Get <strong><a href="https://block-options.com/" target="_blank" >Extended Block Options for WordPress</a></strong> for complete block controls. Thanks!
- * Version: 1.0
+ * Version: 1.1
  * Author: Phpbits Creative Studio
  * Author URI: https://phpbits.net/
  * Text Domain: block-options

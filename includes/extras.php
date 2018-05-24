@@ -40,4 +40,20 @@ if( !function_exists( 'blockopts_addhttp' ) ){
         return $url;
     }
 }
+
+if( !function_exists( 'blockopts_get_reusable' ) ){
+    function blockopts_get_reusable( $id ) {
+
+        //require if throwing errors
+        if ( ! function_exists( 'get_editable_roles' ) ) {
+            require_once ABSPATH . 'wp-admin/includes/user.php';
+        }
+
+        global $wpdb;
+
+        $blocks  = $wpdb->get_results("SELECT post_content FROM $wpdb->posts WHERE post_type = 'wp_block' AND ID = '$id' ORDER BY post_title ASC ");
+
+        return apply_filters( 'blockopts_get_reusable_content', $blocks );
+    }
+}
 ?>

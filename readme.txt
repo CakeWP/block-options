@@ -42,6 +42,9 @@ e.g.
 
 == Changelog ==
 
+= 1.0 =
+* Fix issues with other Gutenberg plugins, options not saving
+* Add support for inner column blocks
 
 = 1.0 =
 * Initial Block Options for Gutenberg Plugin release

@@ -128,12 +128,13 @@ if( !function_exists( 'blockopts_get_settings' ) ):
 
 			// Update old settings with new single option
 			$settings 			= !empty( $opts_settings ) ?  $opts_settings : array();
+			$general 			= array( 'general' 		=> get_option( 'blockopts_tabmodule-general' ) );
 			$devices 			= array( 'devices' 		=> get_option( 'blockopts_tabmodule-devices' ) );
 			$logic 				= array( 'logic' 		=> get_option( 'blockopts_tabmodule-logic' ) );
 			$state 				= array( 'state' 		=> get_option( 'blockopts_tabmodule-state' ) );
 			
 
-			$settings = array_merge( array( 'settings' => $settings ), $devices, $logic, $state );
+			$settings = array_merge( array( 'settings' => $settings ), $general, $devices, $logic, $state );
 
 			// Let's let devs alter that value coming in
 			$value = apply_filters( 'blockopts_update_settings', $settings );

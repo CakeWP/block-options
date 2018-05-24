@@ -56,6 +56,18 @@ if( !function_exists( 'blockopts_settings_general' ) ):
 							</p>
 						</td>
 					</tr>
+					<tr>
+						<th scope="row">
+							<label for="widgetopts-general-hidedesc"><?php _e( 'Hide Descriptions', 'block-options' );?></label>
+						</th>
+						<td>
+							<input type="checkbox" id="widgetopts-general-hidedesc" name="general[hidedesc]" <?php echo blockopts_is_checked( $general, 'hidedesc' ) ?> value="1" />
+							<label for="widgetopts-general-hidedesc"><?php _e( 'Hide Descriptions on each field', 'block-options' );?></label>
+							<p class="description">
+								<?php _e( 'By default, each option has descriptions and instructions for you to easily understand how it works. If you are familiar with the features and want to have less space and hide the descriptions just check this option.', 'block-options' );?>
+							</p>
+						</td>
+					</tr>
 				</table>
 			<?php blockopts_modal_end( $block_options['general'], false ); ?>
 

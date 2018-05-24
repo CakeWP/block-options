@@ -13,16 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if( !function_exists( 'blockopts_editor_assets' ) ):
 	// Hook: Editor assets.
-	add_action( 'enqueue_block_editor_assets', 'blockopts_editor_assets', 9999 );
-	/**
-	 * Enqueue the block's assets for the editor.
-	 *
-	 * `wp-blocks`: includes block type registration and related functions.
-	 * `wp-element`: includes the WordPress Element abstraction for describing the structure of your blocks.
-	 * `wp-i18n`: To internationalize the block's. text.
-	 *
-	 * @since 1.0.0
-	 */
+	add_action( 'init', 'blockopts_editor_assets', 9999 );
 	function blockopts_editor_assets() {
 		global $block_options;
 		$js_dir  = BLOCKOPTS_PLUGIN_URL . 'assets/js/';
@@ -30,9 +21,9 @@ if( !function_exists( 'blockopts_editor_assets' ) ):
 
 		wp_enqueue_script(
 			'gutenberg-blockopts',
-			$js_dir .'block-options.min.js',
+			$js_dir .'block-options.js',
 			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-date' ), // Dependencies, defined above.
-			filemtime( BLOCKOPTS_PLUGIN_DIR .'assets/js/block-options.min.js' )
+			filemtime( BLOCKOPTS_PLUGIN_DIR .'assets/js/block-options.js' )
 		);
 
 		wp_enqueue_style(
@@ -92,6 +83,15 @@ function blockopts_gutenberg_callback( $content ){
 			$content 	= substr( $content, $end_offset + strlen( $end_tag ) );
 
 			$rendered_content .= apply_filters( 'blockopts_block_options', $opening_tag . $innerHTML . $end_tag, $attributes, array( 'tag' => $opening_tag , 'block_name' => $block_name ) );	
+		}else if( $block_name == 'block' && isset( $attributes['ref'] ) && !empty( $attributes['ref'] ) ){
+			$reusable = apply_filters( 'blockopts_block_options', $opening_tag, $attributes, array( 'tag' => $opening_tag , 'block_name' => $block_name ) );
+			//if not empty
+			if( !empty( $reusable ) ){
+				$res = blockopts_get_reusable( $attributes['ref'] ); 
+				if( !empty( $res ) && isset( $res[0] ) && isset( $res[0]->post_content ) ){
+					$rendered_content .= blockopts_gutenberg_callback( $res[0]->post_content );
+				}
+			}
 		}
 	}
 
@@ -101,11 +101,18 @@ function blockopts_gutenberg_callback( $content ){
 	return $rendered_content;
 }
 
+if( !function_exists( 'blockopts_remove_placeholder' ) ){
+	function blockopts_remove_placeholder( $content ){
+		return str_replace( 'blockopts:::placeholder', 'wp:columns', $content );
+	}
+}
+
 if( !function_exists( 'blockopts_gutenberg_filter' ) ){
 	add_action( 'init', 'blockopts_gutenberg_filter' );
 	function blockopts_gutenberg_filter(){ 
 		if( !is_admin() ){
 			add_filter( 'the_content', 'blockopts_gutenberg_callback', 8 );
+			add_filter( 'the_content', 'blockopts_remove_placeholder', 8 );
 		}
 	}
 }
@@ -176,6 +183,11 @@ if( !function_exists( 'blockopts_block_options_callback' ) ){
 	                    return false;
 	                }
 				}
+			}
+
+			//run match on columns content
+			if( $tag['block_name'] == 'columns' ){
+				$block = blockopts_gutenberg_callback( str_replace( 'wp:columns', 'blockopts:::placeholder', $block ) );
 			}
 		}
 		return $block;
