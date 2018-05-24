@@ -42,9 +42,10 @@ e.g.
 
 == Changelog ==
 
-= 1.0 =
+= 1.1 =
 * Fix issues with other Gutenberg plugins, options not saving
 * Add support for inner column blocks
+* Add option to hide descriptions for adept users to minimize section content
 
 = 1.0 =
 * Initial Block Options for Gutenberg Plugin release
