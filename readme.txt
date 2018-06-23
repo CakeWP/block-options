@@ -1,7 +1,7 @@
 === Block Options ===
 Contributors: phpbits
 Donate link: https://www.buymeacoffee.com/phpbits
-Tags: gutenberg, blocks, block, editor, WordPress editor, settings, miscellaneous
+Tags: gutenberg, blocks, block, editor, WordPress editor, gutenberg manager, gutenberg blocks
 Requires at least: 4.0
 Tested up to: 4.9
 Stable tag: 1.0
@@ -12,7 +12,7 @@ Manage your Gutenberg Editor Blocks better! Assign restrictions per devices and/
 
 == Description ==
 
-<strong>More controls over your WordPress Gutenberg Editor Blocks!</strong> Assign restrictions per devices, user logged-in/our state and custom display logic.
+<strong>More controls over your WordPress Gutenberg Editor Blocks!</strong> Your all-in-one Gutenberg manager that will give you options to  assign restrictions per devices, user logged-in/our state and custom display logic.
 
 <strong>Block Options</strong> feature-packed options below each block settings tab to help you better manage your editor blocks. It's main goal is to let you have better contents to serve your visitors on every devices and pages.
 
@@ -41,6 +41,9 @@ e.g.
 1. WordPress Gutenberg Editor Block Options
 
 == Changelog ==
+
+= 1.1.1 =
+* Upgrade API and fix issues with Gutenberg 3.1
 
 = 1.1 =
 * Fix issues with other Gutenberg plugins, options not saving
