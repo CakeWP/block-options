@@ -20,7 +20,7 @@ Manage your Gutenberg Editor Blocks better! Assign restrictions per devices and/
 
 <strong>More information</strong>
 
-* Visit the official <a href="https://block-options.com/" target="_blank">Block Options Website</a>
+* Visit the official <a href="https://block-options.com/" target="_blank">Block Options for Gutenberg Website</a>
 * Follow the developer <a href="https://twitter.com/phpbits" target="_blank">@Twitter</a>
 * <a href="https://www.facebook.com/groups/1306393256173179/" target="_blank">Join Facebook Community Group</a>
 
