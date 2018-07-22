@@ -22,7 +22,7 @@ Manage your Gutenberg Editor Blocks better! Assign restrictions per devices and/
 * Show or Hide Gutenberg Blocks on Desktop, Tablet and Mobile Devices
 * Gutenberg Editor Blocks Visibility per User Logged-in or Logged-out State
 * Custom Conditional Display Logic for Blocks Visibility
-* Show or Hide Gutenberg Blocks based on <a href="https://wordpress.org/plugins/advanced-custom-fields/">Advanced Custom Fields Plugin</a> Value
+* Show or Hide Gutenberg Blocks based on <a href="https://wordpress.org/plugins/advanced-custom-fields/">Advanced Custom Fields Plugin(ACF)</a> Value
 
 <strong>More information</strong>
 
