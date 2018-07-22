@@ -159,6 +159,107 @@ if( !function_exists( 'blockopts_block_options_callback' ) ){
 					}
 				}
 			}
+
+			//ACF
+			if( isset( $block_options['acf'] ) && 'activate' == $block_options['acf'] ){
+				if( isset( $blockOpts['acf_field'] ) && !empty( $blockOpts['acf_field'] ) ){
+					$acf = get_field_object( $blockOpts['acf_field'] );
+					if( $acf && is_array( $acf ) ){
+						$acf_visibility    = isset( $blockOpts['acf_visibility'] ) ? $blockOpts['acf_visibility'] : 'hide';
+						switch ( $blockOpts['acf_condition'] ) {
+							case 'equal':
+								if( isset( $acf['value'] ) ){
+									if( 'show' == $acf_visibility && $acf['value'] == $blockOpts['acf_value'] ){
+										$hidden = false;
+									}else if( 'show' == $acf_visibility && $acf['value'] != $blockOpts['acf_value'] ){
+										$hidden = true;
+									}else if( 'hide' == $acf_visibility && $acf['value'] == $blockOpts['acf_value'] ){
+										$hidden = true;
+									}else if( 'hide' == $acf_visibility && $acf['value'] != $blockOpts['acf_value'] ){
+										$hidden = false;
+									}
+								}
+							break;
+
+							case 'not_equal':
+								if( isset( $acf['value'] ) ){
+									if( 'show' == $acf_visibility && $acf['value'] == $blockOpts['acf_value'] ){
+										$hidden = true;
+									}else if( 'show' == $acf_visibility && $acf['value'] != $blockOpts['acf_value'] ){
+										$hidden = false;
+									}else if( 'hide' == $acf_visibility && $acf['value'] == $blockOpts['acf_value'] ){
+										$hidden = false;
+									}else if( 'hide' == $acf_visibility && $acf['value'] != $blockOpts['acf_value'] ){
+										$hidden = true;
+									}
+								}
+							break;
+
+							case 'contains':
+								if( isset( $acf['value'] ) ){
+									if( 'show' == $acf_visibility && strpos( $acf['value'], $blockOpts['acf_value'] ) !== false ){
+										$hidden = false;
+									}else if( 'show' == $acf_visibility && strpos( $acf['value'], $blockOpts['acf_value'] ) === false ){
+										$hidden = true;
+									}else if( 'hide' == $acf_visibility && strpos( $acf['value'], $blockOpts['acf_value'] ) !== false ){
+										$hidden = true;
+									}else if( 'hide' == $acf_visibility && strpos( $acf['value'], $blockOpts['acf_value'] ) === false ){
+										$hidden = false;
+									}
+								}
+							break;
+
+							case 'not_contains':
+								if( isset( $acf['value'] ) ){
+									if( 'show' == $acf_visibility && strpos( $acf['value'], $blockOpts['acf_value'] ) !== false ){
+										$hidden = true;
+									}else if( 'show' == $acf_visibility && strpos( $acf['value'], $blockOpts['acf_value'] ) === false ){
+										$hidden = false;
+									}else if( 'hide' == $acf_visibility && strpos( $acf['value'], $blockOpts['acf_value'] ) !== false ){
+										$hidden = false;
+									}else if( 'hide' == $acf_visibility && strpos( $acf['value'], $blockOpts['acf_value'] ) === false ){
+										$hidden = true;
+									}
+								}
+							break;
+
+							case 'empty':
+								if( 'show' == $acf_visibility && empty( $acf['value'] ) ){
+									$hidden = false;
+								}else if( 'show' == $acf_visibility && !empty( $acf['value'] ) ){
+									$hidden = true;
+								}elseif( 'hide' == $acf_visibility && empty( $acf['value'] ) ){
+									$hidden = true;
+								}else if( 'hide' == $acf_visibility && !empty( $acf['value'] ) ){
+									$hidden = false;
+								}
+							break;
+
+							case 'not_empty':
+								if( 'show' == $acf_visibility && empty( $acf['value'] ) ){
+									$hidden = true;
+								}else if( 'show' == $acf_visibility && !empty( $acf['value'] ) ){
+									$hidden = false;
+								}elseif( 'hide' == $acf_visibility && empty( $acf['value'] ) ){
+									$hidden = false;
+								}else if( 'hide' == $acf_visibility && !empty( $acf['value'] ) ){
+									$hidden = true;
+								}
+							break;
+							
+							default:
+								$hidden = false;
+								break;
+						}
+
+						// //do return to bypass other conditions
+			            $hidden = apply_filters( 'blockopts_visibility_acf', $hidden );
+			            if( $hidden ){
+			                return false;
+			            }
+					}
+				}
+			}
 			
 			//display logic
 			if( 'activate' == $block_options['logic'] ){
