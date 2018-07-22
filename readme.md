@@ -6,6 +6,12 @@
 
 ![Block Options for WordPress Gutenberg Editor](https://raw.githubusercontent.com/phpbits/block-options/master/screenshot-1.gif "Block Options for WordPress Gutenberg Editor")
 
+###Features
+* Show or Hide Gutenberg Blocks on Desktop, Tablet and Mobile Devices
+* Gutenberg Editor Blocks Visibility per User Logged-in or Logged-out State
+* Custom Conditional Display Logic for Blocks Visibility
+* Show or Hide Gutenberg Blocks based on Advanced Custom Fields Value
+
 ## Installation ##
 
 1. Upload the full directory into your wp-content/plugins directory
