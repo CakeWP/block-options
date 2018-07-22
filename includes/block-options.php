@@ -194,4 +194,32 @@ if( !function_exists( 'blockopts_block_options_callback' ) ){
 	}
 }
 
+if( !function_exists( 'blockopts_api_acf' ) ){
+	function blockopts_api_acf( $data ) {
+
+		$fields = array();
+
+        $groups = apply_filters( 'acf/get_field_groups', array() );
+        if ( is_array( $groups ) ) {
+            foreach ( $groups as $group ) {
+                $fields_group = apply_filters( 'acf/field_group/get_fields', array(), $group['id'] );
+                if( !empty( $fields_group ) ){
+                    foreach ( $fields_group as $k => $fg ) {
+                            $fields[ $fg['key'] ] = $fg['label'];
+                       }   
+                }
+            }
+        }
+
+		return (object)array_reverse( $fields ) ;
+	}
+
+	add_action( 'rest_api_init', function () {
+		register_rest_route( 'block-options/v1', '/acf', array(
+			'methods' => 'GET',
+			'callback' => 'blockopts_api_acf',
+		) );
+	} );
+}
+
 ?>

@@ -130,6 +130,7 @@ final class BLOCKOPTS_Block_Options {
 				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/days.php';
 				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/links.php';
 				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/alignment.php';
+				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/acf.php';
 				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/more.php';
 			}
 		}

@@ -132,9 +132,10 @@ if( !function_exists( 'blockopts_get_settings' ) ):
 			$devices 			= array( 'devices' 		=> get_option( 'blockopts_tabmodule-devices' ) );
 			$logic 				= array( 'logic' 		=> get_option( 'blockopts_tabmodule-logic' ) );
 			$state 				= array( 'state' 		=> get_option( 'blockopts_tabmodule-state' ) );
+			$acf 				= array( 'acf' 			=> get_option( 'blockopts_tabmodule-acf' ) );
 			
 
-			$settings = array_merge( array( 'settings' => $settings ), $general, $devices, $logic, $state );
+			$settings = array_merge( array( 'settings' => $settings ), $general, $devices, $logic, $state, $acf );
 
 			// Let's let devs alter that value coming in
 			$value = apply_filters( 'blockopts_update_settings', $settings );
