@@ -1,10 +1,18 @@
-# Block Options for WordPress Gutenberg Editor #
+# [Block Options](https://block-options.com/) for WordPress Gutenberg Editor #
+
+![Plugin Version](https://img.shields.io/wordpress/plugin/v/block-options.svg?maxAge=2592000) ![Total Downloads](https://img.shields.io/wordpress/plugin/dt/block-options.svg?maxAge=2592000) ![Plugin Rating](https://img.shields.io/wordpress/plugin/r/block-options.svg?maxAge=2592000) ![WordPress Compatibility](https://img.shields.io/wordpress/v/block-options.svg?maxAge=2592000) [![License](https://img.shields.io/badge/license-GPL--2.0%2B-red.svg)](https://github.com/phpbits/block-options/blob/master/LICENSE)
 
 ### Welcome to our GitHub Repository
 
 <strong><a href="https://block-options.com/">Block Options for WordPress Gutenberg Editor</a></strong> will give you additional options to control every Gutenberg block's visibility per mobile device, tablet and desktop. You can also restrict display on user's logged-in or logged-out state; and if you are comfortable with WordPress conditional tags, you can use display logic option.
 
 ![Block Options for WordPress Gutenberg Editor](https://raw.githubusercontent.com/phpbits/block-options/master/screenshot-1.gif "Block Options for WordPress Gutenberg Editor")
+
+###Features
+* Show or Hide Gutenberg Blocks on Desktop, Tablet and Mobile Devices
+* Gutenberg Editor Blocks Visibility per User Logged-in or Logged-out State
+* Custom Conditional Display Logic for Blocks Visibility
+* Show or Hide Gutenberg Blocks based on Advanced Custom Fields Value
 
 ## Installation ##
 

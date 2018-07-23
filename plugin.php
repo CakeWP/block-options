@@ -3,7 +3,7 @@
  * Plugin Name: Block Options
  * Plugin URI: https://block-options.com/
  * Description: Additional block options for better block control. Get <strong><a href="https://block-options.com/" target="_blank" >Extended Block Options for WordPress</a></strong> for complete block controls. Thanks!
- * Version: 1.1.1
+ * Version: 1.2
  * Author: Phpbits Creative Studio
  * Author URI: https://phpbits.net/
  * Text Domain: block-options
@@ -70,7 +70,7 @@ final class BLOCKOPTS_Block_Options {
 
 		// Plugin version.
 		if ( ! defined( 'BLOCKOPTS_VERSION' ) ) {
-			define( 'BLOCKOPTS_VERSION', '1.1.1' );
+			define( 'BLOCKOPTS_VERSION', '1.2' );
 		}
 
 		// Plugin Folder Path.
@@ -130,6 +130,7 @@ final class BLOCKOPTS_Block_Options {
 				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/days.php';
 				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/links.php';
 				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/alignment.php';
+				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/acf.php';
 				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/more.php';
 			}
 		}
