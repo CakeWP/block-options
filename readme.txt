@@ -45,6 +45,7 @@ e.g.
 == Screenshots ==
 
 1. WordPress Gutenberg Editor Block Options
+2. Manage Visibility usig ACF field value condition
 
 == Changelog ==
 
