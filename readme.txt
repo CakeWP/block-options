@@ -1,4 +1,4 @@
-=== Block Options ===
+=== Block Options for Gutenberg Editor ===
 Contributors: phpbits
 Donate link: https://www.buymeacoffee.com/phpbits
 Tags: gutenberg, blocks, block, editor, WordPress editor, gutenberg manager, gutenberg blocks
@@ -48,6 +48,10 @@ e.g.
 2. Manage Visibility usig ACF field value condition
 
 == Changelog ==
+
+= 1.2.1 =
+* Add fixes for ACF Pro integration
+* Fixes for deprecated variables
 
 = 1.2 =
 * Add ACF Support for managing visibilities based on specific field value and conditions
