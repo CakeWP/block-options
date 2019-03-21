@@ -15,6 +15,7 @@ const { InspectorAdvancedControls }	= wp.editor;
 const { compose, createHigherOrderComponent } = wp.compose;
 const { ToggleControl } = wp.components;
 
+const restrictedBlocks = [ 'core/block' ];
 
 /**
  * Add custom CoBlocks attributes to selected blocks
@@ -42,7 +43,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 		return (
 			<Fragment>
 				<BlockEdit {...props} />
-				{ isSelected && 
+				{ isSelected && !restrictedBlocks.includes( name ) &&
 					<InspectorAdvancedControls>
 						<ToggleControl
 							label={ __( 'Devices Visibility' ) }
