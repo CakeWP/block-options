@@ -42,8 +42,9 @@ final class EditorsKit {
 	public static function instance() {
 		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof EditorsKit ) ) {
 			self::$instance = new EditorsKit;
+			self::$instance->init();
 			self::$instance->setup_constants();
-
+			self::$instance->asset_suffix();
 			self::$instance->includes();
 		}
 		return self::$instance;
@@ -118,13 +119,13 @@ final class EditorsKit {
 	private function includes() {
 		global $editorskit,  $pagenow;
 
-		require_once EDITORSKIT_PLUGIN_DIR . 'includes/admin/settings/register-settings.php';
+		// require_once EDITORSKIT_PLUGIN_DIR . 'includes/admin/settings/register-settings.php';
 		require_once EDITORSKIT_PLUGIN_DIR . 'includes/scripts.php';
-		require_once EDITORSKIT_PLUGIN_DIR . 'includes/extras.php';
+		// require_once EDITORSKIT_PLUGIN_DIR . 'includes/extras.php';
 
-		$editorskit = EditorsKit_get_settings();
+		$editorskit = editorskit_get_settings();
 
-		require_once EDITORSKIT_PLUGIN_DIR . 'includes/block-options.php';
+		// require_once EDITORSKIT_PLUGIN_DIR . 'includes/block-options.php';
 
 		if ( is_admin() ) {
 
@@ -134,6 +135,71 @@ final class EditorsKit {
 
 		}
 		
+	}
+
+	/**
+	 * Load actions
+	 *
+	 * @return void
+	 */
+	private function init() {
+		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ), 99 );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'block_localization' ) );
+	}
+
+	/**
+	 * Change the plugin's minified or src file name, based on debug mode.
+	 *
+	 * @since 1.0.0
+	 */
+	public function asset_suffix() {
+		if ( true === EDITORSKIT_DEBUG ) {
+			define( 'EDITORSKIT_ASSET_SUFFIX', null );
+		} else {
+			define( 'EDITORSKIT_ASSET_SUFFIX', '.min' );
+		}
+	}
+
+	/**
+	 * If debug is on, serve unminified source assets.
+	 *
+	 * @since 1.0.0
+	 * @param string|string $type The type of resource.
+	 * @param string|string $directory Any extra directories needed.
+	 */
+	public function asset_source( $type = 'js', $directory = null ) {
+		if ( 'js' === $type ) {
+			if ( true === EDITORSKIT_DEBUG ) {
+				return EDITORSKIT_PLUGIN_URL . 'src/' . $type . '/' . $directory;
+			} else {
+				return EDITORSKIT_PLUGIN_URL . 'dist/' . $type . '/' . $directory;
+			}
+		} else {
+			return EDITORSKIT_PLUGIN_URL . 'dist/css/' . $directory;
+		}
+	}
+
+	/**
+	 * Loads the plugin language files.
+	 *
+	 * @access public
+	 * @since 1.0.0
+	 * @return void
+	 */
+	
+	public function load_textdomain() {
+		load_plugin_textdomain( 'editorskit', false, dirname( plugin_basename( EDITORSKIT_PLUGIN_DIR ) ) . '/languages/' );
+	}
+
+	/**
+	 * Enqueue localization data for our blocks.
+	 *
+	 * @access public
+	 */
+	public function block_localization() {
+		if ( function_exists( 'wp_set_script_translations' ) ) {
+			wp_set_script_translations( 'editorskit-editor', 'editorskit' );
+		}
 	}
 
 }
