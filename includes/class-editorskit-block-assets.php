@@ -67,7 +67,7 @@ class EditorsKit_Block_Assets {
 		$this->_url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
-		add_action( 'init', array( $this, 'editor_assets' ) );
+		add_action( 'init', array( $this, 'editor_assets' ), 999 );
 	}
 
 	/**
@@ -93,8 +93,12 @@ class EditorsKit_Block_Assets {
 	 */
 	public function editor_assets() {
 
+		if( !is_admin() ){
+			return;
+		}
+
 		// Styles.
-		wp_register_style(
+		wp_enqueue_style(
 			$this->_slug . '-editor',
 			$this->_url . '/dist/blocks.editor.build.css',
 			array(),
@@ -102,7 +106,7 @@ class EditorsKit_Block_Assets {
 		);
 
 		// Scripts.
-		wp_register_script(
+		wp_enqueue_script(
 			$this->_slug . '-editor',
 			$this->_url . '/dist/blocks.build.js',
 			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api' ),

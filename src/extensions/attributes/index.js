@@ -10,12 +10,18 @@ const { addFilter } = wp.hooks;
  *
  * @return {Object} Filtered block settings.
  */
-export function addAttribute( settings ) {
+function addAttributes( settings ) {
 	
 	if( typeof settings.attributes !== 'undefined' ){
 		settings.attributes = Object.assign( settings.attributes, {
-			blockOpts:{ type: 'object' }
+			editorskit:{ 
+				type: 'object',
+				default: {
+					devices: false
+				},
+			}
 		} );
+		console.log( settings );
 	}
 
 	return settings;
