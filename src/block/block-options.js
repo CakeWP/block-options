@@ -46,24 +46,6 @@ const { createHigherOrderComponent } = wp.compose;
 const { Button, TextControl, SelectControl, CheckboxControl, TextareaControl, PanelRow, PanelBody, Dashicon, Popover, InspectorAdvancedControls } = wp.components; 
 const { registerStore, withSelect } = wp.data;
 
-/**
- * Filters registered block settings, extending attributes with anchor using ID
- * of the first node.
- *
- * @param {Object} settings Original block settings.
- *
- * @return {Object} Filtered block settings.
- */
-export function addAttribute( settings ) {
-	
-	if( typeof settings.attributes !== 'undefined' ){
-		settings.attributes = Object.assign( settings.attributes, {
-			blockOpts:{ type: 'object' }
-		} );
-	}
-
-	return settings;
-}
 
 /**
  * Override the default edit UI to include a new block inspector control for

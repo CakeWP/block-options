@@ -9,4 +9,8 @@
  * Webpack is compiling as the input file.
  */
 
-import './block/block-options.js';
+// Extensions
+import './extensions/attributes';
+import './extensions/advanced-controls';
+
+// import './block/block-options.js';

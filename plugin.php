@@ -117,21 +117,14 @@ final class EditorsKit {
 	 * @return void
 	 */
 	private function includes() {
-		global $editorskit,  $pagenow;
 
-		// require_once EDITORSKIT_PLUGIN_DIR . 'includes/admin/settings/register-settings.php';
-		require_once EDITORSKIT_PLUGIN_DIR . 'includes/scripts.php';
-		// require_once EDITORSKIT_PLUGIN_DIR . 'includes/extras.php';
-
-		$editorskit = editorskit_get_settings();
-
-		// require_once EDITORSKIT_PLUGIN_DIR . 'includes/block-options.php';
-
-		if ( is_admin() ) {
+		require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-block-assets.php';
+		
+		if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 
 			//run on activation
-			require_once EDITORSKIT_PLUGIN_DIR . 'includes/install.php';
-			require_once EDITORSKIT_PLUGIN_DIR . 'includes/welcome.php';
+			// require_once EDITORSKIT_PLUGIN_DIR . 'includes/install.php';
+			// require_once EDITORSKIT_PLUGIN_DIR . 'includes/welcome.php';
 
 		}
 		
