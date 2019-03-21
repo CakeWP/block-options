@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Block Options
+ * Plugin Name: EditorsKit
  * Plugin URI: https://block-options.com/
- * Description: Additional block options for better block control.
+ * Description: Set of page building <strong>block options</strong> for Gutenberg Editor.
  * Version: 1.3.3
  * Author: Phpbits Creative Studio
  * Author URI: https://phpbits.net/

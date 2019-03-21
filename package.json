@@ -8,7 +8,7 @@
     "eject": "cgb-scripts eject"
   },
   "dependencies": {
-    "cgb-scripts": "1.9.8",
+    "cgb-scripts": "^1.15.0",
     "classnames": "^2.2.6"
   }
 }
