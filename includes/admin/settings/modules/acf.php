@@ -44,8 +44,8 @@ if( !function_exists( 'blockopts_settings_acf' ) ):
 			</div>
 
 			<?php blockopts_modal_start( $block_options['acf'] ); ?>
-				<span class="dashicons widgetopts-dashicons widgetopts-no-top dashicons-editor-textcolor"></span>
-				<h3 class="widgetopts-modal-header"><?php _e( 'Advanced Custom Fields Support', 'block-options' );?></h3>
+				<span class="dashicons blockopts-dashicons blockopts-no-top dashicons-editor-textcolor"></span>
+				<h3 class="blockopts-modal-header"><?php _e( 'Advanced Custom Fields Support', 'block-options' );?></h3>
 				<p>
 					<?php _e( 'Enabling this feature will give you more visibility options for each block and assign condition using ACF field.', 'block-options' );?>
 				</p>

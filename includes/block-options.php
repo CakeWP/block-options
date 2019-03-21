@@ -13,24 +13,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if( !function_exists( 'blockopts_editor_assets' ) ):
 	// Hook: Editor assets.
-	add_action( 'init', 'blockopts_editor_assets', 9999 );
+	add_action( 'init', 'blockopts_editor_assets', 999 );
 	function blockopts_editor_assets() {
 		global $block_options;
-		$js_dir  = BLOCKOPTS_PLUGIN_URL . 'assets/js/';
-		$css_dir = BLOCKOPTS_PLUGIN_URL . 'assets/css/';
+		$js_dir  = BLOCKOPTS_PLUGIN_URL . 'dist/';
+		$css_dir = BLOCKOPTS_PLUGIN_URL . 'dist/';
 
 		wp_enqueue_script(
 			'gutenberg-blockopts',
-			$js_dir .'block-options.min.js',
-			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-date' ), // Dependencies, defined above.
-			filemtime( BLOCKOPTS_PLUGIN_DIR .'assets/js/block-options.min.js' )
+			$js_dir .'blocks.build.js',
+			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-date', 'wp-editor' ), // Dependencies, defined above.
+			filemtime( BLOCKOPTS_PLUGIN_DIR .'dist/blocks.build.js' )
 		);
 
 		wp_enqueue_style(
 			'gutenberg-blockopts-css', // Handle.
-			$css_dir .'gutenberg.css', // Block editor CSS.
-			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
-			filemtime( BLOCKOPTS_PLUGIN_DIR .'assets/css/gutenberg.css' ) // filemtime — Gets file modification time.
+			$css_dir .'blocks.editor.build.css', // Block editor CSS.
+			array(), // Dependency to include the CSS after it.
+			filemtime( BLOCKOPTS_PLUGIN_DIR .'dist/blocks.editor.build.css' ) // filemtime — Gets file modification time.
 		);
 
 		wp_localize_script( 'gutenberg-blockopts', 'varblockOpts', $block_options );
@@ -111,8 +111,8 @@ if( !function_exists( 'blockopts_gutenberg_filter' ) ){
 	add_action( 'init', 'blockopts_gutenberg_filter' );
 	function blockopts_gutenberg_filter(){ 
 		if( !is_admin() ){
-			add_filter( 'the_content', 'blockopts_gutenberg_callback', 8 );
-			add_filter( 'the_content', 'blockopts_remove_placeholder', 8 );
+			add_filter( 'the_content', 'blockopts_gutenberg_callback', 6 );
+			add_filter( 'the_content', 'blockopts_remove_placeholder', 6 );
 		}
 	}
 }
@@ -163,6 +163,7 @@ if( !function_exists( 'blockopts_block_options_callback' ) ){
 			//ACF
 			if( isset( $block_options['acf'] ) && 'activate' == $block_options['acf'] ){
 				if( isset( $blockOpts['acf_field'] ) && !empty( $blockOpts['acf_field'] ) ){
+					$hidden     = false;
 					$acf = get_field_object( $blockOpts['acf_field'] );
 					if( $acf && is_array( $acf ) ){
 						$acf_visibility    = isset( $blockOpts['acf_visibility'] ) ? $blockOpts['acf_visibility'] : 'hide';
@@ -300,7 +301,7 @@ if( !function_exists( 'blockopts_api_acf' ) ){
 
 		$fields = array();
 
-		if ( defined( 'ACF_PRO' ) ) {
+		if ( function_exists( 'acf_get_field_groups' ) ) {
             $groups = acf_get_field_groups();
             if ( is_array( $groups ) ) {
                 foreach ( $groups as $group ) {

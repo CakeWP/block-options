@@ -1,0 +1,19 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+.components-panel__row.blockOpts-panel{
+	flex-wrap: wrap;
+	h3{
+		margin-top: 15px;
+	}
+	.components-base-control{
+		width: 100%;
+		.components-base-control__field{
+			margin-bottom: 0px;
+		}
+	}
+}

@@ -19,8 +19,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 if( !function_exists( 'blockopts_load_scripts' ) ){
     function blockopts_load_scripts(){
-        $css_dir = BLOCKOPTS_PLUGIN_URL . 'assets/css/';
-        wp_enqueue_style( 'blockopts-styles', $css_dir . 'block-options.css' , array(), null );
+        $css_dir = BLOCKOPTS_PLUGIN_URL . 'dist/';
+        wp_enqueue_style( 'blockopts-styles', $css_dir . 'blocks.style.build.css' , array(), null );
     }
     add_action( 'wp_enqueue_scripts', 'blockopts_load_scripts' );
     add_action( 'customize_controls_enqueue_scripts', 'blockopts_load_scripts' );

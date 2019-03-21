@@ -49,6 +49,18 @@ e.g.
 
 == Changelog ==
 
+= 1.3.3 =
+* Fix issue with latest Gutenberg version
+
+= 1.3.2 =
+* Fix issue with column styling
+
+= 1.3.1 =
+* Fix classes duplicate
+
+= 1.3 =
+* Add fixes for Gutenberg 3.7 issue and deprecated functions
+
 = 1.2.1 =
 * Add fixes for ACF Pro integration
 * Fixes for deprecated variables
