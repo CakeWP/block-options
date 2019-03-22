@@ -1,9 +1,11 @@
 const { __ } = wp.i18n;
+const { dispatch } = wp.data;
 const { Fragment } = wp.element; 
 const { Button, ButtonGroup, Tooltip } = wp.components; 
 
-const UserStateOptions = ( props ) => {
+const UserStateOptions = ( props, reloadModal ) => {
 	const {
+		clientId,
 		attributes,
 		setAttributes,
 	} = props;
@@ -19,7 +21,11 @@ const UserStateOptions = ( props ) => {
 
     	var blockOptions = Object.assign( { [ state ]: newValue }, editorskit );
 
-    	setAttributes( { editorskit: blockOptions } );
+    	dispatch( 'core/editor' ).updateBlockAttributes( clientId, { editorskit: blockOptions } );
+
+    	if( reloadModal ){
+    		reloadModal();
+    	}
 	}
 
 	return(

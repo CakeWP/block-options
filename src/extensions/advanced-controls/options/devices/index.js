@@ -1,9 +1,12 @@
 const { __ } = wp.i18n;
+const { dispatch } = wp.data;
 const { Fragment } = wp.element; 
 const { Button, ButtonGroup, Dashicon, Tooltip } = wp.components; 
 
-const DevicesOptions = ( props ) => {
+const DevicesOptions = ( props, reloadModal ) => {
+
 	const {
+		clientId,
 		attributes,
 		setAttributes,
 	} = props;
@@ -19,9 +22,13 @@ const DevicesOptions = ( props ) => {
 
     	var blockOptions = Object.assign( { [ device ]: newValue }, editorskit );
 
-    	setAttributes( { editorskit: blockOptions } );
-	}
+    	dispatch( 'core/editor' ).updateBlockAttributes( clientId, { editorskit: blockOptions } );
 
+    	if( reloadModal ){
+    		reloadModal();
+    	}
+	}
+	
 	return(
 		<Fragment>
 			<div className="editorskit-button-group-container editorskit-button-group-devices">
