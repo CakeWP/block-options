@@ -21,6 +21,8 @@ function addAttributes( settings ) {
 					desktop: true,
 					tablet: true,
 					mobile: true,
+					loggedin: true,
+					loggedout: true,
 				},
 			}
 		} );

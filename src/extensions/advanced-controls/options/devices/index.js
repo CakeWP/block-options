@@ -24,8 +24,8 @@ const DevicesOptions = ( props ) => {
 
 	return(
 		<Fragment>
-			<div className="editorskit-button-group-container">
-				<label className="components-base-control__label" >{ __( 'Devices Visibility' ) }</label>
+			<div className="editorskit-button-group-container editorskit-button-group-devices">
+				<label className="components-base-control__label" >{ __( 'Devices' ) }</label>
 					<ButtonGroup
 						aria-label={ __( 'Devices Visibility' ) }
 					>

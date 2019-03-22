@@ -13,6 +13,8 @@
 	    	padding-top: 2px;
 	    	border: 1px solid #fff;
 	    	outline: none !important;
+	    	text-shadow: none;
+	    	line-height: 21px;
 	    	&, &:focus:enabled{
 	    		color: #a2aab2;
 	    		background: 
@@ -47,5 +49,11 @@
 	.components-base-control__help{
 		margin-top: 0px;
 		font-style: italic;
+	}
+
+	&.editorskit-button-group-state{
+		.components-button-group{
+			grid-template-columns: repeat(2, 1fr);
+		}
 	}
 }
