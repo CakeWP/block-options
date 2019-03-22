@@ -5,6 +5,7 @@
  */
 import DevicesOptions from '../../advanced-controls/options/devices/';
 import UserStateOptions from '../../advanced-controls/options/state/';
+import LogicOptions from '../../advanced-controls/options/logic/';
 
 /**
  * WordPress dependencies
@@ -68,6 +69,7 @@ class BlockSettings extends Component {
 					>
 						{ DevicesOptions( selectedBlock, this.reloadModal ) }
 						{ UserStateOptions( selectedBlock, this.reloadModal ) }
+						{ LogicOptions( selectedBlock, this.reloadModal ) }
 					</Modal>
 				: null }
 			</Fragment>
