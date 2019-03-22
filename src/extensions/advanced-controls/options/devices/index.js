@@ -12,20 +12,14 @@ const DevicesOptions = ( props ) => {
 		editorskit,
 	} = attributes;
 
-	const onSelectDevice = ( backgroundRepeat ) => {
+	const onSelectDevice = ( device ) => {
+		var newValue = !editorskit[ device ];
+					        		
+		delete editorskit[ device ];
 
-		if ( backgroundRepeat === 'no-repeat' ) {
-			setAttributes( {
-				backgroundRepeat: backgroundRepeat,
-				backgroundSize: 'cover',
-			} );
-		} else {
-			setAttributes( {
-				backgroundRepeat: backgroundRepeat,
-				backgroundSize: 'contain',
-				focalPoint: undefined,
-			} );
-		}
+    	var blockOptions = Object.assign( { [ device ]: newValue }, editorskit );
+
+    	setAttributes( { editorskit: blockOptions } );
 	}
 
 	return(
@@ -39,15 +33,7 @@ const DevicesOptions = ( props ) => {
 					        <Button
 					        	className="is-button"
 					        	isPrimary={  !! editorskit.desktop }
-					        	onClick={ () => {
-					        		var newValue = !editorskit.desktop;
-					        		
-					        		delete editorskit.desktop;
-
-					            	var blockOptions = Object.assign( { desktop: newValue }, editorskit );
-
-					            	setAttributes( { editorskit: blockOptions } );
-					        	} }
+					        	onClick={ () => onSelectDevice( 'desktop' ) }
 					        >
 					       		<Dashicon icon="desktop" />
 					        </Button>
@@ -57,15 +43,7 @@ const DevicesOptions = ( props ) => {
 					        <Button
 					        	className="is-button"
 					        	isPrimary={  !! editorskit.tablet }
-					        	onClick={ () => {
-					        		var newValue = !editorskit.tablet;
-					        		
-					        		delete editorskit.tablet;
-
-					            	var blockOptions = Object.assign( { tablet: newValue }, editorskit );
-
-					            	setAttributes( { editorskit: blockOptions } );
-					        	} }
+					        	onClick={ () => onSelectDevice( 'tablet' ) }
 					        >
 					       		<Dashicon icon="tablet" />
 					        </Button>
@@ -74,15 +52,7 @@ const DevicesOptions = ( props ) => {
 					        <Button
 					        	className="is-button"
 					        	isPrimary={  !! editorskit.mobile }
-					        	onClick={ () => {
-					        		var newValue = !editorskit.mobile;
-					        		
-					        		delete editorskit.mobile;
-
-					            	var blockOptions = Object.assign( { mobile: newValue }, editorskit );
-
-					            	setAttributes( { editorskit: blockOptions } );
-					        	} }
+					        	onClick={ () => onSelectDevice( 'mobile' ) }
 					        >
 					       		<Dashicon icon="smartphone" />
 					        </Button>
