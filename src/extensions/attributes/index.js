@@ -17,11 +17,13 @@ function addAttributes( settings ) {
 			editorskit:{ 
 				type: 'object',
 				default: {
-					devices: false
+					devices: false,
+					desktop: true,
+					tablet: true,
+					mobile: true,
 				},
 			}
 		} );
-		console.log( settings );
 	}
 
 	return settings;

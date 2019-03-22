@@ -5,6 +5,13 @@ import classnames from 'classnames';
 
 
 /**
+ * Internal dependencies
+ */
+import './styles/editor.scss';
+import DevicesOptions from './options/devices/';
+
+
+/**
  * WordPress Dependencies
  */
 const { __ } = wp.i18n;
@@ -45,30 +52,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 				<BlockEdit {...props} />
 				{ isSelected && !restrictedBlocks.includes( name ) &&
 					<InspectorAdvancedControls>
-						<ToggleControl
-							label={ __( 'Devices Visibility' ) }
-							checked={ !! editorskit.devices }
-							onChange={ ( n ) => {
-								//delete first
-				            	delete editorskit.devices;
-				            	var blockOptions = Object.assign( { devices: n }, editorskit );
-
-				            	setAttributes( { editorskit: blockOptions } );
-							} }
-							help={ !! editorskit.devices ? __( 'Visible on selected devices only.' ) : __( 'Visible on all devices.' ) }
-						/>
-
-						<ToggleControl
-							label={ __( 'Devices Visibility' ) }
-							checked={ !! editorskit.state }
-							onChange={ ( n ) => {
-								//delete first
-				            	delete editorskit.state;
-				            	var blockOptions = Object.assign( { state: n }, editorskit );
-				                setAttributes( { editorskit: blockOptions } );
-							} }
-							help={ !! editorskit.state ? __( 'Visible on selected devices only.' ) : __( 'Visible on all devices.' ) }
-						/>
+						{ DevicesOptions( props ) }
 					</InspectorAdvancedControls>
 				}
 
