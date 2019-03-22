@@ -64,6 +64,7 @@ class BlockSettings extends Component {
 						title={ __( 'Visibility Settings' ) }
 						onRequestClose={ () => closeModal() }
 						closeLabel={ __( 'Close' ) }
+						className="editorskit-components-modal__content"
 					>
 						{ DevicesOptions( selectedBlock, this.reloadModal ) }
 						{ UserStateOptions( selectedBlock, this.reloadModal ) }

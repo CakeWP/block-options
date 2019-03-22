@@ -66,7 +66,7 @@ const DevicesOptions = ( props, reloadModal ) => {
 					    </Tooltip>
 				    </ButtonGroup>
 				    <p className="components-base-control__help">
-				    	{ __( 'Click to turn visibility on/off.' ) }
+				    	{ __( 'Click to turn visibility on/off for specific device.' ) }
 				    </p>
 			</div>
 		</Fragment>

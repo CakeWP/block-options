@@ -1,6 +1,15 @@
 .editorskit-button-group-container{
+	border-top: 1px solid #e2e4e7;
+	padding: 15px 0px;
+
+	&:last-child{
+		border-bottom: 1px solid #e2e4e7;
+	}
+
 	.components-base-control__label{
 		display: block;
+		font-weight: 600;
+    	margin-bottom: 5px;
 	}
 	.components-button-group{
 		display: grid;
@@ -15,6 +24,8 @@
 	    	outline: none !important;
 	    	text-shadow: none;
 	    	line-height: 21px;
+	    	box-shadow: inset 0 0 0 1px #e2e4e7, inset 0 0 0 2px #fff;
+	    	
 	    	&, &:focus:enabled{
 	    		color: #a2aab2;
 	    		// background: 
@@ -47,8 +58,11 @@
 	    }
 	}
 	.components-base-control__help{
-		margin-top: 0px;
 		font-style: italic;
+		margin: 0px;
+		padding-top: 5px;
+	    opacity: 0.75;
+	    font-size: 11px;
 	}
 
 	&.editorskit-button-group-state{

@@ -1,6 +1,7 @@
 /**
  * Internal dependencies
  */
+import './styles/editor.scss';
 import BlockSettings from './components/modal';
 
 /**

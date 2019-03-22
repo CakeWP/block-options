@@ -56,7 +56,7 @@ const UserStateOptions = ( props, reloadModal ) => {
 				        </Tooltip>
 				    </ButtonGroup>
 				    <p className="components-base-control__help">
-				    	{ __( 'Click to turn visibility on/off.' ) }
+				    	{ __( 'Click to turn visibility on/off for specific user logged-in state.' ) }
 				    </p>
 			</div>
 		</Fragment>

@@ -1,0 +1,14 @@
+.editorskit-components-modal__content{
+	.editorskit-button-group-container{
+		padding: 15px 0px;
+
+    	&.editorskit-button-group-devices{
+    		padding-top: 5px;
+    		border-top: 0px;
+    	}
+
+    	&:last-child{
+    		border-bottom: 0px;
+    	}
+	}
+}
