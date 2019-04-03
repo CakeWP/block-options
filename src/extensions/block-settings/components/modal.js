@@ -13,7 +13,7 @@ import LogicOptions from '../../advanced-controls/options/logic/';
 const { __, sprintf } = wp.i18n;
 const { select } = wp.data;
 const { Fragment, Component } = wp.element;
-const { Button, Modal, TextControl } = wp.components;
+const { Button, Modal, TextControl, TabPanel } = wp.components;
 const { PluginBlockSettingsMenuItem } = wp.editPost;
 
 
@@ -48,6 +48,10 @@ class BlockSettings extends Component {
 		const closeModal = () => (
 			this.setState( { isOpen: false } )
 		);
+
+		const onSelect = ( tabName ) => {
+			console.log( 'Selecting tab', tabName );
+		};
 		
 		return (
 			<Fragment>
@@ -67,9 +71,39 @@ class BlockSettings extends Component {
 						closeLabel={ __( 'Close' ) }
 						className="editorskit-components-modal__content"
 					>
-						{ DevicesOptions( selectedBlock, this.reloadModal ) }
-						{ UserStateOptions( selectedBlock, this.reloadModal ) }
-						{ LogicOptions( selectedBlock, this.reloadModal ) }
+						<TabPanel className="editorskit-tab-panel"
+							activeClass="is-active"
+							tabs={ [
+								{
+									name: 'default',
+									title: __( 'Default' ),
+									className: 'editorskit-default',
+								},
+								{
+									name: 'acf',
+									title: __( 'Advanced' ),
+									className: 'editorskit-acf',
+								},
+							] }>
+							{
+								( tab ) => {
+									switch( tab.name ){
+										case 'acf':
+											return(
+												<p>ACF</p>
+											);
+										break;
+		    							default:
+		    								return[
+												DevicesOptions( selectedBlock, this.reloadModal ),
+												UserStateOptions( selectedBlock, this.reloadModal ),
+												LogicOptions( selectedBlock, this.reloadModal ),
+											];
+		    							break;
+									}
+								}
+							}
+						</TabPanel>
 					</Modal>
 				: null }
 			</Fragment>
