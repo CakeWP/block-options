@@ -101,9 +101,35 @@ class EditorsKit_Render_Block {
 		return $block_content;
 	}
 
+	private function display_logic( $block_content ){
+		if( isset( $this->_attributes['logic'] ) && !empty( $this->_attributes['logic'] ) ){
+			//do display logic
+			$logic = stripslashes( trim( $this->_attributes['logic'] ) );
+			
+			//allow override filters
+            $logic = apply_filters( 'editorskit_logic_override', $logic );
+            $logic = apply_filters( 'block_options_logic_override', $logic );
+            if ( $logic === false ){
+                return '';
+            }
+            if ( $logic === true ){
+                return $block_content;
+            }
+            if ( stristr($logic,"return")===false ){
+                $logic="return (" . html_entity_decode( $logic, ENT_COMPAT | ENT_HTML401 | ENT_QUOTES ) . ");";
+            }
+            if ( !eval( $logic ) ){
+                return '';
+            }
+		}
+
+		return $block_content;
+	}
+
 	public function render_block( $block_content, $block ){
 		$this->_attributes  = $this->block_attributes( $block );
 		$block_content		= $this->user_state_visibility( $block_content );
+		$block_content		= $this->display_logic( $block_content );
 
 		
 		return $block_content;
