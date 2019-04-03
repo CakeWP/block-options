@@ -80,24 +80,23 @@ class BlockSettings extends Component {
 									className: 'editorskit-default',
 								},
 								{
-									name: 'acf',
+									name: 'advanced',
 									title: __( 'Advanced' ),
-									className: 'editorskit-acf',
+									className: 'editorskit-advanced',
 								},
 							] }>
 							{
 								( tab ) => {
 									switch( tab.name ){
-										case 'acf':
-											return(
-												<p>ACF</p>
-											);
+										case 'advanced':
+											return[
+												LogicOptions( selectedBlock, this.reloadModal ),
+											];
 										break;
 		    							default:
 		    								return[
 												DevicesOptions( selectedBlock, this.reloadModal ),
 												UserStateOptions( selectedBlock, this.reloadModal ),
-												LogicOptions( selectedBlock, this.reloadModal ),
 											];
 		    							break;
 									}

@@ -5,7 +5,8 @@
 	.editorskit-button-group-container{
 		padding: 15px 0px;
 
-    	&.editorskit-button-group-devices{
+    	&.editorskit-button-group-devices,
+    	&.editorskit-button-group-logic{
     		padding-top: 5px;
     		border-top: 0px;
     	}

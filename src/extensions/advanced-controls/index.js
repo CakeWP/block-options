@@ -10,7 +10,6 @@ import classnames from 'classnames';
 import './styles/editor.scss';
 import DevicesOptions from './options/devices/';
 import UserStateOptions from './options/state/';
-import LogicOptions from './options/logic/';
 
 
 /**
@@ -56,7 +55,6 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 					<InspectorAdvancedControls>
 						{ DevicesOptions( props ) }
 						{ UserStateOptions( props ) }
-						{ LogicOptions( props ) }
 					</InspectorAdvancedControls>
 				}
 
