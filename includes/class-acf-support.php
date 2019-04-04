@@ -77,10 +77,20 @@ class EditorsKit_ACF_Support {
 			if ( ! is_user_logged_in() ) {
 				wp_die( esc_html__( 'Sorry you are not allowed to access this data.', '@@textdomain' ), 'cheatin eh?', 403 );
 			}
-			register_rest_route( 'editorskit/v1', '/acf', array(
-				'methods' => 'GET',
-				'callback' => array( $this, 'api' ),
-			) );
+
+			if( class_exists( 'ACF' ) ){
+				register_rest_route( 'editorskit/v1', '/acf', array(
+					'methods' => 'GET',
+					'callback' => array( $this, 'api' ),
+				) );
+			}else{
+				register_rest_route( 'editorskit/v1', '/acf', array(
+					'methods' => 'GET',
+					'callback' => function(){
+						return (object)[];
+					},
+				) );
+			}
 		} );
 	}
 
