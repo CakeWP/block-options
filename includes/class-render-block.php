@@ -126,11 +126,117 @@ class EditorsKit_Render_Block {
 		return $block_content;
 	}
 
+	private function acf_visibility( $block_content ){
+		if( isset( $this->_attributes['acf_field'] ) && !empty( $this->_attributes['acf_field'] ) ){
+			$acf = get_field_object( $this->_attributes['acf_field'] );
+			if( $acf && is_array( $acf ) ){
+				$acf_visibility    = isset( $this->_attributes['acf_visibility'] ) ? $this->_attributes['acf_visibility'] : 'hide';
+				switch ( $this->_attributes['acf_condition'] ) {
+					case 'equal':
+						if( isset( $acf['value'] ) ){
+							if( 'show' == $acf_visibility && $acf['value'] == $this->_attributes['acf_value'] ){
+								$hidden = false;
+							}else if( 'show' == $acf_visibility && $acf['value'] != $this->_attributes['acf_value'] ){
+								$hidden = true;
+							}else if( 'hide' == $acf_visibility && $acf['value'] == $this->_attributes['acf_value'] ){
+								$hidden = true;
+							}else if( 'hide' == $acf_visibility && $acf['value'] != $this->_attributes['acf_value'] ){
+								$hidden = false;
+							}
+						}
+					break;
+
+					case 'not_equal':
+						if( isset( $acf['value'] ) ){
+							if( 'show' == $acf_visibility && $acf['value'] == $this->_attributes['acf_value'] ){
+								$hidden = true;
+							}else if( 'show' == $acf_visibility && $acf['value'] != $this->_attributes['acf_value'] ){
+								$hidden = false;
+							}else if( 'hide' == $acf_visibility && $acf['value'] == $this->_attributes['acf_value'] ){
+								$hidden = false;
+							}else if( 'hide' == $acf_visibility && $acf['value'] != $this->_attributes['acf_value'] ){
+								$hidden = true;
+							}
+						}
+					break;
+
+					case 'contains':
+						if( isset( $acf['value'] ) ){
+							if( 'show' == $acf_visibility && strpos( $acf['value'], $this->_attributes['acf_value'] ) !== false ){
+								$hidden = false;
+							}else if( 'show' == $acf_visibility && strpos( $acf['value'], $this->_attributes['acf_value'] ) === false ){
+								$hidden = true;
+							}else if( 'hide' == $acf_visibility && strpos( $acf['value'], $this->_attributes['acf_value'] ) !== false ){
+								$hidden = true;
+							}else if( 'hide' == $acf_visibility && strpos( $acf['value'], $this->_attributes['acf_value'] ) === false ){
+								$hidden = false;
+							}
+						}
+					break;
+
+					case 'not_contains':
+						if( isset( $acf['value'] ) ){
+							if( 'show' == $acf_visibility && strpos( $acf['value'], $this->_attributes['acf_value'] ) !== false ){
+								$hidden = true;
+							}else if( 'show' == $acf_visibility && strpos( $acf['value'], $this->_attributes['acf_value'] ) === false ){
+								$hidden = false;
+							}else if( 'hide' == $acf_visibility && strpos( $acf['value'], $this->_attributes['acf_value'] ) !== false ){
+								$hidden = false;
+							}else if( 'hide' == $acf_visibility && strpos( $acf['value'], $this->_attributes['acf_value'] ) === false ){
+								$hidden = true;
+							}
+						}
+					break;
+
+					case 'empty':
+						if( 'show' == $acf_visibility && empty( $acf['value'] ) ){
+							$hidden = false;
+						}else if( 'show' == $acf_visibility && !empty( $acf['value'] ) ){
+							$hidden = true;
+						}elseif( 'hide' == $acf_visibility && empty( $acf['value'] ) ){
+							$hidden = true;
+						}else if( 'hide' == $acf_visibility && !empty( $acf['value'] ) ){
+							$hidden = false;
+						}
+					break;
+
+					case 'not_empty':
+						if( 'show' == $acf_visibility && empty( $acf['value'] ) ){
+							$hidden = true;
+						}else if( 'show' == $acf_visibility && !empty( $acf['value'] ) ){
+							$hidden = false;
+						}elseif( 'hide' == $acf_visibility && empty( $acf['value'] ) ){
+							$hidden = false;
+						}else if( 'hide' == $acf_visibility && !empty( $acf['value'] ) ){
+							$hidden = true;
+						}
+					break;
+					
+					default:
+						$hidden = false;
+						break;
+				}
+
+				// //do return to bypass other conditions
+	            $hidden = apply_filters( 'editorskit_visibility_acf', $hidden );
+	            
+	            if( $hidden ){
+	                return '';
+	            }
+			}
+		}
+
+		return $block_content;
+	}
+
 	public function render_block( $block_content, $block ){
 		$this->_attributes  = $this->block_attributes( $block );
 		$block_content		= $this->user_state_visibility( $block_content );
 		$block_content		= $this->display_logic( $block_content );
 
+		if( class_exists( 'ACF' ) ){
+			$block_content		= $this->acf_visibility( $block_content );
+		}
 		
 		return $block_content;
 	}
