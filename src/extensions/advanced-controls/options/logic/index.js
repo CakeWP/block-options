@@ -1,13 +1,17 @@
+/**
+ * WordPress Dependencies
+ */
 const { __ } = wp.i18n;
 const { dispatch } = wp.data;
 const { Fragment } = wp.element; 
 const { TextareaControl, Tooltip } = wp.components; 
 
-const LogicOptions = ( props, reloadModal ) => {
+const LogicOptions = ( props ) => {
 	const {
 		clientId,
 		attributes,
 		setAttributes,
+		reloadModal,
 	} = props;
 
 	const {

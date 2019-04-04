@@ -6,6 +6,7 @@
 import DevicesOptions from '../../advanced-controls/options/devices/';
 import UserStateOptions from '../../advanced-controls/options/state/';
 import LogicOptions from '../../advanced-controls/options/logic/';
+import ACFOptions from '../../advanced-controls/options/acf/';
 
 /**
  * WordPress dependencies
@@ -43,15 +44,12 @@ class BlockSettings extends Component {
 
 	render() {
 		
-		const selectedBlock = select( 'core/editor' ).getSelectedBlock();
+		let selectedBlock = select( 'core/editor' ).getSelectedBlock();
+		selectedBlock = Object.assign( { reloadModal: this.reloadModal }, selectedBlock );
 
 		const closeModal = () => (
 			this.setState( { isOpen: false } )
 		);
-
-		const onSelect = ( tabName ) => {
-			console.log( 'Selecting tab', tabName );
-		};
 		
 		return (
 			<Fragment>
@@ -90,13 +88,14 @@ class BlockSettings extends Component {
 									switch( tab.name ){
 										case 'advanced':
 											return[
-												LogicOptions( selectedBlock, this.reloadModal ),
+												LogicOptions( selectedBlock ),
+												ACFOptions( selectedBlock ),
 											];
 										break;
 		    							default:
 		    								return[
-												DevicesOptions( selectedBlock, this.reloadModal ),
-												UserStateOptions( selectedBlock, this.reloadModal ),
+												DevicesOptions( selectedBlock ),
+												UserStateOptions( selectedBlock ),
 											];
 		    							break;
 									}

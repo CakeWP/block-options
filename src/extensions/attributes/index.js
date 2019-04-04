@@ -22,8 +22,6 @@ const { createHigherOrderComponent } = wp.compose;
 function addAttributes( settings ) {
 	
 	if( typeof settings.attributes !== 'undefined' ){
-		let d = new Date();
-
 		settings.attributes = Object.assign( settings.attributes, {
 			editorskit:{ 
 				type: 'object',
@@ -34,6 +32,10 @@ function addAttributes( settings ) {
 					mobile: true,
 					loggedin: true,
 					loggedout: true,
+					acf_visibility: '',
+					acf_field: '',
+					acf_condition: '',
+					acf_value: '',
 				},
 			}
 		} );
@@ -109,8 +111,6 @@ function applyExtraClass(extraProps, blockType, attributes) {
 		}
 		
 	}
-
-	console.log( editorskit );
 
 	return extraProps;
 }

@@ -1,14 +1,18 @@
+/**
+ * WordPress Dependencies
+ */
 const { __ } = wp.i18n;
 const { dispatch } = wp.data;
 const { Fragment } = wp.element; 
 const { Button, ButtonGroup, Dashicon, Tooltip } = wp.components; 
 
-const DevicesOptions = ( props, reloadModal ) => {
+const DevicesOptions = ( props ) => {
 
 	const {
 		clientId,
 		attributes,
 		setAttributes,
+		reloadModal,
 	} = props;
 
 	const {
