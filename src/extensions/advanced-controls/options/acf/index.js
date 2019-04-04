@@ -130,6 +130,7 @@ const ACFOptions = ( props ) => {
 								rows="3"
 								value={ editorskit.acf_value }
 								onChange={ ( n ) => onSelectFields( 'acf_value', n ) }
+								help={ __( 'Additional support for Advanced Custom Fields plugin. Will automatically show when you have the plugin installed and activated.' ) }
 							/>
 					</div>
 				</Fragment>
