@@ -13,5 +13,3 @@
 import './extensions/attributes';
 import './extensions/advanced-controls';
 import './extensions/block-settings';
-
-// import './block/block-options.js';
