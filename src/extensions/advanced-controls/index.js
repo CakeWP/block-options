@@ -51,19 +51,20 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 		if( ! editorskit.migrated ){
 			props.attributes.editorskit = Object.assign( props.attributes.editorskit, {
 				devices: false,
-				desktop: true,
-				tablet: true,
-				mobile: true,
+				desktop: ( ( blockOpts.devices == 'show' && blockOpts.desktop != 'on' ) || ( blockOpts.devices == 'hide' && blockOpts.desktop == 'on' )  ) ? false : true,
+				tablet: ( ( blockOpts.devices == 'show' && blockOpts.tablet != 'on' ) || ( blockOpts.devices == 'hide' && blockOpts.tablet == 'on' )  ) ? false : true,
+				mobile: ( ( blockOpts.devices == 'show' && blockOpts.mobile != 'on' ) || ( blockOpts.devices == 'hide' && blockOpts.mobile == 'on' )  ) ? false : true,
 				loggedin: ( blockOpts.state == 'out' && blockOpts.state != 'in'  ) ? false : true,
 				loggedout: ( blockOpts.state == 'in' && blockOpts.state != 'out'  ) ? false : true,
 				acf_visibility: ( blockOpts.acf_visibility ) ? blockOpts.acf_visibility : '',
 				acf_field: ( blockOpts.acf_field ) ? blockOpts.acf_field : '',
 				acf_condition: ( blockOpts.acf_condition ) ? blockOpts.acf_condition : '',
 				acf_value: ( blockOpts.acf_value ) ? blockOpts.acf_value : '',
-				migrated: false,
+				logic: ( blockOpts.logic ) ? blockOpts.logic : '',
+				migrated: true,
 			});
 
-			console.log( blockOpts );
+			setAttributes( { editorskit: props.attributes.editorskit } );
 		}
 		
 		return (
