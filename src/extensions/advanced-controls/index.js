@@ -44,9 +44,27 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 
 		const {
 			editorskit,
+			blockOpts,
 		} = attributes;
 		
+		//compatibility with version 1
+		if( ! editorskit.migrated ){
+			props.attributes.editorskit = Object.assign( props.attributes.editorskit, {
+				devices: false,
+				desktop: true,
+				tablet: true,
+				mobile: true,
+				loggedin: ( blockOpts.state == 'out' && blockOpts.state != 'in'  ) ? false : true,
+				loggedout: ( blockOpts.state == 'in' && blockOpts.state != 'out'  ) ? false : true,
+				acf_visibility: ( blockOpts.acf_visibility ) ? blockOpts.acf_visibility : '',
+				acf_field: ( blockOpts.acf_field ) ? blockOpts.acf_field : '',
+				acf_condition: ( blockOpts.acf_condition ) ? blockOpts.acf_condition : '',
+				acf_value: ( blockOpts.acf_value ) ? blockOpts.acf_value : '',
+				migrated: false,
+			});
 
+			console.log( blockOpts );
+		}
 		
 		return (
 			<Fragment>

@@ -36,8 +36,14 @@ function addAttributes( settings ) {
 					acf_field: '',
 					acf_condition: '',
 					acf_value: '',
+					migrated: false,
 				},
 			}
+		} );
+
+		//for version 1 compatibility and migration
+		settings.attributes = Object.assign( settings.attributes, {
+			blockOpts:{ type: 'object' }
 		} );
 	}
 
