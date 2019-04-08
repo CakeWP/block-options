@@ -48,7 +48,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 		} = attributes;
 		
 		//compatibility with version 1
-		if( ! editorskit.migrated ){
+		if( ! editorskit.migrated && blockOpts ){
 			props.attributes.editorskit = Object.assign( props.attributes.editorskit, {
 				devices: false,
 				desktop: ( ( blockOpts.devices == 'show' && blockOpts.desktop != 'on' ) || ( blockOpts.devices == 'hide' && blockOpts.desktop == 'on' )  ) ? false : true,
