@@ -9,6 +9,9 @@
  * Webpack is compiling as the input file.
  */
 
+// Styles
+import './styles/style.scss';
+
 // Extensions
 import './extensions/attributes';
 import './extensions/advanced-controls';

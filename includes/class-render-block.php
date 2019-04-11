@@ -73,7 +73,10 @@ class EditorsKit_Render_Block {
 		$this->_slug    	= 'editorskit';
 		$this->_url     	= untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
-		add_action( 'render_block', array( $this, 'render_block' ), 5, 2 );
+		if( !is_admin() ){
+			add_action( 'render_block', array( $this, 'render_block' ), 5, 2 );
+		}
+		
 	}
 
 	private function block_attributes( $block ){
@@ -84,7 +87,27 @@ class EditorsKit_Render_Block {
 		return [];
 	}
 
+	private function old_attributes( $block ){
+		if ( isset( $block['attrs'] ) && isset( $block['attrs']['blockOpts'] ) && is_array( $block['attrs'] ) ) {
+			return $block['attrs']['blockOpts'];
+		}
+
+		return [];
+	}
+
 	private function user_state_visibility( $block_content ){
+
+		// add compatibility for previous version
+		if( !isset( $this->_attributes['migrated'] ) || ( isset( $this->_attributes['migrated'] ) && ! $this->_attributes['migrated'] ) ){
+			if( isset( $this->_attributes['old']['state'] ) && !empty( $this->_attributes['old']['state'] ) ){
+				//do state action here
+				if( $this->_attributes['old']['state'] == 'out' && is_user_logged_in() ){
+					return '';
+				}else if( $this->_attributes['old']['state'] == 'in' && !is_user_logged_in() ){
+					return '';
+				}
+			}
+		}
 
 		if( isset( $this->_attributes['loggedin'] ) && ! $this->_attributes['loggedin']
 			&& is_user_logged_in() 
@@ -230,9 +253,10 @@ class EditorsKit_Render_Block {
 	}
 
 	public function render_block( $block_content, $block ){
-		$this->_attributes  = $this->block_attributes( $block );
-		$block_content		= $this->user_state_visibility( $block_content );
-		$block_content		= $this->display_logic( $block_content );
+		$this->_attributes  		 = $this->block_attributes( $block );
+		$this->_attributes[ 'old' ]  = $this->old_attributes( $block );
+		$block_content				 = $this->user_state_visibility( $block_content );
+		$block_content				 = $this->display_logic( $block_content );
 
 		if( class_exists( 'ACF' ) ){
 			$block_content		= $this->acf_visibility( $block_content );
