@@ -8,7 +8,7 @@ $desktop : 769px;
 $tablet : 768px;
 $mobile : 736px;
 
-body{
+body:not(.wp-admin){
 	.blockopts-show{
 		display: none;
 	}
