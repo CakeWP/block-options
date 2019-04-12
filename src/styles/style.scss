@@ -13,7 +13,8 @@ body:not(.wp-admin){
 		display: none;
 	}
 	@media screen and (min-width: $desktop) {
-		.blockopts-hide.blockopts-desktop{
+		.blockopts-hide.blockopts-desktop,
+		.editorskit-no-desktop{
 			display: none;
 		}
 		.blockopts-show.blockopts-desktop{
@@ -22,7 +23,8 @@ body:not(.wp-admin){
 	}
 	@media screen and (max-width: $tablet)
 	and (min-width: $mobile + 1) {
-		.blockopts-hide.blockopts-tablet{
+		.blockopts-hide.blockopts-tablet,
+		.editorskit-no-tablet{
 			display: none;
 		}
 		.blockopts-show.blockopts-tablet{
@@ -30,7 +32,8 @@ body:not(.wp-admin){
 		}
 	}
 	@media screen and (max-width: $mobile) {
-		.blockopts-hide.blockopts-mobile{
+		.blockopts-hide.blockopts-mobile,
+		.editorskit-no-mobile{
 			display: none;
 		}
 		.blockopts-show.blockopts-mobile{
