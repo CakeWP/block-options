@@ -105,7 +105,7 @@ class EditorsKit_Render_Block {
 			);
 		}
 
-		return [];
+		return $this->block_attributes( $block );
 	}
 
 	private function user_state_visibility( $block_content ){
@@ -260,7 +260,7 @@ class EditorsKit_Render_Block {
 		if( !isset( $this->_attributes[ 'migrated' ] ) || ( isset( $this->_attributes[ 'migrated' ] ) && ! $this->_attributes[ 'migrated' ] ) ){
 			$this->_attributes 		 = $this->version_compatibility( $block );
 		}
-
+		
 		$block_content				 = $this->user_state_visibility( $block_content );
 		$block_content				 = $this->display_logic( $block_content );
 
