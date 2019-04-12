@@ -65,8 +65,11 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 			});
 
 			//remove unnecessary classes
-			// delete editorskit.logic;
+			if( !props.attributes.className ){
+				props.attributes.className = '';
+			}
 			var newClassNames = props.attributes.className.replace( 'b' + blockOpts.id, '' ).replace( 'blockopts-show', '' ).replace( 'blockopts-hide', '' ).replace( 'blockopts-desktop', '' ).replace( 'blockopts-tablet', '' ).replace( 'blockopts-mobile', '' );
+				newClassNames = newClassNames.trim();
 			props.attributes.className = newClassNames;
 			
 			setAttributes( { editorskit: props.attributes.editorskit, className : newClassNames } );
