@@ -64,7 +64,12 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 				migrated: true,
 			});
 
-			setAttributes( { editorskit: props.attributes.editorskit } );
+			//remove unnecessary classes
+			// delete editorskit.logic;
+			var newClassNames = props.attributes.className.replace( 'b' + blockOpts.id, '' ).replace( 'blockopts-show', '' ).replace( 'blockopts-hide', '' ).replace( 'blockopts-desktop', '' ).replace( 'blockopts-tablet', '' ).replace( 'blockopts-mobile', '' );
+			props.attributes.className = newClassNames;
+			
+			setAttributes( { editorskit: props.attributes.editorskit, className : newClassNames } );
 		}
 		
 		return (
