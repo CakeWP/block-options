@@ -3,7 +3,7 @@
  * Plugin Name: EditorsKit
  * Plugin URI: https://block-options.com/
  * Description: EditorsKit is a suite of <strong>page building block options</strong> for the Gutenberg block editor.
- * Version: 1.3.3
+ * Version: 1.9.2
  * Author: Phpbits Creative Studio
  * Author URI: https://phpbits.net/
  * Text Domain: block-options
@@ -123,7 +123,7 @@ final class EditorsKit {
 		require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-acf-support.php';
 		
 		if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
-			// require_once EDITORSKIT_PLUGIN_DIR . 'includes/welcome.php';
+			require_once EDITORSKIT_PLUGIN_DIR . 'includes/welcome.php';
 
 		}
 		

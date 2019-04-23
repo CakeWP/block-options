@@ -50,9 +50,6 @@ const AUTOPREFIXER_BROWSERS = [
 	'bb >= 10'
 ];
 
-// Build contents.
-var filesToUpload	= [ './build/coblocks/**/*' ] ;
-
 /**
  * Load Plugins.
  */
@@ -94,7 +91,7 @@ gulp.task( 'gettingStartedStyles', function (done) {
 	.pipe( autoprefixer( AUTOPREFIXER_BROWSERS ) )
 
 	.pipe( rename( {
-		basename: 'coblocks-getting-started',
+		basename: 'editorskit-getting-started',
 		suffix: '.min',
 	} ) )
 
@@ -261,11 +258,11 @@ gulp.task('zip', function(done) {
  * Build & Release Tasks.
  */
 
-gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'scripts', 'npmMakeBabel', 'npmBuild', 'npmMakePot', 'removeJSPotFile', 'removeJSPotFile', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip' ,  function(done) {
+gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'npmMakeBabel', 'npmBuild', 'npmMakePot', 'removeJSPotFile', 'removeJSPotFile', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip' ,  function(done) {
 	done();
 } ) );
 
-gulp.task('build-process-wo-translations', gulp.series( 'clearCache', 'clean', 'scripts', 'npmBuild', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip', function(done) {
+gulp.task('build-process-wo-translations', gulp.series( 'clearCache', 'clean', 'npmBuild', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip', function(done) {
 	done();
 } ) );
 
