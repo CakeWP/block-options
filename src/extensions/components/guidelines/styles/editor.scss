@@ -1,4 +1,9 @@
 .is-guide-lines-on{
+	.editor-post-title__block{
+		.editor-post-title__input{
+			border: 1px solid rgba( 66,88,99,.2 );
+		}
+	}
 	.block-editor-block-list__layout {
 		.block-editor-block-list__block:not([data-type="core/columns"]):not([data-type="core/column"]):not([data-type="coblocks/accordion"]):not([data-type="coblocks/accordion-item"]):not([data-type="coblocks/row"]):not([data-type="coblocks/column"]):not([data-type="coblocks/buttons"]):not([data-type="atomic-blocks/ab-container"]):not([data-type="atomic-blocks/ab-pricing-table"]){
 			>.block-editor-block-list__block-edit:before{
