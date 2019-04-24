@@ -216,10 +216,13 @@ endif; // End if class_exists check.
 function editorskit() {
 	return EditorsKit::instance();
 }
-// Get Plugin Running. Load on plugins_loaded action to avoid issue on multisite.
+
+// Get Plugin Running.
 if( function_exists( 'is_multisite' ) && is_multisite() ){
+	// Get Plugin Running. Load on plugins_loaded action to avoid issue on multisite.
 	add_action( 'plugins_loaded', 'editorskit' );
 }else{
 	editorskit();
 }
+
 ?>
