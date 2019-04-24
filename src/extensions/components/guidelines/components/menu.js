@@ -55,7 +55,7 @@ class BlockGuideLines extends Component {
 				<PluginMoreMenuItem
 					icon={ isActive && 'yes' }
 					role="menuitemcheckbox"
-					info={ __( 'Show visible guide lines on each blocks' ) }
+					info={ __( 'Show visible guide lines on title and blocks' ) }
 					onClick={ onToggle }
 				>
 					{ __( 'Block Guide Lines' ) }
