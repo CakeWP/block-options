@@ -1,0 +1,43 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+$desktop : 769px;
+$tablet : 768px;
+$mobile : 736px;
+
+body:not(.wp-admin){
+	.blockopts-show{
+		display: none;
+	}
+	@media screen and (min-width: $desktop) {
+		.blockopts-hide.blockopts-desktop,
+		.editorskit-no-desktop{
+			display: none;
+		}
+		.blockopts-show.blockopts-desktop{
+			display: block;
+		}
+	}
+	@media screen and (max-width: $tablet)
+	and (min-width: $mobile + 1) {
+		.blockopts-hide.blockopts-tablet,
+		.editorskit-no-tablet{
+			display: none;
+		}
+		.blockopts-show.blockopts-tablet{
+			display: block;
+		}
+	}
+	@media screen and (max-width: $mobile) {
+		.blockopts-hide.blockopts-mobile,
+		.editorskit-no-mobile{
+			display: none;
+		}
+		.blockopts-show.blockopts-mobile{
+			display: block;
+		}
+	}
+}

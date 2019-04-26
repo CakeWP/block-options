@@ -1,39 +1,18 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
-
-# Folder config file
-Desktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Mac crap
-.DS_Store
-
-# Sublime
+**/*.min.js
+**/*.build.js
+**/node_modules/**
+**/vendor/**
+**/dist/**
+**/build/**
+build
+coverage
+cypress
+node_modules
+vendor
 *.sublime-project
 *.sublime-workspace
+.DS_Store
+.ftppass
+*.cache
+sftp.json.github/
 
-# PhpStorm
-.idea
-
-# Eclipse
-*.pydevproject
-.project
-.metadata
-build/
-tmp/
-tests/clover.xml
-assets/js/block-options.js
-
-# Gulp
-node_modules
-gulpfile.js
-package-lock.json
-
-# Vendor
-vendor
-
-# Temporary files
-*~

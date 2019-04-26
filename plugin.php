@@ -1,12 +1,12 @@
 <?php
 /**
- * Plugin Name: Block Options
- * Plugin URI: https://block-options.com/
- * Description: Additional block options for better block control. Get <strong><a href="https://block-options.com/" target="_blank" >Extended Block Options for WordPress</a></strong> for complete block controls. Thanks!
- * Version: 1.2.1
- * Author: Phpbits Creative Studio
- * Author URI: https://phpbits.net/
- * Text Domain: block-options
+ * Plugin Name: EditorsKit
+ * Plugin URI: https://editorskit.com/
+ * Description: EditorsKit is a suite of <strong>page building block options</strong> for the Gutenberg block editor.
+ * Version: 1.4
+ * Author: Jeffrey Carandang
+ * Author URI: https://jeffreycarandang.com/
+ * Text Domain: editorskit
  * Domain Path: languages
  *
  * @category Gutenberg
@@ -15,77 +15,97 @@
  */
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) exit;
-if ( ! class_exists( 'BLOCKOPTS_Block_Options' ) ) :
+if ( ! class_exists( 'EditorsKit' ) ) :
 
 /**
- * Main BLOCKOPTS_Block_Options Class.
+ * Main EditorsKit Class.
  *
  * @since  1.0
  */
-final class BLOCKOPTS_Block_Options {
+final class EditorsKit {
 	/**
-	 * @var BLOCKOPTS_Block_Options The one true BLOCKOPTS_Block_Options
+	 * @var EditorsKit The one true EditorsKit
 	 * @since  1.0
 	 */
 	private static $instance;
 
 	/**
-	 * Main BLOCKOPTS_Block_Options Instance.
+	 * Main EditorsKit Instance.
 	 *
-	 * Insures that only one instance of BLOCKOPTS_Block_Options exists in memory at any one
+	 * Insures that only one instance of EditorsKit exists in memory at any one
 	 * time. Also prevents needing to define globals all over the place.
 	 *
-	 * @since  1.0
+	 * @since 1.0.0
 	 * @static
-	 * @staticvar array $instance
-	 * @uses BLOCKOPTS_Block_Options::setup_constants() Setup the constants needed.
-	 * @uses BLOCKOPTS_Block_Options::includes() Include the required files.
-	 * @uses BLOCKOPTS_Block_Options::load_textdomain() load the language files.
-	 * @see BLOCKOPTS()
-	 * @return object|BLOCKOPTS_Block_Options The one true BLOCKOPTS_Block_Options
+	 * @return object|EditorsKit The one true EditorsKit
 	 */
 	public static function instance() {
-		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof BLOCKOPTS_Block_Options ) ) {
-			self::$instance = new BLOCKOPTS_Block_Options;
+		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof EditorsKit ) ) {
+			self::$instance = new EditorsKit;
+			self::$instance->init();
 			self::$instance->setup_constants();
-
+			self::$instance->asset_suffix();
 			self::$instance->includes();
 		}
 		return self::$instance;
 	}
 
 	/**
+	 * Throw error on object clone.
+	 *
+	 * The whole idea of the singleton design pattern is that there is a single
+	 * object therefore, we don't want the object to be cloned.
+	 *
+	 * @since 1.0.0
+	 * @access protected
+	 * @return void
+	 */
+	public function __clone() {
+		// Cloning instances of the class is forbidden.
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', '@@textdomain' ), '1.0' );
+	}
+
+	/**
+	 * Disable unserializing of the class.
+	 *
+	 * @since 1.0.0
+	 * @access protected
+	 * @return void
+	 */
+	public function __wakeup() {
+		// Unserializing instances of the class is forbidden.
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', '@@textdomain' ), '1.0' );
+	}
+
+	/**
 	 * Setup plugin constants.
 	 *
 	 * @access private
-	 * @since 4.1
+	 * @since 1.0.0
 	 * @return void
 	 */
 	private function setup_constants() {
 
-		// Plugin version.
-		if ( ! defined( 'BLOCKOPTS_PLUGIN_NAME' ) ) {
-			define( 'BLOCKOPTS_PLUGIN_NAME', 'Block Options' );
-		}
+		$this->define( 'EDITORSKIT_DEBUG', true );
+		$this->define( 'EDITORSKIT_VERSION', '1.4' );
+		$this->define( 'EDITORSKIT_HAS_PRO', false );
+		$this->define( 'EDITORSKIT_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+		$this->define( 'EDITORSKIT_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+		$this->define( 'EDITORSKIT_PLUGIN_FILE', __FILE__ );
+		$this->define( 'EDITORSKIT_PLUGIN_BASE', plugin_basename( __FILE__ ) );
+		$this->define( 'EDITORSKIT_SHOP_URL', 'https://editorskit.com/' );
+		$this->define( 'EDITORSKIT_REVIEW_URL', 'https://wordpress.org/support/plugin/block-options/reviews/?filter=5' );
+	}
 
-		// Plugin version.
-		if ( ! defined( 'BLOCKOPTS_VERSION' ) ) {
-			define( 'BLOCKOPTS_VERSION', '1.2.1' );
-		}
-
-		// Plugin Folder Path.
-		if ( ! defined( 'BLOCKOPTS_PLUGIN_DIR' ) ) {
-			define( 'BLOCKOPTS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-		}
-
-		// Plugin Folder URL.
-		if ( ! defined( 'BLOCKOPTS_PLUGIN_URL' ) ) {
-			define( 'BLOCKOPTS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-		}
-
-		// Plugin Root File.
-		if ( ! defined( 'BLOCKOPTS_PLUGIN_FILE' ) ) {
-			define( 'BLOCKOPTS_PLUGIN_FILE', __FILE__ );
+	/**
+	 * Define constant if not already set.
+	 *
+	 * @param  string|string $name Name of the definition.
+	 * @param  string|bool   $value Default value.
+	 */
+	private function define( $name, $value ) {
+		if ( ! defined( $name ) ) {
+			define( $name, $value );
 		}
 	}
 
@@ -97,44 +117,81 @@ final class BLOCKOPTS_Block_Options {
 	 * @return void
 	 */
 	private function includes() {
-		global $block_options,  $pagenow;
 
-		require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/register-settings.php';
-		require_once BLOCKOPTS_PLUGIN_DIR . 'includes/scripts.php';
-		require_once BLOCKOPTS_PLUGIN_DIR . 'includes/extras.php';
+		require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-block-assets.php';
+		require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-render-block.php';
+		require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-acf-support.php';
+		
+		if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
+			require_once EDITORSKIT_PLUGIN_DIR . 'includes/welcome.php';
 
-		$block_options = blockopts_get_settings();
-
-		require_once BLOCKOPTS_PLUGIN_DIR . 'includes/block-options.php';
-
-		if ( is_admin() ) {
-
-			//run on activation
-			require_once BLOCKOPTS_PLUGIN_DIR . 'includes/install.php';
-			require_once BLOCKOPTS_PLUGIN_DIR . 'includes/welcome.php';
-
-			//admin settings
-			require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/display-settings.php';
-			require_once BLOCKOPTS_PLUGIN_DIR . 'includes/ajax-functions.php';
-
-			if( in_array( $pagenow, array( 'options-general.php' ) ) ){
-				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/general.php';
-				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/devices.php';
-				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/state.php';
-				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/logic.php';
-				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/sidebar-upsell_pro.php';
-
-				//pro features
-				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/roles.php';
-				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/dates.php';
-				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/days.php';
-				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/links.php';
-				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/alignment.php';
-				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/acf.php';
-				require_once BLOCKOPTS_PLUGIN_DIR . 'includes/admin/settings/modules/more.php';
-			}
 		}
 		
+	}
+
+	/**
+	 * Load actions
+	 *
+	 * @return void
+	 */
+	private function init() {
+		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ), 99 );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'block_localization' ) );
+	}
+
+	/**
+	 * Change the plugin's minified or src file name, based on debug mode.
+	 *
+	 * @since 1.0.0
+	 */
+	public function asset_suffix() {
+		if ( true === EDITORSKIT_DEBUG ) {
+			define( 'EDITORSKIT_ASSET_SUFFIX', null );
+		} else {
+			define( 'EDITORSKIT_ASSET_SUFFIX', '.min' );
+		}
+	}
+
+	/**
+	 * If debug is on, serve unminified source assets.
+	 *
+	 * @since 1.0.0
+	 * @param string|string $type The type of resource.
+	 * @param string|string $directory Any extra directories needed.
+	 */
+	public function asset_source( $type = 'js', $directory = null ) {
+		if ( 'js' === $type ) {
+			if ( true === EDITORSKIT_DEBUG ) {
+				return EDITORSKIT_PLUGIN_URL . 'src/' . $type . '/' . $directory;
+			} else {
+				return EDITORSKIT_PLUGIN_URL . 'dist/' . $type . '/' . $directory;
+			}
+		} else {
+			return EDITORSKIT_PLUGIN_URL . 'dist/css/' . $directory;
+		}
+	}
+
+	/**
+	 * Loads the plugin language files.
+	 *
+	 * @access public
+	 * @since 1.0.0
+	 * @return void
+	 */
+	
+	public function load_textdomain() {
+		load_plugin_textdomain( 'editorskit', false, dirname( plugin_basename( EDITORSKIT_PLUGIN_DIR ) ) . '/languages/' );
+	}
+
+	/**
+	 * Enqueue localization data for our blocks.
+	 *
+	 * @access public
+	 */
+	public function block_localization() {
+		if ( function_exists( 'wp_set_script_translations' ) ) {
+			wp_set_script_translations( 'editorskit-editor', 'editorskit' );
+		}
 	}
 
 }
@@ -143,27 +200,29 @@ endif; // End if class_exists check.
 
 
 /**
- * The main function for that returns BLOCKOPTS_Block_Options
+ * The main function for that returns EditorsKit
  *
- * The main function responsible for returning the one true BLOCKOPTS_Block_Options
+ * The main function responsible for returning the one true EditorsKit
  * Instance to functions everywhere.
  *
  * Use this function like you would a global variable, except without needing
  * to declare the global.
  *
- * Example: <?php $blockopts = BLOCKOPTS_Block_Options(); ?>
+ * Example: <?php $blockopts = EditorsKit(); ?>
  *
  * @since 1.0
- * @return object|BLOCKOPTS_Block_Options The one true BLOCKOPTS_Block_Options Instance.
+ * @return object|EditorsKit The one true EditorsKit Instance.
  */
-function blockopts_init() {
-	return BLOCKOPTS_Block_Options::instance();
+function editorskit() {
+	return EditorsKit::instance();
 }
+
 // Get Plugin Running.
 if( function_exists( 'is_multisite' ) && is_multisite() ){
-	//loads on plugins_loaded action to avoid issue on multisite
-	add_action( 'plugins_loaded', 'blockopts_init', apply_filters( 'blockopts_priority', 90 ) );
+	// Get Plugin Running. Load on plugins_loaded action to avoid issue on multisite.
+	add_action( 'plugins_loaded', 'editorskit' );
 }else{
-	blockopts_init();
+	editorskit();
 }
+
 ?>
