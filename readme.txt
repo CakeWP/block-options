@@ -15,7 +15,7 @@ EditorsKit provides set of page building block options for the new WordPress Gut
 
 == Description ==
 
-[EditorsKit](https://editorskin.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit) provides set of page building <strong>block options</strong> for the new WordPress Gutenberg editor.
+[EditorsKit](https://editorskit.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit) provides set of page building <strong>block options</strong> for the new WordPress Gutenberg editor.
 
 You can now have more control over each blocks. Using EditorsKit you will have the following visibility control in order to display better contents.
 
