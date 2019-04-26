@@ -54,6 +54,9 @@ e.g.
 
 == Changelog ==
 
+= 1.4.1 =
+* Block Guide Lines Compatibility for old version
+
 = 1.4 =
 * Rebranded to EditorsKit
 * Improve UI and UX
