@@ -1,9 +1,3 @@
-/**
- * #.# Common SCSS
- *
- * Can include things like variables and mixins
- * that are used across the project.
-*/
 .editorskit-button-group-container {
   border-top: 1px solid #e2e4e7;
   padding: 15px 0px; }
@@ -50,12 +44,6 @@
     font-size: 11px; }
   .editorskit-button-group-container.editorskit-button-group-state .components-button-group {
     grid-template-columns: repeat(2, 1fr); }
-/**
- * #.# Common SCSS
- *
- * Can include things like variables and mixins
- * that are used across the project.
-*/
 .editorskit-components-modal__content {
   width: 320px;
   min-width: 200px !important; }
@@ -93,3 +81,23 @@
         border-color: #007cba; }
   .editorskit-tab-panel .components-tab-panel__tab-content {
     padding: 16px; }
+.is-guide-lines-on {
+  /* Backward Compatibility */ }
+  .is-guide-lines-on .editor-post-title__block .editor-post-title__input {
+    border: 1px solid rgba(66, 88, 99, 0.2); }
+  .is-guide-lines-on .block-editor-block-list__layout .block-editor-block-list__block:not([data-type="core/columns"]):not([data-type="core/column"]):not([data-type="coblocks/accordion"]):not([data-type="coblocks/accordion-item"]):not([data-type="coblocks/row"]):not([data-type="coblocks/column"]):not([data-type="coblocks/buttons"]):not([data-type="atomic-blocks/ab-container"]):not([data-type="atomic-blocks/ab-pricing-table"]) > .block-editor-block-list__block-edit:before {
+    border: 1px solid rgba(66, 88, 99, 0.2); }
+  .is-guide-lines-on .block-editor-block-list__layout .block-editor-block-list__block:not([data-type="core/columns"]):not([data-type="core/column"]):not([data-type="coblocks/accordion"]):not([data-type="coblocks/accordion-item"]):not([data-type="coblocks/row"]):not([data-type="coblocks/column"]):not([data-type="coblocks/buttons"]):not([data-type="atomic-blocks/ab-container"]):not([data-type="atomic-blocks/ab-pricing-table"]).is-selected > .block-editor-block-list__block-edit:before {
+    border: 1px solid rgba(66, 88, 99, 0.4);
+    border-left: none; }
+  .is-guide-lines-on .block-editor-block-list__layout .block-editor-block-list__block[data-type="atomic-blocks/ab-pricing-table"] .block-editor-block-list__block > .block-editor-block-list__block-edit:before {
+    left: -3px;
+    right: -3px; }
+  .is-guide-lines-on .editor-block-list__layout .editor-block-list__block:not([data-type="core/columns"]):not([data-type="core/column"]):not([data-type="coblocks/accordion"]):not([data-type="coblocks/accordion-item"]):not([data-type="coblocks/row"]):not([data-type="coblocks/column"]):not([data-type="coblocks/buttons"]):not([data-type="atomic-blocks/ab-container"]):not([data-type="atomic-blocks/ab-pricing-table"]) > .editor-block-list__block-edit:before {
+    border: 1px solid rgba(66, 88, 99, 0.2); }
+  .is-guide-lines-on .editor-block-list__layout .editor-block-list__block:not([data-type="core/columns"]):not([data-type="core/column"]):not([data-type="coblocks/accordion"]):not([data-type="coblocks/accordion-item"]):not([data-type="coblocks/row"]):not([data-type="coblocks/column"]):not([data-type="coblocks/buttons"]):not([data-type="atomic-blocks/ab-container"]):not([data-type="atomic-blocks/ab-pricing-table"]).is-selected > .editor-block-list__block-edit:before {
+    border: 1px solid rgba(66, 88, 99, 0.4);
+    border-left: none; }
+  .is-guide-lines-on .editor-block-list__layout .editor-block-list__block[data-type="atomic-blocks/ab-pricing-table"] .editor-block-list__block > .editor-block-list__block-edit:before {
+    left: -3px;
+    right: -3px; }
