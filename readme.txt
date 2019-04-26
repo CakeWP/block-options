@@ -52,11 +52,6 @@ e.g.
 3. That's it! I hope you'll love this plugin :)
 
 
-== Screenshots ==
-
-1. WordPress Gutenberg Editor Block Options
-2. Manage Visibility usig ACF field value condition
-
 == Changelog ==
 
 = 1.4 =
