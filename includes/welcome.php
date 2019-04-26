@@ -25,70 +25,59 @@ if( !class_exists( 'BLOCKOPS_Welcome' ) ){
 		}
 
 		function enqueue(){
-			if ( !isset( $_GET['page'] ) || 'block-opts-getting-started' != $_GET['page'] )
+			if ( !isset( $_GET['page'] ) || 'editorskit-getting-started' != $_GET['page'] )
 			return;
 
-			wp_enqueue_style( 'block-opts-welcome', plugins_url( '/assets/css/welcome.css' , dirname(__FILE__) ) , array(), null );
+			wp_enqueue_style( 'editorskit-welcome', plugins_url( '/dist/css/editorskit-getting-started.min.css' , dirname(__FILE__) ) , array(), null );
 		}
 
 		function screen_page(){
 			add_dashboard_page(
-				__( 'Getting started with Block Options', 'block-options' ),
-				__( 'Getting started with Block Options', 'block-options' ),
+				__( 'Getting started with EditorsKit', 'editorskit' ),
+				__( 'Getting started with EditorsKit', 'editorskit' ),
 				apply_filters( 'blockopts_welcome_cap', 'manage_options' ),
-				'block-opts-getting-started',
+				'editorskit-getting-started',
 				array( $this, 'welcome_content' )
 			);
 		}
 
-		function welcome_head(){
-			$selected = isset( $_GET['page'] ) ? $_GET['page'] : 'block-opts-getting-started';
-			?>
-			<h1><?php _e( 'Welcome to Block Options', 'block-options' ); ?></h1>
-			<div class="about-text">
-				<?php _e( 'Congratulations! You\'ve just unlocked features on managing your Editor Blocks better.', 'block-options' ); ?>
-			</div>
-			<div class="blockopts-badge">
-				<span class="blockopts-mascot"></span>
-				<span class="version"><?php _e( 'Version', 'block-options' );?> <?php echo BLOCKOPTS_VERSION; ?></span>
-			</div>
-			<h2 class="nav-tab-wrapper">
-				<a class="nav-tab <?php echo $selected == 'block-opts-getting-started' ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'block-opts-getting-started' ), 'index.php' ) ) ); ?>">
-					<?php _e( 'Getting Started', 'block-options' ); ?>
-				</a>
-			</h2>
-			<?php
-		}
-
 		function welcome_content(){ ?>
-			<div class="wrap about-wrap blockopts-about-wrap">
-				<?php $this->welcome_head(); ?>
-				<p class="about-description">
-					<?php _e( 'Use the tips and instructions below to get started, then you will be up and running in no time. ', 'block-options' ); ?>
-				</p>
+			<div class="wrap about-wrap editorskit-about-wrap">
+				<div class="getting-started__content">
+					<h1><?php echo esc_html__( 'Get started with EditorsKit.', 'editorskit' ); ?></h1>
+					
+					<p><strong><?php echo esc_html__( 'Thank you for choosing EditorsKit!', 'editorskit' ); ?></strong></p>
+					
+					<p><?php echo esc_html__( 'You have just enabled set of useful tools that will help you manage each blocks and improve your content workflow with the new editor.', 'editorskit' ); ?></p>
+					
+					<p><strong><?php echo esc_html__( 'Here is the video on how the plugin works:', 'editorskit' ); ?></strong></p>
 
-				<div class="feature-section two-col">
-					<div class="col">
-						<h3><?php _e( 'Take full control over your Editor Blocks!' , 'block-options' ); ?></h3>
-						<p><?php printf( __( 'Block Options is your all-in-on plugin to take over your Gutenberg Editor Blocks like it was built as WordPress core functionality. You can follow the tutorial on the right to see how the plugin works but in reality it\'s so easy and integrated elegantly on each widgets. To manage the plugin settings page just go to  <a href="%s">Settings > Block Options</a>. Otherwise just go on and create new post or page and experience how easy it is to use Block Options\' features.', 'block-options' ), esc_url( admin_url( 'options-general.php?page=blockopts_plugin_settings' ) ) ); ?>
-					</div>
-					<div class="col">
-						<div class="feature-video">
-							<iframe width="495" height="278" src="https://www.youtube.com/embed/_C1dXFz-uaA" frameborder="0" allowfullscreen></iframe>
-						</div>
-					</div>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/_Im6fuUZXfc" frameborder="0" allowfullscreen></iframe>
+
+					<p>
+						<?php
+						echo sprintf(
+							esc_html__( 'If you have any questions or suggestion, let us know through %1$sTwitter%4$s or our %2$sFacebook community %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what\'s new and upcoming at EditorsKit.', '@@textdomain' ), '<a href="https://twitter.com/editorskit" target="_blank">', '<a href="https://www.facebook.com/groups/1306393256173179/" target="_blank">', '<a href="https://editorskit.com/" target="_blank">', '</a>'
+						);
+						?>
+					</p>
+
+					<p><?php echo esc_html__( 'Happy building!', 'editorskit' ); ?></p>
+
+					<p><img src="<?php echo esc_url( EDITORSKIT_PLUGIN_URL . 'dist/images/logo-800.png' ); ?>" alt="<?php echo esc_attr__( 'EditorsKit Team', 'editorskit' ); ?>"></p>
+
 				</div>
 			</div>
 		<?php }
 
 		function redirect($plugin){
-			if($plugin=='block-options/plugin.php') {
-				wp_redirect(admin_url('index.php?page=block-opts-getting-started'));
+			if( $plugin == 'block-options/plugin.php' || $plugin=='editorskit/plugin.php' ) {
+				wp_redirect(admin_url('index.php?page=editorskit-getting-started'));
 				die();
 			}
 		}
 		function remove_menu(){
-		    remove_submenu_page( 'index.php', 'block-opts-getting-started' );
+		    remove_submenu_page( 'index.php', 'editorskit-getting-started' );
 		}
     }
     new BLOCKOPS_Welcome();
