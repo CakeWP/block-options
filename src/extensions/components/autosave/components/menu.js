@@ -43,6 +43,7 @@ class ManageAutoSave extends Component {
 		if( editorSettings.autosaveInterval != autosaveInterval  ){
 			let newEditorSettings = Object.assign( this.props.editorSettings, { autosaveInterval: autosaveInterval } );
 			dispatch('core/editor').updateEditorSettings( newEditorSettings );
+			dispatch('core/editor').refreshPost();
 		}
 		
 	}
