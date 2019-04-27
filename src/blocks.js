@@ -17,3 +17,4 @@ import './extensions/attributes';
 import './extensions/advanced-controls';
 import './extensions/block-settings';
 import './extensions/components/guidelines';
+import './extensions/components/autosave';
