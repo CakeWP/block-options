@@ -105,7 +105,15 @@ class EditorsKit_Page_Template_Support {
 	}
 
 	public function body_class_support( $classes ){
+		global $post;
+
 		$classes .= 'editorskit-body-class-on ';
+
+		if( isset( $post->ID ) ){
+			$template = str_replace( '/', '-', get_page_template_slug( $post->ID ) );
+			$classes .= 'page-template-' . str_replace( '.', '-', $template );
+		}
+
 		return $classes;
 	}
 
