@@ -54,6 +54,9 @@ e.g.
 
 == Changelog ==
 
+= 1.4.2 =
+* Fix button CSS issue on modal popup for older Gutenberg version 
+
 = 1.4.1 =
 * Block Guide Lines Compatibility for old version
 
