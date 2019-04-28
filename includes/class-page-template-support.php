@@ -111,6 +111,11 @@ class EditorsKit_Page_Template_Support {
 
 		if( isset( $post->ID ) ){
 			$template = str_replace( '/', '-', get_page_template_slug( $post->ID ) );
+
+			if( empty( $template ) ){
+				$template = 'default';
+			}
+
 			$classes .= 'page-template-' . str_replace( '.', '-', $template );
 		}
 
