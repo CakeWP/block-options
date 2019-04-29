@@ -23,6 +23,12 @@ class ManageAutoSave extends Component {
 	}
 
 	componentDidMount() {
+		let editorHeader = document.querySelector('.edit-post-header__settings');
+		let prompt = '<span class="editorskit-auto-save-disabled--label">'+ __( 'Auto Save Disabled' ) +'</span>';
+
+		//insert prompt on header
+		editorHeader.insertAdjacentHTML( 'afterbegin', prompt );
+
 		this.sync();
 	}
 
@@ -34,6 +40,7 @@ class ManageAutoSave extends Component {
 		const { isActive, editorSettings } = this.props;
 
 		let autosaveInterval = 60;
+		let prompt = document.querySelector('.editorskit-auto-save-disabled--label');
 
 		//update autosave interval
 		if( !isActive ){
@@ -45,6 +52,9 @@ class ManageAutoSave extends Component {
 			dispatch('core/editor').updateEditorSettings( newEditorSettings );
 			dispatch('core/editor').refreshPost();
 		}
+
+		//show prompt
+		prompt.className = 'editorskit-auto-save-disabled--label editorskit-auto-save-disabled--' + autosaveInterval;
 		
 	}
 	
