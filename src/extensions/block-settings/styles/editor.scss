@@ -38,7 +38,19 @@
 			margin-bottom: -1px;
 		}
 
-		.components-button{
+		//backward compatibility
+		button{
+			display: inline-flex;
+		    text-decoration: none;
+		    font-size: 13px;
+		    margin: 0;
+		    border: 0;
+		    cursor: pointer;
+		    -webkit-appearance: none;
+		    background: none;
+		}
+
+		.components-button, button{
 			padding: 10px 15px;
 			border-bottom: 2px solid #f3f4f5;
 
