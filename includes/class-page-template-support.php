@@ -116,7 +116,7 @@ class EditorsKit_Page_Template_Support {
 				$template = 'default';
 			}
 
-			$classes .= $post->post_type . '-template-' . $template;
+			$classes .= $post->post_type . '-template-' . $template . ' ';
 		}
 
 		return $classes;
