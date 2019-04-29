@@ -12,7 +12,8 @@ function PageTemplateBodyClass(){
 	if( document.body.classList.contains( 'editorskit-body-class-on' ) ){
 		let templateSelector = document.querySelector('.editor-page-attributes__template select');
 		let pageTemplate 	 = select('core/editor').getEditedPostAttribute('template')
-		let prefix 			 = 'page-template-';
+		let postType 		 = select('core/editor').getEditedPostAttribute('type');
+		let prefix 			 = postType + '-template-';
 
 		templateSelector.addEventListener('change',function(){
 		    const classes = document.body.className.split(' ').filter( c => !c.startsWith( prefix ) );
@@ -25,7 +26,7 @@ function PageTemplateBodyClass(){
 		    selected = selected.split('/').join('-');
 
 			document.body.className = classes.join(' ').trim();
-		    document.body.classList.add( 'page-template-' + selected.split('.').join('-') );
+		    document.body.classList.add( prefix + selected.split('.').join('-') );
 		});
 	}
 	

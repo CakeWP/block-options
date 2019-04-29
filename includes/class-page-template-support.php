@@ -110,19 +110,24 @@ class EditorsKit_Page_Template_Support {
 		$classes .= 'editorskit-body-class-on ';
 
 		if( isset( $post->ID ) ){
-			$template = str_replace( '/', '-', get_page_template_slug( $post->ID ) );
+			$template = str_replace( array( '.', '/' ), '-', get_page_template_slug( $post->ID ) );
 
 			if( empty( $template ) ){
 				$template = 'default';
 			}
 
-			$classes .= 'page-template-' . str_replace( '.', '-', $template );
+			$classes .= $post->post_type . '-template-' . $template;
 		}
 
 		return $classes;
 	}
 
 	public function template_width_css(){
+		global $post;
+		if( !isset( $post->ID ) ){
+			return;
+		}
+
 		$theme_support  = get_theme_support( 'editorskit-template-body-class' );
 		$selector  		= ' .editor-styles-wrapper .wp-block';
 		$style 	   		= '<style id="editorskit-body-class" type="text/css" media="screen">';
@@ -130,8 +135,7 @@ class EditorsKit_Page_Template_Support {
 		foreach ( $theme_support as $templates ) {
 			if( is_array( $templates ) && !empty( $templates ) ){
 				foreach ( $templates as $template => $sizes ) {
-					$selected = str_replace( '/', '-', $template );
-					$block = '.page-template-' . str_replace( '.', '-', $selected ) . $selector;
+					$block = '.' . $post->post_type . '-template-' . str_replace( array( '.', '/' ), '-', $template ) . $selector;
 
 					if( is_array( $sizes ) && !empty( $sizes ) ){
 						foreach ( $sizes as $size => $width ) {
