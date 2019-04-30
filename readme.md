@@ -6,7 +6,7 @@
 
 [EditorsKit](https://editorskit.com?utm_medium=github&utm_source=github&utm_campaign=readme&utm_content=editorskit) provides set of page building block options and tools for the new WordPress Gutenberg editor.
 
-[![EditorsKit: Gutenberg Page Building Block Options](https://i.ytimg.com/vi_webp/_Im6fuUZXfc/maxresdefault.webp | width=600)](https://www.youtube.com/watch?v=_Im6fuUZXfc "EditorsKit")
+[![EditorsKit: Gutenberg Page Building Block Options](https://i.ytimg.com/vi_webp/_Im6fuUZXfc/maxresdefault.webp|width=600)](https://www.youtube.com/watch?v=_Im6fuUZXfc "EditorsKit")
 
 ### Features
 * Show or Hide Gutenberg Blocks on Desktop, Tablet and Mobile Devices
@@ -17,7 +17,7 @@
 ### Block Guide Lines
 Toggle visible guide lines on title and each editor blocks in order to check the element boundaries. This feature will also help your workflow on handling nested blocks.
 
-[![Block Guide Lines for Gutenberg Editor](https://i.ytimg.com/vi_webp/G8x5QkKGzhw/maxresdefault.webp | width=600)](https://www.youtube.com/watch?v=G8x5QkKGzhw "Block Guide Lines")
+[![Block Guide Lines for Gutenberg Editor](https://i.ytimg.com/vi_webp/G8x5QkKGzhw/maxresdefault.webp|width=600)](https://www.youtube.com/watch?v=G8x5QkKGzhw "Block Guide Lines")
 
 ## Installation ##
 
