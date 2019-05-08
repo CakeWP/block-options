@@ -11,6 +11,8 @@ const { addFilter } = wp.hooks;
 const { Fragment } = wp.element; 
 const { createHigherOrderComponent } = wp.compose; 
 
+const restrictedBlocks = [ 'core/freeform' ];
+
 /**
  * Filters registered block settings, extending attributes with anchor using ID
  * of the first node.
@@ -21,7 +23,7 @@ const { createHigherOrderComponent } = wp.compose;
  */
 function addAttributes( settings ) {
 	
-	if( typeof settings.attributes !== 'undefined' ){
+	if( typeof settings.attributes !== 'undefined' && !restrictedBlocks.includes( settings.name ) ){
 		settings.attributes = Object.assign( settings.attributes, {
 			editorskit:{ 
 				type: 'object',
@@ -60,6 +62,7 @@ const withAttributes = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 
 		const {
+			name,
 			clientId,
 			attributes,
 			setAttributes,
@@ -70,7 +73,7 @@ const withAttributes = createHigherOrderComponent( ( BlockEdit ) => {
 		}
 
 		//add unique selector
-		if( typeof attributes.editorskit.id === 'undefined' ){
+		if( typeof attributes.editorskit.id === 'undefined' && !restrictedBlocks.includes( name ) ){
 			let d = new Date();
 
 			const editorskit = Object.assign( { id: "editorskit-" + d.getMonth() + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds() + d.getMilliseconds() }, attributes.editorskit );

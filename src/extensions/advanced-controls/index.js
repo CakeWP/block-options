@@ -23,7 +23,7 @@ const { InspectorAdvancedControls }	= wp.editor;
 const { compose, createHigherOrderComponent } = wp.compose;
 const { ToggleControl } = wp.components;
 
-const restrictedBlocks = [ 'core/block' ];
+const restrictedBlocks = [ 'core/block', 'core/freeform' ];
 
 /**
  * Add custom CoBlocks attributes to selected blocks
@@ -48,7 +48,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 		} = attributes;
 		
 		//compatibility with version 1
-		if( ! editorskit.migrated && blockOpts ){
+		if( typeof editorskit !== 'undefined' && ! editorskit.migrated && blockOpts ){
 			props.attributes.editorskit = Object.assign( props.attributes.editorskit, {
 				devices: false,
 				desktop: ( ( blockOpts.devices == 'show' && blockOpts.desktop != 'on' ) || ( blockOpts.devices == 'hide' && blockOpts.desktop == 'on' )  ) ? false : true,
