@@ -33,7 +33,7 @@ export const underline = {
 		return (
 			<Fragment>
 				<RichTextShortcut
-					type="access"
+					type="primary"
 					character="u"
 					onUse={ onToggle }
 				/>
@@ -42,7 +42,7 @@ export const underline = {
 					title={ __( 'Underline' ) }
 					onClick={ onToggle }
 					isActive={ isActive }
-					shortcutType="access"
+					shortcutType="primary"
 					shortcutCharacter="u"
 				/>
 			</Fragment>
