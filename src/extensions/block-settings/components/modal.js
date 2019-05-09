@@ -17,6 +17,7 @@ const { Fragment, Component } = wp.element;
 const { Button, Modal, TextControl, TabPanel } = wp.components;
 const { PluginBlockSettingsMenuItem } = wp.editPost;
 
+const restrictedBlocks = [ 'core/freeform' ];
 
 /**
  * Render plugin
@@ -62,7 +63,7 @@ class BlockSettings extends Component {
 				>
 					
 				</PluginBlockSettingsMenuItem>
-				{ this.state.isOpen ?
+				{ this.state.isOpen && typeof selectedBlock.name!== 'undefined' && !restrictedBlocks.includes( selectedBlock.name ) ?
 					<Modal
 						title={ __( 'Visibility Settings' ) }
 						onRequestClose={ () => closeModal() }
@@ -104,6 +105,18 @@ class BlockSettings extends Component {
 						</TabPanel>
 					</Modal>
 				: null }
+
+				{ this.state.isOpen && typeof selectedBlock.name !== 'undefined' && restrictedBlocks.includes( selectedBlock.name ) ?
+					<Modal
+						title={ __( 'Visibility Settings' ) }
+						onRequestClose={ () => closeModal() }
+						closeLabel={ __( 'Close' ) }
+						className="editorskit-components-modal__content"
+					>
+						<p>{ __( 'Convert classic block to gutenberg blocks first to have this feature available. Thanks!' ) }</p>
+					</Modal>
+				: null }
+
 			</Fragment>
 		);
 	}
