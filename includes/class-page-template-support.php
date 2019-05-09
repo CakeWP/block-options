@@ -102,6 +102,22 @@ class EditorsKit_Page_Template_Support {
 				}
 			}
 		}
+
+		if( current_theme_supports('editorskit-genesis-layout-body-class') ){
+			$theme_support = get_theme_support( 'editorskit-genesis-layout-body-class' );
+			if( $theme_support ){
+				add_filter( 'admin_body_class', array( $this, 'genesis_layout_support' ) );
+
+				if( is_array( $theme_support ) && !empty( $theme_support ) ){
+					global $pagenow;
+
+					if( !empty( $pagenow ) && in_array( $pagenow, array( 'post-new.php', 'post.php', 'edit.php' ) ) ){
+						add_action( 'admin_head', array( $this, 'layout_width_css' ), 100 );
+					}
+					
+				}
+			}
+		}
 	}
 
 	public function body_class_support( $classes ){
@@ -143,6 +159,67 @@ class EditorsKit_Page_Template_Support {
 								$style .= $block . '{ max-width: '. $width .'; }';
 							}else{
 								$style .= $block . '[data-align="'. $size  .'"]{ max-width: '. $width .'; }';
+							}
+						}
+					}
+				}
+			}
+		}
+
+		echo $style .= '</style>';
+	}
+
+	public function genesis_layout_support( $classes ){
+		global $post;
+
+		$classes .= 'editorskit-genesis-body-class-on ';
+
+		if( isset( $post->ID ) && function_exists( 'genesis_get_custom_field' ) ){
+			$layout = genesis_get_custom_field( '_genesis_layout', $post->ID );
+
+			if( empty( $layout ) ){
+				$layout = 'default-layout';
+			}
+
+			$classes .= $post->post_type . '-layout-' . $layout . ' ';
+		}
+
+		return $classes;
+	}
+
+	public function layout_width_css(){
+		global $post;
+		if( !isset( $post->ID ) ){
+			return;
+		}
+
+		$theme_support  = get_theme_support( 'editorskit-genesis-layout-body-class' );
+		$selector  		= ' .editor-styles-wrapper .wp-block';
+		$style 	   		= '<style type="text/css" media="screen">';
+
+		foreach ( $theme_support as $layouts ) {
+			if( is_array( $layouts ) && !empty( $layouts ) ){
+				foreach ( $layouts as $layout => $sizes ) {
+					if( is_array( $sizes ) && !empty( $sizes ) ){
+						foreach ( $sizes as $size => $width ) {
+							if( is_array( $width ) ){
+								foreach ( $width as $type => $w ) {
+									$block = '.' . $type . '-layout-' . $layout . $selector;
+
+									if( $size == 'default' ){
+										$style .= $block . '{ max-width: '. $w .'; }';
+									}else{
+										$style .= $block . '[data-align="'. $size  .'"]{ max-width: '. $w .'; }';
+									}
+								}
+							}else{
+								$block = '.' . $post->post_type . '-layout-' . $layout . $selector;
+
+								if( $size == 'default' ){
+									$style .= $block . '{ max-width: '. $width .'; }';
+								}else{
+									$style .= $block . '[data-align="'. $size  .'"]{ max-width: '. $width .'; }';
+								}
 							}
 						}
 					}

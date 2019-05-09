@@ -11,7 +11,8 @@ function PageTemplateBodyClass(){
 
 	if( document.body.classList.contains( 'editorskit-body-class-on' ) ){
 		let templateSelector = document.querySelector('.editor-page-attributes__template select');
-		let pageTemplate 	 = select('core/editor').getEditedPostAttribute('template')
+		let genesisLayoutSelector = document.querySelectorAll('.genesis-layout-selector input');
+		let pageTemplate 	 = select('core/editor').getEditedPostAttribute('template');
 		let postType 		 = select('core/editor').getEditedPostAttribute('type');
 		let prefix 			 = postType + '-template-';
 
@@ -28,6 +29,24 @@ function PageTemplateBodyClass(){
 			document.body.className = classes.join(' ').trim();
 		    document.body.classList.add( prefix + selected.split('.').join('-') );
 		});
+
+
+		//add support for Genesis Framework Layouts
+	    let selectedLayout = 'default-layout';
+	    let prefixLayout   = postType + '-layout-';
+	    for (var i = 0, len = genesisLayoutSelector.length; i < len; i++) {
+            genesisLayoutSelector[i].addEventListener('change', function() {
+		        if (this.getAttribute('id') !== selectedLayout) {
+
+		        	const bodyClasses = document.body.className.split(' ').filter( c => !c.startsWith( prefixLayout ) );
+		            selectedLayout    = this.getAttribute('id');
+
+		            document.body.className = bodyClasses.join(' ').trim();
+		    		document.body.classList.add( prefixLayout + selectedLayout.split('.').join('-') );
+		        }
+		    });
+        }
+
 	}
 	
 }
