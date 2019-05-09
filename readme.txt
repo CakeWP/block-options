@@ -33,6 +33,10 @@ https://www.youtube.com/watch?v=_Im6fuUZXfc
 = Watch it in action =
 https://www.youtube.com/watch?v=G8x5QkKGzhw
 
+## Rich Text Formats
+[EditorsKit](https://editorskit.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit) also adds the missing text formats for better content creation. The following rich text format are available upon plugin activation:
+
+* Underline Text Format
 
 ## Helping you with the new Gutenberg Editor
 EditorsKit is created to help you navigate through the new editor. Each new features will make your page building more convenient and easier. You can help achieving this goal through the community: 
@@ -53,6 +57,10 @@ e.g.
 
 
 == Changelog ==
+
+= 1.4.3 =
+* Add new Underline Text Format
+* Fix issue with Classic Block Conversion to Blocks
 
 = 1.4.2 =
 * Fix button CSS issue on modal popup for older Gutenberg version 
