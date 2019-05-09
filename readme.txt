@@ -54,6 +54,10 @@ e.g.
 
 == Changelog ==
 
+= 1.4.3 =
+* Add new Underline Text Format
+* Fix issue with Classic Block Conversion to Blocks
+
 = 1.4.2 =
 * Fix button CSS issue on modal popup for older Gutenberg version 
 
