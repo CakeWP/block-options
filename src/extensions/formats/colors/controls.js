@@ -46,8 +46,8 @@ class InlineColorsToolbar extends Component {
 							className="components-dropdown-menu__toggle"
 							icon="editor-textcolor"
 							aria-haspopup="true"
-							label={ __( 'Background' ) }
-							tooltip={ __( 'Background' ) }
+							label={ __( 'Text Color' ) }
+							tooltip={ __( 'Text Color' ) }
 							onClick={ () => this.setState( { openPopover: ! this.state.openPopover } ) }
 						>
 							<span className="components-dropdown-menu__indicator" />
@@ -57,7 +57,11 @@ class InlineColorsToolbar extends Component {
 							<Popover
 								position="bottom center"
 								className="components-editorskit__inline-color-popover"
-								onClickOutside={ ( onClickOutside ) =>{ console.log( onClickOutside ) } }
+								onClickOutside={ ( onClickOutside ) => { 
+									if( document.querySelector('.components-color-palette__picker') && ! document.querySelector('.components-color-palette__picker').contains( onClickOutside.target ) ) {
+										this.setState( { openPopover: ! this.state.openPopover } );
+									}
+								} }
 							>
 								<span class="components-base-control__label">{ __( 'Highlighted Text Color' ) }</span>
 								<ColorPalette
@@ -75,7 +79,6 @@ class InlineColorsToolbar extends Component {
 										}else{
 											onChange( removeFormat( value, name ) )
 										}
-										console.log( color );
 									} }
 								>
 								</ColorPalette>
