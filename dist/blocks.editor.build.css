@@ -112,6 +112,13 @@
     left: -3px;
     right: -3px; }
 .components-editorskit__inline-color-popover .components-popover__content {
-  padding: 16px 18px; }
+  padding: 20px 18px; }
   .components-editorskit__inline-color-popover .components-popover__content .components-color-palette {
     margin-top: .6rem; }
+  .components-editorskit__inline-color-popover .components-popover__content .components-base-control__label {
+    color: #191e23; }
+
+.editorskit-settings__separator {
+  display: block;
+  margin: 24px -18px;
+  border-top: 1px solid #e2e4e7; }

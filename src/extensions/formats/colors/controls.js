@@ -81,6 +81,30 @@ class InlineColorsToolbar extends Component {
 													},
 												} ) 
 											);
+											console.log( color );
+										}else{
+											onChange( removeFormat( value, name ) )
+										}
+									} }
+								>
+								</ColorPalette>
+
+								<div class="editorskit-settings__separator"></div>
+
+								<span class="components-base-control__label">{ __( 'Highlighted Text Background Color' ) }</span>
+								<ColorPalette
+									colors={ colors }
+									value={ activeColor }
+									onChange={ ( color ) => {
+										if( color ){
+											onChange(
+												applyFormat( value, {
+													type: name,
+													attributes: {
+														style: `color:${color}`,
+													},
+												} ) 
+											);
 										}else{
 											onChange( removeFormat( value, name ) )
 										}
