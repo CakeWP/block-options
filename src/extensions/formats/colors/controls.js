@@ -74,14 +74,13 @@ class InlineColorsToolbar extends Component {
 									onChange={ ( color ) => {
 										if( color ){
 											onChange(
-												toggleFormat( value, {
+												applyFormat( value, {
 													type: name,
 													attributes: {
 														style: `color:${color}`,
 													},
 												} ) 
 											);
-											console.log( color );
 										}else{
 											onChange( removeFormat( value, name ) )
 										}
