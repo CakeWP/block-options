@@ -33,7 +33,6 @@ export const textColor = {
 	className: 'inline-color',
 	attributes: {
 		style: 'style',
-		'data-color' : 'data-color',
 	},
 	edit( { isActive, value, onChange, activeAttributes } ) {
 

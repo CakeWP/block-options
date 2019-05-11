@@ -38,6 +38,8 @@ class InlineColorsToolbar extends Component {
 		} = this.props;
 
 		const colors = get( select( 'core/block-editor' ).getSettings(), [ 'colors' ], [] );
+
+		let activeColor = activeAttributes.style ? activeAttributes.style.replace(new RegExp(`^color:\\s*`), '') : '';
 		
 		return (
 			<Fragment>
@@ -67,7 +69,7 @@ class InlineColorsToolbar extends Component {
 								<span class="components-base-control__label">{ __( 'Highlighted Text Color' ) }</span>
 								<ColorPalette
 									colors={ colors }
-									value={ activeAttributes['data-color'] ? activeAttributes['data-color'] : '' }
+									value={ activeColor }
 									onChange={ ( color ) => {
 										if( color ){
 											onChange(
@@ -75,7 +77,6 @@ class InlineColorsToolbar extends Component {
 													type: name,
 													attributes: {
 														style: `color:${color}`,
-														'data-color' : color,
 													},
 												} ) 
 											);
