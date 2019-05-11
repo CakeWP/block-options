@@ -60,6 +60,7 @@ class InlineColorsToolbar extends Component {
 							<Popover
 								position="bottom center"
 								className="components-editorskit__inline-color-popover"
+								focusOnMount="container"
 								onClickOutside={ ( onClickOutside ) => { 
 									if( ( ! onClickOutside.target.classList.contains( 'components-editorskit-dropdown-menu__toggle' ) && ! document.querySelector('.components-editorskit-dropdown-menu__toggle').contains( onClickOutside.target ) ) && ( !document.querySelector('.components-color-palette__picker') || ( document.querySelector('.components-color-palette__picker') && ! document.querySelector('.components-color-palette__picker').contains( onClickOutside.target ) ) ) ) {
 										this.setState( { openPopover: ! this.state.openPopover } );
