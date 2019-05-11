@@ -34,10 +34,11 @@ class InlineColorsToolbar extends Component {
 			isActive,
 			value,
 			onChange,
+			activeAttributes,
 		} = this.props;
 
 		const colors = get( select( 'core/block-editor' ).getSettings(), [ 'colors' ], [] );
-
+		
 		return (
 			<Fragment>
 				<BlockControls>
@@ -58,7 +59,7 @@ class InlineColorsToolbar extends Component {
 								position="bottom center"
 								className="components-editorskit__inline-color-popover"
 								onClickOutside={ ( onClickOutside ) => { 
-									if( document.querySelector('.components-color-palette__picker') && ! document.querySelector('.components-color-palette__picker').contains( onClickOutside.target ) ) {
+									if( !document.querySelector('.components-color-palette__picker') || ( document.querySelector('.components-color-palette__picker') && ! document.querySelector('.components-color-palette__picker').contains( onClickOutside.target ) ) ) {
 										this.setState( { openPopover: ! this.state.openPopover } );
 									}
 								} }
@@ -66,13 +67,15 @@ class InlineColorsToolbar extends Component {
 								<span class="components-base-control__label">{ __( 'Highlighted Text Color' ) }</span>
 								<ColorPalette
 									colors={ colors }
+									value={ activeAttributes['data-color'] ? activeAttributes['data-color'] : '' }
 									onChange={ ( color ) => {
 										if( color ){
 											onChange(
 												toggleFormat( value, {
 													type: name,
 													attributes: {
-														style: `color:${color}`
+														style: `color:${color}`,
+														'data-color' : color,
 													},
 												} ) 
 											);

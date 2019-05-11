@@ -33,11 +33,13 @@ export const textColor = {
 	className: 'inline-color',
 	attributes: {
 		style: 'style',
+		'data-color' : 'data-color',
 	},
-	edit( { isActive, value, onChange } ) {
+	edit( { isActive, value, onChange, activeAttributes } ) {
+
 		return (
 			<Fragment>
-				<InlineColorsToolbar name={ name } isActive={ isActive } value={ value } onChange={ onChange }  />
+				<InlineColorsToolbar name={ name } isActive={ isActive } value={ value } onChange={ onChange } activeAttributes={ activeAttributes }  />
 			</Fragment>
 		);
 
