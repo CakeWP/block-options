@@ -14,28 +14,24 @@ import InlineColorsToolbar from './controls';
  */
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
+const { toggleFormat } = wp.richText;
+const { RichTextShortcut, __unstableRichTextInputEvent } = wp.blockEditor;
 
 
 /**
  * Block constants
  */
-const name = 'editorskit/color';
+const name = 'editorskit/background';
 
-export const textColor = {
+export const backgroundColor = {
 	name,
-	title: __( 'Text Color' ),
+	title: __( 'Background Color' ),
 	tagName: 'span',
-	className: 'has-inline-color',
+	className: 'has-inline-background',
 	attributes: {
 		style: 'style',
 	},
 	edit( { isActive, value, onChange, activeAttributes } ) {
-
-		return (
-			<Fragment>
-				<InlineColorsToolbar name={ name } isActive={ isActive } value={ value } onChange={ onChange } activeAttributes={ activeAttributes }  />
-			</Fragment>
-		);
-
+		return null;
 	},
 };

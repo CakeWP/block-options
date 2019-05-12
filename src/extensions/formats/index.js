@@ -3,6 +3,7 @@
  */
 import { underline } from './underline';
 import { textColor } from './colors/text-color';
+import { backgroundColor } from './colors/background-color';
 
 /**
  * WordPress dependencies
@@ -13,6 +14,7 @@ function registerFormats () {
 	[
 		underline,
 		textColor,
+		backgroundColor,
 	].forEach( ( { name, ...settings } ) => registerFormatType( name, settings ) );
 };
 registerFormats();

@@ -15,8 +15,8 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { select } = wp.data;
 const { BlockControls } = wp.editor;
-const { applyFormat, toggleFormat, removeFormat } = wp.richText;
-const { Toolbar, IconButton, Popover, ColorPalette } = wp.components;
+const { applyFormat, toggleFormat, removeFormat, getActiveFormat } = wp.richText;
+const { Toolbar, IconButton, Popover, ColorPalette, ColorIndicator } = wp.components;
 
 class InlineColorsToolbar extends Component {
 	constructor( props ) {
@@ -37,16 +37,29 @@ class InlineColorsToolbar extends Component {
 			activeAttributes,
 		} = this.props;
 
+		const backgroundColor = 'editorskit/background';
 		const colors = get( select( 'core/block-editor' ).getSettings(), [ 'colors' ], [] );
+		let activeColor, activeBackground;
 
-		let activeColor = activeAttributes.style ? activeAttributes.style.replace(new RegExp(`^color:\\s*`), '') : '';
+		const activeColorFormat = getActiveFormat( value, name );
+		const activeBackgroundFormat = getActiveFormat( value, backgroundColor );
+    	
+    	if( activeColorFormat ){
+    		const styleColor = activeColorFormat.attributes.style;
+    		activeColor = styleColor.replace(new RegExp(`^color:\\s*`), '') ;
+    	}
+
+    	if( activeBackgroundFormat ){
+    		const styleBackground = activeBackgroundFormat.attributes.style;
+			activeBackground = styleBackground.replace(new RegExp(`^background-color:\\s*`), '');
+    	}
 		
 		return (
 			<Fragment>
 				<BlockControls>
-					<Toolbar>
+					<Toolbar className="components-dropdown-menu">
 						<IconButton
-							className="components-dropdown-menu__toggle components-editorskit-dropdown-menu__toggle"
+							className="components-button components-icon-button components-dropdown-menu__toggle components-editorskit-dropdown-menu__toggle"
 							icon="editor-textcolor"
 							aria-haspopup="true"
 							label={ __( 'Text Color' ) }
@@ -67,7 +80,15 @@ class InlineColorsToolbar extends Component {
 									}
 								} }
 							>
-								<span class="components-base-control__label">{ __( 'Highlighted Text Color' ) }</span>
+								<span class="components-base-control__label components-base-control__title">{ __( 'Highlighted Text Settings' ) }</span>
+								<span class="components-base-control__label">
+									{ __( 'Text Color' ) }
+									{ activeColor && (
+										<ColorIndicator
+											colorValue={ activeColor }
+										/>
+									) }
+								</span>
 								<ColorPalette
 									colors={ colors }
 									value={ activeColor }
@@ -90,22 +111,29 @@ class InlineColorsToolbar extends Component {
 
 								<div class="editorskit-settings__separator"></div>
 
-								<span class="components-base-control__label">{ __( 'Highlighted Text Background Color' ) }</span>
+								<span class="components-base-control__label">
+									{ __( 'Background Color' ) }
+									{ activeBackground && (
+										<ColorIndicator
+											colorValue={ activeBackground }
+										/>
+									) }
+								</span>
 								<ColorPalette
 									colors={ colors }
-									value={ activeColor }
-									onChange={ ( color ) => {
-										if( color ){
+									value={ activeBackground }
+									onChange={ ( background ) => {
+										if( background ){
 											onChange(
 												applyFormat( value, {
-													type: name,
+													type: backgroundColor,
 													attributes: {
-														style: `color:${color}`,
+														style: `background-color:${background}`,
 													},
 												} ) 
 											);
 										}else{
-											onChange( removeFormat( value, name ) )
+											onChange( removeFormat( value, backgroundColor ) )
 										}
 									} }
 								>

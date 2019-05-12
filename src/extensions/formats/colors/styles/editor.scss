@@ -4,9 +4,14 @@
 		.components-color-palette{
     		margin-top: .6rem;
 		}
-		.components-base-control__label{
-			// font-weight: 600;
+		.components-base-control__title{
+			display: block;
+			margin-bottom: 16px;
+			font-weight: 600;
 			color: #191e23;
+		}
+		.component-color-indicator{
+			vertical-align: text-bottom;
 		}
 	}
 }
