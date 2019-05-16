@@ -10,7 +10,7 @@
 
 
 /*
-	add_theme_support('editorskit-template-body-class', array(
+	add_theme_support('editorskit-template-block-sizes', array(
 		'page-templates/landing.php' => array(
 			'default' 	=> '500px',
 			'wide' 		=> '900px',
@@ -81,14 +81,14 @@ class EditorsKit_Page_Template_Support {
 	}
 
 	/**
-	 * Support custom theme support for editorskit-template-body-class
+	 * Support custom theme support for editorskit-template-block-sizes
 	 *
 	 * @access public
 	 */
 	public function theme_support() {
 
-		if( current_theme_supports('editorskit-template-body-class') ){
-			$theme_support = get_theme_support( 'editorskit-template-body-class' );
+		if( current_theme_supports('editorskit-template-block-sizes') ){
+			$theme_support = get_theme_support( 'editorskit-template-block-sizes' );
 			if( $theme_support ){
 				add_filter( 'admin_body_class', array( $this, 'body_class_support' ) );
 
@@ -103,8 +103,8 @@ class EditorsKit_Page_Template_Support {
 			}
 		}
 
-		if( current_theme_supports('editorskit-genesis-layout-body-class') ){
-			$theme_support = get_theme_support( 'editorskit-genesis-layout-body-class' );
+		if( current_theme_supports('editorskit-genesis-layout-block-sizes') ){
+			$theme_support = get_theme_support( 'editorskit-genesis-layout-block-sizes' );
 			if( $theme_support ){
 				add_filter( 'admin_body_class', array( $this, 'genesis_layout_support' ) );
 
@@ -144,7 +144,7 @@ class EditorsKit_Page_Template_Support {
 			return;
 		}
 
-		$theme_support  = get_theme_support( 'editorskit-template-body-class' );
+		$theme_support  = get_theme_support( 'editorskit-template-block-sizes' );
 		$selector  		= ' .editor-styles-wrapper .wp-block';
 		$style 	   		= '<style id="editorskit-body-class" type="text/css" media="screen">';
 
@@ -193,7 +193,7 @@ class EditorsKit_Page_Template_Support {
 			return;
 		}
 
-		$theme_support  = get_theme_support( 'editorskit-genesis-layout-body-class' );
+		$theme_support  = get_theme_support( 'editorskit-genesis-layout-block-sizes' );
 		$selector  		= ' .editor-styles-wrapper .wp-block';
 		$style 	   		= '<style type="text/css" media="screen">';
 
