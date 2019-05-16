@@ -77,7 +77,11 @@ const withAttributes = createHigherOrderComponent( ( BlockEdit ) => {
 			let d = new Date();
 
 			const editorskit = Object.assign( { id: "editorskit-" + d.getMonth() + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds() + d.getMilliseconds() }, attributes.editorskit );
-			setAttributes( { editorskit: editorskit } );
+			if( name.includes('acf') && typeof attributes.mode === 'undefined' ){
+				//do nothing
+			}else{
+				setAttributes( { editorskit: editorskit } );
+			}
 		}
 
 		return (
