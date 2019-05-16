@@ -17,6 +17,17 @@
 			'full' 		=> '1200px',
 		)
 	));
+
+	add_theme_support('editorskit-genesis-layout-block-sizes', array(
+		'content-sidebar' => array(
+			'default' 	=> array(
+								'post' 	=> '700px',
+								'page' 	=> '800px',
+							),
+			'wide' 		=> '900px',
+			'full' 		=> '1200px',
+		),
+	));
  */
 
 // Exit if accessed directly.
