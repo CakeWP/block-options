@@ -15,20 +15,11 @@ const { RichTextToolbarButton } = wp.editor;
 class JustifyControl extends Component {
 	constructor( props ) {
 		super( ...arguments );
-
-		this.state = {
-			openPopover: false,
-		};
 	}
 
 	render() {
 
 		const {
-			name,
-			isActive,
-			value,
-			onChange,
-			activeAttributes,
 			blockId,
 			blockName,
 			isBlockJustified,
