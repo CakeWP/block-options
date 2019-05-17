@@ -36,7 +36,19 @@ https://www.youtube.com/watch?v=G8x5QkKGzhw
 ## Rich Text Formats
 [EditorsKit](https://editorskit.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit) also adds the missing text formats for better content creation. The following rich text format are available upon plugin activation:
 
+* Highlighted Text or Heading Colors
+* Highlighted Text Background Color
+* Paragraph Justify Alignment
 * Underline Text Format
+
+= Watch it in action =
+https://www.youtube.com/watch?v=ZgI8gdfxlaA
+
+## Enable or Disable Auto Save
+Easily toggle Auto Saving to fix several lagging issues or prevent your website from being blacklisted on your webhost provider.
+
+## Theme Supports for Developers
+[EditorsKit](https://editorskit.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit) is moving towards being developer friendly as well. Starting version 1.5, custom `theme_supports` were added to provide theme developers option to make Gutenberg block editing experience for their users match the frontend display. [Learn more here](https://jeffreycarandang.com/editorskit-1-5/).
 
 ## Helping you with the new Gutenberg Editor
 EditorsKit is created to help you navigate through the new editor. Each new features will make your page building more convenient and easier. You can help achieving this goal through the community: 
@@ -58,8 +70,15 @@ e.g.
 
 == Changelog ==
 
+= 1.5 =
+* New: Highlighted Text or Heading Colors 🎉
+* New: Highlighted Text Background Color 🎉
+* New: Paragraph Justify Alignment 🎉
+* New: Enable or Disable Auto Save 🎊
+* New: `editorskit-template-block-sizes` and `editorskit-genesis-layout-block-sizes` theme supports 🎊
+
 = 1.4.3 =
-* Add new Underline Text Format
+* Add new Underline Text Format 🎉
 * Fix issue with Classic Block Conversion to Blocks
 
 = 1.4.2 =

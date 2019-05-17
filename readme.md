@@ -19,6 +19,12 @@ Toggle visible guide lines on title and each editor blocks in order to check the
 
 [![Block Guide Lines for Gutenberg Editor](https://i.ytimg.com/vi_webp/G8x5QkKGzhw/maxresdefault.webp)](https://www.youtube.com/watch?v=G8x5QkKGzhw "Block Guide Lines")
 
+## Rich Text Formats
+* Highlighted Text Colors
+* Highlighted Text Background Color
+* Paragraph Justify Alignment
+* Underline Text Format
+
 ## Installation ##
 
 1. Download EditorsKit from the [WordPress plugin directory](https://wordpress.org/plugins/block-options/).
