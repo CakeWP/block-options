@@ -18,7 +18,7 @@ import './extensions/advanced-controls';
 import './extensions/block-settings';
 import './extensions/components/guidelines';
 import './extensions/components/autosave';
+import './extensions/page-template';
 
 // Formats
 import './extensions/formats/';
-
