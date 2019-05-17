@@ -111,6 +111,12 @@
   .is-guide-lines-on .editor-block-list__layout .editor-block-list__block[data-type="atomic-blocks/ab-pricing-table"] .editor-block-list__block > .editor-block-list__block-edit:before {
     left: -3px;
     right: -3px; }
+.editorskit-auto-save-disabled--label {
+  font-size: 11px;
+  color: #848484;
+  padding-top: 2px; }
+  .editorskit-auto-save-disabled--label.editorskit-auto-save-disabled--60 {
+    display: none; }
 .components-editorskit__inline-color-popover .components-popover__content {
   padding: 20px 18px; }
   .components-editorskit__inline-color-popover .components-popover__content .components-color-palette {

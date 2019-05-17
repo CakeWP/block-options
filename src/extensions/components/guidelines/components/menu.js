@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import { flow } from 'lodash/flow';
-
-/**
  * Internal dependencies
  */
 
