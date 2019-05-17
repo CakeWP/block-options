@@ -1,6 +1,7 @@
 /**
  * Internal dependencies
  */
+import './styles/editor.scss';
 import ManageAutoSave from './components/menu';
 
 /**

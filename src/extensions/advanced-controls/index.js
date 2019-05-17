@@ -84,7 +84,6 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 						{ UserStateOptions( props ) }
 					</InspectorAdvancedControls>
 				}
-
 			</Fragment>
 		);
 	};
