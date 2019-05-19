@@ -74,23 +74,71 @@ class EditorsKit_Features_Manager {
 		if( !isset( $editor_settings['editorskit'] ) ){
 			$editor_settings['editorskit'] = array(
 				'visibility' => array(
-					'devices'	 => true,
-					'loginState' => true,
-					'logic' 	 => true,
-					'acf' 		 => true,
+					'name'  => 'visibility',
+					'label' => __( 'Visibility', $this->_slug ),
+					'items' => array(
+						'devices'	 => array(
+							'name'  => 'devices',
+							'label' => __( 'Devices', $this->_slug ),
+							'value' => true,
+						),
+						'loginState' => array(
+							'name'  => 'loginState',
+							'label' => __( 'Login State', $this->_slug ),
+							'value' => true,
+						),
+						'logic' 	 => array(
+							'name'  => 'logic',
+							'label' => __( 'Display Logic', $this->_slug ),
+							'value' => true,
+						),
+						'acf' 		 => array(
+							'name'  => 'acf',
+							'label' => __( 'ACF Support', $this->_slug ),
+							'value' => true,
+						),
+					)
 				),
 				'formats' => array(
-					'colors'	=> true,
-					'justify'	=> true,
-					'underline'	=> true,
+					'name'  => 'formats',
+					'label' => __( 'Formats', $this->_slug ),
+					'items' => array(
+						'colors'	=> array(
+							'name'  => 'colors',
+							'label' => __( 'Highlighted Text Color', $this->_slug ),
+							'value' => true,
+						),
+						'justify'	=> array(
+							'name'  => 'justify',
+							'label' => __( 'Justified Alignment', $this->_slug ),
+							'value' => true,
+						),
+						'underline'	=> array(
+							'name'  => 'underline',
+							'label' => __( 'Underline', $this->_slug ),
+							'value' => true,
+						),
+					)
 				),
 				'tools' => array(
-					'guidelines' => true,
-					'autosave' 	 => true,
+					'name'  => 'tools',
+					'label' => __( 'Tools', $this->_slug ),
+					'items' => array(
+						'guidelines' => array(
+							'name'  => 'guidelines',
+							'label' => __( 'Block Guide Lines', $this->_slug ),
+							'value' => true,
+						),
+						'autosave' 	 => array(
+							'name'  => 'autosave',
+							'label' => __( 'Toggle Auto Save', $this->_slug ),
+							'value' => true,
+						),
+					)
 				),
 			);
 		}
-		
+
 		return $editor_settings;
 	}
 
