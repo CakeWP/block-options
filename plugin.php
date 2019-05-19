@@ -121,6 +121,7 @@ final class EditorsKit {
 		require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-block-assets.php';
 		require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-render-block.php';
 		require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-acf-support.php';
+		require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-features-manager.php';
 		
 		if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/welcome.php';
