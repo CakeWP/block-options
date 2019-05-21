@@ -62,7 +62,7 @@ class BlockSettings extends Component {
 
 		const tabs = [];
 
-		if( isDisabledDevices || isDisabledUserState ){
+		if( !isDisabledDevices || !isDisabledUserState ){
 			tabs.push({
 				name: 'default',
 				title: __( 'Default' ),
@@ -76,6 +76,11 @@ class BlockSettings extends Component {
 				title: __( 'Advanced' ),
 				className: 'editorskit-advanced',
 			});
+		}
+		
+		//if all options are disabled return nothing
+		if( isDisabledDevices && isDisabledUserState && isDisabledLogic && isDisabledACF  ){
+			return null;
 		}
 		
 		return (
