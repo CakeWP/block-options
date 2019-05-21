@@ -13,6 +13,10 @@ const { Fragment, Component } = wp.element;
 const { PluginMoreMenuItem } = wp.editPost;
 const { withSpokenMessages, Modal, CheckboxControl } = wp.components;
 
+const capitalize = ( str ) => {
+	return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
 
 /**
  * Render plugin
@@ -65,7 +69,7 @@ class FeaturesManager extends Component {
 											<CheckboxControl
 												className="edit-post-options-modal__option"
 												label={ item.label }
-												checked={ !select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKit-' + category.name + '-' + item.name ) }
+												checked={ !select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKit' + capitalize( item.name ) + capitalize( category.name ) ) }
 												onChange={ () => onToggle( category.name, item.name ) }
 											/>
 										);
@@ -87,7 +91,7 @@ export default compose( [
 	} ) ),
 	withDispatch( ( dispatch, ownProps ) => ( {
 		onToggle( category, item ) {
-			dispatch( 'core/edit-post' ).toggleFeature( 'disableEditorsKit-' + category + '-' + item );
+			dispatch( 'core/edit-post' ).toggleFeature( 'disableEditorsKit' + capitalize( item ) + capitalize( category ) );
 		},
 	} ) ),
 	withSpokenMessages,

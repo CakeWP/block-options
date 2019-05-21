@@ -14,6 +14,10 @@
     	&:last-child{
     		border-bottom: 0px;
     	}
+    	
+    	&:first-child{
+    		border-top: 0px;
+    	}
 	}
 
 	.components-modal__header {

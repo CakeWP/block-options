@@ -82,9 +82,9 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Devices', $this->_slug ),
 							'value' => true,
 						),
-						'loginState' => array(
-							'name'  => 'loginState',
-							'label' => __( 'Login State', $this->_slug ),
+						'userState' => array(
+							'name'  => 'userState',
+							'label' => __( 'User Login State', $this->_slug ),
 							'value' => true,
 						),
 						'logic' 	 => array(
