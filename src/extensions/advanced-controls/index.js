@@ -23,7 +23,7 @@ const { InspectorAdvancedControls }	= wp.editor;
 const { compose, createHigherOrderComponent } = wp.compose;
 const { ToggleControl } = wp.components;
 
-const restrictedBlocks = [ 'core/block', 'core/freeform' ];
+const restrictedBlocks = [ 'core/block', 'core/freeform', 'core/shortcode' ];
 
 /**
  * Add custom CoBlocks attributes to selected blocks

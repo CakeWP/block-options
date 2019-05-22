@@ -17,7 +17,7 @@ const { Fragment, Component } = wp.element;
 const { Button, Modal, TextControl, TabPanel } = wp.components;
 const { PluginBlockSettingsMenuItem } = wp.editPost;
 
-const restrictedBlocks = [ 'core/freeform' ];
+const restrictedBlocks = [ 'core/freeform', 'core/shortcode' ];
 
 /**
  * Render plugin
