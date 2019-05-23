@@ -52,11 +52,11 @@ addFilter( 'experimentalRichText', 'editorskit/markdown', ( OriginalComponent ) 
 			richTextIdentifier: props.identifier,
 			blockClientId: props.clientId,
 		};
-
+		console.log( newProps );
 		document.addEventListener('keydown', ( event ) =>{
 			const { keyCode } = event;
 			if ( keyCode === SPACE ) {
-				console.log( props.clientId );
+				// console.log( props.clientId );
 				// return newProps.value = converter.makeHtml( slackMarkdownVariantCorrector( newProps.value ) );
 			}
 		} );
