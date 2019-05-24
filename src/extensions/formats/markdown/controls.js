@@ -10,8 +10,9 @@ const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
 const { compose, ifCondition } = wp.compose;
 const { select, withSelect, withDispatch } = wp.data;
-const { toggleFormat, applyFormat, getTextContent, slice, remove, __unstableUpdateFormats, toString } = wp.richText;
+const { toggleFormat, applyFormat, getTextContent, slice, remove, __unstableUpdateFormats, apply, __unstableGetActiveFormats } = wp.richText;
 const { RichTextToolbarButton, RichTextShortcut } = wp.editor;
+const { withSpokenMessages } = wp.components;
 
 class MarkdownControl extends Component {
 	constructor() {
@@ -20,13 +21,30 @@ class MarkdownControl extends Component {
 
 	_experimentalMarkdown( record ,onChange){
 		const BACKTICK = '*';
-		const { start } = record;
+		const { start, end } = record;
+		const { isCaretWithinFormattedText, onEnterFormattedText, onExitFormattedText } = this.props;
 		const text = getTextContent( record );
+		const activeFormats = __unstableGetActiveFormats( record );
 		
 		const characterBefore = text.slice( start - 1, start );
 
 		// Quick check the text for the necessary character.
 		if ( characterBefore !== BACKTICK ) {
+
+			if( start == 0 ){
+				this.props.onSelectionChange( start, end );
+			}
+
+			if ( ! isCaretWithinFormattedText && activeFormats.length ) {
+				onEnterFormattedText();
+			} else if ( isCaretWithinFormattedText && ! activeFormats.length ) {
+				onExitFormattedText();
+			}
+
+			if ( activeFormats.length > 0 ) {
+				// this.recalculateBoundaryStyle();
+			}
+			
 			return record;
 		}
 
@@ -46,7 +64,7 @@ class MarkdownControl extends Component {
 
 		record = remove( record, startIndex, startIndex + 1 );
 		record = remove( record, endIndex, endIndex + 1 );
-		record = applyFormat( record, { type: 'strong' }, startIndex, endIndex );
+		record = applyFormat( record, { type: 'core/bold' }, startIndex, endIndex );
 		
 		onChange( { ...record, needsSelectionUpdate: false } );
 		
@@ -54,27 +72,54 @@ class MarkdownControl extends Component {
 	}
 
 	render(){
-		const { value, onChange } = this.props;
+		const { value, onChange, onSelectionChange } = this.props;
 		this._experimentalMarkdown( value, onChange ) ;
 
-		return null;
+		return ( <Fragment></Fragment> );
 	}
 
 }
 
 export default compose(
-	withSelect( select => {
+	withSelect( ( select, {
+		clientId,
+		instanceId,
+		identifier = instanceId,
+		isSelected,
+	} ) => {
 		const selectedBlock = select( 'core/editor' ).getSelectedBlock();
+		const { isCaretWithinFormattedText } = select( 'core/block-editor' );
 		if ( ! selectedBlock ) {
 			return {};
 		}
 		return {
 			blockId: selectedBlock.clientId,
 			blockName: selectedBlock.name,
+			blockContent: get( selectedBlock, 'attributes.content' ),
+			isCaretWithinFormattedText: isCaretWithinFormattedText(),
 		};
 	} ),
-	withDispatch( dispatch => ( {
-		updateBlockAttributes: dispatch( 'core/editor' ).updateBlockAttributes,
-	} ) ),
-	ifCondition( props => 'core/paragraph' === props.blockName )
+	withDispatch( ( dispatch, {
+		clientId,
+		instanceId,
+		identifier = instanceId,
+	} ) => {
+
+		const {
+			selectionChange,
+			enterFormattedText,
+			exitFormattedText,
+		} = dispatch( 'core/block-editor' );
+
+		return{
+			updateBlockAttributes: dispatch( 'core/editor' ).updateBlockAttributes,
+			onEnterFormattedText: enterFormattedText,
+			onExitFormattedText: exitFormattedText,
+			onSelectionChange( start, end ) {
+				selectionChange( clientId, identifier, start, end );
+			}
+		};
+	}  ),
+	ifCondition( props => 'core/paragraph' === props.blockName ),
+	withSpokenMessages,
 )( MarkdownControl );;
