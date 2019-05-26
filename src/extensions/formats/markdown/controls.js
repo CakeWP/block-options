@@ -17,12 +17,17 @@ const { withSpokenMessages } = wp.components;
 class MarkdownControl extends Component {
 	constructor() {
 		super( ...arguments );
+
+		this.state   = {
+			start: null,
+			end: null,
+		}
 	}
 
 	_experimentalMarkdown( record ,onChange){
 		const BACKTICK = '*';
 		const { start, end } = record;
-		const { isCaretWithinFormattedText, onEnterFormattedText, onExitFormattedText } = this.props;
+		const { onSelectionChange, isCaretWithinFormattedText } = this.props;
 		const text = getTextContent( record );
 		const activeFormats = __unstableGetActiveFormats( record );
 		
@@ -30,16 +35,6 @@ class MarkdownControl extends Component {
 
 		// Quick check the text for the necessary character.
 		if ( characterBefore !== BACKTICK ) {
-
-			if( start == 0 ){
-				this.props.onSelectionChange( start, end );
-			}
-
-			if ( ! isCaretWithinFormattedText && activeFormats.length ) {
-				onEnterFormattedText();
-			} else if ( isCaretWithinFormattedText && ! activeFormats.length ) {
-				onExitFormattedText();
-			}
 
 			if ( activeFormats.length > 0 ) {
 				// this.recalculateBoundaryStyle();
@@ -65,8 +60,13 @@ class MarkdownControl extends Component {
 		record = remove( record, startIndex, startIndex + 1 );
 		record = remove( record, endIndex, endIndex + 1 );
 		record = applyFormat( record, { type: 'core/bold' }, startIndex, endIndex );
-		
-		onChange( { ...record, needsSelectionUpdate: false } );
+
+		onSelectionChange( startIndex, endIndex );
+
+		this.setState({ start: startIndex, end: endIndex });
+
+		onChange( { ...record, needsSelectionUpdate: true } );
+		console.log( isCaretWithinFormattedText );
 		
 		return record;
 	}
@@ -92,6 +92,7 @@ export default compose(
 		if ( ! selectedBlock ) {
 			return {};
 		}
+
 		return {
 			blockId: selectedBlock.clientId,
 			blockName: selectedBlock.name,
@@ -107,14 +108,10 @@ export default compose(
 
 		const {
 			selectionChange,
-			enterFormattedText,
-			exitFormattedText,
 		} = dispatch( 'core/block-editor' );
 
 		return{
 			updateBlockAttributes: dispatch( 'core/editor' ).updateBlockAttributes,
-			onEnterFormattedText: enterFormattedText,
-			onExitFormattedText: exitFormattedText,
 			onSelectionChange( start, end ) {
 				selectionChange( clientId, identifier, start, end );
 			}
