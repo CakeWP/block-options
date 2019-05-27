@@ -10,8 +10,7 @@ const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
 const { compose, ifCondition } = wp.compose;
 const { select, withSelect, withDispatch } = wp.data;
-const { toggleFormat, applyFormat, getTextContent, slice, remove, __unstableUpdateFormats, apply, __unstableGetActiveFormats } = wp.richText;
-const { RichTextToolbarButton, RichTextShortcut } = wp.editor;
+const { applyFormat, getTextContent, slice, remove } = wp.richText;
 const { withSpokenMessages } = wp.components;
 
 class MarkdownControl extends Component {
@@ -27,19 +26,11 @@ class MarkdownControl extends Component {
 	_experimentalMarkdown( record ,onChange){
 		const BACKTICK = '*';
 		const { start, end } = record;
-		const { onSelectionChange, isCaretWithinFormattedText } = this.props;
 		const text = getTextContent( record );
-		const activeFormats = __unstableGetActiveFormats( record );
 		
 		const characterBefore = text.slice( start - 1, start );
-
 		// Quick check the text for the necessary character.
 		if ( characterBefore !== BACKTICK ) {
-
-			if ( activeFormats.length > 0 ) {
-				// this.recalculateBoundaryStyle();
-			}
-			
 			return record;
 		}
 
@@ -57,16 +48,23 @@ class MarkdownControl extends Component {
 			return record;
 		}
 
+		const characterAfter = text.slice( startIndex + 1, startIndex + 2 );
+
+		//do not apply markdown when next character is SPACE
+		if( characterAfter == " " ){
+			return record;
+		}
+
 		record = remove( record, startIndex, startIndex + 1 );
 		record = remove( record, endIndex, endIndex + 1 );
 		record = applyFormat( record, { type: 'core/bold' }, startIndex, endIndex );
 
-		onSelectionChange( startIndex, endIndex );
+		// onSelectionChange( startIndex, endIndex );
 
 		this.setState({ start: startIndex, end: endIndex });
-
+		record.activeFormats = [];
 		onChange( { ...record, needsSelectionUpdate: true } );
-		console.log( isCaretWithinFormattedText );
+		console.log( record );
 		
 		return record;
 	}
@@ -75,7 +73,7 @@ class MarkdownControl extends Component {
 		const { value, onChange, onSelectionChange } = this.props;
 		this._experimentalMarkdown( value, onChange ) ;
 
-		return ( <Fragment></Fragment> );
+		return null;
 	}
 
 }
@@ -96,7 +94,6 @@ export default compose(
 		return {
 			blockId: selectedBlock.clientId,
 			blockName: selectedBlock.name,
-			blockContent: get( selectedBlock, 'attributes.content' ),
 			isCaretWithinFormattedText: isCaretWithinFormattedText(),
 		};
 	} ),
