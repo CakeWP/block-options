@@ -80,7 +80,7 @@ class MarkdownControl extends Component {
 				'format'	: 'core/italic',
 			},
 			'strikethrough' : {
-				'markdown'  : '-',
+				'markdown'  : '~',
 				'format'	: 'core/strikethrough',
 			},
 		};
