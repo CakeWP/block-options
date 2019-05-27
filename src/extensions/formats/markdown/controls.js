@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { get } from 'lodash';
+import map from 'lodash/map';
 
 /**
  * WordPress dependencies
@@ -23,19 +23,19 @@ class MarkdownControl extends Component {
 		}
 	}
 
-	_experimentalMarkdown( record ,onChange){
+	_experimentalMarkdown( record, onChange, markdown, format ){
 		const BACKTICK = '*';
 		const { start, end } = record;
 		const text = getTextContent( record );
 		
 		const characterBefore = text.slice( start - 1, start );
 		// Quick check the text for the necessary character.
-		if ( characterBefore !== BACKTICK ) {
+		if ( characterBefore !== markdown ) {
 			return record;
 		}
 
 		const textBefore = text.slice( 0, start - 1 );
-		const indexBefore = textBefore.lastIndexOf( BACKTICK );
+		const indexBefore = textBefore.lastIndexOf( markdown );
 
 		if ( indexBefore === -1 ) {
 			return record;
@@ -57,21 +57,37 @@ class MarkdownControl extends Component {
 
 		record = remove( record, startIndex, startIndex + 1 );
 		record = remove( record, endIndex, endIndex + 1 );
-		record = applyFormat( record, { type: 'core/bold' }, startIndex, endIndex );
+		record = applyFormat( record, { type: format }, startIndex, endIndex );
 
 		// onSelectionChange( startIndex, endIndex );
 
 		this.setState({ start: startIndex, end: endIndex });
 		record.activeFormats = [];
 		onChange( { ...record, needsSelectionUpdate: true } );
-		console.log( record );
 		
 		return record;
 	}
 
 	render(){
 		const { value, onChange, onSelectionChange } = this.props;
-		this._experimentalMarkdown( value, onChange ) ;
+		let markdowns = {
+			'bold' : {
+				'markdown'  : '*',
+				'format'	: 'core/bold',
+			},
+			'italic' : {
+				'markdown'  : '_',
+				'format'	: 'core/italic',
+			},
+			'strikethrough' : {
+				'markdown'  : '-',
+				'format'	: 'core/strikethrough',
+			},
+		};
+
+		map( markdowns, ( markdown ) => {
+			this._experimentalMarkdown( value, onChange, markdown.markdown, markdown.format ) ;
+		} );
 
 		return null;
 	}
