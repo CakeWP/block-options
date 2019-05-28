@@ -10,7 +10,7 @@ const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
 const { compose, ifCondition } = wp.compose;
 const { select, withSelect, withDispatch } = wp.data;
-const { applyFormat, getTextContent, slice, remove, __unstableGetActiveFormats } = wp.richText;
+const { applyFormat, getTextContent, slice, remove, __unstableGetActiveFormats, split } = wp.richText;
 const { withSpokenMessages } = wp.components;
 
 class MarkdownControl extends Component {
@@ -24,7 +24,6 @@ class MarkdownControl extends Component {
 	}
 
 	_experimentalMarkdown( record, onChange, markdown, format ){
-		const BACKTICK = '*';
 		const { start, end } = record;
 		const text = getTextContent( record );
 		const activeFormats = __unstableGetActiveFormats( record );
@@ -48,6 +47,14 @@ class MarkdownControl extends Component {
 		const endIndex = start - 2;
 		
 		if ( startIndex === endIndex ) {
+			return record;
+		}
+
+		//return if text contains newline(↵)
+		const characterInside = text.slice( startIndex, endIndex );
+		const splitNewlines   = characterInside.split( '\n'  );
+		
+		if( splitNewlines.length > 1 ){
 			return record;
 		}
 
