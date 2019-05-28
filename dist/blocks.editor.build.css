@@ -127,6 +127,10 @@
     background: #fff; }
     .editorskit-toggle-title .components-button.is-default span {
       z-index: 999; }
+  @media screen and (max-width: 500px) {
+    .editorskit-toggle-title {
+      left: 15px;
+      top: -15px; } }
 
 body.editorskit-title-hidden .editor-post-title__block .editor-post-title__input {
   opacity: 0.5; }
