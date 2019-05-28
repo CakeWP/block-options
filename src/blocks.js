@@ -20,6 +20,7 @@ import './extensions/page-template';
 import './extensions/components/guidelines';
 import './extensions/components/autosave';
 import './extensions/components/manager';
+import './extensions/disable-title';
 
 // Formats
 import './extensions/formats/';
