@@ -22,6 +22,8 @@ export const underline = {
 	},
 	edit( { isActive, value, onChange } ) {
 		const isDisabled = select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitUnderlineFormats' );
+		const formatTypes = select( 'core/rich-text' ).getFormatTypes();
+		const checkFormats = formatTypes.filter( formats => formats['name'] === 'wpcom/underline' );
 		
 		const onToggle = () => {
 			onChange(
@@ -41,7 +43,7 @@ export const underline = {
 					character="u"
 					onUse={ onToggle }
 				/>
-				{ !isDisabled && ( <RichTextToolbarButton
+				{ !isDisabled && checkFormats.length === 0 && ( <RichTextToolbarButton
 						icon="editor-underline"
 						title={ __( 'Underline' ) }
 						onClick={ onToggle }
