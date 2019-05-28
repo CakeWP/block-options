@@ -13,10 +13,11 @@ import './styles/editor.scss';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { select } = wp.data;
+const { select, withSelect } = wp.data;
 const { BlockControls } = wp.editor;
 const { applyFormat, toggleFormat, removeFormat, getActiveFormat } = wp.richText;
 const { Toolbar, IconButton, Popover, ColorPalette, ColorIndicator } = wp.components;
+const { compose } = wp.compose;
 
 class InlineColorsToolbar extends Component {
 	constructor( props ) {
@@ -34,8 +35,13 @@ class InlineColorsToolbar extends Component {
 			isActive,
 			value,
 			onChange,
+			isDisabled,
 			activeAttributes,
 		} = this.props;
+
+		if( isDisabled ){
+			return null;
+		}
 
 		const backgroundColor = 'editorskit/background';
 		const colors = get( select( 'core/block-editor' ).getSettings(), [ 'colors' ], [] );
@@ -148,4 +154,10 @@ class InlineColorsToolbar extends Component {
 
 }
 
-export default InlineColorsToolbar;
+export default compose(
+	withSelect( select => {
+		return {
+			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitColorsFormats' ),
+		};
+	} )
+)( InlineColorsToolbar );
