@@ -11,7 +11,7 @@ const { addFilter } = wp.hooks;
 const { Fragment } = wp.element; 
 const { createHigherOrderComponent } = wp.compose; 
 
-const restrictedBlocks = [ 'core/freeform' ];
+const restrictedBlocks = [ 'core/freeform', 'core/shortcode' ];
 
 /**
  * Filters registered block settings, extending attributes with anchor using ID
@@ -101,7 +101,7 @@ function applyExtraClass(extraProps, blockType, attributes) {
 
 	const { editorskit } = attributes;
 	
-	if ( typeof editorskit !== 'undefined' ) {
+	if ( typeof editorskit !== 'undefined' && !restrictedBlocks.includes( blockType.name ) ) {
 
 		if( typeof editorskit.id !== 'undefined' ){
 			extraProps.className = classnames( extraProps.className, editorskit.id );
