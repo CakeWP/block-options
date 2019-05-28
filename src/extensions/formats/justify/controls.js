@@ -57,10 +57,14 @@ export default compose(
 			blockName: selectedBlock.name,
 			isBlockJustified: 'justify' === get( selectedBlock, 'attributes.align' ),
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitJustifyFormats' ),
+			formatTypes: select( 'core/rich-text' ).getFormatTypes(),
 		};
 	} ),
 	withDispatch( dispatch => ( {
 		updateBlockAttributes: dispatch( 'core/editor' ).updateBlockAttributes,
 	} ) ),
-	ifCondition( props => 'core/paragraph' === props.blockName )
+	ifCondition( props => {
+		const checkFormats = props.formatTypes.filter( formats => formats['name'] === 'wpcom/justify' );
+		return 'core/paragraph' === props.blockName && checkFormats.length === 0;
+	} )
 )( JustifyControl );
