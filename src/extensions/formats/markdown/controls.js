@@ -10,7 +10,7 @@ const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
 const { compose, ifCondition } = wp.compose;
 const { select, withSelect, withDispatch } = wp.data;
-const { applyFormat, getTextContent, slice, remove } = wp.richText;
+const { applyFormat, getTextContent, slice, remove, __unstableGetActiveFormats } = wp.richText;
 const { withSpokenMessages } = wp.components;
 
 class MarkdownControl extends Component {
@@ -27,10 +27,13 @@ class MarkdownControl extends Component {
 		const BACKTICK = '*';
 		const { start, end } = record;
 		const text = getTextContent( record );
+		const activeFormats = __unstableGetActiveFormats( record );
 		
-		const characterBefore = text.slice( start - 1, start );
+		// console.log( record );
+
+		const checkMarkdown = text.slice( start - 1, start );
 		// Quick check the text for the necessary character.
-		if ( characterBefore !== markdown ) {
+		if ( checkMarkdown !== markdown ) {
 			return record;
 		}
 
@@ -48,7 +51,20 @@ class MarkdownControl extends Component {
 			return record;
 		}
 
+		//return if inside code format
+		if( activeFormats.length > 0 ){
+			if( activeFormats.filter( format => format['type'] === 'core/code' ) ) {
+				return record;
+			}
+		}
+
+		const characterBefore = text.slice( startIndex - 1, startIndex );
 		const characterAfter = text.slice( startIndex + 1, startIndex + 2 );
+
+		//continue if character before is a letter
+		if( characterBefore.length === 1 && characterBefore.match(/[A-Z|a-z]/i) ){
+			return record;
+		}
 
 		//do not apply markdown when next character is SPACE
 		if( characterAfter == " " ){
