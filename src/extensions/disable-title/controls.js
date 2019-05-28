@@ -17,12 +17,13 @@ class DisableTitle extends Component {
 	}
 
 	initialize(){
-		const { onToggle, postmeta } = this.props;
-
+		const { onToggle, isDisabled, postmeta } = this.props;
+		
 		let titleBlock = document.querySelector('.editor-post-title__block');
+
 		if( titleBlock ){
-			let isDisabled = postmeta['_editorskit_title_hidden'];
-			let bodyClass = isDisabled ? 'editorskit-title-hidden' : 'editorskit-title-visible';
+			let isHidden = postmeta['_editorskit_title_hidden'];
+			let bodyClass = isHidden ? 'editorskit-title-hidden' : 'editorskit-title-visible';
 			
 			//insert prompt on header
 			titleBlock.insertAdjacentHTML( 'beforeend', 
@@ -30,21 +31,30 @@ class DisableTitle extends Component {
 			);
 
 			//remove existing class
-			if( isDisabled ){
+			if( isHidden ){
 				document.body.classList.remove( 'editorskit-title-visible' );
 			}else{
 				document.body.classList.remove( 'editorskit-title-hidden' );
 			}
 			
 			document.body.classList.add( bodyClass );
-			ReactDOM.render( this.button(), document.querySelector('.editorskit-toggle-title') );
+
+			let editorskitTitleHolder = document.querySelector('.editorskit-toggle-title');
+			ReactDOM.render( this.button(), editorskitTitleHolder );
+
+			//hide if disabled
+			if( isDisabled ){
+				editorskitTitleHolder.classList.add( 'hidden' );
+			}else{
+				editorskitTitleHolder.classList.remove( 'hidden' );
+			}
 		}
 	}
 
 	button(){
 		const { onToggle, postmeta } = this.props;
 
-		let isDisabled = postmeta['_editorskit_title_hidden'];
+		let isHidden = postmeta['_editorskit_title_hidden'];
 		
 		return (
 			<Tooltip text={ __( 'Toggle Title Visibility' ) } position="top right">
@@ -53,7 +63,7 @@ class DisableTitle extends Component {
 					isSmall
 					onClick={ onToggle }
 				>
-					<Dashicon icon={ isDisabled ? 'hidden' : 'visibility' } />
+					<Dashicon icon={ isHidden ? 'hidden' : 'visibility' } />
 				</Button> 
 			</Tooltip>
 		);
@@ -71,6 +81,7 @@ export default compose(
 		return {
 			readyState: document.readyState,
 			postmeta: select( 'core/editor' ).getEditedPostAttribute( 'meta' ),
+			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitToggleTitleTools' ),
 		};
 	} ),
 	withDispatch( ( dispatch, ownProps ) => {
