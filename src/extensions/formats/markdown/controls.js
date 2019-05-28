@@ -50,7 +50,7 @@ class MarkdownControl extends Component {
 		}
 
 		//return if text contains newline(↵)
-		const characterInside = text.slice( startIndex, endIndex );
+		const characterInside = text.slice( startIndex, endIndex + 1 );
 		const splitNewlines   = characterInside.split( '\n'  );
 		
 		if( splitNewlines.length > 1 ){
@@ -82,6 +82,7 @@ class MarkdownControl extends Component {
 		record = applyFormat( record, { type: format }, startIndex, endIndex );
 
 		// onSelectionChange( startIndex, endIndex );
+		wp.data.dispatch( 'core/block-editor' ).stopTyping()
 
 		this.setState({ start: startIndex, end: endIndex });
 		record.activeFormats = [];
