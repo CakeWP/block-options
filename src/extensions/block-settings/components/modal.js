@@ -12,10 +12,11 @@ import ACFOptions from '../../advanced-controls/options/acf/';
  * WordPress dependencies
  */
 const { __, sprintf } = wp.i18n;
-const { select } = wp.data;
+const { select, withSelect } = wp.data;
 const { Fragment, Component } = wp.element;
 const { Button, Modal, TextControl, TabPanel } = wp.components;
 const { PluginBlockSettingsMenuItem } = wp.editPost;
+const { compose } = wp.compose;
 
 const restrictedBlocks = [ 'core/freeform' ];
 
@@ -44,6 +45,13 @@ class BlockSettings extends Component {
 	}
 
 	render() {
+
+		const {
+			isDisabledDevices,
+			isDisabledUserState,
+			isDisabledLogic,
+			isDisabledACF,
+		} = this.props;
 		
 		let selectedBlock = select( 'core/editor' ).getSelectedBlock();
 		selectedBlock = Object.assign( { reloadModal: this.reloadModal }, selectedBlock );
@@ -51,6 +59,29 @@ class BlockSettings extends Component {
 		const closeModal = () => (
 			this.setState( { isOpen: false } )
 		);
+
+		const tabs = [];
+
+		if( !isDisabledDevices || !isDisabledUserState ){
+			tabs.push({
+				name: 'default',
+				title: __( 'Default' ),
+				className: 'editorskit-default',
+			});
+		}
+
+		if( !isDisabledLogic || !isDisabledACF ){
+			tabs.push({
+				name: 'advanced',
+				title: __( 'Advanced' ),
+				className: 'editorskit-advanced',
+			});
+		}
+		
+		//if all options are disabled return nothing
+		if( isDisabledDevices && isDisabledUserState && isDisabledLogic && isDisabledACF  ){
+			return null;
+		}
 		
 		return (
 			<Fragment>
@@ -72,31 +103,20 @@ class BlockSettings extends Component {
 					>
 						<TabPanel className="editorskit-tab-panel"
 							activeClass="is-active"
-							tabs={ [
-								{
-									name: 'default',
-									title: __( 'Default' ),
-									className: 'editorskit-default',
-								},
-								{
-									name: 'advanced',
-									title: __( 'Advanced' ),
-									className: 'editorskit-advanced',
-								},
-							] }>
+							tabs={ tabs }>
 							{
 								( tab ) => {
 									switch( tab.name ){
 										case 'advanced':
 											return[
-												LogicOptions( selectedBlock ),
-												ACFOptions( selectedBlock ),
+												!isDisabledLogic && LogicOptions( selectedBlock ),
+												!isDisabledACF && ACFOptions( selectedBlock ),
 											];
 										break;
 		    							default:
 		    								return[
-												DevicesOptions( selectedBlock ),
-												UserStateOptions( selectedBlock ),
+												!isDisabledDevices && DevicesOptions( selectedBlock ),
+												!isDisabledUserState && UserStateOptions( selectedBlock ),
 											];
 		    							break;
 									}
@@ -122,4 +142,13 @@ class BlockSettings extends Component {
 	}
 };
 
-export default BlockSettings;
+export default compose(
+	withSelect( select => {
+		return {
+			isDisabledDevices : select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitDevicesVisibility' ),
+			isDisabledUserState : select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitUserStateVisibility' ),
+			isDisabledLogic : select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitLogicVisibility' ),
+			isDisabledACF : select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitAcfVisibility' ),
+		};
+	} ),
+)( BlockSettings );

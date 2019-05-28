@@ -31,8 +31,8 @@ class BlockGuideLines extends Component {
 	}
 
 	sync() {
-		const { isActive } = this.props;
-		if ( isActive ) {
+		const { isActive, isDisabled } = this.props;
+		if ( isActive && !isDisabled ) {
 			document.body.classList.add( 'is-guide-lines-on' );
 		} else {
 			document.body.classList.remove( 'is-guide-lines-on' );
@@ -43,7 +43,12 @@ class BlockGuideLines extends Component {
 		const {
 			isActive,
 			onToggle,
+			isDisabled,
 		} = this.props;
+
+		if( isDisabled ){
+			return null;
+		}
 
 		return (
 			<Fragment>
@@ -64,6 +69,7 @@ class BlockGuideLines extends Component {
 export default compose( [
 	withSelect( ( select ) => ( {
 		isActive: select( 'core/edit-post' ).isFeatureActive( 'blockGuideLines' ),
+		isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitGuidelinesTools' ),
 	} ) ),
 	withDispatch( ( dispatch, ownProps ) => ( {
 		onToggle() {

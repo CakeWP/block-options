@@ -9,6 +9,7 @@ import map from 'lodash/map';
 const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
 const { compose, ifCondition } = wp.compose;
+const { select, withSelect, withDispatch } = wp.data;
 const { applyFormat, getTextContent, slice, remove, __unstableGetActiveFormats, split } = wp.richText;
 const { withSpokenMessages } = wp.components;
 
@@ -118,5 +119,32 @@ class MarkdownControl extends Component {
 }
 
 export default compose(
+	withSelect( ( select, {
+		clientId,
+		instanceId,
+		identifier = instanceId,
+		isSelected,
+	} ) => {
+		return {
+			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitMarkdownWriting' ),
+		};
+	} ),
+	withDispatch( ( dispatch, {
+		clientId,
+		instanceId,
+		identifier = instanceId,
+	} ) => {
+
+		const {
+			selectionChange,
+		} = dispatch( 'core/block-editor' );
+
+		return{
+			onSelectionChange( start, end ) {
+				selectionChange( clientId, identifier, start, end );
+			}
+		};
+	}  ),
+	ifCondition( props => !props.isDisabled ),
 	withSpokenMessages,
 )( MarkdownControl );;
