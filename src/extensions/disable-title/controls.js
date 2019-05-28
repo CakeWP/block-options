@@ -6,7 +6,7 @@ const { Component } = wp.element;
 const { domReady } = wp.domReady;
 const { compose, ifCondition } = wp.compose;
 const { select, withSelect, withDispatch } = wp.data;
-const { Button, Dashicon, withSpokenMessages } = wp.components;
+const { Button, Dashicon, withSpokenMessages, Tooltip } = wp.components;
 
 class DisableTitle extends Component {
 	constructor( props ) {
@@ -17,10 +17,11 @@ class DisableTitle extends Component {
 	}
 
 	initialize(){
-		const { onToggle, isDisabled } = this.props;
+		const { onToggle, postmeta } = this.props;
 
 		let titleBlock = document.querySelector('.editor-post-title__block');
 		if( titleBlock ){
+			let isDisabled = postmeta['_editorskit_title_hidden'];
 			let bodyClass = isDisabled ? 'editorskit-title-hidden' : 'editorskit-title-visible';
 			
 			//insert prompt on header
@@ -41,16 +42,21 @@ class DisableTitle extends Component {
 	}
 
 	button(){
-		const { onToggle, isDisabled } = this.props;
-		return [
-			<Button
-				className={ 'test' }
-				isSmall
-				onClick={ onToggle }
-			>
-				<Dashicon icon={ isDisabled ? 'hidden' : 'visibility' } />
-			</Button> 
-		];
+		const { onToggle, postmeta } = this.props;
+
+		let isDisabled = postmeta['_editorskit_title_hidden'];
+		
+		return (
+			<Tooltip text={ __( 'Toggle Title Visibility' ) } position="top right">
+				<Button
+					className={ 'editorskit-button' }
+					isSmall
+					onClick={ onToggle }
+				>
+					<Dashicon icon={ isDisabled ? 'hidden' : 'visibility' } />
+				</Button> 
+			</Tooltip>
+		);
 	}
 
 	render() {
@@ -63,15 +69,22 @@ class DisableTitle extends Component {
 export default compose(
 	withSelect( select => {
 		return {
-			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableTitle' ),
 			readyState: document.readyState,
+			postmeta: select( 'core/editor' ).getEditedPostAttribute( 'meta' ),
 		};
 	} ),
-	withDispatch( ( dispatch, ownProps ) => ( {
-		onToggle() {
-			dispatch( 'core/edit-post' ).toggleFeature( 'disableTitle' );
-		},
-	} ) ),
+	withDispatch( ( dispatch, ownProps ) => {
+		let metavalue = ownProps.postmeta['_editorskit_title_hidden'];
+		return{
+			onToggle() {
+				dispatch( 'core/editor' ).editPost({
+					meta: {
+						_editorskit_title_hidden: ! metavalue,
+					}
+				});
+			},
+		}
+	} ),
 	ifCondition( props => {
 		return props.readyState === 'complete';
 	}),

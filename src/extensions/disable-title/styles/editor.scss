@@ -1,0 +1,19 @@
+.editorskit-toggle-title{
+	position: absolute;
+	left: -41px;
+    top: 40%;
+    .components-button.is-default{
+    	background: #fff;
+    	span{
+    		z-index: 999;
+    	}
+    }
+}
+
+body.editorskit-title-hidden{
+	.editor-post-title__block{
+		.editor-post-title__input{
+			opacity: 0.5;
+		}
+	}
+}
