@@ -36,6 +36,7 @@
     "postcss": "^6.0.23",
     "react": "^16.8.6",
     "redux": "^4.0.1",
+    "showdown": "^1.9.0",
     "stylelint": "^9.10.1"
   },
   "devDependencies": {

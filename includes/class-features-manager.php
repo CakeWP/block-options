@@ -120,6 +120,17 @@ class EditorsKit_Features_Manager {
 						),
 					)
 				),
+				'writing' => array(
+					'name'  => 'writing',
+					'label' => __( 'Writing', $this->_slug ),
+					'items' => array(
+						'markdown'	=> array(
+							'name'  => 'markdown',
+							'label' => __( 'Markdown', $this->_slug ),
+							'value' => true,
+						),
+					)
+				),
 				'tools' => array(
 					'name'  => 'tools',
 					'label' => __( 'Tools', $this->_slug ),
