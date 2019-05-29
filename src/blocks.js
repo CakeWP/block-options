@@ -19,6 +19,8 @@ import './extensions/block-settings';
 import './extensions/page-template';
 import './extensions/components/guidelines';
 import './extensions/components/autosave';
+import './extensions/components/markdown';
+import './extensions/page-template';
 import './extensions/components/manager';
 import './extensions/disable-title';
 
