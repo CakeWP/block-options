@@ -45,9 +45,9 @@ class DisableTitle extends Component {
 
 			//hide if disabled
 			if( isDisabled ){
-				editorskitTitleHolder.classList.add( 'hidden' );
+				document.body.classList.add( 'editorskit-title-visible-disabled' );
 			}else{
-				editorskitTitleHolder.classList.remove( 'hidden' );
+				document.body.classList.remove( 'editorskit-title-visible-disabled' );
 			}
 		}
 	}
