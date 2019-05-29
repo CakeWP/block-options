@@ -27,7 +27,7 @@ class DisableTitle extends Component {
 			
 			//insert prompt on header
 			titleBlock.insertAdjacentHTML( 'beforeend', 
-				'<span class="editorskit-toggle-title"></span>' 
+				'<span class="editorskit-toggle-title"></span><div class="editorskit-hidden-title-label"></div>' 
 			);
 
 			//remove existing class
@@ -41,6 +41,7 @@ class DisableTitle extends Component {
 
 			let editorskitTitleHolder = document.querySelector('.editorskit-toggle-title');
 			ReactDOM.render( this.button(), editorskitTitleHolder );
+			ReactDOM.render( <span>{ __( 'For internal use only. Title is hidden on your website.' ) }</span> , document.querySelector('.editorskit-hidden-title-label') );
 
 			//hide if disabled
 			if( isDisabled ){
