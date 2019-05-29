@@ -14,11 +14,11 @@ import ACFOptions from '../../advanced-controls/options/acf/';
 const { __, sprintf } = wp.i18n;
 const { select, withSelect } = wp.data;
 const { Fragment, Component } = wp.element;
-const { Button, Modal, TextControl, TabPanel } = wp.components;
+const { Button, Modal, TextControl, TabPanel, withSpokenMessages } = wp.components;
 const { PluginBlockSettingsMenuItem } = wp.editPost;
 const { compose } = wp.compose;
 
-const restrictedBlocks = [ 'core/freeform' ];
+const restrictedBlocks = [ 'core/freeform', 'core/shortcode' ];
 
 /**
  * Render plugin
@@ -34,7 +34,6 @@ class BlockSettings extends Component {
 			settings: '',
 			isOpen: false,
 			reload: false,
-			selectedBlock: select( 'core/editor' ).getSelectedBlock()
 		}
 
 	}
@@ -53,7 +52,7 @@ class BlockSettings extends Component {
 			isDisabledACF,
 		} = this.props;
 		
-		let selectedBlock = select( 'core/editor' ).getSelectedBlock();
+		let selectedBlock = this.props.selectedBlock;
 		selectedBlock = Object.assign( { reloadModal: this.reloadModal }, selectedBlock );
 
 		const closeModal = () => (
@@ -83,6 +82,11 @@ class BlockSettings extends Component {
 			return null;
 		}
 		
+		//return nothing if restricted
+		if( typeof selectedBlock.name!== 'undefined' && restrictedBlocks.includes( selectedBlock.name ) ){
+			return null;
+		}
+
 		return (
 			<Fragment>
 				<PluginBlockSettingsMenuItem
@@ -126,17 +130,6 @@ class BlockSettings extends Component {
 					</Modal>
 				: null }
 
-				{ this.state.isOpen && typeof selectedBlock.name !== 'undefined' && restrictedBlocks.includes( selectedBlock.name ) ?
-					<Modal
-						title={ __( 'Visibility Settings' ) }
-						onRequestClose={ () => closeModal() }
-						closeLabel={ __( 'Close' ) }
-						className="editorskit-components-modal__content"
-					>
-						<p>{ __( 'Convert classic block to gutenberg blocks first to have this feature available. Thanks!' ) }</p>
-					</Modal>
-				: null }
-
 			</Fragment>
 		);
 	}
@@ -144,11 +137,19 @@ class BlockSettings extends Component {
 
 export default compose(
 	withSelect( select => {
+		const selectedBlock = select( 'core/editor' ).getSelectedBlock();
+		
+		if ( ! selectedBlock ) {
+			return {};
+		}
+
 		return {
+			selectedBlock: selectedBlock,
 			isDisabledDevices : select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitDevicesVisibility' ),
 			isDisabledUserState : select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitUserStateVisibility' ),
 			isDisabledLogic : select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitLogicVisibility' ),
 			isDisabledACF : select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitAcfVisibility' ),
 		};
 	} ),
+	withSpokenMessages,
 )( BlockSettings );
