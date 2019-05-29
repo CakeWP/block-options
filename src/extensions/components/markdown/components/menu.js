@@ -15,6 +15,8 @@ import shortcutConfig from './config';
 const { __, sprintf } = wp.i18n;
 const { Fragment, Component } = wp.element;
 const { PluginMoreMenuItem } = wp.editPost;
+const { compose, ifCondition } = wp.compose;
+const { select, withSelect } = wp.data;
 const { withSpokenMessages, Modal, CheckboxControl } = wp.components;
 
 /**
@@ -113,4 +115,17 @@ class MarkdownFormatting extends Component {
 	}
 };
 
-export default MarkdownFormatting;
+export default compose(
+	withSelect( ( select, {
+		clientId,
+		instanceId,
+		identifier = instanceId,
+		isSelected,
+	} ) => {
+		return {
+			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitMarkdownWriting' ),
+		};
+	} ),
+	ifCondition( props => !props.isDisabled ),
+	withSpokenMessages,
+)( MarkdownFormatting );
