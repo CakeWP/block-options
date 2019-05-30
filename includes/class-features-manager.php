@@ -123,6 +123,16 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Underline', $this->_slug ),
 							'value' => true,
 						),
+						'subscript'	=> array(
+							'name'  => 'subscript',
+							'label' => __( 'Subscript', $this->_slug ),
+							'value' => true,
+						),
+						'superscript'	=> array(
+							'name'  => 'superscript',
+							'label' => __( 'Superscript', $this->_slug ),
+							'value' => true,
+						),
 					)
 				),
 				'writing' => array(
