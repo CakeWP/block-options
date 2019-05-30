@@ -64,14 +64,14 @@ class MarkdownFormatting extends Component {
 						className="edit-post-keyboard-shortcut-help__shortcut"
 						key={ index }
 					>
-						<dt className="edit-post-keyboard-shortcut-help__shortcut-term">
+						<div className="edit-post-keyboard-shortcut-help__shortcut-description">
+							{ description }
+						</div>
+						<div className="edit-post-keyboard-shortcut-help__shortcut-term">
 							<kbd className="edit-post-keyboard-shortcut-help__shortcut-key-combination" aria-label={ ariaLabel }>
 								{ mapKeyCombination( castArray( keyCombination ) ) }
 							</kbd>
-						</dt>
-						<dd className="edit-post-keyboard-shortcut-help__shortcut-description">
-							{ description }
-						</dd>
+						</div>
 					</div>
 				) ) }
 			</dl>
