@@ -160,6 +160,11 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Toggle Auto Save', $this->_slug ),
 							'value' => true,
 						),
+						'toggleTitle' 	 => array(
+							'name'  => 'toggleTitle',
+							'label' => __( 'Toggle Title Visibility', $this->_slug ),
+							'value' => true,
+						),
 					)
 				),
 			);
