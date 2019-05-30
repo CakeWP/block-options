@@ -18,8 +18,8 @@ const name = 'editorskit/clear-formatting';
 export const clear = {
 	name,
 	title: __( 'Clear Formatting' ),
-	tagName: 'removeformatting',
-	className: null,
+	tagName: 'span',
+	className: 'editorskit-clear-formatting',
 	edit( { isActive, value, onChange, activeAttributes } ) {
 
 		return (

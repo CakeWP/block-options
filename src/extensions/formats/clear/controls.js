@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { get } from 'lodash';
+import map from 'lodash/map';
 
 /**
  * WordPress dependencies
@@ -11,6 +11,7 @@ const { Component } = wp.element;
 const { compose, ifCondition } = wp.compose;
 const { select, withSelect, withDispatch } = wp.data;
 const { RichTextToolbarButton } = wp.editor;
+const { removeFormat } = wp.richText;
 
 class ClearFormatting extends Component {
 	constructor( props ) {
@@ -20,26 +21,30 @@ class ClearFormatting extends Component {
 	render() {
 
 		const {
-			blockId,
-			blockName,
-			isBlockJustified,
-			isDisabled,
-			updateBlockAttributes,
+			value,
+			isActive,
+			onChange,
+			activeAttributes,
 		} = this.props;
-
-		if( isDisabled ){
-			return null;
-		}
 		
 		const onToggle = () => {
-			updateBlockAttributes( blockId, { align: isBlockJustified ? null : 'justify' } );
+			const formatTypes = select( 'core/rich-text' ).getFormatTypes();
+			if( formatTypes.length > 0 ){
+				let newValue = value;
+
+				map( formatTypes, ( activeFormat ) => {
+					newValue = removeFormat( newValue, activeFormat.name );
+				} );
+
+				onChange( { ...newValue } );
+			}
 		};
 		return (
 			<RichTextToolbarButton
 				icon="editor-removeformatting"
 				title={ __( 'Clear Formatting' ) }
 				onClick={ onToggle }
-				isActive={ isBlockJustified }
+				isActive={ isActive }
 			/>
 		);
 	}
@@ -48,23 +53,11 @@ class ClearFormatting extends Component {
 
 export default compose(
 	withSelect( select => {
-		const selectedBlock = select( 'core/editor' ).getSelectedBlock();
-		if ( ! selectedBlock ) {
-			return {};
-		}
 		return {
-			blockId: selectedBlock.clientId,
-			blockName: selectedBlock.name,
-			isBlockJustified: 'justify' === get( selectedBlock, 'attributes.align' ),
-			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitJustifyFormats' ),
-			formatTypes: select( 'core/rich-text' ).getFormatTypes(),
+			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitClearFormattingFormats' ),
 		};
 	} ),
-	withDispatch( dispatch => ( {
-		updateBlockAttributes: dispatch( 'core/editor' ).updateBlockAttributes,
-	} ) ),
 	ifCondition( props => {
-		const checkFormats = props.formatTypes.filter( formats => formats['name'] === 'wpcom/justify' );
-		return 'core/paragraph' === props.blockName && checkFormats.length === 0;
+		return !props.isDisabled;
 	} )
 )( ClearFormatting );
