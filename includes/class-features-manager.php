@@ -103,6 +103,11 @@ class EditorsKit_Features_Manager {
 					'name'  => 'formats',
 					'label' => __( 'Formats', $this->_slug ),
 					'items' => array(
+						'clearFormatting'	=> array(
+							'name'  => 'clearFormatting',
+							'label' => __( 'Clear Formatting', $this->_slug ),
+							'value' => true,
+						),
 						'colors'	=> array(
 							'name'  => 'colors',
 							'label' => __( 'Highlighted Text Color', $this->_slug ),

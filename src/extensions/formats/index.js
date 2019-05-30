@@ -8,6 +8,7 @@ import { backgroundColor } from './colors/background-color';
 import { markdown } from './markdown';
 import { subscript } from './subscript';
 import { superscript } from './superscript';
+import { clear } from './clear';
 
 /**
  * WordPress dependencies
@@ -23,6 +24,7 @@ function registerFormats () {
 		markdown,
 		subscript,
 		superscript,
+		clear,
 	].forEach( ( { name, ...settings } ) => registerFormatType( name, settings ) );
 };
 registerFormats();
