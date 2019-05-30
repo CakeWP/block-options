@@ -16,7 +16,7 @@
 * Custom Conditional Display Logic for Blocks Visibility
 * Show or Hide Gutenberg Blocks based on Advanced Custom Fields Value
 
-## Rich Text Formats
+### Rich Text Formats
 Additional formats for Rich Text editor. Bringing the ease from TinyMCE to Block Editor.
 
 * Clear Formatting
@@ -27,7 +27,7 @@ Additional formats for Rich Text editor. Bringing the ease from TinyMCE to Block
 * Subscript
 * Superscript
 
-## Markdown
+### Markdown
 Write away! Starting version 1.6 markdown for `*bold*`, `_italic_` and `~strikethrough~` are available on the editor.
 
 ### Block Guide Lines
