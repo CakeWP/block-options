@@ -6,6 +6,7 @@ import { justify } from './justify';
 import { textColor } from './colors/text-color';
 import { backgroundColor } from './colors/background-color';
 import { markdown } from './markdown';
+import { clear } from './clear';
 
 /**
  * WordPress dependencies
@@ -19,6 +20,7 @@ function registerFormats () {
 		textColor,
 		backgroundColor,
 		markdown,
+		clear,
 	].forEach( ( { name, ...settings } ) => registerFormatType( name, settings ) );
 };
 registerFormats();
