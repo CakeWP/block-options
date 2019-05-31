@@ -1,8 +1,8 @@
 **/*.min.js
 **/*.build.js
+**/*.build.css
 **/node_modules/**
 **/vendor/**
-**/dist/**
 **/build/**
 build
 coverage

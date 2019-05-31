@@ -271,11 +271,11 @@ class EditorsKit_User_Feedback {
 			<div class="editorskit-notice-inner">
 				<div class="editorskit-notice-icon">
 					<?php /* translators: 1. Name */ ?>
-					<img src="https://ps.w.org/block-options/assets/icon-256x256.jpg" alt="<?php printf( esc_attr__( '%s WordPress Plugin', 'block-options' ), esc_attr( $this->name ) ); ?>" />
+					<img src="<?php echo EDITORSKIT_PLUGIN_URL;?>/dist/images/icon-256x256.jpg" alt="<?php printf( esc_attr__( '%s WordPress Plugin', 'block-options' ), esc_attr( $this->name ) ); ?>" />
 				</div>
 				<div class="editorskit-notice-content">
 					<?php /* translators: 1. Name */ ?>
-					<h3><?php printf( esc_html__( 'Are you enjoying %s?', 'block-options' ), esc_html( $this->name ) ); ?></h3>
+					<h3><?php printf( esc_html__( 'Are you enjoying %s Plugin?', 'block-options' ), esc_html( $this->name ) ); ?></h3>
 					<p>
 						<?php /* translators: 1. Name, 2. Time */ ?>
 						<?php printf( esc_html__( 'You have been using %1$s for %2$s now. Mind leaving a review to let us know know what you think? We\'d really appreciate it!', 'block-options' ), esc_html( $this->name ), esc_html( $time ) ); ?>
