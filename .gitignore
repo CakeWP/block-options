@@ -2,11 +2,6 @@
 **/*.build.js
 **/*.build.css
 **/node_modules/**
-<<<<<<< HEAD
-**/dist/**
-=======
-**/vendor/**
->>>>>>> master
 **/build/**
 build
 coverage
