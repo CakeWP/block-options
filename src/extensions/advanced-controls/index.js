@@ -23,7 +23,16 @@ const { InspectorAdvancedControls }	= wp.editor;
 const { compose, createHigherOrderComponent } = wp.compose;
 const { ToggleControl } = wp.components;
 
-const restrictedBlocks = [ 'core/block', 'core/freeform' ];
+const restrictedBlocks = [ 'core/block', 'core/freeform', 'core/shortcode' ];
+
+const enhance = compose(
+	withSelect( ( select, block ) => {
+		return { 
+			isDisabledDevices : select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitDevicesVisibility' ),
+			isDisabledUserState : select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitUserStateVisibility' ),
+		};
+	} )
+);
 
 /**
  * Add custom CoBlocks attributes to selected blocks
@@ -32,7 +41,7 @@ const restrictedBlocks = [ 'core/block', 'core/freeform' ];
  * @return {string} Wrapped component.
  */
 const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
-	return ( props ) => {
+	return enhance( ( { ...props } ) => {
 
 		const {
 			name,
@@ -40,6 +49,8 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 			attributes,
 			setAttributes,
 			isSelected,
+			isDisabledDevices,
+			isDisabledUserState,
 		} = props;
 
 		const {
@@ -80,13 +91,13 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 				<BlockEdit {...props} />
 				{ isSelected && !restrictedBlocks.includes( name ) &&
 					<InspectorAdvancedControls>
-						{ DevicesOptions( props ) }
-						{ UserStateOptions( props ) }
+						{ !isDisabledDevices && DevicesOptions( props ) }
+						{ !isDisabledUserState && UserStateOptions( props ) }
 					</InspectorAdvancedControls>
 				}
 			</Fragment>
 		);
-	};
+	});
 }, 'withAdvancedControls');
 
 addFilter(

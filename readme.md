@@ -8,22 +8,37 @@
 
 [![EditorsKit: Gutenberg Page Building Block Options](https://i.ytimg.com/vi_webp/_Im6fuUZXfc/maxresdefault.webp)](https://www.youtube.com/watch?v=_Im6fuUZXfc "EditorsKit")
 
-### Features
+## Features
+
+### Visibility
 * Show or Hide Gutenberg Blocks on Desktop, Tablet and Mobile Devices
 * Gutenberg Editor Blocks Visibility per User Logged-in or Logged-out State
 * Custom Conditional Display Logic for Blocks Visibility
 * Show or Hide Gutenberg Blocks based on Advanced Custom Fields Value
 
-### Block Guide Lines
-Toggle visible guide lines on title and each editor blocks in order to check the element boundaries. This feature will also help your workflow on handling nested blocks.
+### Rich Text Formats
+Additional formats for Rich Text editor. Bringing the ease from TinyMCE to Block Editor.
 
-[![Block Guide Lines for Gutenberg Editor](https://i.ytimg.com/vi_webp/G8x5QkKGzhw/maxresdefault.webp)](https://www.youtube.com/watch?v=G8x5QkKGzhw "Block Guide Lines")
-
-## Rich Text Formats
+* Clear Formatting
 * Highlighted Text Colors
 * Highlighted Text Background Color
 * Paragraph Justify Alignment
 * Underline Text Format
+* Subscript
+* Superscript
+
+### Markdown
+Write away! Starting version 1.6 markdown for `*bold*`, `_italic_` and `~strikethrough~` are available on the editor.
+
+### Block Guide Lines
+Toggle visible guide lines on title and each editor blocks in order to check the element boundaries. This feature will also help your workflow on handling nested blocks.
+
+### Toggle Title Visibility
+Easily hide title on your website but visible when you are writing.
+
+### Toggle Auto Save
+Toggle Autosave on/off to prevent issues from multiple API calls.
+
 
 ## Installation ##
 

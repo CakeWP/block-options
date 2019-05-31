@@ -63,7 +63,7 @@ const ACFOptions = ( props ) => {
 
 			return(
 				<Fragment>
-					<div className="editorskit-button-group-container editorskit-button-group-devices">
+					<div className="editorskit-button-group-container editorskit-button-group-acf">
 						<label className="components-base-control__label" >{ __( 'Advanced Custom Fields' ) }</label>
 							<SelectControl
 								value={ ( typeof editorskit.acf_visibility !== 'undefined' && editorskit.acf_visibility != '' ) ? editorskit.acf_visibility : '' }

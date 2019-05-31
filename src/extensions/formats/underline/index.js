@@ -5,6 +5,7 @@ const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { toggleFormat } = wp.richText;
 const { RichTextToolbarButton, RichTextShortcut } = wp.editor;
+const { select } = wp.data;
 
 /**
  * Block constants
@@ -20,6 +21,10 @@ export const underline = {
 		style: 'style',
 	},
 	edit( { isActive, value, onChange } ) {
+		const isDisabled = select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitUnderlineFormats' );
+		const formatTypes = select( 'core/rich-text' ).getFormatTypes();
+		const checkFormats = formatTypes.filter( formats => formats['name'] === 'wpcom/underline' );
+		
 		const onToggle = () => {
 			onChange(
 				toggleFormat( value, {
@@ -30,6 +35,7 @@ export const underline = {
 				} ) 
 			);
 		};
+
 		return (
 			<Fragment>
 				<RichTextShortcut
@@ -37,14 +43,15 @@ export const underline = {
 					character="u"
 					onUse={ onToggle }
 				/>
-				<RichTextToolbarButton
-					icon="editor-underline"
-					title={ __( 'Underline' ) }
-					onClick={ onToggle }
-					isActive={ isActive }
-					shortcutType="primary"
-					shortcutCharacter="u"
-				/>
+				{ !isDisabled && checkFormats.length === 0 && ( <RichTextToolbarButton
+						icon="editor-underline"
+						title={ __( 'Underline' ) }
+						onClick={ onToggle }
+						isActive={ isActive }
+						shortcutType="primary"
+						shortcutCharacter="u"
+					/> )
+				}
 			</Fragment>
 		);
 

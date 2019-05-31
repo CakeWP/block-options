@@ -16,9 +16,13 @@ import './styles/style.scss';
 import './extensions/attributes';
 import './extensions/advanced-controls';
 import './extensions/block-settings';
+import './extensions/page-template';
 import './extensions/components/guidelines';
 import './extensions/components/autosave';
+import './extensions/components/markdown';
 import './extensions/page-template';
+import './extensions/components/manager';
+import './extensions/disable-title';
 
 // Formats
 import './extensions/formats/';
