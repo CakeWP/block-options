@@ -118,11 +118,6 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Justified Alignment', $this->_slug ),
 							'value' => true,
 						),
-						'underline'	=> array(
-							'name'  => 'underline',
-							'label' => __( 'Underline', $this->_slug ),
-							'value' => true,
-						),
 						'subscript'	=> array(
 							'name'  => 'subscript',
 							'label' => __( 'Subscript', $this->_slug ),
@@ -131,6 +126,16 @@ class EditorsKit_Features_Manager {
 						'superscript'	=> array(
 							'name'  => 'superscript',
 							'label' => __( 'Superscript', $this->_slug ),
+							'value' => true,
+						),
+						'underline'	=> array(
+							'name'  => 'underline',
+							'label' => __( 'Underline', $this->_slug ),
+							'value' => true,
+						),
+						'uppercase'	=> array(
+							'name'  => 'uppercase',
+							'label' => __( 'Uppercase', $this->_slug ),
 							'value' => true,
 						),
 					)
