@@ -6,7 +6,7 @@ Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenber editor
 Requires at least: 5.0
 Tested up to: 5.2
 Requires PHP: 5.6
-Stable tag: 1.5
+Stable tag: 1.6
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Donate link: https://www.buymeacoffee.com/phpbits
@@ -33,19 +33,32 @@ https://www.youtube.com/watch?v=_Im6fuUZXfc
 = Watch it in action =
 https://www.youtube.com/watch?v=G8x5QkKGzhw
 
+## Markdown Support
+Starting [EditorsKit 1.6 ](https://jeffreycarandang.com/editorskit-1-6/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit), you can now use markdowns on Gutenberg editor while typing. Markdowns for `*bold*`, `_italic_` and `~strikethrough~` are available upon plugin activation. Lists of available markdowns are also accessible on the settings menu.
+
 ## Rich Text Formats
 [EditorsKit](https://editorskit.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit) also adds the missing text formats for better content creation. The following rich text format are available upon plugin activation:
 
 * Highlighted Text or Heading Colors
 * Highlighted Text Background Color
+* Clear Formatting Options
 * Paragraph Justify Alignment
 * Underline Text Format
+* Superscript
+* Subscript
+* Uppercase Text Transform
 
 = Watch it in action =
 https://www.youtube.com/watch?v=ZgI8gdfxlaA
 
 ## Enable or Disable Auto Save
 Easily toggle Auto Saving to fix several lagging issues or prevent your website from being blacklisted on your webhost provider.
+
+## Toggle Title Visibility
+Easily hide post, page or any post type's title on your website in just a click. This will enable you to create full Gutenberg editor's driven posts and pages without getting "(No Title)" on your admin dashboard.
+
+## Features Manager
+Enable or disable EditorsKit features using "EditorsKit Settings" menu. This will give you full control over the plugin features and let you disable the features that you don't need on your website.
 
 ## Theme Supports for Developers
 [EditorsKit](https://editorskit.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit) is moving towards being developer friendly as well. Starting version 1.5, custom `theme_supports` were added to provide theme developers option to make Gutenberg block editing experience for their users match the frontend display. [Learn more here](https://jeffreycarandang.com/editorskit-1-5/).
@@ -69,6 +82,17 @@ e.g.
 
 
 == Changelog ==
+
+= 1.6 =
+* New: Gutenberg Editor Markdown Support 🎊
+* New: Clear Formatting Options 🎉
+* New: Subscript, Superscript and Uppercase Text Formats 🎉
+* New: Toggle Title Visibility Option 🎉
+* New: EditorsKit Features Manager 🎊
+* Add: Freemius Insights
+* Compatibility: Disable duplicate formats when JetPack or CoBlocks is active
+* Fixes: Shortcode Block Compatibility Bugs
+* Fixes: Remove EditorsKit id instance for other plugin's compatibility
 
 = 1.5 =
 * New: Highlighted Text or Heading Colors 🎉
