@@ -271,7 +271,7 @@ class EditorsKit_User_Feedback {
 			<div class="editorskit-notice-inner">
 				<div class="editorskit-notice-icon">
 					<?php /* translators: 1. Name */ ?>
-					<img src="<?php echo EDITORSKIT_PLUGIN_URL;?>/dist/images/icon-256x256.jpg" alt="<?php printf( esc_attr__( '%s WordPress Plugin', 'block-options' ), esc_attr( $this->name ) ); ?>" />
+					<img src="<?php echo esc_url( EDITORSKIT_PLUGIN_URL . '/dist/images/icon-256x256.jpg' );?>" alt="<?php printf( esc_attr__( '%s WordPress Plugin', 'block-options' ), esc_attr( $this->name ) ); ?>" />
 				</div>
 				<div class="editorskit-notice-content">
 					<?php /* translators: 1. Name */ ?>

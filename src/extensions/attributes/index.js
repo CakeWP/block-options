@@ -73,12 +73,12 @@ const withAttributes = createHigherOrderComponent( ( BlockEdit ) => {
 		}
 
 		//add unique selector
-		if( typeof attributes.editorskit.id === 'undefined' && !restrictedBlocks.includes( name ) ){
-			let d = new Date();
+		// if( typeof attributes.editorskit.id === 'undefined' && !restrictedBlocks.includes( name ) ){
+		// 	let d = new Date();
 
-			const editorskit = Object.assign( { id: "editorskit-" + d.getMonth() + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds() + d.getMilliseconds() }, attributes.editorskit );
-			setAttributes( { editorskit: editorskit } );
-		}
+		// 	const editorskit = Object.assign( { id: "editorskit-" + d.getMonth() + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds() + d.getMilliseconds() }, attributes.editorskit );
+		// 	setAttributes( { editorskit: editorskit } );
+		// }
 
 		return (
 			<Fragment>

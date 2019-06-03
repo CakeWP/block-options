@@ -16,7 +16,7 @@ const { Fragment, Component } = wp.element;
 const { compose, ifCondition } = wp.compose;
 const { select, withSelect, withDispatch } = wp.data;
 const { RichTextToolbarButton, RichTextShortcut } = wp.editor;
-const { toggleFormat } = wp.richText;
+const { toggleFormat, removeFormat } = wp.richText;
 
 class SubscriptControl extends Component {
 	constructor( props ) {
@@ -33,8 +33,11 @@ class SubscriptControl extends Component {
 		} = this.props;
 		
 		const onToggle = () => {
+			//remove superscript format if applied
+			let record = removeFormat( value, 'editorskit/superscript' );
+			
 			onChange(
-				toggleFormat( value, {
+				toggleFormat( record, {
 					type: name,
 				} ) 
 			);
