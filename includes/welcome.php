@@ -33,8 +33,8 @@ if( !class_exists( 'BLOCKOPS_Welcome' ) ){
 
 		function screen_page(){
 			add_dashboard_page(
-				__( 'Getting started with EditorsKit', 'editorskit' ),
-				__( 'Getting started with EditorsKit', 'editorskit' ),
+				__( 'Getting started with EditorsKit', 'block-options' ),
+				__( 'Getting started with EditorsKit', 'block-options' ),
 				apply_filters( 'blockopts_welcome_cap', 'manage_options' ),
 				'editorskit-getting-started',
 				array( $this, 'welcome_content' )
@@ -44,27 +44,27 @@ if( !class_exists( 'BLOCKOPS_Welcome' ) ){
 		function welcome_content(){ ?>
 			<div class="wrap about-wrap editorskit-about-wrap">
 				<div class="getting-started__content">
-					<h1><?php echo esc_html__( 'Get started with EditorsKit.', 'editorskit' ); ?></h1>
+					<h1><?php echo esc_html__( 'Get started with EditorsKit.', 'block-options' ); ?></h1>
 					
-					<p><strong><?php echo esc_html__( 'Thank you for choosing EditorsKit!', 'editorskit' ); ?></strong></p>
+					<p><strong><?php echo esc_html__( 'Thank you for choosing EditorsKit!', 'block-options' ); ?></strong></p>
 					
-					<p><?php echo esc_html__( 'You have just enabled set of useful tools that will help you manage each blocks and improve your content workflow with the new editor.', 'editorskit' ); ?></p>
+					<p><?php echo esc_html__( 'You have just enabled set of useful tools that will help you manage each blocks and improve your content workflow with the new editor.', 'block-options' ); ?></p>
 					
-					<p><strong><?php echo esc_html__( 'Here is the video on how the plugin works:', 'editorskit' ); ?></strong></p>
+					<p><strong><?php echo esc_html__( 'Here is the video on how the plugin works:', 'block-options' ); ?></strong></p>
 
 					<iframe width="560" height="315" src="https://www.youtube.com/embed/_Im6fuUZXfc" frameborder="0" allowfullscreen></iframe>
 
 					<p>
 						<?php
 						echo sprintf(
-							esc_html__( 'If you have any questions or suggestion, let us know through %1$sTwitter%4$s or our %2$sFacebook community %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what\'s new and upcoming at EditorsKit.', '@@textdomain' ), '<a href="https://twitter.com/editorskit" target="_blank">', '<a href="https://www.facebook.com/groups/1306393256173179/" target="_blank">', '<a href="https://editorskit.com/" target="_blank">', '</a>'
+							esc_html__( 'If you have any questions or suggestion, let us know through %1$sTwitter%4$s or our %2$sFacebook community %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what\'s new and upcoming at EditorsKit.', 'block-options' ), '<a href="https://twitter.com/editorskit" target="_blank">', '<a href="https://www.facebook.com/groups/1306393256173179/" target="_blank">', '<a href="https://editorskit.com/" target="_blank">', '</a>'
 						);
 						?>
 					</p>
 
-					<p><?php echo esc_html__( 'Happy building!', 'editorskit' ); ?></p>
+					<p><?php echo esc_html__( 'Happy building!', 'block-options' ); ?></p>
 
-					<p><img src="<?php echo esc_url( EDITORSKIT_PLUGIN_URL . 'dist/images/logo-800.png' ); ?>" alt="<?php echo esc_attr__( 'EditorsKit Team', 'editorskit' ); ?>"></p>
+					<p><img src="<?php echo esc_url( EDITORSKIT_PLUGIN_URL . 'dist/images/logo-800.png' ); ?>" alt="<?php echo esc_attr__( 'EditorsKit Team', 'block-options' ); ?>"></p>
 
 				</div>
 			</div>
