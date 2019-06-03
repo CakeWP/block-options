@@ -2,13 +2,11 @@
 **/*.build.js
 **/*.build.css
 **/node_modules/**
-**/vendor/**
 **/build/**
 build
 coverage
 cypress
 node_modules
-vendor
 *.sublime-project
 *.sublime-workspace
 .DS_Store
