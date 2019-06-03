@@ -171,3 +171,5 @@ body.editorskit-title-visible-disabled .editor-post-title__block .editor-post-ti
 
 .components-editorskit-dropdown-menu__toggle svg {
   background: #eee; }
+.uppercase {
+  text-transform: uppercase; }
