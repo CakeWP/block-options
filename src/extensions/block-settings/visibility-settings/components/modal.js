@@ -3,10 +3,10 @@
 /**
  * Internal dependencies
  */
-import DevicesOptions from '../../advanced-controls/options/devices/';
-import UserStateOptions from '../../advanced-controls/options/state/';
-import LogicOptions from '../../advanced-controls/options/logic/';
-import ACFOptions from '../../advanced-controls/options/acf/';
+import DevicesOptions from '../../../advanced-controls/options/devices/';
+import UserStateOptions from '../../../advanced-controls/options/state/';
+import LogicOptions from '../../../advanced-controls/options/logic/';
+import ACFOptions from '../../../advanced-controls/options/acf/';
 
 /**
  * WordPress dependencies

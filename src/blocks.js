@@ -15,7 +15,6 @@ import './styles/style.scss';
 // Extensions
 import './extensions/attributes';
 import './extensions/advanced-controls';
-import './extensions/block-settings';
 import './extensions/page-template';
 import './extensions/components/guidelines';
 import './extensions/components/autosave';
@@ -23,6 +22,9 @@ import './extensions/components/markdown';
 import './extensions/page-template';
 import './extensions/components/manager';
 import './extensions/disable-title';
+
+//Block Settings
+import './extensions/block-settings';
 
 // Formats
 import './extensions/formats/';
