@@ -74,22 +74,20 @@ class EditorsKit_ACF_Support {
 		$this->_url     	= untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
 		add_action( 'rest_api_init', function () {
-			if ( ! is_user_logged_in() ) {
-				wp_die( esc_html__( 'Sorry you are not allowed to access this data.', '@@textdomain' ), 'cheatin eh?', 403 );
-			}
-
-			if( class_exists( 'ACF' ) ){
-				register_rest_route( 'editorskit/v1', '/acf', array(
-					'methods' => 'GET',
-					'callback' => array( $this, 'api' ),
-				) );
-			}else{
-				register_rest_route( 'editorskit/v1', '/acf', array(
-					'methods' => 'GET',
-					'callback' => function(){
-						return (object)[];
-					},
-				) );
+			if ( is_user_logged_in() ) {
+				if( class_exists( 'ACF' ) ){
+					register_rest_route( 'editorskit/v1', '/acf', array(
+						'methods' => 'GET',
+						'callback' => array( $this, 'api' ),
+					) );
+				}else{
+					register_rest_route( 'editorskit/v1', '/acf', array(
+						'methods' => 'GET',
+						'callback' => function(){
+							return (object)[];
+						},
+					) );
+				}
 			}
 		} );
 	}
