@@ -93,6 +93,7 @@ e.g.
 * Compatibility: Disable duplicate formats when JetPack or CoBlocks is active
 * Fixes: Shortcode Block Compatibility Bugs
 * Fixes: Remove EditorsKit id instance for other plugin's compatibility
+* Fixes: Conflict with Thrive Comments plugin( https://github.com/phpbits/block-options/issues/49 )
 
 = 1.5 =
 * New: Highlighted Text or Heading Colors 🎉
