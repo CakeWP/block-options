@@ -86,7 +86,10 @@ export default compose(
 		};
 	} ),
 	withDispatch( ( dispatch, ownProps ) => {
-		let metavalue = ownProps.postmeta['_editorskit_title_hidden'];
+		let metavalue;
+		if( typeof ownProps.postmeta !== 'undefined' && typeof ownProps.postmeta['_editorskit_title_hidden'] !== 'undefined' ){
+			metavalue = ownProps.postmeta['_editorskit_title_hidden'];
+		}
 		return{
 			onToggle() {
 				dispatch( 'core/editor' ).editPost({
@@ -98,7 +101,7 @@ export default compose(
 		}
 	} ),
 	ifCondition( props => {
-		return props.readyState === 'complete';
+		return props.readyState === 'complete' && typeof props.postmeta !== 'undefined' && typeof props.postmeta['_editorskit_title_hidden'] !== 'undefined' ;
 	}),
 	withSpokenMessages,
 )( DisableTitle );
