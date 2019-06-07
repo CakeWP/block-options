@@ -83,6 +83,9 @@ e.g.
 
 == Changelog ==
 
+= 1.6.2 =
+* Fixes: Bug fix for new reusable block name "core/template" and block options
+
 = 1.6.1 =
 * Fixes: Conflict with custom post type and hidden title feature : https://wordpress.org/support/topic/error-with-custom-post-type-registration-after-plugin-update/
 
