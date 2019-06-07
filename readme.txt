@@ -83,6 +83,9 @@ e.g.
 
 == Changelog ==
 
+= 1.6.1 =
+* Fixes: Conflict with custom post type and hidden title feature : https://wordpress.org/support/topic/error-with-custom-post-type-registration-after-plugin-update/
+
 = 1.6 =
 * New: Gutenberg Editor Markdown Support 🎊
 * New: Clear Formatting Options 🎉
