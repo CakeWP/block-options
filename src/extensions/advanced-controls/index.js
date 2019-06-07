@@ -23,7 +23,7 @@ const { InspectorAdvancedControls }	= wp.editor;
 const { compose, createHigherOrderComponent } = wp.compose;
 const { ToggleControl } = wp.components;
 
-const restrictedBlocks = [ 'core/block', 'core/freeform', 'core/shortcode' ];
+const restrictedBlocks = [ 'core/block', 'core/freeform', 'core/shortcode', 'core/template' ];
 
 const enhance = compose(
 	withSelect( ( select, block ) => {
