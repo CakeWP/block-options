@@ -16,12 +16,14 @@ import './styles/style.scss';
 import './extensions/attributes';
 import './extensions/advanced-controls';
 import './extensions/page-template';
+import './extensions/disable-title';
+
+//Components on Dropdown Menu
 import './extensions/components/guidelines';
 import './extensions/components/autosave';
 import './extensions/components/markdown';
-import './extensions/page-template';
+import './extensions/components/import-export';
 import './extensions/components/manager';
-import './extensions/disable-title';
 
 //Block Settings
 import './extensions/block-settings';
