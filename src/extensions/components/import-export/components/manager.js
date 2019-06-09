@@ -16,7 +16,7 @@ const { withSelect, withDispatch, select } = wp.data;
 const { compose, withState, ifCondition } = wp.compose;
 const { Fragment, Component } = wp.element;
 const { PluginMoreMenuItem } = wp.editPost;
-const { withSpokenMessages, Modal, CheckboxControl } = wp.components;
+const { withSpokenMessages, Modal, CheckboxControl, TabPanel } = wp.components;
 
 
 /**
@@ -42,6 +42,19 @@ class ImportExportManager extends Component {
 			this.setState( { isOpen: false } )
 		);
 
+		const tabs = [
+			{
+				name: 'import',
+				title: __( 'Import' ),
+				className: 'editorskit-import',
+			},
+			{
+				name: 'export',
+				title: __( 'Export' ),
+				className: 'editorskit-export',
+			}
+		];
+
 		return (
 			<Fragment>
 				<PluginMoreMenuItem
@@ -59,9 +72,24 @@ class ImportExportManager extends Component {
 						onRequestClose={ () => closeModal() }
 						closeLabel={ __( 'Close' ) }
 						icon={ null }
-						className='editorskit-modal-component components-modal--editorskit-features-manager'
+						className='editorskit-modal-component components-modal--editorskit-features-import-export'
 					>
-						<ImportForm />
+						<TabPanel className="editorskit-tab-panel"
+							activeClass="is-active"
+							tabs={ tabs }>
+							{
+								( tab ) => {
+									switch( tab.name ){
+										case 'import':
+		    								return ( <ImportForm /> );
+		    							break;
+										case 'export':
+											return null;
+										break;
+									}
+								}
+							}
+						</TabPanel>
 					</Modal>
 				: null }
 			</Fragment>

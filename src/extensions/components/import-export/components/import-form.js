@@ -8,6 +8,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import icon from './icon';
+import importReusableBlock from '../utils/import';
 
 /**
  * WordPress dependencies
@@ -69,6 +70,36 @@ class ImportForm extends Component {
 			return;
 		}
 		this.setState( { isLoading: true } );
+		console.log( this.props );
+		importReusableBlock( file )
+			.then( ( reusableBlock ) => {
+				if ( ! this.isStillMounted ) {
+					return;
+				}
+
+				this.setState( { isLoading: false } );
+				console.log( reusableBlock );
+				// onUpload( reusableBlock );
+			} )
+			.catch( ( error ) => {
+				if ( ! this.isStillMounted ) {
+					return;
+				}
+
+				let uiMessage;
+				switch ( error.message ) {
+					case 'Invalid JSON file':
+						uiMessage = __( 'Invalid JSON file' );
+						break;
+					case 'Invalid Reusable Block JSON file':
+						uiMessage = __( 'Invalid Reusable Block JSON file' );
+						break;
+					default:
+						uiMessage = __( 'Unknown error' );
+				}
+
+				this.setState( { isLoading: false, error: uiMessage } );
+			} );
 	}
 	
 	render(){
@@ -100,6 +131,20 @@ class ImportForm extends Component {
 						>
 							{ __( 'Upload' ) }
 						</FormFileUpload>
+						<form
+							className="list-reusable-blocks-import-form"
+							onSubmit={ this.onSubmit }
+						>
+							<Button
+								type="submit"
+								isBusy={ isLoading }
+								disabled={ ! file || isLoading }
+								isDefault
+								className="list-reusable-blocks-import-form__button"
+							>
+								{ _x( 'Import', 'button label' ) }
+							</Button>
+						</form>
 					</MediaUploadCheck>
 				</Fragment>
 			</Placeholder>

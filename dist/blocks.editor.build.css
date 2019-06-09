@@ -103,6 +103,8 @@ body.editorskit-title-visible-disabled .editor-post-title__block .editor-post-ti
   padding-top: 2px; }
   .editorskit-auto-save-disabled--label.editorskit-auto-save-disabled--60 {
     display: none; }
+.components-modal--editorskit-features-import-export .components-modal__header, .components-modal--editorskit-features-import-export .components-placeholder {
+  margin-bottom: 0px; }
 .editorskit-components-modal__content {
   width: 320px;
   min-width: 200px !important; }

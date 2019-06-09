@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-// import './styles/editor.scss';
+import './styles/editor.scss';
 import ImportExportManager from './components/manager';
 
 /**
