@@ -81,7 +81,7 @@ class ImportExportManager extends Component {
 								( tab ) => {
 									switch( tab.name ){
 										case 'import':
-		    								return ( <ImportForm /> );
+		    								return ( <ImportForm onClose={ closeModal } /> );
 		    							break;
 										case 'export':
 											return null;

@@ -105,6 +105,12 @@ body.editorskit-title-visible-disabled .editor-post-title__block .editor-post-ti
     display: none; }
 .components-modal--editorskit-features-import-export .components-modal__header, .components-modal--editorskit-features-import-export .components-placeholder {
   margin-bottom: 0px; }
+
+.components-modal--editorskit-features-import-export .components-notice {
+  width: 100%; }
+
+.components-modal--editorskit-features-import-export div.components-tab-panel__tab-content {
+  padding-bottom: 0px; }
 .editorskit-components-modal__content {
   width: 320px;
   min-width: 200px !important; }

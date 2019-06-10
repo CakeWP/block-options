@@ -22,6 +22,7 @@ async function importReusableBlock( file ) {
 	} catch ( e ) {
 		throw new Error( 'Invalid JSON file' );
 	}
+	
 	if (
 		parsedContent.__file !== 'wp_block' ||
 		! parsedContent.title ||
@@ -29,7 +30,7 @@ async function importReusableBlock( file ) {
 		! isString( parsedContent.title ) ||
 		! isString( parsedContent.content )
 	) {
-		throw new Error( 'Invalid Reusable Block JSON file' );
+		return importCoreBlocks( parsedContent );
 	}
 
 	const postType = await wp.apiFetch( { path: `/wp/v2/types/wp_block` } );
@@ -43,7 +44,23 @@ async function importReusableBlock( file ) {
 		method: 'POST',
 	} );
 	
-	return reusableBlock;
+	if( reusableBlock.id ){
+		return '<!-- wp:block {"ref":'+ reusableBlock.id +'} /-->';
+	}else{
+		throw new Error( 'Invalid Reusable Block JSON file contents' );
+	}
+}
+
+function importCoreBlocks( parsedContent ){
+	if (
+		parsedContent.__file !== 'core_block' ||
+		! parsedContent.content ||
+		! isString( parsedContent.content )
+	) {
+		throw new Error( 'Invalid JSON file' );
+	}
+
+	return parsedContent.content;
 }
 
 export default importReusableBlock;
