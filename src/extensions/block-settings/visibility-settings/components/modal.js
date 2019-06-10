@@ -114,7 +114,7 @@ class BlockSettings extends Component {
 										case 'advanced':
 											return[
 												!isDisabledLogic && LogicOptions( selectedBlock ),
-												!isDisabledACF && ACFOptions( selectedBlock ),
+												!isDisabledACF && <ACFOptions selectedBlock={ selectedBlock } />,
 											];
 										break;
 		    							default:
