@@ -43,7 +43,7 @@ class Edit extends Component {
 
 	componentDidMount(){
 		const { file } = this.props.attributes;
-		
+
 		if( file ){
 			this.setState( { isLoading: true } );
 			this.addFile( file );
@@ -133,8 +133,8 @@ class Edit extends Component {
 		return (
 			<Placeholder
 				icon={ <BlockIcon icon={ icon } /> }
-				label={ __( 'Import' ) }
-				instructions={ __( 'Drag a file, upload a new one from your device.' ) }
+				label={ __( 'Import from JSON' ) }
+				instructions={ __( 'Drag a file or upload a new one from your device.' ) }
 				className="editor-media-placeholder"
 				notices={ error && (
 					<Notice status="error">
@@ -146,7 +146,7 @@ class Edit extends Component {
 					<MediaUploadCheck>
 						<DropZone
 							onFilesDrop={ this.addFile }
-							label={ __( 'Import' ) }
+							label={ __( 'Import from JSON' ) }
 						/>
 						<FormFileUpload
 							isLarge
