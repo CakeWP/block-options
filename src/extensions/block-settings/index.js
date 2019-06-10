@@ -1,5 +1,6 @@
 /**
  * Internal dependencies
  */
-import './visibility-settings';
 import './clear-formatting';
+import './visibility-settings';
+import './export';

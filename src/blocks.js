@@ -27,7 +27,6 @@ import './extensions/disable-title';
 import './extensions/components/guidelines';
 import './extensions/components/autosave';
 import './extensions/components/markdown';
-import './extensions/components/import-export';
 import './extensions/components/manager';
 
 //Block Settings

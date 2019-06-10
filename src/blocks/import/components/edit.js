@@ -59,7 +59,6 @@ class Edit extends Component {
 		blocks = parse( blocks );
 		let toSelect  = [];
 		let blockIndex = select( 'core/editor' ).getBlockInsertionPoint();
-		let selectedBlock = select( 'core/editor' ).getSelectedBlock();
 		if( blocks.length > 0 ){
 			for( var block in blocks ){
 				var created = createBlock( blocks[ block ].name, blocks[ block ].attributes, blocks[ block ].innerBlocks );

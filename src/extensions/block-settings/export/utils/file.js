@@ -5,7 +5,7 @@
  * @param {string} content     File Content.
  * @param {string} contentType File mime type.
  */
-export function download( fileName, content, contentType ) {
+function download( fileName, content, contentType ) {
 	const file = new window.Blob( [ content ], { type: contentType } );
 
 	// IE11 can't use the click to download technique
@@ -24,18 +24,4 @@ export function download( fileName, content, contentType ) {
 	}
 }
 
-/**
- * Reads the textual content of the given file.
- *
- * @param  {File} file        File.
- * @return {Promise<string>}  Content of the file.
- */
-export function readTextFile( file ) {
-	const reader = new window.FileReader();
-	return new Promise( ( resolve ) => {
-		reader.onload = function() {
-			resolve( reader.result );
-		};
-		reader.readAsText( file );
-	} );
-}
+export default download;
