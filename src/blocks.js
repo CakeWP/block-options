@@ -9,6 +9,11 @@
  * Webpack is compiling as the input file.
  */
 
+/**
+ * WordPress dependencies
+ */
+const { registerBlockType } = wp.blocks;
+
 // Styles
 import './styles/style.scss';
 
@@ -30,3 +35,22 @@ import './extensions/block-settings';
 
 // Formats
 import './extensions/formats/';
+
+// Register Blocks
+import * as importBlock from './blocks/import';
+
+export function registerBlocks () {
+	[
+		importBlock,
+	].forEach( ( block ) => {
+
+		if ( ! block ) {
+			return;
+		}
+
+		const { name, icon, settings } = block;
+
+		registerBlockType( `editorskit/${ name }`, { category: 'common', ...settings } );
+	} );
+};
+registerBlocks();
