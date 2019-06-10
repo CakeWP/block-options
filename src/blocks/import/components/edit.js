@@ -41,6 +41,15 @@ class Edit extends Component {
 		this.addFile = this.addFile.bind( this );
 	}
 
+	componentDidMount(){
+		const { file } = this.props.attributes;
+		
+		if( file ){
+			this.setState( { isLoading: true } );
+			this.addFile( file );
+		}
+	}
+
 	componentWillUnmount() {
 		this.isStillMounted = false;
 	}

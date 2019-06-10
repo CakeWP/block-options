@@ -8,6 +8,7 @@ import classnames from 'classnames';
  */
 import Edit from './components/edit';
 import icon from './icon';
+import transforms from './transforms';
 
 /**
  * WordPress dependencies
@@ -50,6 +51,8 @@ const settings = {
 		alignWide: false,
 		alignFull: false,
 	},
+
+	transforms: transforms,
 
 	edit: Edit,
 
