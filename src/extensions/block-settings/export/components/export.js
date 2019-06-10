@@ -96,7 +96,7 @@ export default compose( [
 			selectedBlockCount: getSelectedBlockCount(),
 			selectedBlock: getSelectedBlock(),
 			selectedBlocks: getMultiSelectedBlocks(),
-			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitImportExportTools' ),
+			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitExportTools' ),
 			getBlock,
 		}
 	} ),

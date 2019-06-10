@@ -155,14 +155,19 @@ class EditorsKit_Features_Manager {
 					'name'  => 'tools',
 					'label' => __( 'Tools', $this->_slug ),
 					'items' => array(
+						'autosave' 	 => array(
+							'name'  => 'autosave',
+							'label' => __( 'Toggle Auto Save', $this->_slug ),
+							'value' => true,
+						),
 						'guidelines' => array(
 							'name'  => 'guidelines',
 							'label' => __( 'Block Guide Lines', $this->_slug ),
 							'value' => true,
 						),
-						'autosave' 	 => array(
-							'name'  => 'autosave',
-							'label' => __( 'Toggle Auto Save', $this->_slug ),
+						'export' 	 => array(
+							'name'  => 'export',
+							'label' => __( 'Export as JSON', $this->_slug ),
 							'value' => true,
 						),
 						'toggleTitle' 	 => array(
@@ -172,6 +177,17 @@ class EditorsKit_Features_Manager {
 						),
 					)
 				),
+				// 'blocks' => array(
+				// 	'name'  => 'blocks',
+				// 	'label' => __( 'Blocks', $this->_slug ),
+				// 	'items' => array(
+				// 		'import' 	 => array(
+				// 			'name'  => 'import',
+				// 			'label' => __( 'Import', $this->_slug ),
+				// 			'value' => true,
+				// 		)
+				// 	)
+				// ),
 			);
 		}
 
