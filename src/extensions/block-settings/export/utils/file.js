@@ -5,7 +5,7 @@
  * @param {string} content     File Content.
  * @param {string} contentType File mime type.
  */
-function download( fileName, content, contentType ) {
+export function download( fileName, content, contentType ) {
 	const file = new window.Blob( [ content ], { type: contentType } );
 
 	// IE11 can't use the click to download technique
@@ -23,5 +23,3 @@ function download( fileName, content, contentType ) {
 		document.body.removeChild( a );
 	}
 }
-
-export default download;

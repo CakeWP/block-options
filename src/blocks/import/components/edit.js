@@ -131,7 +131,7 @@ class Edit extends Component {
 
 		return (
 			<Placeholder
-				icon={ <BlockIcon icon={ icon } /> }
+				icon="download"
 				label={ __( 'Import from JSON' ) }
 				instructions={ __( 'Drag a file or upload a new one from your device.' ) }
 				className="editor-media-placeholder"

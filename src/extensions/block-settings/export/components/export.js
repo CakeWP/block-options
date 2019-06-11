@@ -7,7 +7,7 @@ import { map, kebabCase } from 'lodash';
  * Internal dependencies
  */
 import exportReusableBlock from '../utils/export';
-import download from '../utils/file';
+import { download } from '../utils/file';
 
 /**
  * WordPress dependencies
