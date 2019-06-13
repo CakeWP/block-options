@@ -25,7 +25,7 @@ const UserStateOptions = ( props ) => {
 
     	var blockOptions = Object.assign( { [ state ]: newValue }, editorskit );
 
-    	dispatch( 'core/editor' ).updateBlockAttributes( clientId, { editorskit: blockOptions } );
+    	dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { editorskit: blockOptions } );
 
     	if( reloadModal ){
     		reloadModal();

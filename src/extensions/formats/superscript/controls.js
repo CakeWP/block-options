@@ -15,7 +15,7 @@ const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
 const { compose, ifCondition } = wp.compose;
 const { select, withSelect, withDispatch } = wp.data;
-const { RichTextToolbarButton, RichTextShortcut } = wp.editor;
+const { RichTextToolbarButton, RichTextShortcut } = wp.blockEditor;
 const { toggleFormat, removeFormat } = wp.richText;
 
 class SuperscriptControl extends Component {

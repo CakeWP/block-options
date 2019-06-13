@@ -89,7 +89,7 @@ class ExportManager extends Component {
 
 export default compose( [
 	withSelect( ( select ) => {
-		const { getSelectedBlockCount, getSelectedBlock, getMultiSelectedBlocks } = select( 'core/editor' );
+		const { getSelectedBlockCount, getSelectedBlock, getMultiSelectedBlocks } = select( 'core/block-editor' );
 		const { getBlock } = select( 'core/block-editor' );
 
 		return{
