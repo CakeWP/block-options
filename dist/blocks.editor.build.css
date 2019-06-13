@@ -197,24 +197,14 @@ body.editorskit-title-visible-disabled .editor-post-title__block .editor-post-ti
 .block-editor-block-list__block .block-editor-block-contextual-toolbar .components-toolbar.editorskit-components-toolbar {
   border-right: 0px;
   border-left: 0px; }
-.components-editorskit__inline-color-popover .components-popover__content {
-  padding: 20px 18px; }
-  .components-editorskit__inline-color-popover .components-popover__content .components-color-palette {
-    margin-top: .6rem; }
-  .components-editorskit__inline-color-popover .components-popover__content .components-base-control__title {
-    display: block;
-    margin-bottom: 16px;
-    font-weight: 600;
-    color: #191e23; }
-  .components-editorskit__inline-color-popover .components-popover__content .component-color-indicator {
-    vertical-align: text-bottom; }
-
-.editorskit-settings__separator {
-  display: block;
-  margin: 24px -18px;
-  border-top: 1px solid #e2e4e7; }
-
-.components-editorskit-dropdown-menu__toggle svg {
-  background: #eee; }
+.components-editorskit-background-color__indicator {
+  position: absolute;
+  background-color: currentColor;
+  height: 1px;
+  width: 20px;
+  bottom: 9px;
+  left: auto;
+  right: auto;
+  margin: 0 3px 0px 7px; }
 .uppercase {
   text-transform: uppercase; }

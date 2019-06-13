@@ -1,6 +1,7 @@
 /**
  * External dependencies
  */
+import classnames from 'classnames';
 import { get } from 'lodash';
 
 /**
@@ -14,8 +15,8 @@ const { applyFormat, toggleFormat, removeFormat, getActiveFormat } = wp.richText
 const { Toolbar, IconButton, Popover, ColorPalette, ColorIndicator } = wp.components;
 const { compose } = wp.compose;
 
-const name = 'editorskit/color';
-const title = __( 'Text Color' );
+const name = 'editorskit/background';
+const title = __( 'Highlight Color' );
 
 class Edit extends Component {
 	constructor( props ) {
@@ -39,6 +40,7 @@ class Edit extends Component {
 		const {
 			value,
 			onChange,
+			isActive,
 		} = this.props;
 
 		let activeColor;
@@ -49,7 +51,7 @@ class Edit extends Component {
 		if ( activeColorFormat ) {
 			const styleColor = activeColorFormat.attributes.style;
 			if ( styleColor ) {
-				activeColor = styleColor.replace( new RegExp( `^color:\\s*` ), '' );
+				activeColor = styleColor.replace( new RegExp( `^background-color:\\s*` ), '' );
 			}
 		}
 
@@ -58,18 +60,16 @@ class Edit extends Component {
 				<BlockControls>
 					<Toolbar className="editorskit-components-toolbar">
 						<IconButton
-							className="components-button components-icon-button components-editorskit-toolbar__control components-toolbar__control components-editorskit-color-format"
-							icon="editor-textcolor"
+							className={ classnames(
+								'components-button components-icon-button components-editorskit-toolbar__control components-toolbar__control components-editorskit-background-format', {
+									'is-active': isActive,
+								}
+							) }
+							icon="admin-customizer"
 							aria-haspopup="true"
 							tooltip={ title }
 							onClick={ this.toggle }
 						>
-							<span
-								className="components-editorskit-inline-color__indicator"
-								style={ {
-									backgroundColor: activeColor,
-								} }
-							/>
 						</IconButton>
 
 						{ isOpen && (
@@ -78,7 +78,7 @@ class Edit extends Component {
 								className="components-editorskit__inline-color-popover"
 								focusOnMount="container"
 								onClickOutside={ ( onClickOutside ) => {
-									if ( ( ! onClickOutside.target.classList.contains( 'components-editorskit-color-format' ) && ! document.querySelector( '.components-editorskit-color-format' ).contains( onClickOutside.target ) ) && ( ! document.querySelector( '.components-color-palette__picker' ) || ( document.querySelector( '.components-color-palette__picker' ) && ! document.querySelector( '.components-color-palette__picker' ).contains( onClickOutside.target ) ) ) ) {
+									if ( ( ! onClickOutside.target.classList.contains( 'components-editorskit-background-format' ) && ! document.querySelector( '.components-editorskit-background-format' ).contains( onClickOutside.target ) ) && ( ! document.querySelector( '.components-color-palette__picker' ) || ( document.querySelector( '.components-color-palette__picker' ) && ! document.querySelector( '.components-color-palette__picker' ).contains( onClickOutside.target ) ) ) ) {
 										this.setState( { isOpen: ! isOpen } );
 									}
 								} }
@@ -92,7 +92,7 @@ class Edit extends Component {
 												applyFormat( value, {
 													type: name,
 													attributes: {
-														style: `color:${ color }`,
+														style: `background-color:${ color }`,
 													},
 												} )
 											);
