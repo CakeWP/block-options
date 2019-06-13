@@ -45,7 +45,7 @@ class ACFOptions extends Component {
 
 	    	var blockOptions = Object.assign( { [ key ]: value }, editorskit );
 
-	    	dispatch( 'core/editor' ).updateBlockAttributes( clientId, { editorskit: blockOptions } );
+	    	dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { editorskit: blockOptions } );
 
 	    	if( reloadModal ){
 	    		reloadModal();

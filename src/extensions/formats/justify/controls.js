@@ -61,7 +61,7 @@ export default compose(
 		};
 	} ),
 	withDispatch( dispatch => ( {
-		updateBlockAttributes: dispatch( 'core/editor' ).updateBlockAttributes,
+		updateBlockAttributes: dispatch( 'core/block-editor' ).updateBlockAttributes,
 	} ) ),
 	ifCondition( props => {
 		const checkFormats = props.formatTypes.filter( formats => formats['name'] === 'wpcom/justify' );

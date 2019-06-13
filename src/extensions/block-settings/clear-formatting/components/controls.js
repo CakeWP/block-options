@@ -64,7 +64,7 @@ export default compose(
 		};
 	} ),
 	withDispatch( dispatch => {
-		const { updateBlockAttributes } = dispatch( 'core/editor' );
+		const { updateBlockAttributes } = dispatch( 'core/block-editor' );
 		return{
 			clearBlockFormatting( blockId, blockName, blockContent ) {
 				updateBlockAttributes( blockId, { content: blockContent } );
