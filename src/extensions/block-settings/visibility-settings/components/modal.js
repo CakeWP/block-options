@@ -137,7 +137,7 @@ class BlockSettings extends Component {
 
 export default compose(
 	withSelect( select => {
-		const selectedBlock = select( 'core/editor' ).getSelectedBlock();
+		const selectedBlock = select( 'core/block-editor' ).getSelectedBlock();
 		
 		if ( ! selectedBlock ) {
 			return {};
