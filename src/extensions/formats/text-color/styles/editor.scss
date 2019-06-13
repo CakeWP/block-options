@@ -19,9 +19,19 @@
 	}
 }
 
+.components-editorskit-toolbar__control{
+	&.components-icon-button{
+		&.has-text{
+			svg{
+				margin-right: 0px;
+			}
+		}
+	}
+}
+
 .components-editorskit__inline-color-popover{
 	.components-popover__content{
-		padding: 20px 18px;
+		padding: 10px 18px;
 		.components-color-palette{
     		margin-top: .6rem;
 		}
@@ -34,5 +44,12 @@
 		.component-color-indicator{
 			vertical-align: text-bottom;
 		}
+	}
+}
+
+.block-editor-block-list__block .block-editor-block-contextual-toolbar .components-toolbar{
+	&.editorskit-components-toolbar{
+		border-right: 0px;
+		border-left: 0px;
 	}
 }

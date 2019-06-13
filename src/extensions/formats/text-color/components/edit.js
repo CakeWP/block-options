@@ -21,12 +21,21 @@ class InlineColorsToolbar extends Component {
 	constructor( props ) {
 		super( ...arguments );
 
+		this.toggle = this.toggle.bind( this );
+
 		this.state = {
 			isOpen: false,
 		};
 	}
 
+	toggle() {
+		this.setState( ( state ) => ( {
+			isOpen: ! state.isOpen,
+		} ) );
+	}
+
 	render() {
+		const { isOpen } = this.state;
 		const {
 			value,
 			onChange,
@@ -47,13 +56,13 @@ class InlineColorsToolbar extends Component {
 		return (
 			<Fragment>
 				<BlockControls>
-					<Toolbar>
+					<Toolbar className="editorskit-components-toolbar">
 						<IconButton
-							className="components-button components-icon-button components-inline-color-icon-button components-toolbar__control"
+							className="components-button components-icon-button components-editorskit-toolbar__control components-toolbar__control"
 							icon="editor-textcolor"
 							aria-haspopup="true"
 							tooltip={ title }
-							onClick={ () => this.setState( { isOpen: ! this.state.isOpen } ) }
+							onClick={ this.toggle }
 						>
 							<span
 								className="components-editorskit-inline-color__indicator"
@@ -63,14 +72,14 @@ class InlineColorsToolbar extends Component {
 							/>
 						</IconButton>
 
-						{ this.state.isOpen && (
+						{ isOpen && (
 							<Popover
 								position="bottom center"
 								className="components-editorskit__inline-color-popover"
 								focusOnMount="container"
 								onClickOutside={ ( onClickOutside ) => {
-									if ( ( ! onClickOutside.target.classList.contains( 'components-dropdown-menu__toggle' ) && ! document.querySelector( '.components-dropdown-menu__toggle' ).contains( onClickOutside.target ) ) && ( ! document.querySelector( '.components-color-palette__picker' ) || ( document.querySelector( '.components-color-palette__picker' ) && ! document.querySelector( '.components-color-palette__picker' ).contains( onClickOutside.target ) ) ) ) {
-										this.setState( { isOpen: ! this.state.isOpen } );
+									if ( ( ! onClickOutside.target.classList.contains( 'components-editorskit-toolbar__control' ) && ! document.querySelector( '.components-editorskit-toolbar__control' ).contains( onClickOutside.target ) ) && ( ! document.querySelector( '.components-color-palette__picker' ) || ( document.querySelector( '.components-color-palette__picker' ) && ! document.querySelector( '.components-color-palette__picker' ).contains( onClickOutside.target ) ) ) ) {
+										this.setState( { isOpen: ! isOpen } );
 									}
 								} }
 							>
