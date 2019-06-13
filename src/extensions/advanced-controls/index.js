@@ -19,7 +19,7 @@ const { __ } = wp.i18n;
 const { addFilter } = wp.hooks;
 const { Fragment }	= wp.element;
 const { withSelect, select } = wp.data;
-const { InspectorAdvancedControls }	= wp.editor;
+const { InspectorAdvancedControls }	= wp.blockEditor;
 const { compose, createHigherOrderComponent } = wp.compose;
 const { ToggleControl } = wp.components;
 

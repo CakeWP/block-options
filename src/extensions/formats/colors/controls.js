@@ -14,7 +14,7 @@ import './styles/editor.scss';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { select, withSelect } = wp.data;
-const { BlockControls } = wp.editor;
+const { BlockControls } = wp.blockEditor;
 const { applyFormat, toggleFormat, removeFormat, getActiveFormat } = wp.richText;
 const { Toolbar, IconButton, Popover, ColorPalette, ColorIndicator } = wp.components;
 const { compose } = wp.compose;

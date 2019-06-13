@@ -15,7 +15,7 @@ const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { compose, ifCondition } = wp.compose;
 const { select, withSelect, withDispatch } = wp.data;
-const { RichTextToolbarButton } = wp.editor;
+const { RichTextToolbarButton } = wp.blockEditor;
 const { toggleFormat } = wp.richText;
 
 class UppercaseControl extends Component {
