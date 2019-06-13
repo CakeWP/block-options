@@ -9,6 +9,11 @@
  * Webpack is compiling as the input file.
  */
 
+/**
+ * WordPress dependencies
+ */
+const { registerBlockType } = wp.blocks;
+
 // Styles
 import './styles/style.scss';
 
@@ -16,15 +21,35 @@ import './styles/style.scss';
 import './extensions/attributes';
 import './extensions/advanced-controls';
 import './extensions/page-template';
+import './extensions/disable-title';
+
+//Components on Dropdown Menu
 import './extensions/components/guidelines';
 import './extensions/components/autosave';
 import './extensions/components/markdown';
-import './extensions/page-template';
 import './extensions/components/manager';
-import './extensions/disable-title';
 
 //Block Settings
 import './extensions/block-settings';
 
 // Formats
 import './extensions/formats/';
+
+// Register Blocks
+import * as importBlock from './blocks/import';
+
+export function registerBlocks () {
+	[
+		importBlock,
+	].forEach( ( block ) => {
+
+		if ( ! block ) {
+			return;
+		}
+
+		const { name, icon, settings } = block;
+
+		registerBlockType( `editorskit/${ name }`, { category: 'common', ...settings } );
+	} );
+};
+registerBlocks();
