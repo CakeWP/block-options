@@ -27,7 +27,7 @@ const name = 'editorskit/background';
 export const backgroundColor = {
 	name,
 	title: __( 'Background Color' ),
-	tagName: 'span',
+	tagName: 'mark',
 	className: 'has-inline-background',
 	attributes: {
 		style: 'style',

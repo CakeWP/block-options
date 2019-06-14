@@ -47,6 +47,11 @@ class Edit extends Component {
 
 		const colors = [
 			{
+				name: __('Marker Default'),
+				slug: 'marker-default',
+				color: '#fff9c0'
+			},
+			{
 				name: __('Orange Sunrise'),
 				slug: 'orange-sunrise',
 				color: '#f7cc62'
