@@ -7,6 +7,7 @@ import { get } from 'lodash';
  * Internal dependencies
  */
 import './styles/editor.scss';
+import './styles/style.scss';
 import Edit from './components/edit';
 
 /**

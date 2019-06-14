@@ -45,7 +45,33 @@ class Edit extends Component {
 
 		let activeColor;
 
-		const colors = get( select( 'core/block-editor' ).getSettings(), [ 'colors' ], [] );
+		const colors = [
+			{
+				name: __('Orange Sunrise'),
+				slug: 'orange-sunrise',
+				color: '#f7cc62'
+			},
+			{
+				name: __('Pink Flamingo'),
+				slug: 'pink-flamingo',
+				color: '#ffbfb5'
+			},
+			{
+				name: __('Spring Green'),
+				slug: 'spring-green',
+				color: '#b5dcaf'
+			},
+			{
+				name: __('Blue Moon'),
+				slug: 'blue-moon',
+				color: '#d6e8fa'
+			},
+			{
+				name: __('Purple Mist'),
+				slug: 'purple-mist',
+				color: '#d8c3ff'
+			},
+		];
 		const activeColorFormat = getActiveFormat( value, name );
 
 		if ( activeColorFormat ) {
