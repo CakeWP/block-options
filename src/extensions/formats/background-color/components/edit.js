@@ -5,6 +5,11 @@ import classnames from 'classnames';
 import { get } from 'lodash';
 
 /**
+ * Internal dependencies
+ */
+import icon from '../icon';
+
+/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
@@ -96,7 +101,7 @@ class Edit extends Component {
 									'is-active': isActive,
 								}
 							) }
-							icon="admin-customizer"
+							icon={ icon.highlighter }
 							aria-haspopup="true"
 							tooltip={ title }
 							onClick={ this.toggle }
