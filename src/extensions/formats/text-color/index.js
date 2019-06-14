@@ -7,7 +7,7 @@ import { get } from 'lodash';
  * Internal dependencies
  */
 import './styles/editor.scss';
-import InlineColorsToolbar from './controls';
+import Edit from './components/edit';
 
 /**
  * WordPress dependencies
@@ -29,13 +29,5 @@ export const textColor = {
 	attributes: {
 		style: 'style',
 	},
-	edit( { isActive, value, onChange, activeAttributes } ) {
-
-		return (
-			<Fragment>
-				<InlineColorsToolbar name={ name } isActive={ isActive } value={ value } onChange={ onChange } activeAttributes={ activeAttributes }  />
-			</Fragment>
-		);
-
-	},
+	edit: Edit,
 };

@@ -7,7 +7,8 @@ import { get } from 'lodash';
  * Internal dependencies
  */
 import './styles/editor.scss';
-import InlineColorsToolbar from './controls';
+import './styles/style.scss';
+import Edit from './components/edit';
 
 /**
  * WordPress dependencies
@@ -26,12 +27,10 @@ const name = 'editorskit/background';
 export const backgroundColor = {
 	name,
 	title: __( 'Background Color' ),
-	tagName: 'span',
+	tagName: 'mark',
 	className: 'has-inline-background',
 	attributes: {
 		style: 'style',
 	},
-	edit( { isActive, value, onChange, activeAttributes } ) {
-		return null;
-	},
+	edit: Edit,
 };
