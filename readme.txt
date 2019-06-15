@@ -6,7 +6,7 @@ Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenber editor
 Requires at least: 5.0
 Tested up to: 5.2
 Requires PHP: 5.6
-Stable tag: 1.6
+Stable tag: 1.7
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Donate link: https://www.buymeacoffee.com/phpbits
@@ -57,6 +57,9 @@ Easily toggle Auto Saving to fix several lagging issues or prevent your website 
 ## Toggle Title Visibility
 Easily hide post, page or any post type's title on your website in just a click. This will enable you to create full Gutenberg editor's driven posts and pages without getting "(No Title)" on your admin dashboard.
 
+## Block Import and Export
+Export each block or selected blocks and reusable blocks directly on the editor, no need to navigate to separate admin dashboard. Then <strong>drag and drop</strong> exported JSON file on the editor and it will automatically be transformed into Gutenberg blocks, same goes with reusable blocks.
+
 ## Features Manager
 Enable or disable EditorsKit features using "EditorsKit Settings" menu. This will give you full control over the plugin features and let you disable the features that you don't need on your website.
 
@@ -82,6 +85,12 @@ e.g.
 
 
 == Changelog ==
+
+= 1.7 =
+* New: Block Import and Export ( https://twitter.com/phpbits/status/1138412218721026049 ) 🎉
+* Improvement: Better UI for Text Color and Highlighter
+* Fixes: Gutenberg 5.9+ compatibility fixes
+* Fixes: Fix ACF on advanced visibility tab issue
 
 = 1.6.2 =
 * Fixes: Bug fix for new reusable block name "core/template" and block options
