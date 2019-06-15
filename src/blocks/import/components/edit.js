@@ -58,11 +58,11 @@ class Edit extends Component {
 		const { onClose } = this.props;
 		blocks = parse( blocks );
 		let toSelect  = [];
-		let blockIndex = select( 'core/editor' ).getBlockInsertionPoint();
+		let blockIndex = select( 'core/block-editor' ).getBlockInsertionPoint();
 		if( blocks.length > 0 ){
 			for( var block in blocks ){
 				var created = createBlock( blocks[ block ].name, blocks[ block ].attributes, blocks[ block ].innerBlocks );
-				dispatch( 'core/editor' ).insertBlocks( created , parseInt( blockIndex.index ) + parseInt( block ) );
+				dispatch( 'core/block-editor' ).insertBlocks( created , parseInt( blockIndex.index ) + parseInt( block ) );
 
 				if( typeof created !== 'undefined' ){
 					toSelect.push( created.clientId );
@@ -70,11 +70,11 @@ class Edit extends Component {
 			}
 
 			//remove insertion point if empty
-			dispatch( 'core/editor' ).removeBlock( this.props.clientId );
+			dispatch( 'core/block-editor' ).removeBlock( this.props.clientId );
 
 			//select inserted blocks
 			if( toSelect.length > 0 ){
-				dispatch( 'core/editor' ).multiSelect( toSelect[0], toSelect.reverse()[0] );
+				dispatch( 'core/block-editor' ).multiSelect( toSelect[0], toSelect.reverse()[0] );
 			}
 		}
 
