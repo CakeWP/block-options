@@ -10,6 +10,7 @@ import classnames from 'classnames';
 import './styles/editor.scss';
 import DevicesOptions from './options/devices/';
 import UserStateOptions from './options/state/';
+import VerticalHeightToggle from './options/height/';
 
 
 /**
@@ -22,6 +23,7 @@ const { withSelect, select } = wp.data;
 const { InspectorAdvancedControls }	= wp.blockEditor;
 const { compose, createHigherOrderComponent } = wp.compose;
 const { ToggleControl } = wp.components;
+const { hasBlockSupport } = wp.blocks;
 
 const restrictedBlocks = [ 'core/block', 'core/freeform', 'core/shortcode', 'core/template' ];
 
@@ -57,6 +59,8 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 			editorskit,
 			blockOpts,
 		} = attributes;
+
+		const withFullScreenHeight = hasBlockSupport( name, 'hasHeightFullScreen' );
 		
 		//compatibility with version 1
 		if( typeof editorskit !== 'undefined' && ! editorskit.migrated && blockOpts ){
@@ -89,6 +93,12 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 		return (
 			<Fragment>
 				<BlockEdit {...props} />
+				{
+					withFullScreenHeight && 
+					<InspectorAdvancedControls>
+						{ VerticalHeightToggle( props ) }
+					</InspectorAdvancedControls>
+				}
 				{ isSelected && !restrictedBlocks.includes( name ) &&
 					<InspectorAdvancedControls>
 						{ !isDisabledDevices && DevicesOptions( props ) }
