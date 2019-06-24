@@ -3,6 +3,13 @@
 		> div{
 			> [class*="wp-block-"]{
 				min-height: 100vh;
+
+				&.wp-block-image{
+					img{
+						min-height: 100vh;
+						object-fit: cover;
+					}
+				}
 			}
 		}
 	}
