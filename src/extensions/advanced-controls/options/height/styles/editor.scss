@@ -1,0 +1,9 @@
+.wp-block[data-editorskit-h-screen="1"]{
+	> .editor-block-list__block-edit{
+		> div{
+			> [class*="wp-block-"]{
+				min-height: 100vh;
+			}
+		}
+	}
+}
