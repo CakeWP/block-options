@@ -2,6 +2,7 @@
 	&:not(.wp-block-image), &.wp-block-image img{
 		border-radius: 9999px !important;
 		object-fit: cover;	
+		overflow: hidden;
 	}
 }
 

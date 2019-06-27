@@ -10,8 +10,10 @@ const { __ } = wp.i18n;
 const { addFilter } = wp.hooks; 
 const { Fragment } = wp.element; 
 const { createHigherOrderComponent } = wp.compose; 
+const { hasBlockSupport } = wp.blocks;
 
 const restrictedBlocks = [ 'core/freeform', 'core/shortcode' ];
+const blocksWithFullScreen = [ 'core/image', 'core/cover', 'core/group', 'core/columns', 'core/media-text' ];
 
 /**
  * Filters registered block settings, extending attributes with anchor using ID
@@ -47,6 +49,29 @@ function addAttributes( settings ) {
 		settings.attributes = Object.assign( settings.attributes, {
 			blockOpts:{ type: 'object' }
 		} );
+
+		//Add vertical full screen support
+		if ( blocksWithFullScreen.includes( settings.name ) ) {
+			if ( ! settings.supports ) {
+				settings.supports = {};
+			}
+			settings.supports = Object.assign( settings.supports, {
+				hasHeightFullScreen: true,
+			} );
+		}
+
+		if ( hasBlockSupport( settings, 'hasHeightFullScreen' ) ) {
+			if ( typeof settings.attributes !== 'undefined' ) {
+				if ( ! settings.attributes.isHeightFullScreen ) {
+					settings.attributes = Object.assign( settings.attributes, {
+						isHeightFullScreen: {
+							type: 'boolean',
+							default: false,
+						},
+					} );
+				}
+			}
+		}
 	}
 
 	return settings;
@@ -99,7 +124,7 @@ const withAttributes = createHigherOrderComponent( ( BlockEdit ) => {
  */
 function applyExtraClass(extraProps, blockType, attributes) {
 
-	const { editorskit } = attributes;
+	const { editorskit, isHeightFullScreen } = attributes;
 	
 	if ( typeof editorskit !== 'undefined' && !restrictedBlocks.includes( blockType.name ) ) {
 
@@ -121,8 +146,33 @@ function applyExtraClass(extraProps, blockType, attributes) {
 		
 	}
 
+	if ( hasBlockSupport( blockType.name, 'hasHeightFullScreen' ) && isHeightFullScreen ) {
+		extraProps.className = classnames( extraProps.className, 'h-screen' );
+	}
+
 	return extraProps;
 }
+
+const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {
+	return ( props ) => {
+		const { name, attributes } = props;
+		const { isHeightFullScreen } = attributes;
+
+		let wrapperProps 	= props.wrapperProps;
+		let customData 	 	= {};
+
+		if ( hasBlockSupport( name, 'hasHeightFullScreen' ) && isHeightFullScreen ) {
+			customData = Object.assign( customData, { 'data-editorskit-h-screen': 1 } );
+		}
+
+		wrapperProps = {
+			...wrapperProps,
+			...customData,
+		};
+
+		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
+	};
+}, 'addEditorBlockAttributes');
 
 
 addFilter(
@@ -141,4 +191,10 @@ addFilter(
 	'blocks.getSaveContent.extraProps',
 	'editorskit/applyExtraClass',
 	applyExtraClass
+);
+
+addFilter(
+	'editor.BlockListBlock',
+	'editorskit/addEditorBlockAttributes',
+	addEditorBlockAttributes
 );
