@@ -1,73 +1,13 @@
-.editorskit-button-group-container{
-	border-top: 1px solid #e2e4e7;
-	padding: 15px 0px;
-
-	&:last-child{
-		border-bottom: 1px solid #e2e4e7;
-	}
-
-	.components-base-control__label{
+.editorskit-panel{
+	small{
 		display: block;
-		font-weight: 600;
-    	margin-bottom: 5px;
+		margin-bottom: 15px;
 	}
-	.components-button-group{
-		display: grid;
-	    grid-template-columns: repeat(3, 1fr);
-	    grid-template-rows: repeat(1, 1fr);
-	    
-	    button{
-	    	display: inline;
-	    	text-align: center;
-	    	padding-top: 2px;
-	    	border: 1px solid #fff;
-	    	outline: none !important;
-	    	text-shadow: none;
-	    	line-height: 21px;
-	    	box-shadow: inset 0 0 0 1px #e2e4e7, inset 0 0 0 2px #fff;
-	    	
-	    	&, &:focus:enabled{
-	    		color: #a2aab2;
-	    		// background: 
-		     //     linear-gradient(to top left,
-		     //         rgba(0,0,0,0) 0%,
-		     //         rgba(0,0,0,0) calc(50% - 0.8px),
-		     //         #dfe7ec 50%,
-		     //         rgba(0,0,0,0) calc(50% + 0.8px),
-		     //         rgba(0,0,0,0) 100%)
-	    	}
-	    	&:focus:enabled,
-	    	&:hover{
-	    		box-shadow: inset 0 0 0 1px #a2aab2, inset 0 0 0 2px #fff;
-	    	}
-
-	    	&.is-primary{
-	    		&, &:focus:enabled{
-	    			color: #fff;
-	    			background: #697782;
-	    			box-shadow: none;
-	    			outline: none;
-	    		}
-	    		
-	    		&:hover{
-	    			border: 1px solid #fff;
-	    			box-shadow: inset 0 0 0 1px #555d66, inset 0 0 0 2px #fff;
-	    		}
-
-	    	}
-	    }
-	}
-	.components-base-control__help{
-		font-style: italic;
-		margin: 0px;
-		padding-top: 5px;
-	    opacity: 0.75;
-	    font-size: 11px;
-	}
-
-	&.editorskit-button-group-state{
-		.components-button-group{
-			grid-template-columns: repeat(2, 1fr);
+}
+.components-panel{
+	.editorskit-user-state-controls{
+		.editorskit-divider{
+			display: none !important;
 		}
 	}
 }

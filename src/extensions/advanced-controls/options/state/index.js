@@ -4,7 +4,7 @@
 const { __ } = wp.i18n;
 const { dispatch } = wp.data;
 const { Fragment } = wp.element; 
-const { Button, ButtonGroup, Tooltip } = wp.components; 
+const { Button, ButtonGroup, Tooltip, ToggleControl } = wp.components; 
 
 const UserStateOptions = ( props ) => {
 	const {
@@ -34,34 +34,20 @@ const UserStateOptions = ( props ) => {
 
 	return(
 		<Fragment>
-			<div className="editorskit-button-group-container editorskit-button-group-state">
-				<label className="components-base-control__label" >{ __( 'User State' ) }</label>
-					<ButtonGroup
-						aria-label={ __( 'User State Visibility' ) }
-					>
-						<Tooltip text={ editorskit.loggedin ? __( 'Click to hide on logged-in users' ) : __( 'Click to show on logged-in users' ) }>
-					        <Button
-					        	className="is-button"
-					        	isPrimary={  !! editorskit.loggedin }
-					        	onClick={ () => onSelectUser( 'loggedin' ) }
-					        >
-					       		{ __( 'Logged-in' ) }
-					        </Button>
-					    </Tooltip>
-
-					    <Tooltip text={ editorskit.loggedout ? __( 'Click to hide on logged-out users' ) : __( 'Click to show on logged-out users' ) }>
-					        <Button
-					        	className="is-button"
-					        	isPrimary={  !! editorskit.loggedout }
-					        	onClick={ () => onSelectUser( 'loggedout' ) }
-					        >
-					       		{ __( 'Logged-out' ) }
-					        </Button>
-				        </Tooltip>
-				    </ButtonGroup>
-				    <p className="components-base-control__help">
-				    	{ __( 'Click to turn visibility on/off for specific user logged-in state.' ) }
-				    </p>
+			<div className="editorskit-user-state-controls">
+				<hr className="editorskit-divider" />
+				<ToggleControl
+					label={ __( 'Hide on Loggedin Users' ) }
+					help={ ! editorskit.loggedin ? __( 'Hidden when users are logged in.' ) : __( 'Toggle to hide this block when users are not logged in.' ) }
+					checked={ ! editorskit.loggedin }
+					onChange={ () => onSelectUser( 'loggedin' ) }
+				/>
+				<ToggleControl
+					label={ __( 'Hide on Loggedout Users' ) }
+					help={ ! editorskit.loggedout ? __( 'Hidden on guests or logged out users.' ) : __( 'Toggle to hide this block when users are guests or logged out.' ) }
+					checked={ ! editorskit.loggedout }
+					onChange={ () => onSelectUser( 'loggedout' ) }
+				/>
 			</div>
 		</Fragment>
 	);
