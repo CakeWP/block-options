@@ -19,9 +19,9 @@ const { __ } = wp.i18n;
 const { addFilter } = wp.hooks;
 const { Fragment }	= wp.element;
 const { withSelect, select } = wp.data;
-const { InspectorAdvancedControls }	= wp.blockEditor;
+const { InspectorAdvancedControls, InspectorControls }	= wp.blockEditor;
 const { compose, createHigherOrderComponent } = wp.compose;
-const { ToggleControl } = wp.components;
+const { ToggleControl, PanelBody } = wp.components;
 
 const restrictedBlocks = [ 'core/block', 'core/freeform', 'core/shortcode', 'core/template' ];
 
@@ -90,8 +90,19 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 			<Fragment>
 				<BlockEdit {...props} />
 				{ isSelected && !restrictedBlocks.includes( name ) &&
+					<InspectorControls>
+						<PanelBody
+							title={ __( 'Responsive' ) }
+							initialOpen={ false }
+							className="editorskit-panel"
+						>
+							<small>{ __( 'Attention: The display settings (show/hide for mobile, tablet or desktop) will only take effect once you are on the live page, and not while you\'re editing in Gutenberg.' ) }</small>
+							{ !isDisabledDevices && DevicesOptions( props ) }
+						</PanelBody>
+					</InspectorControls>
+				}
+				{ isSelected && !restrictedBlocks.includes( name ) &&
 					<InspectorAdvancedControls>
-						{ !isDisabledDevices && DevicesOptions( props ) }
 						{ !isDisabledUserState && UserStateOptions( props ) }
 					</InspectorAdvancedControls>
 				}
