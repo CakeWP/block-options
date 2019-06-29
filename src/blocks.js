@@ -35,6 +35,9 @@ import './extensions/block-settings';
 // Formats
 import './extensions/formats/';
 
+// Styles
+import './extensions/block-styles/';
+
 // Register Blocks
 import * as importBlock from './blocks/import';
 

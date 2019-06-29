@@ -10,6 +10,12 @@
 						object-fit: cover;
 					}
 				}
+
+				&.wp-block-media-text{
+					.block-library-media-text__media-container{
+						min-height: 100vh;
+					}
+				}
 			}
 		}
 	}

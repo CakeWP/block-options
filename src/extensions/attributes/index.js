@@ -13,7 +13,7 @@ const { createHigherOrderComponent } = wp.compose;
 const { hasBlockSupport } = wp.blocks;
 
 const restrictedBlocks = [ 'core/freeform', 'core/shortcode' ];
-const blocksWithFullScreen = [ 'core/image', 'core/cover', 'core/group', 'core/columns' ];
+const blocksWithFullScreen = [ 'core/image', 'core/cover', 'core/group', 'core/columns', 'core/media-text' ];
 
 /**
  * Filters registered block settings, extending attributes with anchor using ID

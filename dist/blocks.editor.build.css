@@ -10,6 +10,8 @@
     min-height: 100vh;
     -o-object-fit: cover;
        object-fit: cover; }
+  .wp-block[data-editorskit-h-screen="1"] > .editor-block-list__block-edit > div > [class*="wp-block-"].wp-block-media-text .block-library-media-text__media-container {
+    min-height: 100vh; }
 .editorskit-toggle-title {
   position: absolute;
   left: -41px;
