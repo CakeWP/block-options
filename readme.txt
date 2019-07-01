@@ -1,4 +1,4 @@
-=== Page Building Block Options – EditorsKit ===
+=== Gutenberg Page Building Toolkit – EditorsKit ===
 Author URI: https://editorskit.com
 Plugin URI: https://editorskit.com
 Contributors: phpbits
@@ -6,20 +6,20 @@ Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenber editor
 Requires at least: 5.0
 Tested up to: 5.2
 Requires PHP: 5.6
-Stable tag: 1.7
+Stable tag: 1.8
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Donate link: https://www.buymeacoffee.com/phpbits
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FMKC2SLPTULP8
 
 EditorsKit provides set of page building block options for the new WordPress Gutenberg editor.
 
 == Description ==
 
-[EditorsKit](https://editorskit.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit) provides set of page building <strong>block options</strong> for the new WordPress Gutenberg editor.
+[EditorsKit](https://editorskit.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit) provides set of page building <strong>block options and toolkit</strong> for the new WordPress Gutenberg editor.
 
 You can now have more control over each blocks. Using EditorsKit you will have the following visibility control in order to display better contents.
 
-* Show or hide Gutenberg blocks on desktop, tablet and mobile Devices
+* Show or hide Gutenberg blocks on desktop, tablet and mobile devices
 * User logged-in or logged-out state block visibility
 * Custom PHP conditional display logic
 * Show or hide Gutenberg blocks based on <a href="https://wordpress.org/plugins/advanced-custom-fields/">Advanced Custom Fields Plugin(ACF)</a> Value
@@ -50,6 +50,12 @@ Starting [EditorsKit 1.6 ](https://jeffreycarandang.com/editorskit-1-6/?utm_medi
 
 = Watch it in action =
 https://www.youtube.com/watch?v=ZgI8gdfxlaA
+
+## Image and Cover Block Styles
+Comes with selection of styles on Cover and Image Block for custom shapes and layouts such as diagonal, circular and rounder corners; and even add drop shadows.
+
+## Full Height Screen Option
+Easily display selected blocks as full screen layout by toggling "Full Screen Height" option under the advanced panel. You'll instantly have beautiful hero section by just using core blocks.
 
 ## Enable or Disable Auto Save
 Easily toggle Auto Saving to fix several lagging issues or prevent your website from being blacklisted on your webhost provider.
@@ -85,6 +91,14 @@ e.g.
 
 
 == Changelog ==
+
+= 1.8 =
+* New: Image and Cover Block Styles ( circular, diagonal, rounded corners and shadow ) 🎉
+* New: Full Screen Height toggle option 🎉
+* Improvement: Add responsive panel with display settings to show/hide blocks on desktop, tablet and mobile
+* Improvement: Change logged-in user state to toggle options with descriptions
+* Improvement: Show title on search and menu item even hidden toggle is active
+* Fixes: Compatibility fixes for new Gutenberg plugin version
 
 = 1.7 =
 * New: Block Import and Export ( https://twitter.com/phpbits/status/1138412218721026049 ) 🎉
