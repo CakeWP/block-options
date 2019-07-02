@@ -1,0 +1,30 @@
+// Breakpoints & Media Queries
+
+$break-small: 640px;
+$break-medium: 768px;
+$break-large: 1024px;
+$break-huge: 1280px;
+
+@mixin break-small() {
+	@media (max-width: #{ ($break-small) }) {
+		@content;
+	}
+}
+
+@mixin break-medium() {
+	@media (max-width: #{ ($break-medium) }) {
+		@content;
+	}
+}
+
+@mixin break-large() {
+	@media (max-width: #{ ($break-large) }) {
+		@content;
+	}
+}
+
+@mixin break-huge() {
+	@media (max-width: #{ ($break-huge) }) {
+		@content;
+	}
+}

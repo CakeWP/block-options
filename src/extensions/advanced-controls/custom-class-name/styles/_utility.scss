@@ -1,0 +1,338 @@
+@import "./breakpoints";
+$m: !important;
+
+//Padding
+.padding--sm{
+	padding: 14px $m;
+}
+.padding--md{
+	padding: 24px $m;
+}
+.padding--lg{
+	padding: 34px $m;
+}
+.padding--xl{
+	padding: 60px $m;
+}
+
+@include break-large() {
+	.lg\:padding--sm{
+		padding: 14px $m;
+	}
+	.lg\:padding--md{
+		padding: 24px $m;
+	}
+	.lg\:padding--lg{
+		padding: 34px $m;
+	}
+	.lg\:padding--xl{
+		padding: 60px $m;
+	}
+}
+
+@include break-medium() {
+	.md\:padding--sm{
+		padding: 14px $m;
+	}
+	.md\:padding--md{
+		padding: 24px $m;
+	}
+	.md\:padding--lg{
+		padding: 34px $m;
+	}
+	.md\:padding--xl{
+		padding: 60px $m;
+	}
+}
+
+@include break-small() {
+	.sm\:padding--sm{
+		padding: 14px $m;
+	}
+	.sm\:padding--md{
+		padding: 24px $m;
+	}
+	.sm\:padding--lg{
+		padding: 34px $m;
+	}
+	.sm\:padding--xl{
+		padding: 60px $m;
+	}
+}
+
+body:not(.wp-admin){
+	//Flexbox
+	.flex > div{
+		display: flex $m;
+	}
+	.flex-initial > div{
+		flex: 0 1 auto $m;
+	}
+	.flex-1 > div{
+		flex: 1 1 0% $m;
+	}
+	.flex-auto > div{
+		flex: 1 1 auto $m;
+	}
+	.flex-none > div{
+		flex: none $m;
+	}
+	.flex-no-wrap > div{
+		flex-wrap: nowrap $m;
+	}
+	.flex-wrap > div{
+		flex-wrap: wrap $m;
+	}
+	.flex-wrap-reverse > div{
+		flex-wrap: wrap-reverse $m;
+	}
+	.flex-row > div{
+		flex-direction: row $m;
+	}
+	.flex-row-reverse > div{
+		flex-direction: row-reverse $m;
+	}
+	.flex-col > div{
+		flex-direction: column $m;
+	}
+	.flex-col-reverse > div{
+		flex-direction: column-reverse $m;
+	}
+	.items-stretch > div{
+		align-items: stretch $m;
+	}
+	.items-start > div{
+		align-items: flex-start $m;
+	}
+	.items-center > div{
+		align-items: center $m;
+	}
+	.items-end > div{
+		align-items: flex-end $m;
+	}
+	.items-baseline > div{
+		align-items: baseline $m;
+	}
+	.justify-start > div{
+		justify-content: flex-start $m;
+	}
+	.justify-center > div{
+		justify-content: center $m;
+	}
+	.justify-end > div{
+		justify-content: flex-end $m;
+	}
+	.justify-between > div{
+		justify-content: space-between $m;
+	}
+	.justify-around > div{
+		justify-content: space-around $m;
+	}
+
+	@include break-large() {
+		.lg\:flex > div{
+			display: flex $m;
+		}
+		.lg\:flex-initial > div{
+			flex: 0 1 auto $m;
+		}
+		.lg\:flex-1 > div{
+			flex: 1 1 0% $m;
+		}
+		.lg\:flex-auto > div{
+			flex: 1 1 auto $m;
+		}
+		.lg\:flex-none > div{
+			flex: none $m;
+		}
+		.lg\:flex-no-wrap > div{
+			flex-wrap: nowrap $m;
+		}
+		.lg\:flex-wrap > div{
+			flex-wrap: wrap $m;
+		}
+		.lg\:flex-wrap-reverse > div{
+			flex-wrap: wrap-reverse $m;
+		}
+		.lg\:flex-row > div{
+			flex-direction: row $m;
+		}
+		.lg\:flex-row-reverse > div{
+			flex-direction: row-reverse $m;
+		}
+		.lg\:flex-col > div{
+			flex-direction: column $m;
+		}
+		.lg\:flex-col-reverse > div{
+			flex-direction: column-reverse $m;
+		}
+		.lg\:items-stretch > div{
+			align-items: stretch $m;
+		}
+		.lg\:items-start > div{
+			align-items: flex-start $m;
+		}
+		.lg\:items-center > div{
+			align-items: center $m;
+		}
+		.lg\:items-end > div{
+			align-items: flex-end $m;
+		}
+		.lg\:items-baseline > div{
+			align-items: baseline $m;
+		}
+		.lg\:justify-start > div{
+			justify-content: flex-start $m;
+		}
+		.lg\:justify-center > div{
+			justify-content: center $m;
+		}
+		.lg\:justify-end > div{
+			justify-content: flex-end $m;
+		}
+		.lg\:justify-between > div{
+			justify-content: space-between $m;
+		}
+		.lg\:justify-around > div{
+			justify-content: space-around $m;
+		}
+	}
+
+	@include break-medium() {
+		.md\:flex > div{
+			display: flex $m;
+		}
+		.md\:flex-initial > div{
+			flex: 0 1 auto $m;
+		}
+		.md\:flex-1 > div{
+			flex: 1 1 0% $m;
+		}
+		.md\:flex-auto > div{
+			flex: 1 1 auto $m;
+		}
+		.md\:flex-none > div{
+			flex: none $m;
+		}
+		.md\:flex-no-wrap > div{
+			flex-wrap: nowrap $m;
+		}
+		.md\:flex-wrap > div{
+			flex-wrap: wrap $m;
+		}
+		.md\:flex-wrap-reverse > div{
+			flex-wrap: wrap-reverse $m;
+		}
+		.md\:flex-row > div{
+			flex-direction: row $m;
+		}
+		.md\:flex-row-reverse > div{
+			flex-direction: row-reverse $m;
+		}
+		.md\:flex-col > div{
+			flex-direction: column $m;
+		}
+		.md\:flex-col-reverse > div{
+			flex-direction: column-reverse $m;
+		}
+		.md\:items-stretch > div{
+			align-items: stretch $m;
+		}
+		.md\:items-start > div{
+			align-items: flex-start $m;
+		}
+		.md\:items-center > div{
+			align-items: center $m;
+		}
+		.md\:items-end > div{
+			align-items: flex-end $m;
+		}
+		.md\:items-baseline > div{
+			align-items: baseline $m;
+		}
+		.md\:justify-start > div{
+			justify-content: flex-start $m;
+		}
+		.md\:justify-center > div{
+			justify-content: center $m;
+		}
+		.md\:justify-end > div{
+			justify-content: flex-end $m;
+		}
+		.md\:justify-between > div{
+			justify-content: space-between $m;
+		}
+		.md\:justify-around > div{
+			justify-content: space-around $m;
+		}
+	}
+
+	@include break-small() {
+		.sm\:flex > div{
+			display: flex $m;
+		}
+		.sm\:flex-initial > div{
+			flex: 0 1 auto $m;
+		}
+		.sm\:flex-1 > div{
+			flex: 1 1 0% $m;
+		}
+		.sm\:flex-auto > div{
+			flex: 1 1 auto $m;
+		}
+		.sm\:flex-none > div{
+			flex: none $m;
+		}
+		.sm\:flex-no-wrap > div{
+			flex-wrap: nowrap $m;
+		}
+		.sm\:flex-wrap > div{
+			flex-wrap: wrap $m;
+		}
+		.sm\:flex-wrap-reverse > div{
+			flex-wrap: wrap-reverse $m;
+		}
+		.sm\:flex-row > div{
+			flex-direction: row $m;
+		}
+		.sm\:flex-row-reverse > div{
+			flex-direction: row-reverse $m;
+		}
+		.sm\:flex-col > div{
+			flex-direction: column $m;
+		}
+		.sm\:flex-col-reverse > div{
+			flex-direction: column-reverse $m;
+		}
+		.sm\:items-stretch > div{
+			align-items: stretch $m;
+		}
+		.sm\:items-start > div{
+			align-items: flex-start $m;
+		}
+		.sm\:items-center > div{
+			align-items: center $m;
+		}
+		.sm\:items-end > div{
+			align-items: flex-end $m;
+		}
+		.sm\:items-baseline > div{
+			align-items: baseline $m;
+		}
+		.sm\:justify-start > div{
+			justify-content: flex-start $m;
+		}
+		.sm\:justify-center > div{
+			justify-content: center $m;
+		}
+		.sm\:justify-end > div{
+			justify-content: flex-end $m;
+		}
+		.sm\:justify-between > div{
+			justify-content: space-between $m;
+		}
+		.sm\:justify-around > div{
+			justify-content: space-around $m;
+		}
+	}
+}
