@@ -8,7 +8,7 @@ import './styles/style.scss';
  * WordPress Dependencies
  */
 const { __ } = wp.i18n;
-const { addFilter } = wp.hooks;
+const { addFilter, removeFilter } = wp.hooks;
 const { Fragment }	= wp.element;
 const { withSelect }	= wp.data;
 const { compose, createHigherOrderComponent, withState }	= wp.compose;
@@ -186,4 +186,5 @@ const withInspectorControl = createHigherOrderComponent( ( BlockEdit ) => {
 	});
 }, 'withInspectorControl' );
 
+removeFilter( 'editor.BlockEdit', 'core/editor/custom-class-name/with-inspector-control' );
 addFilter( 'editor.BlockEdit', 'editorskit/custom-class-name/with-inspector-control', withInspectorControl );
