@@ -71,8 +71,8 @@ class EditorsKit_Features_Manager {
 	}
 
 	public function block_editor_settings( $editor_settings, $post ){
-		if( !isset( $editor_settings['editorskit'] ) ){
-			$editor_settings['editorskit'] = array(
+		if( !isset( $editor_settings[ $this->_slug ] ) ){
+			$editor_settings[ $this->_slug ] = array(
 				'visibility' => array(
 					'name'  => 'visibility',
 					'label' => __( 'Visibility', $this->_slug ),
