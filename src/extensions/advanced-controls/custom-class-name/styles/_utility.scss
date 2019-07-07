@@ -60,6 +60,65 @@ $m: !important;
 	}
 }
 
+//margin
+.margin--sm{
+	margin: 14px $m;
+}
+.margin--md{
+	margin: 24px $m;
+}
+.margin--lg{
+	margin: 34px $m;
+}
+.margin--xl{
+	margin: 60px $m;
+}
+
+@include break-large() {
+	.lg\:margin--sm{
+		margin: 14px $m;
+	}
+	.lg\:margin--md{
+		margin: 24px $m;
+	}
+	.lg\:margin--lg{
+		margin: 34px $m;
+	}
+	.lg\:margin--xl{
+		margin: 60px $m;
+	}
+}
+
+@include break-medium() {
+	.md\:margin--sm{
+		margin: 14px $m;
+	}
+	.md\:margin--md{
+		margin: 24px $m;
+	}
+	.md\:margin--lg{
+		margin: 34px $m;
+	}
+	.md\:margin--xl{
+		margin: 60px $m;
+	}
+}
+
+@include break-small() {
+	.sm\:margin--sm{
+		margin: 14px $m;
+	}
+	.sm\:margin--md{
+		margin: 24px $m;
+	}
+	.sm\:margin--lg{
+		margin: 34px $m;
+	}
+	.sm\:margin--xl{
+		margin: 60px $m;
+	}
+}
+
 body:not(.wp-admin){
 	//Flexbox
 	.flex > div{

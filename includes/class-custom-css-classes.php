@@ -88,6 +88,22 @@ class EditorsKit_Custom_CSS_Classes {
 				'sm:padding-xl', 
 				'md:padding-xl', 
 				'lg:padding-xl',
+				'margin--sm', 
+				'sm:margin--sm', 
+				'md:margin--sm', 
+				'lg:margin--sm',
+				'margin--md', 
+				'sm:margin--md', 
+				'md:margin--md', 
+				'lg:margin--md',
+				'margin--lg', 
+				'sm:margin--lg', 
+				'md:margin--lg', 
+				'lg:margin--lg',
+				'margin--xl', 
+				'sm:margin-xl', 
+				'md:margin-xl', 
+				'lg:margin-xl',
 				'flex', 
 				'sm:flex', 
 				'md:flex', 
@@ -178,7 +194,7 @@ class EditorsKit_Custom_CSS_Classes {
 				'lg:justify-around',
 			);
 
-			$editor_settings[ $this->_slug . 'CustomClassNames'] = apply_filters( $this->_slug . '_block_editor_classnames', $defaults );
+			$editor_settings[ $this->_slug . 'CustomClassNames'] = apply_filters( 'editorskit_block_editor_classnames', $defaults );
 		}
 
 		return $editor_settings;

@@ -15,7 +15,7 @@ import './styles/style.scss';
 const { __ } = wp.i18n;
 const { addFilter, removeFilter } = wp.hooks;
 const { Fragment }	= wp.element;
-const { withSelect }	= wp.data;
+const { withSelect, select }	= wp.data;
 const { compose, createHigherOrderComponent, withState }	= wp.compose;
 const { hasBlockSupport }	= wp.blocks;
 const { InspectorAdvancedControls }	= wp.blockEditor;
@@ -65,7 +65,7 @@ const withInspectorControl = createHigherOrderComponent( ( BlockEdit ) => {
 			suggestions,
 			setState,
 		} = props;
-		// console.log( props );
+		
 		if ( hasCustomClassName && props.isSelected ) {
 			return (
 				<Fragment>
@@ -93,5 +93,11 @@ const withInspectorControl = createHigherOrderComponent( ( BlockEdit ) => {
 	});
 }, 'withInspectorControl' );
 
-removeFilter( 'editor.BlockEdit', 'core/editor/custom-class-name/with-inspector-control' );
-addFilter( 'editor.BlockEdit', 'editorskit/custom-class-name/with-inspector-control', withInspectorControl );
+function applyFilters(){
+	if( ! select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitCustomClassNamesTools' ) ){
+		removeFilter( 'editor.BlockEdit', 'core/editor/custom-class-name/with-inspector-control' );
+		addFilter( 'editor.BlockEdit', 'editorskit/custom-class-name/with-inspector-control', withInspectorControl );
+	}
+}
+
+applyFilters();

@@ -160,6 +160,11 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Toggle Auto Save', $this->_slug ),
 							'value' => true,
 						),
+						'customClassNames' 	 => array(
+							'name'  => 'customClassNames',
+							'label' => __( 'Custom Class Names', $this->_slug ),
+							'value' => true,
+						),
 						'guidelines' => array(
 							'name'  => 'guidelines',
 							'label' => __( 'Block Guide Lines', $this->_slug ),
