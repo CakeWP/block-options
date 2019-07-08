@@ -2,11 +2,11 @@
 Author URI: https://editorskit.com
 Plugin URI: https://editorskit.com
 Contributors: phpbits
-Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenber editor
+Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenberg editor
 Requires at least: 5.0
 Tested up to: 5.2
 Requires PHP: 5.6
-Stable tag: 1.8
+Stable tag: 1.9
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FMKC2SLPTULP8
@@ -91,6 +91,11 @@ e.g.
 
 
 == Changelog ==
+
+= 1.9 =
+* New: Custom Utility Classes and Class(es) Suggestions 🎉
+* Improvement: Add Text and Highlight Colors to Features Manager
+* Fixes: Compatibility fixes for new Gutenberg plugin version
 
 = 1.8 =
 * New: Image and Cover Block Styles ( circular, diagonal, rounded corners and shadow ) 🎉
