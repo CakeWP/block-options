@@ -110,6 +110,11 @@ class EditorsKit_Features_Manager {
 						),
 						'colors'	=> array(
 							'name'  => 'colors',
+							'label' => __( 'Text Color', $this->_slug ),
+							'value' => true,
+						),
+						'highlight'	=> array(
+							'name'  => 'highlight',
 							'label' => __( 'Highlighted Text Color', $this->_slug ),
 							'value' => true,
 						),
