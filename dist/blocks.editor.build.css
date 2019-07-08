@@ -4,6 +4,93 @@
 
 .components-panel .editorskit-user-state-controls .editorskit-divider {
   display: none !important; }
+.flex > div > .editor-inner-blocks > .editor-block-list__layout {
+  display: -ms-flexbox !important;
+  display: flex !important; }
+
+.flex-initial > div > .editor-inner-blocks > .editor-block-list__layout {
+  -ms-flex: 0 1 auto !important;
+      flex: 0 1 auto !important; }
+
+.flex-1 > div > .editor-inner-blocks > .editor-block-list__layout {
+  -ms-flex: 1 1 0% !important;
+      flex: 1 1 0% !important; }
+
+.flex-auto > div > .editor-inner-blocks > .editor-block-list__layout {
+  -ms-flex: 1 1 auto !important;
+      flex: 1 1 auto !important; }
+
+.flex-none > div > .editor-inner-blocks > .editor-block-list__layout {
+  -ms-flex: none !important;
+      flex: none !important; }
+
+.flex-no-wrap > div > .editor-inner-blocks > .editor-block-list__layout {
+  -ms-flex-wrap: nowrap !important;
+      flex-wrap: nowrap !important; }
+
+.flex-wrap > div > .editor-inner-blocks > .editor-block-list__layout {
+  -ms-flex-wrap: wrap !important;
+      flex-wrap: wrap !important; }
+
+.flex-wrap-reverse > div > .editor-inner-blocks > .editor-block-list__layout {
+  -ms-flex-wrap: wrap-reverse !important;
+      flex-wrap: wrap-reverse !important; }
+
+.flex-row > div > .editor-inner-blocks > .editor-block-list__layout {
+  -ms-flex-direction: row !important;
+      flex-direction: row !important; }
+
+.flex-row-reverse > div > .editor-inner-blocks > .editor-block-list__layout {
+  -ms-flex-direction: row-reverse !important;
+      flex-direction: row-reverse !important; }
+
+.flex-col > div > .editor-inner-blocks > .editor-block-list__layout {
+  -ms-flex-direction: column !important;
+      flex-direction: column !important; }
+
+.flex-col-reverse > div > .editor-inner-blocks > .editor-block-list__layout {
+  -ms-flex-direction: column-reverse !important;
+      flex-direction: column-reverse !important; }
+
+.items-stretch > div > .editor-inner-blocks > .editor-block-list__layout {
+  -ms-flex-align: stretch !important;
+      align-items: stretch !important; }
+
+.items-start > div > .editor-inner-blocks > .editor-block-list__layout {
+  -ms-flex-align: start !important;
+      align-items: flex-start !important; }
+
+.items-center > div > .editor-inner-blocks > .editor-block-list__layout {
+  -ms-flex-align: center !important;
+      align-items: center !important; }
+
+.items-end > div > .editor-inner-blocks > .editor-block-list__layout {
+  -ms-flex-align: end !important;
+      align-items: flex-end !important; }
+
+.items-baseline > div > .editor-inner-blocks > .editor-block-list__layout {
+  -ms-flex-align: baseline !important;
+      align-items: baseline !important; }
+
+.justify-start > div > .editor-inner-blocks > .editor-block-list__layout {
+  -ms-flex-pack: start !important;
+      justify-content: flex-start !important; }
+
+.justify-center > div > .editor-inner-blocks > .editor-block-list__layout {
+  -ms-flex-pack: center !important;
+      justify-content: center !important; }
+
+.justify-end > div > .editor-inner-blocks > .editor-block-list__layout {
+  -ms-flex-pack: end !important;
+      justify-content: flex-end !important; }
+
+.justify-between > div > .editor-inner-blocks > .editor-block-list__layout {
+  -ms-flex-pack: justify !important;
+      justify-content: space-between !important; }
+
+.justify-around > div > .editor-inner-blocks > .editor-block-list__layout {
+  -ms-flex-pack: distribute !important;
+      justify-content: space-around !important; }
 .wp-block[data-editorskit-h-screen="1"] > .editor-block-list__block-edit > div > [class*="wp-block-"] {
   min-height: 100vh; }
   .wp-block[data-editorskit-h-screen="1"] > .editor-block-list__block-edit > div > [class*="wp-block-"].wp-block-image img {

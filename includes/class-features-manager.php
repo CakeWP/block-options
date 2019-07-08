@@ -71,8 +71,8 @@ class EditorsKit_Features_Manager {
 	}
 
 	public function block_editor_settings( $editor_settings, $post ){
-		if( !isset( $editor_settings['editorskit'] ) ){
-			$editor_settings['editorskit'] = array(
+		if( !isset( $editor_settings[ $this->_slug ] ) ){
+			$editor_settings[ $this->_slug ] = array(
 				'visibility' => array(
 					'name'  => 'visibility',
 					'label' => __( 'Visibility', $this->_slug ),
@@ -163,6 +163,11 @@ class EditorsKit_Features_Manager {
 						'autosave' 	 => array(
 							'name'  => 'autosave',
 							'label' => __( 'Toggle Auto Save', $this->_slug ),
+							'value' => true,
+						),
+						'customClassNames' 	 => array(
+							'name'  => 'customClassNames',
+							'label' => __( 'Custom Class Names', $this->_slug ),
 							'value' => true,
 						),
 						'guidelines' => array(
