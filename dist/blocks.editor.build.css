@@ -4,6 +4,9 @@
 
 .components-panel .editorskit-user-state-controls .editorskit-divider {
   display: none !important; }
+
+.components-panel__body.editor-block-inspector__advanced .components-form-token-field {
+  margin-bottom: 24px; }
 .flex > div > .editor-inner-blocks > .editor-block-list__layout {
   display: -ms-flexbox !important;
   display: flex !important; }
