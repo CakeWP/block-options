@@ -18,7 +18,7 @@ const { select, withSelect } = wp.data;
 const { BlockControls } = wp.blockEditor;
 const { applyFormat, toggleFormat, removeFormat, getActiveFormat } = wp.richText;
 const { Toolbar, IconButton, Popover, ColorPalette, ColorIndicator } = wp.components;
-const { compose } = wp.compose;
+const { compose, ifCondition } = wp.compose;
 
 const name = 'editorskit/background';
 const title = __( 'Highlight Color' );
@@ -152,7 +152,8 @@ class Edit extends Component {
 export default compose(
 	withSelect( select => {
 		return {
-			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitColorsFormats' ),
+			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitHighlightFormats' ),
 		};
-	} )
+	} ),
+	ifCondition( props => !props.isDisabled ),
 )( Edit );
