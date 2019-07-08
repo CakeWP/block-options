@@ -4,13 +4,18 @@
 import map from 'lodash/map';
 
 /**
+ * Internal dependencies
+ */
+import { getActiveFormats } from './get-active-formats';
+
+/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
 const { compose, ifCondition } = wp.compose;
 const { select, withSelect, withDispatch } = wp.data;
-const { applyFormat, getTextContent, slice, remove, __unstableGetActiveFormats, split } = wp.richText;
+const { applyFormat, getTextContent, slice, remove, split } = wp.richText;
 const { withSpokenMessages } = wp.components;
 
 class MarkdownControl extends Component {
@@ -26,7 +31,7 @@ class MarkdownControl extends Component {
 	_experimentalMarkdown( record, onChange, markdown, format ){
 		const { start, end } = record;
 		const text = getTextContent( record );
-		const activeFormats = __unstableGetActiveFormats( record );
+		const activeFormats = getActiveFormats( record );
 		
 		// console.log( record );
 
