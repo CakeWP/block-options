@@ -12,7 +12,7 @@ const { select, withSelect } = wp.data;
 const { BlockControls } = wp.blockEditor;
 const { applyFormat, toggleFormat, removeFormat, getActiveFormat } = wp.richText;
 const { Toolbar, IconButton, Popover, ColorPalette, ColorIndicator } = wp.components;
-const { compose } = wp.compose;
+const { compose, ifCondition } = wp.compose;
 
 const name = 'editorskit/color';
 const title = __( 'Text Color' );
@@ -118,5 +118,6 @@ export default compose(
 		return {
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitColorsFormats' ),
 		};
-	} )
+	} ),
+	ifCondition( props => !props.isDisabled ),
 )( Edit );
