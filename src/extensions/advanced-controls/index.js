@@ -26,7 +26,7 @@ const { compose, createHigherOrderComponent } = wp.compose;
 const { ToggleControl, PanelBody } = wp.components;
 const { hasBlockSupport } = wp.blocks;
 
-const restrictedBlocks = [ 'core/block', 'core/freeform', 'core/shortcode', 'core/template' ];
+const restrictedBlocks = [ 'core/block', 'core/freeform', 'core/shortcode', 'core/template', 'core/nextpage' ];
 
 const enhance = compose(
 	withSelect( ( select, block ) => {
