@@ -94,7 +94,9 @@ e.g.
 
 = 1.9 =
 * New: Custom Utility Classes and Class(es) Suggestions 🎉
+* Improvement: Add `editorskit-title-hidden` body class when title is hidden
 * Improvement: Add Text and Highlight Colors to Features Manager
+* Fixes: Exclude 'core/nextpage' block to visibility option ( https://wordpress.org/support/topic/nextpage-feature-broken/ )
 * Fixes: Compatibility fixes for new Gutenberg plugin version
 
 = 1.8 =
