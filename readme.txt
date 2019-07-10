@@ -69,6 +69,9 @@ Export each block or selected blocks and reusable blocks directly on the editor,
 ## Features Manager
 Enable or disable EditorsKit features using "EditorsKit Settings" menu. This will give you full control over the plugin features and let you disable the features that you don't need on your website.
 
+## Better Custom CSS Class(es)
+Huge improvement on `Additional CSS Class(es)` option! EditorsKit provides better UI with classes suggestions while typing. Powered with custom PHP filter, theme developers can include custom Utility Classes for more customization options.
+
 ## Theme Supports for Developers
 [EditorsKit](https://editorskit.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit) is moving towards being developer friendly as well. Starting version 1.5, custom `theme_supports` were added to provide theme developers option to make Gutenberg block editing experience for their users match the frontend display. [Learn more here](https://jeffreycarandang.com/editorskit-1-5/).
 
