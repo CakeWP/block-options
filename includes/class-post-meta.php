@@ -25,6 +25,7 @@ class EditorsKit_Post_Meta {
 	 */
 	public function __construct() {
 		add_filter( 'init', array( $this, 'register_meta' ) );
+		add_filter( 'rest_pre_dispatch', array( $this, 'rest_pre_dispatch' ), 10, 3 );
 	}
 
 	/**
@@ -41,6 +42,20 @@ class EditorsKit_Post_Meta {
 				},
 			)
 		);
+	}
+
+	//fix REST API issue with blocks registered via PHP register_block_type
+	function rest_pre_dispatch( $result, $server, $request ) {
+
+	    if ( strpos( $request->get_route() , '/wp/v2/block-renderer') !== false ) {
+	        if( isset( $request['attributes'] ) && isset( $request['attributes']['editorskit'] ) ){
+		    	$attributes = $request['attributes'];
+		    	unset( $attributes['editorskit'] );
+		    	$request['attributes'] = $attributes;
+		    }
+	    }
+	    
+	    return $result;
 	}
 }
 
