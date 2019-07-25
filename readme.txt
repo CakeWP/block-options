@@ -95,6 +95,10 @@ e.g.
 
 == Changelog ==
 
+= 1.9.1 =
+* Improvement: Add `ek-` identifier for custom Utility Classnames
+* Improvement: Extended support for Block Lab attributes
+
 = 1.9 =
 * New: Custom Utility Classes and Class(es) Suggestions 🎉
 * Improvement: Add `editorskit-title-hidden` body class when title is hidden
