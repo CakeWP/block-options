@@ -76,6 +76,8 @@ class EditorsKit_Render_Block {
 		if( !is_admin() ){
 			add_action( 'render_block', array( $this, 'render_block' ), 5, 2 );
 		}
+
+		add_filter( 'block_lab_get_block_attributes', array( $this, 'block_lab_get_block_attributes' ), 10, 3 );
 		
 	}
 
@@ -269,6 +271,19 @@ class EditorsKit_Render_Block {
 		}
 		
 		return $block_content;
+	}
+
+	//third part plugins compatibility
+	
+	function block_lab_get_block_attributes( $attributes, $block ){
+
+		if( !isset( $attributes['editorskit'] ) ){
+			$attributes['editorskit'] = array(
+				'type' 	=> 'object',
+			);
+		}
+
+		return $attributes;
 	}
 
 }
