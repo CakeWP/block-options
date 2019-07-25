@@ -2,395 +2,395 @@
 $m: !important;
 
 //Padding
-.padding--sm{
+.ek-padding--sm{
 	padding: 14px $m;
 }
-.padding--md{
+.ek-padding--md{
 	padding: 24px $m;
 }
-.padding--lg{
+.ek-padding--lg{
 	padding: 34px $m;
 }
-.padding--xl{
+.ek-padding--xl{
 	padding: 60px $m;
 }
 
 @include break-large() {
-	.lg\:padding--sm{
+	.lg\:ek-padding--sm{
 		padding: 14px $m;
 	}
-	.lg\:padding--md{
+	.lg\:ek-padding--md{
 		padding: 24px $m;
 	}
-	.lg\:padding--lg{
+	.lg\:ek-padding--lg{
 		padding: 34px $m;
 	}
-	.lg\:padding--xl{
+	.lg\:ek-padding--xl{
 		padding: 60px $m;
 	}
 }
 
 @include break-medium() {
-	.md\:padding--sm{
+	.md\:ek-padding--sm{
 		padding: 14px $m;
 	}
-	.md\:padding--md{
+	.md\:ek-padding--md{
 		padding: 24px $m;
 	}
-	.md\:padding--lg{
+	.md\:ek-padding--lg{
 		padding: 34px $m;
 	}
-	.md\:padding--xl{
+	.md\:ek-padding--xl{
 		padding: 60px $m;
 	}
 }
 
 @include break-small() {
-	.sm\:padding--sm{
+	.sm\:ek-padding--sm{
 		padding: 14px $m;
 	}
-	.sm\:padding--md{
+	.sm\:ek-padding--md{
 		padding: 24px $m;
 	}
-	.sm\:padding--lg{
+	.sm\:ek-padding--lg{
 		padding: 34px $m;
 	}
-	.sm\:padding--xl{
+	.sm\:ek-padding--xl{
 		padding: 60px $m;
 	}
 }
 
 //margin
-.margin--sm{
+.ek-margin--sm{
 	margin: 14px $m;
 }
-.margin--md{
+.ek-margin--md{
 	margin: 24px $m;
 }
-.margin--lg{
+.ek-margin--lg{
 	margin: 34px $m;
 }
-.margin--xl{
+.ek-margin--xl{
 	margin: 60px $m;
 }
 
 @include break-large() {
-	.lg\:margin--sm{
+	.lg\:ek-margin--sm{
 		margin: 14px $m;
 	}
-	.lg\:margin--md{
+	.lg\:ek-margin--md{
 		margin: 24px $m;
 	}
-	.lg\:margin--lg{
+	.lg\:ek-margin--lg{
 		margin: 34px $m;
 	}
-	.lg\:margin--xl{
+	.lg\:ek-margin--xl{
 		margin: 60px $m;
 	}
 }
 
 @include break-medium() {
-	.md\:margin--sm{
+	.md\:ek-margin--sm{
 		margin: 14px $m;
 	}
-	.md\:margin--md{
+	.md\:ek-margin--md{
 		margin: 24px $m;
 	}
-	.md\:margin--lg{
+	.md\:ek-margin--lg{
 		margin: 34px $m;
 	}
-	.md\:margin--xl{
+	.md\:ek-margin--xl{
 		margin: 60px $m;
 	}
 }
 
 @include break-small() {
-	.sm\:margin--sm{
+	.sm\:ek-margin--sm{
 		margin: 14px $m;
 	}
-	.sm\:margin--md{
+	.sm\:ek-margin--md{
 		margin: 24px $m;
 	}
-	.sm\:margin--lg{
+	.sm\:ek-margin--lg{
 		margin: 34px $m;
 	}
-	.sm\:margin--xl{
+	.sm\:ek-margin--xl{
 		margin: 60px $m;
 	}
 }
 
 body:not(.wp-admin){
 	//Flexbox
-	.flex > div{
+	.ek-flex > div{
 		display: flex $m;
 	}
-	.flex-initial > div{
+	.ek-flex-initial > div{
 		flex: 0 1 auto $m;
 	}
-	.flex-1 > div{
+	.ek-flex-1 > div{
 		flex: 1 1 0% $m;
 	}
-	.flex-auto > div{
+	.ek-flex-auto > div{
 		flex: 1 1 auto $m;
 	}
-	.flex-none > div{
+	.ek-flex-none > div{
 		flex: none $m;
 	}
-	.flex-no-wrap > div{
+	.ek-flex-no-wrap > div{
 		flex-wrap: nowrap $m;
 	}
-	.flex-wrap > div{
+	.ek-flex-wrap > div{
 		flex-wrap: wrap $m;
 	}
-	.flex-wrap-reverse > div{
+	.ek-flex-wrap-reverse > div{
 		flex-wrap: wrap-reverse $m;
 	}
-	.flex-row > div{
+	.ek-flex-row > div{
 		flex-direction: row $m;
 	}
-	.flex-row-reverse > div{
+	.ek-flex-row-reverse > div{
 		flex-direction: row-reverse $m;
 	}
-	.flex-col > div{
+	.ek-flex-col > div{
 		flex-direction: column $m;
 	}
-	.flex-col-reverse > div{
+	.ek-flex-col-reverse > div{
 		flex-direction: column-reverse $m;
 	}
-	.items-stretch > div{
+	.ek-items-stretch > div{
 		align-items: stretch $m;
 	}
-	.items-start > div{
+	.ek-items-start > div{
 		align-items: flex-start $m;
 	}
-	.items-center > div{
+	.ek-items-center > div{
 		align-items: center $m;
 	}
-	.items-end > div{
+	.ek-items-end > div{
 		align-items: flex-end $m;
 	}
-	.items-baseline > div{
+	.ek-items-baseline > div{
 		align-items: baseline $m;
 	}
-	.justify-start > div{
+	.ek-justify-start > div{
 		justify-content: flex-start $m;
 	}
-	.justify-center > div{
+	.ek-justify-center > div{
 		justify-content: center $m;
 	}
-	.justify-end > div{
+	.ek-justify-end > div{
 		justify-content: flex-end $m;
 	}
-	.justify-between > div{
+	.ek-justify-between > div{
 		justify-content: space-between $m;
 	}
-	.justify-around > div{
+	.ek-justify-around > div{
 		justify-content: space-around $m;
 	}
 
 	@include break-large() {
-		.lg\:flex > div{
+		.lg\:ek-flex > div{
 			display: flex $m;
 		}
-		.lg\:flex-initial > div{
+		.lg\:ek-flex-initial > div{
 			flex: 0 1 auto $m;
 		}
-		.lg\:flex-1 > div{
+		.lg\:ek-flex-1 > div{
 			flex: 1 1 0% $m;
 		}
-		.lg\:flex-auto > div{
+		.lg\:ek-flex-auto > div{
 			flex: 1 1 auto $m;
 		}
-		.lg\:flex-none > div{
+		.lg\:ek-flex-none > div{
 			flex: none $m;
 		}
-		.lg\:flex-no-wrap > div{
+		.lg\:ek-flex-no-wrap > div{
 			flex-wrap: nowrap $m;
 		}
-		.lg\:flex-wrap > div{
+		.lg\:ek-flex-wrap > div{
 			flex-wrap: wrap $m;
 		}
-		.lg\:flex-wrap-reverse > div{
+		.lg\:ek-flex-wrap-reverse > div{
 			flex-wrap: wrap-reverse $m;
 		}
-		.lg\:flex-row > div{
+		.lg\:ek-flex-row > div{
 			flex-direction: row $m;
 		}
-		.lg\:flex-row-reverse > div{
+		.lg\:ek-flex-row-reverse > div{
 			flex-direction: row-reverse $m;
 		}
-		.lg\:flex-col > div{
+		.lg\:ek-flex-col > div{
 			flex-direction: column $m;
 		}
-		.lg\:flex-col-reverse > div{
+		.lg\:ek-flex-col-reverse > div{
 			flex-direction: column-reverse $m;
 		}
-		.lg\:items-stretch > div{
+		.lg\:ek-items-stretch > div{
 			align-items: stretch $m;
 		}
-		.lg\:items-start > div{
+		.lg\:ek-items-start > div{
 			align-items: flex-start $m;
 		}
-		.lg\:items-center > div{
+		.lg\:ek-items-center > div{
 			align-items: center $m;
 		}
-		.lg\:items-end > div{
+		.lg\:ek-items-end > div{
 			align-items: flex-end $m;
 		}
-		.lg\:items-baseline > div{
+		.lg\:ek-items-baseline > div{
 			align-items: baseline $m;
 		}
-		.lg\:justify-start > div{
+		.lg\:ek-justify-start > div{
 			justify-content: flex-start $m;
 		}
-		.lg\:justify-center > div{
+		.lg\:ek-justify-center > div{
 			justify-content: center $m;
 		}
-		.lg\:justify-end > div{
+		.lg\:ek-justify-end > div{
 			justify-content: flex-end $m;
 		}
-		.lg\:justify-between > div{
+		.lg\:ek-justify-between > div{
 			justify-content: space-between $m;
 		}
-		.lg\:justify-around > div{
+		.lg\:ek-justify-around > div{
 			justify-content: space-around $m;
 		}
 	}
 
 	@include break-medium() {
-		.md\:flex > div{
+		.md\:ek-flex > div{
 			display: flex $m;
 		}
-		.md\:flex-initial > div{
+		.md\:ek-flex-initial > div{
 			flex: 0 1 auto $m;
 		}
-		.md\:flex-1 > div{
+		.md\:ek-flex-1 > div{
 			flex: 1 1 0% $m;
 		}
-		.md\:flex-auto > div{
+		.md\:ek-flex-auto > div{
 			flex: 1 1 auto $m;
 		}
-		.md\:flex-none > div{
+		.md\:ek-flex-none > div{
 			flex: none $m;
 		}
-		.md\:flex-no-wrap > div{
+		.md\:ek-flex-no-wrap > div{
 			flex-wrap: nowrap $m;
 		}
-		.md\:flex-wrap > div{
+		.md\:ek-flex-wrap > div{
 			flex-wrap: wrap $m;
 		}
-		.md\:flex-wrap-reverse > div{
+		.md\:ek-flex-wrap-reverse > div{
 			flex-wrap: wrap-reverse $m;
 		}
-		.md\:flex-row > div{
+		.md\:ek-flex-row > div{
 			flex-direction: row $m;
 		}
-		.md\:flex-row-reverse > div{
+		.md\:ek-flex-row-reverse > div{
 			flex-direction: row-reverse $m;
 		}
-		.md\:flex-col > div{
+		.md\:ek-flex-col > div{
 			flex-direction: column $m;
 		}
-		.md\:flex-col-reverse > div{
+		.md\:ek-flex-col-reverse > div{
 			flex-direction: column-reverse $m;
 		}
-		.md\:items-stretch > div{
+		.md\:ek-items-stretch > div{
 			align-items: stretch $m;
 		}
-		.md\:items-start > div{
+		.md\:ek-items-start > div{
 			align-items: flex-start $m;
 		}
-		.md\:items-center > div{
+		.md\:ek-items-center > div{
 			align-items: center $m;
 		}
-		.md\:items-end > div{
+		.md\:ek-items-end > div{
 			align-items: flex-end $m;
 		}
-		.md\:items-baseline > div{
+		.md\:ek-items-baseline > div{
 			align-items: baseline $m;
 		}
-		.md\:justify-start > div{
+		.md\:ek-justify-start > div{
 			justify-content: flex-start $m;
 		}
-		.md\:justify-center > div{
+		.md\:ek-justify-center > div{
 			justify-content: center $m;
 		}
-		.md\:justify-end > div{
+		.md\:ek-justify-end > div{
 			justify-content: flex-end $m;
 		}
-		.md\:justify-between > div{
+		.md\:ek-justify-between > div{
 			justify-content: space-between $m;
 		}
-		.md\:justify-around > div{
+		.md\:ek-justify-around > div{
 			justify-content: space-around $m;
 		}
 	}
 
 	@include break-small() {
-		.sm\:flex > div{
+		.sm\:ek-flex > div{
 			display: flex $m;
 		}
-		.sm\:flex-initial > div{
+		.sm\:ek-flex-initial > div{
 			flex: 0 1 auto $m;
 		}
-		.sm\:flex-1 > div{
+		.sm\:ek-flex-1 > div{
 			flex: 1 1 0% $m;
 		}
-		.sm\:flex-auto > div{
+		.sm\:ek-flex-auto > div{
 			flex: 1 1 auto $m;
 		}
-		.sm\:flex-none > div{
+		.sm\:ek-flex-none > div{
 			flex: none $m;
 		}
-		.sm\:flex-no-wrap > div{
+		.sm\:ek-flex-no-wrap > div{
 			flex-wrap: nowrap $m;
 		}
-		.sm\:flex-wrap > div{
+		.sm\:ek-flex-wrap > div{
 			flex-wrap: wrap $m;
 		}
-		.sm\:flex-wrap-reverse > div{
+		.sm\:ek-flex-wrap-reverse > div{
 			flex-wrap: wrap-reverse $m;
 		}
-		.sm\:flex-row > div{
+		.sm\:ek-flex-row > div{
 			flex-direction: row $m;
 		}
-		.sm\:flex-row-reverse > div{
+		.sm\:ek-flex-row-reverse > div{
 			flex-direction: row-reverse $m;
 		}
-		.sm\:flex-col > div{
+		.sm\:ek-flex-col > div{
 			flex-direction: column $m;
 		}
-		.sm\:flex-col-reverse > div{
+		.sm\:ek-flex-col-reverse > div{
 			flex-direction: column-reverse $m;
 		}
-		.sm\:items-stretch > div{
+		.sm\:ek-items-stretch > div{
 			align-items: stretch $m;
 		}
-		.sm\:items-start > div{
+		.sm\:ek-items-start > div{
 			align-items: flex-start $m;
 		}
-		.sm\:items-center > div{
+		.sm\:ek-items-center > div{
 			align-items: center $m;
 		}
-		.sm\:items-end > div{
+		.sm\:ek-items-end > div{
 			align-items: flex-end $m;
 		}
-		.sm\:items-baseline > div{
+		.sm\:ek-items-baseline > div{
 			align-items: baseline $m;
 		}
-		.sm\:justify-start > div{
+		.sm\:ek-justify-start > div{
 			justify-content: flex-start $m;
 		}
-		.sm\:justify-center > div{
+		.sm\:ek-justify-center > div{
 			justify-content: center $m;
 		}
-		.sm\:justify-end > div{
+		.sm\:ek-justify-end > div{
 			justify-content: flex-end $m;
 		}
-		.sm\:justify-between > div{
+		.sm\:ek-justify-between > div{
 			justify-content: space-between $m;
 		}
-		.sm\:justify-around > div{
+		.sm\:ek-justify-around > div{
 			justify-content: space-around $m;
 		}
 	}
