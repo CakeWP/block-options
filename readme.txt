@@ -25,7 +25,7 @@ You can now have more control over each blocks. Using EditorsKit you will have t
 * Show or hide Gutenberg blocks based on <a href="https://wordpress.org/plugins/advanced-custom-fields/">Advanced Custom Fields Plugin(ACF)</a> Value
 
 = See for yourself =
-https://www.youtube.com/watch?v=_Im6fuUZXfc
+https://www.youtube.com/watch?v=QWgO4lAJAlE
 
 ## Block Guide Lines
 [EditorsKit](https://editorskit.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit) features other tool aside from visibility management. With the new Block Guide Lines, you can easily toggle visible guide lines on title and each editor blocks in order to check the element boundaries. This feature will also help your workflow on handling nested blocks.

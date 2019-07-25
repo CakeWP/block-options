@@ -52,7 +52,7 @@ if( !class_exists( 'BLOCKOPS_Welcome' ) ){
 					
 					<p><strong><?php echo esc_html__( 'Here is the video on how the plugin works:', 'block-options' ); ?></strong></p>
 
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/_Im6fuUZXfc" frameborder="0" allowfullscreen></iframe>
+					<iframe width="560" height="380" src="https://www.youtube.com/embed/QWgO4lAJAlE" frameborder="0" allowfullscreen></iframe>
 
 					<p>
 						<?php
