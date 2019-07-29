@@ -24,10 +24,12 @@ import './extensions/page-template';
 import './extensions/disable-title';
 
 //Components on Dropdown Menu
-import './extensions/components/guidelines';
 import './extensions/components/autosave';
+import './extensions/components/guidelines';
+import './extensions/components/editor-height';
 import './extensions/components/markdown';
 import './extensions/components/manager';
+
 
 //Block Settings
 import './extensions/block-settings';
