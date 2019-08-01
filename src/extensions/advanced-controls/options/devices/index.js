@@ -32,22 +32,26 @@ const DevicesOptions = ( props ) => {
     		reloadModal();
     	}
 	}
-	
+
+	if( typeof editorskit == 'undefined' ){
+		return;
+	}
+
 	return(
 		<Fragment>
 			<ToggleControl
 				label={ __( 'Hide on Desktop' ) }
-				checked={ ! editorskit.desktop }
+				checked={ typeof editorskit.desktop != 'undefined' && ! editorskit.desktop }
 				onChange={ () => onSelectDevice( 'desktop' ) }
 			/>
 			<ToggleControl
 				label={ __( 'Hide on Tablet' ) }
-				checked={ ! editorskit.tablet }
+				checked={ typeof editorskit.tablet != 'undefined' && ! editorskit.tablet }
 				onChange={ () => onSelectDevice( 'tablet' ) }
 			/>
 			<ToggleControl
 				label={ __( 'Hide on Mobile' ) }
-				checked={ ! editorskit.mobile }
+				checked={ typeof editorskit.mobile != 'undefined' && ! editorskit.mobile }
 				onChange={ () => onSelectDevice( 'mobile' ) }
 				/>
 		</Fragment>
