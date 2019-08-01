@@ -16,7 +16,7 @@ function is_editorskit_blocklab_name_allowed( $is_name_allowed, $name ){
 	return $is_name_allowed;
 }
 
-function editorskit_block_classname() {
+function editorskit_blocklab_classname() {
 	$classes = '';
 	if( function_exists( 'block_field' ) ){
 		$value = block_field( 'editorskit', false );
