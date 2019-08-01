@@ -67,7 +67,7 @@ class EditorsKit_Block_Assets {
 		$this->_url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
-		add_action( 'init', array( $this, 'editor_assets' ), 9999 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'editor_assets' ), 9999 );
 	}
 
 	/**
