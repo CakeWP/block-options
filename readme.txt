@@ -95,6 +95,15 @@ e.g.
 
 == Changelog ==
 
+= 1.9.2 =
+* New: Editor Height Option to set editor min-height to 100% of the viewport 🎊
+* Improvement: Only load editorskit scripts on admin pages that are running Gutenberg
+* Improvement: Do not automatically disable Auto Saving after plugin activation
+* Improvement: Extended support for Block Lab Plugin with editorskit_blocklab_classname() helper function
+* Fixes: Prevent error from third-party plugins for REST API missing attributes
+* Fixes: More compatibility fixes for the latest Gutenberg plugin
+
+
 = 1.9.1 =
 * Improvement: Add `ek-` identifier for custom Utility Classnames
 * Improvement: Extended support for Block Lab attributes
