@@ -92,8 +92,8 @@ class EditorsKit_Block_Assets {
 	 * @access public
 	 */
 	public function editor_assets() {
-
-		if( !is_admin() ){
+		
+		if( ! is_admin() && ! $this->is_edit_or_new_admin_page() ){
 			return;
 		}
 
@@ -113,6 +113,17 @@ class EditorsKit_Block_Assets {
 			time(),
 			false
 		);
+	}
+
+	/**
+	 * Checks if admin page is the 'edit' or 'new-post' screen.
+	 *
+	 * @return bool true or false
+	 */
+	function is_edit_or_new_admin_page() {
+		global $pagenow;
+
+ 		return ( is_admin() && ( $pagenow === 'post.php' || $pagenow === 'post-new.php' || ( $pagenow === 'admin.php' && isset( $_GET['page'] ) && $_GET['page'] == 'gutenberg-widgets' ) ) );
 	}
 
 }
