@@ -113,6 +113,10 @@ class EditorsKit_Block_Assets {
 			time(),
 			false
 		);
+
+		//CodeMirror
+		wp_enqueue_script( 'code-editor' );
+    	wp_enqueue_style( 'code-editor' );
 	}
 
 	/**

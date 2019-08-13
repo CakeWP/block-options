@@ -1,0 +1,18 @@
+.edit-post-text-editor{
+	max-width: 99% !important;
+}
+.edit-post-text-editor__body{
+	.editor-post-title__block{
+		max-width: 100% !important;
+	}
+	.CodeMirror{
+		height: auto;
+		&.CodeMirror-wrap{
+			border: 1px solid #ddd;
+		}
+		.CodeMirror-scroll { 
+			height: auto !important; 
+			overflow: visible !important; 
+		}
+	}
+}
