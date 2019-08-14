@@ -185,6 +185,11 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Export as JSON', $this->_slug ),
 							'value' => true,
 						),
+						'scrollDown' => array(
+							'name'  => 'scrollDown',
+							'label' => __( 'Go to Custom Fields', $this->_slug ),
+							'value' => true,
+						),
 						'toggleTitle' 	 => array(
 							'name'  => 'toggleTitle',
 							'label' => __( 'Toggle Title Visibility', $this->_slug ),

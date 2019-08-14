@@ -29,6 +29,7 @@ import './extensions/components/guidelines';
 import './extensions/components/editor-height';
 import './extensions/components/markdown';
 import './extensions/components/manager';
+import './extensions/components/scroll-down';
 
 
 //Block Settings
