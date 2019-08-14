@@ -165,6 +165,11 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Toggle Auto Save', $this->_slug ),
 							'value' => true,
 						),
+						'codeHighlight' => array(
+							'name'  => 'codeHighlight',
+							'label' => __( 'Code Editor Syntax Highlight', $this->_slug ),
+							'value' => true,
+						),
 						'customClassNames' 	 => array(
 							'name'  => 'customClassNames',
 							'label' => __( 'Custom Class Names', $this->_slug ),
@@ -188,6 +193,11 @@ class EditorsKit_Features_Manager {
 						'toggleTitle' 	 => array(
 							'name'  => 'toggleTitle',
 							'label' => __( 'Toggle Title Visibility', $this->_slug ),
+							'value' => true,
+						),
+						'scrollDown' => array(
+							'name'  => 'scrollDown',
+							'label' => __( 'View Custom Fields', $this->_slug ),
 							'value' => true,
 						),
 					)

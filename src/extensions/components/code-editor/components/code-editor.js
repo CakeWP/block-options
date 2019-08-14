@@ -20,6 +20,12 @@ class CodeEditor extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
+
+		// this.addCodeMirror = this.addCodeMirror.bind( this );
+
+		this.state   = {
+			isLoaded: false,
+		}
 	}
 
 	componentDidMount() {
@@ -32,10 +38,15 @@ class CodeEditor extends Component {
 
 	addCodeMirror(){
 		const {
+			isDisabled,
 			editorMode,
 		} = this.props;
 
-		if( editorMode == 'text' ){
+		if( isDisabled ){
+			return null;
+		}
+
+		if( editorMode == 'text' && !this.state.isLoaded ){
 			var editorSettings = wp.codeEditor.defaultSettings ? _.clone( wp.codeEditor.defaultSettings ) : {};
 
 			//add placeholder class
@@ -55,6 +66,11 @@ class CodeEditor extends Component {
 
             var textEditor = document.querySelector('.editor-post-text-editor');
             var editor = wp.codeEditor.initialize( textEditor , editorSettings );
+
+            this.setState({ isLoaded : true });
+		}else if( editorMode == 'visual' && this.state.isLoaded ){
+
+			this.setState({ isLoaded : false });
 		}
 	}
 	
@@ -66,17 +82,8 @@ class CodeEditor extends Component {
 export default compose( [
 	withSelect( ( select ) => ( {
 		readyState: document.readyState,
-		// isActive: select( 'core/edit-post' ).isFeatureActive( 'editorMinHeight' ),
-		// isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitHeightTools' ),
+		isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitCodeHighlightTools' ),
 		editorMode: select( 'core/edit-post' ).getEditorMode(),
 	} ) ),
-	withDispatch( ( dispatch, ownProps ) => ( {
-		onToggle() {
-			// dispatch( 'core/edit-post' ).toggleFeature( 'editorMinHeight' );
-		},
-	} ) ),
-	ifCondition( props => {
-		return props.readyState === 'complete' ;
-	}),
 	withSpokenMessages,
 ] )( CodeEditor );
