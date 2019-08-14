@@ -37,6 +37,9 @@ class CodeEditor extends Component {
 
 		if( editorMode == 'text' ){
 			var editorSettings = wp.codeEditor.defaultSettings ? _.clone( wp.codeEditor.defaultSettings ) : {};
+
+			//add placeholder class
+			document.body.classList.add( 'editorskit-editor-loaded' );
 			
 			editorSettings.codemirror = _.extend(
                 {},

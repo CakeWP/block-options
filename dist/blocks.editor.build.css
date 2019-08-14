@@ -162,7 +162,7 @@ body.editorskit-title-visible-disabled .editor-post-title__block .editor-post-ti
     left: -3px;
     right: -3px; }
 body.is-editorkit-height-on .edit-post-layout__content .edit-post-visual-editor .editor-writing-flow {
-  min-height: 100vh; }
+  min-height: calc( 100vh - 160px); }
 .edit-post-text-editor {
   max-width: 99% !important; }
 
@@ -176,6 +176,31 @@ body.is-editorkit-height-on .edit-post-layout__content .edit-post-visual-editor 
   .edit-post-text-editor__body .CodeMirror .CodeMirror-scroll {
     height: auto !important;
     overflow: visible !important; }
+
+.editorskit-editor-loaded .edit-post-text-editor,
+.editorskit-editor-loaded .edit-post-visual-editor {
+  -webkit-animation: slide-up 0.4s ease;
+          animation: slide-up 0.4s ease; }
+
+@-webkit-keyframes slide-up {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0); } }
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0); } }
 .editorskit-components-modal__content {
   width: 320px;
   min-width: 200px !important; }
