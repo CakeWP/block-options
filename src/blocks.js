@@ -28,6 +28,7 @@ import './extensions/components/autosave';
 import './extensions/components/guidelines';
 import './extensions/components/editor-height';
 import './extensions/components/markdown';
+import './extensions/components/scroll-down';
 import './extensions/components/manager';
 
 
