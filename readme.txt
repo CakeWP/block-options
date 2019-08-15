@@ -95,6 +95,12 @@ e.g.
 
 == Changelog ==
 
+= 1.10 =
+* New: Add Code Syntax Highlighting when on Code Editor Mode 🎊
+* New: Add "View Custom Fields" option to easily scroll down to Custom Fields area 🎉
+* Fixes: Prevent display bug when Editor Height is toggled on
+* Fixes: More compatibility fixes for the latest Gutenberg plugin
+
 = 1.9.2 =
 * New: Editor Height Option to set editor min-height to 100% of the viewport 🎊
 * Improvement: Only load editorskit scripts on admin pages that are running Gutenberg
