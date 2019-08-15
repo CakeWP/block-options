@@ -72,6 +72,9 @@ Enable or disable EditorsKit features using "EditorsKit Settings" menu. This wil
 ## Better Custom CSS Class(es)
 Huge improvement on `Additional CSS Class(es)` option! EditorsKit provides better UI with classes suggestions while typing. Powered with custom PHP filter, theme developers can include custom Utility Classes for more customization options.
 
+## Code Editor Mode Syntax Highlighting
+Improve display when on "Code Editor Mode". Powered by WordPress default CodeMirror library, Code Editor will be displayed with code syntax highlights and you will easily check each elements and if there are any errors on your HTML codes.
+
 ## Theme Supports for Developers
 [EditorsKit](https://editorskit.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit) is moving towards being developer friendly as well. Starting version 1.5, custom `theme_supports` were added to provide theme developers option to make Gutenberg block editing experience for their users match the frontend display. [Learn more here](https://jeffreycarandang.com/editorskit-1-5/).
 
@@ -91,6 +94,16 @@ e.g.
 1. Upload the full directory into your wp-content/plugins directory
 2. Activate the plugin at the plugin administration page
 3. That's it! I hope you'll love this plugin :)
+
+== Screenshots ==
+
+1. Text and Highlight Colors
+2. Gutenberg Editor Rich Text Formats
+3. Responsive and User Logged-in State Visibility
+4. Block Settings
+5. Image and Cover Block Styles
+6. Settings and Options
+7. Custom Classes Utility and Auto Suggestions
 
 
 == Changelog ==
