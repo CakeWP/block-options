@@ -3,8 +3,7 @@ const path = require( 'path' );
 const postcssPresetEnv = require( 'postcss-preset-env' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const IgnoreEmitPlugin = require( 'ignore-emit-webpack-plugin' );
-
-const production = process.env.NODE_ENV === '';
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
 	...defaultConfig,
@@ -53,15 +52,9 @@ module.exports = {
 					},
 					{
 						loader: 'css-loader',
-						options: {
-							sourceMap: ! production,
-						},
 					},
 					{
 						loader: 'sass-loader',
-						options: {
-							sourceMap: ! production,
-						},
 					},
 					{
 						loader: 'postcss-loader',
@@ -92,6 +85,11 @@ module.exports = {
 		new MiniCssExtractPlugin( {
 			filename: '[name].build.css',
 		} ),
+		new OptimizeCSSAssetsPlugin({
+			cssProcessorPluginOptions: {
+				preset: ['default', { discardComments: { removeAll: true } }],
+			}
+		}),
 		new IgnoreEmitPlugin( [ 
             'editor.js',
             'style.js',
