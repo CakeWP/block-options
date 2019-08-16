@@ -19,17 +19,16 @@ class ClearFormatting extends Component {
 	}
 
 	render() {
-
 		const {
 			value,
 			isActive,
 			onChange,
 			activeAttributes,
 		} = this.props;
-		
+
 		const onToggle = () => {
 			const formatTypes = select( 'core/rich-text' ).getFormatTypes();
-			if( formatTypes.length > 0 ){
+			if ( formatTypes.length > 0 ) {
 				let newValue = value;
 
 				map( formatTypes, ( activeFormat ) => {
@@ -48,16 +47,15 @@ class ClearFormatting extends Component {
 			/>
 		);
 	}
-
 }
 
 export default compose(
-	withSelect( select => {
+	withSelect( ( select ) => {
 		return {
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitClearFormattingFormats' ),
 		};
 	} ),
-	ifCondition( props => {
-		return !props.isDisabled;
+	ifCondition( ( props ) => {
+		return ! props.isDisabled;
 	} )
 )( ClearFormatting );

@@ -9,7 +9,6 @@ import SubscriptControl from './controls';
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 
-
 /**
  * Block constants
  */
@@ -21,12 +20,10 @@ export const subscript = {
 	tagName: 'sub',
 	className: null,
 	edit( { isActive, value, onChange, activeAttributes } ) {
-
 		return (
 			<Fragment>
-				<SubscriptControl name={ name } isActive={ isActive } value={ value } onChange={ onChange } activeAttributes={ activeAttributes }  />
+				<SubscriptControl name={ name } isActive={ isActive } value={ value } onChange={ onChange } activeAttributes={ activeAttributes } />
 			</Fragment>
 		);
-
 	},
 };

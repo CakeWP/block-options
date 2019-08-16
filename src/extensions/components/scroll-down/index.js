@@ -9,6 +9,6 @@ import ScrollDown from './components/scrolldown';
 const { registerPlugin } = wp.plugins;
 
 registerPlugin( 'editorskit-scrolldown', {
-    icon: false,
+	icon: false,
 	render: ScrollDown,
 } );

@@ -20,19 +20,17 @@ const { PluginBlockSettingsMenuItem } = wp.editPost;
 const { withSpokenMessages, Modal, CheckboxControl, TabPanel } = wp.components;
 const { serialize, parse, createBlock } = wp.blocks;
 
-
 /**
  * Render plugin
  */
 class ExportManager extends Component {
-
 	constructor( props ) {
 		super( ...arguments );
 
 		this.saveAsJSON = this.saveAsJSON.bind( this );
 	}
 
-	saveAsJSON(){
+	saveAsJSON() {
 		const {
 			selectedBlockCount,
 			selectedBlock,
@@ -40,15 +38,17 @@ class ExportManager extends Component {
 			getBlock,
 		} = this.props;
 
-		if( selectedBlockCount < 1 ){
+		if ( selectedBlockCount < 1 ) {
 			return;
 		}
 
-		let blocks, reusable = [], title = 'editorskit/export';
+		let blocks,
+			reusable = [],
+			title = 'editorskit/export';
 
-		if( selectedBlockCount == 1 ){
+		if ( selectedBlockCount == 1 ) {
 			//export as reusable when reusable is selected
-			if( selectedBlock.name == 'core/block' ){
+			if ( selectedBlock.name == 'core/block' ) {
 				exportReusableBlock( selectedBlock.attributes.ref );
 				return;
 			}
@@ -56,7 +56,7 @@ class ExportManager extends Component {
 			blocks = serialize( selectedBlock );
 		}
 
-		if( selectedBlockCount > 1 ){
+		if ( selectedBlockCount > 1 ) {
 			blocks = serialize( selectedBlocks );
 		}
 
@@ -70,38 +70,37 @@ class ExportManager extends Component {
 		const fileName = kebabCase( title ) + '.json';
 		download( fileName, fileContent, 'application/json' );
 	}
-	
-	render(){
 
+	render() {
 		return (
 			<Fragment>
 				<PluginBlockSettingsMenuItem
-					icon='share-alt2'
+					icon="share-alt2"
 					label={ __( 'Export as JSON' ) }
 					onClick={ this.saveAsJSON }
 				>
-					
+
 				</PluginBlockSettingsMenuItem>
 			</Fragment>
 		);
 	}
-};
+}
 
 export default compose( [
 	withSelect( ( select ) => {
 		const { getSelectedBlockCount, getSelectedBlock, getMultiSelectedBlocks } = select( 'core/block-editor' );
 		const { getBlock } = select( 'core/block-editor' );
 
-		return{
+		return {
 			selectedBlockCount: getSelectedBlockCount(),
 			selectedBlock: getSelectedBlock(),
 			selectedBlocks: getMultiSelectedBlocks(),
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitExportTools' ),
 			getBlock,
-		}
+		};
 	} ),
-	ifCondition( props => {
-		return !props.isDisabled;
+	ifCondition( ( props ) => {
+		return ! props.isDisabled;
 	} ),
 	withSpokenMessages,
 ] )( ExportManager );

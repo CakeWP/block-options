@@ -3,11 +3,10 @@
  */
 const { __ } = wp.i18n;
 const { dispatch } = wp.data;
-const { Fragment } = wp.element; 
-const { Button, ButtonGroup, Dashicon, Tooltip, ToggleControl, } = wp.components; 
+const { Fragment } = wp.element;
+const { Button, ButtonGroup, Dashicon, Tooltip, ToggleControl } = wp.components;
 
 const DevicesOptions = ( props ) => {
-
 	const {
 		clientId,
 		attributes,
@@ -20,42 +19,42 @@ const DevicesOptions = ( props ) => {
 	} = attributes;
 
 	const onSelectDevice = ( device ) => {
-		var newValue = !editorskit[ device ];
-					        		
+		const newValue = ! editorskit[ device ];
+
 		delete editorskit[ device ];
 
-    	var blockOptions = Object.assign( { [ device ]: newValue }, editorskit );
+    	const blockOptions = Object.assign( { [ device ]: newValue }, editorskit );
 
     	dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { editorskit: blockOptions } );
 
-    	if( reloadModal ){
+    	if ( reloadModal ) {
     		reloadModal();
     	}
-	}
+	};
 
-	if( typeof editorskit == 'undefined' ){
+	if ( typeof editorskit === 'undefined' ) {
 		return;
 	}
 
-	return(
+	return (
 		<Fragment>
 			<ToggleControl
 				label={ __( 'Hide on Desktop' ) }
-				checked={ typeof editorskit.desktop != 'undefined' && ! editorskit.desktop }
+				checked={ typeof editorskit.desktop !== 'undefined' && ! editorskit.desktop }
 				onChange={ () => onSelectDevice( 'desktop' ) }
 			/>
 			<ToggleControl
 				label={ __( 'Hide on Tablet' ) }
-				checked={ typeof editorskit.tablet != 'undefined' && ! editorskit.tablet }
+				checked={ typeof editorskit.tablet !== 'undefined' && ! editorskit.tablet }
 				onChange={ () => onSelectDevice( 'tablet' ) }
 			/>
 			<ToggleControl
 				label={ __( 'Hide on Mobile' ) }
-				checked={ typeof editorskit.mobile != 'undefined' && ! editorskit.mobile }
+				checked={ typeof editorskit.mobile !== 'undefined' && ! editorskit.mobile }
 				onChange={ () => onSelectDevice( 'mobile' ) }
-				/>
+			/>
 		</Fragment>
 	);
-}
+};
 
 export default DevicesOptions;

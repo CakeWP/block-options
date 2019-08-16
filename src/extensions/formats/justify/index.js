@@ -9,7 +9,6 @@ import JustifyControl from './controls';
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 
-
 /**
  * Block constants
  */
@@ -24,12 +23,10 @@ export const justify = {
 		style: 'style',
 	},
 	edit( { isActive, value, onChange, activeAttributes } ) {
-
 		return (
 			<Fragment>
-				<JustifyControl name={ name } isActive={ isActive } value={ value } onChange={ onChange } activeAttributes={ activeAttributes }  />
+				<JustifyControl name={ name } isActive={ isActive } value={ value } onChange={ onChange } activeAttributes={ activeAttributes } />
 			</Fragment>
 		);
-
 	},
 };

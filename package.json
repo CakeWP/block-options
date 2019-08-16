@@ -31,6 +31,7 @@
     "check-licenses": "wp-scripts check-licenses",
     "lint:css": "wp-scripts lint-style",
     "lint:js": "wp-scripts lint-js",
+    "lint:js-fix": "wp-scripts lint-js '**/*.js' --fix",
     "lint:pkg-json": "wp-scripts lint-pkg-json",
     "start": "wp-scripts start",
     "test:e2e": "wp-scripts test-e2e",

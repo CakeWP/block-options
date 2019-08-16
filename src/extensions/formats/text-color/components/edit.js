@@ -110,14 +110,13 @@ class Edit extends Component {
 			</Fragment>
 		);
 	}
-
 }
 
 export default compose(
-	withSelect( select => {
+	withSelect( ( select ) => {
 		return {
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitColorsFormats' ),
 		};
 	} ),
-	ifCondition( props => !props.isDisabled ),
+	ifCondition( ( props ) => ! props.isDisabled ),
 )( Edit );

@@ -14,7 +14,6 @@ import Edit from './components/edit';
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 
-
 /**
  * Block constants
  */

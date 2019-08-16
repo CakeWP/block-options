@@ -1,5 +1,5 @@
 /**
- * External Dependencies
+ * External dependencies
  */
 import classnames from 'classnames';
 
@@ -7,9 +7,9 @@ import classnames from 'classnames';
  * WordPress Dependencies
  */
 const { __ } = wp.i18n;
-const { addFilter } = wp.hooks; 
-const { Fragment } = wp.element; 
-const { createHigherOrderComponent } = wp.compose; 
+const { addFilter } = wp.hooks;
+const { Fragment } = wp.element;
+const { createHigherOrderComponent } = wp.compose;
 const { hasBlockSupport } = wp.blocks;
 
 const restrictedBlocks = [ 'core/freeform', 'core/shortcode', 'core/nextpage' ];
@@ -24,10 +24,9 @@ const blocksWithFullScreen = [ 'core/image', 'core/cover', 'core/group', 'core/c
  * @return {Object} Filtered block settings.
  */
 function addAttributes( settings ) {
-	
-	if( typeof settings.attributes !== 'undefined' && !restrictedBlocks.includes( settings.name ) ){
+	if ( typeof settings.attributes !== 'undefined' && ! restrictedBlocks.includes( settings.name ) ) {
 		settings.attributes = Object.assign( settings.attributes, {
-			editorskit:{ 
+			editorskit: {
 				type: 'object',
 				default: {
 					devices: false,
@@ -42,12 +41,12 @@ function addAttributes( settings ) {
 					acf_value: '',
 					migrated: false,
 				},
-			}
+			},
 		} );
 
 		//for version 1 compatibility and migration
 		settings.attributes = Object.assign( settings.attributes, {
-			blockOpts:{ type: 'object' }
+			blockOpts: { type: 'object' },
 		} );
 
 		//Add vertical full screen support
@@ -85,7 +84,6 @@ function addAttributes( settings ) {
  */
 const withAttributes = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-
 		const {
 			name,
 			clientId,
@@ -107,11 +105,11 @@ const withAttributes = createHigherOrderComponent( ( BlockEdit ) => {
 
 		return (
 			<Fragment>
-				<BlockEdit {...props} />
+				<BlockEdit { ...props } />
 			</Fragment>
 		);
 	};
-}, 'withAttributes');
+}, 'withAttributes' );
 
 /**
  * Override props assigned to save component to inject atttributes
@@ -122,28 +120,25 @@ const withAttributes = createHigherOrderComponent( ( BlockEdit ) => {
  *
  * @return {Object} Filtered props applied to save element.
  */
-function applyExtraClass(extraProps, blockType, attributes) {
-
+function applyExtraClass( extraProps, blockType, attributes ) {
 	const { editorskit, isHeightFullScreen } = attributes;
-	
-	if ( typeof editorskit !== 'undefined' && !restrictedBlocks.includes( blockType.name ) ) {
 
-		if( typeof editorskit.id !== 'undefined' ){
+	if ( typeof editorskit !== 'undefined' && ! restrictedBlocks.includes( blockType.name ) ) {
+		if ( typeof editorskit.id !== 'undefined' ) {
 			extraProps.className = classnames( extraProps.className, editorskit.id );
 		}
 
-		if( typeof editorskit.desktop !== 'undefined' && ! editorskit.desktop ){
+		if ( typeof editorskit.desktop !== 'undefined' && ! editorskit.desktop ) {
 			extraProps.className = classnames( extraProps.className, 'editorskit-no-desktop' );
 		}
 
-		if( typeof editorskit.tablet !== 'undefined' && ! editorskit.tablet ){
+		if ( typeof editorskit.tablet !== 'undefined' && ! editorskit.tablet ) {
 			extraProps.className = classnames( extraProps.className, 'editorskit-no-tablet' );
 		}
 
-		if( typeof editorskit.mobile !== 'undefined' && ! editorskit.mobile ){
+		if ( typeof editorskit.mobile !== 'undefined' && ! editorskit.mobile ) {
 			extraProps.className = classnames( extraProps.className, 'editorskit-no-mobile' );
 		}
-		
 	}
 
 	if ( hasBlockSupport( blockType.name, 'hasHeightFullScreen' ) && isHeightFullScreen ) {
@@ -172,8 +167,7 @@ const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 
 		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
 	};
-}, 'addEditorBlockAttributes');
-
+}, 'addEditorBlockAttributes' );
 
 addFilter(
 	'blocks.registerBlockType',

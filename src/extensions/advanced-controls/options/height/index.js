@@ -3,11 +3,10 @@
  */
 const { __ } = wp.i18n;
 const { dispatch, withSelect } = wp.data;
-const { Fragment, Component } = wp.element; 
-const { ToggleControl, TextareaControl } = wp.components; 
+const { Fragment, Component } = wp.element;
+const { ToggleControl, TextareaControl } = wp.components;
 
 const VerticalHeightToggle = ( props ) => {
-
 	const {
 		attributes,
 		setAttributes,
@@ -16,8 +15,8 @@ const VerticalHeightToggle = ( props ) => {
 	const {
 		isHeightFullScreen,
 	} = attributes;
-	
-	return(
+
+	return (
 		<Fragment>
 			<ToggleControl
 				label={ __( 'Full Screen Height' ) }
@@ -27,6 +26,6 @@ const VerticalHeightToggle = ( props ) => {
 			/>
 		</Fragment>
 	);
-}
+};
 
 export default VerticalHeightToggle;

@@ -24,14 +24,13 @@ class UppercaseControl extends Component {
 	}
 
 	render() {
-
 		const {
 			onChange,
 			isActive,
 			value,
 			name,
 		} = this.props;
-		
+
 		const onToggle = () => {
 			onChange( toggleFormat( value, { type: name } ) );
 		};
@@ -45,18 +44,17 @@ class UppercaseControl extends Component {
 			/>
 		);
 	}
-
 }
 
 export default compose(
-	withSelect( select => {
+	withSelect( ( select ) => {
 		return {
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitUppercaseFormats' ),
 			formatTypes: select( 'core/rich-text' ).getFormatTypes(),
 		};
 	} ),
-	ifCondition( props => {
-		const checkFormats = props.formatTypes.filter( formats => formats['name'] === 'coblocks/uppercase' );
-		return !props.isDisabled && checkFormats.length === 0;
+	ifCondition( ( props ) => {
+		const checkFormats = props.formatTypes.filter( ( formats ) => formats.name === 'coblocks/uppercase' );
+		return ! props.isDisabled && checkFormats.length === 0;
 	} )
 )( UppercaseControl );

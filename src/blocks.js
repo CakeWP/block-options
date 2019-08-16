@@ -15,6 +15,9 @@
 const { registerBlockType } = wp.blocks;
 
 // Extensions
+/**
+ * Internal dependencies
+ */
 import './extensions/attributes';
 import './extensions/advanced-controls';
 import './extensions/page-template';
@@ -29,7 +32,6 @@ import './extensions/components/scroll-down';
 import './extensions/components/manager';
 import './extensions/components/code-editor';
 
-
 //Block Settings
 import './extensions/block-settings';
 
@@ -42,11 +44,10 @@ import './extensions/block-styles/';
 // Register Blocks
 import * as importBlock from './blocks/import';
 
-export function registerBlocks () {
+export function registerBlocks() {
 	[
 		importBlock,
 	].forEach( ( block ) => {
-
 		if ( ! block ) {
 			return;
 		}
@@ -55,5 +56,5 @@ export function registerBlocks () {
 
 		registerBlockType( `editorskit/${ name }`, { category: 'common', ...settings } );
 	} );
-};
+}
 registerBlocks();

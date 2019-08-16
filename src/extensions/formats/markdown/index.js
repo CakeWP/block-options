@@ -10,7 +10,6 @@ import MarkdownControl from './controls';
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 
-
 /**
  * Block constants
  */
@@ -25,12 +24,10 @@ export const markdown = {
 		style: 'style',
 	},
 	edit( { isActive, value, onChange, activeAttributes } ) {
-
 		return (
 			<Fragment>
-				<MarkdownControl name={ name } isActive={ isActive } value={ value } onChange={ onChange } activeAttributes={ activeAttributes }  />
+				<MarkdownControl name={ name } isActive={ isActive } value={ value } onChange={ onChange } activeAttributes={ activeAttributes } />
 			</Fragment>
 		);
-
 	},
 };

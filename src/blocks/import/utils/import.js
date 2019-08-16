@@ -22,7 +22,7 @@ async function importReusableBlock( file ) {
 	} catch ( e ) {
 		throw new Error( 'Invalid JSON file' );
 	}
-	
+
 	if (
 		parsedContent.__file !== 'wp_block' ||
 		! parsedContent.title ||
@@ -43,15 +43,14 @@ async function importReusableBlock( file ) {
 		},
 		method: 'POST',
 	} );
-	
-	if( reusableBlock.id ){
-		return '<!-- wp:block {"ref":'+ reusableBlock.id +'} /-->';
-	}else{
-		throw new Error( 'Invalid Reusable Block JSON file contents' );
+
+	if ( reusableBlock.id ) {
+		return '<!-- wp:block {"ref":' + reusableBlock.id + '} /-->';
 	}
+	throw new Error( 'Invalid Reusable Block JSON file contents' );
 }
 
-function importCoreBlocks( parsedContent ){
+function importCoreBlocks( parsedContent ) {
 	if (
 		parsedContent.__file !== 'core_block' ||
 		! parsedContent.content ||

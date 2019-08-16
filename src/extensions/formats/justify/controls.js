@@ -18,7 +18,6 @@ class JustifyControl extends Component {
 	}
 
 	render() {
-
 		const {
 			blockId,
 			blockName,
@@ -27,10 +26,10 @@ class JustifyControl extends Component {
 			updateBlockAttributes,
 		} = this.props;
 
-		if( isDisabled ){
+		if ( isDisabled ) {
 			return null;
 		}
-		
+
 		const onToggle = () => {
 			updateBlockAttributes( blockId, { align: isBlockJustified ? null : 'justify' } );
 		};
@@ -43,11 +42,10 @@ class JustifyControl extends Component {
 			/>
 		);
 	}
-
 }
 
 export default compose(
-	withSelect( select => {
+	withSelect( ( select ) => {
 		const selectedBlock = select( 'core/block-editor' ).getSelectedBlock();
 		if ( ! selectedBlock ) {
 			return {};
@@ -60,11 +58,11 @@ export default compose(
 			formatTypes: select( 'core/rich-text' ).getFormatTypes(),
 		};
 	} ),
-	withDispatch( dispatch => ( {
+	withDispatch( ( dispatch ) => ( {
 		updateBlockAttributes: dispatch( 'core/block-editor' ).updateBlockAttributes,
 	} ) ),
-	ifCondition( props => {
-		const checkFormats = props.formatTypes.filter( formats => formats['name'] === 'wpcom/justify' );
+	ifCondition( ( props ) => {
+		const checkFormats = props.formatTypes.filter( ( formats ) => formats.name === 'wpcom/justify' );
 		return 'core/paragraph' === props.blockName && checkFormats.length === 0;
 	} )
 )( JustifyControl );

@@ -1,5 +1,5 @@
 /**
- * External Dependencies
+ * External dependencies
  */
 import { split, replace, get, join } from 'lodash';
 
@@ -23,23 +23,22 @@ const enhance = compose(
 		const selectedBlock = select( 'core/block-editor' ).getSelectedBlock();
 		let getClasses 	= get( selectedBlock, 'attributes.className' );
 
-		if( getClasses ){
+		if ( getClasses ) {
 			getClasses = replace( getClasses, ',', ' ' );
 		}
 
-		if( selectedBlock && getClasses && join( block.customClassNames, ' ' ) !== getClasses  ){
+		if ( selectedBlock && getClasses && join( block.customClassNames, ' ' ) !== getClasses ) {
 			//apply to selected block only
-			if( block.clientId == selectedBlock.clientId ){
+			if ( block.clientId == selectedBlock.clientId ) {
 				// props.attributes.className || ''
-				block.setState({ customClassNames: split( getClasses, ' ' ) });
+				block.setState( { customClassNames: split( getClasses, ' ' ) } );
 			}
 		}
 		return {
-			suggestions: select('core/editor').getEditorSettings().editorskitCustomClassNames,
+			suggestions: select( 'core/editor' ).getEditorSettings().editorskitCustomClassNames,
 		};
 	} ),
 );
-
 
 /**
  * Override the default edit UI to include a new block inspector control for
@@ -51,7 +50,6 @@ const enhance = compose(
  */
 const withInspectorControl = createHigherOrderComponent( ( BlockEdit ) => {
 	return enhance( ( { ...props } ) => {
-		
 		const hasCustomClassName = hasBlockSupport( props.name, 'customClassName', true );
 
 		const {
@@ -59,22 +57,22 @@ const withInspectorControl = createHigherOrderComponent( ( BlockEdit ) => {
 			suggestions,
 			setState,
 		} = props;
-		
+
 		if ( hasCustomClassName && props.isSelected ) {
 			return (
 				<Fragment>
 					<BlockEdit { ...props } />
 					<InspectorAdvancedControls>
-						<FormTokenField 
+						<FormTokenField
 							label={ __( 'Additional CSS Class(es)' ) }
-							value={ customClassNames } 
-							suggestions={ suggestions } 
+							value={ customClassNames }
+							suggestions={ suggestions }
 							maxSuggestions={ 20 }
 							onChange={ ( nextValue ) => {
 								props.setAttributes( {
 									className: nextValue !== '' ? join( nextValue, ' ' ) : undefined,
 								} );
-								setState( { customClassNames : nextValue !== '' ? nextValue : undefined } )
+								setState( { customClassNames: nextValue !== '' ? nextValue : undefined } );
 							} }
 							help={ __( 'Separate multiple classes with spaces.' ) }
 						/>
@@ -84,11 +82,11 @@ const withInspectorControl = createHigherOrderComponent( ( BlockEdit ) => {
 		}
 
 		return <BlockEdit { ...props } />;
-	});
+	} );
 }, 'withInspectorControl' );
 
-function applyFilters(){
-	if( ! select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitCustomClassNamesTools' ) ){
+function applyFilters() {
+	if ( ! select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitCustomClassNamesTools' ) ) {
 		removeFilter( 'editor.BlockEdit', 'core/editor/custom-class-name/with-inspector-control' );
 		addFilter( 'editor.BlockEdit', 'editorskit/custom-class-name/with-inspector-control', withInspectorControl );
 	}

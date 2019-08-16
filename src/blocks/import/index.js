@@ -38,11 +38,11 @@ const blockAttributes = {
 
 const settings = {
 
-	title: title,
+	title,
 
 	description: __( 'Provide contextual feedback messages.' ),
 
-	keywords: keywords,
+	keywords,
 
 	attributes: blockAttributes,
 
@@ -52,7 +52,7 @@ const settings = {
 		alignFull: false,
 	},
 
-	transforms: transforms,
+	transforms,
 
 	edit: Edit,
 

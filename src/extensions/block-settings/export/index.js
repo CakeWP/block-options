@@ -9,6 +9,6 @@ import ExportManager from './components/export';
 const { registerPlugin } = wp.plugins;
 
 registerPlugin( 'editorskit-features-import-export', {
-    icon: false,
+	icon: false,
 	render: ExportManager,
 } );

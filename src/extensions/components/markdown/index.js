@@ -9,6 +9,6 @@ import MarkdownFormatting from './components/menu';
 const { registerPlugin } = wp.plugins;
 
 registerPlugin( 'editorskit-markdown-formatting', {
-    icon: false,
+	icon: false,
 	render: MarkdownFormatting,
 } );

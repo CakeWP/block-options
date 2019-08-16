@@ -24,22 +24,21 @@ class SubscriptControl extends Component {
 	}
 
 	render() {
-
 		const {
 			name,
 			value,
 			isActive,
 			onChange,
 		} = this.props;
-		
+
 		const onToggle = () => {
 			//remove superscript format if applied
-			let record = removeFormat( value, 'editorskit/superscript' );
-			
+			const record = removeFormat( value, 'editorskit/superscript' );
+
 			onChange(
 				toggleFormat( record, {
 					type: name,
-				} ) 
+				} )
 			);
 		};
 		return (
@@ -59,14 +58,13 @@ class SubscriptControl extends Component {
 			</Fragment>
 		);
 	}
-
 }
 
 export default compose(
-	withSelect( select => {
+	withSelect( ( select ) => {
 		return {
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitSubscriptFormats' ),
 		};
 	} ),
-	ifCondition( props => !props.isDisabled ),
+	ifCondition( ( props ) => ! props.isDisabled ),
 )( SubscriptControl );

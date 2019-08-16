@@ -9,6 +9,6 @@ import CodeEditor from './components/code-editor';
 const { registerPlugin } = wp.plugins;
 
 registerPlugin( 'editorskit-code-editor', {
-    icon: false,
+	icon: false,
 	render: CodeEditor,
 } );

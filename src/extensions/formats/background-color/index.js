@@ -16,7 +16,6 @@ const { Fragment } = wp.element;
 const { toggleFormat } = wp.richText;
 const { RichTextShortcut, __unstableRichTextInputEvent } = wp.blockEditor;
 
-
 /**
  * Block constants
  */

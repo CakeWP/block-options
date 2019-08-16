@@ -9,6 +9,6 @@ import BlockSettings from './components/modal';
 const { registerPlugin } = wp.plugins;
 
 registerPlugin( 'editorskit-block-settings', {
-    icon: 'visibility',
+	icon: 'visibility',
 	render: BlockSettings,
 } );

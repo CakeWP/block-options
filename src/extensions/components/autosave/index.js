@@ -9,6 +9,6 @@ import ManageAutoSave from './components/menu';
 const { registerPlugin } = wp.plugins;
 
 registerPlugin( 'editorskit-editor-autosave', {
-    icon: false,
+	icon: false,
 	render: ManageAutoSave,
 } );

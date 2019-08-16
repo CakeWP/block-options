@@ -20,38 +20,36 @@ const allowedBlocks = [ 'core/paragraph', 'core/heading' ];
  * Render plugin
  */
 class ClearBlockFormatting extends Component {
-
 	constructor( props ) {
 		super( ...arguments );
-
 	}
 
 	render() {
 		const { blockId, blockName, blockContent, clearBlockFormatting } = this.props;
-		
-		let record = create( { html: blockContent } );
-		
+
+		const record = create( { html: blockContent } );
+
 		return (
 			<Fragment>
 				<PluginBlockSettingsMenuItem
-					icon='editor-removeformatting'
+					icon="editor-removeformatting"
 					label={ __( 'Clear Block Formatting' ) }
 					onClick={ () => {
-						clearBlockFormatting( blockId, blockName, toHTMLString( { 
-							value: { ...record, formats: Array(record.formats.length) }
+						clearBlockFormatting( blockId, blockName, toHTMLString( {
+							value: { ...record, formats: Array( record.formats.length ) },
 						} ) );
 					} }
 				>
-					
+
 				</PluginBlockSettingsMenuItem>
 
 			</Fragment>
 		);
 	}
-};
+}
 
 export default compose(
-	withSelect( select => {
+	withSelect( ( select ) => {
 		const selectedBlock = select( 'core/block-editor' ).getSelectedBlock();
 		if ( ! selectedBlock ) {
 			return {};
@@ -63,16 +61,16 @@ export default compose(
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitClearFormattingFormats' ),
 		};
 	} ),
-	withDispatch( dispatch => {
+	withDispatch( ( dispatch ) => {
 		const { updateBlockAttributes } = dispatch( 'core/block-editor' );
-		return{
+		return {
 			clearBlockFormatting( blockId, blockName, blockContent ) {
 				updateBlockAttributes( blockId, { content: blockContent } );
-			}
-		}
+			},
+		};
 	} ),
-	ifCondition( props => {
-		return !props.isDisabled && allowedBlocks.includes( props.blockName );
+	ifCondition( ( props ) => {
+		return ! props.isDisabled && allowedBlocks.includes( props.blockName );
 	} ),
 	withSpokenMessages,
 )( ClearBlockFormatting );

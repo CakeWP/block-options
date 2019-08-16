@@ -23,17 +23,15 @@ const { withSpokenMessages, Modal, CheckboxControl } = wp.components;
  * Render plugin
  */
 class MarkdownFormatting extends Component {
-
 	constructor( props ) {
 		super( ...arguments );
 
-		this.state   = {
+		this.state = {
 			isOpen: false,
-		}
+		};
 	}
-	
-	render(){
 
+	render() {
 		const closeModal = () => (
 			this.setState( { isOpen: false } )
 		);
@@ -103,17 +101,17 @@ class MarkdownFormatting extends Component {
 						onRequestClose={ () => closeModal() }
 						closeLabel={ __( 'Close' ) }
 						icon={ null }
-						className='editorskit-modal-component components-modal--editorskit-markdown'
+						className="editorskit-modal-component components-modal--editorskit-markdown"
 					>
 						{ shortcutConfig.map( ( config, index ) => (
 							<ShortcutSection key={ index } { ...config } />
 						) ) }
-					</Modal>
-				: null }
+					</Modal> :
+					null }
 			</Fragment>
 		);
 	}
-};
+}
 
 export default compose(
 	withSelect( ( select, {
@@ -126,6 +124,6 @@ export default compose(
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitMarkdownWriting' ),
 		};
 	} ),
-	ifCondition( props => !props.isDisabled ),
+	ifCondition( ( props ) => ! props.isDisabled ),
 	withSpokenMessages,
 )( MarkdownFormatting );

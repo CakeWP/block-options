@@ -9,6 +9,6 @@ import DisableTitle from './controls';
 const { registerPlugin } = wp.plugins;
 
 registerPlugin( 'editorskit-disable-title', {
-    icon: false,
+	icon: false,
 	render: DisableTitle,
 } );

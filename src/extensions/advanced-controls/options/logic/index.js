@@ -3,8 +3,8 @@
  */
 const { __ } = wp.i18n;
 const { dispatch } = wp.data;
-const { Fragment } = wp.element; 
-const { TextareaControl, Tooltip } = wp.components; 
+const { Fragment } = wp.element;
+const { TextareaControl, Tooltip } = wp.components;
 
 const LogicOptions = ( props ) => {
 	const {
@@ -19,35 +19,35 @@ const LogicOptions = ( props ) => {
 	} = attributes;
 
 	const onSelectUser = ( state ) => {
-		var newValue = !editorskit[ state ];
-					        		
+		const newValue = ! editorskit[ state ];
+
 		delete editorskit[ state ];
 
-    	var blockOptions = Object.assign( { [ state ]: newValue }, editorskit );
+    	const blockOptions = Object.assign( { [ state ]: newValue }, editorskit );
 
     	dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { editorskit: blockOptions } );
 
-    	if( reloadModal ){
+    	if ( reloadModal ) {
     		reloadModal();
     	}
-	}
+	};
 
-	return(
+	return (
 		<Fragment>
 			<div className="editorskit-button-group-container editorskit-button-group-logic">
-					<TextareaControl
+				<TextareaControl
 					rows="2"
-				        label={ __( 'Conditional Logic' ) }
-				        help={ __( 'Add valid PHP conditional tags for custom & advanced visibility options.' ) }
-				        value={ editorskit.logic ? editorskit.logic : null }
-				        onChange={ ( newValue ) => {
+					label={ __( 'Conditional Logic' ) }
+					help={ __( 'Add valid PHP conditional tags for custom & advanced visibility options.' ) }
+					value={ editorskit.logic ? editorskit.logic : null }
+					onChange={ ( newValue ) => {
 				        	delete editorskit.logic;
 
-					    	var blockOptions = Object.assign( { logic: newValue }, editorskit );
+					    	const blockOptions = Object.assign( { logic: newValue }, editorskit );
 
 					    	dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { editorskit: blockOptions } );
 
-					    	if( reloadModal ){
+					    	if ( reloadModal ) {
 					    		reloadModal();
 					    	}
 				        } }
@@ -55,6 +55,6 @@ const LogicOptions = ( props ) => {
 			</div>
 		</Fragment>
 	);
-}
+};
 
 export default LogicOptions;

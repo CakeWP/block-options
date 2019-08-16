@@ -7,17 +7,15 @@
  */
 const { __, sprintf } = wp.i18n;
 const { withSelect, withDispatch } = wp.data;
-const { compose, withState} = wp.compose;
+const { compose, withState } = wp.compose;
 const { Fragment, Component } = wp.element;
 const { PluginMoreMenuItem } = wp.editPost;
 const { MenuGroup, MenuItemsChoice, MenuItem, withSpokenMessages } = wp.components;
-
 
 /**
  * Render plugin
  */
 class EditorMinHeight extends Component {
-
 	constructor( props ) {
 		super( ...arguments );
 	}
@@ -32,21 +30,21 @@ class EditorMinHeight extends Component {
 
 	sync() {
 		const { isActive, isDisabled } = this.props;
-		if ( isActive && !isDisabled ) {
+		if ( isActive && ! isDisabled ) {
 			document.body.classList.add( 'is-editorkit-height-on' );
 		} else {
 			document.body.classList.remove( 'is-editorkit-height-on' );
 		}
 	}
-	
-	render(){
+
+	render() {
 		const {
 			isActive,
 			onToggle,
 			isDisabled,
 		} = this.props;
 
-		if( isDisabled ){
+		if ( isDisabled ) {
 			return null;
 		}
 
@@ -60,11 +58,11 @@ class EditorMinHeight extends Component {
 				>
 					{ __( 'Editor Height' ) }
 				</PluginMoreMenuItem>
-				
+
 			</Fragment>
 		);
 	}
-};
+}
 
 export default compose( [
 	withSelect( ( select ) => ( {
