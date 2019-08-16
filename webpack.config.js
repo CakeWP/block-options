@@ -11,7 +11,8 @@ module.exports = {
 	entry: {
 		index: path.resolve( process.cwd(), 'src', 'blocks.js' ),
 		style: path.resolve( process.cwd(), 'src', 'style.scss' ),
-		editor: path.resolve( process.cwd(), 'src', 'editor.scss' ),
+        editor: path.resolve( process.cwd(), 'src', 'editor.scss' ),
+        admin: path.resolve( process.cwd(), 'src', 'admin.scss' ),
 	},
 	optimization: {
 		...defaultConfig.optimization,
@@ -26,6 +27,12 @@ module.exports = {
 				style: {
 					name: 'style',
 					test: /style\.(sc|sa|c)ss$/,
+					chunks: 'all',
+					enforce: true,
+                },
+                admin: {
+					name: 'admin',
+					test: /admin\.(sc|sa|c)ss$/,
 					chunks: 'all',
 					enforce: true,
 				},
@@ -85,6 +92,18 @@ module.exports = {
 		new MiniCssExtractPlugin( {
 			filename: '[name].build.css',
 		} ),
-		new IgnoreEmitPlugin( [ 'editor.js', 'style.js' ] ),
+		new IgnoreEmitPlugin( [ 
+            'editor.js',
+            'style.js',
+            'admin.js',
+            'index.deps.json',
+            'editor.deps.json',
+            'style.deps.json',
+            'admin.deps.json',
+            'index.js.map',
+            'editor.build.css.map',
+            'style.build.css.map',
+            'admin.build.css.map',
+        ] ),
 	],
 };
