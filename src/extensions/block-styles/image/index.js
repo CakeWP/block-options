@@ -4,11 +4,6 @@
 const { __ } = wp.i18n;
 const { registerBlockStyle } = wp.blocks;
 
-/**
- * Internal Dependencies
- */
-import './styles/style.scss';
-
 function registerStyles () {
 	[
 		'core/image',

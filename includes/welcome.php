@@ -64,7 +64,7 @@ if( !class_exists( 'BLOCKOPS_Welcome' ) ){
 
 					<p><?php echo esc_html__( 'Happy building!', 'block-options' ); ?></p>
 
-					<p><img src="<?php echo esc_url( EDITORSKIT_PLUGIN_URL . 'dist/images/logo-800.png' ); ?>" alt="<?php echo esc_attr__( 'EditorsKit Team', 'block-options' ); ?>"></p>
+					<p><img src="<?php echo esc_url( EDITORSKIT_PLUGIN_URL . 'build/images/logo-800.png' ); ?>" alt="<?php echo esc_attr__( 'EditorsKit Team', 'block-options' ); ?>"></p>
 
 				</div>
 			</div>

@@ -3,11 +3,9 @@
  */
 import classnames from 'classnames';
 
-
 /**
  * Internal dependencies
  */
-import './styles/editor.scss';
 import './custom-class-name';
 import DevicesOptions from './options/devices/';
 import UserStateOptions from './options/state/';

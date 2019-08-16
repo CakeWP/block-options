@@ -4,12 +4,6 @@
 import { split, replace, get, join } from 'lodash';
 
 /**
- * Internal dependencies
- */
-import './styles/editor.scss';
-import './styles/style.scss';
-
-/**
  * WordPress Dependencies
  */
 const { __ } = wp.i18n;

@@ -1,7 +1,6 @@
 /**
  * Internal dependencies
  */
-// import './styles/editor.scss';
 import FeaturesManager from './components/manager';
 
 /**

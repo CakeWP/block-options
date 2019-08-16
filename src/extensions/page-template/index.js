@@ -1,8 +1,4 @@
 /**
- * Internal dependencies
- */
-
-/**
  * WordPress dependencies
  */
 const { select } = wp.data;

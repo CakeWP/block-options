@@ -1,7 +1,6 @@
 /**
  * Internal dependencies
  */
-import './styles/editor.scss';
 import BlockGuideLines from './components/menu';
 
 /**

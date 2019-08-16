@@ -14,9 +14,6 @@
  */
 const { registerBlockType } = wp.blocks;
 
-// Styles
-import './styles/style.scss';
-
 // Extensions
 import './extensions/attributes';
 import './extensions/advanced-controls';
