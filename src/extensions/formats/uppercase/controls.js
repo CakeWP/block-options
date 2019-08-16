@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import { get } from 'lodash';
-
-/**
  * Internal dependencies
  */
 import icon from './icon';
@@ -14,12 +9,12 @@ import icon from './icon';
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { compose, ifCondition } = wp.compose;
-const { select, withSelect, withDispatch } = wp.data;
+const { withSelect } = wp.data;
 const { RichTextToolbarButton } = wp.blockEditor;
 const { toggleFormat } = wp.richText;
 
 class UppercaseControl extends Component {
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 	}
 

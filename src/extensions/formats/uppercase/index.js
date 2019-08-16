@@ -1,13 +1,13 @@
 /**
  * Internal dependencies
  */
-import UppercaseControl from './controls';
+import UppercaseControl from './controls'; // eslint-disable-line no-unused-vars
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Fragment } = wp.element;
+const { Fragment } = wp.element; // eslint-disable-line no-unused-vars
 
 /**
  * Block constants

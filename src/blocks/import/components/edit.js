@@ -1,25 +1,18 @@
 /**
- * External dependencies
- */
-import map from 'lodash/map';
-import classnames from 'classnames';
-
-/**
  * Internal dependencies
  */
-import icon from '../icon';
 import importReusableBlock from '../utils/import';
 
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
-const { withSelect, withDispatch, select, dispatch } = wp.data;
-const { compose, withState, ifCondition, withInstanceId } = wp.compose;
+const { __ } = wp.i18n;
+const { select, dispatch } = wp.data;
+const { withInstanceId } = wp.compose;
 const { Fragment, Component } = wp.element;
 const { parse, createBlock } = wp.blocks;
-const { MediaUploadCheck, BlockIcon } = wp.blockEditor;
-const { withSpokenMessages, CheckboxControl, Button, DropZone, FormFileUpload, Placeholder, Notice } = wp.components;
+const { MediaUploadCheck } = wp.blockEditor;
+const { DropZone, FormFileUpload, Placeholder, Notice } = wp.components;
 
 const ALLOWED_BG_MEDIA_TYPES = [ 'json' ];
 
@@ -27,7 +20,7 @@ const ALLOWED_BG_MEDIA_TYPES = [ 'json' ];
  * Block edit function
  */
 class Edit extends Component {
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 
 		this.state = {
@@ -122,10 +115,7 @@ class Edit extends Component {
 	}
 
 	render() {
-		const { instanceId } = this.props;
-		const { file, isLoading, error } = this.state;
-
-		const inputId = 'editorskit-blocks-import-form-' + instanceId;
+		const { isLoading, error } = this.state;
 
 		return (
 			<Placeholder
