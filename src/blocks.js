@@ -52,7 +52,7 @@ export function registerBlocks() {
 			return;
 		}
 
-		const { name, icon, settings } = block;
+		const { name, settings } = block;
 
 		registerBlockType( `editorskit/${ name }`, { category: 'common', ...settings } );
 	} );

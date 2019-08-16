@@ -1,8 +1,7 @@
 /**
  * External dependencies
  */
-import map from 'lodash/map';
-import castArray from 'lodash/castArray';
+import { castArray } from 'lodash';
 
 /**
  * Internal dependencies
@@ -12,18 +11,18 @@ import shortcutConfig from './config';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
 const { PluginMoreMenuItem } = wp.editPost;
 const { compose, ifCondition } = wp.compose;
 const { select, withSelect } = wp.data;
-const { withSpokenMessages, Modal, CheckboxControl } = wp.components;
+const { withSpokenMessages, Modal } = wp.components;
 
 /**
  * Render plugin
  */
 class MarkdownFormatting extends Component {
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 
 		this.state = {
@@ -114,12 +113,7 @@ class MarkdownFormatting extends Component {
 }
 
 export default compose(
-	withSelect( ( select, {
-		clientId,
-		instanceId,
-		identifier = instanceId,
-		isSelected,
-	} ) => {
+	withSelect( ( select ) => {
 		return {
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitMarkdownWriting' ),
 		};

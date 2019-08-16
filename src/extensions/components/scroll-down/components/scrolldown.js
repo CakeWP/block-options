@@ -1,13 +1,9 @@
 /**
- * Internal dependencies
- */
-
-/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;
-const { compose, withState } = wp.compose;
+const { compose } = wp.compose;
 const { Fragment, Component } = wp.element;
 const { PluginMoreMenuItem } = wp.editPost;
 const { withSpokenMessages } = wp.components;
@@ -16,14 +12,13 @@ const { withSpokenMessages } = wp.components;
  * Render plugin
  */
 class ScrollDown extends Component {
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 	}
 
 	render() {
 		const {
 			isActive,
-			onToggle,
 			isDisabled,
 		} = this.props;
 

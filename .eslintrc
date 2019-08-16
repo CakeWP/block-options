@@ -19,4 +19,7 @@
   "extends": [
     "eslint:recommended",
   ],
+  "rules": {
+    "no-unused-vars": "off"
+  }
 }

@@ -11,8 +11,7 @@ import { getActiveFormats } from './get-active-formats';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Fragment, Component } = wp.element;
+const { Component } = wp.element;
 const { compose, ifCondition } = wp.compose;
 const { select, withSelect, withDispatch } = wp.data;
 const { applyFormat, getTextContent, slice, remove, split } = wp.richText;
@@ -29,7 +28,7 @@ class MarkdownControl extends Component {
 	}
 
 	_experimentalMarkdown( record, onChange, markdown, format ) {
-		const { start, end } = record;
+		const { start } = record;
 		const text = getTextContent( record );
 		const activeFormats = getActiveFormats( record );
 
@@ -98,7 +97,7 @@ class MarkdownControl extends Component {
 	}
 
 	render() {
-		const { value, onChange, onSelectionChange } = this.props;
+		const { value, onChange } = this.props;
 		const markdowns = {
 			bold: {
 				markdown: '*',
@@ -123,12 +122,7 @@ class MarkdownControl extends Component {
 }
 
 export default compose(
-	withSelect( ( select, {
-		clientId,
-		instanceId,
-		identifier = instanceId,
-		isSelected,
-	} ) => {
+	withSelect( ( select ) => {
 		return {
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitMarkdownWriting' ),
 		};

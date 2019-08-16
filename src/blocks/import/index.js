@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-
-/**
  * Internal dependencies
  */
 import Edit from './components/edit';
@@ -14,8 +9,6 @@ import transforms from './transforms';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { createBlock } = wp.blocks;
-const { RichText, getColorClassName } = wp.editor;
 
 /**
  * Block constants

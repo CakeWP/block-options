@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import { get } from 'lodash';
-
-/**
  * Internal dependencies
  */
 import Edit from './components/edit';
@@ -12,9 +7,6 @@ import Edit from './components/edit';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Fragment } = wp.element;
-const { toggleFormat } = wp.richText;
-const { RichTextShortcut, __unstableRichTextInputEvent } = wp.blockEditor;
 
 /**
  * Block constants

@@ -10,10 +10,10 @@ import ACFOptions from '../../../advanced-controls/options/acf/';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { select, withSelect } = wp.data;
+const { __ } = wp.i18n;
+const { withSelect } = wp.data;
 const { Fragment, Component } = wp.element;
-const { Button, Modal, TextControl, TabPanel, withSpokenMessages } = wp.components;
+const { Modal, TabPanel, withSpokenMessages } = wp.components;
 const { PluginBlockSettingsMenuItem } = wp.editPost;
 const { compose } = wp.compose;
 
@@ -23,7 +23,7 @@ const restrictedBlocks = [ 'core/freeform', 'core/shortcode', 'core/block', 'cor
  * Render plugin
  */
 class BlockSettings extends Component {
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 
 		this.reloadModal = this.reloadModal.bind( this );

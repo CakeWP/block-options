@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { map, kebabCase } from 'lodash';
+import { kebabCase } from 'lodash';
 
 /**
  * Internal dependencies
@@ -12,19 +12,19 @@ import { download } from '../utils/file';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { withSelect, withDispatch, select } = wp.data;
-const { compose, withState, ifCondition } = wp.compose;
+const { __ } = wp.i18n;
+const { withSelect, select } = wp.data;
+const { compose, ifCondition } = wp.compose;
 const { Fragment, Component } = wp.element;
 const { PluginBlockSettingsMenuItem } = wp.editPost;
-const { withSpokenMessages, Modal, CheckboxControl, TabPanel } = wp.components;
-const { serialize, parse, createBlock } = wp.blocks;
+const { withSpokenMessages } = wp.components;
+const { serialize } = wp.blocks;
 
 /**
  * Render plugin
  */
 class ExportManager extends Component {
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 
 		this.saveAsJSON = this.saveAsJSON.bind( this );
@@ -35,7 +35,6 @@ class ExportManager extends Component {
 			selectedBlockCount,
 			selectedBlock,
 			selectedBlocks,
-			getBlock,
 		} = this.props;
 
 		if ( selectedBlockCount < 1 ) {
@@ -43,7 +42,6 @@ class ExportManager extends Component {
 		}
 
 		let blocks,
-			reusable = [],
 			title = 'editorskit/export';
 
 		if ( selectedBlockCount == 1 ) {

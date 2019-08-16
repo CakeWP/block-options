@@ -13,7 +13,7 @@ const { withSelect, select }	= wp.data;
 const { compose, createHigherOrderComponent, withState }	= wp.compose;
 const { hasBlockSupport }	= wp.blocks;
 const { InspectorAdvancedControls }	= wp.blockEditor;
-const { TextControl, FormTokenField }	= wp.components;
+const { FormTokenField }	= wp.components;
 
 const enhance = compose(
 	withState( {

@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-
-/**
  * Internal dependencies
  */
 import './custom-class-name';
@@ -20,13 +15,13 @@ const { Fragment }	= wp.element;
 const { withSelect, select } = wp.data;
 const { InspectorAdvancedControls, InspectorControls }	= wp.blockEditor;
 const { compose, createHigherOrderComponent } = wp.compose;
-const { ToggleControl, PanelBody } = wp.components;
+const { PanelBody } = wp.components;
 const { hasBlockSupport } = wp.blocks;
 
 const restrictedBlocks = [ 'core/block', 'core/freeform', 'core/shortcode', 'core/template', 'core/nextpage' ];
 
 const enhance = compose(
-	withSelect( ( select, block ) => {
+	withSelect( ( select ) => {
 		return {
 			isDisabledDevices: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitDevicesVisibility' ),
 			isDisabledUserState: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitUserStateVisibility' ),
@@ -44,7 +39,6 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 	return enhance( ( { ...props } ) => {
 		const {
 			name,
-			clientId,
 			attributes,
 			setAttributes,
 			isSelected,

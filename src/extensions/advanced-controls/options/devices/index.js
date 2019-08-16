@@ -4,13 +4,12 @@
 const { __ } = wp.i18n;
 const { dispatch } = wp.data;
 const { Fragment } = wp.element;
-const { Button, ButtonGroup, Dashicon, Tooltip, ToggleControl } = wp.components;
+const { ToggleControl } = wp.components;
 
 const DevicesOptions = ( props ) => {
 	const {
 		clientId,
 		attributes,
-		setAttributes,
 		reloadModal,
 	} = props;
 

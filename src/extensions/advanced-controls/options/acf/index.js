@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import isEmpty from 'lodash/isEmpty';
+import { isEmpty } from 'lodash';
 
 /**
  * Internal dependencies
@@ -14,10 +14,10 @@ import './api.js';
 const { __ } = wp.i18n;
 const { dispatch, withSelect } = wp.data;
 const { Fragment, Component } = wp.element;
-const { Button, ButtonGroup, Dashicon, Tooltip, SelectControl, TextareaControl } = wp.components;
+const { SelectControl, TextareaControl } = wp.components;
 
 class ACFOptions extends Component {
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 	}
 
@@ -25,7 +25,6 @@ class ACFOptions extends Component {
 		const {
 			acf,
 			selectedBlock,
-			setAttributes,
 		} = this.props;
 
 		const {
@@ -150,7 +149,7 @@ class ACFOptions extends Component {
 	}
 }
 
-export default withSelect( ( select, props ) => {
+export default withSelect( ( select ) => {
 	return {
 		acf: select( 'editorskit/acf' ).receiveACFields(),
 	};

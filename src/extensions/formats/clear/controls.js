@@ -9,12 +9,12 @@ import map from 'lodash/map';
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { compose, ifCondition } = wp.compose;
-const { select, withSelect, withDispatch } = wp.data;
+const { select, withSelect } = wp.data;
 const { RichTextToolbarButton } = wp.blockEditor;
 const { removeFormat } = wp.richText;
 
 class ClearFormatting extends Component {
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 	}
 
@@ -23,7 +23,6 @@ class ClearFormatting extends Component {
 			value,
 			isActive,
 			onChange,
-			activeAttributes,
 		} = this.props;
 
 		const onToggle = () => {

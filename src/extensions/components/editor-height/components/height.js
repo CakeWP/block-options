@@ -5,18 +5,18 @@
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { withSelect, withDispatch } = wp.data;
-const { compose, withState } = wp.compose;
+const { compose } = wp.compose;
 const { Fragment, Component } = wp.element;
 const { PluginMoreMenuItem } = wp.editPost;
-const { MenuGroup, MenuItemsChoice, MenuItem, withSpokenMessages } = wp.components;
+const { withSpokenMessages } = wp.components;
 
 /**
  * Render plugin
  */
 class EditorMinHeight extends Component {
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 	}
 
@@ -69,7 +69,7 @@ export default compose( [
 		isActive: select( 'core/edit-post' ).isFeatureActive( 'editorMinHeight' ),
 		isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitHeightTools' ),
 	} ) ),
-	withDispatch( ( dispatch, ownProps ) => ( {
+	withDispatch( ( dispatch ) => ( {
 		onToggle() {
 			dispatch( 'core/edit-post' ).toggleFeature( 'editorMinHeight' );
 		},

@@ -1,8 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { displayShortcutList, shortcutAriaLabel } = wp.keycodes;
+const { __ } = wp.i18n;
 
 const markdownShortcuts = {
 	title: __( 'Markdown Formatting' ),

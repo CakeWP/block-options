@@ -6,9 +6,9 @@ import map from 'lodash/map';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { withSelect, withDispatch, select } = wp.data;
-const { compose, withState } = wp.compose;
+const { compose } = wp.compose;
 const { Fragment, Component } = wp.element;
 const { PluginMoreMenuItem } = wp.editPost;
 const { withSpokenMessages, Modal, CheckboxControl } = wp.components;
@@ -21,7 +21,7 @@ const capitalize = ( str ) => {
  * Render plugin
  */
 class FeaturesManager extends Component {
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 
 		this.state = {
@@ -87,7 +87,7 @@ export default compose( [
 		editorSettings: select( 'core/editor' ).getEditorSettings(),
 		preferences: select( 'core/edit-post' ).getPreferences(),
 	} ) ),
-	withDispatch( ( dispatch, ownProps ) => ( {
+	withDispatch( ( dispatch ) => ( {
 		onToggle( category, item ) {
 			dispatch( 'core/edit-post' ).toggleFeature( 'disableEditorsKit' + capitalize( item ) + capitalize( category ) );
 		},

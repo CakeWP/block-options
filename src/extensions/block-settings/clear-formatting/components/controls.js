@@ -1,18 +1,18 @@
 /**
  * External dependencies
  */
-import { get, map } from 'lodash';
+import { get } from 'lodash';
 
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { select, withSelect, withDispatch } = wp.data;
 const { Fragment, Component } = wp.element;
-const { Button, Modal, TextControl, TabPanel, withSpokenMessages } = wp.components;
+const { withSpokenMessages } = wp.components;
 const { PluginBlockSettingsMenuItem } = wp.editPost;
 const { compose, ifCondition } = wp.compose;
-const { create, toHTMLString, applyFormat, removeFormat } = wp.richText;
+const { create, toHTMLString } = wp.richText;
 
 const allowedBlocks = [ 'core/paragraph', 'core/heading' ];
 
@@ -20,7 +20,7 @@ const allowedBlocks = [ 'core/paragraph', 'core/heading' ];
  * Render plugin
  */
 class ClearBlockFormatting extends Component {
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 	}
 

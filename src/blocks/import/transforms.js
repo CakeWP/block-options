@@ -1,12 +1,6 @@
 /**
- * External dependencies
- */
-import { includes } from 'lodash';
-
-/**
  * WordPress dependencies
  */
-const { createBlobURL } = wp.blob;
 const { createBlock } = wp.blocks;
 
 const transforms = {

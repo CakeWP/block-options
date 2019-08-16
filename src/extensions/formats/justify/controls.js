@@ -13,14 +13,13 @@ const { select, withSelect, withDispatch } = wp.data;
 const { RichTextToolbarButton } = wp.blockEditor;
 
 class JustifyControl extends Component {
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 	}
 
 	render() {
 		const {
 			blockId,
-			blockName,
 			isBlockJustified,
 			isDisabled,
 			updateBlockAttributes,

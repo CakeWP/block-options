@@ -3,7 +3,6 @@
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { domReady } = wp.domReady;
 const { compose, ifCondition } = wp.compose;
 const { select, withSelect, withDispatch } = wp.data;
 const { Button, Dashicon, withSpokenMessages, Tooltip } = wp.components;
@@ -17,7 +16,7 @@ class DisableTitle extends Component {
 	}
 
 	initialize() {
-		const { onToggle, isDisabled, postmeta } = this.props;
+		const { isDisabled, postmeta } = this.props;
 
 		const titleBlock = document.querySelector( '.editor-post-title__block' );
 

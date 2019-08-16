@@ -1,22 +1,16 @@
 /**
- * Internal dependencies
- */
-
-/**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { withSelect, withDispatch } = wp.data;
-const { compose, withState, ifCondition } = wp.compose;
-const { Fragment, Component } = wp.element;
-const { PluginMoreMenuItem } = wp.editPost;
-const { MenuGroup, MenuItemsChoice, MenuItem, withSpokenMessages } = wp.components;
+const { withSelect } = wp.data;
+const { compose } = wp.compose;
+const { Component } = wp.element;
+const { withSpokenMessages } = wp.components;
 
 /**
  * Render plugin
  */
 class CodeEditor extends Component {
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 
 		// this.addCodeMirror = this.addCodeMirror.bind( this );
@@ -65,7 +59,7 @@ class CodeEditor extends Component {
 			);
 
 			const textEditor = document.querySelector( '.editor-post-text-editor' );
-			const editor = wp.codeEditor.initialize( textEditor, editorSettings );
+			wp.codeEditor.initialize( textEditor, editorSettings );
 
 			this.setState( { isLoaded: true } );
 		} else if ( editorMode == 'visual' && this.state.isLoaded ) {

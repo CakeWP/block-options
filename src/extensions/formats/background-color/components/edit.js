@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { get } from 'lodash';
 
 /**
  * Internal dependencies
@@ -16,15 +15,15 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { select, withSelect } = wp.data;
 const { BlockControls } = wp.blockEditor;
-const { applyFormat, toggleFormat, removeFormat, getActiveFormat } = wp.richText;
-const { Toolbar, IconButton, Popover, ColorPalette, ColorIndicator } = wp.components;
+const { applyFormat, removeFormat, getActiveFormat } = wp.richText;
+const { Toolbar, IconButton, Popover, ColorPalette } = wp.components;
 const { compose, ifCondition } = wp.compose;
 
 const name = 'editorskit/background';
 const title = __( 'Highlight Color' );
 
 class Edit extends Component {
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 
 		this.toggle = this.toggle.bind( this );
