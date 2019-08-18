@@ -14,10 +14,6 @@ const { RichTextToolbarButton, RichTextShortcut } = wp.blockEditor;
 const { toggleFormat, removeFormat } = wp.richText;
 
 class SubscriptControl extends Component {
-	constructor() {
-		super( ...arguments );
-	}
-
 	render() {
 		const {
 			name,
@@ -56,7 +52,7 @@ class SubscriptControl extends Component {
 }
 
 export default compose(
-	withSelect( ( select ) => {
+	withSelect( () => {
 		return {
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitSubscriptFormats' ),
 		};

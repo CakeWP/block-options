@@ -83,7 +83,7 @@ class FeaturesManager extends Component {
 }
 
 export default compose( [
-	withSelect( ( select ) => ( {
+	withSelect( () => ( {
 		editorSettings: select( 'core/editor' ).getEditorSettings(),
 		preferences: select( 'core/edit-post' ).getPreferences(),
 	} ) ),

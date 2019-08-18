@@ -14,10 +14,6 @@ const { RichTextToolbarButton } = wp.blockEditor;
 const { toggleFormat } = wp.richText;
 
 class UppercaseControl extends Component {
-	constructor() {
-		super( ...arguments );
-	}
-
 	render() {
 		const {
 			onChange,

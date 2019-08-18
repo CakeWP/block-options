@@ -14,10 +14,6 @@ const { RichTextToolbarButton } = wp.blockEditor;
 const { removeFormat } = wp.richText;
 
 class ClearFormatting extends Component {
-	constructor() {
-		super( ...arguments );
-	}
-
 	render() {
 		const {
 			value,
@@ -49,7 +45,7 @@ class ClearFormatting extends Component {
 }
 
 export default compose(
-	withSelect( ( select ) => {
+	withSelect( () => {
 		return {
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitClearFormattingFormats' ),
 		};

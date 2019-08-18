@@ -13,10 +13,6 @@ const { select, withSelect, withDispatch } = wp.data;
 const { RichTextToolbarButton } = wp.blockEditor;
 
 class JustifyControl extends Component {
-	constructor() {
-		super( ...arguments );
-	}
-
 	render() {
 		const {
 			blockId,
@@ -44,7 +40,7 @@ class JustifyControl extends Component {
 }
 
 export default compose(
-	withSelect( ( select ) => {
+	withSelect( () => {
 		const selectedBlock = select( 'core/block-editor' ).getSelectedBlock();
 		if ( ! selectedBlock ) {
 			return {};

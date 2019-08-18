@@ -8,7 +8,7 @@ const { select, withSelect, withDispatch } = wp.data;
 const { Button, Dashicon, withSpokenMessages, Tooltip } = wp.components;
 
 class DisableTitle extends Component {
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 
 		this.initialize = this.initialize.bind( this );
@@ -76,7 +76,7 @@ class DisableTitle extends Component {
 }
 
 export default compose(
-	withSelect( ( select ) => {
+	withSelect( () => {
 		return {
 			readyState: document.readyState,
 			postmeta: select( 'core/editor' ).getEditedPostAttribute( 'meta' ),

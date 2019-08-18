@@ -14,7 +14,7 @@ import { getActiveFormats } from './get-active-formats';
 const { Component } = wp.element;
 const { compose, ifCondition } = wp.compose;
 const { select, withSelect, withDispatch } = wp.data;
-const { applyFormat, getTextContent, slice, remove, split } = wp.richText;
+const { applyFormat, getTextContent, remove } = wp.richText;
 const { withSpokenMessages } = wp.components;
 
 class MarkdownControl extends Component {
@@ -122,7 +122,7 @@ class MarkdownControl extends Component {
 }
 
 export default compose(
-	withSelect( ( select ) => {
+	withSelect( () => {
 		return {
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitMarkdownWriting' ),
 		};

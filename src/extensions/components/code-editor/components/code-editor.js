@@ -38,7 +38,7 @@ class CodeEditor extends Component {
 			return null;
 		}
 
-		if ( editorMode == 'text' && ! this.state.isLoaded ) {
+		if ( editorMode === 'text' && ! this.state.isLoaded ) {
 			const editorSettings = wp.codeEditor.defaultSettings ? _.clone( wp.codeEditor.defaultSettings ) : {};
 
 			//add placeholder class

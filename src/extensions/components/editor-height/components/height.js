@@ -16,10 +16,6 @@ const { withSpokenMessages } = wp.components;
  * Render plugin
  */
 class EditorMinHeight extends Component {
-	constructor() {
-		super( ...arguments );
-	}
-
 	componentDidMount() {
 		this.sync();
 	}

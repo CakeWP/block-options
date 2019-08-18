@@ -16,9 +16,6 @@ const { withSpokenMessages } = wp.components;
  * Render plugin
  */
 class BlockGuideLines extends Component {
-	constructor() {
-		super( ...arguments );
-	}
 
 	componentDidMount() {
 		this.sync();

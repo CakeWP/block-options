@@ -14,12 +14,8 @@ const { RichTextToolbarButton, RichTextShortcut } = wp.blockEditor;
 const { toggleFormat, removeFormat } = wp.richText;
 
 class SuperscriptControl extends Component {
-	constructor() {
-		super( ...arguments );
-	}
-
 	render() {
-		const {
+	const {
 			name,
 			value,
 			isActive,
@@ -56,7 +52,7 @@ class SuperscriptControl extends Component {
 }
 
 export default compose(
-	withSelect( ( select ) => {
+	withSelect( () => {
 		return {
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitSuperscriptFormats' ),
 		};

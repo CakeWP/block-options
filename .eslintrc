@@ -1,7 +1,9 @@
 {
   "parser": "babel-eslint",
   "globals": {
-    "wp": "readonly"
+    "_": "readonly",
+    "wp": "readonly",
+    "ReactDOM": "readonly"
   },
   "env": {
     "browser": true,
