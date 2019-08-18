@@ -21,7 +21,7 @@ const VerticalHeightToggle = ( props ) => {
 				label={ __( 'Full Screen Height' ) }
 				checked={ !! isHeightFullScreen }
 				onChange={ () => setAttributes( { isHeightFullScreen: ! isHeightFullScreen } ) }
-				help={ !! isHeightFullScreen ? __( 'Full screen height is enabled.' ) : __( 'Toggle to display this block\'s height full screen of the browser viewport.' ) }
+				help={ isHeightFullScreen ? __( 'Full screen height is enabled.' ) : __( 'Toggle to display this block\'s height full screen of the browser viewport.' ) }
 			/>
 		</Fragment>
 	);

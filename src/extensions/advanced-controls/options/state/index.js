@@ -22,13 +22,13 @@ const UserStateOptions = ( props ) => {
 
 		delete editorskit[ state ];
 
-    	const blockOptions = Object.assign( { [ state ]: newValue }, editorskit );
+		const blockOptions = Object.assign( { [ state ]: newValue }, editorskit );
 
-    	dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { editorskit: blockOptions } );
+		dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { editorskit: blockOptions } );
 
-    	if ( reloadModal ) {
-    		reloadModal();
-    	}
+		if ( reloadModal ) {
+			reloadModal();
+		}
 	};
 
 	if ( typeof editorskit === 'undefined' ) {

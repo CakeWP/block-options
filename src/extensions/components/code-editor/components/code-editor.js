@@ -48,8 +48,8 @@ class CodeEditor extends Component {
 				{},
 				editorSettings.codemirror,
 				{
-                	mode: 'text/html',
-                	lineNumbers: true,
+					mode: 'text/html',
+					lineNumbers: true,
 					indentUnit: 2,
 					tabSize: 2,
 					height: 'auto',

@@ -40,18 +40,18 @@ class ACFOptions extends Component {
 		const onSelectFields = ( key, value ) => {
 			delete editorskit[ key ];
 
-	    	const blockOptions = Object.assign( { [ key ]: value }, editorskit );
+			const blockOptions = Object.assign( { [ key ]: value }, editorskit );
 
-	    	dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { editorskit: blockOptions } );
+			dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { editorskit: blockOptions } );
 
-	    	if ( reloadModal ) {
-	    		reloadModal();
-	    	}
+			if ( reloadModal ) {
+				reloadModal();
+			}
 		};
 
 		const acf_fields = [ {
 			label: __( 'Select Field' ),
-		    value: '',
+			value: '',
 		} ];
 
 		if ( ! acf ) {
@@ -64,7 +64,7 @@ class ACFOptions extends Component {
 				for ( const acf_fld in acf_flds ) {
 					acf_fields.push( {
 						label: acf_flds[ acf_fld ],
-			            value: acf_fld,
+						value: acf_fld,
 					} );
 				}
 
@@ -75,19 +75,19 @@ class ACFOptions extends Component {
 							<SelectControl
 								value={ ( typeof editorskit.acf_visibility !== 'undefined' && editorskit.acf_visibility != '' ) ? editorskit.acf_visibility : '' }
 								options={ [
-						            	{
-						            		label: __( 'Select Visibility Option' ),
-						            		value: 'none',
-						            	},
-						            	{
-						            		label: __( 'Hide when Condition\'s met' ),
-						            		value: 'hide',
-						            	},
-						            	{
-						            		label: __( 'Show when Condition\'s met' ),
-						            		value: 'show',
-						            	},
-						            ] }
+									{
+										label: __( 'Select Visibility Option' ),
+										value: 'none',
+									},
+									{
+										label: __( 'Hide when Condition\'s met' ),
+										value: 'hide',
+									},
+									{
+										label: __( 'Show when Condition\'s met' ),
+										value: 'show',
+									},
+								] }
 								onChange={ ( n ) => onSelectFields( 'acf_visibility', n ) }
 							/>
 
@@ -100,35 +100,35 @@ class ACFOptions extends Component {
 							<SelectControl
 								value={ ( typeof editorskit.acf_condition !== 'undefined' && editorskit.acf_condition != '' ) ? editorskit.acf_condition : '' }
 								options={ [
-						            	{
-						            		label: __( 'Select Condition' ),
-						            		value: 'none',
-						            	},
-						            	{
-						            		label: __( 'Is Equal to' ),
-						            		value: 'equal',
-						            	},
-						            	{
-						            		label: __( 'Is Not Equal to' ),
-						            		value: 'not_equal',
-						            	},
-						            	{
-						            		label: __( 'Contains' ),
-						            		value: 'contains',
-						            	},
-						            	{
-						            		label: __( 'Does Not Contain' ),
-						            		value: 'not_contains',
-						            	},
-						            	{
-						            		label: __( 'Is Empty' ),
-						            		value: 'empty',
-						            	},
-						            	{
-						            		label: __( 'Is Not Empty' ),
-						            		value: 'not_empty',
-						            	},
-						            ] }
+									{
+										label: __( 'Select Condition' ),
+										value: 'none',
+									},
+									{
+										label: __( 'Is Equal to' ),
+										value: 'equal',
+									},
+									{
+										label: __( 'Is Not Equal to' ),
+										value: 'not_equal',
+									},
+									{
+										label: __( 'Contains' ),
+										value: 'contains',
+									},
+									{
+										label: __( 'Does Not Contain' ),
+										value: 'not_contains',
+									},
+									{
+										label: __( 'Is Empty' ),
+										value: 'empty',
+									},
+									{
+										label: __( 'Is Not Empty' ),
+										value: 'not_empty',
+									},
+								] }
 								onChange={ ( n ) => onSelectFields( 'acf_condition', n ) }
 							/>
 

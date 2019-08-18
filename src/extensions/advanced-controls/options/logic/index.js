@@ -26,17 +26,17 @@ const LogicOptions = ( props ) => {
 					help={ __( 'Add valid PHP conditional tags for custom & advanced visibility options.' ) }
 					value={ editorskit.logic ? editorskit.logic : null }
 					onChange={ ( newValue ) => {
-				        	delete editorskit.logic;
+						delete editorskit.logic;
 
-					    	const blockOptions = Object.assign( { logic: newValue }, editorskit );
+						const blockOptions = Object.assign( { logic: newValue }, editorskit );
 
-					    	dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { editorskit: blockOptions } );
+						dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { editorskit: blockOptions } );
 
-					    	if ( reloadModal ) {
-					    		reloadModal();
-					    	}
-				        } }
-				    />
+						if ( reloadModal ) {
+							reloadModal();
+						}
+					} }
+				/>
 			</div>
 		</Fragment>
 	);

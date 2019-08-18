@@ -22,13 +22,13 @@ const DevicesOptions = ( props ) => {
 
 		delete editorskit[ device ];
 
-    	const blockOptions = Object.assign( { [ device ]: newValue }, editorskit );
+		const blockOptions = Object.assign( { [ device ]: newValue }, editorskit );
 
-    	dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { editorskit: blockOptions } );
+		dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { editorskit: blockOptions } );
 
-    	if ( reloadModal ) {
-    		reloadModal();
-    	}
+		if ( reloadModal ) {
+			reloadModal();
+		}
 	};
 
 	if ( typeof editorskit === 'undefined' ) {
