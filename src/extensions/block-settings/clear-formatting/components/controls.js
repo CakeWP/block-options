@@ -20,10 +20,6 @@ const allowedBlocks = [ 'core/paragraph', 'core/heading' ];
  * Render plugin
  */
 class ClearBlockFormatting extends Component {
-	constructor() {
-		super( ...arguments );
-	}
-
 	render() {
 		const { blockId, blockName, blockContent, clearBlockFormatting } = this.props;
 
@@ -49,7 +45,7 @@ class ClearBlockFormatting extends Component {
 }
 
 export default compose(
-	withSelect( ( select ) => {
+	withSelect( () => {
 		const selectedBlock = select( 'core/block-editor' ).getSelectedBlock();
 		if ( ! selectedBlock ) {
 			return {};

@@ -73,7 +73,7 @@ class ACFOptions extends Component {
 						<div className="editorskit-button-group-container editorskit-button-group-acf">
 							<label className="components-base-control__label" >{ __( 'Advanced Custom Fields' ) }</label>
 							<SelectControl
-								value={ ( typeof editorskit.acf_visibility !== 'undefined' && editorskit.acf_visibility != '' ) ? editorskit.acf_visibility : '' }
+								value={ ( typeof editorskit.acf_visibility !== 'undefined' && editorskit.acf_visibility !== '' ) ? editorskit.acf_visibility : '' }
 								options={ [
 									{
 										label: __( 'Select Visibility Option' ),
@@ -92,13 +92,13 @@ class ACFOptions extends Component {
 							/>
 
 							<SelectControl
-								value={ ( typeof editorskit.acf_field !== 'undefined' && editorskit.acf_field != '' ) ? editorskit.acf_field : '' }
+								value={ ( typeof editorskit.acf_field !== 'undefined' && editorskit.acf_field !== '' ) ? editorskit.acf_field : '' }
 								options={ acf_fields }
 								onChange={ ( n ) => onSelectFields( 'acf_field', n ) }
 							/>
 
 							<SelectControl
-								value={ ( typeof editorskit.acf_condition !== 'undefined' && editorskit.acf_condition != '' ) ? editorskit.acf_condition : '' }
+								value={ ( typeof editorskit.acf_condition !== 'undefined' && editorskit.acf_condition !== '' ) ? editorskit.acf_condition : '' }
 								options={ [
 									{
 										label: __( 'Select Condition' ),

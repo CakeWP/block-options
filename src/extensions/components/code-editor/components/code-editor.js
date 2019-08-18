@@ -62,7 +62,7 @@ class CodeEditor extends Component {
 			wp.codeEditor.initialize( textEditor, editorSettings );
 
 			this.setState( { isLoaded: true } );
-		} else if ( editorMode == 'visual' && this.state.isLoaded ) {
+		} else if ( editorMode === 'visual' && this.state.isLoaded ) {
 			this.setState( { isLoaded: false } );
 		}
 	}

@@ -19,8 +19,8 @@ const enhance = compose(
 	withState( {
 		customClassNames: [],
 	} ),
-	withSelect( ( select, block ) => {
-		const selectedBlock = select( 'core/block-editor' ).getSelectedBlock();
+	withSelect( ( selectFn, block ) => {
+		const selectedBlock = selectFn( 'core/block-editor' ).getSelectedBlock();
 		let getClasses 	= get( selectedBlock, 'attributes.className' );
 
 		if ( getClasses ) {
@@ -29,13 +29,13 @@ const enhance = compose(
 
 		if ( selectedBlock && getClasses && join( block.customClassNames, ' ' ) !== getClasses ) {
 			//apply to selected block only
-			if ( block.clientId == selectedBlock.clientId ) {
+			if ( block.clientId === selectedBlock.clientId ) {
 				// props.attributes.className || ''
 				block.setState( { customClassNames: split( getClasses, ' ' ) } );
 			}
 		}
 		return {
-			suggestions: select( 'core/editor' ).getEditorSettings().editorskitCustomClassNames,
+			suggestions: selectFn( 'core/editor' ).getEditorSettings().editorskitCustomClassNames,
 		};
 	} ),
 );

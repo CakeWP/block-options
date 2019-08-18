@@ -21,7 +21,7 @@ const { hasBlockSupport } = wp.blocks;
 const restrictedBlocks = [ 'core/block', 'core/freeform', 'core/shortcode', 'core/template', 'core/nextpage' ];
 
 const enhance = compose(
-	withSelect( ( select ) => {
+	withSelect( () => {
 		return {
 			isDisabledDevices: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitDevicesVisibility' ),
 			isDisabledUserState: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitUserStateVisibility' ),
@@ -57,11 +57,11 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 		if ( typeof editorskit !== 'undefined' && ! editorskit.migrated && blockOpts ) {
 			props.attributes.editorskit = Object.assign( props.attributes.editorskit, {
 				devices: false,
-				desktop: ( ( blockOpts.devices == 'show' && blockOpts.desktop != 'on' ) || ( blockOpts.devices == 'hide' && blockOpts.desktop == 'on' ) ) ? false : true,
-				tablet: ( ( blockOpts.devices == 'show' && blockOpts.tablet != 'on' ) || ( blockOpts.devices == 'hide' && blockOpts.tablet == 'on' ) ) ? false : true,
-				mobile: ( ( blockOpts.devices == 'show' && blockOpts.mobile != 'on' ) || ( blockOpts.devices == 'hide' && blockOpts.mobile == 'on' ) ) ? false : true,
-				loggedin: ( blockOpts.state == 'out' && blockOpts.state != 'in' ) ? false : true,
-				loggedout: ( blockOpts.state == 'in' && blockOpts.state != 'out' ) ? false : true,
+				desktop: ( ( blockOpts.devices === 'show' && blockOpts.desktop !== 'on' ) || ( blockOpts.devices === 'hide' && blockOpts.desktop === 'on' ) ) ? false : true,
+				tablet: ( ( blockOpts.devices === 'show' && blockOpts.tablet !== 'on' ) || ( blockOpts.devices === 'hide' && blockOpts.tablet === 'on' ) ) ? false : true,
+				mobile: ( ( blockOpts.devices === 'show' && blockOpts.mobile !== 'on' ) || ( blockOpts.devices === 'hide' && blockOpts.mobile === 'on' ) ) ? false : true,
+				loggedin: ( blockOpts.state === 'out' && blockOpts.state !== 'in' ) ? false : true,
+				loggedout: ( blockOpts.state === 'in' && blockOpts.state !== 'out' ) ? false : true,
 				acf_visibility: ( blockOpts.acf_visibility ) ? blockOpts.acf_visibility : '',
 				acf_field: ( blockOpts.acf_field ) ? blockOpts.acf_field : '',
 				acf_condition: ( blockOpts.acf_condition ) ? blockOpts.acf_condition : '',

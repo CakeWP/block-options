@@ -6,7 +6,6 @@ import classnames from 'classnames';
 /**
  * WordPress Dependencies
  */
-const { __ } = wp.i18n;
 const { addFilter } = wp.hooks;
 const { Fragment } = wp.element;
 const { createHigherOrderComponent } = wp.compose;
@@ -85,23 +84,12 @@ function addAttributes( settings ) {
 const withAttributes = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		const {
-			name,
-			clientId,
 			attributes,
-			setAttributes,
 		} = props;
 
 		if ( typeof attributes.editorskit === 'undefined' ) {
 			attributes.editorskit = [];
 		}
-
-		//add unique selector
-		// if( typeof attributes.editorskit.id === 'undefined' && !restrictedBlocks.includes( name ) ){
-		// 	let d = new Date();
-
-		// 	const editorskit = Object.assign( { id: "editorskit-" + d.getMonth() + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds() + d.getMilliseconds() }, attributes.editorskit );
-		// 	setAttributes( { editorskit: editorskit } );
-		// }
 
 		return (
 			<Fragment>

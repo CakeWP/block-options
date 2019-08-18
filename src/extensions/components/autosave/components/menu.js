@@ -6,7 +6,7 @@
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { withSelect, withDispatch, dispatch } = wp.data;
+const { withSelect, withDispatch, dispatch, select } = wp.data;
 const { compose } = wp.compose;
 const { Fragment, Component } = wp.element;
 const { PluginMoreMenuItem } = wp.editPost;
@@ -16,10 +16,6 @@ const { withSpokenMessages } = wp.components;
  * Render plugin
  */
 class ManageAutoSave extends Component {
-	constructor() {
-		super( ...arguments );
-	}
-
 	componentDidMount() {
 		const editorHeader = document.querySelector( '.edit-post-header__settings' );
 		const prompt = '<span class="editorskit-auto-save-disabled--label">' + __( 'Auto Save Disabled' ) + '</span>';
@@ -45,7 +41,7 @@ class ManageAutoSave extends Component {
 			autosaveInterval = 259200; // 3days in seconds
 		}
 
-		if ( editorSettings.autosaveInterval != autosaveInterval ) {
+		if ( editorSettings.autosaveInterval !== autosaveInterval ) {
 			const newEditorSettings = Object.assign( this.props.editorSettings, { autosaveInterval } );
 			dispatch( 'core/editor' ).updateEditorSettings( newEditorSettings );
 			dispatch( 'core/editor' ).refreshPost();
@@ -68,7 +64,7 @@ class ManageAutoSave extends Component {
 
 		let isActive = this.props.isActive;
 
-		if ( editorSettings.autosaveInterval != 259200 ) {
+		if ( editorSettings.autosaveInterval !== 259200 ) {
 			isActive = true;
 		}
 
@@ -89,13 +85,13 @@ class ManageAutoSave extends Component {
 }
 
 export default compose( [
-	withSelect( ( select ) => ( {
+	withSelect( () => ( {
 		isAvailable: select( 'core/edit-post' ).getPreference( 'features' ).editorskitAutoSave,
 		isActive: select( 'core/edit-post' ).isFeatureActive( 'editorskitAutoSave' ),
 		isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitAutosaveTools' ),
 		editorSettings: select( 'core/editor' ).getEditorSettings(),
 	} ) ),
-	withDispatch( ( dispatch ) => ( {
+	withDispatch( () => ( {
 		onToggle() {
 			dispatch( 'core/edit-post' ).toggleFeature( 'editorskitAutoSave' );
 		},

@@ -12,7 +12,6 @@ const { withSpokenMessages } = wp.components;
  * Render plugin
  */
 class ScrollDown extends Component {
-
 	render() {
 		const {
 			isActive,

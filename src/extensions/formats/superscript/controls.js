@@ -15,7 +15,7 @@ const { toggleFormat, removeFormat } = wp.richText;
 
 class SuperscriptControl extends Component {
 	render() {
-	const {
+		const {
 			name,
 			value,
 			isActive,

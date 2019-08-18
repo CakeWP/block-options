@@ -41,12 +41,12 @@ class ExportManager extends Component {
 			return;
 		}
 
-		let blocks,
-			title = 'editorskit/export';
+		let blocks;
+		const title = 'editorskit/export';
 
-		if ( selectedBlockCount == 1 ) {
+		if ( selectedBlockCount === 1 ) {
 			//export as reusable when reusable is selected
-			if ( selectedBlock.name == 'core/block' ) {
+			if ( selectedBlock.name === 'core/block' ) {
 				exportReusableBlock( selectedBlock.attributes.ref );
 				return;
 			}
@@ -85,7 +85,7 @@ class ExportManager extends Component {
 }
 
 export default compose( [
-	withSelect( ( select ) => {
+	withSelect( () => {
 		const { getSelectedBlockCount, getSelectedBlock, getMultiSelectedBlocks } = select( 'core/block-editor' );
 		const { getBlock } = select( 'core/block-editor' );
 

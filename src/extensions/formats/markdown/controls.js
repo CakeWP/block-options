@@ -30,7 +30,6 @@ class MarkdownControl extends Component {
 	_experimentalMarkdown( record, onChange, markdown, format ) {
 		const { start } = record;
 		const text = getTextContent( record );
-		const activeFormats = getActiveFormats( record );
 
 		// console.log( record );
 
@@ -63,14 +62,14 @@ class MarkdownControl extends Component {
 		}
 
 		//return if inside code format
+		const activeFormats = getActiveFormats( record );
 		if ( activeFormats.length > 0 ) {
-			if ( activeFormats.filter( ( format ) => format.type === 'core/code' ) ) {
+			if ( activeFormats.filter( ( formatActive ) => formatActive.type === 'core/code' ) ) {
 				return record;
 			}
 		}
 
 		const characterBefore = text.slice( startIndex - 1, startIndex );
-		const characterAfter = text.slice( startIndex + 1, startIndex + 2 );
 
 		//continue if character before is a letter
 		if ( characterBefore.length === 1 && characterBefore.match( /[A-Z|a-z]/i ) ) {
@@ -78,7 +77,8 @@ class MarkdownControl extends Component {
 		}
 
 		//do not apply markdown when next character is SPACE
-		if ( characterAfter == ' ' ) {
+		const characterAfter = text.slice(startIndex + 1, startIndex + 2);
+		if ( characterAfter === ' ' ) {
 			return record;
 		}
 

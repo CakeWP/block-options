@@ -3,7 +3,7 @@
  */
 
 const { apiFetch } = wp;
-const { registerStore, withSelect } = wp.data;
+const { registerStore } = wp.data;
 
 const actions = {
 	setACFields( ACFfields ) {
@@ -27,7 +27,7 @@ const actions = {
 	},
 };
 
-const store = registerStore( 'editorskit/acf', {
+registerStore( 'editorskit/acf', {
 	reducer( state = { ACFfields: {} }, action ) {
 		switch ( action.type ) {
 			case 'SET_ACF_FIELDS':
@@ -58,7 +58,7 @@ const store = registerStore( 'editorskit/acf', {
 	},
 
 	resolvers: {
-		* receiveACFields( state ) {
+		* receiveACFields() {
 			const path = '/editorskit/v1/acf';
 			const ACFfields = yield actions.fetchFromAPI( path );
 			yield actions.setACFields( ACFfields );
