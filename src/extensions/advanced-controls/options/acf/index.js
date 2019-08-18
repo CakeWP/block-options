@@ -17,10 +17,6 @@ const { Fragment, Component } = wp.element;
 const { SelectControl, TextareaControl } = wp.components;
 
 class ACFOptions extends Component {
-	constructor() {
-		super( ...arguments );
-	}
-
 	render() {
 		const {
 			acf,
@@ -49,7 +45,7 @@ class ACFOptions extends Component {
 			}
 		};
 
-		const acf_fields = [ {
+		const acfFields = [ {
 			label: __( 'Select Field' ),
 			value: '',
 		} ];
@@ -60,11 +56,11 @@ class ACFOptions extends Component {
 
 		if ( typeof acf !== 'undefined' ) {
 			if ( ! isEmpty( acf ) ) {
-				const acf_flds = acf;
-				for ( const acf_fld in acf_flds ) {
-					acf_fields.push( {
-						label: acf_flds[ acf_fld ],
-						value: acf_fld,
+				const acfFlds = acf;
+				for ( const acfFld in acfFlds ) {
+					acfFields.push( {
+						label: acfFlds[ acfFld ],
+						value: acfFld,
 					} );
 				}
 
@@ -93,7 +89,7 @@ class ACFOptions extends Component {
 
 							<SelectControl
 								value={ ( typeof editorskit.acf_field !== 'undefined' && editorskit.acf_field !== '' ) ? editorskit.acf_field : '' }
-								options={ acf_fields }
+								options={ acfFields }
 								onChange={ ( n ) => onSelectFields( 'acf_field', n ) }
 							/>
 

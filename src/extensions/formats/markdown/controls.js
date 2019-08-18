@@ -77,7 +77,7 @@ class MarkdownControl extends Component {
 		}
 
 		//do not apply markdown when next character is SPACE
-		const characterAfter = text.slice(startIndex + 1, startIndex + 2);
+		const characterAfter = text.slice( startIndex + 1, startIndex + 2 );
 		if ( characterAfter === ' ' ) {
 			return record;
 		}
