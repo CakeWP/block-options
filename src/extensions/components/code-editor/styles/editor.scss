@@ -8,14 +8,14 @@
 		max-width: 100% !important;
 	}
 
-	.CodeMirror {
+	.CodeMirror { /* stylelint-disable-line selector-class-pattern */
 		height: auto;
 
-		&.CodeMirror-wrap {
+		&.CodeMirror-wrap { /* stylelint-disable-line selector-class-pattern */
 			border: 1px solid #ddd;
 		}
 
-		.CodeMirror-scroll {
+		.CodeMirror-scroll { /* stylelint-disable-line selector-class-pattern */
 			height: auto !important;
 			overflow: visible !important;
 		}
