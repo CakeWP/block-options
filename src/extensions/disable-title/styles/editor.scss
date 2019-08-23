@@ -1,3 +1,15 @@
+.editorskit-hidden-title-label {
+	display: none;
+
+	span {
+		display: inline-block;
+		background: #fbf9c1;
+		padding: 1px 10px;
+		margin-left: 14px;
+		font-size: 13px;
+	}
+}
+
 .editorskit-toggle-title {
 	position: absolute;
 	left: -41px;
@@ -14,18 +26,6 @@
 	@media screen and (max-width: 500px) {
 		left: 15px;
 		top: -15px;
-	}
-}
-
-.editorskit-hidden-title-label {
-	display: none;
-
-	span {
-		display: inline-block;
-		background: #fbf9c1;
-		padding: 1px 10px;
-		margin-left: 14px;
-		font-size: 13px;
 	}
 }
 

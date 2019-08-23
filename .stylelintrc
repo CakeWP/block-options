@@ -22,6 +22,7 @@
             "function"
           ]
         }
-      ]
+      ],
+	  "no-descending-specificity": null,
     }
   }
