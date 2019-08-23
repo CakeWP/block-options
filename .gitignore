@@ -1,9 +1,4 @@
-**/*.min.js
-**/*.build.js
-**/*.build.css
 **/node_modules/**
-**/build/**
-build
 coverage
 cypress
 node_modules

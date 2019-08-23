@@ -1,4 +1,4 @@
-.editorskit-components-modal__content{
+.editorskit-components-modal__content {
 	width: 320px;
 	min-width: 200px !important;
 
@@ -7,16 +7,16 @@
 	}
 }
 
-.editorskit-divider{
-	border: 0px;
+.editorskit-divider {
+	border: 0;
 	border-top: 1px solid #e2e4e7;
-	margin: 20px 0px;
+	margin: 20px 0;
 }
 
-.editorskit-tab-panel{
+.editorskit-tab-panel {
 	margin: 0 -16px;
 
-	small{
+	small {
 		display: block;
 		margin-bottom: 15px;
 	}
@@ -36,22 +36,23 @@
 		}
 
 		//backward compatibility
-		button{
+		button {
 			display: inline-flex;
-		    text-decoration: none;
-		    font-size: 13px;
-		    margin: 0;
-		    border: 0;
-		    cursor: pointer;
-		    -webkit-appearance: none;
-		    background: none;
+			text-decoration: none;
+			font-size: 13px;
+			margin: 0;
+			border: 0;
+			cursor: pointer;
+			-webkit-appearance: none;
+			background: none;
 		}
 
-		.components-button, button{
+		.components-button,
+		button {
 			padding: 10px 15px;
 			border-bottom: 2px solid #f3f4f5;
 
-			&.is-active{
+			&.is-active {
 				border-color: #007cba;
 			}
 		}
@@ -60,8 +61,9 @@
 	.components-tab-panel__tab-content {
 		padding: 16px;
 
-		.editorskit-user-state-controls{
-			.components-base-control__help{
+		.editorskit-user-state-controls {
+
+			.components-base-control__help {
 				display: none;
 			}
 		}

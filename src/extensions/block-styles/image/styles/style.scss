@@ -1,34 +1,45 @@
-.is-style-editorskit-circular{
-	&:not(.wp-block-image), &.wp-block-image img{
+.is-style-editorskit-circular {
+
+	&:not(.wp-block-image),
+	&.wp-block-image img {
 		border-radius: 9999px !important;
-		object-fit: cover;	
+		object-fit: cover;
 		overflow: hidden;
 	}
 }
 
-.is-style-editorskit-rounded{
-	&:not(.wp-block-image), &.wp-block-image img{
+.is-style-editorskit-rounded {
+
+	&:not(.wp-block-image),
+	&.wp-block-image img {
 		border-radius: 0.5em;
 		overflow: hidden;
 	}
 }
 
-.is-style-editorskit-diagonal{
-	&:not(.wp-block-image), &.wp-block-image img{
+.is-style-editorskit-diagonal {
+
+	&:not(.wp-block-image),
+	&.wp-block-image img {
 		clip-path: polygon(0 12%, 0 100%, 100% 88%, 100% 0);
 	}
 }
 
-.is-style-editorskit-inverted-diagonal{
-	&:not(.wp-block-image), &.wp-block-image img{
+.is-style-editorskit-inverted-diagonal {
+
+	&:not(.wp-block-image),
+	&.wp-block-image img {
 		clip-path: polygon(0 0, 0 88%, 100% 100%, 100% 12%);
 	}
 }
 
-.is-style-editorskit-shadow{
-	&:not(.wp-block-image), &.wp-block-image img{
-		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); 
-		&:hover{
+.is-style-editorskit-shadow {
+
+	&:not(.wp-block-image),
+	&.wp-block-image img {
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+		&:hover {
 			box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 		}
 	}

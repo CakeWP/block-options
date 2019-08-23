@@ -1,11 +1,16 @@
-body{
-	.entry, div{
-		[class*="wp-block-"]{
-			&.h-screen{
+body {
+
+	div,
+	.entry {
+
+		[class*="wp-block-"] {
+
+			&.h-screen {
 				min-height: 100vh;
 
-				&.wp-block-image{
-					img{
+				&.wp-block-image {
+
+					img {
 						object-fit: cover;
 						min-height: 100vh;
 					}

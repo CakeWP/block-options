@@ -93,7 +93,11 @@ class EditorsKit_Block_Assets {
 	 */
 	public function editor_assets() {
 		
-		if( ! is_admin() && ! $this->is_edit_or_new_admin_page() ){
+		if( ! is_admin() ){
+			return;
+		}
+
+		if( ! $this->is_edit_or_new_admin_page() ){ //load on allowed pages only
 			return;
 		}
 
