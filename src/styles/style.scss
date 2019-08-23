@@ -8,50 +8,63 @@ $desktop : 769px;
 $tablet : 768px;
 $mobile : 736px;
 
-body:not(.wp-admin){
-	.blockopts-show{
+body:not(.wp-admin) {
+
+	.blockopts-show {
 		display: none;
 	}
+
 	@media screen and (min-width: $desktop) {
+
 		.blockopts-hide.blockopts-desktop,
-		.editorskit-no-desktop{
+		.editorskit-no-desktop {
 			display: none;
 		}
-		.blockopts-show.blockopts-desktop{
+
+		.blockopts-show.blockopts-desktop {
 			display: block;
 		}
 	}
+
 	@media screen and (max-width: $tablet)
-	and (min-width: $mobile + 1) {
+		and (min-width: $mobile + 1) {
+
 		.blockopts-hide.blockopts-tablet,
-		.editorskit-no-tablet{
+		.editorskit-no-tablet {
 			display: none;
 		}
-		.blockopts-show.blockopts-tablet{
+
+		.blockopts-show.blockopts-tablet {
 			display: block;
 		}
 	}
+
 	@media screen and (max-width: $mobile) {
+
 		.blockopts-hide.blockopts-mobile,
-		.editorskit-no-mobile{
+		.editorskit-no-mobile {
 			display: none;
 		}
-		.blockopts-show.blockopts-mobile{
+
+		.blockopts-show.blockopts-mobile {
 			display: block;
 		}
 	}
 }
 
 //Utility styles
-.mt-0{
-	margin-top:0 !important;;
+.mt-0 {
+	margin-top: 0 !important;
 }
-.mb-0{
-	margin-bottom:0 !important;;
+
+.mb-0 {
+	margin-bottom: 0 !important;
 }
-.pt-0{
-	padding-top:0 !important;;
+
+.pt-0 {
+	padding-top: 0 !important;
 }
-.pb-0{
-	padding-bottom:0 !important;;
+
+.pb-0 {
+	padding-bottom: 0 !important;
 }
