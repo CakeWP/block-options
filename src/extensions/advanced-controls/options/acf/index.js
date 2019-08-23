@@ -67,7 +67,7 @@ class ACFOptions extends Component {
 				return (
 					<Fragment>
 						<div className="editorskit-button-group-container editorskit-button-group-acf">
-							<label className="components-base-control__label" >{ __( 'Advanced Custom Fields' ) }</label>
+							<label className="components-base-control__label" >{ __( 'Advanced Custom Fields' ) }</label> { /* eslint-disable-line jsx-a11y/label-has-for */ }
 							<SelectControl
 								value={ ( typeof editorskit.acf_visibility !== 'undefined' && editorskit.acf_visibility !== '' ) ? editorskit.acf_visibility : '' }
 								options={ [

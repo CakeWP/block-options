@@ -113,7 +113,7 @@ class BlockSettings extends Component {
 											];
 										default:
 											return [
-												<small>{ __( 'Attention: The display settings (show/hide for mobile, tablet, desktop or users) will only take effect once you are on the live page, and not while you\'re editing in Gutenberg.' ) }</small>,
+												<small>{ __( 'Attention: The display settings (show/hide for mobile, tablet, desktop or users) will only take effect once you are on the live page, and not while you\'re editing in Gutenberg.' ) }</small>, /* eslint-disable-line react/jsx-key */
 												! isDisabledDevices && DevicesOptions( selectedBlock ),
 												! isDisabledUserState && UserStateOptions( selectedBlock ),
 											];
