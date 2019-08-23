@@ -3,60 +3,59 @@
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { domReady } = wp.domReady;
 const { compose, ifCondition } = wp.compose;
 const { select, withSelect, withDispatch } = wp.data;
 const { Button, Dashicon, withSpokenMessages, Tooltip } = wp.components;
 
 class DisableTitle extends Component {
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 
 		this.initialize = this.initialize.bind( this );
 		this.button = this.button.bind( this );
 	}
 
-	initialize(){
-		const { onToggle, isDisabled, postmeta } = this.props;
-		
-		let titleBlock = document.querySelector('.editor-post-title__block');
+	initialize() {
+		const { isDisabled, postmeta } = this.props;
 
-		if( titleBlock ){
-			let isHidden = postmeta['_editorskit_title_hidden'];
-			let bodyClass = isHidden ? 'editorskit-title-hidden' : 'editorskit-title-visible';
-			
+		const titleBlock = document.querySelector( '.editor-post-title__block' );
+
+		if ( titleBlock ) {
+			const isHidden = postmeta._editorskit_title_hidden;
+			const bodyClass = isHidden ? 'editorskit-title-hidden' : 'editorskit-title-visible';
+
 			//insert prompt on header
-			titleBlock.insertAdjacentHTML( 'beforeend', 
-				'<span class="editorskit-toggle-title"></span><div class="editorskit-hidden-title-label"></div>' 
+			titleBlock.insertAdjacentHTML( 'beforeend',
+				'<span class="editorskit-toggle-title"></span><div class="editorskit-hidden-title-label"></div>'
 			);
 
 			//remove existing class
-			if( isHidden ){
+			if ( isHidden ) {
 				document.body.classList.remove( 'editorskit-title-visible' );
-			}else{
+			} else {
 				document.body.classList.remove( 'editorskit-title-hidden' );
 			}
-			
+
 			document.body.classList.add( bodyClass );
 
-			let editorskitTitleHolder = document.querySelector('.editorskit-toggle-title');
+			const editorskitTitleHolder = document.querySelector( '.editorskit-toggle-title' );
 			ReactDOM.render( this.button(), editorskitTitleHolder );
-			ReactDOM.render( <span>{ __( 'For internal use only. Title is hidden on your website.' ) }</span> , document.querySelector('.editorskit-hidden-title-label') );
+			ReactDOM.render( <span>{ __( 'For internal use only. Title is hidden on your website.' ) }</span>, document.querySelector( '.editorskit-hidden-title-label' ) );
 
 			//hide if disabled
-			if( isDisabled ){
+			if ( isDisabled ) {
 				document.body.classList.add( 'editorskit-title-visible-disabled' );
-			}else{
+			} else {
 				document.body.classList.remove( 'editorskit-title-visible-disabled' );
 			}
 		}
 	}
 
-	button(){
+	button() {
 		const { onToggle, postmeta } = this.props;
 
-		let isHidden = postmeta['_editorskit_title_hidden'];
-		
+		const isHidden = postmeta._editorskit_title_hidden;
+
 		return (
 			<Tooltip text={ __( 'Toggle Title Visibility' ) } position="top right">
 				<Button
@@ -65,7 +64,7 @@ class DisableTitle extends Component {
 					onClick={ onToggle }
 				>
 					<Dashicon icon={ isHidden ? 'hidden' : 'visibility' } />
-				</Button> 
+				</Button>
 			</Tooltip>
 		);
 	}
@@ -74,11 +73,10 @@ class DisableTitle extends Component {
 		this.initialize();
 		return null;
 	}
-
 }
 
 export default compose(
-	withSelect( select => {
+	withSelect( () => {
 		return {
 			readyState: document.readyState,
 			postmeta: select( 'core/editor' ).getEditedPostAttribute( 'meta' ),
@@ -87,21 +85,21 @@ export default compose(
 	} ),
 	withDispatch( ( dispatch, ownProps ) => {
 		let metavalue;
-		if( typeof ownProps.postmeta !== 'undefined' && typeof ownProps.postmeta['_editorskit_title_hidden'] !== 'undefined' ){
-			metavalue = ownProps.postmeta['_editorskit_title_hidden'];
+		if ( typeof ownProps.postmeta !== 'undefined' && typeof ownProps.postmeta._editorskit_title_hidden !== 'undefined' ) {
+			metavalue = ownProps.postmeta._editorskit_title_hidden;
 		}
-		return{
+		return {
 			onToggle() {
-				dispatch( 'core/editor' ).editPost({
+				dispatch( 'core/editor' ).editPost( {
 					meta: {
 						_editorskit_title_hidden: ! metavalue,
-					}
-				});
+					},
+				} );
 			},
-		}
+		};
 	} ),
-	ifCondition( props => {
-		return props.readyState === 'complete' && typeof props.postmeta !== 'undefined' && typeof props.postmeta['_editorskit_title_hidden'] !== 'undefined' ;
-	}),
+	ifCondition( ( props ) => {
+		return props.readyState === 'complete' && typeof props.postmeta !== 'undefined' && typeof props.postmeta._editorskit_title_hidden !== 'undefined';
+	} ),
 	withSpokenMessages,
 )( DisableTitle );

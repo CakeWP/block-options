@@ -9,7 +9,6 @@ import SuperscriptControl from './controls';
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 
-
 /**
  * Block constants
  */
@@ -21,12 +20,10 @@ export const superscript = {
 	tagName: 'sup',
 	className: null,
 	edit( { isActive, value, onChange, activeAttributes } ) {
-
 		return (
 			<Fragment>
-				<SuperscriptControl name={ name } isActive={ isActive } value={ value } onChange={ onChange } activeAttributes={ activeAttributes }  />
+				<SuperscriptControl name={ name } isActive={ isActive } value={ value } onChange={ onChange } activeAttributes={ activeAttributes } />
 			</Fragment>
 		);
-
 	},
 };

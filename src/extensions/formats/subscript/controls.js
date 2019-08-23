@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import { get } from 'lodash';
-
-/**
  * Internal dependencies
  */
 import icon from './icons';
@@ -14,32 +9,27 @@ import icon from './icons';
 const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
 const { compose, ifCondition } = wp.compose;
-const { select, withSelect, withDispatch } = wp.data;
+const { select, withSelect } = wp.data;
 const { RichTextToolbarButton, RichTextShortcut } = wp.blockEditor;
 const { toggleFormat, removeFormat } = wp.richText;
 
 class SubscriptControl extends Component {
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			name,
 			value,
 			isActive,
 			onChange,
 		} = this.props;
-		
+
 		const onToggle = () => {
 			//remove superscript format if applied
-			let record = removeFormat( value, 'editorskit/superscript' );
-			
+			const record = removeFormat( value, 'editorskit/superscript' );
+
 			onChange(
 				toggleFormat( record, {
 					type: name,
-				} ) 
+				} )
 			);
 		};
 		return (
@@ -59,14 +49,13 @@ class SubscriptControl extends Component {
 			</Fragment>
 		);
 	}
-
 }
 
 export default compose(
-	withSelect( select => {
+	withSelect( () => {
 		return {
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitSubscriptFormats' ),
 		};
 	} ),
-	ifCondition( props => !props.isDisabled ),
+	ifCondition( ( props ) => ! props.isDisabled ),
 )( SubscriptControl );

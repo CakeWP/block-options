@@ -1,8 +1,7 @@
 /**
  * External dependencies
  */
-import map from 'lodash/map';
-import castArray from 'lodash/castArray';
+import { castArray } from 'lodash';
 
 /**
  * Internal dependencies
@@ -12,28 +11,26 @@ import shortcutConfig from './config';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
 const { PluginMoreMenuItem } = wp.editPost;
 const { compose, ifCondition } = wp.compose;
 const { select, withSelect } = wp.data;
-const { withSpokenMessages, Modal, CheckboxControl } = wp.components;
+const { withSpokenMessages, Modal } = wp.components;
 
 /**
  * Render plugin
  */
 class MarkdownFormatting extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 
-		this.state   = {
+		this.state = {
 			isOpen: false,
-		}
+		};
 	}
-	
-	render(){
 
+	render() {
 		const closeModal = () => (
 			this.setState( { isOpen: false } )
 		);
@@ -103,29 +100,24 @@ class MarkdownFormatting extends Component {
 						onRequestClose={ () => closeModal() }
 						closeLabel={ __( 'Close' ) }
 						icon={ null }
-						className='editorskit-modal-component components-modal--editorskit-markdown'
+						className="editorskit-modal-component components-modal--editorskit-markdown"
 					>
 						{ shortcutConfig.map( ( config, index ) => (
 							<ShortcutSection key={ index } { ...config } />
 						) ) }
-					</Modal>
-				: null }
+					</Modal> :
+					null }
 			</Fragment>
 		);
 	}
-};
+}
 
 export default compose(
-	withSelect( ( select, {
-		clientId,
-		instanceId,
-		identifier = instanceId,
-		isSelected,
-	} ) => {
+	withSelect( () => {
 		return {
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitMarkdownWriting' ),
 		};
 	} ),
-	ifCondition( props => !props.isDisabled ),
+	ifCondition( ( props ) => ! props.isDisabled ),
 	withSpokenMessages,
 )( MarkdownFormatting );

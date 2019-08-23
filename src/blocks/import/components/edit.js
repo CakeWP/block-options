@@ -1,26 +1,18 @@
 /**
- * External dependencies
- */
-import map from 'lodash/map';
-import classnames from 'classnames';
-
-/**
  * Internal dependencies
  */
-import icon from '../icon';
 import importReusableBlock from '../utils/import';
 
 /**
  * WordPress dependencies
  */
-const { __,  _x } = wp.i18n;
-const { withSelect, withDispatch, select, dispatch } = wp.data;
-const { compose, withState, ifCondition, withInstanceId } = wp.compose;
+const { __ } = wp.i18n;
+const { select, dispatch } = wp.data;
+const { withInstanceId } = wp.compose;
 const { Fragment, Component } = wp.element;
 const { parse, createBlock } = wp.blocks;
-const { MediaUploadCheck, BlockIcon } = wp.blockEditor;
-const { withSpokenMessages, CheckboxControl, Button, DropZone, FormFileUpload, Placeholder, Notice } = wp.components;
-
+const { MediaUploadCheck } = wp.blockEditor;
+const { DropZone, FormFileUpload, Placeholder, Notice } = wp.components;
 
 const ALLOWED_BG_MEDIA_TYPES = [ 'json' ];
 
@@ -28,8 +20,7 @@ const ALLOWED_BG_MEDIA_TYPES = [ 'json' ];
  * Block edit function
  */
 class Edit extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 
 		this.state = {
@@ -41,10 +32,10 @@ class Edit extends Component {
 		this.addFile = this.addFile.bind( this );
 	}
 
-	componentDidMount(){
+	componentDidMount() {
 		const { file } = this.props.attributes;
 
-		if( file ){
+		if ( file ) {
 			this.setState( { isLoading: true } );
 			this.addFile( file );
 		}
@@ -54,17 +45,17 @@ class Edit extends Component {
 		this.isStillMounted = false;
 	}
 
-	insertImportedBlocks( blocks ){
+	insertImportedBlocks( blocks ) {
 		const { onClose } = this.props;
 		blocks = parse( blocks );
-		let toSelect  = [];
-		let blockIndex = select( 'core/block-editor' ).getBlockInsertionPoint();
-		if( blocks.length > 0 ){
-			for( var block in blocks ){
-				var created = createBlock( blocks[ block ].name, blocks[ block ].attributes, blocks[ block ].innerBlocks );
-				dispatch( 'core/block-editor' ).insertBlocks( created , parseInt( blockIndex.index ) + parseInt( block ) );
+		const toSelect = [];
+		const blockIndex = select( 'core/block-editor' ).getBlockInsertionPoint();
+		if ( blocks.length > 0 ) {
+			for ( const block in blocks ) {
+				const created = createBlock( blocks[ block ].name, blocks[ block ].attributes, blocks[ block ].innerBlocks );
+				dispatch( 'core/block-editor' ).insertBlocks( created, parseInt( blockIndex.index ) + parseInt( block ) );
 
-				if( typeof created !== 'undefined' ){
+				if ( typeof created !== 'undefined' ) {
 					toSelect.push( created.clientId );
 				}
 			}
@@ -73,8 +64,8 @@ class Edit extends Component {
 			dispatch( 'core/block-editor' ).removeBlock( this.props.clientId );
 
 			//select inserted blocks
-			if( toSelect.length > 0 ){
-				dispatch( 'core/block-editor' ).multiSelect( toSelect[0], toSelect.reverse()[0] );
+			if ( toSelect.length > 0 ) {
+				dispatch( 'core/block-editor' ).multiSelect( toSelect[ 0 ], toSelect.reverse()[ 0 ] );
 			}
 		}
 
@@ -83,8 +74,8 @@ class Edit extends Component {
 
 	addFile( files ) {
 		let file = files[ 0 ];
-		
-		if( files.target ){
+
+		if ( files.target ) {
 			file = event.target.files[ 0 ];
 		}
 
@@ -92,7 +83,7 @@ class Edit extends Component {
 			return;
 		}
 		this.setState( { isLoading: true } );
-		
+
 		importReusableBlock( file )
 			.then( ( reusableBlock ) => {
 				if ( ! this.isStillMounted ) {
@@ -122,12 +113,9 @@ class Edit extends Component {
 				this.setState( { isLoading: false, error: uiMessage } );
 			} );
 	}
-	
-	render(){
-		const { instanceId } = this.props;
-		const { file, isLoading, error } = this.state;
 
-		const inputId = 'editorskit-blocks-import-form-' + instanceId;
+	render() {
+		const { isLoading, error } = this.state;
 
 		return (
 			<Placeholder
@@ -163,6 +151,6 @@ class Edit extends Component {
 			</Placeholder>
 		);
 	}
-};
+}
 
 export default withInstanceId( Edit );

@@ -5,23 +5,17 @@
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { withSelect, withDispatch } = wp.data;
-const { compose, withState} = wp.compose;
+const { compose } = wp.compose;
 const { Fragment, Component } = wp.element;
 const { PluginMoreMenuItem } = wp.editPost;
-const { MenuGroup, MenuItemsChoice, MenuItem, withSpokenMessages } = wp.components;
-
+const { withSpokenMessages } = wp.components;
 
 /**
  * Render plugin
  */
 class EditorMinHeight extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	componentDidMount() {
 		this.sync();
 	}
@@ -32,21 +26,21 @@ class EditorMinHeight extends Component {
 
 	sync() {
 		const { isActive, isDisabled } = this.props;
-		if ( isActive && !isDisabled ) {
+		if ( isActive && ! isDisabled ) {
 			document.body.classList.add( 'is-editorkit-height-on' );
 		} else {
 			document.body.classList.remove( 'is-editorkit-height-on' );
 		}
 	}
-	
-	render(){
+
+	render() {
 		const {
 			isActive,
 			onToggle,
 			isDisabled,
 		} = this.props;
 
-		if( isDisabled ){
+		if ( isDisabled ) {
 			return null;
 		}
 
@@ -60,18 +54,18 @@ class EditorMinHeight extends Component {
 				>
 					{ __( 'Editor Height' ) }
 				</PluginMoreMenuItem>
-				
+
 			</Fragment>
 		);
 	}
-};
+}
 
 export default compose( [
 	withSelect( ( select ) => ( {
 		isActive: select( 'core/edit-post' ).isFeatureActive( 'editorMinHeight' ),
 		isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitHeightTools' ),
 	} ) ),
-	withDispatch( ( dispatch, ownProps ) => ( {
+	withDispatch( ( dispatch ) => ( {
 		onToggle() {
 			dispatch( 'core/edit-post' ).toggleFeature( 'editorMinHeight' );
 		},

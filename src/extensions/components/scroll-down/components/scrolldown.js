@@ -1,35 +1,24 @@
 /**
- * Internal dependencies
- */
-
-/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;
-const { compose, withState} = wp.compose;
+const { compose } = wp.compose;
 const { Fragment, Component } = wp.element;
 const { PluginMoreMenuItem } = wp.editPost;
 const { withSpokenMessages } = wp.components;
-
 
 /**
  * Render plugin
  */
 class ScrollDown extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
-	render(){
+	render() {
 		const {
 			isActive,
-			onToggle,
 			isDisabled,
 		} = this.props;
 
-		if( !isActive || isDisabled ){
+		if ( ! isActive || isDisabled ) {
 			return null;
 		}
 
@@ -38,19 +27,19 @@ class ScrollDown extends Component {
 				<PluginMoreMenuItem
 					role="menuitemcheckbox"
 					onClick={ () => {
-						let metaboxes = document.querySelectorAll('.edit-post-layout__metaboxes');
-						if( metaboxes[0] ){
-							metaboxes[0].scrollIntoView();
+						const metaboxes = document.querySelectorAll( '.edit-post-layout__metaboxes' );
+						if ( metaboxes[ 0 ] ) {
+							metaboxes[ 0 ].scrollIntoView();
 						}
 					} }
 				>
 					{ __( 'View Custom Fields' ) }
 				</PluginMoreMenuItem>
-				
+
 			</Fragment>
 		);
 	}
-};
+}
 
 export default compose( [
 	withSelect( ( select ) => ( {

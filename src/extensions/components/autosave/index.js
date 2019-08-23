@@ -1,7 +1,6 @@
 /**
  * Internal dependencies
  */
-import './styles/editor.scss';
 import ManageAutoSave from './components/menu';
 
 /**
@@ -10,6 +9,6 @@ import ManageAutoSave from './components/menu';
 const { registerPlugin } = wp.plugins;
 
 registerPlugin( 'editorskit-editor-autosave', {
-    icon: false,
+	icon: false,
 	render: ManageAutoSave,
 } );

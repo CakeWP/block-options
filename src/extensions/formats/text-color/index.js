@@ -1,20 +1,12 @@
 /**
- * External dependencies
- */
-import { get } from 'lodash';
-
-/**
  * Internal dependencies
  */
-import './styles/editor.scss';
 import Edit from './components/edit';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Fragment } = wp.element;
-
 
 /**
  * Block constants

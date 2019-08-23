@@ -1,16 +1,13 @@
 /**
  * Internal dependencies
  */
-import './styles/editor.scss';
-import './styles/style.scss';
-import UppercaseControl from './controls';
+import UppercaseControl from './controls'; // eslint-disable-line no-unused-vars
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Fragment } = wp.element;
-
+const { Fragment } = wp.element; // eslint-disable-line no-unused-vars
 
 /**
  * Block constants
@@ -23,12 +20,10 @@ export const uppercase = {
 	tagName: 'span',
 	className: 'uppercase',
 	edit( { isActive, value, onChange, activeAttributes } ) {
-
 		return (
 			<Fragment>
-				<UppercaseControl name={ name } isActive={ isActive } value={ value } onChange={ onChange } activeAttributes={ activeAttributes }  />
+				<UppercaseControl name={ name } isActive={ isActive } value={ value } onChange={ onChange } activeAttributes={ activeAttributes } />
 			</Fragment>
 		);
-
 	},
 };

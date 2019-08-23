@@ -28,7 +28,7 @@ if( !class_exists( 'BLOCKOPS_Welcome' ) ){
 			if ( !isset( $_GET['page'] ) || 'editorskit-getting-started' != $_GET['page'] )
 			return;
 
-			wp_enqueue_style( 'editorskit-welcome', plugins_url( '/dist/css/editorskit-getting-started.min.css' , dirname(__FILE__) ) , array(), null );
+			wp_enqueue_style( 'editorskit-welcome', plugins_url( '/build/admin.build.css' , dirname(__FILE__) ) , array(), null );
 		}
 
 		function screen_page(){
@@ -64,7 +64,7 @@ if( !class_exists( 'BLOCKOPS_Welcome' ) ){
 
 					<p><?php echo esc_html__( 'Happy building!', 'block-options' ); ?></p>
 
-					<p><img src="<?php echo esc_url( EDITORSKIT_PLUGIN_URL . 'dist/images/logo-800.png' ); ?>" alt="<?php echo esc_attr__( 'EditorsKit Team', 'block-options' ); ?>"></p>
+					<p><img src="<?php echo esc_url( EDITORSKIT_PLUGIN_URL . 'build/images/logo-800.png' ); ?>" alt="<?php echo esc_attr__( 'EditorsKit Team', 'block-options' ); ?>"></p>
 
 				</div>
 			</div>

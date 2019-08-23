@@ -1,7 +1,6 @@
 /**
  * Internal dependencies
  */
-// import './styles/editor.scss';
 import FeaturesManager from './components/manager';
 
 /**
@@ -10,6 +9,6 @@ import FeaturesManager from './components/manager';
 const { registerPlugin } = wp.plugins;
 
 registerPlugin( 'editorskit-features-manager', {
-    icon: false,
+	icon: false,
 	render: FeaturesManager,
 } );

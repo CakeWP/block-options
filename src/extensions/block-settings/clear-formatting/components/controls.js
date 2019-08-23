@@ -1,18 +1,18 @@
 /**
  * External dependencies
  */
-import { get, map } from 'lodash';
+import { get } from 'lodash';
 
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { select, withSelect, withDispatch } = wp.data;
 const { Fragment, Component } = wp.element;
-const { Button, Modal, TextControl, TabPanel, withSpokenMessages } = wp.components;
+const { withSpokenMessages } = wp.components;
 const { PluginBlockSettingsMenuItem } = wp.editPost;
 const { compose, ifCondition } = wp.compose;
-const { create, toHTMLString, applyFormat, removeFormat } = wp.richText;
+const { create, toHTMLString } = wp.richText;
 
 const allowedBlocks = [ 'core/paragraph', 'core/heading' ];
 
@@ -20,38 +20,32 @@ const allowedBlocks = [ 'core/paragraph', 'core/heading' ];
  * Render plugin
  */
 class ClearBlockFormatting extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-
-	}
-
 	render() {
 		const { blockId, blockName, blockContent, clearBlockFormatting } = this.props;
-		
-		let record = create( { html: blockContent } );
-		
+
+		const record = create( { html: blockContent } );
+
 		return (
 			<Fragment>
 				<PluginBlockSettingsMenuItem
-					icon='editor-removeformatting'
+					icon="editor-removeformatting"
 					label={ __( 'Clear Block Formatting' ) }
 					onClick={ () => {
-						clearBlockFormatting( blockId, blockName, toHTMLString( { 
-							value: { ...record, formats: Array(record.formats.length) }
+						clearBlockFormatting( blockId, blockName, toHTMLString( {
+							value: { ...record, formats: Array( record.formats.length ) },
 						} ) );
 					} }
 				>
-					
+
 				</PluginBlockSettingsMenuItem>
 
 			</Fragment>
 		);
 	}
-};
+}
 
 export default compose(
-	withSelect( select => {
+	withSelect( () => {
 		const selectedBlock = select( 'core/block-editor' ).getSelectedBlock();
 		if ( ! selectedBlock ) {
 			return {};
@@ -63,16 +57,16 @@ export default compose(
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitClearFormattingFormats' ),
 		};
 	} ),
-	withDispatch( dispatch => {
+	withDispatch( ( dispatch ) => {
 		const { updateBlockAttributes } = dispatch( 'core/block-editor' );
-		return{
+		return {
 			clearBlockFormatting( blockId, blockName, blockContent ) {
 				updateBlockAttributes( blockId, { content: blockContent } );
-			}
-		}
+			},
+		};
 	} ),
-	ifCondition( props => {
-		return !props.isDisabled && allowedBlocks.includes( props.blockName );
+	ifCondition( ( props ) => {
+		return ! props.isDisabled && allowedBlocks.includes( props.blockName );
 	} ),
 	withSpokenMessages,
 )( ClearBlockFormatting );

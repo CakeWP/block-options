@@ -1,31 +1,23 @@
 /**
- * Internal dependencies
- */
-
-/**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { withSelect, withDispatch } = wp.data;
-const { compose, withState, ifCondition } = wp.compose;
-const { Fragment, Component } = wp.element;
-const { PluginMoreMenuItem } = wp.editPost;
-const { MenuGroup, MenuItemsChoice, MenuItem, withSpokenMessages } = wp.components;
-
+const { withSelect } = wp.data;
+const { compose } = wp.compose;
+const { Component } = wp.element;
+const { withSpokenMessages } = wp.components;
 
 /**
  * Render plugin
  */
 class CodeEditor extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 
 		// this.addCodeMirror = this.addCodeMirror.bind( this );
 
-		this.state   = {
+		this.state = {
 			isLoaded: false,
-		}
+		};
 	}
 
 	componentDidMount() {
@@ -36,50 +28,49 @@ class CodeEditor extends Component {
 		this.addCodeMirror();
 	}
 
-	addCodeMirror(){
+	addCodeMirror() {
 		const {
 			isDisabled,
 			editorMode,
 		} = this.props;
 
-		if( isDisabled ){
+		if ( isDisabled ) {
 			return null;
 		}
 
-		if( editorMode == 'text' && !this.state.isLoaded ){
-			var editorSettings = wp.codeEditor.defaultSettings ? _.clone( wp.codeEditor.defaultSettings ) : {};
+		if ( editorMode === 'text' && ! this.state.isLoaded ) {
+			const editorSettings = wp.codeEditor.defaultSettings ? _.clone( wp.codeEditor.defaultSettings ) : {};
 
 			//add placeholder class
 			document.body.classList.add( 'editorskit-editor-loaded' );
-			
+
 			editorSettings.codemirror = _.extend(
-                {},
-                editorSettings.codemirror,
-                {
-                	mode: 'text/html',
-                	lineNumbers: true,
-                    indentUnit: 2,
-                    tabSize: 2,
-                    height: 'auto',
-                    lineWrapping: true,
-                    scrollbarStyle: "null",
-                }
-            );
+				{},
+				editorSettings.codemirror,
+				{
+					mode: 'text/html',
+					lineNumbers: true,
+					indentUnit: 2,
+					tabSize: 2,
+					height: 'auto',
+					lineWrapping: true,
+					scrollbarStyle: 'null',
+				}
+			);
 
-            var textEditor = document.querySelector('.editor-post-text-editor');
-            var editor = wp.codeEditor.initialize( textEditor , editorSettings );
+			const textEditor = document.querySelector( '.editor-post-text-editor' );
+			wp.codeEditor.initialize( textEditor, editorSettings );
 
-            this.setState({ isLoaded : true });
-		}else if( editorMode == 'visual' && this.state.isLoaded ){
-
-			this.setState({ isLoaded : false });
+			this.setState( { isLoaded: true } );
+		} else if ( editorMode === 'visual' && this.state.isLoaded ) {
+			this.setState( { isLoaded: false } );
 		}
 	}
-	
-	render(){
+
+	render() {
 		return null;
 	}
-};
+}
 
 export default compose( [
 	withSelect( ( select ) => ( {

@@ -1,7 +1,6 @@
 /**
  * Internal dependencies
  */
-import './styles/editor.scss';
 import CodeEditor from './components/code-editor';
 
 /**
@@ -10,6 +9,6 @@ import CodeEditor from './components/code-editor';
 const { registerPlugin } = wp.plugins;
 
 registerPlugin( 'editorskit-code-editor', {
-    icon: false,
+	icon: false,
 	render: CodeEditor,
 } );

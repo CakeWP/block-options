@@ -1,7 +1,6 @@
 /**
  * Internal dependencies
  */
-import './styles/editor.scss';
 import BlockGuideLines from './components/menu';
 
 /**
@@ -10,6 +9,6 @@ import BlockGuideLines from './components/menu';
 const { registerPlugin } = wp.plugins;
 
 registerPlugin( 'editorskit-block-guidelines', {
-    icon: false,
+	icon: false,
 	render: BlockGuideLines,
 } );

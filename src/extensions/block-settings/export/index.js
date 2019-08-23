@@ -1,7 +1,6 @@
 /**
  * Internal dependencies
  */
-import './styles/editor.scss';
 import ExportManager from './components/export';
 
 /**
@@ -10,6 +9,6 @@ import ExportManager from './components/export';
 const { registerPlugin } = wp.plugins;
 
 registerPlugin( 'editorskit-features-import-export', {
-    icon: false,
+	icon: false,
 	render: ExportManager,
 } );

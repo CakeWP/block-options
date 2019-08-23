@@ -1,7 +1,6 @@
 /**
  * Internal dependencies
  */
-import './styles/editor.scss';
 import EditorMinHeight from './components/height';
 
 /**
@@ -10,6 +9,6 @@ import EditorMinHeight from './components/height';
 const { registerPlugin } = wp.plugins;
 
 registerPlugin( 'editorskit-editor-height', {
-    icon: false,
+	icon: false,
 	render: EditorMinHeight,
 } );

@@ -1,12 +1,6 @@
 /**
- * External dependencies
- */
-import { includes } from 'lodash';
-
-/**
  * WordPress dependencies
  */
-const { createBlobURL } = wp.blob;
 const { createBlock } = wp.blocks;
 
 const transforms = {
@@ -14,7 +8,7 @@ const transforms = {
 		{
 			type: 'files',
 			isMatch( files ) {
-				return files[0].type == 'application/json';
+				return files[ 0 ].type === 'application/json';
 			},
 			// We define a lower priorty (higher number) than the default of 10. This
 			// ensures that the Import block is only created as a fallback.

@@ -16,7 +16,7 @@ import { uppercase } from './uppercase';
  */
 const { registerFormatType } = wp.richText;
 
-function registerFormats () {
+function registerFormats() {
 	[
 		underline,
 		justify,
@@ -28,5 +28,5 @@ function registerFormats () {
 		clear,
 		uppercase,
 	].forEach( ( { name, ...settings } ) => registerFormatType( name, settings ) );
-};
+}
 registerFormats();

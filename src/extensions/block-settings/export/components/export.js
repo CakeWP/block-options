@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { map, kebabCase } from 'lodash';
+import { kebabCase } from 'lodash';
 
 /**
  * Internal dependencies
@@ -12,43 +12,41 @@ import { download } from '../utils/file';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { withSelect, withDispatch, select } = wp.data;
-const { compose, withState, ifCondition } = wp.compose;
+const { __ } = wp.i18n;
+const { withSelect, select } = wp.data;
+const { compose, ifCondition } = wp.compose;
 const { Fragment, Component } = wp.element;
 const { PluginBlockSettingsMenuItem } = wp.editPost;
-const { withSpokenMessages, Modal, CheckboxControl, TabPanel } = wp.components;
-const { serialize, parse, createBlock } = wp.blocks;
-
+const { withSpokenMessages } = wp.components;
+const { serialize } = wp.blocks;
 
 /**
  * Render plugin
  */
 class ExportManager extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 
 		this.saveAsJSON = this.saveAsJSON.bind( this );
 	}
 
-	saveAsJSON(){
+	saveAsJSON() {
 		const {
 			selectedBlockCount,
 			selectedBlock,
 			selectedBlocks,
-			getBlock,
 		} = this.props;
 
-		if( selectedBlockCount < 1 ){
+		if ( selectedBlockCount < 1 ) {
 			return;
 		}
 
-		let blocks, reusable = [], title = 'editorskit/export';
+		let blocks;
+		const title = 'editorskit/export';
 
-		if( selectedBlockCount == 1 ){
+		if ( selectedBlockCount === 1 ) {
 			//export as reusable when reusable is selected
-			if( selectedBlock.name == 'core/block' ){
+			if ( selectedBlock.name === 'core/block' ) {
 				exportReusableBlock( selectedBlock.attributes.ref );
 				return;
 			}
@@ -56,7 +54,7 @@ class ExportManager extends Component {
 			blocks = serialize( selectedBlock );
 		}
 
-		if( selectedBlockCount > 1 ){
+		if ( selectedBlockCount > 1 ) {
 			blocks = serialize( selectedBlocks );
 		}
 
@@ -70,38 +68,37 @@ class ExportManager extends Component {
 		const fileName = kebabCase( title ) + '.json';
 		download( fileName, fileContent, 'application/json' );
 	}
-	
-	render(){
 
+	render() {
 		return (
 			<Fragment>
 				<PluginBlockSettingsMenuItem
-					icon='share-alt2'
+					icon="share-alt2"
 					label={ __( 'Export as JSON' ) }
 					onClick={ this.saveAsJSON }
 				>
-					
+
 				</PluginBlockSettingsMenuItem>
 			</Fragment>
 		);
 	}
-};
+}
 
 export default compose( [
-	withSelect( ( select ) => {
+	withSelect( () => {
 		const { getSelectedBlockCount, getSelectedBlock, getMultiSelectedBlocks } = select( 'core/block-editor' );
 		const { getBlock } = select( 'core/block-editor' );
 
-		return{
+		return {
 			selectedBlockCount: getSelectedBlockCount(),
 			selectedBlock: getSelectedBlock(),
 			selectedBlocks: getMultiSelectedBlocks(),
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitExportTools' ),
 			getBlock,
-		}
+		};
 	} ),
-	ifCondition( props => {
-		return !props.isDisabled;
+	ifCondition( ( props ) => {
+		return ! props.isDisabled;
 	} ),
 	withSpokenMessages,
 ] )( ExportManager );

@@ -5,26 +5,20 @@
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { withSelect, withDispatch, dispatch } = wp.data;
-const { compose, withState} = wp.compose;
+const { __ } = wp.i18n;
+const { withSelect, withDispatch, dispatch, select } = wp.data;
+const { compose } = wp.compose;
 const { Fragment, Component } = wp.element;
 const { PluginMoreMenuItem } = wp.editPost;
-const { MenuGroup, MenuItemsChoice, MenuItem, withSpokenMessages } = wp.components;
-
+const { withSpokenMessages } = wp.components;
 
 /**
  * Render plugin
  */
 class ManageAutoSave extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	componentDidMount() {
-		let editorHeader = document.querySelector('.edit-post-header__settings');
-		let prompt = '<span class="editorskit-auto-save-disabled--label">'+ __( 'Auto Save Disabled' ) +'</span>';
+		const editorHeader = document.querySelector( '.edit-post-header__settings' );
+		const prompt = '<span class="editorskit-auto-save-disabled--label">' + __( 'Auto Save Disabled' ) + '</span>';
 
 		//insert prompt on header
 		editorHeader.insertAdjacentHTML( 'afterbegin', prompt );
@@ -40,41 +34,40 @@ class ManageAutoSave extends Component {
 		const { isAvailable, isActive, isDisabled, editorSettings } = this.props;
 
 		let autosaveInterval = 60;
-		let prompt = document.querySelector('.editorskit-auto-save-disabled--label');
+		const prompt = document.querySelector( '.editorskit-auto-save-disabled--label' );
 
 		//update autosave interval
-		if( !isActive && !isDisabled && typeof isAvailable !== 'undefined' ){
+		if ( ! isActive && ! isDisabled && typeof isAvailable !== 'undefined' ) {
 			autosaveInterval = 259200; // 3days in seconds
 		}
 
-		if( editorSettings.autosaveInterval != autosaveInterval  ){
-			let newEditorSettings = Object.assign( this.props.editorSettings, { autosaveInterval: autosaveInterval } );
-			dispatch('core/editor').updateEditorSettings( newEditorSettings );
-			dispatch('core/editor').refreshPost();
+		if ( editorSettings.autosaveInterval !== autosaveInterval ) {
+			const newEditorSettings = Object.assign( this.props.editorSettings, { autosaveInterval } );
+			dispatch( 'core/editor' ).updateEditorSettings( newEditorSettings );
+			dispatch( 'core/editor' ).refreshPost();
 		}
 
 		//show prompt
 		prompt.className = 'editorskit-auto-save-disabled--label editorskit-auto-save-disabled--' + autosaveInterval;
-		
 	}
-	
-	render(){
+
+	render() {
 		const {
 			isDisabled,
 			onToggle,
 			editorSettings,
 		} = this.props;
 
-		if( isDisabled ){
+		if ( isDisabled ) {
 			return null;
 		}
-		
+
 		let isActive = this.props.isActive;
 
-		if( editorSettings.autosaveInterval != 259200 ){
+		if ( editorSettings.autosaveInterval !== 259200 ) {
 			isActive = true;
 		}
-		
+
 		return (
 			<Fragment>
 				<PluginMoreMenuItem
@@ -85,20 +78,20 @@ class ManageAutoSave extends Component {
 				>
 					{ __( 'Auto Save' ) }
 				</PluginMoreMenuItem>
-				
+
 			</Fragment>
 		);
 	}
-};
+}
 
 export default compose( [
-	withSelect( ( select ) => ( {
-		isAvailable: select( 'core/edit-post' ).getPreference('features').editorskitAutoSave,
+	withSelect( () => ( {
+		isAvailable: select( 'core/edit-post' ).getPreference( 'features' ).editorskitAutoSave,
 		isActive: select( 'core/edit-post' ).isFeatureActive( 'editorskitAutoSave' ),
 		isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitAutosaveTools' ),
-		editorSettings: select('core/editor').getEditorSettings(),
+		editorSettings: select( 'core/editor' ).getEditorSettings(),
 	} ) ),
-	withDispatch( ( dispatch, ownProps ) => ( {
+	withDispatch( () => ( {
 		onToggle() {
 			dispatch( 'core/edit-post' ).toggleFeature( 'editorskitAutoSave' );
 		},

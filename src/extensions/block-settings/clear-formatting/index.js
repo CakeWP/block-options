@@ -9,6 +9,6 @@ import ClearBlockFormatting from './components/controls';
 const { registerPlugin } = wp.plugins;
 
 registerPlugin( 'editorskit-block-clear-formatting', {
-    icon: 'editor-removeformatting',
+	icon: 'editor-removeformatting',
 	render: ClearBlockFormatting,
 } );

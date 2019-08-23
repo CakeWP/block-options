@@ -1,0 +1,26 @@
+{
+  "parser": "babel-eslint",
+  "globals": {
+    "_": "readonly",
+    "wp": "readonly",
+    "ReactDOM": "readonly"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@wordpress/eslint-plugin/recommended",
+    "plugin:eslint-comments/recommended",
+  ],
+}

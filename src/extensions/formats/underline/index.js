@@ -23,8 +23,8 @@ export const underline = {
 	edit( { isActive, value, onChange } ) {
 		const isDisabled = select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitUnderlineFormats' );
 		const formatTypes = select( 'core/rich-text' ).getFormatTypes();
-		const checkFormats = formatTypes.filter( formats => formats['name'] === 'wpcom/underline' );
-		
+		const checkFormats = formatTypes.filter( ( formats ) => formats.name === 'wpcom/underline' );
+
 		const onToggle = () => {
 			onChange(
 				toggleFormat( value, {
@@ -32,7 +32,7 @@ export const underline = {
 					attributes: {
 						style: 'text-decoration: underline;',
 					},
-				} ) 
+				} )
 			);
 		};
 
@@ -43,17 +43,16 @@ export const underline = {
 					character="u"
 					onUse={ onToggle }
 				/>
-				{ !isDisabled && checkFormats.length === 0 && ( <RichTextToolbarButton
-						icon="editor-underline"
-						title={ __( 'Underline' ) }
-						onClick={ onToggle }
-						isActive={ isActive }
-						shortcutType="primary"
-						shortcutCharacter="u"
-					/> )
+				{ ! isDisabled && checkFormats.length === 0 && ( <RichTextToolbarButton
+					icon="editor-underline"
+					title={ __( 'Underline' ) }
+					onClick={ onToggle }
+					isActive={ isActive }
+					shortcutType="primary"
+					shortcutCharacter="u"
+				/> )
 				}
 			</Fragment>
 		);
-
 	},
 };

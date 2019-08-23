@@ -80,7 +80,7 @@ class EditorsKit_Block_Assets {
 		// Styles.
 		wp_enqueue_style(
 			$this->_slug . '-frontend',
-			$this->_url . '/dist/blocks.style.build.css',
+			$this->_url . '/build/style.build.css',
 			array(),
 			$this->_version
 		);
@@ -100,7 +100,7 @@ class EditorsKit_Block_Assets {
 		// Styles.
 		wp_enqueue_style(
 			$this->_slug . '-editor',
-			$this->_url . '/dist/blocks.editor.build.css',
+			$this->_url . '/build/editor.build.css',
 			array(),
 			$this->_version
 		);
@@ -108,7 +108,7 @@ class EditorsKit_Block_Assets {
 		// Scripts.
 		wp_enqueue_script(
 			$this->_slug . '-editor',
-			$this->_url . '/dist/blocks.build.js',
+			$this->_url . '/build/index.js',
 			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api', 'wp-editor', 'wp-hooks', 'lodash' ),
 			time(),
 			false

@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { get } from 'lodash';
 
 /**
  * Internal dependencies
@@ -16,15 +15,15 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { select, withSelect } = wp.data;
 const { BlockControls } = wp.blockEditor;
-const { applyFormat, toggleFormat, removeFormat, getActiveFormat } = wp.richText;
-const { Toolbar, IconButton, Popover, ColorPalette, ColorIndicator } = wp.components;
+const { applyFormat, removeFormat, getActiveFormat } = wp.richText;
+const { Toolbar, IconButton, Popover, ColorPalette } = wp.components;
 const { compose, ifCondition } = wp.compose;
 
 const name = 'editorskit/background';
 const title = __( 'Highlight Color' );
 
 class Edit extends Component {
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 
 		this.toggle = this.toggle.bind( this );
@@ -52,34 +51,34 @@ class Edit extends Component {
 
 		const colors = [
 			{
-				name: __('Marker Default'),
+				name: __( 'Marker Default' ),
 				slug: 'marker-default',
-				color: '#fff9c0'
+				color: '#fff9c0',
 			},
 			{
-				name: __('Orange Sunrise'),
+				name: __( 'Orange Sunrise' ),
 				slug: 'orange-sunrise',
-				color: '#f7cc62'
+				color: '#f7cc62',
 			},
 			{
-				name: __('Pink Flamingo'),
+				name: __( 'Pink Flamingo' ),
 				slug: 'pink-flamingo',
-				color: '#ffbfb5'
+				color: '#ffbfb5',
 			},
 			{
-				name: __('Spring Green'),
+				name: __( 'Spring Green' ),
 				slug: 'spring-green',
-				color: '#b5dcaf'
+				color: '#b5dcaf',
 			},
 			{
-				name: __('Blue Moon'),
+				name: __( 'Blue Moon' ),
 				slug: 'blue-moon',
-				color: '#d6e8fa'
+				color: '#d6e8fa',
 			},
 			{
-				name: __('Purple Mist'),
+				name: __( 'Purple Mist' ),
 				slug: 'purple-mist',
-				color: '#d8c3ff'
+				color: '#d8c3ff',
 			},
 		];
 		const activeColorFormat = getActiveFormat( value, name );
@@ -146,14 +145,13 @@ class Edit extends Component {
 			</Fragment>
 		);
 	}
-
 }
 
 export default compose(
-	withSelect( select => {
+	withSelect( () => {
 		return {
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitHighlightFormats' ),
 		};
 	} ),
-	ifCondition( props => !props.isDisabled ),
+	ifCondition( ( props ) => ! props.isDisabled ),
 )( Edit );
