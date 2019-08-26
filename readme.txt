@@ -104,6 +104,7 @@ e.g.
 5. Image and Cover Block Styles
 6. Settings and Options
 7. Custom Classes Utility and Auto Suggestions
+8. Code Editor Mode Syntax Highlighter
 
 
 == Changelog ==
