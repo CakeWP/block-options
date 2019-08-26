@@ -62,16 +62,22 @@ class FeaturesManager extends Component {
 							return (
 								<section className="edit-post-options-modal__section">
 									<h2 className="edit-post-options-modal__section-title">{ category.label }</h2>
-									{ map( category.items, ( item ) => {
-										return (
-											<CheckboxControl
-												className="edit-post-options-modal__option"
-												label={ item.label }
-												checked={ ! select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKit' + capitalize( item.name ) + capitalize( category.name ) ) }
-												onChange={ () => onToggle( category.name, item.name ) }
-											/>
-										);
-									} ) }
+									<ul className="edit-post-editorskit-manager-modal__checklist">
+										{ map( category.items, ( item ) => {
+											return (
+												<li
+													className="edit-post-editorskit-manager-modal__checklist-item"
+												>
+													<CheckboxControl
+														className="edit-post-options-modal__option"
+														label={ item.label }
+														checked={ ! select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKit' + capitalize( item.name ) + capitalize( category.name ) ) }
+														onChange={ () => onToggle( category.name, item.name ) }
+													/>
+												</li>
+											);
+										} ) }
+									</ul>
 								</section>
 							);
 						} ) }

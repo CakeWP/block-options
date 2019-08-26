@@ -5738,8 +5738,7 @@ var withInspectorControl = createHigherOrderComponent(function (BlockEdit) {
           setState({
             customClassNames: nextValue !== '' ? nextValue : undefined
           });
-        },
-        help: __('Separate multiple classes with spaces.')
+        }
       })));
     }
 
@@ -8099,16 +8098,20 @@ function (_Component) {
           className: "edit-post-options-modal__section"
         }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h2", {
           className: "edit-post-options-modal__section-title"
-        }, category.label), lodash_map__WEBPACK_IMPORTED_MODULE_6___default()(category.items, function (item) {
-          return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(CheckboxControl, {
+        }, category.label), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("ul", {
+          className: "edit-post-editorskit-manager-modal__checklist"
+        }, lodash_map__WEBPACK_IMPORTED_MODULE_6___default()(category.items, function (item) {
+          return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("li", {
+            className: "edit-post-editorskit-manager-modal__checklist-item"
+          }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(CheckboxControl, {
             className: "edit-post-options-modal__option",
             label: item.label,
             checked: !select('core/edit-post').isFeatureActive('disableEditorsKit' + capitalize(item.name) + capitalize(category.name)),
             onChange: function onChange() {
               return onToggle(category.name, item.name);
             }
-          });
-        }));
+          }));
+        })));
       })) : null);
     }
   }]);

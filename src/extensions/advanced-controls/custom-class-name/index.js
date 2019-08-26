@@ -74,7 +74,6 @@ const withInspectorControl = createHigherOrderComponent( ( BlockEdit ) => {
 								} );
 								setState( { customClassNames: nextValue !== '' ? nextValue : undefined } );
 							} }
-							help={ __( 'Separate multiple classes with spaces.' ) }
 						/>
 					</InspectorAdvancedControls>
 				</Fragment>
