@@ -72,7 +72,7 @@ Enable or disable EditorsKit features using "EditorsKit Settings" menu. This wil
 ## Better Custom CSS Class(es)
 Huge improvement on `Additional CSS Class(es)` option! EditorsKit provides better UI with classes suggestions while typing. Powered with custom PHP filter, theme developers can include custom Utility Classes for more customization options.
 
-## Code Editor Mode Syntax Highlighting
+## Code Editor Mode Syntax Highlighter
 Improve display when on "Code Editor Mode". Powered by WordPress default CodeMirror library, Code Editor will be displayed with code syntax highlights and you will easily check each elements and if there are any errors on your HTML codes.
 
 ## Theme Supports for Developers
