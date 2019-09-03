@@ -42,6 +42,7 @@
     "test:unit": "wp-scripts test-unit-js"
   },
   "devDependencies": {
+    "@babel/runtime": "^7.5.5",
     "@wordpress/scripts": "^3.4.0",
     "babel-eslint": "^10.0.2",
     "classnames": "^2.2.6",
@@ -58,7 +59,5 @@
     "postcss-preset-env": "^6.7.0",
     "sass-loader": "^7.1.0"
   },
-  "dependencies": {
-    "@babel/runtime": "^7.5.5"
-  }
+  "dependencies": {}
 }
