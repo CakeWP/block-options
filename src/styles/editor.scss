@@ -1,0 +1,31 @@
+/*--------------------------------------------------------------
+# Link Popover
+--------------------------------------------------------------*/
+.editor-url-popover__row,
+.block-editor-url-popover__row {
+
+	&.block-editor-url-popover__settings{
+
+		.components-base-control__field {
+			display: flex;
+			flex-direction: row-reverse;
+
+			.components-form-toggle,
+			.components-toggle-control__label {
+				display: flex;
+				flex-direction: column;
+				flex: 1;
+			}
+
+			.components-form-toggle {
+				margin-right: 0px;
+				margin-left: 16px;
+			}
+
+			.components-toggle-control__label {
+				flex-basis: 100%;
+			}
+
+		}
+	}
+}
