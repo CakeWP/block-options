@@ -1,10 +1,12 @@
-.edit-post-editorskit-manager-modal__checklist-item{
-	margin-bottom: 0px;
+.edit-post-editorskit-manager-modal__checklist-item {
+	margin-bottom: 0;
 	border-top: 1px solid #e2e4e7;
+
 	&:last-child {
 		border-bottom: 1px solid #e2e4e7;
 	}
-	.edit-post-options-modal__option{
-		border: 0px !important;
+
+	.edit-post-options-modal__option {
+		border: 0 !important;
 	}
 }
