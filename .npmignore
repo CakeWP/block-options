@@ -8,6 +8,4 @@ node_modules
 .ftppass
 *.cache
 sftp.json.github/
-package.json
 readme.txt
-readme.md
