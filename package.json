@@ -28,6 +28,19 @@
   "files": [
     "build/style.build.css"
   ],
+  "babel": {
+    "presets": [
+      "@wordpress/default"
+    ],
+    "plugins": [
+      [
+        "@wordpress/babel-plugin-makepot",
+        {
+          "output": "languages/editorskit.pot"
+        }
+      ]
+    ]
+  },
   "scripts": {
     "build": "wp-scripts build",
     "check-engines": "wp-scripts check-engines",
@@ -39,10 +52,13 @@
     "lint:pkg-json": "wp-scripts lint-pkg-json",
     "start": "wp-scripts start",
     "test:e2e": "wp-scripts test-e2e",
-    "test:unit": "wp-scripts test-unit-js"
+    "test:unit": "wp-scripts test-unit-js",
+    "makepot": "wp i18n make-pot . languages/editorskit.pot --exclude=node_modules,vendor,build"
   },
   "devDependencies": {
     "@babel/runtime": "^7.5.5",
+    "@wordpress/babel-plugin-makepot": "^3.2.0",
+    "@wordpress/i18n": "^3.6.0",
     "@wordpress/scripts": "^3.4.0",
     "babel-eslint": "^10.0.2",
     "classnames": "^2.2.6",
