@@ -154,6 +154,11 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Markdown', $this->_slug ),
 							'value' => true,
 						),
+						'headingLabel'	=> array(
+							'name'  => 'headingLabel',
+							'label' => __( 'Heading Block Label', $this->_slug ),
+							'value' => true,
+						),
 					)
 				),
 				'tools' => array(
