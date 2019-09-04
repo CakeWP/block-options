@@ -49,9 +49,10 @@
 
 				&::after {
 					content: "";
+					font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 					position: absolute;
 					top: 3px;
-					left: -20px;
+					left: -24px;
 					font-weight: 500;
 					font-size: 12px;
 					opacity: 0.5;
