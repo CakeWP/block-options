@@ -93,11 +93,11 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 				{ isSelected && ! isDisabledDevices && ! restrictedBlocks.includes( name ) &&
 					<InspectorControls>
 						<PanelBody
-							title={ __( 'Responsive' ) }
+							title={ __( 'Responsive', 'block-options' ) }
 							initialOpen={ false }
 							className="editorskit-panel"
 						>
-							<small>{ __( 'Attention: The display settings (show/hide for mobile, tablet or desktop) will only take effect once you are on the live page, and not while you\'re editing in Gutenberg.' ) }</small>
+							<small>{ __( 'Attention: The display settings (show/hide for mobile, tablet or desktop) will only take effect once you are on the live page, and not while you\'re editing in Gutenberg.', 'block-options' ) }</small>
 							{ DevicesOptions( props ) }
 						</PanelBody>
 					</InspectorControls>

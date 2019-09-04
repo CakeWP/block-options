@@ -29,7 +29,7 @@ class UppercaseControl extends Component {
 		return (
 			<RichTextToolbarButton
 				icon={ icon.uppercase }
-				title={ __( 'Uppercase' ) }
+				title={ __( 'Uppercase', 'block-options' ) }
 				onClick={ onToggle }
 				isActive={ isActive }
 			/>

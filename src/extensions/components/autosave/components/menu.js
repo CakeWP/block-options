@@ -18,7 +18,7 @@ const { withSpokenMessages } = wp.components;
 class ManageAutoSave extends Component {
 	componentDidMount() {
 		const editorHeader = document.querySelector( '.edit-post-header__settings' );
-		const prompt = '<span class="editorskit-auto-save-disabled--label">' + __( 'Auto Save Disabled' ) + '</span>';
+		const prompt = '<span class="editorskit-auto-save-disabled--label">' + __( 'Auto Save Disabled', 'block-options' ) + '</span>';
 
 		//insert prompt on header
 		editorHeader.insertAdjacentHTML( 'afterbegin', prompt );
@@ -73,10 +73,10 @@ class ManageAutoSave extends Component {
 				<PluginMoreMenuItem
 					icon={ isActive && 'yes' }
 					role="menuitemcheckbox"
-					info={ __( 'Toggle to disable or enable editor autosaving feature.' ) }
+					info={ __( 'Toggle to disable or enable editor autosaving feature.', 'block-options' ) }
 					onClick={ onToggle }
 				>
-					{ __('Auto Save', 'block-options' ) }
+					{ __( 'Auto Save', 'block-options', 'block-options' ) }
 				</PluginMoreMenuItem>
 
 			</Fragment>

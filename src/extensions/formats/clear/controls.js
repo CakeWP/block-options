@@ -36,7 +36,7 @@ class ClearFormatting extends Component {
 		return (
 			<RichTextToolbarButton
 				icon="editor-removeformatting"
-				title={ __( 'Clear Formatting' ) }
+				title={ __( 'Clear Formatting', 'block-options' ) }
 				onClick={ onToggle }
 				isActive={ isActive }
 			/>

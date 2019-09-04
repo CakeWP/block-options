@@ -14,7 +14,7 @@ const name = 'editorskit/underline';
 
 export const underline = {
 	name,
-	title: __( 'Underline' ),
+	title: __( 'Underline', 'block-options' ),
 	tagName: 'span',
 	className: null,
 	attributes: {
@@ -45,7 +45,7 @@ export const underline = {
 				/>
 				{ ! isDisabled && checkFormats.length === 0 && ( <RichTextToolbarButton
 					icon="editor-underline"
-					title={ __( 'Underline' ) }
+					title={ __( 'Underline', 'block-options' ) }
 					onClick={ onToggle }
 					isActive={ isActive }
 					shortcutType="primary"

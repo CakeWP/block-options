@@ -46,7 +46,7 @@ class ACFOptions extends Component {
 		};
 
 		const acfFields = [ {
-			label: __( 'Select Field' ),
+			label: __( 'Select Field', 'block-options' ),
 			value: '',
 		} ];
 
@@ -67,20 +67,20 @@ class ACFOptions extends Component {
 				return (
 					<Fragment>
 						<div className="editorskit-button-group-container editorskit-button-group-acf">
-							<label className="components-base-control__label" >{ __( 'Advanced Custom Fields' ) }</label> { /* eslint-disable-line jsx-a11y/label-has-for */ }
+							<label className="components-base-control__label" >{ __( 'Advanced Custom Fields', 'block-options' ) }</label> { /* eslint-disable-line jsx-a11y/label-has-for */ }
 							<SelectControl
 								value={ ( typeof editorskit.acf_visibility !== 'undefined' && editorskit.acf_visibility !== '' ) ? editorskit.acf_visibility : '' }
 								options={ [
 									{
-										label: __( 'Select Visibility Option' ),
+										label: __( 'Select Visibility Option', 'block-options' ),
 										value: 'none',
 									},
 									{
-										label: __( 'Hide when Condition\'s met' ),
+										label: __( 'Hide when Condition\'s met', 'block-options' ),
 										value: 'hide',
 									},
 									{
-										label: __( 'Show when Condition\'s met' ),
+										label: __( 'Show when Condition\'s met', 'block-options' ),
 										value: 'show',
 									},
 								] }
@@ -97,31 +97,31 @@ class ACFOptions extends Component {
 								value={ ( typeof editorskit.acf_condition !== 'undefined' && editorskit.acf_condition !== '' ) ? editorskit.acf_condition : '' }
 								options={ [
 									{
-										label: __( 'Select Condition' ),
+										label: __( 'Select Condition', 'block-options' ),
 										value: 'none',
 									},
 									{
-										label: __( 'Is Equal to' ),
+										label: __( 'Is Equal to', 'block-options' ),
 										value: 'equal',
 									},
 									{
-										label: __( 'Is Not Equal to' ),
+										label: __( 'Is Not Equal to', 'block-options' ),
 										value: 'not_equal',
 									},
 									{
-										label: __( 'Contains' ),
+										label: __( 'Contains', 'block-options' ),
 										value: 'contains',
 									},
 									{
-										label: __( 'Does Not Contain' ),
+										label: __( 'Does Not Contain', 'block-options' ),
 										value: 'not_contains',
 									},
 									{
-										label: __( 'Is Empty' ),
+										label: __( 'Is Empty', 'block-options' ),
 										value: 'empty',
 									},
 									{
-										label: __( 'Is Not Empty' ),
+										label: __( 'Is Not Empty', 'block-options' ),
 										value: 'not_empty',
 									},
 								] }
@@ -129,11 +129,11 @@ class ACFOptions extends Component {
 							/>
 
 							<TextareaControl
-								label={ __( 'Conditional Value' ) }
+								label={ __( 'Conditional Value', 'block-options' ) }
 								rows="3"
 								value={ editorskit.acf_value }
 								onChange={ ( n ) => onSelectFields( 'acf_value', n ) }
-								help={ __( 'Additional support for Advanced Custom Fields plugin. Will automatically show when you have the plugin installed and activated.' ) }
+								help={ __( 'Additional support for Advanced Custom Fields plugin. Will automatically show when you have the plugin installed and activated.', 'block-options' ) }
 							/>
 						</div>
 					</Fragment>

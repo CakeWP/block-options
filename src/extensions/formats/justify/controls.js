@@ -31,7 +31,7 @@ class JustifyControl extends Component {
 		return (
 			<RichTextToolbarButton
 				icon="editor-justify"
-				title={ __( 'Justify' ) }
+				title={ __( 'Justify', 'block-options' ) }
 				onClick={ onToggle }
 				isActive={ isBlockJustified }
 			/>

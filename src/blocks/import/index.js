@@ -15,12 +15,12 @@ const { __ } = wp.i18n;
  */
 const name = 'import';
 
-const title = __( 'Import' );
+const title = __( 'Import', 'block-options' );
 
 const keywords = [
-	__( 'import' ),
-	__( 'download' ),
-	__( 'migrate' ),
+	__( 'import', 'block-options' ),
+	__( 'download', 'block-options' ),
+	__( 'migrate', 'block-options' ),
 ];
 
 const blockAttributes = {
@@ -33,7 +33,7 @@ const settings = {
 
 	title,
 
-	description: __( 'Provide contextual feedback messages.' ),
+	description: __( 'Import blocks exported using EditorsKit plugin.', 'block-options' ),
 
 	keywords,
 
