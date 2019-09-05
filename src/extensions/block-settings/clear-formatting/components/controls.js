@@ -29,7 +29,7 @@ class ClearBlockFormatting extends Component {
 			<Fragment>
 				<PluginBlockSettingsMenuItem
 					icon="editor-removeformatting"
-					label={ __( 'Clear Block Formatting' ) }
+					label={ __( 'Clear Block Formatting', 'block-options' ) }
 					onClick={ () => {
 						clearBlockFormatting( blockId, blockName, toHTMLString( {
 							value: { ...record, formats: Array( record.formats.length ) },

@@ -6,7 +6,7 @@
  * Version: 1.11
  * Author: Jeffrey Carandang
  * Author URI: https://jeffreycarandang.com/
- * Text Domain: editorskit
+ * Text Domain: block-options
  * Domain Path: languages
  *
  * @category Gutenberg
@@ -187,7 +187,7 @@ final class EditorsKit {
 	 */
 	
 	public function load_textdomain() {
-		load_plugin_textdomain( 'editorskit', false, dirname( plugin_basename( EDITORSKIT_PLUGIN_DIR ) ) . '/languages/' );
+		load_plugin_textdomain( 'block-options', false, dirname( plugin_basename( EDITORSKIT_PLUGIN_DIR ) ) . '/languages/' );
 	}
 
 	/**

@@ -77,14 +77,14 @@ class EditorsKit_Features_Manager {
 					'name'  => 'visibility',
 					'label' => __( 'Visibility', $this->_slug ),
 					'items' => array(
+						'acf' 		 => array(
+							'name'  => 'acf',
+							'label' => __( 'ACF Support', $this->_slug ),
+							'value' => true,
+						),
 						'devices'	 => array(
 							'name'  => 'devices',
 							'label' => __( 'Devices', $this->_slug ),
-							'value' => true,
-						),
-						'userState' => array(
-							'name'  => 'userState',
-							'label' => __( 'User Login State', $this->_slug ),
 							'value' => true,
 						),
 						'logic' 	 => array(
@@ -92,9 +92,9 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Display Logic', $this->_slug ),
 							'value' => true,
 						),
-						'acf' 		 => array(
-							'name'  => 'acf',
-							'label' => __( 'ACF Support', $this->_slug ),
+						'userState' => array(
+							'name'  => 'userState',
+							'label' => __( 'User Login State', $this->_slug ),
 							'value' => true,
 						),
 					)
@@ -106,11 +106,6 @@ class EditorsKit_Features_Manager {
 						'clearFormatting'	=> array(
 							'name'  => 'clearFormatting',
 							'label' => __( 'Clear Formatting', $this->_slug ),
-							'value' => true,
-						),
-						'colors'	=> array(
-							'name'  => 'colors',
-							'label' => __( 'Text Color', $this->_slug ),
 							'value' => true,
 						),
 						'highlight'	=> array(
@@ -133,6 +128,11 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Superscript', $this->_slug ),
 							'value' => true,
 						),
+						'colors'	=> array(
+							'name'  => 'colors',
+							'label' => __( 'Text Color', $this->_slug ),
+							'value' => true,
+						),
 						'underline'	=> array(
 							'name'  => 'underline',
 							'label' => __( 'Underline', $this->_slug ),
@@ -149,6 +149,11 @@ class EditorsKit_Features_Manager {
 					'name'  => 'writing',
 					'label' => __( 'Writing', $this->_slug ),
 					'items' => array(
+						'headingLabel'	=> array(
+							'name'  => 'headingLabel',
+							'label' => __( 'Heading Block Label', $this->_slug ),
+							'value' => true,
+						),
 						'markdown'	=> array(
 							'name'  => 'markdown',
 							'label' => __( 'Markdown', $this->_slug ),
@@ -160,9 +165,9 @@ class EditorsKit_Features_Manager {
 					'name'  => 'tools',
 					'label' => __( 'Tools', $this->_slug ),
 					'items' => array(
-						'autosave' 	 => array(
-							'name'  => 'autosave',
-							'label' => __( 'Toggle Auto Save', $this->_slug ),
+						'guidelines' => array(
+							'name'  => 'guidelines',
+							'label' => __( 'Block Guide Lines', $this->_slug ),
 							'value' => true,
 						),
 						'codeHighlight' => array(
@@ -180,14 +185,19 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Editor Min-Height', $this->_slug ),
 							'value' => true,
 						),
-						'guidelines' => array(
-							'name'  => 'guidelines',
-							'label' => __( 'Block Guide Lines', $this->_slug ),
-							'value' => true,
-						),
 						'export' 	 => array(
 							'name'  => 'export',
 							'label' => __( 'Export as JSON', $this->_slug ),
+							'value' => true,
+						),
+						'setAsFeatured' => array(
+							'name'  => 'setAsFeatured',
+							'label' => __( 'Set Image Block as Featured', $this->_slug ),
+							'value' => true,
+						),
+						'autosave' 	 => array(
+							'name'  => 'autosave',
+							'label' => __( 'Toggle Auto Save', $this->_slug ),
 							'value' => true,
 						),
 						'toggleTitle' 	 => array(

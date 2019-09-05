@@ -59,7 +59,7 @@ class BlockSettings extends Component {
 		if ( ! isDisabledDevices || ! isDisabledUserState ) {
 			tabs.push( {
 				name: 'default',
-				title: __( 'Default' ),
+				title: __( 'Default', 'block-options' ),
 				className: 'editorskit-default',
 			} );
 		}
@@ -67,7 +67,7 @@ class BlockSettings extends Component {
 		if ( ! isDisabledLogic || ! isDisabledACF ) {
 			tabs.push( {
 				name: 'advanced',
-				title: __( 'Advanced' ),
+				title: __( 'Advanced', 'block-options' ),
 				className: 'editorskit-advanced',
 			} );
 		}
@@ -86,7 +86,7 @@ class BlockSettings extends Component {
 			<Fragment>
 				<PluginBlockSettingsMenuItem
 					icon="visibility"
-					label={ __( 'Visibility Settings' ) }
+					label={ __( 'Visibility Settings', 'block-options' ) }
 					onClick={ () => {
 						this.setState( { isOpen: true } );
 					} }
@@ -95,9 +95,9 @@ class BlockSettings extends Component {
 				</PluginBlockSettingsMenuItem>
 				{ this.state.isOpen && typeof selectedBlock.name !== 'undefined' && ! restrictedBlocks.includes( selectedBlock.name ) ?
 					<Modal
-						title={ __( 'Visibility Settings' ) }
+						title={ __( 'Visibility Settings', 'block-options' ) }
 						onRequestClose={ () => closeModal() }
-						closeLabel={ __( 'Close' ) }
+						closeLabel={ __( 'Close', 'block-options' ) }
 						className="editorskit-components-modal__content"
 					>
 						<TabPanel className="editorskit-tab-panel"
@@ -113,7 +113,7 @@ class BlockSettings extends Component {
 											];
 										default:
 											return [
-												<small>{ __( 'Attention: The display settings (show/hide for mobile, tablet, desktop or users) will only take effect once you are on the live page, and not while you\'re editing in Gutenberg.' ) }</small>, /* eslint-disable-line react/jsx-key */
+												<small>{ __( 'Attention: The display settings (show/hide for mobile, tablet, desktop or users) will only take effect once you are on the live page, and not while you\'re editing in Gutenberg.', 'block-options' ) }</small>, /* eslint-disable-line react/jsx-key */
 												! isDisabledDevices && DevicesOptions( selectedBlock ),
 												! isDisabledUserState && UserStateOptions( selectedBlock ),
 											];

@@ -16,7 +16,7 @@ const name = 'editorskit/justify';
 
 export const justify = {
 	name,
-	title: __( 'Align text justify' ),
+	title: __( 'Align text justify', 'block-options' ),
 	tagName: 'p',
 	className: null,
 	attributes: {

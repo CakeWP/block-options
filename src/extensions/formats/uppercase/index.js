@@ -16,7 +16,7 @@ const name = 'editorskit/uppercase';
 
 export const uppercase = {
 	name,
-	title: __( 'Uppercase' ),
+	title: __( 'Uppercase', 'block-options' ),
 	tagName: 'span',
 	className: 'uppercase',
 	edit( { isActive, value, onChange, activeAttributes } ) {

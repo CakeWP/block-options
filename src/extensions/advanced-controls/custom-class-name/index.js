@@ -64,7 +64,7 @@ const withInspectorControl = createHigherOrderComponent( ( BlockEdit ) => {
 					<BlockEdit { ...props } />
 					<InspectorAdvancedControls>
 						<FormTokenField
-							label={ __( 'Additional CSS Class(es)' ) }
+							label={ __( 'Additional CSS Class(es)', 'block-options' ) }
 							value={ customClassNames }
 							suggestions={ suggestions }
 							maxSuggestions={ 20 }

@@ -5078,10 +5078,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _extensions_components_scroll_down__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./extensions/components/scroll-down */ "./src/extensions/components/scroll-down/index.js");
 /* harmony import */ var _extensions_components_manager__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./extensions/components/manager */ "./src/extensions/components/manager/index.js");
 /* harmony import */ var _extensions_components_code_editor__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./extensions/components/code-editor */ "./src/extensions/components/code-editor/index.js");
-/* harmony import */ var _extensions_block_settings__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./extensions/block-settings */ "./src/extensions/block-settings/index.js");
-/* harmony import */ var _extensions_formats___WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./extensions/formats/ */ "./src/extensions/formats/index.js");
-/* harmony import */ var _extensions_block_styles___WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./extensions/block-styles/ */ "./src/extensions/block-styles/index.js");
-/* harmony import */ var _blocks_import__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./blocks/import */ "./src/blocks/import/index.js");
+/* harmony import */ var _extensions_components_heading_label__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./extensions/components/heading-label */ "./src/extensions/components/heading-label/index.js");
+/* harmony import */ var _extensions_block_settings__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./extensions/block-settings */ "./src/extensions/block-settings/index.js");
+/* harmony import */ var _extensions_formats___WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./extensions/formats/ */ "./src/extensions/formats/index.js");
+/* harmony import */ var _extensions_block_styles___WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./extensions/block-styles/ */ "./src/extensions/block-styles/index.js");
+/* harmony import */ var _blocks_import__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./blocks/import */ "./src/blocks/import/index.js");
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -5119,6 +5120,7 @@ var registerBlockType = wp.blocks.registerBlockType; // Extensions
 
 
 
+
  //Block Settings
 
  // Formats
@@ -5129,7 +5131,7 @@ var registerBlockType = wp.blocks.registerBlockType; // Extensions
 
 
 function registerBlocks() {
-  [_blocks_import__WEBPACK_IMPORTED_MODULE_15__].forEach(function (block) {
+  [_blocks_import__WEBPACK_IMPORTED_MODULE_16__].forEach(function (block) {
     if (!block) {
       return;
     }
@@ -5309,15 +5311,15 @@ function (_Component) {
 
         switch (error.message) {
           case 'Invalid JSON file':
-            uiMessage = __('Invalid JSON file');
+            uiMessage = __('Invalid JSON file', 'block-options');
             break;
 
           case 'Invalid Reusable Block JSON file':
-            uiMessage = __('Invalid Reusable Block JSON file');
+            uiMessage = __('Invalid Reusable Block JSON file', 'block-options');
             break;
 
           default:
-            uiMessage = __('Unknown error');
+            uiMessage = __('Unknown error', 'block-options');
         }
 
         _this2.setState({
@@ -5334,15 +5336,15 @@ function (_Component) {
           error = _this$state.error;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Placeholder, {
         icon: "download",
-        label: __('Import from JSON'),
-        instructions: __('Drag a file or upload a new one from your device.'),
+        label: __('Import from JSON', 'block-options'),
+        instructions: __('Drag a file or upload a new one from your device.', 'block-options'),
         className: "editor-media-placeholder",
         notices: error && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Notice, {
           status: "error"
         }, error)
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(MediaUploadCheck, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(DropZone, {
         onFilesDrop: this.addFile,
-        label: __('Import from JSON')
+        label: __('Import from JSON', 'block-options')
       }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(FormFileUpload, {
         isLarge: true,
         className: "editor-media-placeholder__button",
@@ -5351,7 +5353,7 @@ function (_Component) {
         isBusy: isLoading,
         disabled: isLoading,
         multiple: false
-      }, __('Upload')))));
+      }, __('Upload', 'block-options')))));
     }
   }]);
 
@@ -5425,9 +5427,9 @@ var __ = wp.i18n.__;
 
 var name = 'import';
 
-var title = __('Import');
+var title = __('Import', 'block-options');
 
-var keywords = [__('import'), __('download'), __('migrate')];
+var keywords = [__('import', 'block-options'), __('download', 'block-options'), __('migrate', 'block-options')];
 var blockAttributes = {
   file: {
     type: 'object'
@@ -5435,7 +5437,7 @@ var blockAttributes = {
 };
 var settings = {
   title: title,
-  description: __('Provide contextual feedback messages.'),
+  description: __('Import blocks exported using EditorsKit plugin.', 'block-options'),
   keywords: keywords,
   attributes: blockAttributes,
   supports: {
@@ -5727,7 +5729,7 @@ var withInspectorControl = createHigherOrderComponent(function (BlockEdit) {
 
     if (hasCustomClassName && props.isSelected) {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(BlockEdit, props), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InspectorAdvancedControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(FormTokenField, {
-        label: __('Additional CSS Class(es)'),
+        label: __('Additional CSS Class(es)', 'block-options'),
         value: customClassNames,
         suggestions: suggestions,
         maxSuggestions: 20,
@@ -5860,10 +5862,10 @@ var withAdvancedControls = createHigherOrderComponent(function (BlockEdit) {
     }
 
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(BlockEdit, props), withFullScreenHeight && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InspectorAdvancedControls, null, Object(_options_height___WEBPACK_IMPORTED_MODULE_5__["default"])(props)), isSelected && !isDisabledDevices && !restrictedBlocks.includes(name) && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelBody, {
-      title: __('Responsive'),
+      title: __('Responsive', 'block-options'),
       initialOpen: false,
       className: "editorskit-panel"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("small", null, __('Attention: The display settings (show/hide for mobile, tablet or desktop) will only take effect once you are on the live page, and not while you\'re editing in Gutenberg.')), Object(_options_devices___WEBPACK_IMPORTED_MODULE_3__["default"])(props))), isSelected && !restrictedBlocks.includes(name) && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InspectorAdvancedControls, null, !isDisabledUserState && Object(_options_state___WEBPACK_IMPORTED_MODULE_4__["default"])(props)));
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("small", null, __('Attention: The display settings (show/hide for mobile, tablet or desktop) will only take effect once you are on the live page, and not while you\'re editing in Gutenberg.', 'block-options')), Object(_options_devices___WEBPACK_IMPORTED_MODULE_3__["default"])(props))), isSelected && !restrictedBlocks.includes(name) && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InspectorAdvancedControls, null, !isDisabledUserState && Object(_options_state___WEBPACK_IMPORTED_MODULE_4__["default"])(props)));
   });
 }, 'withAdvancedControls');
 addFilter('editor.BlockEdit', 'editorskit/advanced', withAdvancedControls);
@@ -6072,7 +6074,7 @@ function (_Component) {
       };
 
       var acfFields = [{
-        label: __('Select Field'),
+        label: __('Select Field', 'block-options'),
         value: ''
       }];
 
@@ -6095,16 +6097,16 @@ function (_Component) {
             className: "editorskit-button-group-container editorskit-button-group-acf"
           }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("label", {
             className: "components-base-control__label"
-          }, __('Advanced Custom Fields')), " ", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(SelectControl, {
+          }, __('Advanced Custom Fields', 'block-options')), " ", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(SelectControl, {
             value: typeof editorskit.acf_visibility !== 'undefined' && editorskit.acf_visibility !== '' ? editorskit.acf_visibility : '',
             options: [{
-              label: __('Select Visibility Option'),
+              label: __('Select Visibility Option', 'block-options'),
               value: 'none'
             }, {
-              label: __('Hide when Condition\'s met'),
+              label: __('Hide when Condition\'s met', 'block-options'),
               value: 'hide'
             }, {
-              label: __('Show when Condition\'s met'),
+              label: __('Show when Condition\'s met', 'block-options'),
               value: 'show'
             }],
             onChange: function onChange(n) {
@@ -6119,38 +6121,38 @@ function (_Component) {
           }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(SelectControl, {
             value: typeof editorskit.acf_condition !== 'undefined' && editorskit.acf_condition !== '' ? editorskit.acf_condition : '',
             options: [{
-              label: __('Select Condition'),
+              label: __('Select Condition', 'block-options'),
               value: 'none'
             }, {
-              label: __('Is Equal to'),
+              label: __('Is Equal to', 'block-options'),
               value: 'equal'
             }, {
-              label: __('Is Not Equal to'),
+              label: __('Is Not Equal to', 'block-options'),
               value: 'not_equal'
             }, {
-              label: __('Contains'),
+              label: __('Contains', 'block-options'),
               value: 'contains'
             }, {
-              label: __('Does Not Contain'),
+              label: __('Does Not Contain', 'block-options'),
               value: 'not_contains'
             }, {
-              label: __('Is Empty'),
+              label: __('Is Empty', 'block-options'),
               value: 'empty'
             }, {
-              label: __('Is Not Empty'),
+              label: __('Is Not Empty', 'block-options'),
               value: 'not_empty'
             }],
             onChange: function onChange(n) {
               return onSelectFields('acf_condition', n);
             }
           }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(TextareaControl, {
-            label: __('Conditional Value'),
+            label: __('Conditional Value', 'block-options'),
             rows: "3",
             value: editorskit.acf_value,
             onChange: function onChange(n) {
               return onSelectFields('acf_value', n);
             },
-            help: __('Additional support for Advanced Custom Fields plugin. Will automatically show when you have the plugin installed and activated.')
+            help: __('Additional support for Advanced Custom Fields plugin. Will automatically show when you have the plugin installed and activated.', 'block-options')
           })));
         }
       }
@@ -6218,19 +6220,19 @@ var DevicesOptions = function DevicesOptions(props) {
   }
 
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(ToggleControl, {
-    label: __('Hide on Desktop'),
+    label: __('Hide on Desktop', 'block-options'),
     checked: typeof editorskit.desktop !== 'undefined' && !editorskit.desktop,
     onChange: function onChange() {
       return onSelectDevice('desktop');
     }
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(ToggleControl, {
-    label: __('Hide on Tablet'),
+    label: __('Hide on Tablet', 'block-options'),
     checked: typeof editorskit.tablet !== 'undefined' && !editorskit.tablet,
     onChange: function onChange() {
       return onSelectDevice('tablet');
     }
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(ToggleControl, {
-    label: __('Hide on Mobile'),
+    label: __('Hide on Mobile', 'block-options'),
     checked: typeof editorskit.mobile !== 'undefined' && !editorskit.mobile,
     onChange: function onChange() {
       return onSelectDevice('mobile');
@@ -6267,14 +6269,14 @@ var VerticalHeightToggle = function VerticalHeightToggle(props) {
       setAttributes = props.setAttributes;
   var isHeightFullScreen = attributes.isHeightFullScreen;
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ToggleControl, {
-    label: __('Full Screen Height'),
+    label: __('Full Screen Height', 'block-options'),
     checked: !!isHeightFullScreen,
     onChange: function onChange() {
       return setAttributes({
         isHeightFullScreen: !isHeightFullScreen
       });
     },
-    help: isHeightFullScreen ? __('Full screen height is enabled.') : __('Toggle to display this block\'s height full screen of the browser viewport.')
+    help: isHeightFullScreen ? __('Full screen height is enabled.', 'block-options') : __('Toggle to display this block\'s height full screen of the browser viewport.', 'block-options')
   }));
 };
 
@@ -6312,8 +6314,8 @@ var LogicOptions = function LogicOptions(props) {
     className: "editorskit-button-group-container editorskit-button-group-logic"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextareaControl, {
     rows: "2",
-    label: __('Conditional Logic'),
-    help: __('Add valid PHP conditional tags for custom & advanced visibility options.'),
+    label: __('Conditional Logic', 'block-options'),
+    help: __('Add valid PHP conditional tags for custom & advanced visibility options.', 'block-options'),
     value: editorskit.logic ? editorskit.logic : null,
     onChange: function onChange(newValue) {
       delete editorskit.logic;
@@ -6387,15 +6389,15 @@ var UserStateOptions = function UserStateOptions(props) {
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("hr", {
     className: "editorskit-divider"
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(ToggleControl, {
-    label: __('Hide on Loggedin Users'),
-    help: !editorskit.loggedin ? __('Hidden when users are logged in.') : __('Toggle to hide this block when users are not logged in.'),
+    label: __('Hide on Loggedin Users', 'block-options'),
+    help: !editorskit.loggedin ? __('Hidden when users are logged in.', 'block-options') : __('Toggle to hide this block when users are not logged in.', 'block-options'),
     checked: typeof editorskit.loggedin !== 'undefined' && !editorskit.loggedin,
     onChange: function onChange() {
       return onSelectUser('loggedin');
     }
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(ToggleControl, {
-    label: __('Hide on Loggedout Users'),
-    help: !editorskit.loggedout ? __('Hidden on guests or logged out users.') : __('Toggle to hide this block when users are guests or logged out.'),
+    label: __('Hide on Loggedout Users', 'block-options'),
+    help: !editorskit.loggedout ? __('Hidden on guests or logged out users.', 'block-options') : __('Toggle to hide this block when users are guests or logged out.', 'block-options'),
     checked: typeof editorskit.loggedout !== 'undefined' && !editorskit.loggedout,
     onChange: function onChange() {
       return onSelectUser('loggedout');
@@ -6683,7 +6685,7 @@ function (_Component) {
       });
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(PluginBlockSettingsMenuItem, {
         icon: "editor-removeformatting",
-        label: __('Clear Block Formatting'),
+        label: __('Clear Block Formatting', 'block-options'),
         onClick: function onClick() {
           clearBlockFormatting(blockId, blockName, toHTMLString({
             value: _objectSpread({}, record, {
@@ -6877,7 +6879,7 @@ function (_Component) {
     value: function render() {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(PluginBlockSettingsMenuItem, {
         icon: "share-alt2",
-        label: __('Export as JSON'),
+        label: __('Export as JSON', 'block-options'),
         onClick: this.saveAsJSON
       }));
     }
@@ -7364,7 +7366,7 @@ function (_Component) {
       if (!isDisabledDevices || !isDisabledUserState) {
         tabs.push({
           name: 'default',
-          title: __('Default'),
+          title: __('Default', 'block-options'),
           className: 'editorskit-default'
         });
       }
@@ -7372,7 +7374,7 @@ function (_Component) {
       if (!isDisabledLogic || !isDisabledACF) {
         tabs.push({
           name: 'advanced',
-          title: __('Advanced'),
+          title: __('Advanced', 'block-options'),
           className: 'editorskit-advanced'
         });
       } //if all options are disabled return nothing
@@ -7389,18 +7391,18 @@ function (_Component) {
 
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(PluginBlockSettingsMenuItem, {
         icon: "visibility",
-        label: __('Visibility Settings'),
+        label: __('Visibility Settings', 'block-options'),
         onClick: function onClick() {
           _this2.setState({
             isOpen: true
           });
         }
       }), this.state.isOpen && typeof selectedBlock.name !== 'undefined' && !restrictedBlocks.includes(selectedBlock.name) ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Modal, {
-        title: __('Visibility Settings'),
+        title: __('Visibility Settings', 'block-options'),
         onRequestClose: function onRequestClose() {
           return closeModal();
         },
-        closeLabel: __('Close'),
+        closeLabel: __('Close', 'block-options'),
         className: "editorskit-components-modal__content"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(TabPanel, {
         className: "editorskit-tab-panel",
@@ -7414,7 +7416,7 @@ function (_Component) {
             })];
 
           default:
-            return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("small", null, __('Attention: The display settings (show/hide for mobile, tablet, desktop or users) will only take effect once you are on the live page, and not while you\'re editing in Gutenberg.')),
+            return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("small", null, __('Attention: The display settings (show/hide for mobile, tablet, desktop or users) will only take effect once you are on the live page, and not while you\'re editing in Gutenberg.', 'block-options')),
             /* eslint-disable-line react/jsx-key */
             !isDisabledDevices && Object(_advanced_controls_options_devices___WEBPACK_IMPORTED_MODULE_7__["default"])(selectedBlock), !isDisabledUserState && Object(_advanced_controls_options_state___WEBPACK_IMPORTED_MODULE_8__["default"])(selectedBlock)];
         }
@@ -7486,32 +7488,32 @@ function registerStyles() {
   ['core/image', 'core/cover'].forEach(function (block) {
     registerBlockStyle(block, {
       name: 'default',
-      label: __('Default'),
+      label: __('Default', 'block-options'),
       isDefault: true
     });
     registerBlockStyle(block, {
       name: 'editorskit-circular',
-      label: __('Circular'),
+      label: __('Circular', 'block-options'),
       isDefault: false
     });
     registerBlockStyle(block, {
       name: 'editorskit-rounded',
-      label: __('Rounded Corners'),
+      label: __('Rounded Corners', 'block-options'),
       isDefault: false
     });
     registerBlockStyle(block, {
       name: 'editorskit-diagonal',
-      label: __('Diagonal'),
+      label: __('Diagonal', 'block-options'),
       isDefault: false
     });
     registerBlockStyle(block, {
       name: 'editorskit-inverted-diagonal',
-      label: __('Inverted Diagonal'),
+      label: __('Inverted Diagonal', 'block-options'),
       isDefault: false
     });
     registerBlockStyle(block, {
       name: 'editorskit-shadow',
-      label: __('Shadow'),
+      label: __('Shadow', 'block-options'),
       isDefault: false
     });
   });
@@ -7605,7 +7607,7 @@ function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       var editorHeader = document.querySelector('.edit-post-header__settings');
-      var prompt = '<span class="editorskit-auto-save-disabled--label">' + __('Auto Save Disabled') + '</span>'; //insert prompt on header
+      var prompt = '<span class="editorskit-auto-save-disabled--label">' + __('Auto Save Disabled', 'block-options') + '</span>'; //insert prompt on header
 
       editorHeader.insertAdjacentHTML('afterbegin', prompt);
       this.sync();
@@ -7662,9 +7664,9 @@ function (_Component) {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PluginMoreMenuItem, {
         icon: isActive && 'yes',
         role: "menuitemcheckbox",
-        info: __('Toggle to disable or enable editor autosaving feature.'),
+        info: __('Toggle to disable or enable editor autosaving feature.', 'block-options'),
         onClick: onToggle
-      }, __('Auto Save')));
+      }, __('Auto Save', 'block-options', 'block-options')));
     }
   }]);
 
@@ -7957,9 +7959,9 @@ function (_Component) {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PluginMoreMenuItem, {
         icon: isActive && 'yes',
         role: "menuitemcheckbox",
-        info: __('Toggle to change editor min-height similar to browser viewport.'),
+        info: __('Toggle to change editor min-height similar to browser viewport.', 'block-options'),
         onClick: onToggle
-      }, __('Editor Height')));
+      }, __('Editor Height', 'block-options')));
     }
   }]);
 
@@ -8105,9 +8107,9 @@ function (_Component) {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PluginMoreMenuItem, {
         icon: isActive && 'yes',
         role: "menuitemcheckbox",
-        info: __('Show visible guide lines on title and blocks'),
+        info: __('Show visible guide lines on title and blocks', 'block-options'),
         onClick: onToggle
-      }, __('Block Guide Lines')));
+      }, __('Block Guide Lines', 'block-options')));
     }
   }]);
 
@@ -8151,6 +8153,122 @@ var registerPlugin = wp.plugins.registerPlugin;
 registerPlugin('editorskit-block-guidelines', {
   icon: false,
   render: _components_menu__WEBPACK_IMPORTED_MODULE_0__["default"]
+});
+
+/***/ }),
+
+/***/ "./src/extensions/components/heading-label/components/controls.js":
+/*!************************************************************************!*\
+  !*** ./src/extensions/components/heading-label/components/controls.js ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+
+/**
+ * Internal dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+var withSelect = wp.data.withSelect;
+var compose = wp.compose.compose;
+var Component = wp.element.Component;
+var withSpokenMessages = wp.components.withSpokenMessages;
+/**
+ * Render plugin
+ */
+
+var HeadingLabel =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(HeadingLabel, _Component);
+
+  function HeadingLabel() {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, HeadingLabel);
+
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(HeadingLabel).apply(this, arguments));
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(HeadingLabel, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.sync();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.sync();
+    }
+  }, {
+    key: "sync",
+    value: function sync() {
+      var isDisabled = this.props.isDisabled;
+
+      if (!isDisabled) {
+        document.body.classList.add('is-editorskit-heading-label-on');
+      } else {
+        document.body.classList.remove('is-editorskit-heading-label-on');
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return null;
+    }
+  }]);
+
+  return HeadingLabel;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (compose([withSelect(function (select) {
+  return {
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitHeadingLabelWriting')
+  };
+}), withSpokenMessages])(HeadingLabel));
+
+/***/ }),
+
+/***/ "./src/extensions/components/heading-label/index.js":
+/*!**********************************************************!*\
+  !*** ./src/extensions/components/heading-label/index.js ***!
+  \**********************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_controls__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/controls */ "./src/extensions/components/heading-label/components/controls.js");
+/**
+ * Internal dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+var registerPlugin = wp.plugins.registerPlugin;
+registerPlugin('editorskit-heading-label', {
+  icon: false,
+  render: _components_controls__WEBPACK_IMPORTED_MODULE_0__["default"]
 });
 
 /***/ }),
@@ -8256,12 +8374,12 @@ function (_Component) {
             isOpen: true
           });
         }
-      }, __('EditorsKit Settings')), this.state.isOpen ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Modal, {
-        title: __('EditorsKit Settings'),
+      }, __('EditorsKit Settings', 'block-options')), this.state.isOpen ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Modal, {
+        title: __('EditorsKit Settings', 'block-options'),
         onRequestClose: function onRequestClose() {
           return closeModal();
         },
-        closeLabel: __('Close'),
+        closeLabel: __('Close', 'block-options'),
         icon: null,
         className: "editorskit-modal-component components-modal--editorskit-features-manager"
       }, lodash_map__WEBPACK_IMPORTED_MODULE_6___default()(editorSettings.editorskit, function (category) {
@@ -8345,37 +8463,37 @@ __webpack_require__.r(__webpack_exports__);
  */
 var __ = wp.i18n.__;
 var markdownShortcuts = {
-  title: __('Markdown Formatting'),
+  title: __('Markdown Formatting', 'block-options'),
   shortcuts: [{
     keyCombination: ['##', 'SPACE'],
-    description: __('Large header (h2)')
+    description: __('Large header (h2)', 'block-options')
   }, {
     keyCombination: ['###', 'SPACE'],
-    description: __('Medium header (h3)')
+    description: __('Medium header (h3)', 'block-options')
   }, {
     keyCombination: ['####', 'SPACE'],
-    description: __('Small header (h4)')
+    description: __('Small header (h4)', 'block-options')
   }, {
     keyCombination: ['1.', 'SPACE'],
-    description: __('Numbered list')
+    description: __('Numbered list', 'block-options')
   }, {
     keyCombination: ['*', 'SPACE'],
-    description: __('Bulleted list')
+    description: __('Bulleted list', 'block-options')
   }, {
     keyCombination: ['>', 'SPACE'],
-    description: __('Blockquote')
+    description: __('Blockquote', 'block-options')
   }, {
     keyCombination: ['_italic_'],
-    description: __('Italic')
+    description: __('Italic', 'block-options')
   }, {
     keyCombination: ['*bold*'],
-    description: __('Bold')
+    description: __('Bold', 'block-options')
   }, {
     keyCombination: ['~Strikethrough~'],
-    description: __('Strikethrough')
+    description: __('Strikethrough', 'block-options')
   }, {
     keyCombination: ['`code`'],
-    description: __('Code')
+    description: __('Code', 'block-options')
   }]
 };
 /* harmony default export */ __webpack_exports__["default"] = ([markdownShortcuts]);
@@ -8532,12 +8650,12 @@ function (_Component) {
             isOpen: true
           });
         }
-      }, __('Markdown Formatting')), this.state.isOpen ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Modal, {
-        title: __('Keyboard Shortcuts'),
+      }, __('Markdown Formatting', 'block-options')), this.state.isOpen ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Modal, {
+        title: __('Keyboard Shortcuts', 'block-options'),
         onRequestClose: function onRequestClose() {
           return closeModal();
         },
-        closeLabel: __('Close'),
+        closeLabel: __('Close', 'block-options'),
         icon: null,
         className: "editorskit-modal-component components-modal--editorskit-markdown"
       }, _config__WEBPACK_IMPORTED_MODULE_8__["default"].map(function (config, index) {
@@ -8661,7 +8779,7 @@ function (_Component) {
             metaboxes[0].scrollIntoView();
           }
         }
-      }, __('View Custom Fields')));
+      }, __('View Custom Fields', 'block-options')));
     }
   }]);
 
@@ -8791,7 +8909,7 @@ function (_Component) {
         document.body.classList.add(bodyClass);
         var editorskitTitleHolder = document.querySelector('.editorskit-toggle-title');
         ReactDOM.render(this.button(), editorskitTitleHolder);
-        ReactDOM.render(Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("span", null, __('For internal use only. Title is hidden on your website.')), document.querySelector('.editorskit-hidden-title-label')); //hide if disabled
+        ReactDOM.render(Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("span", null, __('For internal use only. Title is hidden on your website.', 'block-options')), document.querySelector('.editorskit-hidden-title-label')); //hide if disabled
 
         if (isDisabled) {
           document.body.classList.add('editorskit-title-visible-disabled');
@@ -8808,7 +8926,7 @@ function (_Component) {
           postmeta = _this$props2.postmeta;
       var isHidden = postmeta._editorskit_title_hidden;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Tooltip, {
-        text: __('Toggle Title Visibility'),
+        text: __('Toggle Title Visibility', 'block-options'),
         position: "top right"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Button, {
         className: 'editorskit-button',
@@ -8952,7 +9070,7 @@ var _wp$compose = wp.compose,
     ifCondition = _wp$compose.ifCondition;
 var name = 'editorskit/background';
 
-var title = __('Highlight Color');
+var title = __('Highlight Color', 'block-options');
 
 var Edit =
 /*#__PURE__*/
@@ -8993,27 +9111,27 @@ function (_Component) {
           isActive = _this$props.isActive;
       var activeColor;
       var colors = [{
-        name: __('Marker Default'),
+        name: __('Marker Default', 'block-options'),
         slug: 'marker-default',
         color: '#fff9c0'
       }, {
-        name: __('Orange Sunrise'),
+        name: __('Orange Sunrise', 'block-options'),
         slug: 'orange-sunrise',
         color: '#f7cc62'
       }, {
-        name: __('Pink Flamingo'),
+        name: __('Pink Flamingo', 'block-options'),
         slug: 'pink-flamingo',
         color: '#ffbfb5'
       }, {
-        name: __('Spring Green'),
+        name: __('Spring Green', 'block-options'),
         slug: 'spring-green',
         color: '#b5dcaf'
       }, {
-        name: __('Blue Moon'),
+        name: __('Blue Moon', 'block-options'),
         slug: 'blue-moon',
         color: '#d6e8fa'
       }, {
-        name: __('Purple Mist'),
+        name: __('Purple Mist', 'block-options'),
         slug: 'purple-mist',
         color: '#d8c3ff'
       }];
@@ -9140,7 +9258,7 @@ var __ = wp.i18n.__;
 var name = 'editorskit/background';
 var backgroundColor = {
   name: name,
-  title: __('Background Color'),
+  title: __('Background Color', 'block-options'),
   tagName: 'span',
   className: 'has-inline-background',
   attributes: {
@@ -9240,7 +9358,7 @@ function (_Component) {
 
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(RichTextToolbarButton, {
         icon: "editor-removeformatting",
-        title: __('Clear Formatting'),
+        title: __('Clear Formatting', 'block-options'),
         onClick: onToggle,
         isActive: isActive
       });
@@ -9292,7 +9410,7 @@ var Fragment = wp.element.Fragment;
 var name = 'editorskit/clear-formatting';
 var clear = {
   name: name,
-  title: __('Clear Formatting'),
+  title: __('Clear Formatting', 'block-options'),
   tagName: 'span',
   className: 'editorskit-clear-formatting',
   edit: function edit(_ref) {
@@ -9446,7 +9564,7 @@ function (_Component) {
 
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(RichTextToolbarButton, {
         icon: "editor-justify",
-        title: __('Justify'),
+        title: __('Justify', 'block-options'),
         onClick: onToggle,
         isActive: isBlockJustified
       });
@@ -9515,7 +9633,7 @@ var Fragment = wp.element.Fragment;
 var name = 'editorskit/justify';
 var justify = {
   name: name,
-  title: __('Align text justify'),
+  title: __('Align text justify', 'block-options'),
   tagName: 'p',
   className: null,
   attributes: {
@@ -9832,7 +9950,7 @@ var Fragment = wp.element.Fragment;
 var name = 'editorskit/markdown';
 var markdown = {
   name: name,
-  title: __('Underline'),
+  title: __('Underline', 'block-options'),
   tagName: 'p',
   className: 'editorskit-markdown',
   attributes: {
@@ -9943,7 +10061,7 @@ function (_Component) {
         onUse: onToggle
       }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(RichTextToolbarButton, {
         icon: _icons__WEBPACK_IMPORTED_MODULE_6__["default"].subscript,
-        title: __('Subscript'),
+        title: __('Subscript', 'block-options'),
         onClick: onToggle,
         isActive: isActive
       }));
@@ -10030,7 +10148,7 @@ var Fragment = wp.element.Fragment;
 var name = 'editorskit/subscript';
 var subscript = {
   name: name,
-  title: __('Subscript'),
+  title: __('Subscript', 'block-options'),
   tagName: 'sub',
   className: null,
   edit: function edit(_ref) {
@@ -10138,7 +10256,7 @@ function (_Component) {
         onUse: onToggle
       }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(RichTextToolbarButton, {
         icon: _icons__WEBPACK_IMPORTED_MODULE_6__["default"].superscript,
-        title: __('Superscript'),
+        title: __('Superscript', 'block-options'),
         onClick: onToggle,
         isActive: isActive
       }));
@@ -10225,7 +10343,7 @@ var Fragment = wp.element.Fragment;
 var name = 'editorskit/superscript';
 var superscript = {
   name: name,
-  title: __('Superscript'),
+  title: __('Superscript', 'block-options'),
   tagName: 'sup',
   className: null,
   edit: function edit(_ref) {
@@ -10308,7 +10426,7 @@ var _wp$compose = wp.compose,
     ifCondition = _wp$compose.ifCondition;
 var name = 'editorskit/color';
 
-var title = __('Text Color');
+var title = __('Text Color', 'block-options');
 
 var Edit =
 /*#__PURE__*/
@@ -10441,7 +10559,7 @@ var __ = wp.i18n.__;
 var name = 'editorskit/color';
 var textColor = {
   name: name,
-  title: __('Text Color'),
+  title: __('Text Color', 'block-options'),
   tagName: 'span',
   className: 'has-inline-color',
   attributes: {
@@ -10483,7 +10601,7 @@ var select = wp.data.select;
 var name = 'editorskit/underline';
 var underline = {
   name: name,
-  title: __('Underline'),
+  title: __('Underline', 'block-options'),
   tagName: 'span',
   className: null,
   attributes: {
@@ -10514,7 +10632,7 @@ var underline = {
       onUse: onToggle
     }), !isDisabled && checkFormats.length === 0 && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichTextToolbarButton, {
       icon: "editor-underline",
-      title: __('Underline'),
+      title: __('Underline', 'block-options'),
       onClick: onToggle,
       isActive: isActive,
       shortcutType: "primary",
@@ -10599,7 +10717,7 @@ function (_Component) {
 
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(RichTextToolbarButton, {
         icon: _icon__WEBPACK_IMPORTED_MODULE_6__["default"].uppercase,
-        title: __('Uppercase'),
+        title: __('Uppercase', 'block-options'),
         onClick: onToggle,
         isActive: isActive
       });
@@ -10689,7 +10807,7 @@ var Fragment = wp.element.Fragment; // eslint-disable-line no-unused-vars
 var name = 'editorskit/uppercase';
 var uppercase = {
   name: name,
-  title: __('Uppercase'),
+  title: __('Uppercase', 'block-options'),
   tagName: 'span',
   className: 'uppercase',
   edit: function edit(_ref) {

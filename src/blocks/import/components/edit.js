@@ -101,13 +101,13 @@ class Edit extends Component {
 				let uiMessage;
 				switch ( error.message ) {
 					case 'Invalid JSON file':
-						uiMessage = __( 'Invalid JSON file' );
+						uiMessage = __( 'Invalid JSON file', 'block-options' );
 						break;
 					case 'Invalid Reusable Block JSON file':
-						uiMessage = __( 'Invalid Reusable Block JSON file' );
+						uiMessage = __( 'Invalid Reusable Block JSON file', 'block-options' );
 						break;
 					default:
-						uiMessage = __( 'Unknown error' );
+						uiMessage = __( 'Unknown error', 'block-options' );
 				}
 
 				this.setState( { isLoading: false, error: uiMessage } );
@@ -120,8 +120,8 @@ class Edit extends Component {
 		return (
 			<Placeholder
 				icon="download"
-				label={ __( 'Import from JSON' ) }
-				instructions={ __( 'Drag a file or upload a new one from your device.' ) }
+				label={ __( 'Import from JSON', 'block-options' ) }
+				instructions={ __( 'Drag a file or upload a new one from your device.', 'block-options' ) }
 				className="editor-media-placeholder"
 				notices={ error && (
 					<Notice status="error">
@@ -133,7 +133,7 @@ class Edit extends Component {
 					<MediaUploadCheck>
 						<DropZone
 							onFilesDrop={ this.addFile }
-							label={ __( 'Import from JSON' ) }
+							label={ __( 'Import from JSON', 'block-options' ) }
 						/>
 						<FormFileUpload
 							isLarge
@@ -144,7 +144,7 @@ class Edit extends Component {
 							disabled={ isLoading }
 							multiple={ false }
 						>
-							{ __( 'Upload' ) }
+							{ __( 'Upload', 'block-options' ) }
 						</FormFileUpload>
 					</MediaUploadCheck>
 				</Fragment>

@@ -40,7 +40,7 @@ class DisableTitle extends Component {
 
 			const editorskitTitleHolder = document.querySelector( '.editorskit-toggle-title' );
 			ReactDOM.render( this.button(), editorskitTitleHolder );
-			ReactDOM.render( <span>{ __( 'For internal use only. Title is hidden on your website.' ) }</span>, document.querySelector( '.editorskit-hidden-title-label' ) );
+			ReactDOM.render( <span>{ __( 'For internal use only. Title is hidden on your website.', 'block-options' ) }</span>, document.querySelector( '.editorskit-hidden-title-label' ) );
 
 			//hide if disabled
 			if ( isDisabled ) {
@@ -57,7 +57,7 @@ class DisableTitle extends Component {
 		const isHidden = postmeta._editorskit_title_hidden;
 
 		return (
-			<Tooltip text={ __( 'Toggle Title Visibility' ) } position="top right">
+			<Tooltip text={ __( 'Toggle Title Visibility', 'block-options' ) } position="top right">
 				<Button
 					className={ 'editorskit-button' }
 					isSmall
