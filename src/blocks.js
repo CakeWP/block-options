@@ -31,6 +31,7 @@ import './extensions/components/markdown';
 import './extensions/components/scroll-down';
 import './extensions/components/manager';
 import './extensions/components/code-editor';
+import './extensions/components/heading-label';
 
 //Block Settings
 import './extensions/block-settings';
