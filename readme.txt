@@ -109,6 +109,14 @@ e.g.
 
 == Changelog ==
 
+= 1.12 =
+* New: Add option to set Image Block as Featured Image 🎊
+* New: View Heading Block label for better content writing 🎉
+* Improvement: Change URL Popover "Open in New Tab" alignment for lesser mouse movement
+* Improvement: Add POT string translations for both PHP and JS text
+* Fixes: Improve performance and clean up 🐛
+* Fixes: Compatibility and fixes for Gutenberg version 6.4.0
+
 = 1.11 =
 * Improvement: Convert process to `wp-scripts` for WordPress Gutenberg standard
 * Improvement: Ability to hide "Responsive Panel"
