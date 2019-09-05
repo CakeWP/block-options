@@ -7068,15 +7068,186 @@ function download(fileName, content, contentType) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _clear_formatting__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./clear-formatting */ "./src/extensions/block-settings/clear-formatting/index.js");
-/* harmony import */ var _visibility_settings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./visibility-settings */ "./src/extensions/block-settings/visibility-settings/index.js");
-/* harmony import */ var _export__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./export */ "./src/extensions/block-settings/export/index.js");
+/* harmony import */ var _set_as_featured__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./set-as-featured */ "./src/extensions/block-settings/set-as-featured/index.js");
+/* harmony import */ var _clear_formatting__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./clear-formatting */ "./src/extensions/block-settings/clear-formatting/index.js");
+/* harmony import */ var _visibility_settings__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./visibility-settings */ "./src/extensions/block-settings/visibility-settings/index.js");
+/* harmony import */ var _export__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./export */ "./src/extensions/block-settings/export/index.js");
 /**
  * Internal dependencies
  */
 
 
 
+
+
+/***/ }),
+
+/***/ "./src/extensions/block-settings/set-as-featured/components/controls.js":
+/*!******************************************************************************!*\
+  !*** ./src/extensions/block-settings/set-as-featured/components/controls.js ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_6__);
+
+
+
+
+
+
+
+/**
+ * External dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+var __ = wp.i18n.__;
+var _wp$data = wp.data,
+    select = _wp$data.select,
+    withSelect = _wp$data.withSelect,
+    withDispatch = _wp$data.withDispatch;
+var _wp$element = wp.element,
+    Fragment = _wp$element.Fragment,
+    Component = _wp$element.Component;
+var withSpokenMessages = wp.components.withSpokenMessages;
+var PluginBlockSettingsMenuItem = wp.editPost.PluginBlockSettingsMenuItem;
+var _wp$compose = wp.compose,
+    compose = _wp$compose.compose,
+    ifCondition = _wp$compose.ifCondition;
+var allowedBlocks = ['core/image'];
+/**
+ * Render plugin
+ */
+
+var SetAsFeatImageured =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(SetAsFeatImageured, _Component);
+
+  function SetAsFeatImageured() {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, SetAsFeatImageured);
+
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(SetAsFeatImageured).apply(this, arguments));
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(SetAsFeatImageured, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          imageID = _this$props.imageID,
+          featuredImageID = _this$props.featuredImageID,
+          onUpdateImage = _this$props.onUpdateImage,
+          onRemoveImage = _this$props.onRemoveImage;
+
+      var label = function label() {
+        return imageID === featuredImageID ? __('Remove as Featured Image', 'block-options') : __('Set as Featured Image', 'block-options');
+      };
+
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PluginBlockSettingsMenuItem, {
+        icon: "format-image",
+        label: label(),
+        onClick: function onClick() {
+          if (imageID === featuredImageID) {
+            onRemoveImage();
+          } else {
+            onUpdateImage(imageID);
+          }
+        }
+      }));
+    }
+  }]);
+
+  return SetAsFeatImageured;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (compose(withSelect(function () {
+  var selectedBlock = select('core/block-editor').getSelectedBlock();
+
+  if (!selectedBlock) {
+    return {};
+  }
+
+  return {
+    featuredImageID: select('core/editor').getEditedPostAttribute('featured_media'),
+    blockName: selectedBlock.name,
+    imageID: Object(lodash__WEBPACK_IMPORTED_MODULE_6__["get"])(selectedBlock, 'attributes.id'),
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitSetAsFeaturedTools')
+  };
+}), withDispatch(function (dispatch) {
+  var _dispatch = dispatch('core/editor'),
+      editPost = _dispatch.editPost;
+
+  var _dispatch2 = dispatch('core/notices'),
+      createNotice = _dispatch2.createNotice;
+
+  return {
+    onUpdateImage: function onUpdateImage(imageID) {
+      editPost({
+        featured_media: imageID
+      });
+      createNotice('info', __('Image Set as Featured.', 'block-options'), {
+        isDismissible: true,
+        type: 'snackbar'
+      });
+    },
+    onRemoveImage: function onRemoveImage() {
+      editPost({
+        featured_media: 0
+      });
+      createNotice('info', __('Featured Image Removed.', 'block-options'), {
+        isDismissible: true,
+        type: 'snackbar'
+      });
+    }
+  };
+}), ifCondition(function (props) {
+  return !props.isDisabled && allowedBlocks.includes(props.blockName) && typeof props.imageID !== 'undefined';
+}), withSpokenMessages)(SetAsFeatImageured));
+
+/***/ }),
+
+/***/ "./src/extensions/block-settings/set-as-featured/index.js":
+/*!****************************************************************!*\
+  !*** ./src/extensions/block-settings/set-as-featured/index.js ***!
+  \****************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_controls__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/controls */ "./src/extensions/block-settings/set-as-featured/components/controls.js");
+/**
+ * Internal dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+var registerPlugin = wp.plugins.registerPlugin;
+registerPlugin('editorskit-set-as-featured-image', {
+  icon: 'format-image',
+  render: _components_controls__WEBPACK_IMPORTED_MODULE_0__["default"]
+});
 
 /***/ }),
 
@@ -8204,7 +8375,7 @@ function (_Component) {
           });
         }
       }, __('EditorsKit Settings', 'block-options')), this.state.isOpen ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Modal, {
-        title: __('EditorsKit Settings', 'block-options'),
+        title: __('EditorsKit Features Manager', 'block-options'),
         onRequestClose: function onRequestClose() {
           return closeModal();
         },
