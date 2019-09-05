@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-09-04T11:24:28+00:00\n"
+"POT-Creation-Date: 2019-09-05T04:00:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.1.0\n"
 "X-Domain: block-options\n"
@@ -426,6 +426,22 @@ msgstr ""
 msgid "Clear Block Formatting"
 msgstr ""
 
+#: src/extensions/block-settings/set-as-featured/components/controls.js:28
+msgid "Remove as Featured Image"
+msgstr ""
+
+#: src/extensions/block-settings/set-as-featured/components/controls.js:29
+msgid "Set as Featured Image"
+msgstr ""
+
+#: src/extensions/block-settings/set-as-featured/components/controls.js:77
+msgid "Image Set as Featured."
+msgstr ""
+
+#: src/extensions/block-settings/set-as-featured/components/controls.js:88
+msgid "Featured Image Removed."
+msgstr ""
+
 #: src/extensions/block-settings/export/components/export.js:77
 msgid "Export as JSON"
 msgstr ""
@@ -492,8 +508,11 @@ msgid "Editor Height"
 msgstr ""
 
 #: src/extensions/components/manager/components/manager.js:51
-#: src/extensions/components/manager/components/manager.js:55
 msgid "EditorsKit Settings"
+msgstr ""
+
+#: src/extensions/components/manager/components/manager.js:55
+msgid "EditorsKit Features Manager"
 msgstr ""
 
 #: src/extensions/components/autosave/components/menu.js:21
