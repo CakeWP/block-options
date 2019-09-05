@@ -3,56 +3,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/advanced-controls/options/logic/index.js:25
-msgid "Conditional Logic"
+#: src/extensions/components/manager/components/manager.js:51
+msgid "EditorsKit Settings"
 msgstr ""
 
-#: src/extensions/advanced-controls/options/logic/index.js:26
-msgid "Add valid PHP conditional tags for custom & advanced visibility options."
+#: src/extensions/components/manager/components/manager.js:55
+msgid "EditorsKit Features Manager"
 msgstr ""
 
-#: src/extensions/block-settings/export/components/export.js:77
-msgid "Export as JSON"
-msgstr ""
-
-#: src/extensions/components/guidelines/components/menu.js:52
-msgid "Show visible guide lines on title and blocks"
-msgstr ""
-
-#: src/extensions/components/guidelines/components/menu.js:55
-msgid "Block Guide Lines"
-msgstr ""
-
-#: src/extensions/components/markdown/components/menu.js:101
+#: src/extensions/components/manager/components/manager.js:57
 msgid "Close"
-msgstr ""
-
-#: src/extensions/components/markdown/components/menu.js:95
-msgid "Markdown Formatting"
-msgstr ""
-
-#: src/extensions/components/markdown/components/menu.js:99
-msgid "Keyboard Shortcuts"
-msgstr ""
-
-#: src/extensions/formats/clear/controls.js:39
-#: src/extensions/formats/clear/index.js:19
-msgid "Clear Formatting"
-msgstr ""
-
-#: src/extensions/formats/justify/controls.js:34
-msgid "Justify"
-msgstr ""
-
-#: src/extensions/formats/justify/index.js:19
-msgid "Align text justify"
-msgstr ""
-
-#: src/extensions/formats/subscript/controls.js:45
-#: src/extensions/formats/subscript/index.js:19
-msgid "Subscript"
-msgstr ""
-
-#: src/extensions/formats/text-color/components/edit.js:18
-msgid "Text Color"
 msgstr ""

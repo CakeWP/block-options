@@ -8375,7 +8375,7 @@ function (_Component) {
           });
         }
       }, __('EditorsKit Settings', 'block-options')), this.state.isOpen ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Modal, {
-        title: __('EditorsKit Settings', 'block-options'),
+        title: __('EditorsKit Features Manager', 'block-options'),
         onRequestClose: function onRequestClose() {
           return closeModal();
         },
