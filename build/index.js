@@ -7190,7 +7190,7 @@ function (_Component) {
     featuredImageID: select('core/editor').getEditedPostAttribute('featured_media'),
     blockName: selectedBlock.name,
     imageID: Object(lodash__WEBPACK_IMPORTED_MODULE_6__["get"])(selectedBlock, 'attributes.id'),
-    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitSetAsFeaturedImageFormats')
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitSetAsFeaturedTools')
   };
 }), withDispatch(function (dispatch) {
   var _dispatch = dispatch('core/editor'),
