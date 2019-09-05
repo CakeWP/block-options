@@ -29,3 +29,109 @@
 		}
 	}
 }
+
+/*--------------------------------------------------------------
+# Heading Labels
+--------------------------------------------------------------*/
+.is-editorskit-heading-label-on {
+
+	.editor-styles-wrapper {
+
+		.wp-block[data-type="core/heading"]:not(.is-selected):not(.is-hovered) {
+
+			.wp-block-heading {
+
+				h1,
+				h2,
+				h3,
+				h4,
+				h5,
+				h6 {
+					position: relative;
+
+					&::after {
+						content: "";
+						font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+						position: absolute;
+						top: 3px;
+						left: -24px;
+						font-weight: 500;
+						font-size: 12px;
+						opacity: 0.5;
+					}
+				}
+
+				h1::after {
+					content: "H1";
+				}
+
+				h2::after {
+					content: "H2";
+				}
+
+				h3::after {
+					content: "H3";
+				}
+
+				h4::after {
+					content: "H4";
+				}
+
+				h5::after {
+					content: "H5";
+				}
+
+				h6::after {
+					content: "H6";
+				}
+			}
+		}
+
+		.editor-inner-blocks,
+		.block-editor-inner-blocks {
+
+			.wp-block[data-type="core/heading"]:not(.is-selected):not(.is-hovered) {
+
+				.wp-block-heading {
+
+					h1,
+					h2,
+					h3,
+					h4,
+					h5,
+					h6 {
+
+						&::after {
+							content: "";
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&.is-guide-lines-on {
+
+		.editor-styles-wrapper {
+
+			.wp-block[data-type="core/heading"]:not(.is-selected):not(.is-hovered) {
+
+				.wp-block-heading {
+
+					h1,
+					h2,
+					h3,
+					h4,
+					h5,
+					h6 {
+
+						&::after {
+							left: -34px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
