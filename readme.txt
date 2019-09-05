@@ -66,14 +66,20 @@ Easily hide post, page or any post type's title on your website in just a click.
 ## Block Import and Export
 Export each block or selected blocks and reusable blocks directly on the editor, no need to navigate to separate admin dashboard. Then <strong>drag and drop</strong> exported JSON file on the editor and it will automatically be transformed into Gutenberg blocks, same goes with reusable blocks.
 
-## Features Manager
-Enable or disable EditorsKit features using "EditorsKit Settings" menu. This will give you full control over the plugin features and let you disable the features that you don't need on your website.
-
 ## Better Custom CSS Class(es)
 Huge improvement on `Additional CSS Class(es)` option! EditorsKit provides better UI with classes suggestions while typing. Powered with custom PHP filter, theme developers can include custom Utility Classes for more customization options.
 
+## Set Image Block as Featured Image
+Enable selected image block to be set as featured image easily using the block settings dropdown.
+
 ## Code Editor Mode Syntax Highlighter
 Improve display when on "Code Editor Mode". Powered by WordPress default CodeMirror library, Code Editor will be displayed with code syntax highlights and you will easily check each elements and if there are any errors on your HTML codes.
+
+## UI and User Experience Improvements
+Improve interface and provide better writing experience.
+
+## Features Manager
+Enable or disable EditorsKit features using "EditorsKit Settings" menu. This will give you full control over the plugin features and let you disable the features that you don't need on your website.
 
 ## Theme Supports for Developers
 [EditorsKit](https://editorskit.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit) is moving towards being developer friendly as well. Starting version 1.5, custom `theme_supports` were added to provide theme developers option to make Gutenberg block editing experience for their users match the frontend display. [Learn more here](https://jeffreycarandang.com/editorskit-1-5/).
