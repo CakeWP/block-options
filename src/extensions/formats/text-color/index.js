@@ -15,7 +15,7 @@ const name = 'editorskit/color';
 
 export const textColor = {
 	name,
-	title: __( 'Text Color' ),
+	title: __( 'Text Color', 'block-options' ),
 	tagName: 'span',
 	className: 'has-inline-color',
 	attributes: {

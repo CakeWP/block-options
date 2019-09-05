@@ -48,13 +48,13 @@ class FeaturesManager extends Component {
 						this.setState( { isOpen: true } );
 					} }
 				>
-					{ __( 'EditorsKit Settings' ) }
+					{ __( 'EditorsKit Settings', 'block-options' ) }
 				</PluginMoreMenuItem>
 				{ this.state.isOpen ?
 					<Modal
-						title={ __( 'EditorsKit Settings' ) }
+						title={ __( 'EditorsKit Settings', 'block-options' ) }
 						onRequestClose={ () => closeModal() }
-						closeLabel={ __( 'Close' ) }
+						closeLabel={ __( 'Close', 'block-options' ) }
 						icon={ null }
 						className="editorskit-modal-component components-modal--editorskit-features-manager"
 					>

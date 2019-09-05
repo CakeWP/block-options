@@ -17,7 +17,7 @@ const name = 'editorskit/markdown';
 
 export const markdown = {
 	name,
-	title: __( 'Underline' ),
+	title: __( 'Underline', 'block-options' ),
 	tagName: 'p',
 	className: 'editorskit-markdown',
 	attributes: {

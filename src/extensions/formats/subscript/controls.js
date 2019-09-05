@@ -42,7 +42,7 @@ class SubscriptControl extends Component {
 
 				<RichTextToolbarButton
 					icon={ icon.subscript }
-					title={ __( 'Subscript' ) }
+					title={ __( 'Subscript', 'block-options' ) }
 					onClick={ onToggle }
 					isActive={ isActive }
 				/>

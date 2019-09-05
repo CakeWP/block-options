@@ -22,8 +22,8 @@ const LogicOptions = ( props ) => {
 			<div className="editorskit-button-group-container editorskit-button-group-logic">
 				<TextareaControl
 					rows="2"
-					label={ __( 'Conditional Logic' ) }
-					help={ __( 'Add valid PHP conditional tags for custom & advanced visibility options.' ) }
+					label={ __( 'Conditional Logic', 'block-options' ) }
+					help={ __( 'Add valid PHP conditional tags for custom & advanced visibility options.', 'block-options' ) }
 					value={ editorskit.logic ? editorskit.logic : null }
 					onChange={ ( newValue ) => {
 						delete editorskit.logic;

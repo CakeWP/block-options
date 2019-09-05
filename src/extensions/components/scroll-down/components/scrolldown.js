@@ -33,7 +33,7 @@ class ScrollDown extends Component {
 						}
 					} }
 				>
-					{ __( 'View Custom Fields' ) }
+					{ __( 'View Custom Fields', 'block-options' ) }
 				</PluginMoreMenuItem>
 
 			</Fragment>

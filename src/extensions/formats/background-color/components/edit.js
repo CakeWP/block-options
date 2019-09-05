@@ -20,7 +20,7 @@ const { Toolbar, IconButton, Popover, ColorPalette } = wp.components;
 const { compose, ifCondition } = wp.compose;
 
 const name = 'editorskit/background';
-const title = __( 'Highlight Color' );
+const title = __( 'Highlight Color', 'block-options' );
 
 class Edit extends Component {
 	constructor() {
@@ -51,32 +51,32 @@ class Edit extends Component {
 
 		const colors = [
 			{
-				name: __( 'Marker Default' ),
+				name: __( 'Marker Default', 'block-options' ),
 				slug: 'marker-default',
 				color: '#fff9c0',
 			},
 			{
-				name: __( 'Orange Sunrise' ),
+				name: __( 'Orange Sunrise', 'block-options' ),
 				slug: 'orange-sunrise',
 				color: '#f7cc62',
 			},
 			{
-				name: __( 'Pink Flamingo' ),
+				name: __( 'Pink Flamingo', 'block-options' ),
 				slug: 'pink-flamingo',
 				color: '#ffbfb5',
 			},
 			{
-				name: __( 'Spring Green' ),
+				name: __( 'Spring Green', 'block-options' ),
 				slug: 'spring-green',
 				color: '#b5dcaf',
 			},
 			{
-				name: __( 'Blue Moon' ),
+				name: __( 'Blue Moon', 'block-options' ),
 				slug: 'blue-moon',
 				color: '#d6e8fa',
 			},
 			{
-				name: __( 'Purple Mist' ),
+				name: __( 'Purple Mist', 'block-options' ),
 				slug: 'purple-mist',
 				color: '#d8c3ff',
 			},

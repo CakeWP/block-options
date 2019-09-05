@@ -38,17 +38,17 @@ const DevicesOptions = ( props ) => {
 	return (
 		<Fragment>
 			<ToggleControl
-				label={ __( 'Hide on Desktop' ) }
+				label={ __( 'Hide on Desktop', 'block-options' ) }
 				checked={ typeof editorskit.desktop !== 'undefined' && ! editorskit.desktop }
 				onChange={ () => onSelectDevice( 'desktop' ) }
 			/>
 			<ToggleControl
-				label={ __( 'Hide on Tablet' ) }
+				label={ __( 'Hide on Tablet', 'block-options' ) }
 				checked={ typeof editorskit.tablet !== 'undefined' && ! editorskit.tablet }
 				onChange={ () => onSelectDevice( 'tablet' ) }
 			/>
 			<ToggleControl
-				label={ __( 'Hide on Mobile' ) }
+				label={ __( 'Hide on Mobile', 'block-options' ) }
 				checked={ typeof editorskit.mobile !== 'undefined' && ! editorskit.mobile }
 				onChange={ () => onSelectDevice( 'mobile' ) }
 			/>

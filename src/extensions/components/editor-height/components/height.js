@@ -49,10 +49,10 @@ class EditorMinHeight extends Component {
 				<PluginMoreMenuItem
 					icon={ isActive && 'yes' }
 					role="menuitemcheckbox"
-					info={ __( 'Toggle to change editor min-height similar to browser viewport.' ) }
+					info={ __( 'Toggle to change editor min-height similar to browser viewport.', 'block-options' ) }
 					onClick={ onToggle }
 				>
-					{ __( 'Editor Height' ) }
+					{ __( 'Editor Height', 'block-options' ) }
 				</PluginMoreMenuItem>
 
 			</Fragment>

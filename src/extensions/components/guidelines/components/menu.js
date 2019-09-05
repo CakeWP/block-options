@@ -49,10 +49,10 @@ class BlockGuideLines extends Component {
 				<PluginMoreMenuItem
 					icon={ isActive && 'yes' }
 					role="menuitemcheckbox"
-					info={ __( 'Show visible guide lines on title and blocks' ) }
+					info={ __( 'Show visible guide lines on title and blocks', 'block-options' ) }
 					onClick={ onToggle }
 				>
-					{ __( 'Block Guide Lines' ) }
+					{ __( 'Block Guide Lines', 'block-options' ) }
 				</PluginMoreMenuItem>
 
 			</Fragment>

@@ -16,7 +16,7 @@ const name = 'editorskit/superscript';
 
 export const superscript = {
 	name,
-	title: __( 'Superscript' ),
+	title: __( 'Superscript', 'block-options' ),
 	tagName: 'sup',
 	className: null,
 	edit( { isActive, value, onChange, activeAttributes } ) {

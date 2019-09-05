@@ -42,7 +42,7 @@ class SuperscriptControl extends Component {
 
 				<RichTextToolbarButton
 					icon={ icon.superscript }
-					title={ __( 'Superscript' ) }
+					title={ __( 'Superscript', 'block-options' ) }
 					onClick={ onToggle }
 					isActive={ isActive }
 				/>

@@ -15,7 +15,7 @@ const name = 'editorskit/background';
 
 export const backgroundColor = {
 	name,
-	title: __( 'Background Color' ),
+	title: __( 'Background Color', 'block-options' ),
 	tagName: 'span',
 	className: 'has-inline-background',
 	attributes: {

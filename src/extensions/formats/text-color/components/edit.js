@@ -15,7 +15,7 @@ const { Toolbar, IconButton, Popover, ColorPalette } = wp.components;
 const { compose, ifCondition } = wp.compose;
 
 const name = 'editorskit/color';
-const title = __( 'Text Color' );
+const title = __( 'Text Color', 'block-options' );
 
 class Edit extends Component {
 	constructor() {

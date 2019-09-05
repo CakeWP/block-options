@@ -16,7 +16,7 @@ const name = 'editorskit/clear-formatting';
 
 export const clear = {
 	name,
-	title: __( 'Clear Formatting' ),
+	title: __( 'Clear Formatting', 'block-options' ),
 	tagName: 'span',
 	className: 'editorskit-clear-formatting',
 	edit( { isActive, value, onChange, activeAttributes } ) {
