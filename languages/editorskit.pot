@@ -23,10 +23,10 @@ msgstr ""
 msgid "Upload Featured Image"
 msgstr ""
 
-#: src/extensions/components/featured-image/components/controls.js:65
+#: src/extensions/components/featured-image/components/controls.js:68
 msgid "Edit or update the image"
 msgstr ""
 
-#: src/extensions/components/featured-image/components/controls.js:90
+#: src/extensions/components/featured-image/components/controls.js:93
 msgid "Replace Image"
 msgstr ""

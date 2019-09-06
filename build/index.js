@@ -8108,11 +8108,14 @@ registerPlugin('editorskit-editor-height', {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _dropzone__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dropzone */ "./src/extensions/components/featured-image/components/dropzone.js");
+/* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js");
+/* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _dropzone__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dropzone */ "./src/extensions/components/featured-image/components/dropzone.js");
+
 
 
 /**
@@ -8152,15 +8155,17 @@ var PostFeaturedImage = function PostFeaturedImage(_ref) {
       onUpdateImage = _ref.onUpdateImage,
       onRemoveImage = _ref.onRemoveImage,
       media = _ref.media,
-      postType = _ref.postType;
-  var postLabel = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["get"])(postType, ['labels'], {});
-  var instructions = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, __('To edit the featured image, you need permission to upload media.'));
+      postType = _ref.postType,
+      props = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0___default()(_ref, ["currentPostId", "featuredImageId", "onUpdateImage", "onRemoveImage", "media", "postType"]);
+
+  var postLabel = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(postType, ['labels'], {});
+  var instructions = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", null, __('To edit the featured image, you need permission to upload media.'));
   var mediaWidth, mediaHeight, mediaSourceUrl;
 
   if (media) {
     var mediaSize = applyFilters('editor.PostFeaturedImage.imageSize', 'post-thumbnail', media.id, currentPostId);
 
-    if (Object(lodash__WEBPACK_IMPORTED_MODULE_1__["has"])(media, ['media_details', 'sizes', mediaSize])) {
+    if (Object(lodash__WEBPACK_IMPORTED_MODULE_2__["has"])(media, ['media_details', 'sizes', mediaSize])) {
       mediaWidth = media.media_details.sizes[mediaSize].width;
       mediaHeight = media.media_details.sizes[mediaSize].height;
       mediaSourceUrl = media.media_details.sizes[mediaSize].source_url;
@@ -8171,47 +8176,49 @@ var PostFeaturedImage = function PostFeaturedImage(_ref) {
     }
   }
 
-  var dropZone = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_dropzone__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  var dropZone = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_dropzone__WEBPACK_IMPORTED_MODULE_3__["default"], {
     label: __('Upload Featured Image', 'block-options')
   });
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PostFeaturedImageCheck, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-    className: "editor-post-featured-image"
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUploadCheck, {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PostFeaturedImageCheck, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+    className: "editor-post-featured-image editorskit-post-featured-image"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(MediaUploadCheck, {
     fallback: instructions
-  }, dropZone, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
+  }, dropZone, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+    class: "editorskit-post-featured-spinner"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Spinner, null)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(MediaUpload, {
     title: postLabel.featured_image || DEFAULT_FEATURE_IMAGE_LABEL,
     onSelect: onUpdateImage,
     allowedTypes: ALLOWED_MEDIA_TYPES,
     modalClass: !featuredImageId ? 'editor-post-featured-image__media-modal' : 'editor-post-featured-image__media-modal',
     render: function render(_ref2) {
       var open = _ref2.open;
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Button, {
         className: !featuredImageId ? 'editor-post-featured-image__toggle' : 'editor-post-featured-image__preview',
         onClick: open,
         "aria-label": !featuredImageId ? null : __('Edit or update the image')
-      }, !!featuredImageId && media && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ResponsiveWrapper, {
+      }, !!featuredImageId && media && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(ResponsiveWrapper, {
         naturalWidth: mediaWidth,
         naturalHeight: mediaHeight
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
         src: mediaSourceUrl,
         alt: ""
-      })), !!featuredImageId && !media && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Spinner, null), !featuredImageId && (postLabel.set_featured_image || DEFAULT_SET_FEATURE_IMAGE_LABEL));
+      })), !!featuredImageId && !media && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Spinner, null), !featuredImageId && (postLabel.set_featured_image || DEFAULT_SET_FEATURE_IMAGE_LABEL));
     },
     value: featuredImageId
-  })), !!featuredImageId && media && !media.isLoading && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUploadCheck, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
+  })), !!featuredImageId && media && !media.isLoading && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(MediaUploadCheck, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(MediaUpload, {
     title: postLabel.featured_image || DEFAULT_FEATURE_IMAGE_LABEL,
     onSelect: onUpdateImage,
     allowedTypes: ALLOWED_MEDIA_TYPES,
     modalClass: "editor-post-featured-image__media-modal",
     render: function render(_ref3) {
       var open = _ref3.open;
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Button, {
         onClick: open,
         isDefault: true,
         isLarge: true
       }, __('Replace Image'));
     }
-  })), !!featuredImageId && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUploadCheck, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
+  })), !!featuredImageId && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(MediaUploadCheck, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Button, {
     onClick: onRemoveImage,
     isLink: true,
     isDestructive: true
@@ -8264,8 +8271,12 @@ var _wp$element = wp.element,
     Fragment = _wp$element.Fragment;
 var mediaUpload = wp.editor.mediaUpload;
 var compose = wp.compose.compose;
-var DropZone = wp.components.DropZone;
-var withDispatch = wp.data.withDispatch;
+var _wp$components = wp.components,
+    DropZone = _wp$components.DropZone,
+    withSpokenMessages = _wp$components.withSpokenMessages;
+var _wp$data = wp.data,
+    withDispatch = _wp$data.withDispatch,
+    select = _wp$data.select;
 var ALLOWED_MEDIA_TYPES = ['image'];
 
 var BackgroundDropZone =
@@ -8289,6 +8300,7 @@ function (_Component) {
     value: function addFile(files) {
       var _this2 = this;
 
+      document.body.classList.add('is-editorskit-uploading-featured');
       mediaUpload({
         allowedTypes: ALLOWED_MEDIA_TYPES,
         filesList: files,
@@ -8320,7 +8332,7 @@ function (_Component) {
   return BackgroundDropZone;
 }(Component);
 
-var applyWithDispatch = withDispatch(function (dispatch) {
+var applyWithDispatch = withDispatch(function (dispatch, ownProps) {
   var _dispatch = dispatch('core/editor'),
       editPost = _dispatch.editPost;
 
@@ -8329,6 +8341,11 @@ var applyWithDispatch = withDispatch(function (dispatch) {
       editPost({
         featured_media: image.id
       });
+      var featuredImageId = select('core/editor').getEditedPostAttribute('featured_media');
+
+      if (featuredImageId === image.id) {
+        document.body.classList.remove('is-editorskit-uploading-featured');
+      }
     },
     onRemoveImage: function onRemoveImage() {
       editPost({
@@ -8337,7 +8354,7 @@ var applyWithDispatch = withDispatch(function (dispatch) {
     }
   };
 });
-/* harmony default export */ __webpack_exports__["default"] = (compose(applyWithDispatch)(BackgroundDropZone));
+/* harmony default export */ __webpack_exports__["default"] = (compose(applyWithDispatch, withSpokenMessages)(BackgroundDropZone));
 
 /***/ }),
 
@@ -8363,9 +8380,11 @@ __webpack_require__.r(__webpack_exports__);
  */
 var __ = wp.i18n.__;
 var addFilter = wp.hooks.addFilter;
-var createHigherOrderComponent = wp.compose.createHigherOrderComponent;
+var _wp$compose = wp.compose,
+    compose = _wp$compose.compose,
+    createHigherOrderComponent = _wp$compose.createHigherOrderComponent;
 var Fragment = wp.element.Fragment;
-var compose = wp.compose.compose;
+var withSpokenMessages = wp.components.withSpokenMessages;
 var _wp$data = wp.data,
     withSelect = _wp$data.withSelect,
     withDispatch = _wp$data.withDispatch;
@@ -8408,7 +8427,7 @@ var applyWithDispatch = withDispatch(function (dispatch) {
     }
   };
 });
-var enhance = compose(applyWithSelect, applyWithDispatch);
+var enhance = compose(applyWithSelect, applyWithDispatch, withSpokenMessages);
 var withDragandDropFeaturedImage = createHigherOrderComponent(function () {
   return enhance(function (_ref) {
     var props = _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, _ref);

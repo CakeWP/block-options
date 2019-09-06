@@ -3,9 +3,9 @@
  */
 const { __ } = wp.i18n;
 const { addFilter } = wp.hooks;
-const { createHigherOrderComponent } = wp.compose;
+const { compose, createHigherOrderComponent } = wp.compose;
 const { Fragment } = wp.element;
-const { compose } = wp.compose;
+const { withSpokenMessages } = wp.components;
 const { withSelect, withDispatch } = wp.data;
 
 /**
@@ -40,7 +40,8 @@ const applyWithDispatch = withDispatch((dispatch) => {
 
 const enhance = compose(
 	applyWithSelect,
-	applyWithDispatch
+	applyWithDispatch,
+	withSpokenMessages,
 );
 
 const withDragandDropFeaturedImage = createHigherOrderComponent(() => {

@@ -24,7 +24,7 @@ const DEFAULT_FEATURE_IMAGE_LABEL = __('Featured Image', 'block-options');
 const DEFAULT_SET_FEATURE_IMAGE_LABEL = __('Set Featured Image', 'block-options');
 const DEFAULT_REMOVE_FEATURE_IMAGE_LABEL = __('Remove Image', 'block-options');
 
-const PostFeaturedImage = ({ currentPostId, featuredImageId, onUpdateImage, onRemoveImage, media, postType }) => {
+const PostFeaturedImage = ({ currentPostId, featuredImageId, onUpdateImage, onRemoveImage, media, postType, ...props }) => {
 	const postLabel = get(postType, ['labels'], {});
 	const instructions = <p>{__('To edit the featured image, you need permission to upload media.')}</p>;
 
@@ -47,12 +47,15 @@ const PostFeaturedImage = ({ currentPostId, featuredImageId, onUpdateImage, onRe
 			label={__('Upload Featured Image', 'block-options')}
 		/>
 	);
-
+	
 	return (
 		<PostFeaturedImageCheck>
-			<div className="editor-post-featured-image">
+			<div className="editor-post-featured-image editorskit-post-featured-image">
 				<MediaUploadCheck fallback={instructions}>
 					{ dropZone }
+					<div class="editorskit-post-featured-spinner">
+						<Spinner />
+					</div>
 					<MediaUpload
 						title={postLabel.featured_image || DEFAULT_FEATURE_IMAGE_LABEL}
 						onSelect={onUpdateImage}

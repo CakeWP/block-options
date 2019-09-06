@@ -4,8 +4,8 @@
 const { Component, Fragment } = wp.element;
 const { mediaUpload } = wp.editor;
 const { compose } = wp.compose;
-const { DropZone } = wp.components;
-const { withDispatch } = wp.data;
+const { DropZone, withSpokenMessages } = wp.components;
+const { withDispatch, select } = wp.data;
 
 const ALLOWED_MEDIA_TYPES = ['image'];
 
@@ -17,6 +17,7 @@ class BackgroundDropZone extends Component {
 	}
 
 	addFile(files) {
+		document.body.classList.add('is-editorskit-uploading-featured');
 		mediaUpload({
 			allowedTypes: ALLOWED_MEDIA_TYPES,
 			filesList: files,
@@ -42,11 +43,18 @@ class BackgroundDropZone extends Component {
 	}
 }
 
-const applyWithDispatch = withDispatch((dispatch) => {
+
+const applyWithDispatch = withDispatch((dispatch, ownProps) => {
 	const { editPost } = dispatch('core/editor');
 	return {
 		onUpdateImage(image) {
 			editPost({ featured_media: image.id });
+
+			let featuredImageId = select('core/editor').getEditedPostAttribute('featured_media');
+
+			if ( featuredImageId === image.id ){
+				document.body.classList.remove('is-editorskit-uploading-featured');
+			}
 		},
 		onRemoveImage() {
 			editPost({ featured_media: 0 });
@@ -56,5 +64,6 @@ const applyWithDispatch = withDispatch((dispatch) => {
 
 
 export default compose(
-	applyWithDispatch
+	applyWithDispatch,
+	withSpokenMessages
 )(BackgroundDropZone);
