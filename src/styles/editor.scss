@@ -135,3 +135,19 @@
 	}
 }
 
+/*--------------------------------------------------------------
+# Drag & Drop
+--------------------------------------------------------------*/
+.components-draggable__clone {
+
+	.wp-block{
+		> .editor-block-list__block-edit,
+		> .block-editor-block-list__block-edit {
+			
+			&:before{
+				background: #fff;
+			}
+		}
+	}
+}
+
