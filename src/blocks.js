@@ -32,6 +32,7 @@ import './extensions/components/scroll-down';
 import './extensions/components/manager';
 import './extensions/components/code-editor';
 import './extensions/components/heading-label';
+import './extensions/components/featured-image';
 
 //Block Settings
 import './extensions/block-settings';
