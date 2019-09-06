@@ -8407,7 +8407,8 @@ var applyWithSelect = withSelect(function (select) {
     media: featuredImageId ? getMedia(featuredImageId) : null,
     currentPostId: getCurrentPostId(),
     postType: getPostType(getEditedPostAttribute('type')),
-    featuredImageId: featuredImageId
+    featuredImageId: featuredImageId,
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitDragAndDropFeaturedTools')
   };
 });
 var applyWithDispatch = withDispatch(function (dispatch) {
@@ -8428,11 +8429,12 @@ var applyWithDispatch = withDispatch(function (dispatch) {
   };
 });
 var enhance = compose(applyWithSelect, applyWithDispatch, withSpokenMessages);
-var withDragandDropFeaturedImage = createHigherOrderComponent(function () {
+var withDragandDropFeaturedImage = createHigherOrderComponent(function (OriginalComponent) {
   return enhance(function (_ref) {
     var props = _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, _ref);
 
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_components_controls__WEBPACK_IMPORTED_MODULE_2__["default"], props));
+    var isDisabled = props.isDisabled;
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, !isDisabled ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_components_controls__WEBPACK_IMPORTED_MODULE_2__["default"], props) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(OriginalComponent, props));
   });
 }, 'withDragandDropFeaturedImage');
 addFilter('editor.PostFeaturedImage', 'editorskit/post-featured-image', withDragandDropFeaturedImage);

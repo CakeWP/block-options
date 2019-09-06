@@ -23,6 +23,7 @@ const applyWithSelect = withSelect((select) => {
 		currentPostId: getCurrentPostId(),
 		postType: getPostType(getEditedPostAttribute('type')),
 		featuredImageId,
+		isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitDragAndDropFeaturedTools'),
 	};
 });
 
@@ -44,12 +45,12 @@ const enhance = compose(
 	withSpokenMessages,
 );
 
-const withDragandDropFeaturedImage = createHigherOrderComponent(() => {
+const withDragandDropFeaturedImage = createHigherOrderComponent(( OriginalComponent ) => {
 	return enhance(({ ...props }) => {
-
+		const { isDisabled } = props;
 		return (
 			<Fragment>
-				<PostFeaturedImage {...props} />
+				{ ! isDisabled ? <PostFeaturedImage {...props} /> : <OriginalComponent {...props} /> }
 			</Fragment>
 		);
 	});
