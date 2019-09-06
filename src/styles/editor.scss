@@ -140,7 +140,7 @@
 --------------------------------------------------------------*/
 .components-draggable__clone {
 
-	.wp-block{
+	> .wp-block{
 		> .editor-block-list__block-edit,
 		> .block-editor-block-list__block-edit {
 			
