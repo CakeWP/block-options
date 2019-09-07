@@ -3,14 +3,26 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:71
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:123
+msgid "Edit Media Link"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:123
+msgid "Media Link"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:174
+msgid "Remove Link"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:240
 msgid "Media File"
 msgstr ""
 
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:77
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:246
 msgid "Attachment Page"
 msgstr ""
 
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:88
-msgid "Media Link"
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:275
+msgid "Open in New Tab"
 msgstr ""

@@ -6,10 +6,9 @@ import LinkToolbar from './components/toolbar';
 /**
  * WordPress Dependencies
  */
-const { withSelect } = wp.data;
 const { addFilter } = wp.hooks;
 const { Fragment } = wp.element;
-const { compose, createHigherOrderComponent } = wp.compose;
+const { createHigherOrderComponent } = wp.compose;
 
 const allowedBlocks = ['core/media-text'];
 
@@ -23,8 +22,16 @@ function addAttributes(settings) {
 	// Use Lodash's assign to gracefully handle if attributes are undefined
 	if (allowedBlocks.includes(settings.name)) {
 		settings.attributes = Object.assign( settings.attributes, {
-			url: {
+			href: {
 				type: 'string',
+			},
+			linkDestination: {
+				type: 'string',
+				default: 'none'
+			},
+			linkTarget: {
+				type: 'string',
+				default: 'none'
 			},
 		} );
 	}
