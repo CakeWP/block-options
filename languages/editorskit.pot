@@ -23,6 +23,10 @@ msgstr ""
 msgid "Attachment Page"
 msgstr ""
 
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:275
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:276
 msgid "Open in New Tab"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:281
+msgid "No follow"
 msgstr ""

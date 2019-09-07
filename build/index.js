@@ -7975,20 +7975,30 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var attributes = this.props.attributes;
+      var _this$props = this.props,
+          attributes = _this$props.attributes,
+          setAttributes = _this$props.setAttributes;
       var href = attributes.href,
-          mediaId = attributes.mediaId,
           linkDestination = attributes.linkDestination,
-          linkTarget = attributes.linkTarget;
+          linkTarget = attributes.linkTarget,
+          linkNoFollow = attributes.linkNoFollow;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(ImageURLInputUI, {
         url: href || '',
         onChangeUrl: this.onSetHref,
         mediaLinks: this.getLinkDestinations(),
         linkDestination: linkDestination,
         advancedOptions: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(ToggleControl, {
-          label: __('Open in New Tab'),
+          label: __('Open in New Tab', 'block-options'),
           onChange: this.onSetNewTab,
           checked: linkTarget === '_blank'
+        }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(ToggleControl, {
+          label: __('No follow', 'block-options'),
+          onChange: function onChange() {
+            setAttributes({
+              linkNoFollow: !linkNoFollow
+            });
+          },
+          checked: !!linkNoFollow
         }))
       }));
     }
@@ -8133,6 +8143,10 @@ function addAttributes(settings) {
       linkTarget: {
         type: 'string',
         default: 'none'
+      },
+      linkNoFollow: {
+        type: 'boolean',
+        default: false
       }
     });
   }

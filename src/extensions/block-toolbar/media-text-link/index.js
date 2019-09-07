@@ -33,6 +33,10 @@ function addAttributes(settings) {
 				type: 'string',
 				default: 'none'
 			},
+			linkNoFollow: {
+				type: 'boolean',
+				default: false
+			},
 		} );
 	}
 

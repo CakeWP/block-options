@@ -253,13 +253,14 @@ class Controls extends Component {
 	render() {
 		const {
 			attributes,
+			setAttributes,
 		} = this.props;
 
 		const {
 			href,
-			mediaId,
 			linkDestination,
 			linkTarget,
+			linkNoFollow,
 		} = attributes;
 		
 		return (
@@ -272,9 +273,16 @@ class Controls extends Component {
 					advancedOptions={
 						<Fragment>
 							<ToggleControl
-								label={__('Open in New Tab')}
+								label={__('Open in New Tab', 'block-options')}
 								onChange={this.onSetNewTab}
 								checked={linkTarget === '_blank'} />
+
+							<ToggleControl
+								label={__('No follow', 'block-options')}
+								onChange={() => {
+									setAttributes({ linkNoFollow: !linkNoFollow });
+								}}
+								checked={!!linkNoFollow} />
 						</Fragment>
 					}
 				/>
