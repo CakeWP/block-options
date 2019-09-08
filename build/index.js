@@ -7700,9 +7700,7 @@ var _wp$element = wp.element,
     useCallback = _wp$element.useCallback,
     useState = _wp$element.useState,
     useRef = _wp$element.useRef;
-var _wp$data = wp.data,
-    select = _wp$data.select,
-    withSelect = _wp$data.withSelect;
+var withSelect = wp.data.withSelect;
 var _wp$compose = wp.compose,
     compose = _wp$compose.compose,
     ifCondition = _wp$compose.ifCondition;
@@ -8022,10 +8020,11 @@ function (_Component) {
 
   var mediaId = props.attributes.mediaId;
   return {
-    image: mediaId ? getMedia(mediaId) : null
+    image: mediaId ? getMedia(mediaId) : null,
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitMediaTextLinkTools')
   };
 }), ifCondition(function (props) {
-  return props.image && props.attributes.mediaType === 'image';
+  return !props.isDisabled && props.image && props.attributes.mediaType === 'image';
 }), withSpokenMessages)(Controls));
 
 /***/ }),

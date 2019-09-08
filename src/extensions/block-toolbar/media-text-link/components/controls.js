@@ -8,7 +8,7 @@ import { map } from 'lodash';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment, useCallback, useState, useRef } = wp.element;
-const { select, withSelect } = wp.data;
+const { withSelect } = wp.data;
 const { compose, ifCondition } = wp.compose;
 const { isBlobURL } = wp.blob;
 const { LEFT, RIGHT, UP, DOWN, BACKSPACE, ENTER } = wp.keycodes;
@@ -306,10 +306,11 @@ export default compose(
 
 		return {
 			image: mediaId ? getMedia(mediaId) : null,
+			isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitMediaTextLinkTools'),
 		};
 	}),
 	ifCondition((props) => {
-		return props.image && props.attributes.mediaType === 'image';
+		return !props.isDisabled && props.image && props.attributes.mediaType === 'image';
 	}),
 	withSpokenMessages
 )(Controls);
