@@ -1,0 +1,29 @@
+.is-editorskit-uploading-featured {
+
+	.editorskit-post-featured-image {
+
+		button {
+			display: none !important;
+		}
+
+		.editorskit-post-featured-spinner {
+			display: flex;
+		}
+	}
+}
+
+.editorskit-post-featured-image {
+	position: relative;
+
+	.editor-post-featured-image__toggle {
+		padding: 30px 0;
+	}
+
+	.editorskit-post-featured-spinner {
+		width: 100%;
+		padding: 25px 0;
+		display: none;
+		align-items: center;
+		justify-content: center;
+	}
+}
