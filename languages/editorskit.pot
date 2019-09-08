@@ -3,7 +3,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/block-toolbar/spacer-height/components/controls.js:102
+#: src/extensions/block-toolbar/spacer-height/components/controls.js:103
 msgid "Spacer Block default height updated."
 msgstr ""
 

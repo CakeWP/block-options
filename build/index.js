@@ -8300,7 +8300,6 @@ function (_Component) {
         return null;
       }
 
-      console.log(this.props);
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Toolbar, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
         disabled: height === this.state.spacerSetDefault ? 'disabled' : '',
         onClick: function onClick() {
