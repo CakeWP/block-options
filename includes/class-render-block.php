@@ -260,14 +260,19 @@ class EditorsKit_Render_Block {
 			$attributes = $block['attrs'];
 			if( isset( $attributes['href'] ) && !empty( $attributes['href'] ) ){
 				$linked = '<a href="'. $attributes['href'] .'" class="editorskit-media-text-link"';
+				$rel 	= 'rel="';
 
 				if( isset( $attributes['linkTarget'] ) && $attributes['linkTarget'] == '_blank' ){
 					$linked .= ' target="_blank"';
+					$rel 	.= ' noreferrer noopener';
 				}
 
 				if( isset( $attributes['linkNoFollow'] ) && $attributes['linkNoFollow'] ){
-					$linked .= ' rel="noreferrer noopener nofollow"';
+					$rel .= ' nofollow';
 				}
+
+				$rel 	.= '"';
+				$linked .= $rel;
 
 				$linked .= '>';
 
