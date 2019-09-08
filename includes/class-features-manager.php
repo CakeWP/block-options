@@ -180,6 +180,11 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Custom Class Names', $this->_slug ),
 							'value' => true,
 						),
+						'dragAndDropFeatured' => array(
+							'name'  => 'dragAndDropFeatured',
+							'label' => __( 'Drag and Drop Featured Image', $this->_slug ),
+							'value' => true,
+						),
 						'height' => array(
 							'name'  => 'height',
 							'label' => __( 'Editor Min-Height', $this->_slug ),

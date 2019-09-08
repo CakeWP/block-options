@@ -3,34 +3,34 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:123
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:111
 msgid "Edit Media Link"
 msgstr ""
 
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:123
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:111
 msgid "Media Link"
 msgstr ""
 
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:174
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:162
 msgid "Remove Link"
 msgstr ""
 
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:240
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:228
 msgid "Media File"
 msgstr ""
 
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:246
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:234
 msgid "Attachment Page"
 msgstr ""
 
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:277
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:265
 msgid "Open in New Tab"
 msgstr ""
 
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:282
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:270
 msgid "No follow"
 msgstr ""
 
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:289
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:277
 msgid "Apply link to whole block"
 msgstr ""
