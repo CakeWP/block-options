@@ -34,3 +34,11 @@ msgstr ""
 #: src/extensions/block-toolbar/media-text-link/components/controls.js:289
 msgid "Apply link to whole block"
 msgstr ""
+
+#: src/extensions/block-toolbar/spacer-height/components/controls.js:34
+msgid "Set as Default Height"
+msgstr ""
+
+#: src/extensions/block-toolbar/spacer-height/components/controls.js:57
+msgid "Spacer Block default height updated."
+msgstr ""
