@@ -8011,7 +8011,7 @@ function (_Component) {
     isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitMediaTextLinkTools')
   };
 }), ifCondition(function (props) {
-  return !props.isDisabled && props.image && props.attributes.mediaType === 'image';
+  return !props.isDisabled && props.image && props.attributes.mediaType === 'image' && URLPopover.LinkEditor !== undefined;
 }), withSpokenMessages)(Controls));
 
 /***/ }),
