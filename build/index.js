@@ -71,8 +71,6 @@
 /************************************************************************/
 /******/ ({
 
-<<<<<<< HEAD
-=======
 /***/ "./node_modules/@babel/runtime/helpers/arrayWithHoles.js":
 /*!***************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/arrayWithHoles.js ***!
@@ -88,7 +86,6 @@ module.exports = _arrayWithHoles;
 
 /***/ }),
 
->>>>>>> master
 /***/ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/assertThisInitialized.js ***!
@@ -300,8 +297,6 @@ module.exports = _inherits;
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "./node_modules/@babel/runtime/helpers/iterableToArrayLimit.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/iterableToArrayLimit.js ***!
@@ -354,7 +349,6 @@ module.exports = _nonIterableRest;
 
 /***/ }),
 
->>>>>>> master
 /***/ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js":
 /*!************************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/objectWithoutProperties.js ***!
@@ -456,8 +450,6 @@ module.exports = _setPrototypeOf;
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "./node_modules/@babel/runtime/helpers/slicedToArray.js":
 /*!**************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/slicedToArray.js ***!
@@ -479,7 +471,6 @@ module.exports = _slicedToArray;
 
 /***/ }),
 
->>>>>>> master
 /***/ "./node_modules/@babel/runtime/helpers/typeof.js":
 /*!*******************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/typeof.js ***!
@@ -5176,18 +5167,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _extensions_components_manager__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./extensions/components/manager */ "./src/extensions/components/manager/index.js");
 /* harmony import */ var _extensions_components_code_editor__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./extensions/components/code-editor */ "./src/extensions/components/code-editor/index.js");
 /* harmony import */ var _extensions_components_heading_label__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./extensions/components/heading-label */ "./src/extensions/components/heading-label/index.js");
-<<<<<<< HEAD
-/* harmony import */ var _extensions_block_settings__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./extensions/block-settings */ "./src/extensions/block-settings/index.js");
-/* harmony import */ var _extensions_formats___WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./extensions/formats/ */ "./src/extensions/formats/index.js");
-/* harmony import */ var _extensions_block_styles___WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./extensions/block-styles/ */ "./src/extensions/block-styles/index.js");
-/* harmony import */ var _blocks_import__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./blocks/import */ "./src/blocks/import/index.js");
-=======
 /* harmony import */ var _extensions_components_featured_image__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./extensions/components/featured-image */ "./src/extensions/components/featured-image/index.js");
 /* harmony import */ var _extensions_block_settings__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./extensions/block-settings */ "./src/extensions/block-settings/index.js");
 /* harmony import */ var _extensions_formats___WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./extensions/formats/ */ "./src/extensions/formats/index.js");
 /* harmony import */ var _extensions_block_styles___WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./extensions/block-styles/ */ "./src/extensions/block-styles/index.js");
 /* harmony import */ var _blocks_import__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./blocks/import */ "./src/blocks/import/index.js");
->>>>>>> master
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -5226,10 +5210,7 @@ var registerBlockType = wp.blocks.registerBlockType; // Extensions
 
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> master
  //Block Settings
 
  // Formats
@@ -5240,11 +5221,7 @@ var registerBlockType = wp.blocks.registerBlockType; // Extensions
 
 
 function registerBlocks() {
-<<<<<<< HEAD
-  [_blocks_import__WEBPACK_IMPORTED_MODULE_16__].forEach(function (block) {
-=======
   [_blocks_import__WEBPACK_IMPORTED_MODULE_17__].forEach(function (block) {
->>>>>>> master
     if (!block) {
       return;
     }
@@ -8122,8 +8099,6 @@ registerPlugin('editorskit-editor-height', {
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "./src/extensions/components/featured-image/components/controls.js":
 /*!*************************************************************************!*\
   !*** ./src/extensions/components/featured-image/components/controls.js ***!
@@ -8460,7 +8435,6 @@ addFilter('editor.PostFeaturedImage', 'editorskit/post-featured-image', withDrag
 
 /***/ }),
 
->>>>>>> master
 /***/ "./src/extensions/components/guidelines/components/menu.js":
 /*!*****************************************************************!*\
   !*** ./src/extensions/components/guidelines/components/menu.js ***!
