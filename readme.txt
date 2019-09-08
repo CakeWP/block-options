@@ -72,8 +72,14 @@ Huge improvement on `Additional CSS Class(es)` option! EditorsKit provides bette
 ## Set Image Block as Featured Image
 Enable selected image block to be set as featured image easily using the block settings dropdown.
 
+## Drag and Drop Featured Image Upload
+Easily upload or change featured image on Gutenberg editor by dragging and dropping image on Featured Image sidebar panel.
+
 ## Code Editor Mode Syntax Highlighter
 Improve display when on "Code Editor Mode". Powered by WordPress default CodeMirror library, Code Editor will be displayed with code syntax highlights and you will easily check each elements and if there are any errors on your HTML codes.
+
+## Media and Text Block Link Option
+Assign custom link to Image on Media and Text Block. Add custom, media or attachment link easily. You can also set open to new tab, add no follow and/or set link to the whole block.
 
 ## UI and User Experience Improvements
 Improve interface and provide better writing experience.
@@ -114,6 +120,13 @@ e.g.
 
 
 == Changelog ==
+
+= 1.13 =
+* New: Drag and Drop Featured Image Upload 🎊
+* New: Add Toolbar to Media and Text Block to Add Custom Link to Image or Whole Block 🎉
+* New: Media and Text Block Link no follow and open to new tab toggle 🎉
+* Improvement: Add background on block drag and drop for better UI
+* Fixes: Clean up 🐛
 
 = 1.12 =
 * New: Add option to set Image Block as Featured Image 🎊
