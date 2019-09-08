@@ -48,7 +48,7 @@ class FeaturesManager extends Component {
 						this.setState( { isOpen: true } );
 					} }
 				>
-					{__( 'EditorsKit Settings', 'block-options' ) }
+					{ __( 'EditorsKit Settings', 'block-options' ) }
 				</PluginMoreMenuItem>
 				{ this.state.isOpen ?
 					<Modal
