@@ -63,7 +63,7 @@ class Controls extends Component {
 		if (!this.state.spacerSetDefault ){
 			return null;
 		}
-
+		console.log(this.props );
 		return (
 			<Fragment>
 				<BlockControls>
