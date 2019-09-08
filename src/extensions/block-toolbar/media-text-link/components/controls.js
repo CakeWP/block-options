@@ -298,7 +298,7 @@ export default compose(
 		};
 	} ),
 	ifCondition( ( props ) => {
-		return !props.isDisabled && props.image && props.attributes.mediaType === 'image' && URLPopover.LinkEditor !== undefined;
+		return ! props.isDisabled && props.image && props.attributes.mediaType === 'image' && URLPopover.LinkEditor !== undefined;
 	} ),
 	withSpokenMessages
 )( Controls );
