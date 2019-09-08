@@ -190,6 +190,11 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Editor Min-Height', $this->_slug ),
 							'value' => true,
 						),
+						'mediaTextLink' => array(
+							'name'  => 'mediaTextLink',
+							'label' => __( 'Media Text Block Link', $this->_slug ),
+							'value' => true,
+						),
 						'export' 	 => array(
 							'name'  => 'export',
 							'label' => __( 'Export as JSON', $this->_slug ),

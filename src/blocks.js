@@ -40,6 +40,9 @@ import './extensions/block-settings';
 // Formats
 import './extensions/formats/';
 
+//Block Toolbar
+import './extensions/block-toolbar';
+
 // Styles
 import './extensions/block-styles/';
 

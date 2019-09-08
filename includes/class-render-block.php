@@ -255,6 +255,43 @@ class EditorsKit_Render_Block {
 		return $block_content;
 	}
 
+	private function media_text_link( $block_content, $block ){
+		if( isset( $block['blockName'] ) && $block['blockName'] == 'core/media-text' ){
+			$attributes = $block['attrs'];
+			if( isset( $attributes['href'] ) && !empty( $attributes['href'] ) ){
+				$linked = '<a href="'. $attributes['href'] .'" class="editorskit-media-text-link"';
+				$rel 	= 'rel="';
+
+				if( isset( $attributes['linkTarget'] ) && $attributes['linkTarget'] == '_blank' ){
+					$linked .= ' target="_blank"';
+					$rel 	.= ' noreferrer noopener';
+				}
+
+				if( isset( $attributes['linkNoFollow'] ) && $attributes['linkNoFollow'] ){
+					$rel .= ' nofollow';
+				}
+
+				$rel 	.= '"';
+				$linked .= $rel;
+
+				$linked .= '>';
+
+				if( isset( $attributes['linkFullBlock'] ) && $attributes['linkFullBlock'] ){
+					$block_content = $linked . $block_content . '</a>';
+				}else{
+					if( preg_match_all('/<figure class="wp-block-media-text__media"[^>]*>(.*?)<\/figure[^>]*>/', $block_content, $figure ) ){ 
+						$linked .= $figure[0][0];
+						$linked .= '</a>';
+						$block_content = str_replace( $figure[0], $linked, $block_content );
+					}
+				}
+
+			}
+		}
+
+		return $block_content;
+	}
+
 	public function render_block( $block_content, $block ){
 		$this->_attributes  		 = $this->block_attributes( $block );
 		
@@ -267,8 +304,11 @@ class EditorsKit_Render_Block {
 		$block_content				 = $this->display_logic( $block_content );
 
 		if( class_exists( 'ACF' ) ){
-			$block_content		= $this->acf_visibility( $block_content );
+			$block_content	= $this->acf_visibility( $block_content );
 		}
+
+		//Media Text Block Link
+		$block_content	= $this->media_text_link( $block_content, $block );
 		
 		return $block_content;
 	}
