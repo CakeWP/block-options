@@ -13,6 +13,11 @@
 }
 
 .editorskit-post-featured-image{
+	position: relative;
+
+	&.editor-post-featured-image{
+		padding: 25px 0px;
+	}
 
 	.editorskit-post-featured-spinner{
 		width: 100%;
