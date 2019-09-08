@@ -1,5 +1,5 @@
 /**
- * Internal Dependencies
+ * Internal dependencies
  */
 import Controls from './controls';
 
@@ -16,7 +16,7 @@ class LinkToolbar extends Component {
 			<Fragment>
 				<BlockControls>
 					<Toolbar>
-						<Controls {...this.props} />
+						<Controls { ...this.props } />
 					</Toolbar>
 				</BlockControls>
 			</Fragment>

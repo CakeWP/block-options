@@ -1,5 +1,5 @@
 /**
- * Internal Dependencies
+ * Internal dependencies
  */
 import LinkToolbar from './components/toolbar';
 
@@ -10,7 +10,7 @@ const { addFilter } = wp.hooks;
 const { Fragment } = wp.element;
 const { createHigherOrderComponent } = wp.compose;
 
-const allowedBlocks = ['core/media-text'];
+const allowedBlocks = [ 'core/media-text' ];
 
 /**
  * Filters registered block settings, extending attributes with settings
@@ -18,28 +18,28 @@ const allowedBlocks = ['core/media-text'];
  * @param {Object} settings Original block settings.
  * @return {Object} Filtered block settings.
  */
-function addAttributes(settings) {
+function addAttributes( settings ) {
 	// Use Lodash's assign to gracefully handle if attributes are undefined
-	if (allowedBlocks.includes(settings.name)) {
+	if ( allowedBlocks.includes( settings.name ) ) {
 		settings.attributes = Object.assign( settings.attributes, {
 			href: {
 				type: 'string',
 			},
 			linkDestination: {
 				type: 'string',
-				default: 'none'
+				default: 'none',
 			},
 			linkTarget: {
 				type: 'string',
-				default: 'none'
+				default: 'none',
 			},
 			linkNoFollow: {
 				type: 'boolean',
-				default: false
+				default: false,
 			},
 			linkFullBlock: {
 				type: 'boolean',
-				default: false
+				default: false,
 			},
 		} );
 	}
@@ -53,16 +53,16 @@ function addAttributes(settings) {
  * @param {function|Component} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
-const withControls = createHigherOrderComponent((BlockEdit) => {
-	return (props) => {
+const withControls = createHigherOrderComponent( ( BlockEdit ) => {
+	return ( props ) => {
 		return (
 			<Fragment>
-				<BlockEdit {...props} />
-				{props.isSelected && allowedBlocks.includes(props.name) && <LinkToolbar {...{ ...props }} />}
+				<BlockEdit { ...props } />
+				{ props.isSelected && allowedBlocks.includes( props.name ) && <LinkToolbar { ...{ ...props } } /> }
 			</Fragment>
 		);
 	};
-}, 'withControls');
+}, 'withControls' );
 
 addFilter(
 	'blocks.registerBlockType',

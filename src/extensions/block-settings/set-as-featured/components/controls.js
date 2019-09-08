@@ -62,7 +62,7 @@ export default compose(
 			featuredImageID: select( 'core/editor' ).getEditedPostAttribute( 'featured_media' ),
 			blockName: selectedBlock.name,
 			imageID: get( selectedBlock, 'attributes.id' ),
-			isDisabled: select('core/edit-post').isFeatureActive( 'disableEditorsKitSetAsFeaturedTools' ),
+			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitSetAsFeaturedTools' ),
 		};
 	} ),
 	withDispatch( ( dispatch ) => {
