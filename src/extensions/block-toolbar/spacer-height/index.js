@@ -13,6 +13,14 @@ const { createHigherOrderComponent } = wp.compose;
 const allowedBlocks = ['core/spacer'];
 
 /**
+ * Get settings.
+ */
+let globalSettings;
+wp.api.loadPromise.then(() => {
+	globalSettings = new wp.api.models.Settings();
+});
+
+/**
  * Filters registered block settings, extending attributes with settings
  *
  * @param {Object} settings Original block settings.
@@ -21,10 +29,15 @@ const allowedBlocks = ['core/spacer'];
 function addAttributes(settings) {
 	// Use Lodash's assign to gracefully handle if attributes are undefined
 	if (allowedBlocks.includes(settings.name)) {
-		settings.attributes = Object.assign(settings.attributes, {
-			setDefault: {
-				type: 'integer',
-			},
+
+		globalSettings.fetch().then(response => {
+			settings.attributes = Object.assign(settings.attributes, {
+				height: {
+					type: 'number',
+					default: response.spacerSetDefault,
+				},
+			});
+			return settings;
 		});
 	}
 

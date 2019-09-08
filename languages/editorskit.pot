@@ -3,42 +3,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:123
-msgid "Edit Media Link"
-msgstr ""
-
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:123
-msgid "Media Link"
-msgstr ""
-
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:174
-msgid "Remove Link"
-msgstr ""
-
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:240
-msgid "Media File"
-msgstr ""
-
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:246
-msgid "Attachment Page"
-msgstr ""
-
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:277
-msgid "Open in New Tab"
-msgstr ""
-
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:282
-msgid "No follow"
-msgstr ""
-
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:289
-msgid "Apply link to whole block"
-msgstr ""
-
-#: src/extensions/block-toolbar/spacer-height/components/controls.js:34
-msgid "Set as Default Height"
-msgstr ""
-
-#: src/extensions/block-toolbar/spacer-height/components/controls.js:57
+#: src/extensions/block-toolbar/spacer-height/components/controls.js:102
 msgid "Spacer Block default height updated."
+msgstr ""
+
+#: src/extensions/block-toolbar/spacer-height/components/controls.js:78
+msgid "Set as Default Height"
 msgstr ""

@@ -26,6 +26,7 @@ class EditorsKit_Post_Meta {
 	public function __construct() {
 		add_filter( 'init', array( $this, 'register_meta' ) );
 		add_filter( 'rest_pre_dispatch', array( $this, 'rest_pre_dispatch' ), 10, 3 );
+		add_action( 'init', array( $this, 'register_settings' ) );
 	}
 
 	/**
@@ -40,6 +41,25 @@ class EditorsKit_Post_Meta {
 				'auth_callback' => function() {
 					return current_user_can( 'edit_posts' );
 				},
+			)
+		);
+	}
+
+	/**
+	 * Register block settings.
+	 *
+	 * @access public
+	 */
+	public function register_settings() {
+		register_setting(
+			'spacerSetDefault',
+			'spacerSetDefault',
+			array(
+				'type'              => 'integer',
+				'description'       => __( 'Spacer Block Default Height', 'block-options' ),
+				'sanitize_callback' => 'sanitize_text_field',
+				'show_in_rest'      => true,
+				'default'           => 100,
 			)
 		);
 	}

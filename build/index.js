@@ -7642,7 +7642,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _media_text_link__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./media-text-link */ "./src/extensions/block-toolbar/media-text-link/index.js");
-/* harmony import */ var _spacer_height__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./spacer-height */ "./src/extensions/block-toolbar/spacer-height/index.js");
+/* harmony import */ var _spacer_height__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./spacer-height */ "./src/extensions/block-toolbar/spacer-height/index.js");
 /**
  * Internal dependencies
  */
@@ -8217,6 +8217,9 @@ __webpack_require__.r(__webpack_exports__);
  * WordPress dependencies
  */
 var __ = wp.i18n.__;
+var _wp$api = wp.api,
+    loadPromise = _wp$api.loadPromise,
+    models = _wp$api.models;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
@@ -8231,6 +8234,14 @@ var _wp$components = wp.components,
 var _wp$compose = wp.compose,
     compose = _wp$compose.compose,
     ifCondition = _wp$compose.ifCondition;
+/**
+ * Get settings.
+ */
+
+var settings;
+loadPromise.then(function () {
+  settings = new models.Settings();
+});
 
 var Controls =
 /*#__PURE__*/
@@ -8238,24 +8249,63 @@ function (_Component) {
   _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(Controls, _Component);
 
   function Controls() {
+    var _this;
+
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, Controls);
 
-    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Controls).apply(this, arguments));
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Controls).apply(this, arguments));
+    _this.state = {
+      spacerSetDefault: 100
+    };
+    settings.on('change:spacerSetDefault', function (model) {
+      _this.setState({
+        spacerSetDefault: settings.get('spacerSetDefault')
+      });
+    });
+    settings.fetch().then(function (response) {
+      _this.setState({
+        spacerSetDefault: response.spacerSetDefault
+      });
+    });
+    return _this;
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Controls, [{
+    key: "saveApiKey",
+    value: function saveApiKey(spacerSetDefault) {
+      var _this2 = this;
+
+      var model = new models.Settings({
+        spacerSetDefault: spacerSetDefault
+      });
+      model.save().then(function () {
+        _this2.setState({
+          spacerSetDefault: spacerSetDefault
+        });
+
+        settings.fetch();
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var _this$props = this.props,
           attributes = _this$props.attributes,
-          onSetDefault = _this$props.onSetDefault,
-          spacerSetDefault = _this$props.spacerSetDefault;
+          onSetDefault = _this$props.onSetDefault;
       var height = attributes.height;
-      console.log(spacerSetDefault);
+
+      if (!this.state.spacerSetDefault) {
+        return null;
+      }
+
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Toolbar, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
-        disabled: height === spacerSetDefault ? 'disabled' : '',
+        disabled: height === this.state.spacerSetDefault ? 'disabled' : '',
         onClick: function onClick() {
-          onSetDefault(height);
+          _this3.saveApiKey(height);
+
+          onSetDefault();
         }
       }, __('Set as Default Height', 'block-options')))));
     }
@@ -8265,18 +8315,16 @@ function (_Component) {
 }(Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (compose(withSelect(function (select) {
+  var spacerSetDefault = '';
   return {
-    spacerSetDefault: select('core/block-editor').getSettings().spacerSetDefault
+    spacerSetDefault: spacerSetDefault
   };
 }), withDispatch(function (dispatch) {
   var _dispatch = dispatch('core/notices'),
       createNotice = _dispatch.createNotice;
 
   return {
-    onSetDefault: function onSetDefault(height) {
-      dispatch('core/block-editor').updateSettings({
-        spacerSetDefault: height
-      });
+    onSetDefault: function onSetDefault() {
       createNotice('info', __('Spacer Block default height updated.', 'block-options'), {
         isDismissible: true,
         type: 'snackbar'
@@ -8321,6 +8369,14 @@ var Fragment = wp.element.Fragment;
 var createHigherOrderComponent = wp.compose.createHigherOrderComponent;
 var allowedBlocks = ['core/spacer'];
 /**
+ * Get settings.
+ */
+
+var globalSettings;
+wp.api.loadPromise.then(function () {
+  globalSettings = new wp.api.models.Settings();
+});
+/**
  * Filters registered block settings, extending attributes with settings
  *
  * @param {Object} settings Original block settings.
@@ -8330,10 +8386,14 @@ var allowedBlocks = ['core/spacer'];
 function addAttributes(settings) {
   // Use Lodash's assign to gracefully handle if attributes are undefined
   if (allowedBlocks.includes(settings.name)) {
-    settings.attributes = Object.assign(settings.attributes, {
-      setDefault: {
-        type: 'integer'
-      }
+    globalSettings.fetch().then(function (response) {
+      settings.attributes = Object.assign(settings.attributes, {
+        height: {
+          type: 'number',
+          default: response.spacerSetDefault
+        }
+      });
+      return settings;
     });
   }
 
