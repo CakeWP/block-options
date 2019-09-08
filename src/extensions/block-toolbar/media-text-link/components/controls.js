@@ -261,6 +261,7 @@ class Controls extends Component {
 			linkDestination,
 			linkTarget,
 			linkNoFollow,
+			linkFullBlock,
 		} = attributes;
 		
 		return (
@@ -283,6 +284,13 @@ class Controls extends Component {
 									setAttributes({ linkNoFollow: !linkNoFollow });
 								}}
 								checked={!!linkNoFollow} />
+							
+							<ToggleControl
+								label={__('Apply link to whole block', 'block-options')}
+								onChange={() => {
+									setAttributes({ linkFullBlock: !linkFullBlock });
+								}}
+								checked={!!linkFullBlock} />
 						</Fragment>
 					}
 				/>

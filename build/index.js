@@ -5169,7 +5169,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _extensions_components_heading_label__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./extensions/components/heading-label */ "./src/extensions/components/heading-label/index.js");
 /* harmony import */ var _extensions_block_settings__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./extensions/block-settings */ "./src/extensions/block-settings/index.js");
 /* harmony import */ var _extensions_formats___WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./extensions/formats/ */ "./src/extensions/formats/index.js");
-/* harmony import */ var _extensions_block_toolbar__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./extensions/block-toolbar */ "./src/extensions/block-toolbar/index.js");
+/* harmony import */ var _extensions_block_toolbar__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./extensions/block-toolbar */ "./src/extensions/block-toolbar/index.js");
 /* harmony import */ var _extensions_block_styles___WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./extensions/block-styles/ */ "./src/extensions/block-styles/index.js");
 /* harmony import */ var _blocks_import__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./blocks/import */ "./src/blocks/import/index.js");
 
@@ -7981,7 +7981,8 @@ function (_Component) {
       var href = attributes.href,
           linkDestination = attributes.linkDestination,
           linkTarget = attributes.linkTarget,
-          linkNoFollow = attributes.linkNoFollow;
+          linkNoFollow = attributes.linkNoFollow,
+          linkFullBlock = attributes.linkFullBlock;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(ImageURLInputUI, {
         url: href || '',
         onChangeUrl: this.onSetHref,
@@ -7999,6 +8000,14 @@ function (_Component) {
             });
           },
           checked: !!linkNoFollow
+        }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(ToggleControl, {
+          label: __('Apply link to whole block', 'block-options'),
+          onChange: function onChange() {
+            setAttributes({
+              linkFullBlock: !linkFullBlock
+            });
+          },
+          checked: !!linkFullBlock
         }))
       }));
     }
@@ -8145,6 +8154,10 @@ function addAttributes(settings) {
         default: 'none'
       },
       linkNoFollow: {
+        type: 'boolean',
+        default: false
+      },
+      linkFullBlock: {
         type: 'boolean',
         default: false
       }
