@@ -117,6 +117,7 @@ e.g.
 6. Settings and Options
 7. Custom Classes Utility and Auto Suggestions
 8. Code Editor Mode Syntax Highlighter
+9. Drag and Drop Featured Image Upload
 
 
 == Changelog ==
