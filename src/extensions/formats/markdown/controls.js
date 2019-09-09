@@ -111,6 +111,10 @@ class MarkdownControl extends Component {
 				markdown: '~',
 				format: 'core/strikethrough',
 			},
+			code: {
+				markdown: '`',
+				format: 'core/code',
+			}
 		};
 
 		map( markdowns, ( markdown ) => {
