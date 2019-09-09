@@ -3,34 +3,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:111
-msgid "Edit Media Link"
+#: src/extensions/block-settings/set-as-featured/components/controls.js:28
+msgid "Remove as Featured Image"
 msgstr ""
 
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:111
-msgid "Media Link"
+#: src/extensions/block-settings/set-as-featured/components/controls.js:29
+msgid "Set as Featured Image"
 msgstr ""
 
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:162
-msgid "Remove Link"
+#: src/extensions/block-settings/set-as-featured/components/controls.js:77
+msgid "Image Set as Featured."
 msgstr ""
 
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:228
-msgid "Media File"
-msgstr ""
-
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:234
-msgid "Attachment Page"
-msgstr ""
-
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:265
-msgid "Open in New Tab"
-msgstr ""
-
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:270
-msgid "No follow"
-msgstr ""
-
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:277
-msgid "Apply link to whole block"
+#: src/extensions/block-settings/set-as-featured/components/controls.js:88
+msgid "Featured Image Removed."
 msgstr ""
