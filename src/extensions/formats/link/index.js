@@ -18,7 +18,7 @@ const name = 'editorskit/link';
 
 export const link = {
 	name,
-	title: __('Link', 'block-options'),
+	title: __( 'Link', 'block-options' ),
 	tagName: 'a',
 	className: 'ek-link',
 	attributes: {
@@ -26,27 +26,27 @@ export const link = {
 		target: 'target',
 		rel: 'rel',
 	},
-	__unstablePasteRule(value, { html, plainText }) {
-		if (isCollapsed(value)) {
+	__unstablePasteRule( value, { html, plainText } ) {
+		if ( isCollapsed( value ) ) {
 			return value;
 		}
 
-		const pastedText = (html || plainText).replace(/<[^>]+>/g, '').trim();
+		const pastedText = ( html || plainText ).replace( /<[^>]+>/g, '' ).trim();
 
 		// A URL was pasted, turn the selection into a link
-		if (!isURL(pastedText)) {
+		if ( ! isURL( pastedText ) ) {
 			return value;
 		}
 
 		// Allows us to ask for this information when we get a report.
-		window.console.log('Created link:\n\n', pastedText);
+		window.console.log( 'Created link:\n\n', pastedText );
 
-		return applyFormat(value, {
+		return applyFormat( value, {
 			type: name,
 			attributes: {
-				url: decodeEntities(pastedText),
+				url: decodeEntities( pastedText ),
 			},
-		});
+		} );
 	},
 	edit: Edit,
 };

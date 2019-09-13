@@ -27,53 +27,54 @@ const { __, sprintf } = wp.i18n;
  *
  * @return {boolean} Is the href invalid?
  */
-export function isValidHref(href) {
-	if (!href) {
+export function isValidHref( href ) {
+	if ( ! href ) {
 		return false;
 	}
 
 	const trimmedHref = href.trim();
 
-	if (!trimmedHref) {
+	if ( ! trimmedHref ) {
 		return false;
 	}
 
 	// Does the href start with something that looks like a URL protocol?
-	if (/^\S+:/.test(trimmedHref)) {
-		const protocol = getProtocol(trimmedHref);
-		if (!isValidProtocol(protocol)) {
+	if ( /^\S+:/.test( trimmedHref ) ) {
+		const protocol = getProtocol( trimmedHref );
+		if ( ! isValidProtocol( protocol ) ) {
 			return false;
 		}
 
 		// Add some extra checks for http(s) URIs, since these are the most common use-case.
 		// This ensures URIs with an http protocol have exactly two forward slashes following the protocol.
-		if (startsWith(protocol, 'http') && ! /^https?:\/\/[^\/\s]/i.test(trimmedHref)) {
+		// eslint-disable-next-line no-useless-escape
+		if ( startsWith( protocol, 'http' ) && ! /^https?:\/\/[^\/\s]/i.test( trimmedHref ) ) {
 			return false;
 		}
 
-		const authority = getAuthority(trimmedHref);
-		if (!isValidAuthority(authority)) {
+		const authority = getAuthority( trimmedHref );
+		if ( ! isValidAuthority( authority ) ) {
 			return false;
 		}
 
-		const path = getPath(trimmedHref);
-		if (path && !isValidPath(path)) {
+		const path = getPath( trimmedHref );
+		if ( path && ! isValidPath( path ) ) {
 			return false;
 		}
 
-		const queryString = getQueryString(trimmedHref);
-		if (queryString && !isValidQueryString(queryString)) {
+		const queryString = getQueryString( trimmedHref );
+		if ( queryString && ! isValidQueryString( queryString ) ) {
 			return false;
 		}
 
-		const fragment = getFragment(trimmedHref);
-		if (fragment && !isValidFragment(fragment)) {
+		const fragment = getFragment( trimmedHref );
+		if ( fragment && ! isValidFragment( fragment ) ) {
 			return false;
 		}
 	}
 
 	// Validate anchor links.
-	if (startsWith(trimmedHref, '#') && !isValidFragment(trimmedHref)) {
+	if ( startsWith( trimmedHref, '#' ) && ! isValidFragment( trimmedHref ) ) {
 		return false;
 	}
 
@@ -90,7 +91,7 @@ export function isValidHref(href) {
  *
  * @return {Object} The final format object.
  */
-export function createLinkFormat({ url, opensInNewWindow, noFollow, sponsored, text }) {
+export function createLinkFormat( { url, opensInNewWindow, noFollow, sponsored, text } ) {
 	const format = {
 		type: 'editorskit/link',
 		attributes: {
@@ -100,26 +101,26 @@ export function createLinkFormat({ url, opensInNewWindow, noFollow, sponsored, t
 
 	const relAttributes = [];
 
-	if (opensInNewWindow) {
+	if ( opensInNewWindow ) {
 		// translators: accessibility label for external links, where the argument is the link text
-		const label = sprintf(__('%s (opens in a new tab)'), text);
+		const label = sprintf( __( '%s (opens in a new tab)', 'block-options' ), text );
 
 		format.attributes.target = '_blank';
-		format.attributes['aria-label'] = label;
+		format.attributes[ 'aria-label' ] = label;
 
-		relAttributes.push('noreferrer noopener');
-	}
-	
-	if (noFollow) {
-		relAttributes.push('nofollow');
+		relAttributes.push( 'noreferrer noopener' );
 	}
 
-	if (sponsored) {
-		relAttributes.push('sponsored');
+	if ( noFollow ) {
+		relAttributes.push( 'nofollow' );
 	}
 
-	if (relAttributes.length > 0) {
-		format.attributes.rel = relAttributes.join(' ');
+	if ( sponsored ) {
+		relAttributes.push( 'sponsored' );
+	}
+
+	if ( relAttributes.length > 0 ) {
+		format.attributes.rel = relAttributes.join( ' ' );
 	}
 
 	return format;

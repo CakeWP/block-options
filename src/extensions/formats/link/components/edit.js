@@ -11,7 +11,6 @@ const { Component, Fragment } = wp.element;
 const { select, withSelect, dispatch } = wp.data;
 const { BlockControls, RichTextToolbarButton, RichTextShortcut } = wp.blockEditor;
 const {
-	unregisterFormatType, 
 	getTextContent,
 	applyFormat,
 	removeFormat,
@@ -19,9 +18,8 @@ const {
 	isCollapsed,
 	getActiveFormat } = wp.richText;
 const { isURL, isEmail } = wp.url;
-const { Toolbar, IconButton, Popover, ColorPalette, withSpokenMessages } = wp.components;
+const { Toolbar, withSpokenMessages } = wp.components;
 const { compose, ifCondition } = wp.compose;
-
 
 /**
  * Internal dependencies
@@ -29,15 +27,15 @@ const { compose, ifCondition } = wp.compose;
 import InlineLinkUI from './inline';
 
 const name = 'editorskit/link';
-const title = __('Add Link', 'block-options');
+const title = __( 'Add Link', 'block-options' );
 
 class Edit extends Component {
 	constructor() {
-		super(...arguments);
+		super( ...arguments );
 
-		this.addLink = this.addLink.bind(this);
-		this.stopAddingLink = this.stopAddingLink.bind(this);
-		this.onRemoveFormat = this.onRemoveFormat.bind(this);
+		this.addLink = this.addLink.bind( this );
+		this.stopAddingLink = this.stopAddingLink.bind( this );
+		this.onRemoveFormat = this.onRemoveFormat.bind( this );
 		this.state = {
 			addingLink: false,
 		};
@@ -45,19 +43,19 @@ class Edit extends Component {
 
 	addLink() {
 		const { value, onChange } = this.props;
-		const text = getTextContent(slice(value));
+		const text = getTextContent( slice( value ) );
 
-		if (text && isURL(text)) {
-			onChange(applyFormat(value, { type: name, attributes: { url: text } }));
-		} else if (text && isEmail(text)) {
-			onChange(applyFormat(value, { type: name, attributes: { url: `mailto:${text}` } }));
+		if ( text && isURL( text ) ) {
+			onChange( applyFormat( value, { type: name, attributes: { url: text } } ) );
+		} else if ( text && isEmail( text ) ) {
+			onChange( applyFormat( value, { type: name, attributes: { url: `mailto:${ text }` } } ) );
 		} else {
-			this.setState({ addingLink: true });
+			this.setState( { addingLink: true } );
 		}
 	}
 
 	stopAddingLink() {
-		this.setState({ addingLink: false });
+		this.setState( { addingLink: false } );
 	}
 
 	onRemoveFormat() {
@@ -65,34 +63,34 @@ class Edit extends Component {
 
 		let newValue = value;
 
-		map(['core/link', 'editorskit/link'], (linkFormat) => {
-			newValue = removeFormat(newValue, linkFormat);
-		});
+		map( [ 'core/link', 'editorskit/link' ], ( linkFormat ) => {
+			newValue = removeFormat( newValue, linkFormat );
+		} );
 
-		onChange({ ...newValue });
-		speak(__('Link removed.', 'block-options'), 'assertive');
+		onChange( { ...newValue } );
+		speak( __( 'Link removed.', 'block-options' ), 'assertive' );
 	}
 
 	render() {
 		const { activeAttributes, onChange } = this.props;
 		let { isActive, value } = this.props;
-		
+
 		const activeFormat = getActiveFormat( value, 'core/link' );
-		if ( activeFormat && isCollapsed(value) && !isActive ){
+		if ( activeFormat && isCollapsed( value ) && ! isActive ) {
 			activeFormat.type = name;
 
 			let newValue = value;
-			newValue = applyFormat(newValue, activeFormat);
-			newValue = removeFormat(newValue, 'core/link');
-			onChange({ ...newValue });
+			newValue = applyFormat( newValue, activeFormat );
+			newValue = removeFormat( newValue, 'core/link' );
+			onChange( { ...newValue } );
 
 			value = newValue;
 
 			isActive = true;
-		}else{
-			const oldFormat = select('core/rich-text').getFormatType('core/link');
-			if (oldFormat) {
-				dispatch('core/rich-text').removeFormatTypes('core/link');
+		} else {
+			const oldFormat = select( 'core/rich-text' ).getFormatType( 'core/link' );
+			if ( oldFormat ) {
+				dispatch( 'core/rich-text' ).removeFormatTypes( 'core/link' );
 			}
 		}
 
@@ -103,42 +101,42 @@ class Edit extends Component {
 						<RichTextShortcut
 							type="primary"
 							character="k"
-							onUse={this.addLink}
+							onUse={ this.addLink }
 						/>
 						<RichTextShortcut
 							type="primaryShift"
 							character="k"
-							onUse={this.onRemoveFormat}
+							onUse={ this.onRemoveFormat }
 						/>
 
-						{isActive && <RichTextToolbarButton
+						{ isActive && <RichTextToolbarButton
 							name="link"
 							icon="editor-unlink"
-							title={__('Unlink')}
-							onClick={this.onRemoveFormat}
-							isActive={isActive}
+							title={ __( 'Unlink' ) }
+							onClick={ this.onRemoveFormat }
+							isActive={ isActive }
 							shortcutType="primaryShift"
 							shortcutCharacter="k"
-						/>}
-						{!isActive && <RichTextToolbarButton
+						/> }
+						{ ! isActive && <RichTextToolbarButton
 							name="link"
 							icon="admin-links"
-							title={title}
-							onClick={this.addLink}
-							isActive={isActive}
+							title={ title }
+							onClick={ this.addLink }
+							isActive={ isActive }
 							shortcutType="primary"
 							shortcutCharacter="k"
-						/>}
+						/> }
 
 						<InlineLinkUI
-							addingLink={this.state.addingLink}
-							stopAddingLink={this.stopAddingLink}
-							isActive={isActive}
-							activeAttributes={activeAttributes}
-							value={value}
-							onChange={onChange}
+							addingLink={ this.state.addingLink }
+							stopAddingLink={ this.stopAddingLink }
+							isActive={ isActive }
+							activeAttributes={ activeAttributes }
+							value={ value }
+							onChange={ onChange }
 						/>
-						
+
 					</Toolbar>
 				</BlockControls>
 			</Fragment>
@@ -147,11 +145,11 @@ class Edit extends Component {
 }
 
 export default compose(
-	withSelect(() => {
+	withSelect( () => {
 		return {
-			isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitColorsFormats'),
+			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitColorsFormats' ),
 		};
-	}),
-	ifCondition((props) => !props.isDisabled),
+	} ),
+	ifCondition( ( props ) => ! props.isDisabled ),
 	withSpokenMessages,
-)(Edit);
+)( Edit );
