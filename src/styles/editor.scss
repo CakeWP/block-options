@@ -11,7 +11,8 @@
 			flex-direction: row-reverse;
 
 			.components-form-toggle,
-			.components-toggle-control__label {
+			.components-toggle-control__label,
+			.components-checkbox-control__label {
 				display: flex;
 				flex-direction: column;
 				flex: 1;
@@ -22,7 +23,8 @@
 				margin-left: 16px;
 			}
 
-			.components-toggle-control__label {
+			.components-toggle-control__label,
+			.components-checkbox-control__label {
 				flex-basis: 100%;
 			}
 

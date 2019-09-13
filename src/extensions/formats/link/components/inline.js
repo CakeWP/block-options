@@ -75,6 +75,7 @@ class InlineLinkUI extends Component {
 		this.onChangeInputValue = this.onChangeInputValue.bind(this);
 		this.setLinkTarget = this.setLinkTarget.bind(this);
 		this.setNoFollow = this.setNoFollow.bind(this);
+		this.setSponsored = this.setSponsored.bind(this);
 		this.onFocusOutside = this.onFocusOutside.bind(this);
 		this.resetState = this.resetState.bind(this);
 		this.autocompleteRef = createRef();
@@ -82,6 +83,7 @@ class InlineLinkUI extends Component {
 		this.state = {
 			opensInNewWindow: false,
 			noFollow: false,
+			sponsored: false,
 			inputValue: '',
 		};
 	}
@@ -101,8 +103,14 @@ class InlineLinkUI extends Component {
 
 			if (typeof rel === 'string') {
 				const noFollow = rel.split(' ').includes('nofollow');
+				const sponsored = rel.split(' ').includes('sponsored');
+				
 				if (noFollow !== state.noFollow) {
 					return { noFollow };
+				}
+
+				if (sponsored !== state.sponsored) {
+					return { sponsored };
 				}
 			}
 		}
@@ -134,6 +142,7 @@ class InlineLinkUI extends Component {
 				url,
 				opensInNewWindow,
 				noFollow: this.state.noFollow,
+				sponsored: this.state.sponsored,
 				text: selectedText,
 			})));
 		}
@@ -150,8 +159,28 @@ class InlineLinkUI extends Component {
 
 			onChange(applyFormat(value, createLinkFormat({
 				url,
-				noFollow,
 				opensInNewWindow: this.state.opensInNewWindow,
+				noFollow,
+				sponsored: this.state.sponsored,
+				text: selectedText,
+			})));
+		}
+	}
+
+	setSponsored(sponsored) {
+		const { activeAttributes: { url = '' }, value, onChange } = this.props;
+
+		this.setState({ sponsored });
+
+		// Apply now if URL is not being edited.
+		if (!isShowingInput(this.props, this.state)) {
+			const selectedText = getTextContent(slice(value));
+
+			onChange(applyFormat(value, createLinkFormat({
+				url,
+				opensInNewWindow: this.state.opensInNewWindow,
+				noFollow: this.state.noFollow,
+				sponsored: sponsored,
 				text: selectedText,
 			})));
 		}
@@ -218,7 +247,7 @@ class InlineLinkUI extends Component {
 			return null;
 		}
 
-		const { inputValue, opensInNewWindow, noFollow } = this.state;
+		const { inputValue, opensInNewWindow, noFollow, sponsored } = this.state;
 		const showInput = isShowingInput(this.props, this.state);
 
 		
@@ -228,8 +257,14 @@ class InlineLinkUI extends Component {
 		
 		if (typeof rel === 'string') {
 			const relNoFollow = rel.split(' ').includes('nofollow');
+			const relSponsored = rel.split(' ').includes('sponsored');
+
 			if ( relNoFollow !== noFollow ) {
 				this.setState({ noFollow: relNoFollow });
+			}
+
+			if (relSponsored !== sponsored) {
+				this.setState({ sponsored: relSponsored });
 			}
 		}
 
@@ -245,14 +280,19 @@ class InlineLinkUI extends Component {
 				renderSettings={() => (
 					<Fragment>
 						<ToggleControl
-							label={__('Open in New Tab')}
+							label={__('Open in New Tab', 'block-options')}
 							checked={ opensInNewWindow }
 							onChange={this.setLinkTarget}
 						/>
 						<ToggleControl
-							label={__('No follow')}
+							label={__('No Follow', 'block-options')}
 							checked={noFollow}
 							onChange={this.setNoFollow}
+						/>
+						<ToggleControl
+							label={__('Sponsored', 'block-options')}
+							checked={sponsored}
+							onChange={this.setSponsored}
 						/>
 					</Fragment>
 				)}

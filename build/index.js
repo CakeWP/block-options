@@ -10999,12 +10999,14 @@ function (_Component) {
     _this.onChangeInputValue = _this.onChangeInputValue.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     _this.setLinkTarget = _this.setLinkTarget.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     _this.setNoFollow = _this.setNoFollow.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.setSponsored = _this.setSponsored.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     _this.onFocusOutside = _this.onFocusOutside.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     _this.resetState = _this.resetState.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     _this.autocompleteRef = createRef();
     _this.state = {
       opensInNewWindow: false,
       noFollow: false,
+      sponsored: false,
       inputValue: ''
     };
     return _this;
@@ -11043,6 +11045,7 @@ function (_Component) {
           url: url,
           opensInNewWindow: opensInNewWindow,
           noFollow: this.state.noFollow,
+          sponsored: this.state.sponsored,
           text: selectedText
         })));
       }
@@ -11063,8 +11066,32 @@ function (_Component) {
         var selectedText = getTextContent(slice(value));
         onChange(applyFormat(value, Object(_utils__WEBPACK_IMPORTED_MODULE_9__["createLinkFormat"])({
           url: url,
-          noFollow: noFollow,
           opensInNewWindow: this.state.opensInNewWindow,
+          noFollow: noFollow,
+          sponsored: this.state.sponsored,
+          text: selectedText
+        })));
+      }
+    }
+  }, {
+    key: "setSponsored",
+    value: function setSponsored(sponsored) {
+      var _this$props3 = this.props,
+          _this$props3$activeAt = _this$props3.activeAttributes.url,
+          url = _this$props3$activeAt === void 0 ? '' : _this$props3$activeAt,
+          value = _this$props3.value,
+          onChange = _this$props3.onChange;
+      this.setState({
+        sponsored: sponsored
+      }); // Apply now if URL is not being edited.
+
+      if (!isShowingInput(this.props, this.state)) {
+        var selectedText = getTextContent(slice(value));
+        onChange(applyFormat(value, Object(_utils__WEBPACK_IMPORTED_MODULE_9__["createLinkFormat"])({
+          url: url,
+          opensInNewWindow: this.state.opensInNewWindow,
+          noFollow: this.state.noFollow,
+          sponsored: sponsored,
           text: selectedText
         })));
       }
@@ -11080,11 +11107,11 @@ function (_Component) {
   }, {
     key: "submitLink",
     value: function submitLink(event) {
-      var _this$props3 = this.props,
-          isActive = _this$props3.isActive,
-          value = _this$props3.value,
-          onChange = _this$props3.onChange,
-          speak = _this$props3.speak;
+      var _this$props4 = this.props,
+          isActive = _this$props4.isActive,
+          value = _this$props4.value,
+          onChange = _this$props4.onChange,
+          speak = _this$props4.speak;
       var _this$state = this.state,
           inputValue = _this$state.inputValue,
           opensInNewWindow = _this$state.opensInNewWindow;
@@ -11144,14 +11171,14 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var _this$props4 = this.props,
-          isActive = _this$props4.isActive,
-          _this$props4$activeAt = _this$props4.activeAttributes,
-          url = _this$props4$activeAt.url,
-          target = _this$props4$activeAt.target,
-          rel = _this$props4$activeAt.rel,
-          addingLink = _this$props4.addingLink,
-          value = _this$props4.value;
+      var _this$props5 = this.props,
+          isActive = _this$props5.isActive,
+          _this$props5$activeAt = _this$props5.activeAttributes,
+          url = _this$props5$activeAt.url,
+          target = _this$props5$activeAt.target,
+          rel = _this$props5$activeAt.rel,
+          addingLink = _this$props5.addingLink,
+          value = _this$props5.value;
 
       if (!isActive && !addingLink) {
         return null;
@@ -11160,7 +11187,8 @@ function (_Component) {
       var _this$state2 = this.state,
           inputValue = _this$state2.inputValue,
           opensInNewWindow = _this$state2.opensInNewWindow,
-          noFollow = _this$state2.noFollow;
+          noFollow = _this$state2.noFollow,
+          sponsored = _this$state2.sponsored;
       var showInput = isShowingInput(this.props, this.state);
 
       if (!opensInNewWindow && target === '_blank') {
@@ -11171,10 +11199,17 @@ function (_Component) {
 
       if (typeof rel === 'string') {
         var relNoFollow = rel.split(' ').includes('nofollow');
+        var relSponsored = rel.split(' ').includes('sponsored');
 
         if (relNoFollow !== noFollow) {
           this.setState({
             noFollow: relNoFollow
+          });
+        }
+
+        if (relSponsored !== sponsored) {
+          this.setState({
+            sponsored: relSponsored
           });
         }
       }
@@ -11188,13 +11223,17 @@ function (_Component) {
         focusOnMount: showInput ? 'firstElement' : false,
         renderSettings: function renderSettings() {
           return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(ToggleControl, {
-            label: __('Open in New Tab'),
+            label: __('Open in New Tab', 'block-options'),
             checked: opensInNewWindow,
             onChange: _this2.setLinkTarget
           }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(ToggleControl, {
-            label: __('No follow'),
+            label: __('No Follow', 'block-options'),
             checked: noFollow,
             onChange: _this2.setNoFollow
+          }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(ToggleControl, {
+            label: __('Sponsored', 'block-options'),
+            checked: sponsored,
+            onChange: _this2.setSponsored
           }));
         }
       }, showInput ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(URLPopover.LinkEditor, {
@@ -11237,10 +11276,17 @@ function (_Component) {
 
         if (typeof rel === 'string') {
           var noFollow = rel.split(' ').includes('nofollow');
+          var sponsored = rel.split(' ').includes('sponsored');
 
           if (noFollow !== state.noFollow) {
             return {
               noFollow: noFollow
+            };
+          }
+
+          if (sponsored !== state.sponsored) {
+            return {
+              sponsored: sponsored
             };
           }
         }
@@ -11372,6 +11418,7 @@ function createLinkFormat(_ref) {
   var url = _ref.url,
       opensInNewWindow = _ref.opensInNewWindow,
       noFollow = _ref.noFollow,
+      sponsored = _ref.sponsored,
       text = _ref.text;
   var format = {
     type: 'editorskit/link',
@@ -11391,6 +11438,10 @@ function createLinkFormat(_ref) {
 
   if (noFollow) {
     relAttributes.push('nofollow');
+  }
+
+  if (sponsored) {
+    relAttributes.push('sponsored');
   }
 
   if (relAttributes.length > 0) {

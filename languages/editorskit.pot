@@ -3,47 +3,31 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/formats/link/components/edit.js:117
-msgid "Unlink"
-msgstr ""
-
-#: src/extensions/formats/link/components/edit.js:32
-msgid "Add Link"
-msgstr ""
-
-#: src/extensions/formats/link/components/edit.js:73
-msgid "Link removed."
-msgstr ""
-
-#: src/extensions/formats/link/components/inline.js:188
+#: src/extensions/formats/link/components/inline.js:217
 msgid "Warning: the link has been inserted but may have errors. Please test it."
 msgstr ""
 
-#: src/extensions/formats/link/components/inline.js:190
+#: src/extensions/formats/link/components/inline.js:219
 msgid "Link edited."
 msgstr ""
 
-#: src/extensions/formats/link/components/inline.js:192
+#: src/extensions/formats/link/components/inline.js:221
 msgid "Link inserted."
 msgstr ""
 
-#: src/extensions/formats/link/components/inline.js:248
+#: src/extensions/formats/link/components/inline.js:283
 msgid "Open in New Tab"
 msgstr ""
 
-#: src/extensions/formats/link/components/inline.js:253
-msgid "No follow"
+#: src/extensions/formats/link/components/inline.js:288
+msgid "No Follow"
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:293
+msgid "Sponsored"
 msgstr ""
 
 #: src/extensions/formats/link/components/utils.js:105
 #. accessibility label for external links, where the argument is the link text
 msgid "%s (opens in a new tab)"
-msgstr ""
-
-#: src/extensions/formats/link/index.js:21
-msgid "Link"
-msgstr ""
-
-#: src/extensions/formats/text-color/components/edit.js:18
-msgid "Text Color"
 msgstr ""
