@@ -7,13 +7,10 @@
  */
 
 //Block Lab : https://github.com/getblocklab/block-lab/pull/373
-add_filter( 'is_block_field_name_allowed', 'is_editorskit_blocklab_name_allowed', 10, 3 );
-function is_editorskit_blocklab_name_allowed( $is_name_allowed, $name ){
-	if( $name == 'editorskit' ){
-		$is_name_allowed = true;
-	}
-
-	return $is_name_allowed;
+add_filter( 'block_lab_default_fields', 'editorskit_block_lab_default_fields', 10, 3 );
+function editorskit_block_lab_default_fields( $default_fields ){
+	$default_fields['editorskit'] = 'array'; // The name and type.
+	return $default_fields;
 }
 
 function editorskit_blocklab_classname() {
