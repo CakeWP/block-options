@@ -72,3 +72,12 @@ msgstr ""
 #: src/extensions/formats/link/components/url-input.js:280
 msgid "(no title)"
 msgstr ""
+
+#: src/extensions/formats/link/components/utils.js:106
+#. accessibility label for external links, where the argument is the link text
+msgid "%s (opens in a new tab)"
+msgstr ""
+
+#: src/extensions/formats/link/index.js:21
+msgid "Link"
+msgstr ""
