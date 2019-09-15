@@ -26,29 +26,3 @@ msgstr ""
 #: src/extensions/formats/link/components/inline.js:306
 msgid "Sponsored"
 msgstr ""
-
-#: src/extensions/formats/link/components/url-input.js:111
-msgid "%d result found, use up and down arrow keys to navigate."
-msgid_plural "%d results found, use up and down arrow keys to navigate."
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/extensions/formats/link/components/url-input.js:117
-msgid "No results."
-msgstr ""
-
-#: src/extensions/formats/link/components/url-input.js:201
-msgid "Link selected."
-msgstr ""
-
-#: src/extensions/formats/link/components/url-input.js:239
-msgid "URL"
-msgstr ""
-
-#: src/extensions/formats/link/components/url-input.js:244
-msgid "Paste URL or type to search"
-msgstr ""
-
-#: src/extensions/formats/link/components/url-input.js:281
-msgid "(no title)"
-msgstr ""
