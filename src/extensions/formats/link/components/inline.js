@@ -27,7 +27,6 @@ import { createLinkFormat, isValidHref } from './utils';
 import PositionedAtSelection from './positioned-at-selection';
 import LinkEditor from './link-editor';
 import LinkViewer from './link-viewer';
-import { thisExpression } from '@babel/types';
 
 const stopKeyPropagation = ( event ) => event.stopPropagation();
 
@@ -127,8 +126,8 @@ class InlineLinkUI extends Component {
 			// Stop the key event from propagating up to ObserveTyping.startTypingInTextField.
 			event.stopPropagation();
 		}
-		
-		if ([ESCAPE].indexOf(event.keyCode) > -1) {
+
+		if ( [ ESCAPE ].indexOf( event.keyCode ) > -1 ) {
 			this.resetState();
 		}
 	}
@@ -285,7 +284,7 @@ class InlineLinkUI extends Component {
 					addingLink={ addingLink }
 					onFocusOutside={ this.onFocusOutside }
 					onClose={ () => {
-						if (!inputValue ){
+						if ( ! inputValue ) {
 							this.resetState();
 						}
 					} }

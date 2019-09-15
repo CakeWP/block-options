@@ -15,7 +15,6 @@ const {
 	applyFormat,
 	removeFormat,
 	slice,
-	isCollapsed,
 	getActiveFormat } = wp.richText;
 const { isURL } = wp.url;
 const { Toolbar, withSpokenMessages } = wp.components;
@@ -43,11 +42,11 @@ class Edit extends Component {
 		};
 	}
 
-	componentDidMount(){
-		let oldFormat = select('core/rich-text').getFormatType('core/link');
-		if (oldFormat) {
+	componentDidMount() {
+		const oldFormat = select( 'core/rich-text' ).getFormatType( 'core/link' );
+		if ( oldFormat ) {
 			oldFormat.edit = null;
-			dispatch('core/rich-text').addFormatTypes( oldFormat );
+			dispatch( 'core/rich-text' ).addFormatTypes( oldFormat );
 		}
 	}
 
@@ -90,7 +89,7 @@ class Edit extends Component {
 		let { isActive, value } = this.props;
 
 		const activeFormat = getActiveFormat( value, 'core/link' );
-		
+
 		if ( activeFormat ) {
 			activeFormat.type = name;
 
