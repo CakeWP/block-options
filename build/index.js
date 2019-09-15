@@ -560,6 +560,663 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 
+/***/ "./node_modules/dom-scroll-into-view/dist-web/index.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/dom-scroll-into-view/dist-web/index.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _typeof(obj) {
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function (obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function (obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(source, true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(source).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+var RE_NUM = /[\-+]?(?:\d*\.|)\d+(?:[eE][\-+]?\d+|)/.source;
+
+function getClientPosition(elem) {
+  var box;
+  var x;
+  var y;
+  var doc = elem.ownerDocument;
+  var body = doc.body;
+  var docElem = doc && doc.documentElement; // 根据 GBS 最新数据，A-Grade Browsers 都已支持 getBoundingClientRect 方法，不用再考虑传统的实现方式
+
+  box = elem.getBoundingClientRect(); // 注：jQuery 还考虑减去 docElem.clientLeft/clientTop
+  // 但测试发现，这样反而会导致当 html 和 body 有边距/边框样式时，获取的值不正确
+  // 此外，ie6 会忽略 html 的 margin 值，幸运地是没有谁会去设置 html 的 margin
+
+  x = box.left;
+  y = box.top; // In IE, most of the time, 2 extra pixels are added to the top and left
+  // due to the implicit 2-pixel inset border.  In IE6/7 quirks mode and
+  // IE6 standards mode, this border can be overridden by setting the
+  // document element's border to zero -- thus, we cannot rely on the
+  // offset always being 2 pixels.
+  // In quirks mode, the offset can be determined by querying the body's
+  // clientLeft/clientTop, but in standards mode, it is found by querying
+  // the document element's clientLeft/clientTop.  Since we already called
+  // getClientBoundingRect we have already forced a reflow, so it is not
+  // too expensive just to query them all.
+  // ie 下应该减去窗口的边框吧，毕竟默认 absolute 都是相对窗口定位的
+  // 窗口边框标准是设 documentElement ,quirks 时设置 body
+  // 最好禁止在 body 和 html 上边框 ，但 ie < 9 html 默认有 2px ，减去
+  // 但是非 ie 不可能设置窗口边框，body html 也不是窗口 ,ie 可以通过 html,body 设置
+  // 标准 ie 下 docElem.clientTop 就是 border-top
+  // ie7 html 即窗口边框改变不了。永远为 2
+  // 但标准 firefox/chrome/ie9 下 docElem.clientTop 是窗口边框，即使设了 border-top 也为 0
+
+  x -= docElem.clientLeft || body.clientLeft || 0;
+  y -= docElem.clientTop || body.clientTop || 0;
+  return {
+    left: x,
+    top: y
+  };
+}
+
+function getScroll(w, top) {
+  var ret = w["page".concat(top ? 'Y' : 'X', "Offset")];
+  var method = "scroll".concat(top ? 'Top' : 'Left');
+
+  if (typeof ret !== 'number') {
+    var d = w.document; // ie6,7,8 standard mode
+
+    ret = d.documentElement[method];
+
+    if (typeof ret !== 'number') {
+      // quirks mode
+      ret = d.body[method];
+    }
+  }
+
+  return ret;
+}
+
+function getScrollLeft(w) {
+  return getScroll(w);
+}
+
+function getScrollTop(w) {
+  return getScroll(w, true);
+}
+
+function getOffset(el) {
+  var pos = getClientPosition(el);
+  var doc = el.ownerDocument;
+  var w = doc.defaultView || doc.parentWindow;
+  pos.left += getScrollLeft(w);
+  pos.top += getScrollTop(w);
+  return pos;
+}
+
+function _getComputedStyle(elem, name, computedStyle_) {
+  var val = '';
+  var d = elem.ownerDocument;
+  var computedStyle = computedStyle_ || d.defaultView.getComputedStyle(elem, null); // https://github.com/kissyteam/kissy/issues/61
+
+  if (computedStyle) {
+    val = computedStyle.getPropertyValue(name) || computedStyle[name];
+  }
+
+  return val;
+}
+
+var _RE_NUM_NO_PX = new RegExp("^(".concat(RE_NUM, ")(?!px)[a-z%]+$"), 'i');
+
+var RE_POS = /^(top|right|bottom|left)$/;
+var CURRENT_STYLE = 'currentStyle';
+var RUNTIME_STYLE = 'runtimeStyle';
+var LEFT = 'left';
+var PX = 'px';
+
+function _getComputedStyleIE(elem, name) {
+  // currentStyle maybe null
+  // http://msdn.microsoft.com/en-us/library/ms535231.aspx
+  var ret = elem[CURRENT_STYLE] && elem[CURRENT_STYLE][name]; // 当 width/height 设置为百分比时，通过 pixelLeft 方式转换的 width/height 值
+  // 一开始就处理了! CUSTOM_STYLE.height,CUSTOM_STYLE.width ,cssHook 解决@2011-08-19
+  // 在 ie 下不对，需要直接用 offset 方式
+  // borderWidth 等值也有问题，但考虑到 borderWidth 设为百分比的概率很小，这里就不考虑了
+  // From the awesome hack by Dean Edwards
+  // http://erik.eae.net/archives/2007/07/27/18.54.15/#comment-102291
+  // If we're not dealing with a regular pixel number
+  // but a number that has a weird ending, we need to convert it to pixels
+  // exclude left right for relativity
+
+  if (_RE_NUM_NO_PX.test(ret) && !RE_POS.test(name)) {
+    // Remember the original values
+    var style = elem.style;
+    var left = style[LEFT];
+    var rsLeft = elem[RUNTIME_STYLE][LEFT]; // prevent flashing of content
+
+    elem[RUNTIME_STYLE][LEFT] = elem[CURRENT_STYLE][LEFT]; // Put in the new values to get a computed value out
+
+    style[LEFT] = name === 'fontSize' ? '1em' : ret || 0;
+    ret = style.pixelLeft + PX; // Revert the changed values
+
+    style[LEFT] = left;
+    elem[RUNTIME_STYLE][LEFT] = rsLeft;
+  }
+
+  return ret === '' ? 'auto' : ret;
+}
+
+var getComputedStyleX;
+
+if (typeof window !== 'undefined') {
+  getComputedStyleX = window.getComputedStyle ? _getComputedStyle : _getComputedStyleIE;
+}
+
+function each(arr, fn) {
+  for (var i = 0; i < arr.length; i++) {
+    fn(arr[i]);
+  }
+}
+
+function isBorderBoxFn(elem) {
+  return getComputedStyleX(elem, 'boxSizing') === 'border-box';
+}
+
+var BOX_MODELS = ['margin', 'border', 'padding'];
+var CONTENT_INDEX = -1;
+var PADDING_INDEX = 2;
+var BORDER_INDEX = 1;
+var MARGIN_INDEX = 0;
+
+function swap(elem, options, callback) {
+  var old = {};
+  var style = elem.style;
+  var name; // Remember the old values, and insert the new ones
+
+  for (name in options) {
+    if (options.hasOwnProperty(name)) {
+      old[name] = style[name];
+      style[name] = options[name];
+    }
+  }
+
+  callback.call(elem); // Revert the old values
+
+  for (name in options) {
+    if (options.hasOwnProperty(name)) {
+      style[name] = old[name];
+    }
+  }
+}
+
+function getPBMWidth(elem, props, which) {
+  var value = 0;
+  var prop;
+  var j;
+  var i;
+
+  for (j = 0; j < props.length; j++) {
+    prop = props[j];
+
+    if (prop) {
+      for (i = 0; i < which.length; i++) {
+        var cssProp = void 0;
+
+        if (prop === 'border') {
+          cssProp = "".concat(prop + which[i], "Width");
+        } else {
+          cssProp = prop + which[i];
+        }
+
+        value += parseFloat(getComputedStyleX(elem, cssProp)) || 0;
+      }
+    }
+  }
+
+  return value;
+}
+/**
+ * A crude way of determining if an object is a window
+ * @member util
+ */
+
+
+function isWindow(obj) {
+  // must use == for ie8
+
+  /* eslint eqeqeq:0 */
+  return obj != null && obj == obj.window;
+}
+
+var domUtils = {};
+each(['Width', 'Height'], function (name) {
+  domUtils["doc".concat(name)] = function (refWin) {
+    var d = refWin.document;
+    return Math.max( // firefox chrome documentElement.scrollHeight< body.scrollHeight
+    // ie standard mode : documentElement.scrollHeight> body.scrollHeight
+    d.documentElement["scroll".concat(name)], // quirks : documentElement.scrollHeight 最大等于可视窗口多一点？
+    d.body["scroll".concat(name)], domUtils["viewport".concat(name)](d));
+  };
+
+  domUtils["viewport".concat(name)] = function (win) {
+    // pc browser includes scrollbar in window.innerWidth
+    var prop = "client".concat(name);
+    var doc = win.document;
+    var body = doc.body;
+    var documentElement = doc.documentElement;
+    var documentElementProp = documentElement[prop]; // 标准模式取 documentElement
+    // backcompat 取 body
+
+    return doc.compatMode === 'CSS1Compat' && documentElementProp || body && body[prop] || documentElementProp;
+  };
+});
+/*
+ 得到元素的大小信息
+ @param elem
+ @param name
+ @param {String} [extra]  'padding' : (css width) + padding
+ 'border' : (css width) + padding + border
+ 'margin' : (css width) + padding + border + margin
+ */
+
+function getWH(elem, name, extra) {
+  if (isWindow(elem)) {
+    return name === 'width' ? domUtils.viewportWidth(elem) : domUtils.viewportHeight(elem);
+  } else if (elem.nodeType === 9) {
+    return name === 'width' ? domUtils.docWidth(elem) : domUtils.docHeight(elem);
+  }
+
+  var which = name === 'width' ? ['Left', 'Right'] : ['Top', 'Bottom'];
+  var borderBoxValue = name === 'width' ? elem.offsetWidth : elem.offsetHeight;
+  var computedStyle = getComputedStyleX(elem);
+  var isBorderBox = isBorderBoxFn(elem);
+  var cssBoxValue = 0;
+
+  if (borderBoxValue == null || borderBoxValue <= 0) {
+    borderBoxValue = undefined; // Fall back to computed then un computed css if necessary
+
+    cssBoxValue = getComputedStyleX(elem, name);
+
+    if (cssBoxValue == null || Number(cssBoxValue) < 0) {
+      cssBoxValue = elem.style[name] || 0;
+    } // Normalize '', auto, and prepare for extra
+
+
+    cssBoxValue = parseFloat(cssBoxValue) || 0;
+  }
+
+  if (extra === undefined) {
+    extra = isBorderBox ? BORDER_INDEX : CONTENT_INDEX;
+  }
+
+  var borderBoxValueOrIsBorderBox = borderBoxValue !== undefined || isBorderBox;
+  var val = borderBoxValue || cssBoxValue;
+
+  if (extra === CONTENT_INDEX) {
+    if (borderBoxValueOrIsBorderBox) {
+      return val - getPBMWidth(elem, ['border', 'padding'], which);
+    }
+
+    return cssBoxValue;
+  }
+
+  if (borderBoxValueOrIsBorderBox) {
+    var padding = extra === PADDING_INDEX ? -getPBMWidth(elem, ['border'], which) : getPBMWidth(elem, ['margin'], which);
+    return val + (extra === BORDER_INDEX ? 0 : padding);
+  }
+
+  return cssBoxValue + getPBMWidth(elem, BOX_MODELS.slice(extra), which);
+}
+
+var cssShow = {
+  position: 'absolute',
+  visibility: 'hidden',
+  display: 'block'
+}; // fix #119 : https://github.com/kissyteam/kissy/issues/119
+
+function getWHIgnoreDisplay(elem) {
+  var val;
+  var args = arguments; // in case elem is window
+  // elem.offsetWidth === undefined
+
+  if (elem.offsetWidth !== 0) {
+    val = getWH.apply(undefined, args);
+  } else {
+    swap(elem, cssShow, function () {
+      val = getWH.apply(undefined, args);
+    });
+  }
+
+  return val;
+}
+
+function css(el, name, v) {
+  var value = v;
+
+  if (_typeof(name) === 'object') {
+    for (var i in name) {
+      if (name.hasOwnProperty(i)) {
+        css(el, i, name[i]);
+      }
+    }
+
+    return undefined;
+  }
+
+  if (typeof value !== 'undefined') {
+    if (typeof value === 'number') {
+      value += 'px';
+    }
+
+    el.style[name] = value;
+    return undefined;
+  }
+
+  return getComputedStyleX(el, name);
+}
+
+each(['width', 'height'], function (name) {
+  var first = name.charAt(0).toUpperCase() + name.slice(1);
+
+  domUtils["outer".concat(first)] = function (el, includeMargin) {
+    return el && getWHIgnoreDisplay(el, name, includeMargin ? MARGIN_INDEX : BORDER_INDEX);
+  };
+
+  var which = name === 'width' ? ['Left', 'Right'] : ['Top', 'Bottom'];
+
+  domUtils[name] = function (elem, val) {
+    if (val !== undefined) {
+      if (elem) {
+        var computedStyle = getComputedStyleX(elem);
+        var isBorderBox = isBorderBoxFn(elem);
+
+        if (isBorderBox) {
+          val += getPBMWidth(elem, ['padding', 'border'], which);
+        }
+
+        return css(elem, name, val);
+      }
+
+      return undefined;
+    }
+
+    return elem && getWHIgnoreDisplay(elem, name, CONTENT_INDEX);
+  };
+}); // 设置 elem 相对 elem.ownerDocument 的坐标
+
+function setOffset(elem, offset) {
+  // set position first, in-case top/left are set even on static elem
+  if (css(elem, 'position') === 'static') {
+    elem.style.position = 'relative';
+  }
+
+  var old = getOffset(elem);
+  var ret = {};
+  var current;
+  var key;
+
+  for (key in offset) {
+    if (offset.hasOwnProperty(key)) {
+      current = parseFloat(css(elem, key)) || 0;
+      ret[key] = current + offset[key] - old[key];
+    }
+  }
+
+  css(elem, ret);
+}
+
+var util = _objectSpread2({
+  getWindow: function getWindow(node) {
+    var doc = node.ownerDocument || node;
+    return doc.defaultView || doc.parentWindow;
+  },
+  offset: function offset(el, value) {
+    if (typeof value !== 'undefined') {
+      setOffset(el, value);
+    } else {
+      return getOffset(el);
+    }
+  },
+  isWindow: isWindow,
+  each: each,
+  css: css,
+  clone: function clone(obj) {
+    var ret = {};
+
+    for (var i in obj) {
+      if (obj.hasOwnProperty(i)) {
+        ret[i] = obj[i];
+      }
+    }
+
+    var overflow = obj.overflow;
+
+    if (overflow) {
+      for (var _i in obj) {
+        if (obj.hasOwnProperty(_i)) {
+          ret.overflow[_i] = obj.overflow[_i];
+        }
+      }
+    }
+
+    return ret;
+  },
+  scrollLeft: function scrollLeft(w, v) {
+    if (isWindow(w)) {
+      if (v === undefined) {
+        return getScrollLeft(w);
+      }
+
+      window.scrollTo(v, getScrollTop(w));
+    } else {
+      if (v === undefined) {
+        return w.scrollLeft;
+      }
+
+      w.scrollLeft = v;
+    }
+  },
+  scrollTop: function scrollTop(w, v) {
+    if (isWindow(w)) {
+      if (v === undefined) {
+        return getScrollTop(w);
+      }
+
+      window.scrollTo(getScrollLeft(w), v);
+    } else {
+      if (v === undefined) {
+        return w.scrollTop;
+      }
+
+      w.scrollTop = v;
+    }
+  },
+  viewportWidth: 0,
+  viewportHeight: 0
+}, domUtils);
+
+function scrollIntoView(elem, container, config) {
+  config = config || {}; // document 归一化到 window
+
+  if (container.nodeType === 9) {
+    container = util.getWindow(container);
+  }
+
+  var allowHorizontalScroll = config.allowHorizontalScroll;
+  var onlyScrollIfNeeded = config.onlyScrollIfNeeded;
+  var alignWithTop = config.alignWithTop;
+  var alignWithLeft = config.alignWithLeft;
+  var offsetTop = config.offsetTop || 0;
+  var offsetLeft = config.offsetLeft || 0;
+  var offsetBottom = config.offsetBottom || 0;
+  var offsetRight = config.offsetRight || 0;
+  allowHorizontalScroll = allowHorizontalScroll === undefined ? true : allowHorizontalScroll;
+  var isWin = util.isWindow(container);
+  var elemOffset = util.offset(elem);
+  var eh = util.outerHeight(elem);
+  var ew = util.outerWidth(elem);
+  var containerOffset;
+  var ch;
+  var cw;
+  var containerScroll;
+  var diffTop;
+  var diffBottom;
+  var win;
+  var winScroll;
+  var ww;
+  var wh;
+
+  if (isWin) {
+    win = container;
+    wh = util.height(win);
+    ww = util.width(win);
+    winScroll = {
+      left: util.scrollLeft(win),
+      top: util.scrollTop(win)
+    }; // elem 相对 container 可视视窗的距离
+
+    diffTop = {
+      left: elemOffset.left - winScroll.left - offsetLeft,
+      top: elemOffset.top - winScroll.top - offsetTop
+    };
+    diffBottom = {
+      left: elemOffset.left + ew - (winScroll.left + ww) + offsetRight,
+      top: elemOffset.top + eh - (winScroll.top + wh) + offsetBottom
+    };
+    containerScroll = winScroll;
+  } else {
+    containerOffset = util.offset(container);
+    ch = container.clientHeight;
+    cw = container.clientWidth;
+    containerScroll = {
+      left: container.scrollLeft,
+      top: container.scrollTop
+    }; // elem 相对 container 可视视窗的距离
+    // 注意边框, offset 是边框到根节点
+
+    diffTop = {
+      left: elemOffset.left - (containerOffset.left + (parseFloat(util.css(container, 'borderLeftWidth')) || 0)) - offsetLeft,
+      top: elemOffset.top - (containerOffset.top + (parseFloat(util.css(container, 'borderTopWidth')) || 0)) - offsetTop
+    };
+    diffBottom = {
+      left: elemOffset.left + ew - (containerOffset.left + cw + (parseFloat(util.css(container, 'borderRightWidth')) || 0)) + offsetRight,
+      top: elemOffset.top + eh - (containerOffset.top + ch + (parseFloat(util.css(container, 'borderBottomWidth')) || 0)) + offsetBottom
+    };
+  }
+
+  if (diffTop.top < 0 || diffBottom.top > 0) {
+    // 强制向上
+    if (alignWithTop === true) {
+      util.scrollTop(container, containerScroll.top + diffTop.top);
+    } else if (alignWithTop === false) {
+      util.scrollTop(container, containerScroll.top + diffBottom.top);
+    } else {
+      // 自动调整
+      if (diffTop.top < 0) {
+        util.scrollTop(container, containerScroll.top + diffTop.top);
+      } else {
+        util.scrollTop(container, containerScroll.top + diffBottom.top);
+      }
+    }
+  } else {
+    if (!onlyScrollIfNeeded) {
+      alignWithTop = alignWithTop === undefined ? true : !!alignWithTop;
+
+      if (alignWithTop) {
+        util.scrollTop(container, containerScroll.top + diffTop.top);
+      } else {
+        util.scrollTop(container, containerScroll.top + diffBottom.top);
+      }
+    }
+  }
+
+  if (allowHorizontalScroll) {
+    if (diffTop.left < 0 || diffBottom.left > 0) {
+      // 强制向上
+      if (alignWithLeft === true) {
+        util.scrollLeft(container, containerScroll.left + diffTop.left);
+      } else if (alignWithLeft === false) {
+        util.scrollLeft(container, containerScroll.left + diffBottom.left);
+      } else {
+        // 自动调整
+        if (diffTop.left < 0) {
+          util.scrollLeft(container, containerScroll.left + diffTop.left);
+        } else {
+          util.scrollLeft(container, containerScroll.left + diffBottom.left);
+        }
+      }
+    } else {
+      if (!onlyScrollIfNeeded) {
+        alignWithLeft = alignWithLeft === undefined ? true : !!alignWithLeft;
+
+        if (alignWithLeft) {
+          util.scrollLeft(container, containerScroll.left + diffTop.left);
+        } else {
+          util.scrollLeft(container, containerScroll.left + diffBottom.left);
+        }
+      }
+    }
+  }
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (scrollIntoView);
+
+
+/***/ }),
+
 /***/ "./node_modules/lodash/_DataView.js":
 /*!******************************************!*\
   !*** ./node_modules/lodash/_DataView.js ***!
@@ -10415,11 +11072,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _superscript__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./superscript */ "./src/extensions/formats/superscript/index.js");
 /* harmony import */ var _clear__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./clear */ "./src/extensions/formats/clear/index.js");
 /* harmony import */ var _uppercase__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./uppercase */ "./src/extensions/formats/uppercase/index.js");
+/* harmony import */ var _link__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./link */ "./src/extensions/formats/link/index.js");
 
 
 /**
  * Internal dependencies
  */
+
 
 
 
@@ -10436,7 +11095,7 @@ __webpack_require__.r(__webpack_exports__);
 var registerFormatType = wp.richText.registerFormatType;
 
 function registerFormats() {
-  [_underline__WEBPACK_IMPORTED_MODULE_1__["underline"], _justify__WEBPACK_IMPORTED_MODULE_2__["justify"], _text_color__WEBPACK_IMPORTED_MODULE_3__["textColor"], _background_color__WEBPACK_IMPORTED_MODULE_4__["backgroundColor"], _markdown__WEBPACK_IMPORTED_MODULE_5__["markdown"], _subscript__WEBPACK_IMPORTED_MODULE_6__["subscript"], _superscript__WEBPACK_IMPORTED_MODULE_7__["superscript"], _clear__WEBPACK_IMPORTED_MODULE_8__["clear"], _uppercase__WEBPACK_IMPORTED_MODULE_9__["uppercase"]].forEach(function (_ref) {
+  [_underline__WEBPACK_IMPORTED_MODULE_1__["underline"], _justify__WEBPACK_IMPORTED_MODULE_2__["justify"], _text_color__WEBPACK_IMPORTED_MODULE_3__["textColor"], _background_color__WEBPACK_IMPORTED_MODULE_4__["backgroundColor"], _markdown__WEBPACK_IMPORTED_MODULE_5__["markdown"], _subscript__WEBPACK_IMPORTED_MODULE_6__["subscript"], _superscript__WEBPACK_IMPORTED_MODULE_7__["superscript"], _clear__WEBPACK_IMPORTED_MODULE_8__["clear"], _uppercase__WEBPACK_IMPORTED_MODULE_9__["uppercase"], _link__WEBPACK_IMPORTED_MODULE_10__["link"]].forEach(function (_ref) {
     var name = _ref.name,
         settings = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0___default()(_ref, ["name"]);
 
@@ -10617,6 +11276,1551 @@ var justify = {
       activeAttributes: activeAttributes
     }));
   }
+};
+
+/***/ }),
+
+/***/ "./src/extensions/formats/link/components/edit.js":
+/*!********************************************************!*\
+  !*** ./src/extensions/formats/link/components/edit.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _inline__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./inline */ "./src/extensions/formats/link/components/inline.js");
+
+
+
+
+
+
+
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+/**
+ * External dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
+var _wp$data = wp.data,
+    select = _wp$data.select,
+    withSelect = _wp$data.withSelect,
+    dispatch = _wp$data.dispatch;
+var _wp$blockEditor = wp.blockEditor,
+    BlockControls = _wp$blockEditor.BlockControls,
+    RichTextToolbarButton = _wp$blockEditor.RichTextToolbarButton,
+    RichTextShortcut = _wp$blockEditor.RichTextShortcut;
+var _wp$richText = wp.richText,
+    getTextContent = _wp$richText.getTextContent,
+    applyFormat = _wp$richText.applyFormat,
+    removeFormat = _wp$richText.removeFormat,
+    slice = _wp$richText.slice,
+    isCollapsed = _wp$richText.isCollapsed,
+    getActiveFormat = _wp$richText.getActiveFormat;
+var isURL = wp.url.isURL;
+var _wp$components = wp.components,
+    Toolbar = _wp$components.Toolbar,
+    withSpokenMessages = _wp$components.withSpokenMessages;
+var _wp$compose = wp.compose,
+    compose = _wp$compose.compose,
+    ifCondition = _wp$compose.ifCondition;
+/**
+ * Internal dependencies
+ */
+
+
+var name = 'editorskit/link';
+
+var title = __('Add Link', 'block-options');
+
+var EMAIL_REGEXP = /^(mailto:)?[a-z0-9._%+-]+@[a-z0-9][a-z0-9.-]*\.[a-z]{2,63}$/i;
+
+var Edit =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6___default()(Edit, _Component);
+
+  function Edit() {
+    var _this;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, Edit);
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default()(Edit).apply(this, arguments));
+    _this.isEmail = _this.isEmail.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this));
+    _this.addLink = _this.addLink.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this));
+    _this.stopAddingLink = _this.stopAddingLink.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this));
+    _this.onRemoveFormat = _this.onRemoveFormat.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this));
+    _this.state = {
+      addingLink: false
+    };
+    return _this;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(Edit, [{
+    key: "isEmail",
+    value: function isEmail(email) {
+      return EMAIL_REGEXP.test(email);
+    }
+  }, {
+    key: "addLink",
+    value: function addLink() {
+      var _this$props = this.props,
+          value = _this$props.value,
+          onChange = _this$props.onChange;
+      var text = getTextContent(slice(value));
+
+      if (text && isURL(text)) {
+        onChange(applyFormat(value, {
+          type: name,
+          attributes: {
+            url: text
+          }
+        }));
+      } else if (text && this.isEmail(text)) {
+        onChange(applyFormat(value, {
+          type: name,
+          attributes: {
+            url: "mailto:".concat(text)
+          }
+        }));
+      } else {
+        this.setState({
+          addingLink: true
+        });
+      }
+    }
+  }, {
+    key: "stopAddingLink",
+    value: function stopAddingLink() {
+      this.setState({
+        addingLink: false
+      });
+    }
+  }, {
+    key: "onRemoveFormat",
+    value: function onRemoveFormat() {
+      var _this$props2 = this.props,
+          value = _this$props2.value,
+          onChange = _this$props2.onChange,
+          speak = _this$props2.speak;
+      var newValue = value;
+      Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(['core/link', 'editorskit/link'], function (linkFormat) {
+        newValue = removeFormat(newValue, linkFormat);
+      });
+      onChange(_objectSpread({}, newValue));
+      speak(__('Link removed.', 'block-options'), 'assertive');
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props3 = this.props,
+          activeAttributes = _this$props3.activeAttributes,
+          onChange = _this$props3.onChange;
+      var _this$props4 = this.props,
+          isActive = _this$props4.isActive,
+          value = _this$props4.value;
+      var activeFormat = getActiveFormat(value, 'core/link');
+
+      if (activeFormat && isCollapsed(value) && !isActive) {
+        activeFormat.type = name;
+        var newValue = value;
+        newValue = applyFormat(newValue, activeFormat);
+        newValue = removeFormat(newValue, 'core/link');
+        onChange(_objectSpread({}, newValue));
+        value = newValue;
+        isActive = true;
+      } else {
+        var oldFormat = select('core/rich-text').getFormatType('core/link');
+
+        if (oldFormat) {
+          dispatch('core/rich-text').removeFormatTypes('core/link');
+        }
+      }
+
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(Toolbar, {
+        className: "editorskit-components-toolbar"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(RichTextShortcut, {
+        type: "primary",
+        character: "k",
+        onUse: this.addLink
+      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(RichTextShortcut, {
+        type: "primaryShift",
+        character: "k",
+        onUse: this.onRemoveFormat
+      }), isActive && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(RichTextToolbarButton, {
+        name: "link",
+        icon: "editor-unlink",
+        title: __('Unlink', 'block-options'),
+        onClick: this.onRemoveFormat,
+        isActive: isActive,
+        shortcutType: "primaryShift",
+        shortcutCharacter: "k"
+      }), !isActive && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(RichTextToolbarButton, {
+        name: "link",
+        icon: "admin-links",
+        title: title,
+        onClick: this.addLink,
+        isActive: isActive,
+        shortcutType: "primary",
+        shortcutCharacter: "k"
+      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_inline__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        addingLink: this.state.addingLink,
+        stopAddingLink: this.stopAddingLink,
+        isActive: isActive,
+        activeAttributes: activeAttributes,
+        value: value,
+        onChange: onChange
+      }))));
+    }
+  }]);
+
+  return Edit;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (compose(withSelect(function () {
+  return {
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitColorsFormats')
+  };
+}), ifCondition(function (props) {
+  return !props.isDisabled;
+}), withSpokenMessages)(Edit));
+
+/***/ }),
+
+/***/ "./src/extensions/formats/link/components/inline.js":
+/*!**********************************************************!*\
+  !*** ./src/extensions/formats/link/components/inline.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js");
+/* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./utils */ "./src/extensions/formats/link/components/utils.js");
+/* harmony import */ var _positioned_at_selection__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./positioned-at-selection */ "./src/extensions/formats/link/components/positioned-at-selection.js");
+/* harmony import */ var _link_editor__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./link-editor */ "./src/extensions/formats/link/components/link-editor.js");
+/* harmony import */ var _link_viewer__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./link-viewer */ "./src/extensions/formats/link/components/link-viewer.js");
+
+
+
+
+
+
+
+
+
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    createRef = _wp$element.createRef,
+    useMemo = _wp$element.useMemo,
+    Fragment = _wp$element.Fragment;
+var _wp$components = wp.components,
+    ToggleControl = _wp$components.ToggleControl,
+    withSpokenMessages = _wp$components.withSpokenMessages;
+var _wp$keycodes = wp.keycodes,
+    LEFT = _wp$keycodes.LEFT,
+    RIGHT = _wp$keycodes.RIGHT,
+    UP = _wp$keycodes.UP,
+    DOWN = _wp$keycodes.DOWN,
+    BACKSPACE = _wp$keycodes.BACKSPACE,
+    ENTER = _wp$keycodes.ENTER;
+var getRectangleFromRange = wp.dom.getRectangleFromRange;
+var prependHTTP = wp.url.prependHTTP;
+var _wp$richText = wp.richText,
+    create = _wp$richText.create,
+    insert = _wp$richText.insert,
+    isCollapsed = _wp$richText.isCollapsed,
+    applyFormat = _wp$richText.applyFormat,
+    getTextContent = _wp$richText.getTextContent,
+    slice = _wp$richText.slice;
+var URLPopover = wp.blockEditor.URLPopover;
+/**
+ * Internal dependencies
+ */
+
+
+
+
+
+
+var stopKeyPropagation = function stopKeyPropagation(event) {
+  return event.stopPropagation();
+};
+
+function isShowingInput(props, state) {
+  return props.addingLink || state.editLink;
+}
+
+var URLPopoverAtLink = function URLPopoverAtLink(_ref) {
+  var isActive = _ref.isActive,
+      addingLink = _ref.addingLink,
+      value = _ref.value,
+      props = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_7___default()(_ref, ["isActive", "addingLink", "value"]);
+
+  var anchorRect = useMemo(function () {
+    var selection = window.getSelection();
+    var range = selection.rangeCount > 0 ? selection.getRangeAt(0) : null;
+
+    if (!range) {
+      return;
+    }
+
+    if (addingLink) {
+      return getRectangleFromRange(range);
+    }
+
+    var element = range.startContainer; // If the caret is right before the element, select the next element.
+
+    element = element.nextElementSibling || element;
+
+    while (element.nodeType !== window.Node.ELEMENT_NODE) {
+      element = element.parentNode;
+    }
+
+    var closest = element.closest('a');
+
+    if (closest) {
+      return closest.getBoundingClientRect();
+    }
+  }, [isActive, addingLink, value.start, value.end]);
+
+  if (!anchorRect) {
+    return null;
+  }
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(URLPopover, _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_6___default()({
+    anchorRect: anchorRect
+  }, props));
+};
+
+var InlineLinkUI =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(InlineLinkUI, _Component);
+
+  function InlineLinkUI() {
+    var _this;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, InlineLinkUI);
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(InlineLinkUI).apply(this, arguments));
+    _this.editLink = _this.editLink.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.submitLink = _this.submitLink.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.onKeyDown = _this.onKeyDown.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.onChangeInputValue = _this.onChangeInputValue.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.setLinkTarget = _this.setLinkTarget.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.setNoFollow = _this.setNoFollow.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.setSponsored = _this.setSponsored.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.onFocusOutside = _this.onFocusOutside.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.resetState = _this.resetState.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.autocompleteRef = createRef();
+    _this.state = {
+      opensInNewWindow: false,
+      noFollow: false,
+      sponsored: false,
+      inputValue: ''
+    };
+    return _this;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(InlineLinkUI, [{
+    key: "onKeyDown",
+    value: function onKeyDown(event) {
+      if ([LEFT, DOWN, RIGHT, UP, BACKSPACE, ENTER].indexOf(event.keyCode) > -1) {
+        // Stop the key event from propagating up to ObserveTyping.startTypingInTextField.
+        event.stopPropagation();
+      }
+    }
+  }, {
+    key: "onChangeInputValue",
+    value: function onChangeInputValue(inputValue) {
+      this.setState({
+        inputValue: inputValue
+      });
+    }
+  }, {
+    key: "setLinkTarget",
+    value: function setLinkTarget(opensInNewWindow) {
+      var _this$props = this.props,
+          _this$props$activeAtt = _this$props.activeAttributes.url,
+          url = _this$props$activeAtt === void 0 ? '' : _this$props$activeAtt,
+          value = _this$props.value,
+          onChange = _this$props.onChange;
+      this.setState({
+        opensInNewWindow: opensInNewWindow
+      }); // Apply now if URL is not being edited.
+
+      if (!isShowingInput(this.props, this.state)) {
+        var selectedText = getTextContent(slice(value));
+        onChange(applyFormat(value, Object(_utils__WEBPACK_IMPORTED_MODULE_9__["createLinkFormat"])({
+          url: url,
+          opensInNewWindow: opensInNewWindow,
+          noFollow: this.state.noFollow,
+          sponsored: this.state.sponsored,
+          text: selectedText
+        })));
+      }
+    }
+  }, {
+    key: "setNoFollow",
+    value: function setNoFollow(noFollow) {
+      var _this$props2 = this.props,
+          _this$props2$activeAt = _this$props2.activeAttributes.url,
+          url = _this$props2$activeAt === void 0 ? '' : _this$props2$activeAt,
+          value = _this$props2.value,
+          onChange = _this$props2.onChange;
+      this.setState({
+        noFollow: noFollow
+      }); // Apply now if URL is not being edited.
+
+      if (!isShowingInput(this.props, this.state)) {
+        var selectedText = getTextContent(slice(value));
+        onChange(applyFormat(value, Object(_utils__WEBPACK_IMPORTED_MODULE_9__["createLinkFormat"])({
+          url: url,
+          opensInNewWindow: this.state.opensInNewWindow,
+          noFollow: noFollow,
+          sponsored: this.state.sponsored,
+          text: selectedText
+        })));
+      }
+    }
+  }, {
+    key: "setSponsored",
+    value: function setSponsored(sponsored) {
+      var _this$props3 = this.props,
+          _this$props3$activeAt = _this$props3.activeAttributes.url,
+          url = _this$props3$activeAt === void 0 ? '' : _this$props3$activeAt,
+          value = _this$props3.value,
+          onChange = _this$props3.onChange;
+      this.setState({
+        sponsored: sponsored
+      }); // Apply now if URL is not being edited.
+
+      if (!isShowingInput(this.props, this.state)) {
+        var selectedText = getTextContent(slice(value));
+        onChange(applyFormat(value, Object(_utils__WEBPACK_IMPORTED_MODULE_9__["createLinkFormat"])({
+          url: url,
+          opensInNewWindow: this.state.opensInNewWindow,
+          noFollow: this.state.noFollow,
+          sponsored: sponsored,
+          text: selectedText
+        })));
+      }
+    }
+  }, {
+    key: "editLink",
+    value: function editLink(event) {
+      this.setState({
+        editLink: true
+      });
+      event.preventDefault();
+    }
+  }, {
+    key: "submitLink",
+    value: function submitLink(event) {
+      var _this$props4 = this.props,
+          isActive = _this$props4.isActive,
+          value = _this$props4.value,
+          onChange = _this$props4.onChange,
+          speak = _this$props4.speak;
+      var _this$state = this.state,
+          inputValue = _this$state.inputValue,
+          opensInNewWindow = _this$state.opensInNewWindow;
+      var url = prependHTTP(inputValue);
+      var selectedText = getTextContent(slice(value));
+      var format = Object(_utils__WEBPACK_IMPORTED_MODULE_9__["createLinkFormat"])({
+        url: url,
+        opensInNewWindow: opensInNewWindow,
+        text: selectedText
+      });
+      event.preventDefault();
+
+      if (isCollapsed(value) && !isActive) {
+        var toInsert = applyFormat(create({
+          text: url
+        }), format, 0, url.length);
+        onChange(insert(value, toInsert));
+      } else {
+        onChange(applyFormat(value, format));
+      }
+
+      this.resetState();
+
+      if (!Object(_utils__WEBPACK_IMPORTED_MODULE_9__["isValidHref"])(url)) {
+        speak(__('Warning: the link has been inserted but may have errors. Please test it.'), 'assertive');
+      } else if (isActive) {
+        speak(__('Link edited.'), 'assertive');
+      } else {
+        speak(__('Link inserted.'), 'assertive');
+      }
+    }
+  }, {
+    key: "onFocusOutside",
+    value: function onFocusOutside() {
+      // The autocomplete suggestions list renders in a separate popover (in a portal),
+      // so onClickOutside fails to detect that a click on a suggestion occured in the
+      // LinkContainer. Detect clicks on autocomplete suggestions using a ref here, and
+      // return to avoid the popover being closed.
+      var autocompleteElement = this.autocompleteRef.current;
+
+      if (autocompleteElement && autocompleteElement.contains(event.target)) {
+        return;
+      }
+
+      this.resetState();
+    }
+  }, {
+    key: "resetState",
+    value: function resetState() {
+      this.props.stopAddingLink();
+      this.setState({
+        editLink: false
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$props5 = this.props,
+          isActive = _this$props5.isActive,
+          _this$props5$activeAt = _this$props5.activeAttributes,
+          url = _this$props5$activeAt.url,
+          target = _this$props5$activeAt.target,
+          rel = _this$props5$activeAt.rel,
+          addingLink = _this$props5.addingLink,
+          value = _this$props5.value;
+
+      if (!isActive && !addingLink) {
+        return null;
+      }
+
+      var _this$state2 = this.state,
+          inputValue = _this$state2.inputValue,
+          opensInNewWindow = _this$state2.opensInNewWindow,
+          noFollow = _this$state2.noFollow,
+          sponsored = _this$state2.sponsored;
+      var showInput = isShowingInput(this.props, this.state);
+
+      if (!opensInNewWindow && target === '_blank') {
+        this.setState({
+          opensInNewWindow: true
+        });
+      }
+
+      if (typeof rel === 'string') {
+        var relNoFollow = rel.split(' ').includes('nofollow');
+        var relSponsored = rel.split(' ').includes('sponsored');
+
+        if (relNoFollow !== noFollow) {
+          this.setState({
+            noFollow: relNoFollow
+          });
+        }
+
+        if (relSponsored !== sponsored) {
+          this.setState({
+            sponsored: relSponsored
+          });
+        }
+      }
+
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(_positioned_at_selection__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        key: "".concat(value.start).concat(value.end)
+        /* Used to force rerender on selection change */
+
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(URLPopoverAtLink, {
+        value: value,
+        isActive: isActive,
+        addingLink: addingLink,
+        onFocusOutside: this.onFocusOutside // onClose={ this.resetState }
+        ,
+        focusOnMount: showInput ? 'firstElement' : false,
+        renderSettings: function renderSettings() {
+          return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(ToggleControl, {
+            label: __('Open in New Tab', 'block-options'),
+            checked: opensInNewWindow,
+            onChange: _this2.setLinkTarget
+          }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(ToggleControl, {
+            label: __('No Follow', 'block-options'),
+            checked: noFollow,
+            onChange: _this2.setNoFollow
+          }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(ToggleControl, {
+            label: __('Sponsored', 'block-options'),
+            checked: sponsored,
+            onChange: _this2.setSponsored
+          }));
+        }
+      }, showInput ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(_link_editor__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        className: "editor-format-toolbar__link-container-content block-editor-format-toolbar__link-container-content",
+        value: inputValue,
+        onChangeInputValue: this.onChangeInputValue,
+        onKeyDown: this.onKeyDown,
+        onKeyPress: stopKeyPropagation,
+        onSubmit: this.submitLink,
+        autocompleteRef: this.autocompleteRef
+      }) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(_link_viewer__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        className: "editor-format-toolbar__link-container-content block-editor-format-toolbar__link-container-content",
+        onKeyPress: stopKeyPropagation,
+        url: url,
+        onEditLinkClick: this.editLink,
+        linkClassName: Object(_utils__WEBPACK_IMPORTED_MODULE_9__["isValidHref"])(prependHTTP(url)) ? undefined : 'has-invalid-link'
+      })));
+    }
+  }], [{
+    key: "getDerivedStateFromProps",
+    value: function getDerivedStateFromProps(props, state) {
+      var _props$activeAttribut = props.activeAttributes,
+          url = _props$activeAttribut.url,
+          target = _props$activeAttribut.target,
+          rel = _props$activeAttribut.rel;
+      var opensInNewWindow = target === '_blank';
+
+      if (!isShowingInput(props, state)) {
+        if (url !== state.inputValue) {
+          return {
+            inputValue: url
+          };
+        }
+
+        if (opensInNewWindow !== state.opensInNewWindow) {
+          return {
+            opensInNewWindow: opensInNewWindow
+          };
+        }
+
+        if (typeof rel === 'string') {
+          var noFollow = rel.split(' ').includes('nofollow');
+          var sponsored = rel.split(' ').includes('sponsored');
+
+          if (noFollow !== state.noFollow) {
+            return {
+              noFollow: noFollow
+            };
+          }
+
+          if (sponsored !== state.sponsored) {
+            return {
+              sponsored: sponsored
+            };
+          }
+        }
+      }
+
+      return null;
+    }
+  }]);
+
+  return InlineLinkUI;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (withSpokenMessages(InlineLinkUI));
+
+/***/ }),
+
+/***/ "./src/extensions/formats/link/components/link-editor.js":
+/*!***************************************************************!*\
+  !*** ./src/extensions/formats/link/components/link-editor.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return LinkEditor; });
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js");
+/* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _url_input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./url-input */ "./src/extensions/formats/link/components/url-input.js");
+
+
+
+
+/**
+ * External dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+var __ = wp.i18n.__;
+var IconButton = wp.components.IconButton;
+/**
+ * Internal dependencies
+ */
+
+
+function LinkEditor(_ref) {
+  var autocompleteRef = _ref.autocompleteRef,
+      className = _ref.className,
+      onChangeInputValue = _ref.onChangeInputValue,
+      value = _ref.value,
+      props = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1___default()(_ref, ["autocompleteRef", "className", "onChangeInputValue", "value"]);
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("form", _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
+    className: classnames__WEBPACK_IMPORTED_MODULE_3___default()('block-editor-url-popover__link-editor', className)
+  }, props), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_url_input__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    value: value,
+    onChange: onChangeInputValue,
+    autocompleteRef: autocompleteRef
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(IconButton, {
+    icon: "editor-break",
+    label: __('Apply', 'block-options'),
+    type: "submit"
+  }));
+}
+
+/***/ }),
+
+/***/ "./src/extensions/formats/link/components/link-viewer.js":
+/*!***************************************************************!*\
+  !*** ./src/extensions/formats/link/components/link-viewer.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return LinkViewer; });
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js");
+/* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+/**
+ * External dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+var __ = wp.i18n.__;
+var _wp$components = wp.components,
+    ExternalLink = _wp$components.ExternalLink,
+    IconButton = _wp$components.IconButton;
+var _wp$url = wp.url,
+    safeDecodeURI = _wp$url.safeDecodeURI,
+    filterURLForDisplay = _wp$url.filterURLForDisplay;
+
+function LinkViewerUrl(_ref) {
+  var url = _ref.url,
+      urlLabel = _ref.urlLabel,
+      className = _ref.className;
+  var linkClassName = classnames__WEBPACK_IMPORTED_MODULE_3___default()(className, 'block-editor-url-popover__link-viewer-url');
+
+  if (!url) {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("span", {
+      className: linkClassName
+    });
+  }
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(ExternalLink, {
+    className: linkClassName,
+    href: url
+  }, urlLabel || filterURLForDisplay(safeDecodeURI(url)));
+}
+
+function LinkViewer(_ref2) {
+  var className = _ref2.className,
+      linkClassName = _ref2.linkClassName,
+      onEditLinkClick = _ref2.onEditLinkClick,
+      url = _ref2.url,
+      urlLabel = _ref2.urlLabel,
+      props = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1___default()(_ref2, ["className", "linkClassName", "onEditLinkClick", "url", "urlLabel"]);
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
+    className: classnames__WEBPACK_IMPORTED_MODULE_3___default()('block-editor-url-popover__link-viewer', className)
+  }, props), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(LinkViewerUrl, {
+    url: url,
+    urlLabel: urlLabel,
+    className: linkClassName
+  }), onEditLinkClick && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(IconButton, {
+    icon: "edit",
+    label: __('Edit', 'block-options'),
+    onClick: onEditLinkClick
+  }));
+}
+
+/***/ }),
+
+/***/ "./src/extensions/formats/link/components/positioned-at-selection.js":
+/*!***************************************************************************!*\
+  !*** ./src/extensions/formats/link/components/positioned-at-selection.js ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+
+
+/**
+ * WordPress dependencies
+ */
+var Component = wp.element.Component;
+var _wp$dom = wp.dom,
+    getOffsetParent = _wp$dom.getOffsetParent,
+    getRectangleFromRange = _wp$dom.getRectangleFromRange;
+/**
+ * Returns a style object for applying as `position: absolute` for an element
+ * relative to the bottom-center of the current selection. Includes `top` and
+ * `left` style properties.
+ *
+ * @return {Object} Style object.
+ */
+
+function getCurrentCaretPositionStyle() {
+  var selection = window.getSelection(); // Unlikely, but in the case there is no selection, return empty styles so
+  // as to avoid a thrown error by `Selection#getRangeAt` on invalid index.
+
+  if (selection.rangeCount === 0) {
+    return {};
+  } // Get position relative viewport.
+
+
+  var rect = getRectangleFromRange(selection.getRangeAt(0));
+  var top = rect.top + rect.height;
+  var left = rect.left + rect.width / 2; // Offset by positioned parent, if one exists.
+
+  var offsetParent = getOffsetParent(selection.anchorNode);
+
+  if (offsetParent) {
+    var parentRect = offsetParent.getBoundingClientRect();
+    top -= parentRect.top;
+    left -= parentRect.left;
+  }
+
+  return {
+    top: top,
+    left: left
+  };
+}
+/**
+ * Component which renders itself positioned under the current caret selection.
+ * The position is calculated at the time of the component being mounted, so it
+ * should only be mounted after the desired selection has been made.
+ *
+ * @type {WPComponent}
+ */
+
+
+var PositionedAtSelection =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(PositionedAtSelection, _Component);
+
+  function PositionedAtSelection() {
+    var _this;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, PositionedAtSelection);
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(PositionedAtSelection).apply(this, arguments));
+    _this.state = {
+      style: getCurrentCaretPositionStyle()
+    };
+    return _this;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(PositionedAtSelection, [{
+    key: "render",
+    value: function render() {
+      var children = this.props.children;
+      var style = this.state.style;
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
+        className: "editor-format-toolbar__selection-position",
+        style: style
+      }, children);
+    }
+  }]);
+
+  return PositionedAtSelection;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (PositionedAtSelection);
+
+/***/ }),
+
+/***/ "./src/extensions/formats/link/components/url-input.js":
+/*!*************************************************************!*\
+  !*** ./src/extensions/formats/link/components/url-input.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var dom_scroll_into_view__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! dom-scroll-into-view */ "./node_modules/dom-scroll-into-view/dist-web/index.js");
+
+
+
+
+
+
+
+
+/**
+ * External dependencies
+ */
+
+
+
+/**
+ * WordPress dependencies
+ */
+
+var _wp$i18n = wp.i18n,
+    __ = _wp$i18n.__,
+    sprintf = _wp$i18n.sprintf,
+    _n = _wp$i18n._n;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    createRef = _wp$element.createRef;
+var decodeEntities = wp.htmlEntities.decodeEntities;
+var _wp$keycodes = wp.keycodes,
+    UP = _wp$keycodes.UP,
+    DOWN = _wp$keycodes.DOWN,
+    ENTER = _wp$keycodes.ENTER,
+    TAB = _wp$keycodes.TAB;
+var _wp$components = wp.components,
+    Spinner = _wp$components.Spinner,
+    withSpokenMessages = _wp$components.withSpokenMessages,
+    Popover = _wp$components.Popover;
+var withInstanceId = wp.compose.withInstanceId;
+var apiFetch = wp.apiFetch;
+var addQueryArgs = wp.url.addQueryArgs; // Since URLInput is rendered in the context of other inputs, but should be
+// considered a separate modal node, prevent keyboard events from propagating
+// as being considered from the input.
+
+var stopEventPropagation = function stopEventPropagation(event) {
+  return event.stopPropagation();
+};
+
+var URLInput =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(URLInput, _Component);
+
+  function URLInput(_ref) {
+    var _this;
+
+    var autocompleteRef = _ref.autocompleteRef;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, URLInput);
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(URLInput).apply(this, arguments));
+    _this.onChange = _this.onChange.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.onKeyDown = _this.onKeyDown.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.autocompleteRef = autocompleteRef || createRef();
+    _this.inputRef = createRef();
+    _this.updateSuggestions = Object(lodash__WEBPACK_IMPORTED_MODULE_7__["throttle"])(_this.updateSuggestions.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this)), 200);
+    _this.suggestionNodes = [];
+    _this.state = {
+      posts: [],
+      showSuggestions: false,
+      selectedSuggestion: null
+    };
+    return _this;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(URLInput, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      var _this2 = this;
+
+      var _this$state = this.state,
+          showSuggestions = _this$state.showSuggestions,
+          selectedSuggestion = _this$state.selectedSuggestion; // only have to worry about scrolling selected suggestion into view
+      // when already expanded
+
+      if (showSuggestions && selectedSuggestion !== null && !this.scrollingIntoView) {
+        this.scrollingIntoView = true;
+        Object(dom_scroll_into_view__WEBPACK_IMPORTED_MODULE_9__["default"])(this.suggestionNodes[selectedSuggestion], this.autocompleteRef.current, {
+          onlyScrollIfNeeded: true
+        });
+        setTimeout(function () {
+          _this2.scrollingIntoView = false;
+        }, 100);
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      delete this.suggestionsRequest;
+    }
+  }, {
+    key: "bindSuggestionNode",
+    value: function bindSuggestionNode(index) {
+      var _this3 = this;
+
+      return function (ref) {
+        _this3.suggestionNodes[index] = ref;
+      };
+    }
+  }, {
+    key: "updateSuggestions",
+    value: function updateSuggestions(value) {
+      var _this4 = this;
+
+      // Show the suggestions after typing at least 2 characters
+      // and also for URLs
+      if (value.length < 2 || /^https?:/.test(value)) {
+        this.setState({
+          showSuggestions: false,
+          selectedSuggestion: null,
+          loading: false
+        });
+        return;
+      }
+
+      this.setState({
+        showSuggestions: true,
+        selectedSuggestion: null,
+        loading: true
+      });
+      var request = apiFetch({
+        path: addQueryArgs('/wp/v2/search', {
+          search: value,
+          per_page: 20,
+          type: 'post'
+        })
+      });
+      request.then(function (posts) {
+        // A fetch Promise doesn't have an abort option. It's mimicked by
+        // comparing the request reference in on the instance, which is
+        // reset or deleted on subsequent requests or unmounting.
+        if (_this4.suggestionsRequest !== request) {
+          return;
+        }
+
+        _this4.setState({
+          posts: posts,
+          loading: false
+        });
+
+        if (posts.length) {
+          _this4.props.debouncedSpeak(sprintf(_n('%d result found, use up and down arrow keys to navigate.', '%d results found, use up and down arrow keys to navigate.', posts.length), posts.length), 'assertive');
+        } else {
+          _this4.props.debouncedSpeak(__('No results.', 'block-options'), 'assertive');
+        }
+      }).catch(function () {
+        if (_this4.suggestionsRequest === request) {
+          _this4.setState({
+            loading: false
+          });
+        }
+      });
+      this.suggestionsRequest = request;
+    }
+  }, {
+    key: "onChange",
+    value: function onChange(event) {
+      var inputValue = event.target.value;
+      this.props.onChange(inputValue);
+      this.updateSuggestions(inputValue);
+    }
+  }, {
+    key: "onKeyDown",
+    value: function onKeyDown(event) {
+      var _this$state2 = this.state,
+          showSuggestions = _this$state2.showSuggestions,
+          selectedSuggestion = _this$state2.selectedSuggestion,
+          posts = _this$state2.posts,
+          loading = _this$state2.loading; // If the suggestions are not shown or loading, we shouldn't handle the arrow keys
+      // We shouldn't preventDefault to allow block arrow keys navigation
+
+      if (!showSuggestions || !posts.length || loading) {
+        // In the Windows version of Firefox the up and down arrows don't move the caret
+        // within an input field like they do for Mac Firefox/Chrome/Safari. This causes
+        // a form of focus trapping that is disruptive to the user experience. This disruption
+        // only happens if the caret is not in the first or last position in the text input.
+        // See: https://github.com/WordPress/gutenberg/issues/5693#issuecomment-436684747
+        switch (event.keyCode) {
+          // When UP is pressed, if the caret is at the start of the text, move it to the 0
+          // position.
+          case UP:
+            {
+              if (0 !== event.target.selectionStart) {
+                event.stopPropagation();
+                event.preventDefault(); // Set the input caret to position 0
+
+                event.target.setSelectionRange(0, 0);
+              }
+
+              break;
+            }
+          // When DOWN is pressed, if the caret is not at the end of the text, move it to the
+          // last position.
+
+          case DOWN:
+            {
+              if (this.props.value.length !== event.target.selectionStart) {
+                event.stopPropagation();
+                event.preventDefault(); // Set the input caret to the last position
+
+                event.target.setSelectionRange(this.props.value.length, this.props.value.length);
+              }
+
+              break;
+            }
+        }
+
+        return;
+      }
+
+      var post = this.state.posts[this.state.selectedSuggestion];
+
+      switch (event.keyCode) {
+        case UP:
+          {
+            event.stopPropagation();
+            event.preventDefault();
+            var previousIndex = !selectedSuggestion ? posts.length - 1 : selectedSuggestion - 1;
+            this.setState({
+              selectedSuggestion: previousIndex
+            });
+            break;
+          }
+
+        case DOWN:
+          {
+            event.stopPropagation();
+            event.preventDefault();
+            var nextIndex = selectedSuggestion === null || selectedSuggestion === posts.length - 1 ? 0 : selectedSuggestion + 1;
+            this.setState({
+              selectedSuggestion: nextIndex
+            });
+            break;
+          }
+
+        case TAB:
+          {
+            if (this.state.selectedSuggestion !== null) {
+              this.selectLink(post); // Announce a link has been selected when tabbing away from the input field.
+
+              this.props.speak(__('Link selected.', 'block-options'));
+            }
+
+            break;
+          }
+
+        case ENTER:
+          {
+            if (this.state.selectedSuggestion !== null) {
+              event.stopPropagation();
+              this.selectLink(post);
+            }
+
+            break;
+          }
+      }
+    }
+  }, {
+    key: "selectLink",
+    value: function selectLink(post) {
+      this.props.onChange(post.url, post);
+      this.setState({
+        selectedSuggestion: null,
+        showSuggestions: false
+      });
+    }
+  }, {
+    key: "handleOnClick",
+    value: function handleOnClick(post) {
+      this.selectLink(post); // Move focus to the input field when a link suggestion is clicked.
+
+      this.inputRef.current.focus();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this5 = this;
+
+      var _this$props = this.props,
+          _this$props$value = _this$props.value,
+          value = _this$props$value === void 0 ? '' : _this$props$value,
+          _this$props$autoFocus = _this$props.autoFocus,
+          autoFocus = _this$props$autoFocus === void 0 ? true : _this$props$autoFocus,
+          instanceId = _this$props.instanceId,
+          className = _this$props.className;
+      var _this$state3 = this.state,
+          showSuggestions = _this$state3.showSuggestions,
+          posts = _this$state3.posts,
+          selectedSuggestion = _this$state3.selectedSuggestion,
+          loading = _this$state3.loading;
+      /* eslint-disable jsx-a11y/no-autofocus */
+
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("div", {
+        className: classnames__WEBPACK_IMPORTED_MODULE_8___default()('editor-url-input block-editor-url-input', className)
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("input", {
+        autoFocus: autoFocus,
+        type: "text",
+        "aria-label": __('URL', 'block-options'),
+        required: true,
+        value: value,
+        onChange: this.onChange,
+        onInput: stopEventPropagation,
+        placeholder: __('Paste URL or type to search', 'block-options'),
+        onKeyDown: this.onKeyDown,
+        role: "combobox",
+        "aria-expanded": showSuggestions,
+        "aria-autocomplete": "list",
+        "aria-owns": "editor-url-input-suggestions-".concat(instanceId),
+        "aria-activedescendant": selectedSuggestion !== null ? "editor-url-input-suggestion-".concat(instanceId, "-").concat(selectedSuggestion) : undefined,
+        ref: this.inputRef
+      }), loading && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Spinner, null), showSuggestions && !!posts.length && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Popover, {
+        position: "bottom",
+        noArrow: true,
+        focusOnMount: false
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("div", {
+        className: classnames__WEBPACK_IMPORTED_MODULE_8___default()('editor-url-input__suggestions', 'block-editor-url-input__suggestions', "".concat(className, "__suggestions")),
+        id: "editor-url-input-suggestions-".concat(instanceId),
+        ref: this.autocompleteRef,
+        role: "listbox"
+      }, posts.map(function (post, index) {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("button", {
+          key: post.id,
+          role: "option",
+          tabIndex: "-1",
+          id: "editor-url-input-suggestion-".concat(instanceId, "-").concat(index),
+          ref: _this5.bindSuggestionNode(index),
+          className: classnames__WEBPACK_IMPORTED_MODULE_8___default()('editor-url-input__suggestion block-editor-url-input__suggestion', {
+            'is-selected': index === selectedSuggestion
+          }),
+          onClick: function onClick() {
+            return _this5.handleOnClick(post);
+          },
+          "aria-selected": index === selectedSuggestion
+        }, decodeEntities(post.title) || __('(no title)', 'block-options'));
+      }))));
+      /* eslint-enable jsx-a11y/no-autofocus */
+    }
+  }]);
+
+  return URLInput;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (withSpokenMessages(withInstanceId(URLInput)));
+
+/***/ }),
+
+/***/ "./src/extensions/formats/link/components/utils.js":
+/*!*********************************************************!*\
+  !*** ./src/extensions/formats/link/components/utils.js ***!
+  \*********************************************************/
+/*! exports provided: isValidHref, createLinkFormat */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isValidHref", function() { return isValidHref; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createLinkFormat", function() { return createLinkFormat; });
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+/**
+ * External dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+var _wp$url = wp.url,
+    getProtocol = _wp$url.getProtocol,
+    isValidProtocol = _wp$url.isValidProtocol,
+    getAuthority = _wp$url.getAuthority,
+    isValidAuthority = _wp$url.isValidAuthority,
+    getPath = _wp$url.getPath,
+    isValidPath = _wp$url.isValidPath,
+    getQueryString = _wp$url.getQueryString,
+    isValidQueryString = _wp$url.isValidQueryString,
+    getFragment = _wp$url.getFragment,
+    isValidFragment = _wp$url.isValidFragment;
+var _wp$i18n = wp.i18n,
+    __ = _wp$i18n.__,
+    sprintf = _wp$i18n.sprintf;
+/**
+ * Check for issues with the provided href.
+ *
+ * @param {string} href The href.
+ *
+ * @return {boolean} Is the href invalid?
+ */
+
+function isValidHref(href) {
+  if (!href) {
+    return false;
+  }
+
+  var trimmedHref = href.trim();
+
+  if (!trimmedHref) {
+    return false;
+  } // Does the href start with something that looks like a URL protocol?
+
+
+  if (/^\S+:/.test(trimmedHref)) {
+    var protocol = getProtocol(trimmedHref);
+
+    if (!isValidProtocol(protocol)) {
+      return false;
+    } // Add some extra checks for http(s) URIs, since these are the most common use-case.
+    // This ensures URIs with an http protocol have exactly two forward slashes following the protocol.
+    // eslint-disable-next-line no-useless-escape
+
+
+    if (Object(lodash__WEBPACK_IMPORTED_MODULE_0__["startsWith"])(protocol, 'http') && !/^https?:\/\/[^\/\s]/i.test(trimmedHref)) {
+      return false;
+    }
+
+    var authority = getAuthority(trimmedHref);
+
+    if (!isValidAuthority(authority)) {
+      return false;
+    }
+
+    var path = getPath(trimmedHref);
+
+    if (path && !isValidPath(path)) {
+      return false;
+    }
+
+    var queryString = getQueryString(trimmedHref);
+
+    if (queryString && !isValidQueryString(queryString)) {
+      return false;
+    }
+
+    var fragment = getFragment(trimmedHref);
+
+    if (fragment && !isValidFragment(fragment)) {
+      return false;
+    }
+  } // Validate anchor links.
+
+
+  if (Object(lodash__WEBPACK_IMPORTED_MODULE_0__["startsWith"])(trimmedHref, '#') && !isValidFragment(trimmedHref)) {
+    return false;
+  }
+
+  return true;
+}
+/**
+ * Generates the format object that will be applied to the link text.
+ *
+ * @param {Object}  options
+ * @param {string}  options.url              The href of the link.
+ * @param {boolean} options.opensInNewWindow Whether this link will open in a new window.
+ * @param {Object}  options.text             The text that is being hyperlinked.
+ *
+ * @return {Object} The final format object.
+ */
+
+function createLinkFormat(_ref) {
+  var url = _ref.url,
+      opensInNewWindow = _ref.opensInNewWindow,
+      noFollow = _ref.noFollow,
+      sponsored = _ref.sponsored,
+      text = _ref.text;
+  var format = {
+    type: 'editorskit/link',
+    attributes: {
+      url: url
+    }
+  };
+  var relAttributes = [];
+
+  if (opensInNewWindow) {
+    // translators: accessibility label for external links, where the argument is the link text
+    var label = sprintf(__('%s (opens in a new tab)', 'block-options'), text);
+    format.attributes.target = '_blank';
+    format.attributes['aria-label'] = label;
+    relAttributes.push('noreferrer noopener');
+  }
+
+  if (noFollow) {
+    relAttributes.push('nofollow');
+  }
+
+  if (sponsored) {
+    relAttributes.push('sponsored');
+  }
+
+  if (relAttributes.length > 0) {
+    format.attributes.rel = relAttributes.join(' ');
+  }
+
+  return format;
+}
+
+/***/ }),
+
+/***/ "./src/extensions/formats/link/index.js":
+/*!**********************************************!*\
+  !*** ./src/extensions/formats/link/index.js ***!
+  \**********************************************/
+/*! exports provided: link */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "link", function() { return link; });
+/* harmony import */ var _components_edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/edit */ "./src/extensions/formats/link/components/edit.js");
+/**
+ * Internal dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+var __ = wp.i18n.__;
+var _wp$richText = wp.richText,
+    applyFormat = _wp$richText.applyFormat,
+    isCollapsed = _wp$richText.isCollapsed;
+var decodeEntities = wp.htmlEntities.decodeEntities;
+var isURL = wp.url.isURL;
+/**
+ * Block constants
+ */
+
+var name = 'editorskit/link';
+var link = {
+  name: name,
+  title: __('Link', 'block-options'),
+  tagName: 'a',
+  className: 'ek-link',
+  attributes: {
+    url: 'href',
+    target: 'target',
+    rel: 'rel'
+  },
+  __unstablePasteRule: function __unstablePasteRule(value, _ref) {
+    var html = _ref.html,
+        plainText = _ref.plainText;
+
+    if (isCollapsed(value)) {
+      return value;
+    }
+
+    var pastedText = (html || plainText).replace(/<[^>]+>/g, '').trim(); // A URL was pasted, turn the selection into a link
+
+    if (!isURL(pastedText)) {
+      return value;
+    } // Allows us to ask for this information when we get a report.
+
+
+    window.console.log('Created link:\n\n', pastedText);
+    return applyFormat(value, {
+      type: name,
+      attributes: {
+        url: decodeEntities(pastedText)
+      }
+    });
+  },
+  edit: _components_edit__WEBPACK_IMPORTED_MODULE_0__["default"]
 };
 
 /***/ }),

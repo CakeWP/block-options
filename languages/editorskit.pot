@@ -3,18 +3,48 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/block-settings/set-as-featured/components/controls.js:28
-msgid "Remove as Featured Image"
+#: src/extensions/formats/link/components/edit.js:121
+msgid "Unlink"
 msgstr ""
 
-#: src/extensions/block-settings/set-as-featured/components/controls.js:29
-msgid "Set as Featured Image"
+#: src/extensions/formats/link/components/edit.js:30
+msgid "Add Link"
 msgstr ""
 
-#: src/extensions/block-settings/set-as-featured/components/controls.js:77
-msgid "Image Set as Featured."
+#: src/extensions/formats/link/components/edit.js:77
+msgid "Link removed."
 msgstr ""
 
-#: src/extensions/block-settings/set-as-featured/components/controls.js:88
-msgid "Featured Image Removed."
+#: src/extensions/formats/link/components/link-editor.js:37
+msgid "Apply"
+msgstr ""
+
+#: src/extensions/formats/link/components/link-viewer.js:53
+msgid "Edit"
+msgstr ""
+
+#: src/extensions/formats/link/components/url-input.js:111
+msgid "%d result found, use up and down arrow keys to navigate."
+msgid_plural "%d results found, use up and down arrow keys to navigate."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/extensions/formats/link/components/url-input.js:117
+msgid "No results."
+msgstr ""
+
+#: src/extensions/formats/link/components/url-input.js:201
+msgid "Link selected."
+msgstr ""
+
+#: src/extensions/formats/link/components/url-input.js:238
+msgid "URL"
+msgstr ""
+
+#: src/extensions/formats/link/components/url-input.js:243
+msgid "Paste URL or type to search"
+msgstr ""
+
+#: src/extensions/formats/link/components/url-input.js:280
+msgid "(no title)"
 msgstr ""
