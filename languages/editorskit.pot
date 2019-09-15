@@ -3,48 +3,28 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/formats/link/components/edit.js:121
-msgid "Unlink"
-msgstr ""
-
-#: src/extensions/formats/link/components/edit.js:30
-msgid "Add Link"
-msgstr ""
-
-#: src/extensions/formats/link/components/edit.js:77
-msgid "Link removed."
-msgstr ""
-
-#: src/extensions/formats/link/components/inline.js:220
+#: src/extensions/formats/link/components/inline.js:225
 msgid "Warning: the link has been inserted but may have errors. Please test it."
 msgstr ""
 
-#: src/extensions/formats/link/components/inline.js:222
+#: src/extensions/formats/link/components/inline.js:227
 msgid "Link edited."
 msgstr ""
 
-#: src/extensions/formats/link/components/inline.js:224
+#: src/extensions/formats/link/components/inline.js:229
 msgid "Link inserted."
 msgstr ""
 
-#: src/extensions/formats/link/components/inline.js:287
+#: src/extensions/formats/link/components/inline.js:296
 msgid "Open in New Tab"
 msgstr ""
 
-#: src/extensions/formats/link/components/inline.js:292
+#: src/extensions/formats/link/components/inline.js:301
 msgid "No Follow"
 msgstr ""
 
-#: src/extensions/formats/link/components/inline.js:297
+#: src/extensions/formats/link/components/inline.js:306
 msgid "Sponsored"
-msgstr ""
-
-#: src/extensions/formats/link/components/link-editor.js:37
-msgid "Apply"
-msgstr ""
-
-#: src/extensions/formats/link/components/link-viewer.js:53
-msgid "Edit"
 msgstr ""
 
 #: src/extensions/formats/link/components/url-input.js:111
@@ -61,23 +41,14 @@ msgstr ""
 msgid "Link selected."
 msgstr ""
 
-#: src/extensions/formats/link/components/url-input.js:238
+#: src/extensions/formats/link/components/url-input.js:239
 msgid "URL"
 msgstr ""
 
-#: src/extensions/formats/link/components/url-input.js:243
+#: src/extensions/formats/link/components/url-input.js:244
 msgid "Paste URL or type to search"
 msgstr ""
 
-#: src/extensions/formats/link/components/url-input.js:280
+#: src/extensions/formats/link/components/url-input.js:281
 msgid "(no title)"
-msgstr ""
-
-#: src/extensions/formats/link/components/utils.js:106
-#. accessibility label for external links, where the argument is the link text
-msgid "%s (opens in a new tab)"
-msgstr ""
-
-#: src/extensions/formats/link/index.js:21
-msgid "Link"
 msgstr ""

@@ -7,7 +7,7 @@ const {
 	ToggleControl,
 	withSpokenMessages,
 } = wp.components;
-const { LEFT, RIGHT, UP, DOWN, BACKSPACE, ENTER } = wp.keycodes;
+const { LEFT, RIGHT, UP, DOWN, BACKSPACE, ENTER, ESCAPE } = wp.keycodes;
 const { getRectangleFromRange } = wp.dom;
 const { prependHTTP } = wp.url;
 const {
@@ -27,6 +27,7 @@ import { createLinkFormat, isValidHref } from './utils';
 import PositionedAtSelection from './positioned-at-selection';
 import LinkEditor from './link-editor';
 import LinkViewer from './link-viewer';
+import { thisExpression } from '@babel/types';
 
 const stopKeyPropagation = ( event ) => event.stopPropagation();
 
@@ -125,6 +126,10 @@ class InlineLinkUI extends Component {
 		if ( [ LEFT, DOWN, RIGHT, UP, BACKSPACE, ENTER ].indexOf( event.keyCode ) > -1 ) {
 			// Stop the key event from propagating up to ObserveTyping.startTypingInTextField.
 			event.stopPropagation();
+		}
+		
+		if ([ESCAPE].indexOf(event.keyCode) > -1) {
+			this.resetState();
 		}
 	}
 
@@ -279,7 +284,11 @@ class InlineLinkUI extends Component {
 					isActive={ isActive }
 					addingLink={ addingLink }
 					onFocusOutside={ this.onFocusOutside }
-					// onClose={ this.resetState }
+					onClose={ () => {
+						if (!inputValue ){
+							this.resetState();
+						}
+					} }
 					focusOnMount={ showInput ? 'firstElement' : false }
 					renderSettings={ () => (
 						<Fragment>
