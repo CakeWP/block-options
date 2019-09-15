@@ -217,11 +217,11 @@ class InlineLinkUI extends Component {
 		this.resetState();
 
 		if ( ! isValidHref( url ) ) {
-			speak( __( 'Warning: the link has been inserted but may have errors. Please test it.' ), 'assertive' );
+			speak( __( 'Warning: the link has been inserted but may have errors. Please test it.', 'block-options' ), 'assertive' );
 		} else if ( isActive ) {
-			speak( __( 'Link edited.' ), 'assertive' );
+			speak( __( 'Link edited.', 'block-options' ), 'assertive' );
 		} else {
-			speak( __( 'Link inserted.' ), 'assertive' );
+			speak( __( 'Link inserted.', 'block-options' ), 'assertive' );
 		}
 	}
 
