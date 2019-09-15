@@ -11481,7 +11481,7 @@ function (_Component) {
       }), isActive && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(RichTextToolbarButton, {
         name: "link",
         icon: "editor-unlink",
-        title: __('Unlink'),
+        title: __('Unlink', 'block-options'),
         onClick: this.onRemoveFormat,
         isActive: isActive,
         shortcutType: "primaryShift",
@@ -12025,7 +12025,7 @@ function LinkEditor(_ref) {
     autocompleteRef: autocompleteRef
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(IconButton, {
     icon: "editor-break",
-    label: __('Apply'),
+    label: __('Apply', 'block-options'),
     type: "submit"
   }));
 }
@@ -12104,7 +12104,7 @@ function LinkViewer(_ref2) {
     className: linkClassName
   }), onEditLinkClick && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(IconButton, {
     icon: "edit",
-    label: __('Edit'),
+    label: __('Edit', 'block-options'),
     onClick: onEditLinkClick
   }));
 }
@@ -12403,7 +12403,7 @@ function (_Component) {
         if (posts.length) {
           _this4.props.debouncedSpeak(sprintf(_n('%d result found, use up and down arrow keys to navigate.', '%d results found, use up and down arrow keys to navigate.', posts.length), posts.length), 'assertive');
         } else {
-          _this4.props.debouncedSpeak(__('No results.'), 'assertive');
+          _this4.props.debouncedSpeak(__('No results.', 'block-options'), 'assertive');
         }
       }).catch(function () {
         if (_this4.suggestionsRequest === request) {
@@ -12500,7 +12500,7 @@ function (_Component) {
             if (this.state.selectedSuggestion !== null) {
               this.selectLink(post); // Announce a link has been selected when tabbing away from the input field.
 
-              this.props.speak(__('Link selected.'));
+              this.props.speak(__('Link selected.', 'block-options'));
             }
 
             break;
@@ -12557,12 +12557,12 @@ function (_Component) {
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("input", {
         autoFocus: autoFocus,
         type: "text",
-        "aria-label": __('URL'),
+        "aria-label": __('URL', 'block-options'),
         required: true,
         value: value,
         onChange: this.onChange,
         onInput: stopEventPropagation,
-        placeholder: __('Paste URL or type to search'),
+        placeholder: __('Paste URL or type to search', 'block-options'),
         onKeyDown: this.onKeyDown,
         role: "combobox",
         "aria-expanded": showSuggestions,
@@ -12593,7 +12593,7 @@ function (_Component) {
             return _this5.handleOnClick(post);
           },
           "aria-selected": index === selectedSuggestion
-        }, decodeEntities(post.title) || __('(no title)'));
+        }, decodeEntities(post.title) || __('(no title)', 'block-options'));
       }))));
       /* eslint-enable jsx-a11y/no-autofocus */
     }

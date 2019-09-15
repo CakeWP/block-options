@@ -118,7 +118,7 @@ class Edit extends Component {
 						{ isActive && <RichTextToolbarButton
 							name="link"
 							icon="editor-unlink"
-							title={ __( 'Unlink' ) }
+							title={__('Unlink', 'block-options' ) }
 							onClick={ this.onRemoveFormat }
 							isActive={ isActive }
 							shortcutType="primaryShift"
