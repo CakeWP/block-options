@@ -10,6 +10,7 @@ import { subscript } from './subscript';
 import { superscript } from './superscript';
 import { clear } from './clear';
 import { uppercase } from './uppercase';
+import { link } from './link';
 
 /**
  * WordPress dependencies
@@ -27,6 +28,8 @@ function registerFormats() {
 		superscript,
 		clear,
 		uppercase,
+		link,
 	].forEach( ( { name, ...settings } ) => registerFormatType( name, settings ) );
 }
+
 registerFormats();

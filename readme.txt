@@ -39,6 +39,7 @@ Starting [EditorsKit 1.6 ](https://jeffreycarandang.com/editorskit-1-6/?utm_medi
 ## Rich Text Formats
 [EditorsKit](https://editorskit.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit) also adds the missing text formats for better content creation. The following rich text format are available upon plugin activation:
 
+* Links with "rel" nofollow and sponsored attribute option
 * Highlighted Text or Heading Colors
 * Highlighted Text Background Color
 * Clear Formatting Options
@@ -118,9 +119,16 @@ e.g.
 7. Custom Classes Utility and Auto Suggestions
 8. Code Editor Mode Syntax Highlighter
 9. Drag and Drop Featured Image Upload
+10. Link rel attributes nofollow and sponsored option
 
 
 == Changelog ==
+
+= 1.14 
+* New: Link format noFollow rel attribute option 🎊
+* New: Link format sponsored rel attribute option 🎉
+* Fixes: Fix Chrome overlapping metabox issue
+* Fixes: Few other 🐛 cleanup
 
 = 1.13 =
 * New: Drag and Drop Featured Image Upload 🎊
