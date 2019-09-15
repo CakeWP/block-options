@@ -43,6 +43,14 @@ class Edit extends Component {
 		};
 	}
 
+	componentDidMount(){
+		let oldFormat = select('core/rich-text').getFormatType('core/link');
+		if (oldFormat) {
+			oldFormat.edit = null;
+			dispatch('core/rich-text').addFormatTypes( oldFormat );
+		}
+	}
+
 	isEmail( email ) {
 		return EMAIL_REGEXP.test( email );
 	}
@@ -82,7 +90,8 @@ class Edit extends Component {
 		let { isActive, value } = this.props;
 
 		const activeFormat = getActiveFormat( value, 'core/link' );
-		if ( activeFormat && isCollapsed( value ) && ! isActive ) {
+		
+		if ( activeFormat ) {
 			activeFormat.type = name;
 
 			let newValue = value;
@@ -93,11 +102,6 @@ class Edit extends Component {
 			value = newValue;
 
 			isActive = true;
-		} else {
-			const oldFormat = select( 'core/rich-text' ).getFormatType( 'core/link' );
-			if ( oldFormat ) {
-				dispatch( 'core/rich-text' ).removeFormatTypes( 'core/link' );
-			}
 		}
 
 		return (
