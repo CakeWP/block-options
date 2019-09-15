@@ -118,6 +118,11 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Justified Alignment', $this->_slug ),
 							'value' => true,
 						),
+						'link'	=> array(
+							'name'  => 'link',
+							'label' => __( 'Link with "rel" Attributes', $this->_slug ),
+							'value' => true,
+						),
 						'subscript'	=> array(
 							'name'  => 'subscript',
 							'label' => __( 'Subscript', $this->_slug ),

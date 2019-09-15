@@ -29056,13 +29056,17 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 var registerFormatType = wp.richText.registerFormatType;
+var select = wp.data.select;
+var isDisabled = select('core/edit-post').isFeatureActive('disableEditorsKitLinkFormats');
 
 function registerFormats() {
-  [_underline__WEBPACK_IMPORTED_MODULE_1__["underline"], _justify__WEBPACK_IMPORTED_MODULE_2__["justify"], _text_color__WEBPACK_IMPORTED_MODULE_3__["textColor"], _background_color__WEBPACK_IMPORTED_MODULE_4__["backgroundColor"], _markdown__WEBPACK_IMPORTED_MODULE_5__["markdown"], _subscript__WEBPACK_IMPORTED_MODULE_6__["subscript"], _superscript__WEBPACK_IMPORTED_MODULE_7__["superscript"], _clear__WEBPACK_IMPORTED_MODULE_8__["clear"], _uppercase__WEBPACK_IMPORTED_MODULE_9__["uppercase"], _link__WEBPACK_IMPORTED_MODULE_10__["link"]].forEach(function (_ref) {
+  [_underline__WEBPACK_IMPORTED_MODULE_1__["underline"], _justify__WEBPACK_IMPORTED_MODULE_2__["justify"], _text_color__WEBPACK_IMPORTED_MODULE_3__["textColor"], _background_color__WEBPACK_IMPORTED_MODULE_4__["backgroundColor"], _markdown__WEBPACK_IMPORTED_MODULE_5__["markdown"], _subscript__WEBPACK_IMPORTED_MODULE_6__["subscript"], _superscript__WEBPACK_IMPORTED_MODULE_7__["superscript"], _clear__WEBPACK_IMPORTED_MODULE_8__["clear"], _uppercase__WEBPACK_IMPORTED_MODULE_9__["uppercase"], !isDisabled ? _link__WEBPACK_IMPORTED_MODULE_10__["link"] : []].forEach(function (_ref) {
     var name = _ref.name,
         settings = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0___default()(_ref, ["name"]);
 
-    return registerFormatType(name, settings);
+    if (name) {
+      registerFormatType(name, settings);
+    }
   });
 }
 
@@ -29477,7 +29481,7 @@ function (_Component) {
 
 /* harmony default export */ __webpack_exports__["default"] = (compose(withSelect(function () {
   return {
-    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitColorsFormats')
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitLinkFormats')
   };
 }), ifCondition(function (props) {
   return !props.isDisabled;

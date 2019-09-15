@@ -16,6 +16,9 @@ import { link } from './link';
  * WordPress dependencies
  */
 const { registerFormatType } = wp.richText;
+const { select } = wp.data;
+
+const isDisabled = select('core/edit-post').isFeatureActive('disableEditorsKitLinkFormats');
 
 function registerFormats() {
 	[
@@ -28,8 +31,12 @@ function registerFormats() {
 		superscript,
 		clear,
 		uppercase,
-		link,
-	].forEach( ( { name, ...settings } ) => registerFormatType( name, settings ) );
+		!isDisabled ? link : [],
+	].forEach( ( { name, ...settings } ) => {
+		if (name ){
+			registerFormatType(name, settings)
+		}
+	} );
 }
 
 registerFormats();

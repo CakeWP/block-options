@@ -3,7 +3,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/formats/link/components/edit.js:125
+#: src/extensions/formats/link/components/edit.js:135
 msgid "Unlink"
 msgstr ""
 
@@ -11,6 +11,10 @@ msgstr ""
 msgid "Add Link"
 msgstr ""
 
-#: src/extensions/formats/link/components/edit.js:85
+#: src/extensions/formats/link/components/edit.js:91
 msgid "Link removed."
+msgstr ""
+
+#: src/extensions/formats/link/index.js:23
+msgid "Link"
 msgstr ""
