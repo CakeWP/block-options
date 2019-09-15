@@ -3,6 +3,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+#: src/extensions/formats/link/components/edit.js:121
+msgid "Unlink"
+msgstr ""
+
+#: src/extensions/formats/link/components/edit.js:30
+msgid "Add Link"
+msgstr ""
+
+#: src/extensions/formats/link/components/edit.js:77
+msgid "Link removed."
+msgstr ""
+
 #: src/extensions/formats/link/components/inline.js:220
 msgid "Warning: the link has been inserted but may have errors. Please test it."
 msgstr ""
@@ -57,6 +69,6 @@ msgstr ""
 msgid "Paste URL or type to search"
 msgstr ""
 
-#: src/extensions/formats/link/components/url-input.js:276
+#: src/extensions/formats/link/components/url-input.js:280
 msgid "(no title)"
 msgstr ""

@@ -12400,7 +12400,7 @@ function (_Component) {
           loading: false
         });
 
-        if (!!posts.length) {
+        if (posts.length) {
           _this4.props.debouncedSpeak(sprintf(_n('%d result found, use up and down arrow keys to navigate.', '%d results found, use up and down arrow keys to navigate.', posts.length), posts.length), 'assertive');
         } else {
           _this4.props.debouncedSpeak(__('No results.'), 'assertive');
@@ -12544,8 +12544,7 @@ function (_Component) {
           _this$props$autoFocus = _this$props.autoFocus,
           autoFocus = _this$props$autoFocus === void 0 ? true : _this$props$autoFocus,
           instanceId = _this$props.instanceId,
-          className = _this$props.className,
-          id = _this$props.id;
+          className = _this$props.className;
       var _this$state3 = this.state,
           showSuggestions = _this$state3.showSuggestions,
           posts = _this$state3.posts,
