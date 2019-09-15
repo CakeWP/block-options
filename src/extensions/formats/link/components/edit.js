@@ -17,7 +17,7 @@ const {
 	slice,
 	isCollapsed,
 	getActiveFormat } = wp.richText;
-const { isURL, isEmail } = wp.url;
+const { isURL } = wp.url;
 const { Toolbar, withSpokenMessages } = wp.components;
 const { compose, ifCondition } = wp.compose;
 
@@ -28,11 +28,13 @@ import InlineLinkUI from './inline';
 
 const name = 'editorskit/link';
 const title = __( 'Add Link', 'block-options' );
+const EMAIL_REGEXP = /^(mailto:)?[a-z0-9._%+-]+@[a-z0-9][a-z0-9.-]*\.[a-z]{2,63}$/i;
 
 class Edit extends Component {
 	constructor() {
 		super( ...arguments );
 
+		this.isEmail = this.isEmail.bind( this );
 		this.addLink = this.addLink.bind( this );
 		this.stopAddingLink = this.stopAddingLink.bind( this );
 		this.onRemoveFormat = this.onRemoveFormat.bind( this );
@@ -41,14 +43,18 @@ class Edit extends Component {
 		};
 	}
 
+	isEmail( email ){
+		return EMAIL_REGEXP.test(email);
+	}
+
 	addLink() {
 		const { value, onChange } = this.props;
 		const text = getTextContent( slice( value ) );
 
 		if ( text && isURL( text ) ) {
 			onChange( applyFormat( value, { type: name, attributes: { url: text } } ) );
-		} else if ( text && isEmail( text ) ) {
-			onChange( applyFormat( value, { type: name, attributes: { url: `mailto:${ text }` } } ) );
+		} else if (text && this.isEmail(text)) {
+			onChange(applyFormat(value, { type: name, attributes: { url: `mailto:${text}` } }));
 		} else {
 			this.setState( { addingLink: true } );
 		}

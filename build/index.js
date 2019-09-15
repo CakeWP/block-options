@@ -10685,21 +10685,15 @@ var _wp$blockEditor = wp.blockEditor,
     RichTextToolbarButton = _wp$blockEditor.RichTextToolbarButton,
     RichTextShortcut = _wp$blockEditor.RichTextShortcut;
 var _wp$richText = wp.richText,
-    unregisterFormatType = _wp$richText.unregisterFormatType,
     getTextContent = _wp$richText.getTextContent,
     applyFormat = _wp$richText.applyFormat,
     removeFormat = _wp$richText.removeFormat,
     slice = _wp$richText.slice,
     isCollapsed = _wp$richText.isCollapsed,
     getActiveFormat = _wp$richText.getActiveFormat;
-var _wp$url = wp.url,
-    isURL = _wp$url.isURL,
-    isEmail = _wp$url.isEmail;
+var isURL = wp.url.isURL;
 var _wp$components = wp.components,
     Toolbar = _wp$components.Toolbar,
-    IconButton = _wp$components.IconButton,
-    Popover = _wp$components.Popover,
-    ColorPalette = _wp$components.ColorPalette,
     withSpokenMessages = _wp$components.withSpokenMessages;
 var _wp$compose = wp.compose,
     compose = _wp$compose.compose,
@@ -10713,6 +10707,8 @@ var name = 'editorskit/link';
 
 var title = __('Add Link', 'block-options');
 
+var EMAIL_REGEXP = /^(mailto:)?[a-z0-9._%+-]+@[a-z0-9][a-z0-9.-]*\.[a-z]{2,63}$/i;
+
 var Edit =
 /*#__PURE__*/
 function (_Component) {
@@ -10724,6 +10720,7 @@ function (_Component) {
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, Edit);
 
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default()(Edit).apply(this, arguments));
+    _this.isEmail = _this.isEmail.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this));
     _this.addLink = _this.addLink.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this));
     _this.stopAddingLink = _this.stopAddingLink.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this));
     _this.onRemoveFormat = _this.onRemoveFormat.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this));
@@ -10734,6 +10731,11 @@ function (_Component) {
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(Edit, [{
+    key: "isEmail",
+    value: function isEmail(email) {
+      return EMAIL_REGEXP.test(email);
+    }
+  }, {
     key: "addLink",
     value: function addLink() {
       var _this$props = this.props,
@@ -10748,7 +10750,7 @@ function (_Component) {
             url: text
           }
         }));
-      } else if (text && isEmail(text)) {
+      } else if (text && this.isEmail(text)) {
         onChange(applyFormat(value, {
           type: name,
           attributes: {
@@ -11365,6 +11367,7 @@ function isValidHref(href) {
       return false;
     } // Add some extra checks for http(s) URIs, since these are the most common use-case.
     // This ensures URIs with an http protocol have exactly two forward slashes following the protocol.
+    // eslint-disable-next-line no-useless-escape
 
 
     if (Object(lodash__WEBPACK_IMPORTED_MODULE_0__["startsWith"])(protocol, 'http') && !/^https?:\/\/[^\/\s]/i.test(trimmedHref)) {
@@ -11430,7 +11433,7 @@ function createLinkFormat(_ref) {
 
   if (opensInNewWindow) {
     // translators: accessibility label for external links, where the argument is the link text
-    var label = sprintf(__('%s (opens in a new tab)'), text);
+    var label = sprintf(__('%s (opens in a new tab)', 'block-options'), text);
     format.attributes.target = '_blank';
     format.attributes['aria-label'] = label;
     relAttributes.push('noreferrer noopener');
