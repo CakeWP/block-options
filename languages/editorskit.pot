@@ -3,14 +3,60 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/formats/link/components/edit.js:121
-msgid "Unlink"
+#: src/extensions/formats/link/components/inline.js:220
+msgid "Warning: the link has been inserted but may have errors. Please test it."
 msgstr ""
 
-#: src/extensions/formats/link/components/edit.js:30
-msgid "Add Link"
+#: src/extensions/formats/link/components/inline.js:222
+msgid "Link edited."
 msgstr ""
 
-#: src/extensions/formats/link/components/edit.js:77
-msgid "Link removed."
+#: src/extensions/formats/link/components/inline.js:224
+msgid "Link inserted."
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:287
+msgid "Open in New Tab"
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:292
+msgid "No Follow"
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:297
+msgid "Sponsored"
+msgstr ""
+
+#: src/extensions/formats/link/components/link-editor.js:37
+msgid "Apply"
+msgstr ""
+
+#: src/extensions/formats/link/components/link-viewer.js:53
+msgid "Edit"
+msgstr ""
+
+#: src/extensions/formats/link/components/url-input.js:111
+msgid "%d result found, use up and down arrow keys to navigate."
+msgid_plural "%d results found, use up and down arrow keys to navigate."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/extensions/formats/link/components/url-input.js:117
+msgid "No results."
+msgstr ""
+
+#: src/extensions/formats/link/components/url-input.js:201
+msgid "Link selected."
+msgstr ""
+
+#: src/extensions/formats/link/components/url-input.js:238
+msgid "URL"
+msgstr ""
+
+#: src/extensions/formats/link/components/url-input.js:243
+msgid "Paste URL or type to search"
+msgstr ""
+
+#: src/extensions/formats/link/components/url-input.js:276
+msgid "(no title)"
 msgstr ""

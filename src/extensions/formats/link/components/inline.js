@@ -24,6 +24,9 @@ const { URLPopover } = wp.blockEditor;
  * Internal dependencies
  */
 import { createLinkFormat, isValidHref } from './utils';
+import PositionedAtSelection from './positioned-at-selection';
+import LinkEditor from './link-editor';
+import LinkViewer from './link-viewer';
 
 const stopKeyPropagation = ( event ) => event.stopPropagation();
 
@@ -224,11 +227,11 @@ class InlineLinkUI extends Component {
 
 	onFocusOutside() {
 		// The autocomplete suggestions list renders in a separate popover (in a portal),
-		// so onFocusOutside fails to detect that a click on a suggestion occurred in the
+		// so onClickOutside fails to detect that a click on a suggestion occured in the
 		// LinkContainer. Detect clicks on autocomplete suggestions using a ref here, and
 		// return to avoid the popover being closed.
 		const autocompleteElement = this.autocompleteRef.current;
-		if ( autocompleteElement && autocompleteElement.contains( document.activeElement ) ) {
+		if ( autocompleteElement && autocompleteElement.contains( event.target ) ) {
 			return;
 		}
 
@@ -268,54 +271,58 @@ class InlineLinkUI extends Component {
 		}
 
 		return (
-			<URLPopoverAtLink
-				value={ value }
-				isActive={ isActive }
-				addingLink={ addingLink }
-				onFocusOutside={ this.onFocusOutside }
-				onClose={ this.resetState }
-				focusOnMount={ showInput ? 'firstElement' : false }
-				renderSettings={ () => (
-					<Fragment>
-						<ToggleControl
-							label={ __( 'Open in New Tab', 'block-options' ) }
-							checked={ opensInNewWindow }
-							onChange={ this.setLinkTarget }
-						/>
-						<ToggleControl
-							label={ __( 'No Follow', 'block-options' ) }
-							checked={ noFollow }
-							onChange={ this.setNoFollow }
-						/>
-						<ToggleControl
-							label={ __( 'Sponsored', 'block-options' ) }
-							checked={ sponsored }
-							onChange={ this.setSponsored }
-						/>
-					</Fragment>
-				) }
+			<PositionedAtSelection
+				key={ `${ value.start }${ value.end }` /* Used to force rerender on selection change */ }
 			>
-				{ showInput ? (
-					<URLPopover.LinkEditor
-						className="editor-format-toolbar__link-container-content block-editor-format-toolbar__link-container-content"
-						value={ inputValue }
-						onChangeInputValue={ this.onChangeInputValue }
-						onKeyDown={ this.onKeyDown }
-						onKeyPress={ stopKeyPropagation }
-						onSubmit={ this.submitLink }
-						autocompleteRef={ this.autocompleteRef }
-					/>
-				) : (
-					<URLPopover.LinkViewer
-						className="editor-format-toolbar__link-container-content block-editor-format-toolbar__link-container-content"
-						onKeyPress={ stopKeyPropagation }
-						url={ url }
-						onEditLinkClick={ this.editLink }
-						linkClassName={ isValidHref( prependHTTP( url ) ) ? undefined : 'has-invalid-link' }
-					/>
-				) }
+				<URLPopoverAtLink
+					value={ value }
+					isActive={ isActive }
+					addingLink={ addingLink }
+					onFocusOutside={ this.onFocusOutside }
+					// onClose={ this.resetState }
+					focusOnMount={ showInput ? 'firstElement' : false }
+					renderSettings={ () => (
+						<Fragment>
+							<ToggleControl
+								label={ __( 'Open in New Tab', 'block-options' ) }
+								checked={ opensInNewWindow }
+								onChange={ this.setLinkTarget }
+							/>
+							<ToggleControl
+								label={ __( 'No Follow', 'block-options' ) }
+								checked={ noFollow }
+								onChange={ this.setNoFollow }
+							/>
+							<ToggleControl
+								label={ __( 'Sponsored', 'block-options' ) }
+								checked={ sponsored }
+								onChange={ this.setSponsored }
+							/>
+						</Fragment>
+					) }
+				>
+					{ showInput ? (
+						<LinkEditor
+							className="editor-format-toolbar__link-container-content block-editor-format-toolbar__link-container-content"
+							value={ inputValue }
+							onChangeInputValue={ this.onChangeInputValue }
+							onKeyDown={ this.onKeyDown }
+							onKeyPress={ stopKeyPropagation }
+							onSubmit={ this.submitLink }
+							autocompleteRef={ this.autocompleteRef }
+						/>
+					) : (
+						<LinkViewer
+							className="editor-format-toolbar__link-container-content block-editor-format-toolbar__link-container-content"
+							onKeyPress={ stopKeyPropagation }
+							url={ url }
+							onEditLinkClick={ this.editLink }
+							linkClassName={ isValidHref( prependHTTP( url ) ) ? undefined : 'has-invalid-link' }
+						/>
+					) }
 
-			</URLPopoverAtLink>
+				</URLPopoverAtLink>
+			</PositionedAtSelection>
 		);
 	}
 }

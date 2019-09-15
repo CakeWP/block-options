@@ -65,6 +65,7 @@
     "babel-eslint": "^10.0.2",
     "classnames": "^2.2.6",
     "css-loader": "^3.1.0",
+    "dom-scroll-into-view": "^2.0.1",
     "eslint-plugin-eslint-comments": "^3.1.2",
     "eslint-plugin-react": "^7.14.3",
     "ignore-emit-webpack-plugin": "^2.0.2",

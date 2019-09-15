@@ -43,8 +43,8 @@ class Edit extends Component {
 		};
 	}
 
-	isEmail( email ){
-		return EMAIL_REGEXP.test(email);
+	isEmail( email ) {
+		return EMAIL_REGEXP.test( email );
 	}
 
 	addLink() {
@@ -53,8 +53,8 @@ class Edit extends Component {
 
 		if ( text && isURL( text ) ) {
 			onChange( applyFormat( value, { type: name, attributes: { url: text } } ) );
-		} else if (text && this.isEmail(text)) {
-			onChange(applyFormat(value, { type: name, attributes: { url: `mailto:${text}` } }));
+		} else if ( text && this.isEmail( text ) ) {
+			onChange( applyFormat( value, { type: name, attributes: { url: `mailto:${ text }` } } ) );
 		} else {
 			this.setState( { addingLink: true } );
 		}
