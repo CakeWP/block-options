@@ -168,14 +168,14 @@ final class EditorsKit {
 	 */
 	public function asset_source( $type = 'js', $directory = null ) {
 		if ( 'js' !== $type ) {
-			return EDITORSKIT_PLUGIN_URL . 'dist/css/' . $directory;
+			return EDITORSKIT_PLUGIN_URL . 'build/css/' . $directory;
 		}
 
 		if ( true === EDITORSKIT_DEBUG ) {
 			return EDITORSKIT_PLUGIN_URL . 'src/' . $type . '/' . $directory;
 		}
 
-		return EDITORSKIT_PLUGIN_URL . 'dist/' . $type . '/' . $directory;
+		return EDITORSKIT_PLUGIN_URL . 'build/' . $type . '/' . $directory;
 	}
 
 	/**
