@@ -131,7 +131,7 @@ class EditorsKit_Block_Assets {
 	function is_edit_or_new_admin_page() {
 		global $pagenow;
 
- 		return ( is_admin() && ( $pagenow === 'post.php' || $pagenow === 'post-new.php' || ( $pagenow === 'admin.php' && isset( $_GET['page'] ) && $_GET['page'] == 'gutenberg-widgets' ) ) );
+ 		return ( is_admin() && ( $pagenow === 'post.php' || $pagenow === 'post-new.php' ) );
 	}
 
 }
