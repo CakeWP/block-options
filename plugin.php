@@ -167,15 +167,15 @@ final class EditorsKit {
 	 * @param string|string $directory Any extra directories needed.
 	 */
 	public function asset_source( $type = 'js', $directory = null ) {
-		if ( 'js' === $type ) {
-			if ( true === EDITORSKIT_DEBUG ) {
-				return EDITORSKIT_PLUGIN_URL . 'src/' . $type . '/' . $directory;
-			} else {
-				return EDITORSKIT_PLUGIN_URL . 'dist/' . $type . '/' . $directory;
-			}
-		} else {
-			return EDITORSKIT_PLUGIN_URL . 'dist/css/' . $directory;
+		if ( 'js' !== $type ) {
+			return EDITORSKIT_PLUGIN_URL . 'build/css/' . $directory;
 		}
+
+		if ( true === EDITORSKIT_DEBUG ) {
+			return EDITORSKIT_PLUGIN_URL . 'src/' . $type . '/' . $directory;
+		}
+
+		return EDITORSKIT_PLUGIN_URL . 'build/' . $type . '/' . $directory;
 	}
 
 	/**
