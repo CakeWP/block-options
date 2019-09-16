@@ -127,6 +127,7 @@ e.g.
 = 1.14 
 * New: Link format noFollow rel attribute option 🎊
 * New: Link format sponsored rel attribute option 🎉
+* Improvement: Helper filter for Block Lab plugin support
 * Fixes: Fix Chrome overlapping metabox issue
 * Fixes: Few other 🐛 cleanup
 
