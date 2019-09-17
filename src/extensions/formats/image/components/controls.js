@@ -9,7 +9,7 @@ import { get } from 'lodash';
 const { __ } = wp.i18n;
 const { Component, useMemo } = wp.element;
 const { compose, ifCondition } = wp.compose;
-const { insertObject } = wp.richText;
+const { insertObject, insert } = wp.richText;
 const { computeCaretRect } = wp.dom;
 const { select, withSelect, withDispatch } = wp.data;
 const { MediaUpload, RichTextToolbarButton, MediaUploadCheck, BlockControls } = wp.blockEditor;
@@ -87,7 +87,6 @@ class ImageControl extends Component {
 					imageID = cname.replace('wp-image-', '');
 				}
 			});
-			console.log(imageID);
 		}
 
 		return (
@@ -102,16 +101,10 @@ class ImageControl extends Component {
 					allowedTypes={ALLOWED_MEDIA_TYPES}
 					onSelect={({ id, url, alt, width, height }) => {
 						this.closeModal();
-						onChange(insertObject(value, {
-							type: name,
-							attributes: {
-								className: `wp-image-${id} ek-img`,
-								width: `${Math.min(width, 150)}`,
-								height: `${Math.min(height, 150)}`,
-								url,
-								alt,
-							},
-						}));
+						
+						onChange(insert(value,
+							wp.richText.create({ html: `<figure class="ek-img"><img class="wp-image-${id} ek-inline-img" alt="" src="${url}" style="width: ${Math.min(width, 150)}px;"/></figure>` })
+						));
 					}}
 					onClose={this.closeModal}
 					render={({ open }) => {
@@ -119,7 +112,7 @@ class ImageControl extends Component {
 						return null;
 					}}
 				/>}
-				{isObjectActive && className.split(' ').includes('ek-img') &&
+				{isObjectActive && (className.split(' ').includes('ek-img-caption') || className.split(' ').includes('ek-inline-img') ) &&
 					<PopoverAtImage
 						// Reposition Popover when the selection changes or
 						// when the width changes.

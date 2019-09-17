@@ -11106,7 +11106,9 @@ var _wp$element = wp.element,
 var _wp$compose = wp.compose,
     compose = _wp$compose.compose,
     ifCondition = _wp$compose.ifCondition;
-var insertObject = wp.richText.insertObject;
+var _wp$richText = wp.richText,
+    insertObject = _wp$richText.insertObject,
+    insert = _wp$richText.insert;
 var computeCaretRect = wp.dom.computeCaretRect;
 var _wp$data = wp.data,
     select = _wp$data.select,
@@ -11223,7 +11225,6 @@ function (_Component) {
             imageID = cname.replace('wp-image-', '');
           }
         });
-        console.log(imageID);
       }
 
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(MediaUploadCheck, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(RichTextToolbarButton, {
@@ -11242,16 +11243,9 @@ function (_Component) {
 
           _this2.closeModal();
 
-          onChange(insertObject(value, {
-            type: name,
-            attributes: {
-              className: "wp-image-".concat(id, " ek-img"),
-              width: "".concat(Math.min(width, 150)),
-              height: "".concat(Math.min(height, 150)),
-              url: url,
-              alt: alt
-            }
-          }));
+          onChange(insert(value, wp.richText.create({
+            html: "<figure class=\"ek-img\"><img class=\"wp-image-".concat(id, " ek-inline-img\" alt=\"\" src=\"").concat(url, "\" style=\"width: ").concat(Math.min(width, 150), "px;\"/></figure>")
+          })));
         },
         onClose: this.closeModal,
         render: function render(_ref3) {
@@ -11259,7 +11253,7 @@ function (_Component) {
           open();
           return null;
         }
-      }), isObjectActive && className.split(' ').includes('ek-img') && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(PopoverAtImage // Reposition Popover when the selection changes or
+      }), isObjectActive && (className.split(' ').includes('ek-img-caption') || className.split(' ').includes('ek-inline-img')) && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(PopoverAtImage // Reposition Popover when the selection changes or
       // when the width changes.
       , {
         dependencies: [style, value.start]
@@ -11351,17 +11345,10 @@ var image = {
   name: name,
   title: __('Add Inline Image', 'block-options'),
   keywords: [__('photo', 'block-options'), __('media', 'block-options')],
-  object: true,
-  tagName: 'img',
+  tagName: 'figure',
   className: 'ek-img',
   attributes: {
-    className: 'class',
-    style: 'style',
-    url: 'src',
-    alt: 'alt',
-    title: 'title',
-    width: 'width',
-    height: 'height'
+    className: 'class'
   },
   edit: function edit(_ref) {
     var isActive = _ref.isActive,

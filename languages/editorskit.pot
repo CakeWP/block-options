@@ -3,23 +3,23 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/formats/image/components/controls.js:135
+#: src/extensions/formats/image/components/controls.js:128
 msgid "Align Left"
 msgstr ""
 
-#: src/extensions/formats/image/components/controls.js:136
+#: src/extensions/formats/image/components/controls.js:129
 msgid "Align Right"
 msgstr ""
 
-#: src/extensions/formats/image/components/controls.js:137
+#: src/extensions/formats/image/components/controls.js:130
 msgid "Align Center"
 msgstr ""
 
-#: src/extensions/formats/image/components/controls.js:138
+#: src/extensions/formats/image/components/controls.js:131
 msgid "Align None"
 msgstr ""
 
-#: src/extensions/formats/image/components/controls.js:146
+#: src/extensions/formats/image/components/controls.js:139
 msgid "Edit Gallery"
 msgstr ""
 
