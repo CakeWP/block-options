@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { get } from 'lodash';
+import { map } from 'lodash';
 
 /**
  * WordPress dependencies
@@ -9,11 +9,16 @@ import { get } from 'lodash';
 const { __ } = wp.i18n;
 const { Component, useMemo } = wp.element;
 const { compose, ifCondition } = wp.compose;
-const { insertObject, insert } = wp.richText;
+const { insertObject, insert, removeFormat } = wp.richText;
 const { computeCaretRect } = wp.dom;
 const { select, withSelect, withDispatch } = wp.data;
 const { MediaUpload, RichTextToolbarButton, MediaUploadCheck, BlockControls } = wp.blockEditor;
 const { Popover, IconButton } = wp.components;
+
+/**
+ * Interna dependencies
+ */
+import { getActiveFormats } from '../../markdown/get-active-formats';
 
 const ALLOWED_MEDIA_TYPES = ['image'];
 const name = 'editorskit/image';
@@ -37,6 +42,7 @@ class ImageControl extends Component {
 		super(...arguments);
 		// this.onChange = this.onChange.bind(this);
 		this.onSelectImage = this.onSelectImage.bind(this);
+		this.onRemove = this.onRemove.bind(this);
 		this.onKeyDown = this.onKeyDown.bind(this);
 		this.openModal = this.openModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
@@ -59,6 +65,19 @@ class ImageControl extends Component {
 		console.log(image);
 	}
 
+	onRemove() {
+		const { value, onChange, activeAttributes } = this.props;
+		console.log(this.props);
+		// map(activeFormats, (activeFormat) => {
+		// 	newValue = removeFormat( newValue, activeFormat.type);
+		// 	newValue = wp.richText.remove(newValue);
+		// });
+
+		// newValue=removeFormat(newValue, name);
+
+		// onChange( newValue );
+	}
+
 	onKeyDown(event) {
 		if ([LEFT, DOWN, RIGHT, UP, BACKSPACE, ENTER].indexOf(event.keyCode) > -1) {
 			// Stop the key event from propagating up to ObserveTyping.startTypingInTextField.
@@ -75,7 +94,7 @@ class ImageControl extends Component {
 	}
 
 	render() {
-		const { value, onChange, isObjectActive, activeObjectAttributes } = this.props;
+		const { value, onChange, isActive, isObjectActive, activeObjectAttributes } = this.props;
 		const { style, className, width, height } = activeObjectAttributes;
 		let imageID = null;
 
@@ -89,6 +108,8 @@ class ImageControl extends Component {
 			});
 		}
 
+		const activeFormats = getActiveFormats(value);
+		
 		return (
 			<MediaUploadCheck>
 				<RichTextToolbarButton
@@ -101,9 +122,10 @@ class ImageControl extends Component {
 					allowedTypes={ALLOWED_MEDIA_TYPES}
 					onSelect={({ id, url, alt, width, height }) => {
 						this.closeModal();
-						
+						let newValue = wp.richText.create({ html: `<span class="ek-img wp-inline-image"><a href="/" class="ek-link"><img class="wp-image-${id} ek-inline-img" style="width: ${Math.min(width, 150)}px;" src="${url}" alt=""></a><span class="ek-img-caption">Caption</span></span>` });
+						console.log(newValue );
 						onChange(insert(value,
-							wp.richText.create({ html: `<figure class="ek-img"><img class="wp-image-${id} ek-inline-img" alt="" src="${url}" style="width: ${Math.min(width, 150)}px;"/></figure>` })
+							newValue
 						));
 					}}
 					onClose={this.closeModal}
@@ -112,7 +134,7 @@ class ImageControl extends Component {
 						return null;
 					}}
 				/>}
-				{isObjectActive && (className.split(' ').includes('ek-img-caption') || className.split(' ').includes('ek-inline-img') ) &&
+				{isActive && (activeFormats.filter((formatActive) => [name, 'editorskit/caption'].includes( formatActive.type ) ) ) &&
 					<PopoverAtImage
 						// Reposition Popover when the selection changes or
 						// when the width changes.
@@ -135,17 +157,17 @@ class ImageControl extends Component {
 							value={imageID}
 							render={({ open }) => (
 								<IconButton
-									className="components-toolbar__control"
 									label={__('Edit Gallery')}
 									icon="edit"
 									onClick={open}
 								/>
 							)}
 						/>
+						<IconButton icon="trash" tooltip={__('Remove', 'block-options')} onClick={ this.onRemove } />
 						</form>
 						<style dangerouslySetInnerHTML={{
 							__html: `
-							.editor-format-toolbar__image-container-content{ display: none; }
+							.editor-format-toolbar__image-container-content, .editor-url-popover{ display: none; }
 							.editor-format-toolbar__image-container-content.editorskit-format-toolbar__image-container-content{ display: block; }
 						`}} />
 						{ /* eslint-enable jsx-a11y/no-noninteractive-element-interactions */}

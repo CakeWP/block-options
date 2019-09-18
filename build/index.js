@@ -11081,6 +11081,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! lodash */ "lodash");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _markdown_get_active_formats__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../markdown/get-active-formats */ "./src/extensions/formats/markdown/get-active-formats.js");
 
 
 
@@ -11108,7 +11109,8 @@ var _wp$compose = wp.compose,
     ifCondition = _wp$compose.ifCondition;
 var _wp$richText = wp.richText,
     insertObject = _wp$richText.insertObject,
-    insert = _wp$richText.insert;
+    insert = _wp$richText.insert,
+    removeFormat = _wp$richText.removeFormat;
 var computeCaretRect = wp.dom.computeCaretRect;
 var _wp$data = wp.data,
     select = _wp$data.select,
@@ -11122,6 +11124,11 @@ var _wp$blockEditor = wp.blockEditor,
 var _wp$components = wp.components,
     Popover = _wp$components.Popover,
     IconButton = _wp$components.IconButton;
+/**
+ * Interna dependencies
+ */
+
+
 var ALLOWED_MEDIA_TYPES = ['image'];
 var name = 'editorskit/image';
 
@@ -11157,6 +11164,7 @@ function (_Component) {
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(ImageControl).apply(this, arguments)); // this.onChange = this.onChange.bind(this);
 
     _this.onSelectImage = _this.onSelectImage.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.onRemove = _this.onRemove.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     _this.onKeyDown = _this.onKeyDown.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     _this.openModal = _this.openModal.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     _this.closeModal = _this.closeModal.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
@@ -11179,6 +11187,20 @@ function (_Component) {
       // // Finally, open the modal.
       // items_frame.open();
       console.log(image);
+    }
+  }, {
+    key: "onRemove",
+    value: function onRemove() {
+      var _this$props = this.props,
+          value = _this$props.value,
+          onChange = _this$props.onChange,
+          activeAttributes = _this$props.activeAttributes;
+      console.log(this.props); // map(activeFormats, (activeFormat) => {
+      // 	newValue = removeFormat( newValue, activeFormat.type);
+      // 	newValue = wp.richText.remove(newValue);
+      // });
+      // newValue=removeFormat(newValue, name);
+      // onChange( newValue );
     }
   }, {
     key: "onKeyDown",
@@ -11207,11 +11229,12 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var _this$props = this.props,
-          value = _this$props.value,
-          onChange = _this$props.onChange,
-          isObjectActive = _this$props.isObjectActive,
-          activeObjectAttributes = _this$props.activeObjectAttributes;
+      var _this$props2 = this.props,
+          value = _this$props2.value,
+          onChange = _this$props2.onChange,
+          isActive = _this$props2.isActive,
+          isObjectActive = _this$props2.isObjectActive,
+          activeObjectAttributes = _this$props2.activeObjectAttributes;
       var style = activeObjectAttributes.style,
           className = activeObjectAttributes.className,
           width = activeObjectAttributes.width,
@@ -11227,6 +11250,7 @@ function (_Component) {
         });
       }
 
+      var activeFormats = Object(_markdown_get_active_formats__WEBPACK_IMPORTED_MODULE_10__["getActiveFormats"])(value);
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(MediaUploadCheck, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(RichTextToolbarButton, {
         icon: "format-image",
         title: title,
@@ -11243,9 +11267,11 @@ function (_Component) {
 
           _this2.closeModal();
 
-          onChange(insert(value, wp.richText.create({
-            html: "<figure class=\"ek-img\"><img class=\"wp-image-".concat(id, " ek-inline-img\" alt=\"\" src=\"").concat(url, "\" style=\"width: ").concat(Math.min(width, 150), "px;\"/></figure>")
-          })));
+          var newValue = wp.richText.create({
+            html: "<span class=\"ek-img wp-inline-image\"><a href=\"/\" class=\"ek-link\"><img class=\"wp-image-".concat(id, " ek-inline-img\" style=\"width: ").concat(Math.min(width, 150), "px;\" src=\"").concat(url, "\" alt=\"\"></a><span class=\"ek-img-caption\">Caption</span></span>")
+          });
+          console.log(newValue);
+          onChange(insert(value, newValue));
         },
         onClose: this.closeModal,
         render: function render(_ref3) {
@@ -11253,7 +11279,9 @@ function (_Component) {
           open();
           return null;
         }
-      }), isObjectActive && (className.split(' ').includes('ek-img-caption') || className.split(' ').includes('ek-inline-img')) && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(PopoverAtImage // Reposition Popover when the selection changes or
+      }), isActive && activeFormats.filter(function (formatActive) {
+        return [name, 'editorskit/caption'].includes(formatActive.type);
+      }) && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(PopoverAtImage // Reposition Popover when the selection changes or
       // when the width changes.
       , {
         dependencies: [style, value.start]
@@ -11280,15 +11308,18 @@ function (_Component) {
         render: function render(_ref4) {
           var open = _ref4.open;
           return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(IconButton, {
-            className: "components-toolbar__control",
             label: __('Edit Gallery'),
             icon: "edit",
             onClick: open
           });
         }
+      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(IconButton, {
+        icon: "trash",
+        tooltip: __('Remove', 'block-options'),
+        onClick: this.onRemove
       })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])("style", {
         dangerouslySetInnerHTML: {
-          __html: "\n\t\t\t\t\t\t\t.editor-format-toolbar__image-container-content{ display: none; }\n\t\t\t\t\t\t\t.editor-format-toolbar__image-container-content.editorskit-format-toolbar__image-container-content{ display: block; }\n\t\t\t\t\t\t"
+          __html: "\n\t\t\t\t\t\t\t.editor-format-toolbar__image-container-content, .editor-url-popover{ display: none; }\n\t\t\t\t\t\t\t.editor-format-toolbar__image-container-content.editorskit-format-toolbar__image-container-content{ display: block; }\n\t\t\t\t\t\t"
         }
       })));
     }
@@ -11315,11 +11346,12 @@ function (_Component) {
 /*!***********************************************!*\
   !*** ./src/extensions/formats/image/index.js ***!
   \***********************************************/
-/*! exports provided: image */
+/*! exports provided: caption, image */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "caption", function() { return caption; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "image", function() { return image; });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
@@ -11341,11 +11373,23 @@ var Fragment = wp.element.Fragment;
  */
 
 var name = 'editorskit/image';
+var caption = {
+  name: 'editorskit/image',
+  title: __('Inline Image Caption', 'block-options'),
+  tagName: 'span',
+  className: 'ek-img-caption',
+  attributes: {
+    className: 'class'
+  },
+  edit: function edit() {
+    return null;
+  }
+};
 var image = {
   name: name,
   title: __('Add Inline Image', 'block-options'),
   keywords: [__('photo', 'block-options'), __('media', 'block-options')],
-  tagName: 'figure',
+  tagName: 'span',
   className: 'ek-img',
   attributes: {
     className: 'class'
@@ -11418,7 +11462,7 @@ var select = wp.data.select;
 var isDisabled = select('core/edit-post').isFeatureActive('disableEditorsKitLinkFormats');
 
 function registerFormats() {
-  [_underline__WEBPACK_IMPORTED_MODULE_1__["underline"], _justify__WEBPACK_IMPORTED_MODULE_2__["justify"], _text_color__WEBPACK_IMPORTED_MODULE_3__["textColor"], _background_color__WEBPACK_IMPORTED_MODULE_4__["backgroundColor"], _markdown__WEBPACK_IMPORTED_MODULE_5__["markdown"], _subscript__WEBPACK_IMPORTED_MODULE_6__["subscript"], _superscript__WEBPACK_IMPORTED_MODULE_7__["superscript"], _clear__WEBPACK_IMPORTED_MODULE_8__["clear"], _uppercase__WEBPACK_IMPORTED_MODULE_9__["uppercase"], _image__WEBPACK_IMPORTED_MODULE_11__["image"], !isDisabled ? _link__WEBPACK_IMPORTED_MODULE_10__["link"] : []].forEach(function (_ref) {
+  [_underline__WEBPACK_IMPORTED_MODULE_1__["underline"], _justify__WEBPACK_IMPORTED_MODULE_2__["justify"], _text_color__WEBPACK_IMPORTED_MODULE_3__["textColor"], _background_color__WEBPACK_IMPORTED_MODULE_4__["backgroundColor"], _markdown__WEBPACK_IMPORTED_MODULE_5__["markdown"], _subscript__WEBPACK_IMPORTED_MODULE_6__["subscript"], _superscript__WEBPACK_IMPORTED_MODULE_7__["superscript"], _clear__WEBPACK_IMPORTED_MODULE_8__["clear"], _uppercase__WEBPACK_IMPORTED_MODULE_9__["uppercase"], _image__WEBPACK_IMPORTED_MODULE_11__["image"], _image__WEBPACK_IMPORTED_MODULE_11__["caption"], !isDisabled ? _link__WEBPACK_IMPORTED_MODULE_10__["link"] : []].forEach(function (_ref) {
     var name = _ref.name,
         settings = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0___default()(_ref, ["name"]);
 

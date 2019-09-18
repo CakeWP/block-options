@@ -14,11 +14,24 @@ const { Fragment } = wp.element;
  */
 const name = 'editorskit/image';
 
+export const caption = {
+	name: 'editorskit/image',
+	title: __('Inline Image Caption', 'block-options'),
+	tagName: 'span',
+	className: 'ek-img-caption',
+	attributes: {
+		className: 'class',
+	},
+	edit() {
+		return null;
+	},
+};
+
 export const image = {
 	name,
 	title: __('Add Inline Image', 'block-options'),
 	keywords: [__('photo', 'block-options'), __('media', 'block-options')],
-	tagName: 'figure',
+	tagName: 'span',
 	className: 'ek-img',
 	attributes: {
 		className: 'class',

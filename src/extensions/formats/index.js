@@ -11,7 +11,7 @@ import { superscript } from './superscript';
 import { clear } from './clear';
 import { uppercase } from './uppercase';
 import { link } from './link';
-import { image } from './image';
+import { image, caption } from './image';
 
 /**
  * WordPress dependencies
@@ -33,6 +33,7 @@ function registerFormats() {
 		clear,
 		uppercase,
 		image,
+		caption,
 		! isDisabled ? link : [],
 	].forEach( ( { name, ...settings } ) => {
 		if ( name ) {

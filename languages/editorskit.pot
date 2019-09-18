@@ -3,38 +3,46 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/formats/image/components/controls.js:128
+#: src/extensions/formats/image/components/controls.js:150
 msgid "Align Left"
 msgstr ""
 
-#: src/extensions/formats/image/components/controls.js:129
+#: src/extensions/formats/image/components/controls.js:151
 msgid "Align Right"
 msgstr ""
 
-#: src/extensions/formats/image/components/controls.js:130
+#: src/extensions/formats/image/components/controls.js:152
 msgid "Align Center"
 msgstr ""
 
-#: src/extensions/formats/image/components/controls.js:131
+#: src/extensions/formats/image/components/controls.js:153
 msgid "Align None"
 msgstr ""
 
-#: src/extensions/formats/image/components/controls.js:139
+#: src/extensions/formats/image/components/controls.js:160
 msgid "Edit Gallery"
 msgstr ""
 
-#: src/extensions/formats/image/components/controls.js:20
+#: src/extensions/formats/image/components/controls.js:166
+msgid "Remove"
+msgstr ""
+
+#: src/extensions/formats/image/components/controls.js:25
 msgid "Image"
 msgstr ""
 
 #: src/extensions/formats/image/index.js:19
+msgid "Inline Image Caption"
+msgstr ""
+
+#: src/extensions/formats/image/index.js:32
 msgid "Add Inline Image"
 msgstr ""
 
-#: src/extensions/formats/image/index.js:20
+#: src/extensions/formats/image/index.js:33
 msgid "photo"
 msgstr ""
 
-#: src/extensions/formats/image/index.js:20
+#: src/extensions/formats/image/index.js:33
 msgid "media"
 msgstr ""
