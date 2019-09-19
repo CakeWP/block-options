@@ -10,7 +10,7 @@ const { addFilter } = wp.hooks;
 const { Fragment } = wp.element;
 const { createHigherOrderComponent } = wp.compose;
 
-const allowedBlocks = ['core/columns', 'core/column'];
+const allowedBlocks = ['core/columns', 'core/column', 'core/group'];
 
 /**
  * Override the default edit UI to include a new block toolbar control

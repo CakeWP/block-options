@@ -8547,7 +8547,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 var addFilter = wp.hooks.addFilter;
 var Fragment = wp.element.Fragment;
 var createHigherOrderComponent = wp.compose.createHigherOrderComponent;
-var allowedBlocks = ['core/columns', 'core/column'];
+var allowedBlocks = ['core/columns', 'core/column', 'core/group'];
 /**
  * Override the default edit UI to include a new block toolbar control
  *
