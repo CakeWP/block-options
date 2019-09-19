@@ -37,6 +37,10 @@ function addAttributes( settings ) {
 				type: 'boolean',
 				default: false,
 			},
+			linkSponsored: {
+				type: 'boolean',
+				default: false,
+			},
 			linkFullBlock: {
 				type: 'boolean',
 				default: false,

@@ -249,6 +249,7 @@ class Controls extends Component {
 			linkDestination,
 			linkTarget,
 			linkNoFollow,
+			linkSponsored,
 			linkFullBlock,
 		} = attributes;
 
@@ -272,6 +273,13 @@ class Controls extends Component {
 									setAttributes( { linkNoFollow: ! linkNoFollow } );
 								} }
 								checked={ !! linkNoFollow } />
+
+							<ToggleControl
+								label={__('Sponsored', 'block-options')}
+								onChange={() => {
+									setAttributes({ linkSponsored: !linkSponsored });
+								}}
+								checked={!!linkSponsored} />
 
 							<ToggleControl
 								label={ __( 'Apply link to whole block', 'block-options' ) }

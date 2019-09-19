@@ -8809,6 +8809,7 @@ function (_Component) {
           linkDestination = attributes.linkDestination,
           linkTarget = attributes.linkTarget,
           linkNoFollow = attributes.linkNoFollow,
+          linkSponsored = attributes.linkSponsored,
           linkFullBlock = attributes.linkFullBlock;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(ImageURLInputUI, {
         url: href || '',
@@ -8827,6 +8828,14 @@ function (_Component) {
             });
           },
           checked: !!linkNoFollow
+        }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(ToggleControl, {
+          label: __('Sponsored', 'block-options'),
+          onChange: function onChange() {
+            setAttributes({
+              linkSponsored: !linkSponsored
+            });
+          },
+          checked: !!linkSponsored
         }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(ToggleControl, {
           label: __('Apply link to whole block', 'block-options'),
           onChange: function onChange() {
@@ -8982,6 +8991,10 @@ function addAttributes(settings) {
         default: 'none'
       },
       linkNoFollow: {
+        type: 'boolean',
+        default: false
+      },
+      linkSponsored: {
         type: 'boolean',
         default: false
       },
