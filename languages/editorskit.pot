@@ -3,10 +3,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/block-toolbar/media-text-card/components/toolbar.js:49
+#: src/extensions/block-toolbar/media-text-card/components/toolbar.js:65
 msgid "Show media on top"
 msgstr ""
 
-#: src/extensions/block-toolbar/media-text-card/components/toolbar.js:64
+#: src/extensions/block-toolbar/media-text-card/components/toolbar.js:73
 msgid "Show media on bottom"
 msgstr ""

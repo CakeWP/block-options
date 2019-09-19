@@ -24,11 +24,27 @@ class ToolbarControls extends Component {
 		} = attributes;
 
 		if (!['top', 'bottom'].includes(mediaPosition) && className ){
-			let newClassName = className.replace('has-media-on-the-bottom', '').replace('has-media-on-the-top', '').trim();
-			newClassName = newClassName.replace(/\s+/g, ' ').trim();
-
-			setAttributes({ className: newClassName })
+			setAttributes({ className: this.removeTopBottom() })
 		}
+	}
+
+	removeTopBottom(){
+		const {
+			attributes,
+		} = this.props;
+
+		const {
+			className,
+		} = attributes;
+
+		let newClassName = '';
+
+		if (className ){
+			newClassName = className.replace('has-media-on-the-bottom', '').replace('has-media-on-the-top', '').trim();
+			newClassName = newClassName.replace(/\s+/g, ' ').trim();
+		}
+
+		return newClassName;
 	}
 
 	render() {
@@ -49,14 +65,7 @@ class ToolbarControls extends Component {
 			title: __('Show media on top'),
 			isActive: mediaPosition === 'top',
 			onClick: () => {
-				let newClassName = className;
-				if (newClassName) {
-					newClassName = newClassName.replace('has-media-on-the-bottom', '').replace('has-media-on-the-top', '').trim() + ' has-media-on-the-top';
-					newClassName = newClassName.replace(/\s+/g, ' ').trim();
-				}else{
-					newClassName = 'has-media-on-the-top';
-				}
-				setAttributes({ mediaPosition: 'top', className: newClassName, align: '' })
+				setAttributes({ mediaPosition: 'top', className: this.removeTopBottom() + ' has-media-on-the-top', align: '' })
 			},
 		}, {
 			className: 'align-pull-bottom',
@@ -64,14 +73,7 @@ class ToolbarControls extends Component {
 			title: __('Show media on bottom'),
 			isActive: mediaPosition === 'bottom',
 			onClick: () => {
-				let newClassName = className;
-				if (newClassName) {
-					newClassName = newClassName.replace('has-media-on-the-top', '').replace('has-media-on-the-bottom', '').trim() + ' has-media-on-the-bottom';
-					newClassName = newClassName.replace(/\s+/g, ' ').trim();
-				} else {
-					newClassName = 'has-media-on-the-bottom';
-				}
-				setAttributes({ mediaPosition: 'bottom', className: newClassName, align: '' })
+				setAttributes({ mediaPosition: 'bottom', className: this.removeTopBottom() + ' has-media-on-the-bottom', align: '' })
 			},
 		}];
 

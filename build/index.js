@@ -8376,16 +8376,30 @@ function (_Component) {
           className = attributes.className;
 
       if (!['top', 'bottom'].includes(mediaPosition) && className) {
-        var newClassName = className.replace('has-media-on-the-bottom', '').replace('has-media-on-the-top', '').trim();
-        newClassName = newClassName.replace(/\s+/g, ' ').trim();
         setAttributes({
-          className: newClassName
+          className: this.removeTopBottom()
         });
       }
     }
   }, {
+    key: "removeTopBottom",
+    value: function removeTopBottom() {
+      var attributes = this.props.attributes;
+      var className = attributes.className;
+      var newClassName = '';
+
+      if (className) {
+        newClassName = className.replace('has-media-on-the-bottom', '').replace('has-media-on-the-top', '').trim();
+        newClassName = newClassName.replace(/\s+/g, ' ').trim();
+      }
+
+      return newClassName;
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
       var _this$props2 = this.props,
           attributes = _this$props2.attributes,
           setAttributes = _this$props2.setAttributes;
@@ -8397,18 +8411,9 @@ function (_Component) {
         title: __('Show media on top'),
         isActive: mediaPosition === 'top',
         onClick: function onClick() {
-          var newClassName = className;
-
-          if (newClassName) {
-            newClassName = newClassName.replace('has-media-on-the-bottom', '').replace('has-media-on-the-top', '').trim() + ' has-media-on-the-top';
-            newClassName = newClassName.replace(/\s+/g, ' ').trim();
-          } else {
-            newClassName = 'has-media-on-the-top';
-          }
-
           setAttributes({
             mediaPosition: 'top',
-            className: newClassName,
+            className: _this.removeTopBottom() + ' has-media-on-the-top',
             align: ''
           });
         }
@@ -8418,18 +8423,9 @@ function (_Component) {
         title: __('Show media on bottom'),
         isActive: mediaPosition === 'bottom',
         onClick: function onClick() {
-          var newClassName = className;
-
-          if (newClassName) {
-            newClassName = newClassName.replace('has-media-on-the-top', '').replace('has-media-on-the-bottom', '').trim() + ' has-media-on-the-bottom';
-            newClassName = newClassName.replace(/\s+/g, ' ').trim();
-          } else {
-            newClassName = 'has-media-on-the-bottom';
-          }
-
           setAttributes({
             mediaPosition: 'bottom',
-            className: newClassName,
+            className: _this.removeTopBottom() + ' has-media-on-the-bottom',
             align: ''
           });
         }
