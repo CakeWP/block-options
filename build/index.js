@@ -8331,6 +8331,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_6__);
 
 
 
@@ -8339,8 +8341,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /**
+ * External dependencies
+ */
+
+/**
  * WordPress dependencies
  */
+
 var __ = wp.i18n.__;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
@@ -8360,20 +8367,49 @@ function (_Component) {
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(ToolbarControls, [{
-    key: "render",
-    value: function render() {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
       var _this$props = this.props,
           attributes = _this$props.attributes,
           setAttributes = _this$props.setAttributes;
-      var mediaPosition = attributes.mediaPosition;
+      var mediaPosition = attributes.mediaPosition,
+          className = attributes.className;
+
+      if (!['top', 'bottom'].includes(mediaPosition) && className) {
+        var newClassName = className.replace('has-media-on-the-bottom', '').replace('has-media-on-the-top', '').trim();
+        newClassName = newClassName.replace(/\s+/g, ' ').trim();
+        setAttributes({
+          className: newClassName
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props2 = this.props,
+          attributes = _this$props2.attributes,
+          setAttributes = _this$props2.setAttributes;
+      var mediaPosition = attributes.mediaPosition,
+          className = attributes.className;
       var toolbarControls = [{
         className: 'align-pull-top',
         icon: 'align-pull-left',
         title: __('Show media on top'),
         isActive: mediaPosition === 'top',
         onClick: function onClick() {
-          return setAttributes({
-            mediaPosition: 'top'
+          var newClassName = className;
+
+          if (newClassName) {
+            newClassName = newClassName.replace('has-media-on-the-bottom', '').replace('has-media-on-the-top', '').trim() + ' has-media-on-the-top';
+            newClassName = newClassName.replace(/\s+/g, ' ').trim();
+          } else {
+            newClassName = 'has-media-on-the-top';
+          }
+
+          setAttributes({
+            mediaPosition: 'top',
+            className: newClassName,
+            align: ''
           });
         }
       }, {
@@ -8382,8 +8418,19 @@ function (_Component) {
         title: __('Show media on bottom'),
         isActive: mediaPosition === 'bottom',
         onClick: function onClick() {
-          return setAttributes({
-            mediaPosition: 'bottom'
+          var newClassName = className;
+
+          if (newClassName) {
+            newClassName = newClassName.replace('has-media-on-the-top', '').replace('has-media-on-the-bottom', '').trim() + ' has-media-on-the-bottom';
+            newClassName = newClassName.replace(/\s+/g, ' ').trim();
+          } else {
+            newClassName = 'has-media-on-the-bottom';
+          }
+
+          setAttributes({
+            mediaPosition: 'bottom',
+            className: newClassName,
+            align: ''
           });
         }
       }];
