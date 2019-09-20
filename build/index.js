@@ -10380,7 +10380,9 @@ var _wp$data = wp.data,
     withDispatch = _wp$data.withDispatch,
     select = _wp$data.select,
     subscribe = _wp$data.subscribe;
-var compose = wp.compose.compose;
+var _wp$compose = wp.compose,
+    compose = _wp$compose.compose,
+    ifCondition = _wp$compose.ifCondition;
 var Component = wp.element.Component;
 var hasBlockSupport = wp.blocks.hasBlockSupport;
 var withSpokenMessages = wp.components.withSpokenMessages;
@@ -10504,7 +10506,7 @@ function (_Component) {
   return {
     content: select('core/editor').getEditedPostAttribute('content'),
     blocks: select('core/editor').getEditedPostAttribute('blocks'),
-    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitHeadingLabelWriting')
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitReadingTimeWriting')
   };
 }), withDispatch(function (dispatch) {
   return {
@@ -10516,6 +10518,8 @@ function (_Component) {
       });
     }
   };
+}), ifCondition(function (props) {
+  return !props.isDisabled;
 }), withSpokenMessages])(ReadingTime));
 
 /***/ }),

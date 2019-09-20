@@ -12,7 +12,7 @@ import { map } from 'lodash';
  */
 const { __ } = wp.i18n;
 const { withSelect, withDispatch, select, subscribe } = wp.data;
-const { compose } = wp.compose;
+const { compose, ifCondition } = wp.compose;
 const { Component } = wp.element;
 const { hasBlockSupport } = wp.blocks;
 const { withSpokenMessages } = wp.components;
@@ -111,7 +111,7 @@ export default compose( [
 	withSelect( ( select ) => ( {
 		content: select( 'core/editor' ).getEditedPostAttribute( 'content' ),
 		blocks: select( 'core/editor' ).getEditedPostAttribute( 'blocks' ),
-		isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitHeadingLabelWriting' ),
+		isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitReadingTimeWriting' ),
 	} ) ),
 	withDispatch((dispatch) => {
 		return {
@@ -123,6 +123,9 @@ export default compose( [
 				});
 			},
 		};
+	}),
+	ifCondition((props) => {
+		return !props.isDisabled ;
 	}),
 	withSpokenMessages,
 ] )( ReadingTime );
