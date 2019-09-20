@@ -2,6 +2,7 @@
  * External dependencies
  */
 import { count as wordcount } from '@wordpress/wordcount';
+import {map} from 'lodash';
 
 /**
  * WordPress dependencies
@@ -9,7 +10,10 @@ import { count as wordcount } from '@wordpress/wordcount';
 const { withSelect } = wp.data;
 const { compose } = wp.compose;
 const { Component } = wp.element;
+const { hasBlockSupport } = wp.blocks;
 const { withSpokenMessages } = wp.components;
+
+const mediaBlocks = ['core/image', 'core/gallery', 'core/cover'];
 
 /**
  * Render plugin
@@ -34,12 +38,23 @@ class ReadingTime extends Component {
 	}
 
 	handleButtonClick(event) {
-		const { content } = this.props;
+		const { content, blocks } = this.props;
 		let words = wordcount(content, 'words', {});
 		let button = document.querySelector('.table-of-contents button').getAttribute('aria-expanded');
 		if (document.querySelector('.table-of-contents').contains(event.target) && button === 'false' ){
-			let estimated = words / 275;
-			console.log(estimated);
+			let estimated = (words / 275) * 60; //get time on seconds
+			if ( blocks ){
+				let i = 12;
+				map(blocks, (block) => {
+					if (mediaBlocks.includes(block.name) || hasBlockSupport(block, 'hasWordCount') ){
+						estimated = estimated + i;
+						if( i > 3 ){
+							i--;
+						}
+					}
+				});
+			}
+			estimated = estimated/60; //convert to minutes
 			var checkExist = setInterval(function () {
 				if (document.querySelector('.table-of-contents__popover') ) {
 					document.querySelector('.table-of-contents__counts').insertAdjacentHTML('beforeend',
@@ -65,6 +80,7 @@ class ReadingTime extends Component {
 export default compose([
 	withSelect((select) => ({
 		content: select('core/editor').getEditedPostAttribute('content'),
+		blocks: select('core/editor').getEditedPostAttribute('blocks'),
 		isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitHeadingLabelWriting'),
 	})),
 	withSpokenMessages,

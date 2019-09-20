@@ -10352,6 +10352,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _wordpress_wordcount__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/wordcount */ "@wordpress/wordcount");
 /* harmony import */ var _wordpress_wordcount__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_wordcount__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_7__);
 
 
 
@@ -10363,6 +10365,7 @@ __webpack_require__.r(__webpack_exports__);
  * External dependencies
  */
 
+
 /**
  * WordPress dependencies
  */
@@ -10370,7 +10373,9 @@ __webpack_require__.r(__webpack_exports__);
 var withSelect = wp.data.withSelect;
 var compose = wp.compose.compose;
 var Component = wp.element.Component;
+var hasBlockSupport = wp.blocks.hasBlockSupport;
 var withSpokenMessages = wp.components.withSpokenMessages;
+var mediaBlocks = ['core/image', 'core/gallery', 'core/cover'];
 /**
  * Render plugin
  */
@@ -10410,13 +10415,30 @@ function (_Component) {
   }, {
     key: "handleButtonClick",
     value: function handleButtonClick(event) {
-      var content = this.props.content;
+      var _this$props = this.props,
+          content = _this$props.content,
+          blocks = _this$props.blocks;
       var words = Object(_wordpress_wordcount__WEBPACK_IMPORTED_MODULE_6__["count"])(content, 'words', {});
       var button = document.querySelector('.table-of-contents button').getAttribute('aria-expanded');
 
       if (document.querySelector('.table-of-contents').contains(event.target) && button === 'false') {
-        var estimated = words / 275;
-        console.log(estimated);
+        var estimated = words / 275 * 60; //get time on seconds
+
+        if (blocks) {
+          var i = 12;
+          Object(lodash__WEBPACK_IMPORTED_MODULE_7__["map"])(blocks, function (block) {
+            if (mediaBlocks.includes(block.name) || hasBlockSupport(block, 'hasWordCount')) {
+              estimated = estimated + i;
+
+              if (i > 3) {
+                i--;
+              }
+            }
+          });
+        }
+
+        estimated = estimated / 60; //convert to minutes
+
         var checkExist = setInterval(function () {
           if (document.querySelector('.table-of-contents__popover')) {
             document.querySelector('.table-of-contents__counts').insertAdjacentHTML('beforeend', "<li class=\"table-of-contents__count table-of-contents__wordcount\">Est. Reading Time<span class=\"table-of-contents__number\">".concat(estimated.toFixed(), " min</span></li>"));
@@ -10429,9 +10451,9 @@ function (_Component) {
   }, {
     key: "initialize",
     value: function initialize() {
-      var _this$props = this.props,
-          isDisabled = _this$props.isDisabled,
-          postmeta = _this$props.postmeta;
+      var _this$props2 = this.props,
+          isDisabled = _this$props2.isDisabled,
+          postmeta = _this$props2.postmeta;
     }
   }, {
     key: "render",
@@ -10446,6 +10468,7 @@ function (_Component) {
 /* harmony default export */ __webpack_exports__["default"] = (compose([withSelect(function (select) {
   return {
     content: select('core/editor').getEditedPostAttribute('content'),
+    blocks: select('core/editor').getEditedPostAttribute('blocks'),
     isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitHeadingLabelWriting')
   };
 }), withSpokenMessages])(ReadingTime));
