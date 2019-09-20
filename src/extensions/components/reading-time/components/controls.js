@@ -29,9 +29,9 @@ class ReadingTime extends Component {
 		this.calculateReadingTime = this.calculateReadingTime.bind( this );
 		this.handleButtonClick = this.handleButtonClick.bind( this );
 
-		this.state ={
+		this.state = {
 			readingTime: 0,
-		}
+		};
 	}
 	componentDidMount() {
 		this.updateMeta();
@@ -45,9 +45,9 @@ class ReadingTime extends Component {
 	handleButtonClick( event ) {
 		const button = document.querySelector( '.table-of-contents button' ).getAttribute( 'aria-expanded' );
 		if ( document.querySelector( '.table-of-contents' ).contains( event.target ) && button === 'false' ) {
-			let estimated = this.calculateReadingTime();
+			const estimated = this.calculateReadingTime();
 
-			let checkExist = setInterval( function() {
+			const checkExist = setInterval( function() {
 				if ( document.querySelector( '.table-of-contents__popover' ) ) {
 					document.querySelector( '.table-of-contents__counts' ).insertAdjacentHTML( 'beforeend',
 						`<li class="table-of-contents__count table-of-contents__wordcount">${ __( 'Reading Time', 'block-options' ) }<span class="table-of-contents__number">${ estimated } min</span></li>`
@@ -59,45 +59,45 @@ class ReadingTime extends Component {
 	}
 	calculateReadingTime() {
 		const { content, blocks } = this.props;
-		const words = wordcount(content, 'words', {});
+		const words = wordcount( content, 'words', {} );
 
-		let estimated = (words / 275) * 60; //get time on seconds
-		if (blocks) {
+		let estimated = ( words / 275 ) * 60; //get time on seconds
+		if ( blocks ) {
 			let i = 12;
-			map(blocks, (block) => {
-				if (mediaBlocks.includes(block.name) || hasBlockSupport(block, 'hasWordCount')) {
+			map( blocks, ( block ) => {
+				if ( mediaBlocks.includes( block.name ) || hasBlockSupport( block, 'hasWordCount' ) ) {
 					estimated = estimated + i;
-					if (i > 3) {
+					if ( i > 3 ) {
 						i--;
 					}
 				}
-			});
+			} );
 		}
 		estimated = estimated / 60; //convert to minutes
 
 		//do not show zero
-		if (estimated < 1) {
+		if ( estimated < 1 ) {
 			estimated = 1;
 		}
 
 		return estimated.toFixed();
 	}
 
-	updateMeta(){
+	updateMeta() {
 		const { updateReadingTime } = this.props;
 
-		let unssubscribe = subscribe(() => {
-			var isSavingPost = select('core/editor').isSavingPost();
-			var isAutosavingPost = select('core/editor').isAutosavingPost();
+		const unssubscribe = subscribe( () => {
+			const isSavingPost = select( 'core/editor' ).isSavingPost();
+			const isAutosavingPost = select( 'core/editor' ).isAutosavingPost();
 
-			if (isSavingPost && !isAutosavingPost) {
+			if ( isSavingPost && ! isAutosavingPost ) {
 				const calculatedTime = this.calculateReadingTime();
-				if ( calculatedTime !== this.state.readingTime ){
-					this.setState({ readingTime: calculatedTime });
-					updateReadingTime(parseInt(calculatedTime) );
+				if ( calculatedTime !== this.state.readingTime ) {
+					this.setState( { readingTime: calculatedTime } );
+					updateReadingTime( parseInt( calculatedTime ) );
 				}
 			}
-		});
+		} );
 
 		return unssubscribe;
 	}
@@ -108,24 +108,24 @@ class ReadingTime extends Component {
 }
 
 export default compose( [
-	withSelect( ( select ) => ( {
+	withSelect( () => ( {
 		content: select( 'core/editor' ).getEditedPostAttribute( 'content' ),
 		blocks: select( 'core/editor' ).getEditedPostAttribute( 'blocks' ),
 		isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitReadingTimeWriting' ),
 	} ) ),
-	withDispatch((dispatch) => {
+	withDispatch( ( dispatch ) => {
 		return {
-			updateReadingTime(estimated) {
-				dispatch('core/editor').editPost({
+			updateReadingTime( estimated ) {
+				dispatch( 'core/editor' ).editPost( {
 					meta: {
 						_editorskit_reading_time: estimated,
 					},
-				});
+				} );
 			},
 		};
-	}),
-	ifCondition((props) => {
-		return !props.isDisabled ;
-	}),
+	} ),
+	ifCondition( ( props ) => {
+		return ! props.isDisabled;
+	} ),
 	withSpokenMessages,
 ] )( ReadingTime );
