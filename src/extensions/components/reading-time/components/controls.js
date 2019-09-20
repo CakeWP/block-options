@@ -10,6 +10,7 @@ import { map } from 'lodash';
 /**
  * WordPress dependencies
  */
+const { __ } = wp.i18n;
 const { withSelect, withDispatch, select, subscribe } = wp.data;
 const { compose } = wp.compose;
 const { Component } = wp.element;
@@ -49,7 +50,7 @@ class ReadingTime extends Component {
 			let checkExist = setInterval( function() {
 				if ( document.querySelector( '.table-of-contents__popover' ) ) {
 					document.querySelector( '.table-of-contents__counts' ).insertAdjacentHTML( 'beforeend',
-						`<li class="table-of-contents__count table-of-contents__wordcount">Reading Time<span class="table-of-contents__number">${ estimated } min</span></li>`
+						`<li class="table-of-contents__count table-of-contents__wordcount">${ __( 'Reading Time', 'block-options' ) }<span class="table-of-contents__number">${ estimated } min</span></li>`
 					);
 					clearInterval( checkExist );
 				}

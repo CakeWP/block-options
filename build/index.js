@@ -10374,6 +10374,7 @@ __webpack_require__.r(__webpack_exports__);
  * WordPress dependencies
  */
 
+var __ = wp.i18n.__;
 var _wp$data = wp.data,
     withSelect = _wp$data.withSelect,
     withDispatch = _wp$data.withDispatch,
@@ -10428,7 +10429,7 @@ function (_Component) {
         var estimated = this.calculateReadingTime();
         var checkExist = setInterval(function () {
           if (document.querySelector('.table-of-contents__popover')) {
-            document.querySelector('.table-of-contents__counts').insertAdjacentHTML('beforeend', "<li class=\"table-of-contents__count table-of-contents__wordcount\">Reading Time<span class=\"table-of-contents__number\">".concat(estimated, " min</span></li>"));
+            document.querySelector('.table-of-contents__counts').insertAdjacentHTML('beforeend', "<li class=\"table-of-contents__count table-of-contents__wordcount\">".concat(__('Reading Time', 'block-options'), "<span class=\"table-of-contents__number\">").concat(estimated, " min</span></li>"));
             clearInterval(checkExist);
           }
         }, 100); // check every 100ms
