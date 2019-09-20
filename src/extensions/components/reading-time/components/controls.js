@@ -10,7 +10,7 @@ import { map } from 'lodash';
 /**
  * WordPress dependencies
  */
-const { withSelect } = wp.data;
+const { withSelect, withDispatch, select, subscribe } = wp.data;
 const { compose } = wp.compose;
 const { Component } = wp.element;
 const { hasBlockSupport } = wp.blocks;
@@ -24,9 +24,16 @@ const mediaBlocks = [ 'core/image', 'core/gallery', 'core/cover' ];
 class ReadingTime extends Component {
 	constructor() {
 		super( ...arguments );
+		this.updateMeta = this.updateMeta.bind( this );
+		this.calculateReadingTime = this.calculateReadingTime.bind( this );
 		this.handleButtonClick = this.handleButtonClick.bind( this );
+
+		this.state ={
+			readingTime: 0,
+		}
 	}
 	componentDidMount() {
+		this.updateMeta();
 		document.addEventListener( 'mousedown', this.handleButtonClick );
 	}
 
@@ -35,32 +42,63 @@ class ReadingTime extends Component {
 	}
 
 	handleButtonClick( event ) {
-		const { content, blocks } = this.props;
-		const words = wordcount( content, 'words', {} );
 		const button = document.querySelector( '.table-of-contents button' ).getAttribute( 'aria-expanded' );
 		if ( document.querySelector( '.table-of-contents' ).contains( event.target ) && button === 'false' ) {
-			let estimated = ( words / 275 ) * 60; //get time on seconds
-			if ( blocks ) {
-				let i = 12;
-				map( blocks, ( block ) => {
-					if ( mediaBlocks.includes( block.name ) || hasBlockSupport( block, 'hasWordCount' ) ) {
-						estimated = estimated + i;
-						if ( i > 3 ) {
-							i--;
-						}
-					}
-				} );
-			}
-			estimated = estimated / 60; //convert to minutes
+			let estimated = this.calculateReadingTime();
+
 			let checkExist = setInterval( function() {
 				if ( document.querySelector( '.table-of-contents__popover' ) ) {
 					document.querySelector( '.table-of-contents__counts' ).insertAdjacentHTML( 'beforeend',
-						`<li class="table-of-contents__count table-of-contents__wordcount">Est. Reading Time<span class="table-of-contents__number">${ estimated.toFixed() } min</span></li>`
+						`<li class="table-of-contents__count table-of-contents__wordcount">Reading Time<span class="table-of-contents__number">${ estimated } min</span></li>`
 					);
 					clearInterval( checkExist );
 				}
 			}, 100 ); // check every 100ms
 		}
+	}
+	calculateReadingTime() {
+		const { content, blocks } = this.props;
+		const words = wordcount(content, 'words', {});
+
+		let estimated = (words / 275) * 60; //get time on seconds
+		if (blocks) {
+			let i = 12;
+			map(blocks, (block) => {
+				if (mediaBlocks.includes(block.name) || hasBlockSupport(block, 'hasWordCount')) {
+					estimated = estimated + i;
+					if (i > 3) {
+						i--;
+					}
+				}
+			});
+		}
+		estimated = estimated / 60; //convert to minutes
+
+		//do not show zero
+		if (estimated < 1) {
+			estimated = 1;
+		}
+
+		return estimated.toFixed();
+	}
+
+	updateMeta(){
+		const { updateReadingTime } = this.props;
+
+		let unssubscribe = subscribe(() => {
+			var isSavingPost = select('core/editor').isSavingPost();
+			var isAutosavingPost = select('core/editor').isAutosavingPost();
+
+			if (isSavingPost && !isAutosavingPost) {
+				const calculatedTime = this.calculateReadingTime();
+				if ( calculatedTime !== this.state.readingTime ){
+					this.setState({ readingTime: calculatedTime });
+					updateReadingTime(parseInt(calculatedTime) );
+				}
+			}
+		});
+
+		return unssubscribe;
 	}
 
 	render() {
@@ -74,5 +112,16 @@ export default compose( [
 		blocks: select( 'core/editor' ).getEditedPostAttribute( 'blocks' ),
 		isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitHeadingLabelWriting' ),
 	} ) ),
+	withDispatch((dispatch) => {
+		return {
+			updateReadingTime(estimated) {
+				dispatch('core/editor').editPost({
+					meta: {
+						_editorskit_reading_time: estimated,
+					},
+				});
+			},
+		};
+	}),
 	withSpokenMessages,
 ] )( ReadingTime );

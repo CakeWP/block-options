@@ -10365,12 +10365,20 @@ __webpack_require__.r(__webpack_exports__);
  * External dependencies
  */
 
+/**
+ * WordPress dependencies
+ */
+
 
 /**
  * WordPress dependencies
  */
 
-var withSelect = wp.data.withSelect;
+var _wp$data = wp.data,
+    withSelect = _wp$data.withSelect,
+    withDispatch = _wp$data.withDispatch,
+    select = _wp$data.select,
+    subscribe = _wp$data.subscribe;
 var compose = wp.compose.compose;
 var Component = wp.element.Component;
 var hasBlockSupport = wp.blocks.hasBlockSupport;
@@ -10391,13 +10399,19 @@ function (_Component) {
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, ReadingTime);
 
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(ReadingTime).apply(this, arguments));
+    _this.updateMeta = _this.updateMeta.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.calculateReadingTime = _this.calculateReadingTime.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     _this.handleButtonClick = _this.handleButtonClick.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.state = {
+      readingTime: 0
+    };
     return _this;
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(ReadingTime, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      this.updateMeta();
       document.addEventListener('mousedown', this.handleButtonClick);
     }
   }, {
@@ -10408,37 +10422,72 @@ function (_Component) {
   }, {
     key: "handleButtonClick",
     value: function handleButtonClick(event) {
-      var _this$props = this.props,
-          content = _this$props.content,
-          blocks = _this$props.blocks;
-      var words = Object(_wordpress_wordcount__WEBPACK_IMPORTED_MODULE_6__["count"])(content, 'words', {});
       var button = document.querySelector('.table-of-contents button').getAttribute('aria-expanded');
 
       if (document.querySelector('.table-of-contents').contains(event.target) && button === 'false') {
-        var estimated = words / 275 * 60; //get time on seconds
-
-        if (blocks) {
-          var i = 12;
-          Object(lodash__WEBPACK_IMPORTED_MODULE_7__["map"])(blocks, function (block) {
-            if (mediaBlocks.includes(block.name) || hasBlockSupport(block, 'hasWordCount')) {
-              estimated = estimated + i;
-
-              if (i > 3) {
-                i--;
-              }
-            }
-          });
-        }
-
-        estimated = estimated / 60; //convert to minutes
-
+        var estimated = this.calculateReadingTime();
         var checkExist = setInterval(function () {
           if (document.querySelector('.table-of-contents__popover')) {
-            document.querySelector('.table-of-contents__counts').insertAdjacentHTML('beforeend', "<li class=\"table-of-contents__count table-of-contents__wordcount\">Est. Reading Time<span class=\"table-of-contents__number\">".concat(estimated.toFixed(), " min</span></li>"));
+            document.querySelector('.table-of-contents__counts').insertAdjacentHTML('beforeend', "<li class=\"table-of-contents__count table-of-contents__wordcount\">Reading Time<span class=\"table-of-contents__number\">".concat(estimated, " min</span></li>"));
             clearInterval(checkExist);
           }
         }, 100); // check every 100ms
       }
+    }
+  }, {
+    key: "calculateReadingTime",
+    value: function calculateReadingTime() {
+      var _this$props = this.props,
+          content = _this$props.content,
+          blocks = _this$props.blocks;
+      var words = Object(_wordpress_wordcount__WEBPACK_IMPORTED_MODULE_6__["count"])(content, 'words', {});
+      var estimated = words / 275 * 60; //get time on seconds
+
+      if (blocks) {
+        var i = 12;
+        Object(lodash__WEBPACK_IMPORTED_MODULE_7__["map"])(blocks, function (block) {
+          if (mediaBlocks.includes(block.name) || hasBlockSupport(block, 'hasWordCount')) {
+            estimated = estimated + i;
+
+            if (i > 3) {
+              i--;
+            }
+          }
+        });
+      }
+
+      estimated = estimated / 60; //convert to minutes
+      //do not show zero
+
+      if (estimated < 1) {
+        estimated = 1;
+      }
+
+      return estimated.toFixed();
+    }
+  }, {
+    key: "updateMeta",
+    value: function updateMeta() {
+      var _this2 = this;
+
+      var updateReadingTime = this.props.updateReadingTime;
+      var unssubscribe = subscribe(function () {
+        var isSavingPost = select('core/editor').isSavingPost();
+        var isAutosavingPost = select('core/editor').isAutosavingPost();
+
+        if (isSavingPost && !isAutosavingPost) {
+          var calculatedTime = _this2.calculateReadingTime();
+
+          if (calculatedTime !== _this2.state.readingTime) {
+            _this2.setState({
+              readingTime: calculatedTime
+            });
+
+            updateReadingTime(parseInt(calculatedTime));
+          }
+        }
+      });
+      return unssubscribe;
     }
   }, {
     key: "render",
@@ -10455,6 +10504,16 @@ function (_Component) {
     content: select('core/editor').getEditedPostAttribute('content'),
     blocks: select('core/editor').getEditedPostAttribute('blocks'),
     isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitHeadingLabelWriting')
+  };
+}), withDispatch(function (dispatch) {
+  return {
+    updateReadingTime: function updateReadingTime(estimated) {
+      dispatch('core/editor').editPost({
+        meta: {
+          _editorskit_reading_time: estimated
+        }
+      });
+    }
   };
 }), withSpokenMessages])(ReadingTime));
 
