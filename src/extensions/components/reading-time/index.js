@@ -8,7 +8,7 @@ import ReadingTime from './components/controls';
  */
 const { registerPlugin } = wp.plugins;
 
-registerPlugin('editorskit-reading-time', {
+registerPlugin( 'editorskit-reading-time', {
 	icon: false,
 	render: ReadingTime,
-});
+} );

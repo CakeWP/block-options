@@ -10391,7 +10391,6 @@ function (_Component) {
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, ReadingTime);
 
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(ReadingTime).apply(this, arguments));
-    _this.initialize = _this.initialize.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     _this.handleButtonClick = _this.handleButtonClick.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     return _this;
   }
@@ -10399,13 +10398,7 @@ function (_Component) {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(ReadingTime, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.initialize();
       document.addEventListener('mousedown', this.handleButtonClick);
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      this.initialize();
     }
   }, {
     key: "componentWillUnmount",
@@ -10445,15 +10438,7 @@ function (_Component) {
             clearInterval(checkExist);
           }
         }, 100); // check every 100ms
-        // console.log(document.querySelector('.table-of-contents__popover'));
       }
-    }
-  }, {
-    key: "initialize",
-    value: function initialize() {
-      var _this$props2 = this.props,
-          isDisabled = _this$props2.isDisabled,
-          postmeta = _this$props2.postmeta;
     }
   }, {
     key: "render",
