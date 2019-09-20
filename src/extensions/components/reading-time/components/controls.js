@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { count } from '@wordpress/wordcount';
+import { count as wordcount } from '@wordpress/wordcount';
 
 /**
  * WordPress dependencies
@@ -34,28 +34,27 @@ class ReadingTime extends Component {
 	}
 
 	handleButtonClick(event) {
-		if (document.querySelector('.table-of-contents').contains(event.target) ){
+		const { content } = this.props;
+		let words = wordcount(content, 'words', {});
+		let button = document.querySelector('.table-of-contents button').getAttribute('aria-expanded');
+		if (document.querySelector('.table-of-contents').contains(event.target) && button === 'false' ){
+			let estimated = words / 275;
+			console.log(estimated);
 			var checkExist = setInterval(function () {
-				if ( document.querySelector('.table-of-contents__popover') ) {
-					//insert prompt on header
+				if (document.querySelector('.table-of-contents__popover') ) {
 					document.querySelector('.table-of-contents__counts').insertAdjacentHTML('beforeend',
-						'<li class="table-of-contents__count">Est. Reading Time<span class="table-of-contents__number">10 min</span></li>'
+						`<li class="table-of-contents__count table-of-contents__wordcount">Est. Reading Time<span class="table-of-contents__number">${estimated.toFixed() } min</span></li>`
 					);
 					clearInterval(checkExist);
 				}
 			}, 100); // check every 100ms
+			
 			// console.log(document.querySelector('.table-of-contents__popover'));
 		}
 	}
 
 	initialize() {
 		const { isDisabled, postmeta } = this.props;
-
-		const tableOfContents = document.querySelector('.table-of-contents button');
-		console.log(tableOfContents)
-		if (tableOfContents) {
-			console.log( tableOfContents );
-		}
 	}
 
 	render() {
@@ -65,6 +64,7 @@ class ReadingTime extends Component {
 
 export default compose([
 	withSelect((select) => ({
+		content: select('core/editor').getEditedPostAttribute('content'),
 		isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitHeadingLabelWriting'),
 	})),
 	withSpokenMessages,

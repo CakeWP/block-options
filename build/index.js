@@ -10410,11 +10410,16 @@ function (_Component) {
   }, {
     key: "handleButtonClick",
     value: function handleButtonClick(event) {
-      if (document.querySelector('.table-of-contents').contains(event.target)) {
+      var content = this.props.content;
+      var words = Object(_wordpress_wordcount__WEBPACK_IMPORTED_MODULE_6__["count"])(content, 'words', {});
+      var button = document.querySelector('.table-of-contents button').getAttribute('aria-expanded');
+
+      if (document.querySelector('.table-of-contents').contains(event.target) && button === 'false') {
+        var estimated = words / 275;
+        console.log(estimated);
         var checkExist = setInterval(function () {
           if (document.querySelector('.table-of-contents__popover')) {
-            //insert prompt on header
-            document.querySelector('.table-of-contents__counts').insertAdjacentHTML('beforeend', '<li class="table-of-contents__count">Est. Reading Time<span class="table-of-contents__number">10 min</span></li>');
+            document.querySelector('.table-of-contents__counts').insertAdjacentHTML('beforeend', "<li class=\"table-of-contents__count table-of-contents__wordcount\">Est. Reading Time<span class=\"table-of-contents__number\">".concat(estimated.toFixed(), " min</span></li>"));
             clearInterval(checkExist);
           }
         }, 100); // check every 100ms
@@ -10427,12 +10432,6 @@ function (_Component) {
       var _this$props = this.props,
           isDisabled = _this$props.isDisabled,
           postmeta = _this$props.postmeta;
-      var tableOfContents = document.querySelector('.table-of-contents button');
-      console.log(tableOfContents);
-
-      if (tableOfContents) {
-        console.log(tableOfContents);
-      }
     }
   }, {
     key: "render",
@@ -10446,6 +10445,7 @@ function (_Component) {
 
 /* harmony default export */ __webpack_exports__["default"] = (compose([withSelect(function (select) {
   return {
+    content: select('core/editor').getEditedPostAttribute('content'),
     isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitHeadingLabelWriting')
   };
 }), withSpokenMessages])(ReadingTime));
