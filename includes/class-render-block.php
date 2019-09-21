@@ -271,6 +271,10 @@ class EditorsKit_Render_Block {
 					$rel .= ' nofollow';
 				}
 
+				if( isset( $attributes['linkSponsored'] ) && $attributes['linkSponsored'] ){
+					$rel .= ' sponsored';
+				}
+
 				$rel 	.= '"';
 				$linked .= $rel;
 

@@ -249,6 +249,7 @@ class Controls extends Component {
 			linkDestination,
 			linkTarget,
 			linkNoFollow,
+			linkSponsored,
 			linkFullBlock,
 		} = attributes;
 
@@ -274,6 +275,13 @@ class Controls extends Component {
 								checked={ !! linkNoFollow } />
 
 							<ToggleControl
+								label={ __( 'Sponsored', 'block-options' ) }
+								onChange={ () => {
+									setAttributes( { linkSponsored: ! linkSponsored } );
+								} }
+								checked={ !! linkSponsored } />
+
+							<ToggleControl
 								label={ __( 'Apply link to whole block', 'block-options' ) }
 								onChange={ () => {
 									setAttributes( { linkFullBlock: ! linkFullBlock } );
@@ -294,7 +302,7 @@ export default compose(
 
 		return {
 			image: mediaId ? getMedia( mediaId ) : null,
-			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitMediaTextLinkTools' ),
+			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitMediaTextLinkOptions' ),
 		};
 	} ),
 	ifCondition( ( props ) => {
