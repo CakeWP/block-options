@@ -166,6 +166,37 @@ class EditorsKit_Features_Manager {
 						),
 					)
 				),
+				'options' => array(
+					'name'  => 'options',
+					'label' => __( 'Block Options', $this->_slug ),
+					'items' => array(
+						'navigator' 	 => array(
+							'name'  => 'navigator',
+							'label' => __( 'Block Navigator', $this->_slug ),
+							'value' => true,
+						),
+						'export' 	 => array(
+							'name'  => 'export',
+							'label' => __( 'Export as JSON', $this->_slug ),
+							'value' => true,
+						),
+						'mediaTextLayout' => array(
+							'name'  => 'mediaTextLayout',
+							'label' => __( 'Media Text Block Layout', $this->_slug ),
+							'value' => true,
+						),
+						'mediaTextLink' => array(
+							'name'  => 'mediaTextLink',
+							'label' => __( 'Media Text Block Link', $this->_slug ),
+							'value' => true,
+						),
+						'setAsFeatured' => array(
+							'name'  => 'setAsFeatured',
+							'label' => __( 'Set Image Block as Featured', $this->_slug ),
+							'value' => true,
+						),
+					)
+				),
 				'tools' => array(
 					'name'  => 'tools',
 					'label' => __( 'Tools', $this->_slug ),
@@ -193,21 +224,6 @@ class EditorsKit_Features_Manager {
 						'height' => array(
 							'name'  => 'height',
 							'label' => __( 'Editor Min-Height', $this->_slug ),
-							'value' => true,
-						),
-						'mediaTextLink' => array(
-							'name'  => 'mediaTextLink',
-							'label' => __( 'Media Text Block Link', $this->_slug ),
-							'value' => true,
-						),
-						'export' 	 => array(
-							'name'  => 'export',
-							'label' => __( 'Export as JSON', $this->_slug ),
-							'value' => true,
-						),
-						'setAsFeatured' => array(
-							'name'  => 'setAsFeatured',
-							'label' => __( 'Set Image Block as Featured', $this->_slug ),
 							'value' => true,
 						),
 						'autosave' 	 => array(

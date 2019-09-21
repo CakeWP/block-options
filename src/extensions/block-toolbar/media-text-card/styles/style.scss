@@ -1,0 +1,19 @@
+.wp-block-media-text {
+
+	&:not(.has-media-on-the-right):not(.has-media-on-the-left) {
+
+		&.has-media-on-the-top {
+			grid-template-columns: 100% !important;
+			grid-template-areas:
+				"media-text-media"
+				"media-text-content";
+		}
+
+		&.has-media-on-the-bottom {
+			grid-template-columns: 100% !important;
+			grid-template-areas:
+				"media-text-content"
+				"media-text-media";
+		}
+	}
+}

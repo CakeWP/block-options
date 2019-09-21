@@ -7730,7 +7730,7 @@ function (_Component) {
     selectedBlockCount: getSelectedBlockCount(),
     selectedBlock: getSelectedBlock(),
     selectedBlocks: getMultiSelectedBlocks(),
-    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitExportTools'),
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitExportOptions'),
     getBlock: getBlock
   };
 }), ifCondition(function (props) {
@@ -8019,7 +8019,7 @@ function (_Component) {
     featuredImageID: select('core/editor').getEditedPostAttribute('featured_media'),
     blockName: selectedBlock.name,
     imageID: Object(lodash__WEBPACK_IMPORTED_MODULE_6__["get"])(selectedBlock, 'attributes.id'),
-    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitSetAsFeaturedTools')
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitSetAsFeaturedOptions')
   };
 }), withDispatch(function (dispatch) {
   var _dispatch = dispatch('core/editor'),
@@ -8505,12 +8505,15 @@ function (_Component) {
     setAttributes: setAttributes,
     clientId: clientId,
     block: getBlock(clientId),
-    selectedBlockClientId: getSelectedBlockClientId()
+    selectedBlockClientId: getSelectedBlockClientId(),
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitNavigatorOptions')
   };
 }), withDispatch(function (dispatch) {
   return {
     selectBlock: dispatch('core/block-editor').selectBlock
   };
+}), ifCondition(function (props) {
+  return !props.isDisabled;
 }), withSpokenMessages)(NavigatorToolbar));
 
 /***/ }),
@@ -8573,13 +8576,204 @@ addFilter('editor.BlockEdit', 'editorskit/media-text-link', withNavigator);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _media_text_link__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./media-text-link */ "./src/extensions/block-toolbar/media-text-link/index.js");
-/* harmony import */ var _block_navigator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block-navigator */ "./src/extensions/block-toolbar/block-navigator/index.js");
+/* harmony import */ var _media_text_card__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./media-text-card */ "./src/extensions/block-toolbar/media-text-card/index.js");
+/* harmony import */ var _media_text_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./media-text-link */ "./src/extensions/block-toolbar/media-text-link/index.js");
+/* harmony import */ var _block_navigator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block-navigator */ "./src/extensions/block-toolbar/block-navigator/index.js");
 /**
  * Internal dependencies
  */
 
 
+
+
+/***/ }),
+
+/***/ "./src/extensions/block-toolbar/media-text-card/components/toolbar.js":
+/*!****************************************************************************!*\
+  !*** ./src/extensions/block-toolbar/media-text-card/components/toolbar.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var withSelect = wp.data.withSelect;
+var compose = wp.compose.compose;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
+var BlockControls = wp.blockEditor.BlockControls;
+var _wp$components = wp.components,
+    Toolbar = _wp$components.Toolbar,
+    withSpokenMessages = _wp$components.withSpokenMessages;
+
+var ToolbarControls =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(ToolbarControls, _Component);
+
+  function ToolbarControls() {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, ToolbarControls);
+
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(ToolbarControls).apply(this, arguments));
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(ToolbarControls, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      var _this$props = this.props,
+          attributes = _this$props.attributes,
+          setAttributes = _this$props.setAttributes;
+      var mediaPosition = attributes.mediaPosition,
+          className = attributes.className;
+
+      if (!['top', 'bottom'].includes(mediaPosition) && className) {
+        setAttributes({
+          className: this.removeTopBottom()
+        });
+      }
+    }
+  }, {
+    key: "removeTopBottom",
+    value: function removeTopBottom() {
+      var attributes = this.props.attributes;
+      var className = attributes.className;
+      var newClassName = '';
+
+      if (className) {
+        newClassName = className.replace('has-media-on-the-bottom', '').replace('has-media-on-the-top', '').trim();
+        newClassName = newClassName.replace(/\s+/g, ' ').trim();
+      }
+
+      return newClassName;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      var _this$props2 = this.props,
+          attributes = _this$props2.attributes,
+          setAttributes = _this$props2.setAttributes,
+          isDisabled = _this$props2.isDisabled;
+      var mediaPosition = attributes.mediaPosition;
+
+      if (isDisabled) {
+        return null;
+      }
+
+      var toolbarControls = [{
+        className: 'align-pull-top',
+        icon: 'align-pull-left',
+        title: __('Show media on top'),
+        isActive: mediaPosition === 'top',
+        onClick: function onClick() {
+          setAttributes({
+            mediaPosition: 'top',
+            className: _this.removeTopBottom() + ' has-media-on-the-top',
+            align: ''
+          });
+        }
+      }, {
+        className: 'align-pull-bottom',
+        icon: 'align-pull-right',
+        title: __('Show media on bottom'),
+        isActive: mediaPosition === 'bottom',
+        onClick: function onClick() {
+          setAttributes({
+            mediaPosition: 'bottom',
+            className: _this.removeTopBottom() + ' has-media-on-the-bottom',
+            align: ''
+          });
+        }
+      }];
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Toolbar, {
+        className: "editorskit-media-text-card-controls",
+        controls: toolbarControls
+      })));
+    }
+  }]);
+
+  return ToolbarControls;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (compose(withSelect(function (select) {
+  return {
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitMediaTextLayoutOptions')
+  };
+}), withSpokenMessages)(ToolbarControls));
+
+/***/ }),
+
+/***/ "./src/extensions/block-toolbar/media-text-card/index.js":
+/*!***************************************************************!*\
+  !*** ./src/extensions/block-toolbar/media-text-card/index.js ***!
+  \***************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_toolbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/toolbar */ "./src/extensions/block-toolbar/media-text-card/components/toolbar.js");
+
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+/**
+ * Internal dependencies
+ */
+
+/**
+ * WordPress Dependencies
+ */
+
+var addFilter = wp.hooks.addFilter;
+var Fragment = wp.element.Fragment;
+var createHigherOrderComponent = wp.compose.createHigherOrderComponent;
+var allowedBlocks = ['core/media-text'];
+/**
+ * Override the default edit UI to include a new block toolbar control
+ *
+ * @param {function|Component} BlockEdit Original component.
+ * @return {string} Wrapped component.
+ */
+
+var withControls = createHigherOrderComponent(function (BlockEdit) {
+  return function (props) {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, props.isSelected && allowedBlocks.includes(props.name) && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_components_toolbar__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread({}, props)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(BlockEdit, props));
+  };
+}, 'withControls');
+addFilter('editor.BlockEdit', 'editorskit/media-text-link', withControls);
 
 /***/ }),
 
@@ -8899,6 +9093,7 @@ function (_Component) {
           linkDestination = attributes.linkDestination,
           linkTarget = attributes.linkTarget,
           linkNoFollow = attributes.linkNoFollow,
+          linkSponsored = attributes.linkSponsored,
           linkFullBlock = attributes.linkFullBlock;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(ImageURLInputUI, {
         url: href || '',
@@ -8917,6 +9112,14 @@ function (_Component) {
             });
           },
           checked: !!linkNoFollow
+        }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(ToggleControl, {
+          label: __('Sponsored', 'block-options'),
+          onChange: function onChange() {
+            setAttributes({
+              linkSponsored: !linkSponsored
+            });
+          },
+          checked: !!linkSponsored
         }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(ToggleControl, {
           label: __('Apply link to whole block', 'block-options'),
           onChange: function onChange() {
@@ -8940,7 +9143,7 @@ function (_Component) {
   var mediaId = props.attributes.mediaId;
   return {
     image: mediaId ? getMedia(mediaId) : null,
-    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitMediaTextLinkTools')
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitMediaTextLinkOptions')
   };
 }), ifCondition(function (props) {
   return !props.isDisabled && props.image && props.attributes.mediaType === 'image' && URLPopover.LinkEditor !== undefined;
@@ -9072,6 +9275,10 @@ function addAttributes(settings) {
         default: 'none'
       },
       linkNoFollow: {
+        type: 'boolean',
+        default: false
+      },
+      linkSponsored: {
         type: 'boolean',
         default: false
       },

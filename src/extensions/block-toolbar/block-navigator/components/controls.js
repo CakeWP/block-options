@@ -87,10 +87,14 @@ export default compose(
 			clientId,
 			block: getBlock(clientId),
 			selectedBlockClientId: getSelectedBlockClientId(),
+			isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitNavigatorOptions'),
 		};
 	}),
 	withDispatch((dispatch) => ({
 		selectBlock: dispatch('core/block-editor').selectBlock,
 	})),
+	ifCondition((props) => {
+		return !props.isDisabled;
+	}),
 	withSpokenMessages
 )(NavigatorToolbar);
