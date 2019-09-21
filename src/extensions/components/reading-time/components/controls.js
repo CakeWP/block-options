@@ -65,7 +65,7 @@ class ReadingTime extends Component {
 		if ( blocks ) {
 			let i = 12;
 			map( blocks, ( block ) => {
-				if ( mediaBlocks.includes( block.name ) || hasBlockSupport( block, 'hasWordCount' ) ) {
+				if ( mediaBlocks.includes( block.name ) || hasBlockSupport( block.name, 'editorsKitWordCount' ) ) {
 					estimated = estimated + i;
 					if ( i > 3 ) {
 						i--;
