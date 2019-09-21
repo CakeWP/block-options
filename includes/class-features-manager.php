@@ -170,6 +170,11 @@ class EditorsKit_Features_Manager {
 					'name'  => 'options',
 					'label' => __( 'Block Options', $this->_slug ),
 					'items' => array(
+						'navigator' 	 => array(
+							'name'  => 'navigator',
+							'label' => __( 'Block Navigator', $this->_slug ),
+							'value' => true,
+						),
 						'export' 	 => array(
 							'name'  => 'export',
 							'label' => __( 'Export as JSON', $this->_slug ),
