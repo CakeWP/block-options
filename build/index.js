@@ -8349,11 +8349,15 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 var __ = wp.i18n.__;
+var withSelect = wp.data.withSelect;
+var compose = wp.compose.compose;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
 var BlockControls = wp.blockEditor.BlockControls;
-var Toolbar = wp.components.Toolbar;
+var _wp$components = wp.components,
+    Toolbar = _wp$components.Toolbar,
+    withSpokenMessages = _wp$components.withSpokenMessages;
 
 var ToolbarControls =
 /*#__PURE__*/
@@ -8402,9 +8406,14 @@ function (_Component) {
 
       var _this$props2 = this.props,
           attributes = _this$props2.attributes,
-          setAttributes = _this$props2.setAttributes;
-      var mediaPosition = attributes.mediaPosition,
-          className = attributes.className;
+          setAttributes = _this$props2.setAttributes,
+          isDisabled = _this$props2.isDisabled;
+      var mediaPosition = attributes.mediaPosition;
+
+      if (isDisabled) {
+        return null;
+      }
+
       var toolbarControls = [{
         className: 'align-pull-top',
         icon: 'align-pull-left',
@@ -8440,7 +8449,11 @@ function (_Component) {
   return ToolbarControls;
 }(Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (ToolbarControls);
+/* harmony default export */ __webpack_exports__["default"] = (compose(withSelect(function (select) {
+  return {
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitMediaTextLayoutOptions')
+  };
+}), withSpokenMessages)(ToolbarControls));
 
 /***/ }),
 

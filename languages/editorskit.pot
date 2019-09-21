@@ -23,6 +23,14 @@ msgstr ""
 msgid "Featured Image Removed."
 msgstr ""
 
+#: src/extensions/block-toolbar/media-text-card/components/toolbar.js:71
+msgid "Show media on top"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-card/components/toolbar.js:79
+msgid "Show media on bottom"
+msgstr ""
+
 #: src/extensions/block-toolbar/media-text-link/components/controls.js:111
 msgid "Edit Media Link"
 msgstr ""

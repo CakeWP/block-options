@@ -7,9 +7,11 @@ import { join } from 'lodash';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
+const { withSelect } = wp.data;
+const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { BlockControls } = wp.blockEditor;
-const { Toolbar } = wp.components;
+const { Toolbar, withSpokenMessages } = wp.components;
 
 class ToolbarControls extends Component {
 	componentDidUpdate(){
@@ -52,12 +54,16 @@ class ToolbarControls extends Component {
 		const {
 			attributes,
 			setAttributes,
+			isDisabled,
 		} = this.props;
 		
 		const {
 			mediaPosition,
-			className,
 		} = attributes;
+
+		if (isDisabled ){
+			return null;
+		}
 
 		const toolbarControls = [{
 			className: 'align-pull-top',
@@ -90,4 +96,11 @@ class ToolbarControls extends Component {
 	}
 }
 
-export default ToolbarControls;
+export default compose(
+	withSelect((select) => {
+		return {
+			isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitMediaTextLayoutOptions'),
+		};
+	}),
+	withSpokenMessages
+)(ToolbarControls);
