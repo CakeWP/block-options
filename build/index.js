@@ -8563,7 +8563,7 @@ var allowedBlocks = ['core/columns', 'core/column', 'core/group'];
 
 var withNavigator = createHigherOrderComponent(function (BlockEdit) {
   return function (props) {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(BlockEdit, props), props.isSelected && (allowedBlocks.includes(props.name) || hasBlockSupport(props, 'hasEditorsKitBlockNavigator')) && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_components_controls__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread({}, props)));
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(BlockEdit, props), props.isSelected && (allowedBlocks.includes(props.name) || hasBlockSupport(props.name, 'editorsKitBlockNavigator')) && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_components_controls__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread({}, props)));
   };
 }, 'withNavigator');
 addFilter('editor.BlockEdit', 'editorskit/media-text-link', withNavigator);

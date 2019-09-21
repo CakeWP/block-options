@@ -24,7 +24,7 @@ const withNavigator = createHigherOrderComponent( ( BlockEdit ) => {
 		return (
 			<Fragment>
 				<BlockEdit { ...props } />
-				{ props.isSelected && ( allowedBlocks.includes( props.name ) || hasBlockSupport( props, 'hasEditorsKitBlockNavigator' ) ) && <NavigatorToolbar { ...{ ...props } } /> }
+				{ props.isSelected && ( allowedBlocks.includes( props.name ) || hasBlockSupport( props.name, 'editorsKitBlockNavigator' ) ) && <NavigatorToolbar { ...{ ...props } } /> }
 			</Fragment>
 		);
 	};
