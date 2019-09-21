@@ -155,6 +155,20 @@
 }
 
 /*--------------------------------------------------------------
+# Menu Options Popover
+--------------------------------------------------------------*/
+.components-popover {
+
+	&.edit-post-more-menu__content {
+
+		> .components-popover__content {
+			max-height: calc(100vh - 100px);
+			overflow: scroll;
+		}
+	}
+}
+
+/*--------------------------------------------------------------
 # Chrome version 77 bug fixes
 --------------------------------------------------------------*/
 .block-editor-writing-flow {
