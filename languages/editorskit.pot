@@ -3,6 +3,63 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+<<<<<<< HEAD
 #: src/extensions/components/reading-time/components/controls.js:53
 msgid "Reading Time"
+=======
+#: src/extensions/block-toolbar/block-navigator/components/controls.js:35
+msgid "Open block navigator"
+msgstr ""
+
+#: src/extensions/block-toolbar/block-navigator/components/controls.js:43
+msgid "Block Navigator"
+msgstr ""
+
+#: src/extensions/block-toolbar/block-navigator/components/controls.js:44
+msgid "Close"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-card/components/toolbar.js:65
+msgid "Show media on top"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-card/components/toolbar.js:73
+msgid "Show media on bottom"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:111
+msgid "Edit Media Link"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:111
+msgid "Media Link"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:162
+msgid "Remove Link"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:228
+msgid "Media File"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:234
+msgid "Attachment Page"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:266
+msgid "Open in New Tab"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:271
+msgid "No follow"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:278
+msgid "Sponsored"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:285
+msgid "Apply link to whole block"
+>>>>>>> master
 msgstr ""
