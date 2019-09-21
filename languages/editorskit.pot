@@ -3,6 +3,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+<<<<<<< HEAD
+#: src/extensions/components/reading-time/components/controls.js:53
+msgid "Reading Time"
+=======
 #: src/extensions/block-toolbar/block-navigator/components/controls.js:35
 msgid "Open block navigator"
 msgstr ""
@@ -57,4 +61,5 @@ msgstr ""
 
 #: src/extensions/block-toolbar/media-text-link/components/controls.js:285
 msgid "Apply link to whole block"
+>>>>>>> master
 msgstr ""

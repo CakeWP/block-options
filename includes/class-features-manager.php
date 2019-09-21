@@ -154,6 +154,11 @@ class EditorsKit_Features_Manager {
 					'name'  => 'writing',
 					'label' => __( 'Writing', $this->_slug ),
 					'items' => array(
+						'readingTime'	=> array(
+							'name'  => 'readingTime',
+							'label' => __( 'Estimated Reading Time', $this->_slug ),
+							'value' => true,
+						),
 						'headingLabel'	=> array(
 							'name'  => 'headingLabel',
 							'label' => __( 'Heading Block Label', $this->_slug ),

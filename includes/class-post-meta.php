@@ -42,6 +42,17 @@ class EditorsKit_Post_Meta {
 				},
 			)
 		);
+
+		register_meta(
+			'post', '_editorskit_reading_time', array(
+				'show_in_rest'  => true,
+				'single'        => true,
+				'type' 			=> 'number',
+				'auth_callback' => function() {
+					return current_user_can( 'edit_posts' );
+				},
+			)
+		);
 	}
 
 	//fix REST API issue with blocks registered via PHP register_block_type

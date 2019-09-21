@@ -33,6 +33,7 @@ import './extensions/components/manager';
 import './extensions/components/code-editor';
 import './extensions/components/heading-label';
 import './extensions/components/featured-image';
+import './extensions/components/reading-time';
 
 //Block Settings
 import './extensions/block-settings';
