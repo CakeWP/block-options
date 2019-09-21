@@ -7651,7 +7651,7 @@ function (_Component) {
     selectedBlockCount: getSelectedBlockCount(),
     selectedBlock: getSelectedBlock(),
     selectedBlocks: getMultiSelectedBlocks(),
-    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitExportTools'),
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitExportOptions'),
     getBlock: getBlock
   };
 }), ifCondition(function (props) {
@@ -7940,7 +7940,7 @@ function (_Component) {
     featuredImageID: select('core/editor').getEditedPostAttribute('featured_media'),
     blockName: selectedBlock.name,
     imageID: Object(lodash__WEBPACK_IMPORTED_MODULE_6__["get"])(selectedBlock, 'attributes.id'),
-    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitSetAsFeaturedTools')
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitSetAsFeaturedOptions')
   };
 }), withDispatch(function (dispatch) {
   var _dispatch = dispatch('core/editor'),
@@ -8859,7 +8859,7 @@ function (_Component) {
   var mediaId = props.attributes.mediaId;
   return {
     image: mediaId ? getMedia(mediaId) : null,
-    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitMediaTextLinkTools')
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitMediaTextLinkOptions')
   };
 }), ifCondition(function (props) {
   return !props.isDisabled && props.image && props.attributes.mediaType === 'image' && URLPopover.LinkEditor !== undefined;

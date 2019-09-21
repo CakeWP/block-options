@@ -3,12 +3,24 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/block-toolbar/media-text-card/components/toolbar.js:65
-msgid "Show media on top"
+#: src/extensions/block-settings/export/components/export.js:77
+msgid "Export as JSON"
 msgstr ""
 
-#: src/extensions/block-toolbar/media-text-card/components/toolbar.js:73
-msgid "Show media on bottom"
+#: src/extensions/block-settings/set-as-featured/components/controls.js:28
+msgid "Remove as Featured Image"
+msgstr ""
+
+#: src/extensions/block-settings/set-as-featured/components/controls.js:29
+msgid "Set as Featured Image"
+msgstr ""
+
+#: src/extensions/block-settings/set-as-featured/components/controls.js:77
+msgid "Image Set as Featured."
+msgstr ""
+
+#: src/extensions/block-settings/set-as-featured/components/controls.js:88
+msgid "Featured Image Removed."
 msgstr ""
 
 #: src/extensions/block-toolbar/media-text-link/components/controls.js:111

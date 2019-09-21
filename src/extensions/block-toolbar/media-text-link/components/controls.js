@@ -302,7 +302,7 @@ export default compose(
 
 		return {
 			image: mediaId ? getMedia( mediaId ) : null,
-			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitMediaTextLinkTools' ),
+			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitMediaTextLinkOptions' ),
 		};
 	} ),
 	ifCondition( ( props ) => {
