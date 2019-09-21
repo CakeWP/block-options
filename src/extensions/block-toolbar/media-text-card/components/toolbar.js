@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import { join } from 'lodash';
-
-/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
@@ -14,7 +9,7 @@ const { BlockControls } = wp.blockEditor;
 const { Toolbar, withSpokenMessages } = wp.components;
 
 class ToolbarControls extends Component {
-	componentDidUpdate(){
+	componentDidUpdate() {
 		const {
 			attributes,
 			setAttributes,
@@ -25,12 +20,12 @@ class ToolbarControls extends Component {
 			className,
 		} = attributes;
 
-		if (!['top', 'bottom'].includes(mediaPosition) && className ){
-			setAttributes({ className: this.removeTopBottom() })
+		if ( ! [ 'top', 'bottom' ].includes( mediaPosition ) && className ) {
+			setAttributes( { className: this.removeTopBottom() } );
 		}
 	}
 
-	removeTopBottom(){
+	removeTopBottom() {
 		const {
 			attributes,
 		} = this.props;
@@ -41,54 +36,53 @@ class ToolbarControls extends Component {
 
 		let newClassName = '';
 
-		if (className ){
-			newClassName = className.replace('has-media-on-the-bottom', '').replace('has-media-on-the-top', '').trim();
-			newClassName = newClassName.replace(/\s+/g, ' ').trim();
+		if ( className ) {
+			newClassName = className.replace( 'has-media-on-the-bottom', '' ).replace( 'has-media-on-the-top', '' ).trim();
+			newClassName = newClassName.replace( /\s+/g, ' ' ).trim();
 		}
 
 		return newClassName;
 	}
 
 	render() {
-
 		const {
 			attributes,
 			setAttributes,
 			isDisabled,
 		} = this.props;
-		
+
 		const {
 			mediaPosition,
 		} = attributes;
 
-		if (isDisabled ){
+		if ( isDisabled ) {
 			return null;
 		}
 
-		const toolbarControls = [{
+		const toolbarControls = [ {
 			className: 'align-pull-top',
 			icon: 'align-pull-left',
-			title: __('Show media on top'),
+			title: __( 'Show media on top' ),
 			isActive: mediaPosition === 'top',
 			onClick: () => {
-				setAttributes({ mediaPosition: 'top', className: this.removeTopBottom() + ' has-media-on-the-top', align: '' })
+				setAttributes( { mediaPosition: 'top', className: this.removeTopBottom() + ' has-media-on-the-top', align: '' } );
 			},
 		}, {
 			className: 'align-pull-bottom',
 			icon: 'align-pull-right',
-			title: __('Show media on bottom'),
+			title: __( 'Show media on bottom' ),
 			isActive: mediaPosition === 'bottom',
 			onClick: () => {
-				setAttributes({ mediaPosition: 'bottom', className: this.removeTopBottom() + ' has-media-on-the-bottom', align: '' })
+				setAttributes( { mediaPosition: 'bottom', className: this.removeTopBottom() + ' has-media-on-the-bottom', align: '' } );
 			},
-		}];
+		} ];
 
 		return (
 			<Fragment>
 				<BlockControls>
 					<Toolbar
 						className="editorskit-media-text-card-controls"
-						controls={toolbarControls}
+						controls={ toolbarControls }
 					/>
 				</BlockControls>
 			</Fragment>
@@ -97,10 +91,10 @@ class ToolbarControls extends Component {
 }
 
 export default compose(
-	withSelect((select) => {
+	withSelect( ( select ) => {
 		return {
-			isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitMediaTextLayoutOptions'),
+			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitMediaTextLayoutOptions' ),
 		};
-	}),
+	} ),
 	withSpokenMessages
-)(ToolbarControls);
+)( ToolbarControls );

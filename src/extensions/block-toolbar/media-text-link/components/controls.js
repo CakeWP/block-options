@@ -275,11 +275,11 @@ class Controls extends Component {
 								checked={ !! linkNoFollow } />
 
 							<ToggleControl
-								label={__('Sponsored', 'block-options')}
-								onChange={() => {
-									setAttributes({ linkSponsored: !linkSponsored });
-								}}
-								checked={!!linkSponsored} />
+								label={ __( 'Sponsored', 'block-options' ) }
+								onChange={ () => {
+									setAttributes( { linkSponsored: ! linkSponsored } );
+								} }
+								checked={ !! linkSponsored } />
 
 							<ToggleControl
 								label={ __( 'Apply link to whole block', 'block-options' ) }
