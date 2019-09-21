@@ -10932,7 +10932,7 @@ function (_Component) {
       if (blocks) {
         var i = 12;
         Object(lodash__WEBPACK_IMPORTED_MODULE_7__["map"])(blocks, function (block) {
-          if (mediaBlocks.includes(block.name) || hasBlockSupport(block, 'hasWordCount')) {
+          if (mediaBlocks.includes(block.name) || hasBlockSupport(block.name, 'editorsKitWordCount')) {
             estimated = estimated + i;
 
             if (i > 3) {

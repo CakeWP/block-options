@@ -3,18 +3,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/block-navigation/list.js:43
-msgid "(selected block)"
-msgstr ""
-
-#: src/extensions/block-toolbar/block-navigator/components/controls.js:35
-msgid "Open block navigator"
-msgstr ""
-
-#: src/extensions/block-toolbar/block-navigator/components/controls.js:43
-msgid "Block Navigator"
-msgstr ""
-
-#: src/extensions/block-toolbar/block-navigator/components/controls.js:44
-msgid "Close"
+#: src/extensions/components/reading-time/components/controls.js:53
+msgid "Reading Time"
 msgstr ""
