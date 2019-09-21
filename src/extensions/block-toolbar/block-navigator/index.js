@@ -10,7 +10,7 @@ const { addFilter } = wp.hooks;
 const { Fragment } = wp.element;
 const { createHigherOrderComponent } = wp.compose;
 
-const allowedBlocks = ['core/columns', 'core/column', 'core/group'];
+const allowedBlocks = [ 'core/columns', 'core/column', 'core/group' ];
 
 /**
  * Override the default edit UI to include a new block toolbar control
@@ -18,16 +18,16 @@ const allowedBlocks = ['core/columns', 'core/column', 'core/group'];
  * @param {function|Component} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
-const withNavigator = createHigherOrderComponent((BlockEdit) => {
-	return (props) => {
+const withNavigator = createHigherOrderComponent( ( BlockEdit ) => {
+	return ( props ) => {
 		return (
 			<Fragment>
-				<BlockEdit {...props} />
-				{props.isSelected && allowedBlocks.includes(props.name) && <NavigatorToolbar {...{ ...props }} />}
+				<BlockEdit { ...props } />
+				{ props.isSelected && allowedBlocks.includes( props.name ) && <NavigatorToolbar { ...{ ...props } } /> }
 			</Fragment>
 		);
 	};
-}, 'withNavigator');
+}, 'withNavigator' );
 
 addFilter(
 	'editor.BlockEdit',

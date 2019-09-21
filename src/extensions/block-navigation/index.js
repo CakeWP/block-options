@@ -16,15 +16,15 @@ const { __ } = wp.i18n;
  */
 import BlockNavigationList from './list';
 
-function BlockNavigation({ rootBlock, rootBlocks, selectedBlockClientId, selectBlock }) {
-	if (!rootBlocks || rootBlocks.length === 0) {
+function BlockNavigation( { rootBlock, rootBlocks, selectedBlockClientId, selectBlock } ) {
+	if ( ! rootBlocks || rootBlocks.length === 0 ) {
 		return null;
 	}
 
 	const hasHierarchy = (
 		rootBlock && (
 			rootBlock.clientId !== selectedBlockClientId ||
-			(rootBlock.innerBlocks && rootBlock.innerBlocks.length !== 0)
+			( rootBlock.innerBlocks && rootBlock.innerBlocks.length !== 0 )
 		)
 	);
 
@@ -33,47 +33,47 @@ function BlockNavigation({ rootBlock, rootBlocks, selectedBlockClientId, selectB
 			role="presentation"
 			className="editor-block-navigation__container block-editor-block-navigation__container"
 		>
-			<p className="editor-block-navigation__label block-editor-block-navigation__label">{__('Block navigation')}</p>
-			{hasHierarchy && (
+			<p className="editor-block-navigation__label block-editor-block-navigation__label">{ __( 'Block navigation' ) }</p>
+			{ hasHierarchy && (
 				<BlockNavigationList
-					blocks={[rootBlock]}
-					selectedBlockClientId={selectedBlockClientId}
-					selectBlock={selectBlock}
+					blocks={ [ rootBlock ] }
+					selectedBlockClientId={ selectedBlockClientId }
+					selectBlock={ selectBlock }
 					showNestedBlocks
 				/>
-			)}
-			{!hasHierarchy && (
+			) }
+			{ ! hasHierarchy && (
 				<BlockNavigationList
-					blocks={rootBlocks}
-					selectedBlockClientId={selectedBlockClientId}
-					selectBlock={selectBlock}
+					blocks={ rootBlocks }
+					selectedBlockClientId={ selectedBlockClientId }
+					selectBlock={ selectBlock }
 				/>
-			)}
+			) }
 		</NavigableMenu>
 	);
 }
 
 export default compose(
-	withSelect((select) => {
+	withSelect( ( select ) => {
 		const {
 			getSelectedBlockClientId,
 			getBlockHierarchyRootClientId,
 			getBlock,
 			getBlocks,
-		} = select('core/block-editor');
+		} = select( 'core/block-editor' );
 		const selectedBlockClientId = getSelectedBlockClientId();
 		return {
 			rootBlocks: getBlocks(),
-			rootBlock: selectedBlockClientId ? getBlock(getBlockHierarchyRootClientId(selectedBlockClientId)) : null,
+			rootBlock: selectedBlockClientId ? getBlock( getBlockHierarchyRootClientId( selectedBlockClientId ) ) : null,
 			selectedBlockClientId,
 		};
-	}),
-	withDispatch((dispatch, { onSelect = noop }) => {
+	} ),
+	withDispatch( ( dispatch, { onSelect = noop } ) => {
 		return {
-			selectBlock(clientId) {
-				dispatch('core/block-editor').selectBlock(clientId);
-				onSelect(clientId);
+			selectBlock( clientId ) {
+				dispatch( 'core/block-editor' ).selectBlock( clientId );
+				onSelect( clientId );
 			},
 		};
-	})
-)(BlockNavigation);
+	} )
+)( BlockNavigation );

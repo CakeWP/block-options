@@ -17,40 +17,40 @@ const MenuIcon = (
 	</SVG>
 );
 
-function BlockNavigationDropdown({ hasBlocks, isDisabled }) {
-	const isEnabled = hasBlocks && !isDisabled;
+function BlockNavigationDropdown( { hasBlocks, isDisabled } ) {
+	const isEnabled = hasBlocks && ! isDisabled;
 
 	return (
 		<Dropdown
-			renderToggle={({ isOpen, onToggle }) => (
+			renderToggle={ ( { isOpen, onToggle } ) => (
 				<>
-					{isEnabled && <KeyboardShortcuts
+					{ isEnabled && <KeyboardShortcuts
 						bindGlobal
-						shortcuts={{
-							[rawShortcut.access('o')]: onToggle,
-						}}
+						shortcuts={ {
+							[ rawShortcut.access( 'o' ) ]: onToggle,
+						} }
 					/>
 					}
 					<IconButton
-						icon={MenuIcon}
-						aria-expanded={isOpen}
-						onClick={isEnabled ? onToggle : undefined}
-						label={__('Block navigation')}
+						icon={ MenuIcon }
+						aria-expanded={ isOpen }
+						onClick={ isEnabled ? onToggle : undefined }
+						label={ __( 'Block navigation' ) }
 						className="editor-block-navigation block-editor-block-navigation"
-						shortcut={displayShortcut.access('o')}
-						aria-disabled={!isEnabled}
+						shortcut={ displayShortcut.access( 'o' ) }
+						aria-disabled={ ! isEnabled }
 					/>
 				</>
-			)}
-			renderContent={({ onClose }) => (
-				<BlockNavigation onSelect={onClose} />
-			)}
+			) }
+			renderContent={ ( { onClose } ) => (
+				<BlockNavigation onSelect={ onClose } />
+			) }
 		/>
 	);
 }
 
-export default withSelect((select) => {
+export default withSelect( ( select ) => {
 	return {
-		hasBlocks: !!select('core/block-editor').getBlockCount(),
+		hasBlocks: !! select( 'core/block-editor' ).getBlockCount(),
 	};
-})(BlockNavigationDropdown);
+} )( BlockNavigationDropdown );

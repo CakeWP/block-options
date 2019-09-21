@@ -21,35 +21,35 @@ const NavigatorIcon = (
 
 class NavigatorToolbar extends Component {
 	constructor() {
-		super(...arguments);
+		super( ...arguments );
 		this.state = {
 			isNavigationListOpen: false,
 		};
 	}
 	render() {
 		const { block, selectBlock, selectedBlockClientId } = this.props;
-		
+
 		const navigatorToolbarButton = (
 			<IconButton
 				className="components-toolbar__control"
-				label={__('Open block navigator')}
-				onClick={() => this.setState({ isNavigationListOpen : true })}
-				icon={NavigatorIcon}
+				label={ __( 'Open block navigator' ) }
+				onClick={ () => this.setState( { isNavigationListOpen: true } ) }
+				icon={ NavigatorIcon }
 			/>
 		);
 
-		const navigatorModal = this.state.isNavigationListOpen&& (
+		const navigatorModal = this.state.isNavigationListOpen && (
 			<Modal
-				title={__('Block Navigator')}
-				closeLabel={__('Close')}
-				onRequestClose={() => {
-					this.setState({ isNavigationListOpen: false })
-				}}
+				title={ __( 'Block Navigator' ) }
+				closeLabel={ __( 'Close' ) }
+				onRequestClose={ () => {
+					this.setState( { isNavigationListOpen: false } );
+				} }
 			>
 				<BlockNavigationList
-					blocks={[block]}
-					selectedBlockClientId={selectedBlockClientId}
-					selectBlock={selectBlock}
+					blocks={ [ block ] }
+					selectedBlockClientId={ selectedBlockClientId }
+					selectBlock={ selectBlock }
 					showNestedBlocks
 				/>
 			</Modal>
@@ -69,32 +69,32 @@ class NavigatorToolbar extends Component {
 }
 
 export default compose(
-	withSelect((select, props) => {
-		const { 
+	withSelect( ( select, props ) => {
+		const {
 			attributes,
 			setAttributes,
-			clientId, 
+			clientId,
 		} = props;
 
 		const {
 			getSelectedBlockClientId,
 			getBlock,
-		} = select('core/block-editor');
+		} = select( 'core/block-editor' );
 
 		return {
 			attributes,
 			setAttributes,
 			clientId,
-			block: getBlock(clientId),
+			block: getBlock( clientId ),
 			selectedBlockClientId: getSelectedBlockClientId(),
-			isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitNavigatorOptions'),
+			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitNavigatorOptions' ),
 		};
-	}),
-	withDispatch((dispatch) => ({
-		selectBlock: dispatch('core/block-editor').selectBlock,
-	})),
-	ifCondition((props) => {
-		return !props.isDisabled;
-	}),
+	} ),
+	withDispatch( ( dispatch ) => ( {
+		selectBlock: dispatch( 'core/block-editor' ).selectBlock,
+	} ) ),
+	ifCondition( ( props ) => {
+		return ! props.isDisabled;
+	} ),
 	withSpokenMessages
-)(NavigatorToolbar);
+)( NavigatorToolbar );
