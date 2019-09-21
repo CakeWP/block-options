@@ -9,6 +9,7 @@ import NavigatorToolbar from './components/controls';
 const { addFilter } = wp.hooks;
 const { Fragment } = wp.element;
 const { createHigherOrderComponent } = wp.compose;
+const { hasBlockSupport } = wp.blocks;
 
 const allowedBlocks = [ 'core/columns', 'core/column', 'core/group' ];
 
@@ -23,7 +24,7 @@ const withNavigator = createHigherOrderComponent( ( BlockEdit ) => {
 		return (
 			<Fragment>
 				<BlockEdit { ...props } />
-				{ props.isSelected && allowedBlocks.includes( props.name ) && <NavigatorToolbar { ...{ ...props } } /> }
+				{ props.isSelected && ( allowedBlocks.includes( props.name ) || hasBlockSupport( props, 'hasEditorsKitBlockNavigator' ) ) && <NavigatorToolbar { ...{ ...props } } /> }
 			</Fragment>
 		);
 	};

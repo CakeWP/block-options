@@ -8552,6 +8552,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 var addFilter = wp.hooks.addFilter;
 var Fragment = wp.element.Fragment;
 var createHigherOrderComponent = wp.compose.createHigherOrderComponent;
+var hasBlockSupport = wp.blocks.hasBlockSupport;
 var allowedBlocks = ['core/columns', 'core/column', 'core/group'];
 /**
  * Override the default edit UI to include a new block toolbar control
@@ -8562,7 +8563,7 @@ var allowedBlocks = ['core/columns', 'core/column', 'core/group'];
 
 var withNavigator = createHigherOrderComponent(function (BlockEdit) {
   return function (props) {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(BlockEdit, props), props.isSelected && allowedBlocks.includes(props.name) && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_components_controls__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread({}, props)));
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(BlockEdit, props), props.isSelected && (allowedBlocks.includes(props.name) || hasBlockSupport(props, 'hasEditorsKitBlockNavigator')) && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_components_controls__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread({}, props)));
   };
 }, 'withNavigator');
 addFilter('editor.BlockEdit', 'editorskit/media-text-link', withNavigator);
