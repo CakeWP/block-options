@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * EditorsKit_Shortcodes Class
  *
- * @since 1.6.0
+ * @since 1.15
  */
 class EditorsKit_Shortcodes {
 
