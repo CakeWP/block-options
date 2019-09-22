@@ -6,7 +6,7 @@ Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenberg editor
 Requires at least: 5.0
 Tested up to: 5.2
 Requires PHP: 5.6
-Stable tag: 1.10
+Stable tag: 1.14
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FMKC2SLPTULP8
@@ -17,24 +17,10 @@ EditorsKit provides set of page building block options for the new WordPress Gut
 
 [EditorsKit](https://editorskit.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit) provides set of page building <strong>block options and toolkit</strong> for the new WordPress Gutenberg editor.
 
-You can now have more control over each blocks. Using EditorsKit you will have the following visibility control in order to display better contents.
-
-* Show or hide Gutenberg blocks on desktop, tablet and mobile devices
-* User logged-in or logged-out state block visibility
-* Custom PHP conditional display logic
-* Show or hide Gutenberg blocks based on <a href="https://wordpress.org/plugins/advanced-custom-fields/">Advanced Custom Fields Plugin(ACF)</a> Value
+You can now have better control, text formats, styling and workflow by simply utilizing the tools provided by EditorsKit plugin.
 
 = See for yourself =
 https://www.youtube.com/watch?v=QWgO4lAJAlE
-
-## Block Guide Lines
-[EditorsKit](https://editorskit.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit) features other tool aside from visibility management. With the new Block Guide Lines, you can easily toggle visible guide lines on title and each editor blocks in order to check the element boundaries. This feature will also help your workflow on handling nested blocks.
-
-= Watch it in action =
-https://www.youtube.com/watch?v=G8x5QkKGzhw
-
-## Markdown Support
-Starting [EditorsKit 1.6 ](https://jeffreycarandang.com/editorskit-1-6/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit), you can now use markdowns on Gutenberg editor while typing. Markdowns for `*bold*`, `_italic_` and `~strikethrough~` are available upon plugin activation. Lists of available markdowns are also accessible on the settings menu.
 
 ## Rich Text Formats
 [EditorsKit](https://editorskit.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit) also adds the missing text formats for better content creation. The following rich text format are available upon plugin activation:
@@ -49,8 +35,38 @@ Starting [EditorsKit 1.6 ](https://jeffreycarandang.com/editorskit-1-6/?utm_medi
 * Subscript
 * Uppercase Text Transform
 
+## Markdown Support
+Starting [EditorsKit 1.6 ](https://jeffreycarandang.com/editorskit-1-6/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit), you can now use markdowns on Gutenberg editor while typing. Markdowns for `*bold*`, `_italic_` and `~strikethrough~` are available upon plugin activation. Lists of available markdowns are also accessible on the settings menu.
+
 = Watch it in action =
 https://www.youtube.com/watch?v=ZgI8gdfxlaA
+
+
+## Block Guide Lines
+[EditorsKit](https://editorskit.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit) features other tool aside from visibility management. With the new Block Guide Lines, you can easily toggle visible guide lines on title and each editor blocks in order to check the element boundaries. This feature will also help your workflow on handling nested blocks.
+
+= Watch it in action =
+https://www.youtube.com/watch?v=G8x5QkKGzhw
+
+## Block Visibility
+Using EditorsKit you will have the following visibility control in order to manage and display better contents.
+
+* Show or hide Gutenberg blocks on desktop, tablet and mobile devices
+* User logged-in or logged-out state block visibility
+* Custom PHP conditional display logic
+* Show or hide Gutenberg blocks based on <a href="https://wordpress.org/plugins/advanced-custom-fields/">Advanced Custom Fields Plugin(ACF)</a> Value
+
+## Estimated Reading Time
+Word count is already available on Gutenberg editor. EditorsKit then extend this word count and display estimated count as well. Using roughly 275 word per minute plus additional calculations based on image blocks, you can display better estimated reading time on your posts and pages.
+
+Powered by shortcode you can display the Estimated Reading Time on your content by using the code below.
+
+`[editorskit display="wordcount" before="Reading Time: " after=" min"]`
+
+* `before` : Text or element you want to display before reading time.
+* `after` : Text or element you want to display after reading time.
+* `tag` : default `div` : Html tag container 
+* `fallback` : set value to 'true' to display PHP based wordcount on old posts that are not edited or created through Gutenberg
 
 ## Image and Cover Block Styles
 Comes with selection of styles on Cover and Image Block for custom shapes and layouts such as diagonal, circular and rounder corners; and even add drop shadows.
@@ -79,8 +95,11 @@ Easily upload or change featured image on Gutenberg editor by dragging and dropp
 ## Code Editor Mode Syntax Highlighter
 Improve display when on "Code Editor Mode". Powered by WordPress default CodeMirror library, Code Editor will be displayed with code syntax highlights and you will easily check each elements and if there are any errors on your HTML codes.
 
-## Media and Text Block Link Option
-Assign custom link to Image on Media and Text Block. Add custom, media or attachment link easily. You can also set open to new tab, add no follow and/or set link to the whole block.
+## Media and Text Block Link and Card Layout Option
+Assign custom link to Image on Media and Text Block. Add custom, media or attachment link easily. You can also set open to new tab, add no follow and/or set link to the whole block. Additionally, you can set Media and Text Block to display as card layout with option to set image on top or bottom. Integrated perfectly with the toolbar layour selection.
+
+## Block Navigator
+Display "Block Navigator" on block that can contain multiple child blocks. Available on Columns Block and Group Block. 
 
 ## UI and User Experience Improvements
 Improve interface and provide better writing experience.
@@ -124,7 +143,15 @@ e.g.
 
 == Changelog ==
 
-= 1.14 
+= 1.15 =
+* New: Estimated Reading Time 🎊
+* New: Media and Text Block card layout option 🎊
+* New: Block Navigator on Columns and Group Block 🎉
+* Improvement: Add 'sponsored' rel attributes option on Media and Text Block link
+* Improvement: Prevent menu and tools link overlap when there are lots of menu
+* Fixes: Few other 🐛 cleanup for errors and Gutenberg compatibility
+
+= 1.14 =
 * New: Link format noFollow rel attribute option 🎊
 * New: Link format sponsored rel attribute option 🎉
 * Improvement: Helper filter for Block Lab plugin support
