@@ -126,6 +126,7 @@ final class EditorsKit {
 		require_once EDITORSKIT_PLUGIN_DIR . 'includes/function-hide-title.php';
 		require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-custom-css-classes.php';
 		require_once EDITORSKIT_PLUGIN_DIR . 'includes/helper.php';
+		require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-shortcodes.php';
 		
 		if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/welcome.php';
