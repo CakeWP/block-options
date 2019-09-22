@@ -32,12 +32,12 @@ class EditorsKit_Shortcodes {
 	 */
 	public function register_shortcode( $atts, $content = "" ) {
 
-		if( !isset($atts['display']) ){
+		if( !isset( $atts['display'] ) ){
 			return $content;
 		}
 		$tag = 'div';
 
-		if( isset($atts['tag']) ){
+		if( isset( $atts['tag'] ) ){
 			$tag = $atts['tag'];
 		}
 
@@ -45,7 +45,13 @@ class EditorsKit_Shortcodes {
 
 		switch ( $atts['display'] ) {
 			case 'wordcount':
-				$content .= $this->wordcount( $atts, $content );
+				$wordcount = $this->wordcount( $atts, $content );
+				$content .= $wordcount;
+
+				if( empty( $wordcount ) ){
+					return false;
+				}
+
 				break;
 			
 			default:
@@ -62,9 +68,10 @@ class EditorsKit_Shortcodes {
 		global $post;
 		
 		if( !isset($post->ID) ){
-			return $content;
+			return false;
 		}
 
+		$returned_content = '';
 		$readingTime = get_post_meta( $post->ID, '_editorskit_reading_time', true );
 		
 		if( !$readingTime && isset( $atts['fallback'] ) && $atts['fallback'] == 'true' ){
@@ -102,20 +109,20 @@ class EditorsKit_Shortcodes {
 		}
 
 		if( !$readingTime ){
-			return $content;
+			return false;
 		}
 
 		if( isset($atts['before']) ){
-			$content .= $atts['before'];
+			$returned_content .= $atts['before'];
 		}
 
-		$content .= $readingTime;
+		$returned_content .= $readingTime;
 
 		if( isset($atts['after']) ){
-			$content .= $atts['after'];
+			$returned_content .= $atts['after'];
 		}
 
-		return $content;
+		return $returned_content;
 	}
 }
 
