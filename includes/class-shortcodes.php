@@ -28,7 +28,7 @@ class EditorsKit_Shortcodes {
 	}
 
 	/**
-	 * Register meta.
+	 * Register Shortcode.
 	 */
 	public function register_shortcode( $atts, $content = "" ) {
 
