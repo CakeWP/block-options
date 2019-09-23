@@ -1,0 +1,9 @@
+.components-toolbar{
+	&.editorskit-components-alignment-toolbar{
+		padding: 0px;
+		border-right: 0px;
+		.components-dropdown-menu{
+			border: 0px !important;
+		}
+	}
+}
