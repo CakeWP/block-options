@@ -11341,7 +11341,7 @@ registerPlugin('editorskit-disable-title', {
  */
 var addFilter = wp.hooks.addFilter;
 var hasBlockSupport = wp.blocks.hasBlockSupport;
-var allowedBlocks = ['core/image', 'core/gallery'];
+var allowedBlocks = ['core/image', 'core/gallery', 'core/video', 'core-embed', 'core-embed/youtube', 'core-embed/twitter', 'core-embed/facebook', 'core-embed/instagram', 'core-embed/wordpress', 'core-embed/soundcloud', 'core-embed/spotify', 'core-embed/flickr', 'core-embed/vimeo'];
 /**
  * Filters registered block settings, extending attributes with anchor using ID
  * of the first node.
@@ -11423,7 +11423,7 @@ var _wp$blockEditor = wp.blockEditor,
     AlignmentToolbar = _wp$blockEditor.AlignmentToolbar;
 var Toolbar = wp.components.Toolbar;
 var hasBlockSupport = wp.blocks.hasBlockSupport;
-var ALLOWED_BLOCKS = ['core/image', 'core/gallery'];
+var ALLOWED_BLOCKS = ['core/image', 'core/gallery', 'core/video', 'core-embed', 'core-embed/youtube', 'core-embed/twitter', 'core-embed/facebook', 'core-embed/instagram', 'core-embed/wordpress', 'core-embed/soundcloud', 'core-embed/spotify', 'core-embed/flickr', 'core-embed/vimeo'];
 var ALIGNMENT_CONTROLS = [{
   icon: 'editor-alignleft',
   title: __('Align caption left', 'block-options'),

@@ -14,7 +14,7 @@ const { BlockControls, AlignmentToolbar } = wp.blockEditor;
 const { Toolbar } = wp.components;
 const { hasBlockSupport } = wp.blocks;
 
-const ALLOWED_BLOCKS = [ 'core/image', 'core/gallery' ];
+const ALLOWED_BLOCKS = ['core/image', 'core/gallery', 'core/video', 'core-embed', 'core-embed/youtube', 'core-embed/twitter', 'core-embed/facebook', 'core-embed/instagram', 'core-embed/wordpress', 'core-embed/soundcloud', 'core-embed/spotify', 'core-embed/flickr', 'core-embed/vimeo' ];
 const ALIGNMENT_CONTROLS = [
 	{
 		icon: 'editor-alignleft',

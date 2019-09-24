@@ -4,7 +4,7 @@
 const { addFilter } = wp.hooks;
 const { hasBlockSupport } = wp.blocks;
 
-const allowedBlocks = [ 'core/image', 'core/gallery' ];
+const allowedBlocks = ['core/image', 'core/gallery', 'core/video', 'core-embed', 'core-embed/youtube', 'core-embed/twitter', 'core-embed/facebook', 'core-embed/instagram', 'core-embed/wordpress', 'core-embed/soundcloud', 'core-embed/spotify', 'core-embed/flickr', 'core-embed/vimeo' ];
 
 /**
  * Filters registered block settings, extending attributes with anchor using ID

@@ -14,7 +14,3 @@ msgstr ""
 #: src/extensions/formats/alignment/components/control.js:31
 msgid "Align caption right"
 msgstr ""
-
-#: src/extensions/formats/alignment/index.js:20
-msgid "Change Caption Alignment"
-msgstr ""
