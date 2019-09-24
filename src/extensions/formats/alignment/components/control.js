@@ -14,21 +14,21 @@ const { BlockControls, AlignmentToolbar } = wp.blockEditor;
 const { Toolbar } = wp.components;
 const { hasBlockSupport } = wp.blocks;
 
-const allowedBlocks = ['core/image', 'core/gallery'];
+const ALLOWED_BLOCKS = [ 'core/image', 'core/gallery' ];
 const ALIGNMENT_CONTROLS = [
 	{
 		icon: 'editor-alignleft',
-		title: __('Align caption left', 'block-options'),
+		title: __( 'Align caption left', 'block-options' ),
 		align: 'left',
 	},
 	{
 		icon: 'editor-aligncenter',
-		title: __('Align caption center', 'block-options'),
+		title: __( 'Align caption center', 'block-options' ),
 		align: 'center',
 	},
 	{
 		icon: 'editor-alignright',
-		title: __('Align caption right', 'block-options'),
+		title: __( 'Align caption right', 'block-options' ),
 		align: 'right',
 	},
 ];
@@ -40,26 +40,22 @@ class AlignmentControl extends Component {
 			blockName,
 			blockClassName,
 			blockCaptionAlignment,
-			isDisabled,
 			updateBlockAttributes,
 		} = this.props;
 
 		const clearClassName = ( nextAlign ) => {
 			let newClassName = '';
-			if (blockClassName) {
-				newClassName = blockClassName.replace('caption-align-center', '').replace('caption-align-right', '').replace('caption-align-left', '').trim();
-				newClassName = newClassName.replace(/\s+/g, ' ').trim();
+			if ( blockClassName ) {
+				newClassName = blockClassName.replace( 'caption-align-center', '' ).replace( 'caption-align-right', '' ).replace( 'caption-align-left', '' ).trim();
+				newClassName = newClassName.replace( /\s+/g, ' ' ).trim();
 			}
 
 			return `caption-align-${ nextAlign } ` + newClassName;
-		}
+		};
 
-		if (isDisabled) {
-			return null;
-		}
-		if ( allowedBlocks.includes(blockName) || hasBlockSupport(blockName, 'editorsKitCaptionAlignment')) {
+		if ( ALLOWED_BLOCKS.includes( blockName ) || hasBlockSupport( blockName, 'editorsKitCaptionAlignment' ) ) {
 			//continue
-		}else{
+		} else {
 			return null;
 		}
 		return (
@@ -67,11 +63,11 @@ class AlignmentControl extends Component {
 				<BlockControls>
 					<Toolbar className="editorskit-components-alignment-toolbar">
 						<AlignmentToolbar
-							value={blockCaptionAlignment}
-							onChange={(nextAlign) => {
-								updateBlockAttributes(blockId, { captionAlignment: nextAlign, className: clearClassName(nextAlign) });
-							}}
-							alignmentControls={ALIGNMENT_CONTROLS}
+							value={ blockCaptionAlignment }
+							onChange={ ( nextAlign ) => {
+								updateBlockAttributes( blockId, { captionAlignment: nextAlign, className: clearClassName( nextAlign ) } );
+							} }
+							alignmentControls={ ALIGNMENT_CONTROLS }
 						/>
 					</Toolbar>
 				</BlockControls>
@@ -81,24 +77,21 @@ class AlignmentControl extends Component {
 }
 
 export default compose(
-	withSelect(() => {
-		const selectedBlock = select('core/block-editor').getSelectedBlock();
-		if (!selectedBlock) {
+	withSelect( () => {
+		const selectedBlock = select( 'core/block-editor' ).getSelectedBlock();
+		if ( ! selectedBlock ) {
 			return {};
 		}
 		return {
 			blockId: selectedBlock.clientId,
 			blockName: selectedBlock.name,
-			blockClassName: get(selectedBlock, 'attributes.className'),
-			blockCaptionAlignment: get(selectedBlock, 'attributes.captionAlignment'),
-			isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitCaptionAlignmentFormats'),
+			blockClassName: get( selectedBlock, 'attributes.className' ),
+			blockCaptionAlignment: get( selectedBlock, 'attributes.captionAlignment' ),
+			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitCaptionAlignmentFormats' ),
 		};
-	}),
-	withDispatch((dispatch) => ({
-		updateBlockAttributes: dispatch('core/block-editor').updateBlockAttributes,
-	})),
-	// ifCondition((props) => {
-	// 	const checkFormats = props.formatTypes.filter((formats) => formats.name === 'wpcom/justify');
-	// 	return 'core/paragraph' === props.blockName && checkFormats.length === 0;
-	// })
-)(AlignmentControl);
+	} ),
+	withDispatch( ( dispatch ) => ( {
+		updateBlockAttributes: dispatch( 'core/block-editor' ).updateBlockAttributes,
+	} ) ),
+	ifCondition( ( props ) => ! props.isDisabled ),
+)( AlignmentControl );

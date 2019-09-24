@@ -1,17 +1,23 @@
 div[class*="wp-block-"],
-figure[class*="wp-block-"]{
-	&.caption-align-left{
-		figcaption{
+figure[class*="wp-block-"] {
+
+	&.caption-align-left {
+
+		figcaption {
 			text-align: left;
 		}
 	}
-	&.caption-align-center{
-		figcaption{
+
+	&.caption-align-center {
+
+		figcaption {
 			text-align: center;
 		}
 	}
-	&.caption-align-right{
-		figcaption{
+
+	&.caption-align-right {
+
+		figcaption {
 			text-align: right;
 		}
 	}

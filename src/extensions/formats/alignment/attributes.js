@@ -4,7 +4,7 @@
 const { addFilter } = wp.hooks;
 const { hasBlockSupport } = wp.blocks;
 
-const allowedBlocks = ['core/image', 'core/gallery'];
+const allowedBlocks = [ 'core/image', 'core/gallery' ];
 
 /**
  * Filters registered block settings, extending attributes with anchor using ID
@@ -14,14 +14,14 @@ const allowedBlocks = ['core/image', 'core/gallery'];
  *
  * @return {Object} Filtered block settings.
  */
-function addAttributes(settings) {
-	if (typeof settings.attributes !== 'undefined' ) {
-		if (allowedBlocks.includes(settings.name) || hasBlockSupport(settings.name, 'editorsKitCaptionAlignment' ) ){
-			settings.attributes = Object.assign(settings.attributes, {
+function addAttributes( settings ) {
+	if ( typeof settings.attributes !== 'undefined' ) {
+		if ( allowedBlocks.includes( settings.name ) || hasBlockSupport( settings.name, 'editorsKitCaptionAlignment' ) ) {
+			settings.attributes = Object.assign( settings.attributes, {
 				captionAlignment: {
 					type: 'string',
 				},
-			});
+			} );
 		}
 	}
 

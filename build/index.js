@@ -11423,7 +11423,7 @@ var _wp$blockEditor = wp.blockEditor,
     AlignmentToolbar = _wp$blockEditor.AlignmentToolbar;
 var Toolbar = wp.components.Toolbar;
 var hasBlockSupport = wp.blocks.hasBlockSupport;
-var allowedBlocks = ['core/image', 'core/gallery'];
+var ALLOWED_BLOCKS = ['core/image', 'core/gallery'];
 var ALIGNMENT_CONTROLS = [{
   icon: 'editor-alignleft',
   title: __('Align caption left', 'block-options'),
@@ -11457,7 +11457,6 @@ function (_Component) {
           blockName = _this$props.blockName,
           blockClassName = _this$props.blockClassName,
           blockCaptionAlignment = _this$props.blockCaptionAlignment,
-          isDisabled = _this$props.isDisabled,
           updateBlockAttributes = _this$props.updateBlockAttributes;
 
       var clearClassName = function clearClassName(nextAlign) {
@@ -11471,11 +11470,7 @@ function (_Component) {
         return "caption-align-".concat(nextAlign, " ") + newClassName;
       };
 
-      if (isDisabled) {
-        return null;
-      }
-
-      if (allowedBlocks.includes(blockName) || hasBlockSupport(blockName, 'editorsKitCaptionAlignment')) {//continue
+      if (ALLOWED_BLOCKS.includes(blockName) || hasBlockSupport(blockName, 'editorsKitCaptionAlignment')) {//continue
       } else {
         return null;
       }
@@ -11516,11 +11511,9 @@ function (_Component) {
   return {
     updateBlockAttributes: dispatch('core/block-editor').updateBlockAttributes
   };
-}) // ifCondition((props) => {
-// 	const checkFormats = props.formatTypes.filter((formats) => formats.name === 'wpcom/justify');
-// 	return 'core/paragraph' === props.blockName && checkFormats.length === 0;
-// })
-)(AlignmentControl));
+}), ifCondition(function (props) {
+  return !props.isDisabled;
+}))(AlignmentControl));
 
 /***/ }),
 

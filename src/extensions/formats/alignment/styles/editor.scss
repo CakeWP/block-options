@@ -1,9 +1,11 @@
-.components-toolbar{
-	&.editorskit-components-alignment-toolbar{
-		padding: 0px;
-		border-right: 0px;
-		.components-dropdown-menu{
-			border: 0px !important;
+.components-toolbar {
+
+	&.editorskit-components-alignment-toolbar {
+		padding: 0;
+		border-right: 0;
+
+		.components-dropdown-menu {
+			border: 0 !important;
 		}
 	}
 }
