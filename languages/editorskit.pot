@@ -3,10 +3,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/formats/alignment/index.js:20
-msgid "Change Text Alignment"
+#: src/extensions/formats/alignment/components/control.js:21
+msgid "Align caption left"
 msgstr ""
 
-#: src/extensions/formats/text-color/components/edit.js:18
-msgid "Text Color"
+#: src/extensions/formats/alignment/components/control.js:26
+msgid "Align caption center"
+msgstr ""
+
+#: src/extensions/formats/alignment/components/control.js:31
+msgid "Align caption right"
 msgstr ""

@@ -11424,6 +11424,19 @@ var _wp$blockEditor = wp.blockEditor,
 var Toolbar = wp.components.Toolbar;
 var hasBlockSupport = wp.blocks.hasBlockSupport;
 var allowedBlocks = ['core/image', 'core/gallery'];
+var ALIGNMENT_CONTROLS = [{
+  icon: 'editor-alignleft',
+  title: __('Align caption left', 'block-options'),
+  align: 'left'
+}, {
+  icon: 'editor-aligncenter',
+  title: __('Align caption center', 'block-options'),
+  align: 'center'
+}, {
+  icon: 'editor-alignright',
+  title: __('Align caption right', 'block-options'),
+  align: 'right'
+}];
 
 var AlignmentControl =
 /*#__PURE__*/
@@ -11476,7 +11489,8 @@ function (_Component) {
             captionAlignment: nextAlign,
             className: clearClassName(nextAlign)
           });
-        }
+        },
+        alignmentControls: ALIGNMENT_CONTROLS
       }))));
     }
   }]);
@@ -11545,7 +11559,7 @@ var Fragment = wp.element.Fragment;
 var name = 'editorskit/alignment';
 var alignment = {
   name: name,
-  title: __('Change Text Alignment', 'block-options'),
+  title: __('Change Caption Alignment', 'block-options'),
   tagName: 'figcaption',
   className: null,
   attributes: {

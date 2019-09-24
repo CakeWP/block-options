@@ -15,6 +15,23 @@ const { Toolbar } = wp.components;
 const { hasBlockSupport } = wp.blocks;
 
 const allowedBlocks = ['core/image', 'core/gallery'];
+const ALIGNMENT_CONTROLS = [
+	{
+		icon: 'editor-alignleft',
+		title: __('Align caption left', 'block-options'),
+		align: 'left',
+	},
+	{
+		icon: 'editor-aligncenter',
+		title: __('Align caption center', 'block-options'),
+		align: 'center',
+	},
+	{
+		icon: 'editor-alignright',
+		title: __('Align caption right', 'block-options'),
+		align: 'right',
+	},
+];
 
 class AlignmentControl extends Component {
 	render() {
@@ -54,6 +71,7 @@ class AlignmentControl extends Component {
 							onChange={(nextAlign) => {
 								updateBlockAttributes(blockId, { captionAlignment: nextAlign, className: clearClassName(nextAlign) });
 							}}
+							alignmentControls={ALIGNMENT_CONTROLS}
 						/>
 					</Toolbar>
 				</BlockControls>

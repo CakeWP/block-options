@@ -17,7 +17,7 @@ const name = 'editorskit/alignment';
 
 export const alignment = {
 	name,
-	title: __('Change Text Alignment', 'block-options'),
+	title: __('Change Caption Alignment', 'block-options'),
 	tagName: 'figcaption',
 	className: null,
 	attributes: {
