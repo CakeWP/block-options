@@ -45,12 +45,22 @@ class AlignmentControl extends Component {
 
 		const clearClassName = ( nextAlign ) => {
 			let newClassName = '';
+
 			if ( blockClassName ) {
-				newClassName = blockClassName.replace( 'caption-align-center', '' ).replace( 'caption-align-right', '' ).replace( 'caption-align-left', '' ).trim();
-				newClassName = newClassName.replace( /\s+/g, ' ' ).trim();
+				newClassName = blockClassName.replace( 'caption-align-default', '' ).replace( 'caption-align-center', '' ).replace( 'caption-align-right', '' ).replace( 'caption-align-left', '' ).trim();
 			}
 
-			return `caption-align-${ nextAlign } ` + newClassName;
+			if ( nextAlign ) {
+				newClassName = `caption-align-${ nextAlign } ` + newClassName;
+			}
+
+			newClassName = newClassName.replace( /\s+/g, ' ' ).trim();
+
+			if ( ! newClassName ) {
+				newClassName = 'caption-align-default';
+			}
+
+			return newClassName;
 		};
 
 		if ( ALLOWED_BLOCKS.includes( blockName ) || hasBlockSupport( blockName, 'editorsKitCaptionAlignment' ) ) {
