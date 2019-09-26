@@ -1,0 +1,25 @@
+div[class*="wp-block-"],
+ul[class*="wp-block-"],
+figure[class*="wp-block-"] {
+
+	&.caption-align-left {
+
+		figcaption {
+			text-align: left;
+		}
+	}
+
+	&.caption-align-center {
+
+		figcaption {
+			text-align: center;
+		}
+	}
+
+	&.caption-align-right {
+
+		figcaption {
+			text-align: right;
+		}
+	}
+}
