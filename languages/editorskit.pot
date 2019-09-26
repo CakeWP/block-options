@@ -3,6 +3,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+<<<<<<< HEAD
+#: src/extensions/block-settings/copy/components/controls.js:108
+msgid "Selected block copied."
+msgstr ""
+
+#: src/extensions/block-settings/copy/components/controls.js:110
+msgid "Selected blocks copied."
+msgstr ""
+
+#: src/extensions/block-settings/copy/components/controls.js:74
+msgid "Copy"
+=======
 #: src/extensions/formats/alignment/components/control.js:21
 msgid "Align caption left"
 msgstr ""
@@ -17,4 +29,5 @@ msgstr ""
 
 #: src/extensions/formats/alignment/index.js:20
 msgid "Change Caption Alignment"
+>>>>>>> master
 msgstr ""

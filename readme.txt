@@ -34,6 +34,7 @@ https://www.youtube.com/watch?v=QWgO4lAJAlE
 * Superscript
 * Subscript
 * Uppercase Text Transform
+* Images and Embeds Caption Alignment
 
 ## Markdown Support
 Starting [EditorsKit 1.6 ](https://jeffreycarandang.com/editorskit-1-6/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit), you can now use markdowns on Gutenberg editor while typing. Markdowns for `*bold*`, `_italic_` and `~strikethrough~` are available upon plugin activation. Lists of available markdowns are also accessible on the settings menu.
@@ -67,6 +68,9 @@ Powered by shortcode you can display the Estimated Reading Time on your content 
 * `after` : Text or element you want to display after reading time.
 * `tag` : default `div` : Html tag container 
 * `fallback` : set value to 'true' to display PHP based wordcount on old posts that are not edited or created through Gutenberg
+
+## Copy and Paste Selected Blocks
+Easily copy single or multiple selected blocks then paste across the website or separate website using `CMD + V`, `CTRL + V` or paste right click option.
 
 ## Image and Cover Block Styles
 Comes with selection of styles on Cover and Image Block for custom shapes and layouts such as diagonal, circular and rounder corners; and even add drop shadows.
@@ -142,6 +146,10 @@ e.g.
 
 
 == Changelog ==
+
+= 1.16 =
+* New: `Copy` single or muliple selected blocks and paste anywhere 🎊
+* New: Caption Alignment for images, galleries and embed blocks 🎉
 
 = 1.15 =
 * New: Estimated Reading Time 🎊
