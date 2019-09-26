@@ -175,6 +175,11 @@ class EditorsKit_Features_Manager {
 					'name'  => 'options',
 					'label' => __( 'Block Options', $this->_slug ),
 					'items' => array(
+						'copy' 	 => array(
+							'name'  => 'copy',
+							'label' => __( 'Copy Selected Block(s)', $this->_slug ),
+							'value' => true,
+						),
 						'navigator' 	 => array(
 							'name'  => 'navigator',
 							'label' => __( 'Block Navigator', $this->_slug ),
