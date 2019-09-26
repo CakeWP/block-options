@@ -11,7 +11,7 @@ License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FMKC2SLPTULP8
 
-EditorsKit provides set of page building block options for the new WordPress Gutenberg editor.
+EditorsKit provides set of page building tools to supercharge the new WordPress Gutenberg block editor.
 
 == Description ==
 
