@@ -3,6 +3,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/block-settings/copy/components/controls.js:109
-msgid "Selected block(s) copied."
+#: src/extensions/block-settings/copy/components/controls.js:108
+msgid "Selected block copied."
+msgstr ""
+
+#: src/extensions/block-settings/copy/components/controls.js:110
+msgid "Selected blocks copied."
+msgstr ""
+
+#: src/extensions/block-settings/copy/components/controls.js:74
+msgid "Copy"
 msgstr ""

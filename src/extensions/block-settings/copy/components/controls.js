@@ -104,9 +104,15 @@ export default compose(
 
 		return {
 			onCopy() {
+				const selectedBlocks = select( 'core/block-editor' ).getMultiSelectedBlocks();
+				let notice = __( 'Selected block copied.', 'block-options' );
+				if ( size( selectedBlocks ) > 0 ) {
+					notice = __( 'Selected blocks copied.', 'block-options' );
+				}
+
 				createNotice(
 					'info',
-					__( 'Selected block(s) copied.', 'block-options' ),
+					notice,
 					{
 						isDismissible: true,
 						type: 'snackbar',

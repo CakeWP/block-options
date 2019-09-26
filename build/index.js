@@ -7706,7 +7706,7 @@ function (_Component) {
           text: this.getSelection(),
           icon: _copy_icon__WEBPACK_IMPORTED_MODULE_8__["default"].copy,
           onCopy: onCopy
-        }, 'Copy'),
+        }, __('Copy', 'block-options')),
         onClick: function onClick() {}
       }));
     }
@@ -7737,7 +7737,15 @@ function (_Component) {
 
   return {
     onCopy: function onCopy() {
-      createNotice('info', __('Selected block(s) copied.', 'block-options'), {
+      var selectedBlocks = select('core/block-editor').getMultiSelectedBlocks();
+
+      var notice = __('Selected block copied.', 'block-options');
+
+      if (Object(lodash__WEBPACK_IMPORTED_MODULE_7__["size"])(selectedBlocks) > 0) {
+        notice = __('Selected blocks copied.', 'block-options');
+      }
+
+      createNotice('info', notice, {
         isDismissible: true,
         type: 'snackbar'
       });
