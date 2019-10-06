@@ -43,6 +43,7 @@ export default compose(
 		return {
 			getBlocks: select( 'core/block-editor' ).getBlocks(),
 			getBlockIndex: select( 'core/block-editor' ).getBlockIndex( selectedId ),
+			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitTransformEmptyWriting' ),
 		};
 	} ),
 	withDispatch( ( dispatch ) => ( {
@@ -54,5 +55,8 @@ export default compose(
 			selectBlock( createSpacer.clientId );
 		},
 	} ) ),
+	ifCondition( ( props ) => {
+		return ! props.isDisabled;
+	} ),
 	withSpokenMessages,
 )( TransformControls );

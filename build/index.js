@@ -15367,7 +15367,8 @@ function (_Component) {
   var selectedId = select('core/block-editor').getSelectedBlockClientId();
   return {
     getBlocks: select('core/block-editor').getBlocks(),
-    getBlockIndex: select('core/block-editor').getBlockIndex(selectedId)
+    getBlockIndex: select('core/block-editor').getBlockIndex(selectedId),
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitTransformEmptyWriting')
   };
 }), withDispatch(function (dispatch) {
   return {
@@ -15383,6 +15384,8 @@ function (_Component) {
       selectBlock(createSpacer.clientId);
     }
   };
+}), ifCondition(function (props) {
+  return !props.isDisabled;
 }), withSpokenMessages)(TransformControls));
 
 /***/ }),
