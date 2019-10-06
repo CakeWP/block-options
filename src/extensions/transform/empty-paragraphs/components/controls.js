@@ -6,16 +6,29 @@ import { isEmpty } from 'lodash';
 /**
  * WordPress dependencies
  */
-const { Component } = wp.element;
+const { __ } = wp.i18n;
+const { Component, Fragment } = wp.element;
 const { createBlock } = wp.blocks;
 const { compose, ifCondition } = wp.compose;
 const { select, withSelect, withDispatch } = wp.data;
-const { withSpokenMessages } = wp.components;
+const { withSpokenMessages, Modal, Button } = wp.components;
 
 class TransformControls extends Component {
+	constructor() {
+		super(...arguments);
+
+		this.state = {
+			isOpen: false,
+		};
+	}
+
 	render() {
 		const { getBlocks, getBlockIndex, createSpacer } = this.props;
 		const isValid = getBlockIndex - 3;
+
+		const closeModal = () => (
+			this.setState({ isOpen: false })
+		);
 
 		if ( isValid < 0 ) {
 			return null;
@@ -32,7 +45,32 @@ class TransformControls extends Component {
 			return null;
 		}
 
-		createSpacer( getFirst.clientId, getSecond.clientId, getThird.clientId, getFourth.clientId );
+		return(
+			<Fragment>
+				<Modal
+					title={__('Enable Shortcut', 'block-options')}
+					onRequestClose={() => closeModal()}
+					focusOnMount={true}
+					closeLabel={__('Close', 'block-options')}
+					icon={null}
+					className="editorskit-modal-component components-modal--editorskit-transform-empty"
+				>
+					<p>{__('Do you want to automatically transform four(4) consecutive empty paragraphs into Spacer Block?', 'block-options') }</p>
+					<Button isPrimary isLarge onClick={
+						() => {
+							createSpacer(getFirst.clientId, getSecond.clientId, getThird.clientId, getFourth.clientId);
+						}
+					} >
+						{__('Yes', 'block-options')}
+					</Button>
+					&nbsp;
+					<Button isDefault isLarge>
+						{__('No', 'block-options')}
+					</Button>
+					<p><small>{__('This prompt will only be shown once and will remember your preference. Thanks!', 'block-options')}</small></p>
+				</Modal>
+			</Fragment>
+		);
 
 		return null;
 	}
