@@ -15337,7 +15337,7 @@ function (_Component) {
           getBlocks = _this$props.getBlocks,
           getBlockIndex = _this$props.getBlockIndex,
           createSpacer = _this$props.createSpacer;
-      var isValid = getBlockIndex - 2;
+      var isValid = getBlockIndex - 3;
 
       if (isValid < 0) {
         return null;
@@ -15346,16 +15346,17 @@ function (_Component) {
       var getFirst = getBlocks[isValid];
       var getSecond = getBlocks[isValid + 1];
       var getThird = getBlocks[isValid + 2];
+      var getFourth = getBlocks[isValid + 3];
 
-      if (getFirst.name !== 'core/paragraph' || getSecond.name !== 'core/paragraph' || getThird.name !== 'core/paragraph') {
+      if (getFirst.name !== 'core/paragraph' || getSecond.name !== 'core/paragraph' || getThird.name !== 'core/paragraph' || getFourth.name !== 'core/paragraph') {
         return null;
       }
 
-      if (!Object(lodash__WEBPACK_IMPORTED_MODULE_5__["isEmpty"])(getFirst.attributes.content) || !Object(lodash__WEBPACK_IMPORTED_MODULE_5__["isEmpty"])(getSecond.attributes.content) || !Object(lodash__WEBPACK_IMPORTED_MODULE_5__["isEmpty"])(getThird.attributes.content)) {
+      if (!Object(lodash__WEBPACK_IMPORTED_MODULE_5__["isEmpty"])(getFirst.attributes.content) || !Object(lodash__WEBPACK_IMPORTED_MODULE_5__["isEmpty"])(getSecond.attributes.content) || !Object(lodash__WEBPACK_IMPORTED_MODULE_5__["isEmpty"])(getThird.attributes.content) || !Object(lodash__WEBPACK_IMPORTED_MODULE_5__["isEmpty"])(getFourth.attributes.content)) {
         return null;
       }
 
-      createSpacer(getFirst.clientId, getSecond.clientId, getThird.clientId);
+      createSpacer(getFirst.clientId, getSecond.clientId, getThird.clientId, getFourth.clientId);
       return null;
     }
   }]);
@@ -15372,15 +15373,15 @@ function (_Component) {
   };
 }), withDispatch(function (dispatch) {
   return {
-    createSpacer: function createSpacer(getFirst, getSecond, getThird) {
+    createSpacer: function createSpacer(getFirst, getSecond, getThird, getFourth) {
       var _dispatch = dispatch('core/block-editor'),
           selectBlock = _dispatch.selectBlock,
           replaceBlock = _dispatch.replaceBlock,
           removeBlocks = _dispatch.removeBlocks;
 
       var createSpacer = createBlock('core/spacer', {});
-      removeBlocks([getFirst, getSecond]);
-      replaceBlock(getThird, createSpacer);
+      removeBlocks([getFirst, getSecond, getThird]);
+      replaceBlock(getFourth, createSpacer);
       selectBlock(createSpacer.clientId);
     }
   };
