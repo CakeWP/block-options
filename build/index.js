@@ -15290,12 +15290,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
 /* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_7__);
+
 
 
 
@@ -15314,7 +15317,9 @@ __webpack_require__.r(__webpack_exports__);
 var __ = wp.i18n.__;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
-    Fragment = _wp$element.Fragment;
+    Fragment = _wp$element.Fragment,
+    createRef = _wp$element.createRef;
+var _focus = wp.dom.focus;
 var createBlock = wp.blocks.createBlock;
 var _wp$compose = wp.compose,
     compose = _wp$compose.compose,
@@ -15322,7 +15327,8 @@ var _wp$compose = wp.compose,
 var _wp$data = wp.data,
     select = _wp$data.select,
     withSelect = _wp$data.withSelect,
-    withDispatch = _wp$data.withDispatch;
+    withDispatch = _wp$data.withDispatch,
+    dispatch = _wp$data.dispatch;
 var _wp$components = wp.components,
     withSpokenMessages = _wp$components.withSpokenMessages,
     Modal = _wp$components.Modal,
@@ -15331,7 +15337,7 @@ var _wp$components = wp.components,
 var TransformControls =
 /*#__PURE__*/
 function (_Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(TransformControls, _Component);
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(TransformControls, _Component);
 
   function TransformControls() {
     var _this;
@@ -15339,6 +15345,8 @@ function (_Component) {
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, TransformControls);
 
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(TransformControls).apply(this, arguments));
+    _this.nameInput = createRef();
+    _this.focus = _this.focus.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     _this.state = {
       isOpen: false
     };
@@ -15346,20 +15354,39 @@ function (_Component) {
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(TransformControls, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.focus();
+    }
+  }, {
+    key: "focus",
+    value: function focus() {
+      if (this.nameInput.current !== null) {
+        var tabbables = _focus.tabbable.find(document.querySelector('.components-modal--editorskit-transform-empty'));
+
+        console.log(tabbables);
+
+        if (tabbables.length) {// tabbables[0].focus();
+        }
+      }
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.focus();
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
       var _this$props = this.props,
           getBlocks = _this$props.getBlocks,
           getBlockIndex = _this$props.getBlockIndex,
-          createSpacer = _this$props.createSpacer;
+          createSpacer = _this$props.createSpacer,
+          onToggle = _this$props.onToggle,
+          isPrompted = _this$props.isPrompted;
       var isValid = getBlockIndex - 3;
 
-      var closeModal = function closeModal() {
-        return _this2.setState({
-          isOpen: false
-        });
+      var closeModal = function closeModal() {// onToggle(1);
       };
 
       if (isValid < 0) {
@@ -15371,33 +15398,50 @@ function (_Component) {
       var getThird = getBlocks[isValid + 2];
       var getFourth = getBlocks[isValid + 3];
 
-      if (getFirst.name !== 'core/paragraph' || getSecond.name !== 'core/paragraph' || getThird.name !== 'core/paragraph' || getFourth.name !== 'core/paragraph') {
-        return null;
-      }
-
-      if (!Object(lodash__WEBPACK_IMPORTED_MODULE_6__["isEmpty"])(getFirst.attributes.content) || !Object(lodash__WEBPACK_IMPORTED_MODULE_6__["isEmpty"])(getSecond.attributes.content) || !Object(lodash__WEBPACK_IMPORTED_MODULE_6__["isEmpty"])(getThird.attributes.content) || !Object(lodash__WEBPACK_IMPORTED_MODULE_6__["isEmpty"])(getFourth.attributes.content)) {
-        return null;
-      }
-
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Modal, {
-        title: __('Enable Shortcut', 'block-options'),
-        onRequestClose: function onRequestClose() {
-          return closeModal();
-        },
-        focusOnMount: true,
-        closeLabel: __('Close', 'block-options'),
-        icon: null,
-        className: "editorskit-modal-component components-modal--editorskit-transform-empty"
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Do you want to automatically transform four(4) consecutive empty paragraphs into Spacer Block?', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
-        isPrimary: true,
-        isLarge: true,
-        onClick: function onClick() {
-          createSpacer(getFirst.clientId, getSecond.clientId, getThird.clientId, getFourth.clientId);
+      if (!this.state.isOpen) {
+        if (getFirst.name !== 'core/paragraph' || getSecond.name !== 'core/paragraph' || getThird.name !== 'core/paragraph' || getFourth.name !== 'core/paragraph') {
+          return null;
         }
-      }, __('Yes', 'block-options')), "\xA0", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
-        isDefault: true,
-        isLarge: true
-      }, __('No', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("small", null, __('This prompt will only be shown once and will remember your preference. Thanks!', 'block-options')))));
+
+        if (!Object(lodash__WEBPACK_IMPORTED_MODULE_7__["isEmpty"])(getFirst.attributes.content) || !Object(lodash__WEBPACK_IMPORTED_MODULE_7__["isEmpty"])(getSecond.attributes.content) || !Object(lodash__WEBPACK_IMPORTED_MODULE_7__["isEmpty"])(getThird.attributes.content) || !Object(lodash__WEBPACK_IMPORTED_MODULE_7__["isEmpty"])(getFourth.attributes.content)) {
+          return null;
+        }
+      }
+
+      if (!isPrompted) {
+        if (!this.state.isOpen) {
+          this.setState({
+            isOpen: true
+          });
+        }
+
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Modal, {
+          title: __('Enable Shortcut', 'block-options'),
+          onRequestClose: function onRequestClose() {
+            return closeModal();
+          },
+          focusOnMount: "container",
+          closeLabel: __('Close', 'block-options'),
+          icon: null,
+          className: "editorskit-modal-component components-modal--editorskit-transform-empty"
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("p", null, __('Do you want to automatically transform four(4) consecutive empty paragraphs into Spacer Block?', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Button, {
+          isPrimary: true,
+          isLarge: true,
+          onClick: function onClick() {
+            onToggle(0);
+            createSpacer(getFirst.clientId, getSecond.clientId, getThird.clientId, getFourth.clientId);
+          },
+          ref: this.nameInput
+        }, __('Yes', 'block-options')), "\xA0", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Button, {
+          isDefault: true,
+          isLarge: true,
+          onClick: function onClick() {
+            return closeModal();
+          }
+        }, __('No', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("small", null, __('This prompt will only be shown once and will remember your preference. Thanks!', 'block-options')))));
+      }
+
+      createSpacer(getFirst.clientId, getSecond.clientId, getThird.clientId, getFourth.clientId);
       return null;
     }
   }]);
@@ -15410,9 +15454,10 @@ function (_Component) {
   return {
     getBlocks: select('core/block-editor').getBlocks(),
     getBlockIndex: select('core/block-editor').getBlockIndex(selectedId),
-    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitTransformEmptyWriting')
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitTransformEmptyWriting'),
+    isPrompted: select('core/edit-post').isFeatureActive('editorsKitTransformEmptyWriting')
   };
-}), withDispatch(function (dispatch) {
+}), withDispatch(function () {
   return {
     createSpacer: function createSpacer(getFirst, getSecond, getThird, getFourth) {
       var _dispatch = dispatch('core/block-editor'),
@@ -15424,6 +15469,13 @@ function (_Component) {
       removeBlocks([getFirst, getSecond, getThird]);
       replaceBlock(getFourth, createSpacer);
       selectBlock(createSpacer.clientId);
+    },
+    onToggle: function onToggle(disabled) {
+      dispatch('core/edit-post').toggleFeature('editorsKitTransformEmptyWriting');
+
+      if (disabled) {
+        dispatch('core/edit-post').toggleFeature('disableEditorsKitTransformEmptyWriting');
+      }
     }
   };
 }), ifCondition(function (props) {
