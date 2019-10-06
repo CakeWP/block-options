@@ -44,6 +44,9 @@ import './extensions/formats/';
 //Block Toolbar
 import './extensions/block-toolbar';
 
+// Block Transformation
+import './extensions/transform/empty-paragraphs';
+
 // Styles
 import './extensions/block-styles/';
 
