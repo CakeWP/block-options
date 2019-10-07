@@ -13029,13 +13029,14 @@ var _wp$compose = wp.compose,
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component;
+var DOWN = wp.keycodes.DOWN;
 var _wp$components = wp.components,
     withSpokenMessages = _wp$components.withSpokenMessages,
     Modal = _wp$components.Modal,
-    DropdownMenu = _wp$components.DropdownMenu,
-    MenuGroup = _wp$components.MenuGroup,
-    MenuItem = _wp$components.MenuItem,
-    Button = _wp$components.Button;
+    Button = _wp$components.Button,
+    IconButton = _wp$components.IconButton,
+    Dropdown = _wp$components.Dropdown,
+    NavigableMenu = _wp$components.NavigableMenu;
 var tweets = ['1178226931277287425', '1177555440638382080', '1179365591553118227', '1177920047546650624', '1177461678004293637', '1178693225923497984', '1179727978353135616', '1180455552079425537', '1178929974247448576', '1176395801888604161'];
 /**
  * Render plugin
@@ -13104,7 +13105,7 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var onToggle = this.props.onToggle;
+      var onDisable = this.props.onDisable;
 
       var closeModal = function closeModal() {
         return _this2.setState({
@@ -13113,30 +13114,57 @@ function (_Component) {
         });
       };
 
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(DropdownMenu, {
-        icon: "editor-help",
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Dropdown, {
         className: "editorskit-component-help-tips",
-        label: __('Help, tips and tricks')
-      }, function (_ref) {
-        var onClose = _ref.onClose;
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(MenuGroup, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(MenuItem, {
-          icon: "sos",
-          onClick: function onClick() {
-            onClose();
+        renderToggle: function renderToggle(_ref) {
+          var isOpen = _ref.isOpen,
+              onToggle = _ref.onToggle;
 
-            _this2.setState({
-              isOpen: true
-            });
-          }
-        }, __('Tips and Tricks')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(MenuItem, {
-          icon: "admin-site-alt3",
-          onClick: function onClick() {
-            _this2.routeChange("https://www.facebook.com/groups/editorskit/");
-          }
-        }, __('EditorsKit Community Help'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(MenuGroup, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(MenuItem, {
-          icon: "dismiss",
-          onClick: onToggle
-        }, __('Remove/Disable Help Button'))));
+          var openOnArrowDown = function openOnArrowDown(event) {
+            if (!isOpen && event.keyCode === DOWN) {
+              event.preventDefault();
+              event.stopPropagation();
+              onToggle();
+            }
+          };
+
+          return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(IconButton, {
+            className: "components-dropdown-menu__toggle",
+            icon: "editor-help",
+            onClick: onToggle,
+            onKeyDown: openOnArrowDown,
+            "aria-haspopup": "true",
+            "aria-expanded": isOpen,
+            label: __('Help, tips and tricks'),
+            tooltip: __('Help, tips and tricks')
+          });
+        },
+        renderContent: function renderContent(_ref2) {
+          var onClose = _ref2.onClose;
+          return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(NavigableMenu, {
+            className: "editorskit-menu-help-tips",
+            role: "menu"
+          }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(IconButton, {
+            icon: "sos",
+            onClick: function onClick() {
+              onClose();
+
+              _this2.setState({
+                isOpen: true
+              });
+            }
+          }, __('Tips and Tricks')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(IconButton, {
+            icon: "admin-site-alt3",
+            onClick: function onClick() {
+              _this2.routeChange("https://www.facebook.com/groups/editorskit/");
+            }
+          }, __('EditorsKit Community Help')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
+            className: "editor-block-settings-menu__separator block-editor-block-settings-menu__separator"
+          }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(IconButton, {
+            icon: "dismiss",
+            onClick: onDisable
+          }, __('Remove/Disable Help Button')));
+        }
       }), this.state.isOpen ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Modal, {
         title: __('Tips and Tricks', 'block-options'),
         shouldCloseOnClickOutside: false,
@@ -13184,7 +13212,7 @@ function (_Component) {
   };
 }), withDispatch(function (dispatch) {
   return {
-    onToggle: function onToggle() {
+    onDisable: function onDisable() {
       dispatch('core/edit-post').toggleFeature('disableEditorsKitHelpTools');
     }
   };

@@ -10,7 +10,8 @@ const { __ } = wp.i18n;
 const { withSelect, withDispatch, select } = wp.data;
 const { compose, ifCondition } = wp.compose;
 const { Fragment, Component } = wp.element;
-const { withSpokenMessages, Modal, DropdownMenu, MenuGroup, MenuItem, Button } = wp.components;
+const { DOWN } = wp.keycodes;
+const { withSpokenMessages, Modal, Button, IconButton, Dropdown, NavigableMenu } = wp.components;
 
 const tweets = [
 	'1178226931277287425',
@@ -66,7 +67,7 @@ class HelpControl extends Component {
 
 	render() {
 		const {
-			onToggle,
+			onDisable,
 		} = this.props;
 
 		const closeModal = () => (
@@ -75,15 +76,38 @@ class HelpControl extends Component {
 
 		return (
 			<Fragment>
-				<DropdownMenu
-					icon="editor-help"
+				<Dropdown
 					className="editorskit-component-help-tips"
-					label={ __( 'Help, tips and tricks' ) }
-				>
-					{ ( { onClose } ) => (
-						<Fragment>
-							<MenuGroup>
-								<MenuItem
+					renderToggle={ ( { isOpen, onToggle } ) => {
+						const openOnArrowDown = ( event ) => {
+							if ( ! isOpen && event.keyCode === DOWN ) {
+								event.preventDefault();
+								event.stopPropagation();
+								onToggle();
+							}
+						};
+						return (
+							<IconButton
+								className="components-dropdown-menu__toggle"
+								icon="editor-help"
+								onClick={ onToggle }
+								onKeyDown={ openOnArrowDown }
+								aria-haspopup="true"
+								aria-expanded={ isOpen }
+								label={ __( 'Help, tips and tricks' ) }
+								tooltip={ __( 'Help, tips and tricks' ) }
+							>
+
+							</IconButton>
+						);
+					} }
+					renderContent={ ( { onClose } ) => {
+						return (
+							<NavigableMenu
+								className="editorskit-menu-help-tips"
+								role="menu"
+							>
+								<IconButton
 									icon="sos"
 									onClick={ () => {
 										onClose();
@@ -91,27 +115,26 @@ class HelpControl extends Component {
 									} }
 								>
 									{ __( 'Tips and Tricks' ) }
-								</MenuItem>
-								<MenuItem
+								</IconButton>
+								<IconButton
 									icon="admin-site-alt3"
 									onClick={ () => {
 										this.routeChange( `https://www.facebook.com/groups/editorskit/` );
 									} }
 								>
 									{ __( 'EditorsKit Community Help' ) }
-								</MenuItem>
-							</MenuGroup>
-							<MenuGroup>
-								<MenuItem
+								</IconButton>
+								<div className="editor-block-settings-menu__separator block-editor-block-settings-menu__separator"></div>
+								<IconButton
 									icon="dismiss"
-									onClick={ onToggle }
+									onClick={ onDisable }
 								>
 									{ __( 'Remove/Disable Help Button' ) }
-								</MenuItem>
-							</MenuGroup>
-						</Fragment>
-					) }
-				</DropdownMenu>
+								</IconButton>
+							</NavigableMenu>
+						);
+					} }
+				/>
 				{ this.state.isOpen ?
 					<Modal
 						title={ __( 'Tips and Tricks', 'block-options' ) }
@@ -166,7 +189,7 @@ export default compose( [
 		isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitHelpTools' ),
 	} ) ),
 	withDispatch( ( dispatch ) => ( {
-		onToggle() {
+		onDisable() {
 			dispatch( 'core/edit-post' ).toggleFeature( 'disableEditorsKitHelpTools' );
 		},
 	} ) ),
