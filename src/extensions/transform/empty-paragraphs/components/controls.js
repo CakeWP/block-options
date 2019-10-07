@@ -16,24 +16,22 @@ const { withSpokenMessages, Modal, Button } = wp.components;
 
 class TransformControls extends Component {
 	constructor() {
-		super(...arguments);
+		super( ...arguments );
 
 		this.nameInput = createRef();
-		this.focus = this.focus.bind(this);
-		this.state = {
-			isOpen: false
-		}
+		this.focus = this.focus.bind( this );
 	}
 	componentDidMount() {
 		this.focus();
 	}
-	
+
 	focus() {
-		if (this.nameInput.current !== null){
-			const tabbables = focus.tabbable.find(document.querySelector('.components-modal--editorskit-transform-empty'));
-			console.log(tabbables);
-			if (tabbables.length) {
-				// tabbables[0].focus();
+		if ( this.nameInput.current !== null ) {
+			const tabbables = focus.tabbable.find( document.querySelector( '.components-modal--editorskit-transform-empty' ) );
+			if ( tabbables.length ) {
+				document.activeElement.classList.remove( 'is-selected' );
+				document.activeElement.blur();
+				tabbables[ 0 ].focus();
 			}
 		}
 	}
@@ -47,7 +45,7 @@ class TransformControls extends Component {
 		const isValid = getBlockIndex - 3;
 
 		const closeModal = () => {
-			onToggle(1);
+			onToggle( 1 );
 		};
 
 		if ( isValid < 0 ) {
@@ -57,50 +55,46 @@ class TransformControls extends Component {
 		const getSecond = getBlocks[ isValid + 1 ];
 		const getThird = getBlocks[ isValid + 2 ];
 		const getFourth = getBlocks[ isValid + 3 ];
-		
-		if (!this.state.isOpen ){
-			if (getFirst.name !== 'core/paragraph' || getSecond.name !== 'core/paragraph' || getThird.name !== 'core/paragraph' || getFourth.name !== 'core/paragraph') {
-				return null;
-			}
 
-			if (!isEmpty(getFirst.attributes.content) || !isEmpty(getSecond.attributes.content) || !isEmpty(getThird.attributes.content) || !isEmpty(getFourth.attributes.content)) {
-				return null;
-			}
+		if ( getFirst.name !== 'core/paragraph' || getSecond.name !== 'core/paragraph' || getThird.name !== 'core/paragraph' || getFourth.name !== 'core/paragraph' ) {
+			return null;
 		}
-		
-		if (!isPrompted ){
-			if (!this.state.isOpen) {
-				this.setState({ isOpen: true });
-			}
+
+		if ( ! isEmpty( getFirst.attributes.content ) || ! isEmpty( getSecond.attributes.content ) || ! isEmpty( getThird.attributes.content ) || ! isEmpty( getFourth.attributes.content ) ) {
+			return null;
+		}
+
+		if ( ! isPrompted ) {
 			return (
 				<Fragment>
 					<Modal
-						title={__('Enable Shortcut', 'block-options')}
-						onRequestClose={() => closeModal()}
-						focusOnMount='container'
-						closeLabel={__('Close', 'block-options')}
-						icon={null}
+						title={ __( 'Enable Shortcut', 'block-options' ) }
+						// onRequestClose={() => closeModal()}
+						shouldCloseOnEsc={ false }
+						shouldCloseOnClickOutside={ false }
+						closeLabel={ __( 'Close', 'block-options' ) }
+						icon={ null }
 						className="editorskit-modal-component components-modal--editorskit-transform-empty"
 					>
-						<p>{__('Do you want to automatically transform four(4) consecutive empty paragraphs into Spacer Block?', 'block-options')}</p>
+						<p>{ __( 'Do you want to automatically transform four(4) consecutive empty paragraphs into Spacer Block?', 'block-options' ) }</p>
 						<Button isPrimary isLarge onClick={
 							() => {
-								onToggle(0);
-								createSpacer(getFirst.clientId, getSecond.clientId, getThird.clientId, getFourth.clientId);
+								onToggle( 0 );
+								createSpacer( getFirst.clientId, getSecond.clientId, getThird.clientId, getFourth.clientId );
 							}
-						} ref={this.nameInput}  >
-							{__('Yes', 'block-options')}
+						} ref={ this.nameInput } >
+							{ __( 'Yes Enable', 'block-options' ) }
 						</Button>
 						&nbsp;
-						<Button isDefault isLarge onClick={() => closeModal()} >
-							{__('No', 'block-options')}
+						<Button isDefault isLarge onClick={ () => closeModal() } >
+							{ __( 'No, Thanks', 'block-options' ) }
 						</Button>
-						<p><small>{__('This prompt will only be shown once and will remember your preference. Thanks!', 'block-options')}</small></p>
+						<p><small>{ __( 'This prompt will only be shown once and will remember your preference. Thanks!', 'block-options' ) }</small></p>
 					</Modal>
 				</Fragment>
 			);
 		}
-		createSpacer(getFirst.clientId, getSecond.clientId, getThird.clientId, getFourth.clientId);
+		createSpacer( getFirst.clientId, getSecond.clientId, getThird.clientId, getFourth.clientId );
 
 		return null;
 	}
@@ -113,7 +107,7 @@ export default compose(
 			getBlocks: select( 'core/block-editor' ).getBlocks(),
 			getBlockIndex: select( 'core/block-editor' ).getBlockIndex( selectedId ),
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitTransformEmptyWriting' ),
-			isPrompted: select('core/edit-post').isFeatureActive( 'editorsKitTransformEmptyWriting' ),
+			isPrompted: select( 'core/edit-post' ).isFeatureActive( 'editorsKitTransformEmptyWriting' ),
 		};
 	} ),
 	withDispatch( () => ( {
@@ -124,10 +118,10 @@ export default compose(
 			replaceBlock( getFourth, createSpacer );
 			selectBlock( createSpacer.clientId );
 		},
-		onToggle(disabled) {
-			dispatch('core/edit-post').toggleFeature('editorsKitTransformEmptyWriting');
-			if (disabled){
-				dispatch('core/edit-post').toggleFeature('disableEditorsKitTransformEmptyWriting');
+		onToggle( disabled ) {
+			dispatch( 'core/edit-post' ).toggleFeature( 'editorsKitTransformEmptyWriting' );
+			if ( disabled ) {
+				dispatch( 'core/edit-post' ).toggleFeature( 'disableEditorsKitTransformEmptyWriting' );
 			}
 		},
 	} ) ),

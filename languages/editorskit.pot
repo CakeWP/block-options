@@ -3,29 +3,29 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/transform/empty-paragraphs/components/controls.js:78
+#: src/extensions/transform/empty-paragraphs/components/controls.js:72
 msgid "Enable Shortcut"
 msgstr ""
 
-#: src/extensions/transform/empty-paragraphs/components/controls.js:81
+#: src/extensions/transform/empty-paragraphs/components/controls.js:76
 msgid "Close"
 msgstr ""
 
-#: src/extensions/transform/empty-paragraphs/components/controls.js:85
+#: src/extensions/transform/empty-paragraphs/components/controls.js:80
 msgid ""
 "Do you want to automatically transform four(4) consecutive empty paragraphs "
 "into Spacer Block?"
 msgstr ""
 
-#: src/extensions/transform/empty-paragraphs/components/controls.js:92
-msgid "Yes"
+#: src/extensions/transform/empty-paragraphs/components/controls.js:87
+msgid "Yes Enable"
 msgstr ""
 
-#: src/extensions/transform/empty-paragraphs/components/controls.js:96
-msgid "No"
+#: src/extensions/transform/empty-paragraphs/components/controls.js:91
+msgid "No, Thanks"
 msgstr ""
 
-#: src/extensions/transform/empty-paragraphs/components/controls.js:98
+#: src/extensions/transform/empty-paragraphs/components/controls.js:93
 msgid ""
 "This prompt will only be shown once and will remember your preference. "
 "Thanks!"

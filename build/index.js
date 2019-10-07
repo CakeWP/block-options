@@ -15347,9 +15347,6 @@ function (_Component) {
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(TransformControls).apply(this, arguments));
     _this.nameInput = createRef();
     _this.focus = _this.focus.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
-    _this.state = {
-      isOpen: false
-    };
     return _this;
   }
 
@@ -15364,9 +15361,10 @@ function (_Component) {
       if (this.nameInput.current !== null) {
         var tabbables = _focus.tabbable.find(document.querySelector('.components-modal--editorskit-transform-empty'));
 
-        console.log(tabbables);
-
-        if (tabbables.length) {// tabbables[0].focus();
+        if (tabbables.length) {
+          document.activeElement.classList.remove('is-selected');
+          document.activeElement.blur();
+          tabbables[0].focus();
         }
       }
     }
@@ -15386,7 +15384,8 @@ function (_Component) {
           isPrompted = _this$props.isPrompted;
       var isValid = getBlockIndex - 3;
 
-      var closeModal = function closeModal() {// onToggle(1);
+      var closeModal = function closeModal() {
+        onToggle(1);
       };
 
       if (isValid < 0) {
@@ -15398,29 +15397,20 @@ function (_Component) {
       var getThird = getBlocks[isValid + 2];
       var getFourth = getBlocks[isValid + 3];
 
-      if (!this.state.isOpen) {
-        if (getFirst.name !== 'core/paragraph' || getSecond.name !== 'core/paragraph' || getThird.name !== 'core/paragraph' || getFourth.name !== 'core/paragraph') {
-          return null;
-        }
+      if (getFirst.name !== 'core/paragraph' || getSecond.name !== 'core/paragraph' || getThird.name !== 'core/paragraph' || getFourth.name !== 'core/paragraph') {
+        return null;
+      }
 
-        if (!Object(lodash__WEBPACK_IMPORTED_MODULE_7__["isEmpty"])(getFirst.attributes.content) || !Object(lodash__WEBPACK_IMPORTED_MODULE_7__["isEmpty"])(getSecond.attributes.content) || !Object(lodash__WEBPACK_IMPORTED_MODULE_7__["isEmpty"])(getThird.attributes.content) || !Object(lodash__WEBPACK_IMPORTED_MODULE_7__["isEmpty"])(getFourth.attributes.content)) {
-          return null;
-        }
+      if (!Object(lodash__WEBPACK_IMPORTED_MODULE_7__["isEmpty"])(getFirst.attributes.content) || !Object(lodash__WEBPACK_IMPORTED_MODULE_7__["isEmpty"])(getSecond.attributes.content) || !Object(lodash__WEBPACK_IMPORTED_MODULE_7__["isEmpty"])(getThird.attributes.content) || !Object(lodash__WEBPACK_IMPORTED_MODULE_7__["isEmpty"])(getFourth.attributes.content)) {
+        return null;
       }
 
       if (!isPrompted) {
-        if (!this.state.isOpen) {
-          this.setState({
-            isOpen: true
-          });
-        }
-
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Modal, {
-          title: __('Enable Shortcut', 'block-options'),
-          onRequestClose: function onRequestClose() {
-            return closeModal();
-          },
-          focusOnMount: "container",
+          title: __('Enable Shortcut', 'block-options') // onRequestClose={() => closeModal()}
+          ,
+          shouldCloseOnEsc: false,
+          shouldCloseOnClickOutside: false,
           closeLabel: __('Close', 'block-options'),
           icon: null,
           className: "editorskit-modal-component components-modal--editorskit-transform-empty"
@@ -15432,13 +15422,13 @@ function (_Component) {
             createSpacer(getFirst.clientId, getSecond.clientId, getThird.clientId, getFourth.clientId);
           },
           ref: this.nameInput
-        }, __('Yes', 'block-options')), "\xA0", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Button, {
+        }, __('Yes Enable', 'block-options')), "\xA0", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Button, {
           isDefault: true,
           isLarge: true,
           onClick: function onClick() {
             return closeModal();
           }
-        }, __('No', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("small", null, __('This prompt will only be shown once and will remember your preference. Thanks!', 'block-options')))));
+        }, __('No, Thanks', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("small", null, __('This prompt will only be shown once and will remember your preference. Thanks!', 'block-options')))));
       }
 
       createSpacer(getFirst.clientId, getSecond.clientId, getThird.clientId, getFourth.clientId);
