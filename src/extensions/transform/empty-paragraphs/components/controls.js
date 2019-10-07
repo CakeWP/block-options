@@ -29,7 +29,6 @@ class TransformControls extends Component {
 		if ( this.nameInput.current !== null ) {
 			const tabbables = focus.tabbable.find( document.querySelector( '.components-modal--editorskit-transform-empty' ) );
 			if ( tabbables.length ) {
-				document.activeElement.classList.remove( 'is-selected' );
 				document.activeElement.blur();
 				tabbables[ 0 ].focus();
 			}
