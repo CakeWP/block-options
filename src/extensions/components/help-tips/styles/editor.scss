@@ -1,14 +1,23 @@
-.editorskit-component-help-tips{
+.editorskit-component-help-tips {
 	position: absolute;
-    bottom: 0px;
-    right: 0px;
+	bottom: 0;
+	right: 0;
 	z-index: 999;
-	
-	>button{
-		svg{
+
+	> button {
+
+		svg {
 			height: 30px;
 			width: 30px;
 			color: #6a7987;
+			background: #fff;
+   			border-radius: 999px;
 		}
 	}
+}
+
+.components-modal--editorskit-help-tips-buttons {
+	margin-top: 20px;
+	display: flex;
+	justify-content: space-between;
 }
