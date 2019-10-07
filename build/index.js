@@ -15362,7 +15362,6 @@ function (_Component) {
         var tabbables = _focus.tabbable.find(document.querySelector('.components-modal--editorskit-transform-empty'));
 
         if (tabbables.length) {
-          document.activeElement.classList.remove('is-selected');
           document.activeElement.blur();
           tabbables[0].focus();
         }
@@ -15407,9 +15406,10 @@ function (_Component) {
 
       if (!isPrompted) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Modal, {
-          title: __('Enable Shortcut', 'block-options') // onRequestClose={() => closeModal()}
-          ,
-          shouldCloseOnEsc: false,
+          title: __('Enable Shortcut', 'block-options'),
+          onRequestClose: function onRequestClose() {
+            return closeModal();
+          },
           shouldCloseOnClickOutside: false,
           closeLabel: __('Close', 'block-options'),
           icon: null,

@@ -68,8 +68,7 @@ class TransformControls extends Component {
 				<Fragment>
 					<Modal
 						title={ __( 'Enable Shortcut', 'block-options' ) }
-						// onRequestClose={() => closeModal()}
-						shouldCloseOnEsc={ false }
+						onRequestClose={ () => closeModal() }
 						shouldCloseOnClickOutside={ false }
 						closeLabel={ __( 'Close', 'block-options' ) }
 						icon={ null }
