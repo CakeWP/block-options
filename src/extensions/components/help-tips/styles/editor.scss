@@ -1,0 +1,14 @@
+.editorskit-component-help-tips{
+	position: absolute;
+    bottom: 0px;
+    right: 0px;
+	z-index: 999;
+	
+	>button{
+		svg{
+			height: 30px;
+			width: 30px;
+			color: #6a7987;
+		}
+	}
+}
