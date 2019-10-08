@@ -1,0 +1,84 @@
+.editorskit-component-help-tips {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	z-index: 999;
+
+	> button {
+		border-radius: 999px;
+
+		svg {
+			height: 30px;
+			width: 30px;
+			color: #6a7987;
+			background: #fff;
+			border-radius: 999px;
+		}
+	}
+
+	.components-button {
+
+		&:not(:disabled):not([aria-disabled="true"]):not(.is-default):hover {
+			background-color: #fff;
+			color: #191e23;
+			box-shadow: inset 0 0 0 1px #6c7781, inset 0 0 0 2px #fff;
+		}
+	}
+}
+
+body {
+
+	.editorskit-menu-help-tips {
+		padding: 10px 0;
+
+		.components-icon-button {
+			width: 100%;
+			justify-content: flex-start;
+			padding: 8px 15px;
+			background: none;
+			outline: none;
+			border-radius: 0;
+			color: #555d66;
+			text-align: left;
+			cursor: pointer;
+			border: none;
+			box-shadow: none;
+
+			&:hover:not(:disabled):not([aria-disabled="true"]) {
+				color: #191e23;
+				border: none;
+				box-shadow: none;
+				background: #f3f4f5;
+			}
+
+			&:focus:not(:disabled):not([aria-disabled="true"]) {
+				color: #191e23;
+				border: none;
+				box-shadow: none;
+				outline-offset: -2px;
+				outline: 1px dotted #555d66;
+			}
+		}
+
+		.editor-block-settings-menu__separator {
+			margin: 8px 0;
+			border-top: 1px solid #e2e4e7;
+		}
+	}
+
+	.components-modal--editorskit-help-tips-buttons {
+		margin-top: 20px;
+		display: flex;
+		justify-content: space-between;
+
+		.components-icon-button {
+
+			&:hover:not(:disabled):not([aria-disabled="true"]) {
+				background: #0070a7;
+				border-color: #0070a7;
+				color: #fff;
+				box-shadow: none;
+			}
+		}
+	}
+}

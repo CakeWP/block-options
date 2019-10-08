@@ -100,10 +100,20 @@ class TransformControls extends Component {
 
 export default compose(
 	withSelect( () => {
-		const selectedId = select( 'core/block-editor' ).getSelectedBlockClientId();
+		const { getSelectedBlockClientId, getBlockRootClientId, getBlocks, getBlockIndex, getBlocksByClientId } = select( 'core/block-editor' );
+		const selectedId = getSelectedBlockClientId();
+		const selectedParent = getBlockRootClientId( selectedId );
+		let getAllBlocks = getBlocks();
+		let getSelectedBlockIndex = getBlockIndex( selectedId );
+
+		if ( ! isEmpty( selectedParent ) ) {
+			getAllBlocks = getBlocksByClientId( selectedParent )[ 0 ].innerBlocks;
+			getSelectedBlockIndex = getBlockIndex( selectedId, selectedParent );
+		}
+
 		return {
-			getBlocks: select( 'core/block-editor' ).getBlocks(),
-			getBlockIndex: select( 'core/block-editor' ).getBlockIndex( selectedId ),
+			getBlocks: getAllBlocks,
+			getBlockIndex: getSelectedBlockIndex,
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitTransformEmptyWriting' ),
 			isPrompted: select( 'core/edit-post' ).isFeatureActive( 'editorsKitTransformEmptyWriting' ),
 		};

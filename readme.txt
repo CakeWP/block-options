@@ -114,6 +114,9 @@ Enable or disable EditorsKit features using "EditorsKit Settings" menu. This wil
 ## Theme Supports for Developers
 [EditorsKit](https://editorskit.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit) is moving towards being developer friendly as well. Starting version 1.5, custom `theme_supports` were added to provide theme developers option to make Gutenberg block editing experience for their users match the frontend display. [Learn more here](https://jeffreycarandang.com/editorskit-1-5/).
 
+## Accessible Help, Tips and Tricks
+Add help, tips and tricks button on the bottom right side of the editor to help users discover several helpful power tips and shortcuts. These tips will definitely improve your workflow and save time navigating the new block editor.
+
 ## Helping you with the new Gutenberg Editor
 EditorsKit is created to help you navigate through the new editor. Each new features will make your page building more convenient and easier. You can help achieving this goal through the community: 
 
