@@ -169,6 +169,11 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Markdown', $this->_slug ),
 							'value' => true,
 						),
+						'transformEmpty'	=> array(
+							'name'  => 'transformEmpty',
+							'label' => __( 'Transform 4 Empty Paragraphs to Spacer Block', $this->_slug ),
+							'value' => true,
+						),
 					)
 				),
 				'options' => array(
