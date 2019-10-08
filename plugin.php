@@ -225,9 +225,6 @@ function editorskit() {
 	return EditorsKit::instance();
 }
 
-//add freemius sdk
-require_once plugin_dir_path( __FILE__ ) . 'includes/freemius.php';
-
 // Get Plugin Running.
 if( function_exists( 'is_multisite' ) && is_multisite() ){
 	// Get Plugin Running. Load on plugins_loaded action to avoid issue on multisite.
