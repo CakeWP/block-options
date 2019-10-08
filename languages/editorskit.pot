@@ -3,34 +3,34 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/components/help-tips/components/controls.js:125
+#: src/extensions/components/help-tips/components/controls.js:100
+msgid "Help, tips and tricks"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/controls.js:127
 msgid "EditorsKit Community Help"
 msgstr ""
 
-#: src/extensions/components/help-tips/components/controls.js:132
+#: src/extensions/components/help-tips/components/controls.js:134
 msgid "Remove/Disable Help Button"
 msgstr ""
 
-#: src/extensions/components/help-tips/components/controls.js:140
+#: src/extensions/components/help-tips/components/controls.js:142
 msgid "Tips and Tricks"
 msgstr ""
 
-#: src/extensions/components/help-tips/components/controls.js:143
+#: src/extensions/components/help-tips/components/controls.js:145
 msgid "Close"
 msgstr ""
 
-#: src/extensions/components/help-tips/components/controls.js:168
+#: src/extensions/components/help-tips/components/controls.js:170
 msgid "View All Tips and Tricks"
 msgstr ""
 
-#: src/extensions/components/help-tips/components/controls.js:176
+#: src/extensions/components/help-tips/components/controls.js:178
 msgid "Next"
 msgstr ""
 
-#: src/extensions/components/help-tips/components/controls.js:179
+#: src/extensions/components/help-tips/components/controls.js:181
 msgid "Fetching..."
-msgstr ""
-
-#: src/extensions/components/help-tips/components/controls.js:98
-msgid "Help, tips and tricks"
 msgstr ""
