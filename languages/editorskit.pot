@@ -23,14 +23,14 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: src/extensions/components/help-tips/components/controls.js:170
+#: src/extensions/components/help-tips/components/controls.js:171
 msgid "View All Tips and Tricks"
 msgstr ""
 
-#: src/extensions/components/help-tips/components/controls.js:178
+#: src/extensions/components/help-tips/components/controls.js:179
 msgid "Next"
 msgstr ""
 
-#: src/extensions/components/help-tips/components/controls.js:181
+#: src/extensions/components/help-tips/components/controls.js:182
 msgid "Fetching..."
 msgstr ""
