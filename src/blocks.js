@@ -34,6 +34,7 @@ import './extensions/components/code-editor';
 import './extensions/components/heading-label';
 import './extensions/components/featured-image';
 import './extensions/components/reading-time';
+import './extensions/components/help-tips';
 
 //Block Settings
 import './extensions/block-settings';
