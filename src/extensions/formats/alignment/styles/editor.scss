@@ -4,6 +4,10 @@
 		padding: 0;
 		border-right: 0;
 
+		> .components-toolbar{
+			padding: 0px !important;
+		}
+
 		.components-dropdown-menu,
 		> .components-toolbar {
 			border: 0 !important;
