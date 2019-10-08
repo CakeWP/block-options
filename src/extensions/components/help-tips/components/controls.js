@@ -61,7 +61,7 @@ class HelpControl extends Component {
 
 	componentDidUpdate() {
 		if ( this.state.tweetId > 0 && ! this.state.isOpen ) {
-			this.setState( { isOpen: true } );
+			this.setState( { isOpen: true, isLoaded: false } );
 		}
 	}
 
@@ -158,14 +158,15 @@ class HelpControl extends Component {
 						/>
 						{ this.state.isLoaded ?
 							<div className="components-modal--editorskit-help-tips-buttons">
-								<Button
+								<IconButton
 									isPrimary
 									isLarge
+									icon="twitter"
 									onClick={ () => {
 										this.routeChange( `https://twitter.com/i/moments/1177466596219949057` );
 									} }>
 									{ __( 'View All Tips and Tricks', 'block-options' ) }
-								</Button>
+								</IconButton>
 								<Button
 									isDefault
 									isLarge

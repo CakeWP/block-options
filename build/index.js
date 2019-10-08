@@ -13096,7 +13096,8 @@ function (_Component) {
     value: function componentDidUpdate() {
       if (this.state.tweetId > 0 && !this.state.isOpen) {
         this.setState({
-          isOpen: true
+          isOpen: true,
+          isLoaded: false
         });
       }
     }
@@ -13187,9 +13188,10 @@ function (_Component) {
         }
       }), this.state.isLoaded ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
         className: "components-modal--editorskit-help-tips-buttons"
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(IconButton, {
         isPrimary: true,
         isLarge: true,
+        icon: "twitter",
         onClick: function onClick() {
           _this2.routeChange("https://twitter.com/i/moments/1177466596219949057");
         }

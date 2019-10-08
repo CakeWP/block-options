@@ -18,7 +18,7 @@
 
 	.components-button {
 
-		&:not(:disabled):not([aria-disabled=true]):not(.is-default):hover {
+		&:not(:disabled):not([aria-disabled="true"]):not(.is-default):hover {
 			background-color: #fff;
 			color: #191e23;
 			box-shadow: inset 0 0 0 1px #6c7781, inset 0 0 0 2px #fff;
@@ -44,14 +44,14 @@ body {
 			border: none;
 			box-shadow: none;
 
-			&:hover:not(:disabled):not([aria-disabled=true]) {
+			&:hover:not(:disabled):not([aria-disabled="true"]) {
 				color: #191e23;
 				border: none;
 				box-shadow: none;
 				background: #f3f4f5;
 			}
 
-			&:focus:not(:disabled):not([aria-disabled=true]) {
+			&:focus:not(:disabled):not([aria-disabled="true"]) {
 				color: #191e23;
 				border: none;
 				box-shadow: none;
@@ -65,10 +65,20 @@ body {
 			border-top: 1px solid #e2e4e7;
 		}
 	}
-}
 
-.components-modal--editorskit-help-tips-buttons {
-	margin-top: 20px;
-	display: flex;
-	justify-content: space-between;
+	.components-modal--editorskit-help-tips-buttons {
+		margin-top: 20px;
+		display: flex;
+		justify-content: space-between;
+
+		.components-icon-button {
+
+			&:hover:not(:disabled):not([aria-disabled="true"]) {
+				background: #0070a7;
+				border-color: #0070a7;
+				color: #fff;
+				box-shadow: none;
+			}
+		}
+	}
 }
