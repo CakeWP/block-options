@@ -3,30 +3,34 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/transform/empty-paragraphs/components/controls.js:70
-msgid "Enable Shortcut"
+#: src/extensions/components/help-tips/components/controls.js:100
+msgid "Help, tips and tricks"
 msgstr ""
 
-#: src/extensions/transform/empty-paragraphs/components/controls.js:73
+#: src/extensions/components/help-tips/components/controls.js:127
+msgid "EditorsKit Community Help"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/controls.js:134
+msgid "Remove/Disable Help Button"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/controls.js:142
+msgid "Tips and Tricks"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/controls.js:145
 msgid "Close"
 msgstr ""
 
-#: src/extensions/transform/empty-paragraphs/components/controls.js:77
-msgid ""
-"Do you want to automatically transform four(4) consecutive empty paragraphs "
-"into Spacer Block?"
+#: src/extensions/components/help-tips/components/controls.js:170
+msgid "View All Tips and Tricks"
 msgstr ""
 
-#: src/extensions/transform/empty-paragraphs/components/controls.js:84
-msgid "Yes Enable"
+#: src/extensions/components/help-tips/components/controls.js:178
+msgid "Next"
 msgstr ""
 
-#: src/extensions/transform/empty-paragraphs/components/controls.js:88
-msgid "No, Thanks"
-msgstr ""
-
-#: src/extensions/transform/empty-paragraphs/components/controls.js:90
-msgid ""
-"This prompt will only be shown once and will remember your preference. "
-"Thanks!"
+#: src/extensions/components/help-tips/components/controls.js:181
+msgid "Fetching..."
 msgstr ""
