@@ -6,7 +6,7 @@ Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenberg editor
 Requires at least: 5.0
 Tested up to: 5.2
 Requires PHP: 5.6
-Stable tag: 1.14
+Stable tag: 1.16
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FMKC2SLPTULP8
@@ -149,6 +149,12 @@ e.g.
 
 
 == Changelog ==
+
+= 1.17 =
+* New: Add accessible [Help, tips and tricks button](https://github.com/phpbits/block-options/issues/141) 🎉
+* New: Add new shortcut option to [automatically transform 4 consecutive empty paragraphs into Spacer Block](https://github.com/phpbits/block-options/issues/139) 🎊
+* Tweaks: Remove Freemius insight integration
+* Fixes: Few other 🐛 cleanup for errors and Gutenberg compatibility
 
 = 1.16 =
 * New: `Copy` single or muliple selected blocks and paste anywhere 🎊
