@@ -73,7 +73,7 @@ class HelpControl extends Component {
 		} = this.props;
 
 		const closeModal = () => (
-			this.setState( { isOpen: false, tweetId: 0 } )
+			this.setState( { isOpen: false, tweetId: 0, isLoaded: false } )
 		);
 
 		return (

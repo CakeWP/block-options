@@ -13111,7 +13111,8 @@ function (_Component) {
       var closeModal = function closeModal() {
         return _this2.setState({
           isOpen: false,
-          tweetId: 0
+          tweetId: 0,
+          isLoaded: false
         });
       };
 
