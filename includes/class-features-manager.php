@@ -171,7 +171,7 @@ class EditorsKit_Features_Manager {
 						),
 						'transformEmpty'	=> array(
 							'name'  => 'transformEmpty',
-							'label' => __( 'Transform 3 Empty to Spacer Block', $this->_slug ),
+							'label' => __( 'Transform 4 Empty Paragraphs to Spacer Block', $this->_slug ),
 							'value' => true,
 						),
 					)
