@@ -71,7 +71,7 @@ if( !class_exists( 'BLOCKOPS_Welcome' ) ){
 		<?php }
 
 		function redirect($plugin){
-			if( $plugin == 'block-options/plugin.php' || $plugin=='editorskit/plugin.php' ) {
+			if( ( $plugin == 'block-options/plugin.php' || $plugin=='editorskit/plugin.php' ) && !isset( $_GET['activate-multi'] ) ) {
 				wp_redirect(admin_url('index.php?page=editorskit-getting-started'));
 				die();
 			}
