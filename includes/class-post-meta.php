@@ -58,7 +58,7 @@ class EditorsKit_Post_Meta {
 			'post', '_editorskit_remove_empty', array(
 				'show_in_rest'  => true,
 				'single'        => true,
-				'type' 			=> 'number',
+				'type' 			=> 'boolean',
 				'auth_callback' => function() {
 					return current_user_can( 'edit_posts' );
 				},

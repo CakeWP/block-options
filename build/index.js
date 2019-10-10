@@ -13705,10 +13705,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
 /* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
+
 
 
 
@@ -13723,7 +13726,9 @@ var __ = wp.i18n.__;
 var _wp$data = wp.data,
     withSelect = _wp$data.withSelect,
     withDispatch = _wp$data.withDispatch,
-    select = _wp$data.select;
+    select = _wp$data.select,
+    subscribe = _wp$data.subscribe,
+    dispatch = _wp$data.dispatch;
 var _wp$compose = wp.compose,
     compose = _wp$compose.compose,
     ifCondition = _wp$compose.ifCondition;
@@ -13739,30 +13744,66 @@ var _wp$components = wp.components,
 var PrePublishCheck =
 /*#__PURE__*/
 function (_Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(PrePublishCheck, _Component);
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(PrePublishCheck, _Component);
 
   function PrePublishCheck() {
+    var _this;
+
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, PrePublishCheck);
 
-    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(PrePublishCheck).apply(this, arguments));
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(PrePublishCheck).apply(this, arguments));
+    _this.updateMeta = _this.updateMeta.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.state = {
+      isSaved: false
+    };
+    return _this;
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(PrePublishCheck, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.updateMeta();
+    }
+  }, {
+    key: "updateMeta",
+    value: function updateMeta() {
+      var _this2 = this;
+
+      var postmeta = this.props.postmeta;
+      var isChecked = postmeta._editorskit_remove_empty;
+      var unssubscribe = subscribe(function () {
+        var isSavingPost = select('core/editor').isSavingPost();
+        var isAutosavingPost = select('core/editor').isAutosavingPost();
+
+        if (isSavingPost && !isAutosavingPost) {
+          if (isChecked && !_this2.state.isSaved) {
+            _this2.setState({
+              isSaved: true
+            }); // dispatch('core/editor').editPost({
+            // 	content: "<p>asdfas</p>",
+            // });
+
+          }
+        }
+      });
+      return unssubscribe;
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
           postmeta = _this$props.postmeta,
           removeEmpty = _this$props.removeEmpty;
       var isChecked = postmeta._editorskit_remove_empty;
-      var panelBodyTitle = [__('Cleanup:'), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("span", {
+      var panelBodyTitle = [__('Cleanup:'), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("span", {
         className: "editor-post-publish-panel__link",
         key: "label"
       }, __('Remove Empty Blocks', 'block-options'))];
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PluginPrePublishPanel, {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(PluginPrePublishPanel, {
         className: "editorskit-pre-publish-panel",
         title: panelBodyTitle,
         initialOpen: true
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(CheckboxControl, {
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(CheckboxControl, {
         label: __('Automatically remove empty paragraphs', 'block-options'),
         checked: isChecked,
         onChange: removeEmpty

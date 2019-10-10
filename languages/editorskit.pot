@@ -3,14 +3,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/components/pre-publish/components/controls.js:25
+#: src/extensions/components/pre-publish/components/controls.js:54
 msgid "Cleanup:"
 msgstr ""
 
-#: src/extensions/components/pre-publish/components/controls.js:28
+#: src/extensions/components/pre-publish/components/controls.js:57
 msgid "Remove Empty Blocks"
 msgstr ""
 
-#: src/extensions/components/pre-publish/components/controls.js:40
+#: src/extensions/components/pre-publish/components/controls.js:69
 msgid "Automatically remove empty paragraphs"
 msgstr ""
