@@ -35,6 +35,7 @@ import './extensions/components/heading-label';
 import './extensions/components/featured-image';
 import './extensions/components/reading-time';
 import './extensions/components/help-tips';
+import './extensions/components/pre-publish';
 
 //Block Settings
 import './extensions/block-settings';
