@@ -4,6 +4,11 @@
 import { TwitterTweetEmbed } from 'react-twitter-embed';
 
 /**
+ * Internal dependencies
+ */
+import { AboutGutenbergEditor } from './about'
+
+/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
@@ -36,6 +41,7 @@ class HelpControl extends Component {
 		super( ...arguments );
 		this.state = {
 			isOpen: false,
+			isAboutOpen: false,
 			isLoaded: false,
 			tweetId: 0,
 		};
@@ -73,7 +79,7 @@ class HelpControl extends Component {
 		} = this.props;
 
 		const closeModal = () => (
-			this.setState( { isOpen: false, tweetId: 0, isLoaded: false } )
+			this.setState( { isOpen: false, isAboutOpen: false, tweetId: 0, isLoaded: false } )
 		);
 
 		return (
@@ -109,6 +115,15 @@ class HelpControl extends Component {
 								className="editorskit-menu-help-tips"
 								role="menu"
 							>
+								<IconButton
+									icon="info"
+									onClick={ () => {
+										onClose();
+										this.setState( { isAboutOpen: true } );
+									} }
+								>
+									{ __( 'About' ) }
+								</IconButton>
 								<IconButton
 									icon="sos"
 									onClick={ () => {
@@ -182,6 +197,7 @@ class HelpControl extends Component {
 						}
 
 					</Modal> : null }
+					{ this.state.isAboutOpen ? <AboutGutenbergEditor closeModal={ closeModal } /> : null }
 			</Fragment>
 		);
 	}
