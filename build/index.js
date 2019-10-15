@@ -17940,7 +17940,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var react_twitter_embed__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-twitter-embed */ "./node_modules/react-twitter-embed/dist/index.es.js");
 
 
 
@@ -17949,16 +17948,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-/**
- * External dependencies
- */
 
 /**
  * WordPress dependencies
  */
-
-var __ = wp.i18n.__;
 var _wp$data = wp.data,
     withSelect = _wp$data.withSelect,
     withDispatch = _wp$data.withDispatch,
@@ -17969,16 +17962,9 @@ var _wp$compose = wp.compose,
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component;
-var _wp$keycodes = wp.keycodes,
-    rawShortcut = _wp$keycodes.rawShortcut,
-    displayShortcut = _wp$keycodes.displayShortcut;
+var rawShortcut = wp.keycodes.rawShortcut;
 var _wp$components = wp.components,
     withSpokenMessages = _wp$components.withSpokenMessages,
-    Modal = _wp$components.Modal,
-    Button = _wp$components.Button,
-    IconButton = _wp$components.IconButton,
-    Dropdown = _wp$components.Dropdown,
-    NavigableMenu = _wp$components.NavigableMenu,
     KeyboardShortcuts = _wp$components.KeyboardShortcuts;
 /**
  * Render plugin
@@ -18036,15 +18022,16 @@ function (_Component) {
       getBlockRootClientId = _select.getBlockRootClientId;
 
   var selectedBlockId = getSelectedBlockClientId();
-  var parentBlockId = getBlockRootClientId(selectedBlockId);
 
   if (!selectedBlockId) {
     return {};
   }
 
+  var parentBlockId = getBlockRootClientId(selectedBlockId);
   return {
     selectedBlockId: selectedBlockId,
-    parentBlockId: parentBlockId
+    parentBlockId: parentBlockId,
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitSelectParentShortcuts')
   };
 }), withDispatch(function (dispatch) {
   var _dispatch = dispatch('core/block-editor'),
@@ -18055,10 +18042,9 @@ function (_Component) {
       selectBlock(clientId);
     }
   };
-}), // ifCondition( ( props ) => {
-// 	return ! props.isDisabled;
-// } ),
-withSpokenMessages])(RegisterShortcut));
+}), ifCondition(function (props) {
+  return !props.isDisabled;
+}), withSpokenMessages])(RegisterShortcut));
 
 /***/ }),
 
