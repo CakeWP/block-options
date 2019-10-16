@@ -8,7 +8,6 @@ msgid "About Gutenberg Block Editor"
 msgstr ""
 
 #: src/extensions/components/help-tips/components/about.js:17
-#: src/extensions/components/help-tips/components/controls.js:160
 msgid "Close"
 msgstr ""
 
@@ -22,36 +21,4 @@ msgstr ""
 
 #: src/extensions/components/help-tips/components/about.js:26
 msgid " Want to help? %sGet involved or report an issue%s."
-msgstr ""
-
-#: src/extensions/components/help-tips/components/controls.js:106
-msgid "Help, tips and tricks"
-msgstr ""
-
-#: src/extensions/components/help-tips/components/controls.js:125
-msgid "About"
-msgstr ""
-
-#: src/extensions/components/help-tips/components/controls.js:142
-msgid "EditorsKit Community Help"
-msgstr ""
-
-#: src/extensions/components/help-tips/components/controls.js:149
-msgid "Remove/Disable Help Button"
-msgstr ""
-
-#: src/extensions/components/help-tips/components/controls.js:157
-msgid "Tips and Tricks"
-msgstr ""
-
-#: src/extensions/components/help-tips/components/controls.js:185
-msgid "View All Tips and Tricks"
-msgstr ""
-
-#: src/extensions/components/help-tips/components/controls.js:193
-msgid "Next"
-msgstr ""
-
-#: src/extensions/components/help-tips/components/controls.js:196
-msgid "Fetching..."
 msgstr ""

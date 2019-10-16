@@ -8856,7 +8856,7 @@ var enhance = compose(withState({
  * Override the default edit UI to include a new block inspector control for
  * assigning the custom class name, if block supports custom class name.
  *
- * @param {function|Component} BlockEdit Original component.
+ * @param {Function|Component} BlockEdit Original component.
  *
  * @return {string} Wrapped component.
  */
@@ -8957,7 +8957,7 @@ var enhance = compose(withSelect(function () {
 /**
  * Add custom CoBlocks attributes to selected blocks
  *
- * @param {function|Component} BlockEdit Original component.
+ * @param {Function|Component} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
 
@@ -9656,7 +9656,7 @@ function addAttributes(settings) {
 /**
  * Add custom EditorsKit attributes to selected blocks
  *
- * @param {function|Component} BlockEdit Original component.
+ * @param {Function|Component} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
 
@@ -11180,7 +11180,7 @@ var allowedBlocks = ['core/columns', 'core/column', 'core/group'];
 /**
  * Override the default edit UI to include a new block toolbar control
  *
- * @param {function|Component} BlockEdit Original component.
+ * @param {Function|Component} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
 
@@ -11390,7 +11390,7 @@ var allowedBlocks = ['core/media-text'];
 /**
  * Override the default edit UI to include a new block toolbar control
  *
- * @param {function|Component} BlockEdit Original component.
+ * @param {Function|Component} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
 
@@ -11920,7 +11920,7 @@ function addAttributes(settings) {
 /**
  * Override the default edit UI to include a new block toolbar control
  *
- * @param {function|Component} BlockEdit Original component.
+ * @param {Function|Component} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
 
