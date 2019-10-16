@@ -6,7 +6,7 @@ import { TwitterTweetEmbed } from 'react-twitter-embed';
 /**
  * Internal dependencies
  */
-import { AboutGutenbergEditor } from './about'
+import { AboutGutenbergEditor } from './about';
 
 /**
  * WordPress dependencies
@@ -197,7 +197,7 @@ class HelpControl extends Component {
 						}
 
 					</Modal> : null }
-					{ this.state.isAboutOpen ? <AboutGutenbergEditor closeModal={ closeModal } /> : null }
+				{ this.state.isAboutOpen ? <AboutGutenbergEditor closeModal={ closeModal } /> : null }
 			</Fragment>
 		);
 	}
