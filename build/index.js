@@ -13044,6 +13044,10 @@ var _wp$components = wp.components,
     NavigableMenu = _wp$components.NavigableMenu;
 function AboutGutenbergEditor(_ref) {
   var closeModal = _ref.closeModal;
+  var _window$editorskit = window.editorskit,
+      core = _window$editorskit.core,
+      editor = _window$editorskit.editor,
+      plugin = _window$editorskit.plugin;
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Modal, {
     title: __('About Gutenberg Block Editor', 'block-options'),
     shouldCloseOnClickOutside: false,
@@ -13053,7 +13057,9 @@ function AboutGutenbergEditor(_ref) {
     closeLabel: __('Close', 'block-options'),
     icon: null,
     className: "editorskit-modal-component components-modal--editorskit-overview"
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, __('Version', 'block-options'), " ", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("strong", null, "6.6.0")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RawHTML, null, sprintf(__(' You are using the new block editor powered by the %sGutenberg Plugin%s.', 'block-options'), '<a href="https://wordpress.org/plugins/gutenberg/" target="_blank" rel="noreferrer noopener nofollow">', '</a>'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RawHTML, null, sprintf(__(' Want to help? %sGet involved or report an issue%s.', 'block-options'), '<a href="https://github.com/WordPress/gutenberg/issues" target="_blank" rel="noreferrer noopener nofollow">', '</a>'))));
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, __('Version', 'block-options'), " ", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("strong", null, editor.version)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, editor.is_core ? sprintf(__('You are using the new block editor bundled on WordPress core %s', 'block-options'), core.version) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RawHTML, null, sprintf(__('You are using the new block editor powered by the %sGutenberg Plugin%s.', 'block-options'), '<a href="https://wordpress.org/plugins/gutenberg/" target="_blank" rel="noreferrer noopener nofollow">', '</a>'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RawHTML, null, sprintf(__(' Want to help? %sGet involved or report an issue%s.', 'block-options'), '<a href="https://github.com/WordPress/gutenberg/issues" target="_blank" rel="noreferrer noopener nofollow">', '</a>'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+    class: "editorskit-version-small"
+  }, sprintf(__('EditorsKit %s', 'block-options'), plugin.version)));
 }
 
 /***/ }),

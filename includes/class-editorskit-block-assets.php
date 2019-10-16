@@ -101,6 +101,8 @@ class EditorsKit_Block_Assets {
 			return;
 		}
 
+		global $wp_version;
+
 		// Styles.
 		wp_enqueue_style(
 			$this->_slug . '-editor',
@@ -117,6 +119,35 @@ class EditorsKit_Block_Assets {
 			time(),
 			false
 		);
+
+		$version = '';
+		$is_core = true;
+
+		if( defined('GUTENBERG_VERSION') ){
+			$version = GUTENBERG_VERSION;
+			$is_core = false;
+		}else{
+			if ( version_compare( $wp_version,'5.0' ) >= 0 && version_compare( $wp_version,'5.2.9' ) <= 0 ) {
+				$version = '4.8';
+			}else if( version_compare( $wp_version,'5.3' ) >= 0 ){
+				$version = '6.5';
+			}
+		}
+
+		$global = array(
+			'plugin' => array(
+				'version' => $this->_version,
+			),
+			'core'	=> array(
+				'version' => $wp_version,
+			),
+			'editor' => array(
+				'version' => $version,
+				'is_core' => $is_core,
+			),
+		);
+
+		wp_add_inline_script( $this->_slug . '-editor', 'window.editorskit = '. json_encode( $global ) .';', 'before' );
 
 		//CodeMirror
 		wp_enqueue_script( 'code-editor' );
