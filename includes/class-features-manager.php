@@ -263,17 +263,17 @@ class EditorsKit_Features_Manager {
 						),
 					)
 				),
-				// 'blocks' => array(
-				// 	'name'  => 'blocks',
-				// 	'label' => __( 'Blocks', $this->_slug ),
-				// 	'items' => array(
-				// 		'import' 	 => array(
-				// 			'name'  => 'import',
-				// 			'label' => __( 'Import', $this->_slug ),
-				// 			'value' => true,
-				// 		)
-				// 	)
-				// ),
+				'shortcuts' => array(
+					'name'  => 'shortcuts',
+					'label' => __( 'Shortcuts', $this->_slug ),
+					'items' => array(
+						'nonbreakingSpace' 	 => array(
+							'name'  => 'nonbreakingSpace',
+							'label' => __( 'Nonbreaking Space', $this->_slug ),
+							'value' => true,
+						)
+					)
+				),
 			);
 		}
 
