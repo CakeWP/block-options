@@ -1,3 +1,19 @@
+.editorskit-media-text-card-controls {
+	// order: 4;
+	margin-left: -1px;
+
+	.components-button {
+
+		&.align-pull-top {
+			transform: rotate(90deg);
+		}
+
+		&.align-pull-bottom {
+			transform: rotate(90deg);
+		}
+	}
+}
+
 .editor-block-list__block {
 
 	&[data-type="core/media-text"] {
@@ -45,22 +61,6 @@
 
 				> :nth-child(10) {
 					order: 10;
-				}
-
-				> .editorskit-media-text-card-controls {
-					order: 4;
-					margin-left: -1px;
-
-					.components-button {
-
-						&.align-pull-top {
-							transform: rotate(90deg);
-						}
-
-						&.align-pull-bottom {
-							transform: rotate(90deg);
-						}
-					}
 				}
 			}
 
