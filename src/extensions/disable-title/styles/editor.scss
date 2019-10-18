@@ -1,31 +1,12 @@
-.editorskit-hidden-title-label {
-	display: none;
+.editorskit-hide-title-label {
+	text-transform: capitalize;
 
-	span {
-		display: inline-block;
+	.components-base-control__help {
+		margin-top: 5px;
 		background: #fbf9c1;
 		padding: 1px 10px;
-		margin-left: 14px;
+		margin-left: 0;
 		font-size: 13px;
-	}
-}
-
-.editorskit-toggle-title {
-	position: absolute;
-	left: -41px;
-	top: 40%;
-
-	.components-button.is-default {
-		background: #fff;
-
-		span {
-			z-index: 999;
-		}
-	}
-
-	@media screen and (max-width: 500px) {
-		left: 15px;
-		top: -15px;
 	}
 }
 

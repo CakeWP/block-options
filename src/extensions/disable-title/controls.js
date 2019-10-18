@@ -4,15 +4,23 @@
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { compose, ifCondition } = wp.compose;
+const { PluginPostStatusInfo } = wp.editPost;
 const { select, withSelect, withDispatch } = wp.data;
-const { Button, Dashicon, withSpokenMessages, Tooltip } = wp.components;
+const { withSpokenMessages, CheckboxControl } = wp.components;
 
 class DisableTitle extends Component {
 	constructor() {
 		super( ...arguments );
 
 		this.initialize = this.initialize.bind( this );
-		this.button = this.button.bind( this );
+	}
+
+	componentDidMount() {
+		this.initialize();
+	}
+
+	componentDidUpdate() {
+		this.initialize();
 	}
 
 	initialize() {
@@ -24,11 +32,6 @@ class DisableTitle extends Component {
 			const isHidden = postmeta._editorskit_title_hidden;
 			const bodyClass = isHidden ? 'editorskit-title-hidden' : 'editorskit-title-visible';
 
-			//insert prompt on header
-			titleBlock.insertAdjacentHTML( 'beforeend',
-				'<span class="editorskit-toggle-title"></span><div class="editorskit-hidden-title-label"></div>'
-			);
-
 			//remove existing class
 			if ( isHidden ) {
 				document.body.classList.remove( 'editorskit-title-visible' );
@@ -37,10 +40,6 @@ class DisableTitle extends Component {
 			}
 
 			document.body.classList.add( bodyClass );
-
-			const editorskitTitleHolder = document.querySelector( '.editorskit-toggle-title' );
-			ReactDOM.render( this.button(), editorskitTitleHolder );
-			ReactDOM.render( <span>{ __( 'For internal use only. Title is hidden on your website.', 'block-options' ) }</span>, document.querySelector( '.editorskit-hidden-title-label' ) );
 
 			//hide if disabled
 			if ( isDisabled ) {
@@ -51,34 +50,28 @@ class DisableTitle extends Component {
 		}
 	}
 
-	button() {
-		const { onToggle, postmeta } = this.props;
-
+	render() {
+		const { onToggle, postmeta, posttype } = this.props;
 		const isHidden = postmeta._editorskit_title_hidden;
 
 		return (
-			<Tooltip text={ __( 'Toggle Title Visibility', 'block-options' ) } position="top right">
-				<Button
-					className={ 'editorskit-button' }
-					isSmall
-					onClick={ onToggle }
-				>
-					<Dashicon icon={ isHidden ? 'hidden' : 'visibility' } />
-				</Button>
-			</Tooltip>
+			<PluginPostStatusInfo>
+				<CheckboxControl
+					className="editorskit-hide-title-label"
+					label={ __( 'Hide ' + posttype + ' Title', 'block-options' ) }
+					checked={ isHidden }
+					onChange={ onToggle }
+					help={ isHidden ? __( 'Title is hidden on your website.', 'block-options' ) : null }
+				/>
+			</PluginPostStatusInfo>
 		);
-	}
-
-	render() {
-		this.initialize();
-		return null;
 	}
 }
 
 export default compose(
 	withSelect( () => {
 		return {
-			readyState: document.readyState,
+			posttype: select( 'core/editor' ).getEditedPostAttribute( 'type' ),
 			postmeta: select( 'core/editor' ).getEditedPostAttribute( 'meta' ),
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitToggleTitleTools' ),
 		};
@@ -99,7 +92,7 @@ export default compose(
 		};
 	} ),
 	ifCondition( ( props ) => {
-		return props.readyState === 'complete' && typeof props.postmeta !== 'undefined' && typeof props.postmeta._editorskit_title_hidden !== 'undefined';
+		return ! props.isDisabled;
 	} ),
 	withSpokenMessages,
 )( DisableTitle );

@@ -14125,15 +14125,14 @@ var Component = wp.element.Component;
 var _wp$compose = wp.compose,
     compose = _wp$compose.compose,
     ifCondition = _wp$compose.ifCondition;
+var PluginPostStatusInfo = wp.editPost.PluginPostStatusInfo;
 var _wp$data = wp.data,
     select = _wp$data.select,
     withSelect = _wp$data.withSelect,
     withDispatch = _wp$data.withDispatch;
 var _wp$components = wp.components,
-    Button = _wp$components.Button,
-    Dashicon = _wp$components.Dashicon,
     withSpokenMessages = _wp$components.withSpokenMessages,
-    Tooltip = _wp$components.Tooltip;
+    CheckboxControl = _wp$components.CheckboxControl;
 
 var DisableTitle =
 /*#__PURE__*/
@@ -14147,11 +14146,20 @@ function (_Component) {
 
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(DisableTitle).apply(this, arguments));
     _this.initialize = _this.initialize.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
-    _this.button = _this.button.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     return _this;
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(DisableTitle, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.initialize();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.initialize();
+    }
+  }, {
     key: "initialize",
     value: function initialize() {
       var _this$props = this.props,
@@ -14161,9 +14169,7 @@ function (_Component) {
 
       if (titleBlock) {
         var isHidden = postmeta._editorskit_title_hidden;
-        var bodyClass = isHidden ? 'editorskit-title-hidden' : 'editorskit-title-visible'; //insert prompt on header
-
-        titleBlock.insertAdjacentHTML('beforeend', '<span class="editorskit-toggle-title"></span><div class="editorskit-hidden-title-label"></div>'); //remove existing class
+        var bodyClass = isHidden ? 'editorskit-title-hidden' : 'editorskit-title-visible'; //remove existing class
 
         if (isHidden) {
           document.body.classList.remove('editorskit-title-visible');
@@ -14171,10 +14177,7 @@ function (_Component) {
           document.body.classList.remove('editorskit-title-hidden');
         }
 
-        document.body.classList.add(bodyClass);
-        var editorskitTitleHolder = document.querySelector('.editorskit-toggle-title');
-        ReactDOM.render(this.button(), editorskitTitleHolder);
-        ReactDOM.render(Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("span", null, __('For internal use only. Title is hidden on your website.', 'block-options')), document.querySelector('.editorskit-hidden-title-label')); //hide if disabled
+        document.body.classList.add(bodyClass); //hide if disabled
 
         if (isDisabled) {
           document.body.classList.add('editorskit-title-visible-disabled');
@@ -14184,28 +14187,20 @@ function (_Component) {
       }
     }
   }, {
-    key: "button",
-    value: function button() {
-      var _this$props2 = this.props,
-          onToggle = _this$props2.onToggle,
-          postmeta = _this$props2.postmeta;
-      var isHidden = postmeta._editorskit_title_hidden;
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Tooltip, {
-        text: __('Toggle Title Visibility', 'block-options'),
-        position: "top right"
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Button, {
-        className: 'editorskit-button',
-        isSmall: true,
-        onClick: onToggle
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Dashicon, {
-        icon: isHidden ? 'hidden' : 'visibility'
-      })));
-    }
-  }, {
     key: "render",
     value: function render() {
-      this.initialize();
-      return null;
+      var _this$props2 = this.props,
+          onToggle = _this$props2.onToggle,
+          postmeta = _this$props2.postmeta,
+          posttype = _this$props2.posttype;
+      var isHidden = postmeta._editorskit_title_hidden;
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(PluginPostStatusInfo, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(CheckboxControl, {
+        className: "editorskit-hide-title-label",
+        label: __('Hide ' + posttype + ' Title', 'block-options'),
+        checked: isHidden,
+        onChange: onToggle,
+        help: isHidden ? __('Title is hidden on your website.', 'block-options') : null
+      }));
     }
   }]);
 
@@ -14214,7 +14209,7 @@ function (_Component) {
 
 /* harmony default export */ __webpack_exports__["default"] = (compose(withSelect(function () {
   return {
-    readyState: document.readyState,
+    posttype: select('core/editor').getEditedPostAttribute('type'),
     postmeta: select('core/editor').getEditedPostAttribute('meta'),
     isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitToggleTitleTools')
   };
@@ -14235,7 +14230,7 @@ function (_Component) {
     }
   };
 }), ifCondition(function (props) {
-  return props.readyState === 'complete' && typeof props.postmeta !== 'undefined' && typeof props.postmeta._editorskit_title_hidden !== 'undefined';
+  return !props.isDisabled;
 }), withSpokenMessages)(DisableTitle));
 
 /***/ }),
