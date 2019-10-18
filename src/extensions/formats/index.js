@@ -12,6 +12,7 @@ import { clear } from './clear';
 import { uppercase } from './uppercase';
 import { link } from './link';
 import { alignment } from './alignment';
+import { nbsp } from './nbsp';
 
 /**
  * WordPress dependencies
@@ -33,6 +34,7 @@ function registerFormats() {
 		clear,
 		uppercase,
 		alignment,
+		nbsp,
 		! isDisabled ? link : [],
 	].forEach( ( { name, ...settings } ) => {
 		if ( name ) {
