@@ -3,30 +3,30 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/components/help-tips/components/about.js:15
+#: src/extensions/components/help-tips/components/about.js:12
 msgid "About Gutenberg Block Editor"
 msgstr ""
 
-#: src/extensions/components/help-tips/components/about.js:18
+#: src/extensions/components/help-tips/components/about.js:15
 msgid "Close"
 msgstr ""
 
-#: src/extensions/components/help-tips/components/about.js:22
+#: src/extensions/components/help-tips/components/about.js:19
 msgid "Version"
 msgstr ""
 
-#: src/extensions/components/help-tips/components/about.js:24
+#: src/extensions/components/help-tips/components/about.js:21
 msgid "You are using the new block editor bundled on WordPress core %s"
 msgstr ""
 
-#: src/extensions/components/help-tips/components/about.js:25
+#: src/extensions/components/help-tips/components/about.js:22
 msgid "You are using the new block editor powered by the %sGutenberg Plugin%s."
 msgstr ""
 
-#: src/extensions/components/help-tips/components/about.js:27
+#: src/extensions/components/help-tips/components/about.js:24
 msgid " Want to help? %sGet involved or report an issue%s."
 msgstr ""
 
-#: src/extensions/components/help-tips/components/about.js:28
+#: src/extensions/components/help-tips/components/about.js:25
 msgid "EditorsKit %s"
 msgstr ""

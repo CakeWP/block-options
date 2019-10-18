@@ -147,7 +147,7 @@ class EditorsKit_Block_Assets {
 			),
 		);
 
-		wp_add_inline_script( $this->_slug . '-editor', 'window.editorskit = '. json_encode( $global ) .';', 'before' );
+		wp_add_inline_script( $this->_slug . '-editor', 'window.editorskitInfo = '. json_encode( $global ) .';', 'before' );
 
 		//CodeMirror
 		wp_enqueue_script( 'code-editor' );

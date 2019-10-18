@@ -6,7 +6,7 @@ const { RawHTML } = wp.element;
 const { Modal } = wp.components;
 
 export function AboutGutenbergEditor( { closeModal } ) {
-	const { core, editor, plugin } = window.editorskit;
+	const { core, editor, plugin } = window.editorskitInfo;
 	return (
 		<Modal
 			title={ __( 'About Gutenberg Block Editor', 'block-options' ) }
