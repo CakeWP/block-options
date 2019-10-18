@@ -14152,6 +14152,11 @@ function (_Component) {
       var _document$body$classL;
 
       var blockName = this.props.blockName;
+
+      if (!blockName) {
+        return null;
+      }
+
       var regx = new RegExp('\\beditorskit-selected--.*?\\b', 'g');
       var bodyClasses = document.body.classList;
       var addedClasses = bodyClasses.value.split(/\s+/).filter(function (el) {

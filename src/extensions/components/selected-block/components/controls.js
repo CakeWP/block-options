@@ -9,6 +9,11 @@ const { withSpokenMessages } = wp.components;
 class AddSelectedBlockClass extends Component {
 	componentDidUpdate() {
 		const { blockName } = this.props;
+
+		if ( ! blockName ) {
+			return null;
+		}
+
 		const regx = new RegExp( '\\beditorskit-selected--.*?\\b', 'g' );
 		const bodyClasses = document.body.classList;
 		const addedClasses = bodyClasses.value.split( /\s+/ ).filter( function( el ) {
