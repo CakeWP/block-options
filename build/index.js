@@ -14128,20 +14128,12 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * WordPress dependencies
  */
-var __ = wp.i18n.__;
 var Component = wp.element.Component;
-var _wp$compose = wp.compose,
-    compose = _wp$compose.compose,
-    ifCondition = _wp$compose.ifCondition;
+var compose = wp.compose.compose;
 var _wp$data = wp.data,
     select = _wp$data.select,
-    withSelect = _wp$data.withSelect,
-    withDispatch = _wp$data.withDispatch;
-var _wp$components = wp.components,
-    Button = _wp$components.Button,
-    Dashicon = _wp$components.Dashicon,
-    withSpokenMessages = _wp$components.withSpokenMessages,
-    Tooltip = _wp$components.Tooltip;
+    withSelect = _wp$data.withSelect;
+var withSpokenMessages = wp.components.withSpokenMessages;
 
 var AddSelectedBlockClass =
 /*#__PURE__*/
@@ -14168,7 +14160,7 @@ function (_Component) {
 
       (_document$body$classL = document.body.classList).remove.apply(_document$body$classL, _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(addedClasses));
 
-      document.body.classList.add('editorskit-selected--' + blockName);
+      document.body.classList.add('editorskit-selected--' + blockName.replace('/', '-'));
     }
   }, {
     key: "render",

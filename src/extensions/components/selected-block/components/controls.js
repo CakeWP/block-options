@@ -15,7 +15,7 @@ class AddSelectedBlockClass extends Component {
 			return regx.test( el );
 		} );
 		document.body.classList.remove( ...addedClasses );
-		document.body.classList.add( 'editorskit-selected--' + blockName );
+		document.body.classList.add( 'editorskit-selected--' + blockName.replace( '/', '-' ) );
 	}
 
 	render() {
