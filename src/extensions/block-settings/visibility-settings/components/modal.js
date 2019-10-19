@@ -17,7 +17,7 @@ const { Modal, TabPanel, withSpokenMessages } = wp.components;
 const { PluginBlockSettingsMenuItem } = wp.editPost;
 const { compose } = wp.compose;
 
-const restrictedBlocks = [ 'core/freeform', 'core/shortcode', 'core/block', 'core/template' ];
+const restrictedBlocks = ['core/freeform', 'core/shortcode', 'core/block', 'core/template', 'editorskit/import' ];
 
 /**
  * Render plugin

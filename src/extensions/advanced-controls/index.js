@@ -18,7 +18,7 @@ const { compose, createHigherOrderComponent } = wp.compose;
 const { PanelBody } = wp.components;
 const { hasBlockSupport } = wp.blocks;
 
-const restrictedBlocks = [ 'core/block', 'core/freeform', 'core/shortcode', 'core/template', 'core/nextpage' ];
+const restrictedBlocks = ['core/block', 'core/freeform', 'core/shortcode', 'core/template', 'core/nextpage', 'editorskit/import' ];
 
 const enhance = compose(
 	withSelect( () => {
@@ -32,7 +32,7 @@ const enhance = compose(
 /**
  * Add custom CoBlocks attributes to selected blocks
  *
- * @param {function|Component} BlockEdit Original component.
+ * @param {Function|Component} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
 const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {

@@ -15,7 +15,7 @@ const allowedBlocks = [ 'core/media-text' ];
 /**
  * Override the default edit UI to include a new block toolbar control
  *
- * @param {function|Component} BlockEdit Original component.
+ * @param {Function|Component} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
 const withControls = createHigherOrderComponent( ( BlockEdit ) => {

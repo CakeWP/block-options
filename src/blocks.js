@@ -35,6 +35,7 @@ import './extensions/components/heading-label';
 import './extensions/components/featured-image';
 import './extensions/components/reading-time';
 import './extensions/components/help-tips';
+import './extensions/components/selected-block';
 
 //Block Settings
 import './extensions/block-settings';
@@ -50,6 +51,9 @@ import './extensions/transform/empty-paragraphs';
 
 // Styles
 import './extensions/block-styles/';
+
+// Shortcuts
+import './extensions/shortcuts/select-parent-block';
 
 // Register Blocks
 import * as importBlock from './blocks/import';

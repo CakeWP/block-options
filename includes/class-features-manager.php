@@ -268,6 +268,17 @@ class EditorsKit_Features_Manager {
 						),
 					)
 				),
+				'shortcuts' => array(
+					'name'  => 'shortcuts',
+					'label' => __( 'Shortcuts', $this->_slug ),
+					'items' => array(
+						'selectParent' 	 => array(
+							'name'  => 'selectParent',
+							'label' => __( 'Select Parent Block', $this->_slug ),
+							'value' => true,
+						)
+					)
+				),
 			);
 		}
 

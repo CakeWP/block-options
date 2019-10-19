@@ -16,7 +16,7 @@ const allowedBlocks = [ 'core/columns', 'core/column', 'core/group' ];
 /**
  * Override the default edit UI to include a new block toolbar control
  *
- * @param {function|Component} BlockEdit Original component.
+ * @param {Function|Component} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
 const withNavigator = createHigherOrderComponent( ( BlockEdit ) => {
