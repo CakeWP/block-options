@@ -32,7 +32,7 @@ const enhance = compose(
 /**
  * Add custom CoBlocks attributes to selected blocks
  *
- * @param {function|Component} BlockEdit Original component.
+ * @param {Function|Component} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
 const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {

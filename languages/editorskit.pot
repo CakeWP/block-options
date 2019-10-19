@@ -4,6 +4,34 @@ msgstr ""
 "X-Generator: babel-plugin-makepot\n"
 
 <<<<<<< HEAD
+#: src/extensions/components/help-tips/components/about.js:12
+msgid "About Gutenberg Block Editor"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/about.js:15
+msgid "Close"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/about.js:19
+msgid "Version"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/about.js:21
+msgid "You are using the new block editor bundled on WordPress core %s"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/about.js:22
+msgid "You are using the new block editor powered by the %sGutenberg Plugin%s."
+msgstr ""
+
+#: src/extensions/components/help-tips/components/about.js:24
+msgid " Want to help? %sGet involved or report an issue%s."
+msgstr ""
+
+#: src/extensions/components/help-tips/components/about.js:25
+msgid "EditorsKit %s"
+=======
+<<<<<<< HEAD
 #: src/extensions/formats/background-color/components/edit.js:24
 msgid "Highlight Color"
 msgstr ""
@@ -49,5 +77,6 @@ msgstr ""
 
 #: src/extensions/formats/link/components/inline.js:305
 msgid "Sponsored"
+>>>>>>> master
 >>>>>>> master
 msgstr ""

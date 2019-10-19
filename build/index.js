@@ -8202,8 +8202,12 @@ __webpack_require__.r(__webpack_exports__);
 <<<<<<< HEAD
 /* harmony import */ var _blocks_import__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./blocks/import */ "./src/blocks/import/index.js");
 =======
+<<<<<<< HEAD
+/* harmony import */ var _blocks_import__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./blocks/import */ "./src/blocks/import/index.js");
+=======
 /* harmony import */ var _extensions_shortcuts_select_parent_block__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./extensions/shortcuts/select-parent-block */ "./src/extensions/shortcuts/select-parent-block/index.js");
 /* harmony import */ var _blocks_import__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./blocks/import */ "./src/blocks/import/index.js");
+>>>>>>> master
 >>>>>>> master
 
 
@@ -8258,8 +8262,11 @@ var registerBlockType = wp.blocks.registerBlockType; // Extensions
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  // Shortcuts
 
+>>>>>>> master
 >>>>>>> master
  // Register Blocks
 
@@ -8268,7 +8275,11 @@ function registerBlocks() {
 <<<<<<< HEAD
   [_blocks_import__WEBPACK_IMPORTED_MODULE_21__].forEach(function (block) {
 =======
+<<<<<<< HEAD
+  [_blocks_import__WEBPACK_IMPORTED_MODULE_21__].forEach(function (block) {
+=======
   [_blocks_import__WEBPACK_IMPORTED_MODULE_22__].forEach(function (block) {
+>>>>>>> master
 >>>>>>> master
     if (!block) {
       return;
@@ -8584,10 +8595,14 @@ var settings = {
 <<<<<<< HEAD
     alignFull: false
 =======
+<<<<<<< HEAD
+    alignFull: false
+=======
     alignFull: false,
     customClassName: false,
     className: false,
     html: false
+>>>>>>> master
 >>>>>>> master
   },
   transforms: _transforms__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -8858,7 +8873,11 @@ var enhance = compose(withState({
  * Override the default edit UI to include a new block inspector control for
  * assigning the custom class name, if block supports custom class name.
  *
+<<<<<<< HEAD
+ * @param {Function|Component} BlockEdit Original component.
+=======
  * @param {function|Component} BlockEdit Original component.
+>>>>>>> master
  *
  * @return {string} Wrapped component.
  */
@@ -8952,7 +8971,11 @@ var hasBlockSupport = wp.blocks.hasBlockSupport;
 <<<<<<< HEAD
 var restrictedBlocks = ['core/block', 'core/freeform', 'core/shortcode', 'core/template', 'core/nextpage'];
 =======
+<<<<<<< HEAD
+var restrictedBlocks = ['core/block', 'core/freeform', 'core/shortcode', 'core/template', 'core/nextpage'];
+=======
 var restrictedBlocks = ['core/block', 'core/freeform', 'core/shortcode', 'core/template', 'core/nextpage', 'editorskit/import'];
+>>>>>>> master
 >>>>>>> master
 var enhance = compose(withSelect(function () {
   return {
@@ -8963,7 +8986,11 @@ var enhance = compose(withSelect(function () {
 /**
  * Add custom CoBlocks attributes to selected blocks
  *
+<<<<<<< HEAD
+ * @param {Function|Component} BlockEdit Original component.
+=======
  * @param {function|Component} BlockEdit Original component.
+>>>>>>> master
  * @return {string} Wrapped component.
  */
 
@@ -9662,7 +9689,11 @@ function addAttributes(settings) {
 /**
  * Add custom EditorsKit attributes to selected blocks
  *
+<<<<<<< HEAD
+ * @param {Function|Component} BlockEdit Original component.
+=======
  * @param {function|Component} BlockEdit Original component.
+>>>>>>> master
  * @return {string} Wrapped component.
  */
 
@@ -10771,7 +10802,11 @@ var compose = wp.compose.compose;
 <<<<<<< HEAD
 var restrictedBlocks = ['core/freeform', 'core/shortcode', 'core/block', 'core/template'];
 =======
+<<<<<<< HEAD
+var restrictedBlocks = ['core/freeform', 'core/shortcode', 'core/block', 'core/template'];
+=======
 var restrictedBlocks = ['core/freeform', 'core/shortcode', 'core/block', 'core/template', 'editorskit/import'];
+>>>>>>> master
 >>>>>>> master
 /**
  * Render plugin
@@ -11190,7 +11225,11 @@ var allowedBlocks = ['core/columns', 'core/column', 'core/group'];
 /**
  * Override the default edit UI to include a new block toolbar control
  *
+<<<<<<< HEAD
+ * @param {Function|Component} BlockEdit Original component.
+=======
  * @param {function|Component} BlockEdit Original component.
+>>>>>>> master
  * @return {string} Wrapped component.
  */
 
@@ -11400,7 +11439,11 @@ var allowedBlocks = ['core/media-text'];
 /**
  * Override the default edit UI to include a new block toolbar control
  *
+<<<<<<< HEAD
+ * @param {Function|Component} BlockEdit Original component.
+=======
  * @param {function|Component} BlockEdit Original component.
+>>>>>>> master
  * @return {string} Wrapped component.
  */
 
@@ -11930,7 +11973,11 @@ function addAttributes(settings) {
 /**
  * Override the default edit UI to include a new block toolbar control
  *
+<<<<<<< HEAD
+ * @param {Function|Component} BlockEdit Original component.
+=======
  * @param {function|Component} BlockEdit Original component.
+>>>>>>> master
  * @return {string} Wrapped component.
  */
 
@@ -13013,6 +13060,53 @@ registerPlugin('editorskit-heading-label', {
 
 /***/ }),
 
+<<<<<<< HEAD
+/***/ "./src/extensions/components/help-tips/components/about.js":
+/*!*****************************************************************!*\
+  !*** ./src/extensions/components/help-tips/components/about.js ***!
+  \*****************************************************************/
+/*! exports provided: AboutGutenbergEditor */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AboutGutenbergEditor", function() { return AboutGutenbergEditor; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress dependencies
+ */
+var _wp$i18n = wp.i18n,
+    __ = _wp$i18n.__,
+    sprintf = _wp$i18n.sprintf;
+var RawHTML = wp.element.RawHTML;
+var Modal = wp.components.Modal;
+function AboutGutenbergEditor(_ref) {
+  var closeModal = _ref.closeModal;
+  var _window$editorskitInf = window.editorskitInfo,
+      core = _window$editorskitInf.core,
+      editor = _window$editorskitInf.editor,
+      plugin = _window$editorskitInf.plugin;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Modal, {
+    title: __('About Gutenberg Block Editor', 'block-options'),
+    shouldCloseOnClickOutside: false,
+    onRequestClose: function onRequestClose() {
+      return closeModal();
+    },
+    closeLabel: __('Close', 'block-options'),
+    icon: null,
+    className: "editorskit-modal-component components-modal--editorskit-overview"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, __('Version', 'block-options'), " ", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("strong", null, editor.version)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, editor.is_core ? sprintf(__('You are using the new block editor bundled on WordPress core %s', 'block-options'), core.version) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RawHTML, null, sprintf(__('You are using the new block editor powered by the %sGutenberg Plugin%s.', 'block-options'), '<a href="https://wordpress.org/plugins/gutenberg/" target="_blank" rel="noreferrer noopener nofollow">', '</a>'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RawHTML, null, sprintf(__(' Want to help? %sGet involved or report an issue%s.', 'block-options'), '<a href="https://github.com/WordPress/gutenberg/issues" target="_blank" rel="noreferrer noopener nofollow">', '</a>'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+    className: "editorskit-version-small"
+  }, sprintf(__('EditorsKit %s', 'block-options'), plugin.version)));
+}
+
+/***/ }),
+
+=======
+>>>>>>> master
 /***/ "./src/extensions/components/help-tips/components/controls.js":
 /*!********************************************************************!*\
   !*** ./src/extensions/components/help-tips/components/controls.js ***!
@@ -13035,6 +13129,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var react_twitter_embed__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-twitter-embed */ "./node_modules/react-twitter-embed/dist/index.es.js");
+<<<<<<< HEAD
+/* harmony import */ var _about__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./about */ "./src/extensions/components/help-tips/components/about.js");
+=======
+>>>>>>> master
 
 
 
@@ -13047,6 +13145,14 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 /**
+<<<<<<< HEAD
+ * Internal dependencies
+ */
+
+
+/**
+=======
+>>>>>>> master
  * WordPress dependencies
  */
 
@@ -13087,6 +13193,10 @@ function (_Component) {
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(HelpControl).apply(this, arguments));
     _this.state = {
       isOpen: false,
+<<<<<<< HEAD
+      isAboutOpen: false,
+=======
+>>>>>>> master
       isLoaded: false,
       tweetId: 0
     };
@@ -13143,6 +13253,10 @@ function (_Component) {
       var closeModal = function closeModal() {
         return _this2.setState({
           isOpen: false,
+<<<<<<< HEAD
+          isAboutOpen: false,
+=======
+>>>>>>> master
           tweetId: 0,
           isLoaded: false
         });
@@ -13179,6 +13293,18 @@ function (_Component) {
             className: "editorskit-menu-help-tips",
             role: "menu"
           }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(IconButton, {
+<<<<<<< HEAD
+            icon: "info",
+            onClick: function onClick() {
+              onClose();
+
+              _this2.setState({
+                isAboutOpen: true
+              });
+            }
+          }, __('About')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(IconButton, {
+=======
+>>>>>>> master
             icon: "sos",
             onClick: function onClick() {
               onClose();
@@ -13234,7 +13360,13 @@ function (_Component) {
         onClick: function onClick() {
           _this2.nextTweet();
         }
+<<<<<<< HEAD
+      }, __('Next', 'block-options'))) : __('Fetching...', 'block-options')) : null, this.state.isAboutOpen ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_about__WEBPACK_IMPORTED_MODULE_7__["AboutGutenbergEditor"], {
+        closeModal: closeModal
+      }) : null);
+=======
       }, __('Next', 'block-options'))) : __('Fetching...', 'block-options')) : null);
+>>>>>>> master
     }
   }]);
 
@@ -14513,11 +14645,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_7__);
 <<<<<<< HEAD
+/* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../icon */ "./src/extensions/formats/background-color/icon.js");
+=======
+<<<<<<< HEAD
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! lodash */ "lodash");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../icon */ "./src/extensions/formats/background-color/icon.js");
 =======
 /* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../icon */ "./src/extensions/formats/background-color/icon.js");
+>>>>>>> master
 >>>>>>> master
 
 
@@ -14532,8 +14668,11 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 
 =======
+>>>>>>> master
 >>>>>>> master
 /**
  * Internal dependencies
@@ -14607,13 +14746,19 @@ function (_Component) {
           isActive = _this$props.isActive;
       var activeColor;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
       var definedColors = [{
 =======
+>>>>>>> master
       var colors = [{
         name: __('Marker Default', 'block-options'),
         slug: 'marker-default',
         color: '#fff9c0'
       }, {
+<<<<<<< HEAD
+=======
+>>>>>>> master
 >>>>>>> master
         name: __('Orange Sunrise', 'block-options'),
         slug: 'orange-sunrise',
@@ -14636,8 +14781,11 @@ function (_Component) {
         color: '#d8c3ff'
       }];
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
       var colors = Object(lodash__WEBPACK_IMPORTED_MODULE_8__["get"])(select('core/block-editor').getSettings(), ['colors'], definedColors);
 =======
+>>>>>>> master
 >>>>>>> master
       var activeColorFormat = getActiveFormat(value, name);
 
@@ -14656,9 +14804,13 @@ function (_Component) {
           'is-active': isActive
         }),
 <<<<<<< HEAD
+        icon: _icon__WEBPACK_IMPORTED_MODULE_8__["default"].highlighter,
+=======
+<<<<<<< HEAD
         icon: _icon__WEBPACK_IMPORTED_MODULE_9__["default"].highlighter,
 =======
         icon: _icon__WEBPACK_IMPORTED_MODULE_8__["default"].highlighter,
+>>>>>>> master
 >>>>>>> master
         "aria-haspopup": "true",
         tooltip: title,
@@ -15825,7 +15977,11 @@ function (_Component) {
 <<<<<<< HEAD
         linkClassName: Object(_utils__WEBPACK_IMPORTED_MODULE_9__["isValidHref"])(prependHTTP(url)) ? undefined : 'has-invalid-link'
 =======
+<<<<<<< HEAD
+        linkClassName: Object(_utils__WEBPACK_IMPORTED_MODULE_9__["isValidHref"])(prependHTTP(url)) ? undefined : 'has-invalid-link'
+=======
         linkClassName: url && Object(_utils__WEBPACK_IMPORTED_MODULE_9__["isValidHref"])(prependHTTP(url)) ? undefined : 'has-invalid-link'
+>>>>>>> master
 >>>>>>> master
       })));
     }
@@ -17969,6 +18125,8 @@ wp.domReady(PageTemplateBodyClass);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /***/ "./src/extensions/shortcuts/select-parent-block/components/controls.js":
 /*!*****************************************************************************!*\
   !*** ./src/extensions/shortcuts/select-parent-block/components/controls.js ***!
@@ -18128,6 +18286,7 @@ registerPlugin('editorskit-shortcuts-select-parent', {
 
 /***/ }),
 
+>>>>>>> master
 >>>>>>> master
 /***/ "./src/extensions/transform/empty-paragraphs/components/controls.js":
 /*!**************************************************************************!*\
