@@ -3,6 +3,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+<<<<<<< HEAD
 #: src/extensions/formats/background-color/components/edit.js:24
 msgid "Highlight Color"
 msgstr ""
@@ -25,4 +26,28 @@ msgstr ""
 
 #: src/extensions/formats/background-color/components/edit.js:76
 msgid "Purple Mist"
+=======
+#: src/extensions/formats/link/components/inline.js:224
+msgid "Warning: the link has been inserted but may have errors. Please test it."
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:226
+msgid "Link edited."
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:228
+msgid "Link inserted."
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:295
+msgid "Open in New Tab"
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:300
+msgid "No Follow"
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:305
+msgid "Sponsored"
+>>>>>>> master
 msgstr ""
