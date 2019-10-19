@@ -4,6 +4,132 @@ msgstr ""
 "X-Generator: babel-plugin-makepot\n"
 
 <<<<<<< HEAD
+#: src/extensions/advanced-controls/custom-class-name/index.js:67
+msgid "Additional CSS Class(es)"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/acf/index.js:100
+msgid "Select Condition"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/acf/index.js:104
+msgid "Is Equal to"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/acf/index.js:108
+msgid "Is Not Equal to"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/acf/index.js:112
+msgid "Contains"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/acf/index.js:116
+msgid "Does Not Contain"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/acf/index.js:120
+msgid "Is Empty"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/acf/index.js:124
+msgid "Is Not Empty"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/acf/index.js:132
+msgid "Conditional Value"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/acf/index.js:136
+msgid ""
+"Additional support for Advanced Custom Fields plugin. Will automatically "
+"show when you have the plugin installed and activated."
+msgstr ""
+
+#: src/extensions/advanced-controls/options/acf/index.js:49
+msgid "Select Field"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/acf/index.js:70
+msgid "Advanced Custom Fields"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/acf/index.js:75
+msgid "Select Visibility Option"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/acf/index.js:79
+msgid "Hide when Condition's met"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/acf/index.js:83
+msgid "Show when Condition's met"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/index.js:41
+msgid "Hide on Desktop"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/index.js:46
+msgid "Hide on Tablet"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/index.js:51
+msgid "Hide on Mobile"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/height/index.js:21
+msgid "Full Screen Height"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/height/index.js:24
+msgid "Full screen height is enabled."
+msgstr ""
+
+#: src/extensions/advanced-controls/options/height/index.js:24
+msgid "Toggle to display this block's height full screen of the browser viewport."
+msgstr ""
+
+#: src/extensions/advanced-controls/options/state/index.js:43
+msgid "Hide on Loggedin Users"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/state/index.js:44
+msgid "Hidden when users are logged in."
+msgstr ""
+
+#: src/extensions/advanced-controls/options/state/index.js:44
+msgid "Toggle to hide this block when users are not logged in."
+msgstr ""
+
+#: src/extensions/advanced-controls/options/state/index.js:49
+msgid "Hide on Loggedout Users"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/state/index.js:50
+msgid "Hidden on guests or logged out users."
+msgstr ""
+
+#: src/extensions/advanced-controls/options/state/index.js:50
+msgid "Toggle to hide this block when users are guests or logged out."
+msgstr ""
+
+#: src/extensions/block-navigation/list.js:43
+msgid "(selected block)"
+msgstr ""
+
+#: src/extensions/block-settings/export/components/export.js:77
+msgid "Export as JSON"
+msgstr ""
+
+#: src/extensions/block-styles/image/index.js:14
+msgid "Default"
+msgstr ""
+
+#: src/extensions/block-styles/image/index.js:20
+msgid "Circular"
+=======
+<<<<<<< HEAD
 #: src/blocks/import/components/edit.js:105
 msgid "Invalid JSON file"
 msgstr ""
@@ -53,12 +179,155 @@ msgid ""
 "Attention: The display settings (show/hide for mobile, tablet or desktop) "
 "will only take effect once you are on the live page, and not while you're "
 "editing in Gutenberg."
+>>>>>>> master
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:96
-msgid "Responsive"
+#: src/extensions/block-styles/image/index.js:26
+msgid "Rounded Corners"
 msgstr ""
 
+<<<<<<< HEAD
+#: src/extensions/block-styles/image/index.js:32
+msgid "Diagonal"
+msgstr ""
+
+#: src/extensions/block-styles/image/index.js:38
+msgid "Inverted Diagonal"
+msgstr ""
+
+#: src/extensions/block-styles/image/index.js:44
+msgid "Shadow"
+msgstr ""
+
+#: src/extensions/block-toolbar/block-navigator/components/controls.js:35
+msgid "Open block navigator"
+msgstr ""
+
+#: src/extensions/block-toolbar/block-navigator/components/controls.js:43
+msgid "Block Navigator"
+msgstr ""
+
+#: src/extensions/block-toolbar/block-navigator/components/controls.js:44
+#: src/extensions/components/manager/components/manager.js:57
+#: src/extensions/transform/empty-paragraphs/components/controls.js:73
+msgid "Close"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-card/components/toolbar.js:65
+msgid "Show media on top"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-card/components/toolbar.js:73
+msgid "Show media on bottom"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:111
+msgid "Edit Media Link"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:111
+msgid "Media Link"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:162
+msgid "Remove Link"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:228
+msgid "Media File"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:234
+msgid "Attachment Page"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:266
+#: src/extensions/formats/link/components/inline.js:295
+msgid "Open in New Tab"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:271
+msgid "No follow"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:278
+#: src/extensions/formats/link/components/inline.js:305
+msgid "Sponsored"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-link/components/controls.js:285
+msgid "Apply link to whole block"
+msgstr ""
+
+#: src/extensions/components/autosave/components/menu.js:21
+msgid "Auto Save Disabled"
+msgstr ""
+
+#: src/extensions/components/autosave/components/menu.js:76
+msgid "Toggle to disable or enable editor autosaving feature."
+msgstr ""
+
+#: src/extensions/components/autosave/components/menu.js:79
+msgid "Auto Save"
+msgstr ""
+
+#: src/extensions/components/editor-height/components/height.js:52
+msgid "Toggle to change editor min-height similar to browser viewport."
+msgstr ""
+
+#: src/extensions/components/editor-height/components/height.js:55
+msgid "Editor Height"
+msgstr ""
+
+#: src/extensions/components/featured-image/components/controls.js:23
+msgid "Featured Image"
+msgstr ""
+
+#: src/extensions/components/featured-image/components/controls.js:24
+msgid "Set Featured Image"
+msgstr ""
+
+#: src/extensions/components/featured-image/components/controls.js:25
+msgid "Remove Image"
+msgstr ""
+
+#: src/extensions/components/featured-image/components/controls.js:29
+msgid "To edit the featured image, you need permission to upload media."
+msgstr ""
+
+#: src/extensions/components/featured-image/components/controls.js:47
+msgid "Upload Featured Image"
+msgstr ""
+
+#: src/extensions/components/featured-image/components/controls.js:68
+msgid "Edit or update the image"
+msgstr ""
+
+#: src/extensions/components/featured-image/components/controls.js:93
+msgid "Replace Image"
+msgstr ""
+
+#: src/extensions/components/manager/components/manager.js:51
+msgid "EditorsKit Settings"
+msgstr ""
+
+#: src/extensions/components/manager/components/manager.js:55
+msgid "EditorsKit Features Manager"
+msgstr ""
+
+#: src/extensions/formats/alignment/components/control.js:21
+msgid "Align caption left"
+msgstr ""
+
+#: src/extensions/formats/alignment/components/control.js:26
+msgid "Align caption center"
+msgstr ""
+
+#: src/extensions/formats/alignment/components/control.js:31
+msgid "Align caption right"
+msgstr ""
+
+=======
 #: src/extensions/block-settings/visibility-settings/components/modal.js:100
 msgid "Close"
 msgstr ""
@@ -81,6 +350,7 @@ msgstr ""
 #: src/extensions/block-settings/visibility-settings/components/modal.js:98
 msgid "Visibility Settings"
 =======
+>>>>>>> master
 #: src/extensions/formats/link/components/edit.js:124
 msgid "Unlink"
 msgstr ""
@@ -105,12 +375,84 @@ msgstr ""
 msgid "Link inserted."
 msgstr ""
 
+<<<<<<< HEAD
+#: src/extensions/formats/link/components/inline.js:300
+msgid "No Follow"
+msgstr ""
+
+#: src/extensions/formats/link/components/link-editor.js:37
+msgid "Apply"
+msgstr ""
+
+#: src/extensions/formats/link/components/link-viewer.js:53
+msgid "Edit"
+msgstr ""
+
+#: src/extensions/formats/link/components/url-input.js:111
+msgid "%d result found, use up and down arrow keys to navigate."
+msgid_plural "%d results found, use up and down arrow keys to navigate."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/extensions/formats/link/components/url-input.js:117
+msgid "No results."
+msgstr ""
+
+#: src/extensions/formats/link/components/url-input.js:201
+msgid "Link selected."
+msgstr ""
+
+#: src/extensions/formats/link/components/url-input.js:238
+msgid "URL"
+msgstr ""
+
+#: src/extensions/formats/link/components/url-input.js:243
+msgid "Paste URL or type to search"
+msgstr ""
+
+#: src/extensions/formats/link/components/url-input.js:280
+msgid "(no title)"
+msgstr ""
+
+#: src/extensions/formats/link/components/utils.js:106
+#. accessibility label for external links, where the argument is the link text
+msgid "%s (opens in a new tab)"
+msgstr ""
+
+#: src/extensions/formats/link/index.js:21
+msgid "Link"
+msgstr ""
+
+#: src/extensions/formats/markdown/index.js:20
+#: src/extensions/formats/underline/index.js:48
+msgid "Underline"
+msgstr ""
+
+#: src/extensions/formats/superscript/controls.js:45
+#: src/extensions/formats/superscript/index.js:19
+msgid "Superscript"
+msgstr ""
+
+#: src/extensions/formats/uppercase/controls.js:32
+msgid "Uppercase"
+msgstr ""
+
+#: src/extensions/transform/empty-paragraphs/components/controls.js:70
+msgid "Enable Shortcut"
+msgstr ""
+
+#: src/extensions/transform/empty-paragraphs/components/controls.js:77
+msgid ""
+"Do you want to automatically transform four(4) consecutive empty paragraphs "
+"into Spacer Block?"
+=======
 #: src/extensions/formats/link/components/inline.js:295
 msgid "Open in New Tab"
 msgstr ""
 
 #: src/extensions/formats/link/components/inline.js:300
 msgid "No Follow"
+>>>>>>> master
 msgstr ""
 
 #: src/extensions/formats/link/components/inline.js:305
@@ -122,7 +464,14 @@ msgstr ""
 msgid "%s (opens in a new tab)"
 msgstr ""
 
+<<<<<<< HEAD
+#: src/extensions/transform/empty-paragraphs/components/controls.js:90
+msgid ""
+"This prompt will only be shown once and will remember your preference. "
+"Thanks!"
+=======
 #: src/extensions/formats/link/index.js:21
 msgid "Link"
+>>>>>>> master
 >>>>>>> master
 msgstr ""
