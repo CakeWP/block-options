@@ -17020,6 +17020,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../icons */ "./src/extensions/formats/nbsp/icons.js");
 
 
 
@@ -17033,8 +17034,14 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 /**
+ * Internal dependencies
+ */
+
+/**
  * WordPress dependencies
  */
+
+var __ = wp.i18n.__;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component;
@@ -17047,7 +17054,9 @@ var _wp$data = wp.data,
 var _wp$richText = wp.richText,
     insert = _wp$richText.insert,
     getTextContent = _wp$richText.getTextContent;
-var RichTextShortcut = wp.blockEditor.RichTextShortcut;
+var _wp$blockEditor = wp.blockEditor,
+    RichTextShortcut = _wp$blockEditor.RichTextShortcut,
+    RichTextToolbarButton = _wp$blockEditor.RichTextToolbarButton;
 var withSpokenMessages = wp.components.withSpokenMessages;
 var UNICODE = "\xA0";
 
@@ -17095,6 +17104,10 @@ function (_Component) {
         type: "primaryShift",
         character: "SPACE",
         onUse: onToggle
+      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(RichTextToolbarButton, {
+        icon: _icons__WEBPACK_IMPORTED_MODULE_7__["default"].spacebar,
+        title: __('Nonbreaking space', 'block-options'),
+        onClick: onToggle
       }));
     }
   }]);
@@ -17109,6 +17122,38 @@ function (_Component) {
 }), ifCondition(function (props) {
   return !props.isDisabled;
 }), withSpokenMessages)(Edit));
+
+/***/ }),
+
+/***/ "./src/extensions/formats/nbsp/icons.js":
+/*!**********************************************!*\
+  !*** ./src/extensions/formats/nbsp/icons.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * Custom icon
+ */
+var icon = {};
+icon.spacebar = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "24",
+  height: "24",
+  viewBox: "0 0 24 24"
+}, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+  fill: "none",
+  d: "M0 0h24v24H0V0z"
+}), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+  d: "M18 9v4H6V9H4v6h16V9z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (icon);
 
 /***/ }),
 

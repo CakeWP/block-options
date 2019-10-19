@@ -1,11 +1,17 @@
 /**
+ * Internal dependencies
+ */
+import icon from '../icons';
+
+/**
  * WordPress dependencies
  */
+const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
 const { compose, ifCondition } = wp.compose;
 const { select, withSelect } = wp.data;
 const { insert, getTextContent } = wp.richText;
-const { RichTextShortcut } = wp.blockEditor;
+const { RichTextShortcut, RichTextToolbarButton } = wp.blockEditor;
 const { withSpokenMessages } = wp.components;
 
 const UNICODE = '\u00A0';
@@ -44,6 +50,11 @@ class Edit extends Component {
 					type="primaryShift"
 					character="SPACE"
 					onUse={ onToggle }
+				/>
+				<RichTextToolbarButton
+					icon={ icon.spacebar }
+					title={__('Nonbreaking space', 'block-options')}
+					onClick={onToggle}
 				/>
 			</Fragment>
 		);

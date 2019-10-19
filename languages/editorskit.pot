@@ -3,6 +3,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/formats/nbsp/index.js:19
-msgid "Nonbreaking Space"
+#: src/extensions/formats/nbsp/components/edit.js:56
+msgid "Nonbreaking space"
 msgstr ""
