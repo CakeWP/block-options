@@ -22,7 +22,7 @@ const { select } = wp.data;
 
 const isDisabled = select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitLinkFormats' );
 
-function registerFormats() {
+function registerEditorsKitFormats() {
 	[
 		underline,
 		justify,
@@ -43,4 +43,6 @@ function registerFormats() {
 	} );
 }
 
-registerFormats();
+wp.domReady(
+	registerEditorsKitFormats
+);
