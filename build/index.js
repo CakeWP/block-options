@@ -8199,8 +8199,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _extensions_block_toolbar__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./extensions/block-toolbar */ "./src/extensions/block-toolbar/index.js");
 /* harmony import */ var _extensions_transform_empty_paragraphs__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./extensions/transform/empty-paragraphs */ "./src/extensions/transform/empty-paragraphs/index.js");
 /* harmony import */ var _extensions_block_styles___WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./extensions/block-styles/ */ "./src/extensions/block-styles/index.js");
+<<<<<<< HEAD
+/* harmony import */ var _blocks_import__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./blocks/import */ "./src/blocks/import/index.js");
+=======
 /* harmony import */ var _extensions_shortcuts_select_parent_block__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./extensions/shortcuts/select-parent-block */ "./src/extensions/shortcuts/select-parent-block/index.js");
 /* harmony import */ var _blocks_import__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./blocks/import */ "./src/blocks/import/index.js");
+>>>>>>> master
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -8252,13 +8256,20 @@ var registerBlockType = wp.blocks.registerBlockType; // Extensions
 
  // Styles
 
+<<<<<<< HEAD
+=======
  // Shortcuts
 
+>>>>>>> master
  // Register Blocks
 
 
 function registerBlocks() {
+<<<<<<< HEAD
+  [_blocks_import__WEBPACK_IMPORTED_MODULE_21__].forEach(function (block) {
+=======
   [_blocks_import__WEBPACK_IMPORTED_MODULE_22__].forEach(function (block) {
+>>>>>>> master
     if (!block) {
       return;
     }
@@ -8570,10 +8581,14 @@ var settings = {
   supports: {
     align: true,
     alignWide: false,
+<<<<<<< HEAD
+    alignFull: false
+=======
     alignFull: false,
     customClassName: false,
     className: false,
     html: false
+>>>>>>> master
   },
   transforms: _transforms__WEBPACK_IMPORTED_MODULE_2__["default"],
   edit: _components_edit__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -8934,7 +8949,11 @@ var _wp$compose = wp.compose,
     createHigherOrderComponent = _wp$compose.createHigherOrderComponent;
 var PanelBody = wp.components.PanelBody;
 var hasBlockSupport = wp.blocks.hasBlockSupport;
+<<<<<<< HEAD
+var restrictedBlocks = ['core/block', 'core/freeform', 'core/shortcode', 'core/template', 'core/nextpage'];
+=======
 var restrictedBlocks = ['core/block', 'core/freeform', 'core/shortcode', 'core/template', 'core/nextpage', 'editorskit/import'];
+>>>>>>> master
 var enhance = compose(withSelect(function () {
   return {
     isDisabledDevices: select('core/edit-post').isFeatureActive('disableEditorsKitDevicesVisibility'),
@@ -10749,7 +10768,11 @@ var _wp$components = wp.components,
     withSpokenMessages = _wp$components.withSpokenMessages;
 var PluginBlockSettingsMenuItem = wp.editPost.PluginBlockSettingsMenuItem;
 var compose = wp.compose.compose;
+<<<<<<< HEAD
+var restrictedBlocks = ['core/freeform', 'core/shortcode', 'core/block', 'core/template'];
+=======
 var restrictedBlocks = ['core/freeform', 'core/shortcode', 'core/block', 'core/template', 'editorskit/import'];
+>>>>>>> master
 /**
  * Render plugin
  */
@@ -14489,7 +14512,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_7__);
+<<<<<<< HEAD
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../icon */ "./src/extensions/formats/background-color/icon.js");
+=======
 /* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../icon */ "./src/extensions/formats/background-color/icon.js");
+>>>>>>> master
 
 
 
@@ -14502,6 +14531,10 @@ __webpack_require__.r(__webpack_exports__);
  * External dependencies
  */
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> master
 /**
  * Internal dependencies
  */
@@ -14573,11 +14606,15 @@ function (_Component) {
           _onChange = _this$props.onChange,
           isActive = _this$props.isActive;
       var activeColor;
+<<<<<<< HEAD
+      var definedColors = [{
+=======
       var colors = [{
         name: __('Marker Default', 'block-options'),
         slug: 'marker-default',
         color: '#fff9c0'
       }, {
+>>>>>>> master
         name: __('Orange Sunrise', 'block-options'),
         slug: 'orange-sunrise',
         color: '#f7cc62'
@@ -14598,6 +14635,10 @@ function (_Component) {
         slug: 'purple-mist',
         color: '#d8c3ff'
       }];
+<<<<<<< HEAD
+      var colors = Object(lodash__WEBPACK_IMPORTED_MODULE_8__["get"])(select('core/block-editor').getSettings(), ['colors'], definedColors);
+=======
+>>>>>>> master
       var activeColorFormat = getActiveFormat(value, name);
 
       if (activeColorFormat) {
@@ -14614,7 +14655,11 @@ function (_Component) {
         className: classnames__WEBPACK_IMPORTED_MODULE_7___default()('components-button components-icon-button components-editorskit-toolbar__control components-toolbar__control components-editorskit-background-format', {
           'is-active': isActive
         }),
+<<<<<<< HEAD
+        icon: _icon__WEBPACK_IMPORTED_MODULE_9__["default"].highlighter,
+=======
         icon: _icon__WEBPACK_IMPORTED_MODULE_8__["default"].highlighter,
+>>>>>>> master
         "aria-haspopup": "true",
         tooltip: title,
         onClick: this.toggle
@@ -15777,7 +15822,11 @@ function (_Component) {
         onKeyPress: stopKeyPropagation,
         url: url,
         onEditLinkClick: this.editLink,
+<<<<<<< HEAD
+        linkClassName: Object(_utils__WEBPACK_IMPORTED_MODULE_9__["isValidHref"])(prependHTTP(url)) ? undefined : 'has-invalid-link'
+=======
         linkClassName: url && Object(_utils__WEBPACK_IMPORTED_MODULE_9__["isValidHref"])(prependHTTP(url)) ? undefined : 'has-invalid-link'
+>>>>>>> master
       })));
     }
   }], [{
@@ -17918,6 +17967,8 @@ wp.domReady(PageTemplateBodyClass);
 
 /***/ }),
 
+<<<<<<< HEAD
+=======
 /***/ "./src/extensions/shortcuts/select-parent-block/components/controls.js":
 /*!*****************************************************************************!*\
   !*** ./src/extensions/shortcuts/select-parent-block/components/controls.js ***!
@@ -18077,6 +18128,7 @@ registerPlugin('editorskit-shortcuts-select-parent', {
 
 /***/ }),
 
+>>>>>>> master
 /***/ "./src/extensions/transform/empty-paragraphs/components/controls.js":
 /*!**************************************************************************!*\
   !*** ./src/extensions/transform/empty-paragraphs/components/controls.js ***!

@@ -3,6 +3,30 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+<<<<<<< HEAD
+#: src/extensions/formats/background-color/components/edit.js:24
+msgid "Highlight Color"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:56
+msgid "Orange Sunrise"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:61
+msgid "Pink Flamingo"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:66
+msgid "Spring Green"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:71
+msgid "Blue Moon"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:76
+msgid "Purple Mist"
+=======
 #: src/extensions/formats/link/components/inline.js:224
 msgid "Warning: the link has been inserted but may have errors. Please test it."
 msgstr ""
@@ -25,4 +49,5 @@ msgstr ""
 
 #: src/extensions/formats/link/components/inline.js:305
 msgid "Sponsored"
+>>>>>>> master
 msgstr ""
