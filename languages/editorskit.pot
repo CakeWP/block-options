@@ -3,6 +3,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+<<<<<<< HEAD
 #: src/blocks/import/components/edit.js:105
 msgid "Invalid JSON file"
 msgstr ""
@@ -79,4 +80,49 @@ msgstr ""
 
 #: src/extensions/block-settings/visibility-settings/components/modal.js:98
 msgid "Visibility Settings"
+=======
+#: src/extensions/formats/link/components/edit.js:124
+msgid "Unlink"
+msgstr ""
+
+#: src/extensions/formats/link/components/edit.js:29
+msgid "Add Link"
+msgstr ""
+
+#: src/extensions/formats/link/components/edit.js:84
+msgid "Link removed."
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:224
+msgid "Warning: the link has been inserted but may have errors. Please test it."
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:226
+msgid "Link edited."
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:228
+msgid "Link inserted."
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:295
+msgid "Open in New Tab"
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:300
+msgid "No Follow"
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:305
+msgid "Sponsored"
+msgstr ""
+
+#: src/extensions/formats/link/components/utils.js:111
+#. accessibility label for external links, where the argument is the link text
+msgid "%s (opens in a new tab)"
+msgstr ""
+
+#: src/extensions/formats/link/index.js:21
+msgid "Link"
+>>>>>>> master
 msgstr ""
