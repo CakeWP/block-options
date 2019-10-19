@@ -151,6 +151,9 @@ e.g.
 
 == Changelog ==
 
+= 1.18.1 =
+* Fixes: Fix sudden conflict with CoBlocks - [Use domReady when registering formats](https://github.com/phpbits/block-options/pull/161)
+
 = 1.18 =
 * New: Create [keyboard shortcut to easily select parent block](https://github.com/phpbits/block-options/issues/151) 🎉
 * New : Add [nonbreaking space format](https://github.com/phpbits/block-options/pull/160) with `CTRL/CMD + SHIFT + SPACE` keyboard shortcut
