@@ -4,6 +4,10 @@ msgstr ""
 "X-Generator: babel-plugin-makepot\n"
 
 <<<<<<< HEAD
+#: src/extensions/formats/nbsp/components/edit.js:56
+msgid "Nonbreaking space"
+=======
+<<<<<<< HEAD
 #: src/extensions/disable-title/controls.js:61
 msgid "Hide  Title"
 msgstr ""
@@ -33,5 +37,6 @@ msgstr ""
 
 #: src/extensions/formats/background-color/components/edit.js:76
 msgid "Purple Mist"
+>>>>>>> master
 >>>>>>> master
 msgstr ""
