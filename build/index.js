@@ -8199,8 +8199,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _extensions_block_toolbar__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./extensions/block-toolbar */ "./src/extensions/block-toolbar/index.js");
 /* harmony import */ var _extensions_transform_empty_paragraphs__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./extensions/transform/empty-paragraphs */ "./src/extensions/transform/empty-paragraphs/index.js");
 /* harmony import */ var _extensions_block_styles___WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./extensions/block-styles/ */ "./src/extensions/block-styles/index.js");
+<<<<<<< HEAD
 /* harmony import */ var _extensions_shortcuts_select_parent_block__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./extensions/shortcuts/select-parent-block */ "./src/extensions/shortcuts/select-parent-block/index.js");
 /* harmony import */ var _blocks_import__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./blocks/import */ "./src/blocks/import/index.js");
+=======
+/* harmony import */ var _blocks_import__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./blocks/import */ "./src/blocks/import/index.js");
+>>>>>>> master
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -8252,13 +8256,20 @@ var registerBlockType = wp.blocks.registerBlockType; // Extensions
 
  // Styles
 
+<<<<<<< HEAD
  // Shortcuts
 
+=======
+>>>>>>> master
  // Register Blocks
 
 
 function registerBlocks() {
+<<<<<<< HEAD
   [_blocks_import__WEBPACK_IMPORTED_MODULE_22__].forEach(function (block) {
+=======
+  [_blocks_import__WEBPACK_IMPORTED_MODULE_21__].forEach(function (block) {
+>>>>>>> master
     if (!block) {
       return;
     }
@@ -8570,7 +8581,18 @@ var settings = {
   supports: {
     align: true,
     alignWide: false,
+<<<<<<< HEAD
     alignFull: false
+=======
+<<<<<<< HEAD
+    alignFull: false,
+    customClassName: false,
+    className: false,
+    html: false
+=======
+    alignFull: false
+>>>>>>> master
+>>>>>>> master
   },
   transforms: _transforms__WEBPACK_IMPORTED_MODULE_2__["default"],
   edit: _components_edit__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -8931,7 +8953,15 @@ var _wp$compose = wp.compose,
     createHigherOrderComponent = _wp$compose.createHigherOrderComponent;
 var PanelBody = wp.components.PanelBody;
 var hasBlockSupport = wp.blocks.hasBlockSupport;
+<<<<<<< HEAD
 var restrictedBlocks = ['core/block', 'core/freeform', 'core/shortcode', 'core/template', 'core/nextpage'];
+=======
+<<<<<<< HEAD
+var restrictedBlocks = ['core/block', 'core/freeform', 'core/shortcode', 'core/template', 'core/nextpage', 'editorskit/import'];
+=======
+var restrictedBlocks = ['core/block', 'core/freeform', 'core/shortcode', 'core/template', 'core/nextpage'];
+>>>>>>> master
+>>>>>>> master
 var enhance = compose(withSelect(function () {
   return {
     isDisabledDevices: select('core/edit-post').isFeatureActive('disableEditorsKitDevicesVisibility'),
@@ -10746,7 +10776,15 @@ var _wp$components = wp.components,
     withSpokenMessages = _wp$components.withSpokenMessages;
 var PluginBlockSettingsMenuItem = wp.editPost.PluginBlockSettingsMenuItem;
 var compose = wp.compose.compose;
+<<<<<<< HEAD
 var restrictedBlocks = ['core/freeform', 'core/shortcode', 'core/block', 'core/template'];
+=======
+<<<<<<< HEAD
+var restrictedBlocks = ['core/freeform', 'core/shortcode', 'core/block', 'core/template', 'editorskit/import'];
+=======
+var restrictedBlocks = ['core/freeform', 'core/shortcode', 'core/block', 'core/template'];
+>>>>>>> master
+>>>>>>> master
 /**
  * Render plugin
  */
@@ -15774,7 +15812,15 @@ function (_Component) {
         onKeyPress: stopKeyPropagation,
         url: url,
         onEditLinkClick: this.editLink,
+<<<<<<< HEAD
         linkClassName: Object(_utils__WEBPACK_IMPORTED_MODULE_9__["isValidHref"])(prependHTTP(url)) ? undefined : 'has-invalid-link'
+=======
+<<<<<<< HEAD
+        linkClassName: Object(_utils__WEBPACK_IMPORTED_MODULE_9__["isValidHref"])(prependHTTP(url)) ? undefined : 'has-invalid-link'
+=======
+        linkClassName: url && Object(_utils__WEBPACK_IMPORTED_MODULE_9__["isValidHref"])(prependHTTP(url)) ? undefined : 'has-invalid-link'
+>>>>>>> master
+>>>>>>> master
       })));
     }
   }], [{
@@ -17915,6 +17961,7 @@ wp.domReady(PageTemplateBodyClass);
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./src/extensions/shortcuts/select-parent-block/components/controls.js":
 /*!*****************************************************************************!*\
   !*** ./src/extensions/shortcuts/select-parent-block/components/controls.js ***!
@@ -18074,6 +18121,8 @@ registerPlugin('editorskit-shortcuts-select-parent', {
 
 /***/ }),
 
+=======
+>>>>>>> master
 /***/ "./src/extensions/transform/empty-paragraphs/components/controls.js":
 /*!**************************************************************************!*\
   !*** ./src/extensions/transform/empty-paragraphs/components/controls.js ***!

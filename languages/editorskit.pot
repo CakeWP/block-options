@@ -3,6 +3,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+<<<<<<< HEAD
 #: src/extensions/advanced-controls/custom-class-name/index.js:67
 msgid "Additional CSS Class(es)"
 msgstr ""
@@ -127,12 +128,65 @@ msgstr ""
 
 #: src/extensions/block-styles/image/index.js:20
 msgid "Circular"
+=======
+<<<<<<< HEAD
+#: src/blocks/import/components/edit.js:105
+msgid "Invalid JSON file"
+msgstr ""
+
+#: src/blocks/import/components/edit.js:108
+msgid "Invalid Reusable Block JSON file"
+msgstr ""
+
+#: src/blocks/import/components/edit.js:111
+msgid "Unknown error"
+msgstr ""
+
+#: src/blocks/import/components/edit.js:125
+msgid "Drag a file or upload a new one from your device."
+msgstr ""
+
+#: src/blocks/import/components/edit.js:137
+msgid "Import from JSON"
+msgstr ""
+
+#: src/blocks/import/components/edit.js:148
+msgid "Upload"
+msgstr ""
+
+#: src/blocks/import/index.js:18
+msgid "Import"
+msgstr ""
+
+#: src/blocks/import/index.js:21
+msgid "import"
+msgstr ""
+
+#: src/blocks/import/index.js:22
+msgid "download"
+msgstr ""
+
+#: src/blocks/import/index.js:23
+msgid "migrate"
+msgstr ""
+
+#: src/blocks/import/index.js:36
+msgid "Import blocks exported using EditorsKit plugin."
+msgstr ""
+
+#: src/extensions/advanced-controls/index.js:100
+msgid ""
+"Attention: The display settings (show/hide for mobile, tablet or desktop) "
+"will only take effect once you are on the live page, and not while you're "
+"editing in Gutenberg."
+>>>>>>> master
 msgstr ""
 
 #: src/extensions/block-styles/image/index.js:26
 msgid "Rounded Corners"
 msgstr ""
 
+<<<<<<< HEAD
 #: src/extensions/block-styles/image/index.js:32
 msgid "Diagonal"
 msgstr ""
@@ -273,6 +327,30 @@ msgstr ""
 msgid "Align caption right"
 msgstr ""
 
+=======
+#: src/extensions/block-settings/visibility-settings/components/modal.js:100
+msgid "Close"
+msgstr ""
+
+#: src/extensions/block-settings/visibility-settings/components/modal.js:116
+msgid ""
+"Attention: The display settings (show/hide for mobile, tablet, desktop or "
+"users) will only take effect once you are on the live page, and not while "
+"you're editing in Gutenberg."
+msgstr ""
+
+#: src/extensions/block-settings/visibility-settings/components/modal.js:62
+msgid "Default"
+msgstr ""
+
+#: src/extensions/block-settings/visibility-settings/components/modal.js:70
+msgid "Advanced"
+msgstr ""
+
+#: src/extensions/block-settings/visibility-settings/components/modal.js:98
+msgid "Visibility Settings"
+=======
+>>>>>>> master
 #: src/extensions/formats/link/components/edit.js:124
 msgid "Unlink"
 msgstr ""
@@ -297,6 +375,7 @@ msgstr ""
 msgid "Link inserted."
 msgstr ""
 
+<<<<<<< HEAD
 #: src/extensions/formats/link/components/inline.js:300
 msgid "No Follow"
 msgstr ""
@@ -366,18 +445,33 @@ msgstr ""
 msgid ""
 "Do you want to automatically transform four(4) consecutive empty paragraphs "
 "into Spacer Block?"
+=======
+#: src/extensions/formats/link/components/inline.js:295
+msgid "Open in New Tab"
 msgstr ""
 
-#: src/extensions/transform/empty-paragraphs/components/controls.js:84
-msgid "Yes Enable"
+#: src/extensions/formats/link/components/inline.js:300
+msgid "No Follow"
+>>>>>>> master
 msgstr ""
 
-#: src/extensions/transform/empty-paragraphs/components/controls.js:88
-msgid "No, Thanks"
+#: src/extensions/formats/link/components/inline.js:305
+msgid "Sponsored"
 msgstr ""
 
+#: src/extensions/formats/link/components/utils.js:111
+#. accessibility label for external links, where the argument is the link text
+msgid "%s (opens in a new tab)"
+msgstr ""
+
+<<<<<<< HEAD
 #: src/extensions/transform/empty-paragraphs/components/controls.js:90
 msgid ""
 "This prompt will only be shown once and will remember your preference. "
 "Thanks!"
+=======
+#: src/extensions/formats/link/index.js:21
+msgid "Link"
+>>>>>>> master
+>>>>>>> master
 msgstr ""
