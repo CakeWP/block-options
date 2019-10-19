@@ -325,7 +325,7 @@ class InlineLinkUI extends Component {
 							onKeyPress={ stopKeyPropagation }
 							url={ url }
 							onEditLinkClick={ this.editLink }
-							linkClassName={ isValidHref( prependHTTP( url ) ) ? undefined : 'has-invalid-link' }
+							linkClassName={ url && isValidHref( prependHTTP( url ) ) ? undefined : 'has-invalid-link' }
 						/>
 					) }
 
