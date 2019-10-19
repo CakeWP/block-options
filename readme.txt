@@ -35,6 +35,7 @@ https://www.youtube.com/watch?v=QWgO4lAJAlE
 * Subscript
 * Uppercase Text Transform
 * Images and Embeds Caption Alignment
+* Nonbreaking Space
 
 ## Markdown Support
 Starting [EditorsKit 1.6 ](https://jeffreycarandang.com/editorskit-1-6/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit), you can now use markdowns on Gutenberg editor while typing. Markdowns for `*bold*`, `_italic_` and `~strikethrough~` are available upon plugin activation. Lists of available markdowns are also accessible on the settings menu.
