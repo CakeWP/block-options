@@ -3,18 +3,33 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-<<<<<<< HEAD
-#: src/extensions/formats/nbsp/components/edit.js:56
-msgid "Nonbreaking space"
-=======
-<<<<<<< HEAD
-#: src/extensions/disable-title/controls.js:61
-msgid "Hide  Title"
+#: src/extensions/advanced-controls/custom-class-name/index.js:67
+msgid "Additional CSS Class(es)"
 msgstr ""
 
-#: src/extensions/disable-title/controls.js:64
-msgid "Title is hidden on your website."
-=======
+#: src/extensions/block-settings/visibility-settings/components/modal.js:100
+msgid "Close"
+msgstr ""
+
+#: src/extensions/block-settings/visibility-settings/components/modal.js:116
+msgid ""
+"Attention: The display settings (show/hide for mobile, tablet, desktop or "
+"users) will only take effect once you are on the live page, and not while "
+"you're editing in Gutenberg."
+msgstr ""
+
+#: src/extensions/block-settings/visibility-settings/components/modal.js:62
+msgid "Default"
+msgstr ""
+
+#: src/extensions/block-settings/visibility-settings/components/modal.js:70
+msgid "Advanced"
+msgstr ""
+
+#: src/extensions/block-settings/visibility-settings/components/modal.js:98
+msgid "Visibility Settings"
+msgstr ""
+
 #: src/extensions/formats/background-color/components/edit.js:24
 msgid "Highlight Color"
 msgstr ""
@@ -37,6 +52,32 @@ msgstr ""
 
 #: src/extensions/formats/background-color/components/edit.js:76
 msgid "Purple Mist"
->>>>>>> master
->>>>>>> master
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:224
+msgid "Warning: the link has been inserted but may have errors. Please test it."
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:226
+msgid "Link edited."
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:228
+msgid "Link inserted."
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:295
+msgid "Open in New Tab"
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:300
+msgid "No Follow"
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:305
+msgid "Sponsored"
+msgstr ""
+
+#: src/extensions/formats/nbsp/components/edit.js:56
+msgid "Nonbreaking space"
 msgstr ""
