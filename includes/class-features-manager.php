@@ -123,6 +123,11 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Link with "rel" Attributes', $this->_slug ),
 							'value' => true,
 						),
+						'nonbreakingSpace' 	 => array(
+							'name'  => 'nonbreakingSpace',
+							'label' => __( 'Nonbreaking Space', $this->_slug ),
+							'value' => true,
+						),
 						'subscript'	=> array(
 							'name'  => 'subscript',
 							'label' => __( 'Subscript', $this->_slug ),
@@ -261,17 +266,6 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'View Custom Fields', $this->_slug ),
 							'value' => true,
 						),
-					)
-				),
-				'shortcuts' => array(
-					'name'  => 'shortcuts',
-					'label' => __( 'Shortcuts', $this->_slug ),
-					'items' => array(
-						'nonbreakingSpace' 	 => array(
-							'name'  => 'nonbreakingSpace',
-							'label' => __( 'Nonbreaking Space', $this->_slug ),
-							'value' => true,
-						)
 					)
 				),
 			);

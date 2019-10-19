@@ -17117,7 +17117,7 @@ function (_Component) {
 
 /* harmony default export */ __webpack_exports__["default"] = (compose(withSelect(function () {
   return {
-    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitNonbreakingSpaceShortcuts')
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitNonbreakingSpaceFormats')
   };
 }), ifCondition(function (props) {
   return !props.isDisabled;
