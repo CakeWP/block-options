@@ -157,6 +157,7 @@ e.g.
 * Tweaks: Remove [unwanted block supports](https://github.com/phpbits/block-options/pull/149) on Import Block
 * Tweaks: Set [Highlights Color](https://github.com/phpbits/block-options/issues/137) to Default Theme Colors
 * Fixes: Fix [issue with old links](https://github.com/phpbits/block-options/pull/148) added before EditorsKit
+* Fixes: Fix [Media Card Block Toolbars](https://github.com/phpbits/block-options/issues/155) when using Fixed Toolbar Mode
 
 = 1.17 =
 * New: Add accessible [Help, tips and tricks button](https://github.com/phpbits/block-options/issues/141) 🎉
