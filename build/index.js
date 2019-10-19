@@ -8567,7 +8567,14 @@ var settings = {
   supports: {
     align: true,
     alignWide: false,
+<<<<<<< HEAD
+    alignFull: false,
+    customClassName: false,
+    className: false,
+    html: false
+=======
     alignFull: false
+>>>>>>> master
   },
   transforms: _transforms__WEBPACK_IMPORTED_MODULE_2__["default"],
   edit: _components_edit__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -8928,7 +8935,11 @@ var _wp$compose = wp.compose,
     createHigherOrderComponent = _wp$compose.createHigherOrderComponent;
 var PanelBody = wp.components.PanelBody;
 var hasBlockSupport = wp.blocks.hasBlockSupport;
+<<<<<<< HEAD
+var restrictedBlocks = ['core/block', 'core/freeform', 'core/shortcode', 'core/template', 'core/nextpage', 'editorskit/import'];
+=======
 var restrictedBlocks = ['core/block', 'core/freeform', 'core/shortcode', 'core/template', 'core/nextpage'];
+>>>>>>> master
 var enhance = compose(withSelect(function () {
   return {
     isDisabledDevices: select('core/edit-post').isFeatureActive('disableEditorsKitDevicesVisibility'),
@@ -10743,7 +10754,11 @@ var _wp$components = wp.components,
     withSpokenMessages = _wp$components.withSpokenMessages;
 var PluginBlockSettingsMenuItem = wp.editPost.PluginBlockSettingsMenuItem;
 var compose = wp.compose.compose;
+<<<<<<< HEAD
+var restrictedBlocks = ['core/freeform', 'core/shortcode', 'core/block', 'core/template', 'editorskit/import'];
+=======
 var restrictedBlocks = ['core/freeform', 'core/shortcode', 'core/block', 'core/template'];
+>>>>>>> master
 /**
  * Render plugin
  */
@@ -15771,7 +15786,11 @@ function (_Component) {
         onKeyPress: stopKeyPropagation,
         url: url,
         onEditLinkClick: this.editLink,
+<<<<<<< HEAD
+        linkClassName: Object(_utils__WEBPACK_IMPORTED_MODULE_9__["isValidHref"])(prependHTTP(url)) ? undefined : 'has-invalid-link'
+=======
         linkClassName: url && Object(_utils__WEBPACK_IMPORTED_MODULE_9__["isValidHref"])(prependHTTP(url)) ? undefined : 'has-invalid-link'
+>>>>>>> master
       })));
     }
   }], [{

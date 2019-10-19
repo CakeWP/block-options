@@ -3,6 +3,84 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+<<<<<<< HEAD
+#: src/blocks/import/components/edit.js:105
+msgid "Invalid JSON file"
+msgstr ""
+
+#: src/blocks/import/components/edit.js:108
+msgid "Invalid Reusable Block JSON file"
+msgstr ""
+
+#: src/blocks/import/components/edit.js:111
+msgid "Unknown error"
+msgstr ""
+
+#: src/blocks/import/components/edit.js:125
+msgid "Drag a file or upload a new one from your device."
+msgstr ""
+
+#: src/blocks/import/components/edit.js:137
+msgid "Import from JSON"
+msgstr ""
+
+#: src/blocks/import/components/edit.js:148
+msgid "Upload"
+msgstr ""
+
+#: src/blocks/import/index.js:18
+msgid "Import"
+msgstr ""
+
+#: src/blocks/import/index.js:21
+msgid "import"
+msgstr ""
+
+#: src/blocks/import/index.js:22
+msgid "download"
+msgstr ""
+
+#: src/blocks/import/index.js:23
+msgid "migrate"
+msgstr ""
+
+#: src/blocks/import/index.js:36
+msgid "Import blocks exported using EditorsKit plugin."
+msgstr ""
+
+#: src/extensions/advanced-controls/index.js:100
+msgid ""
+"Attention: The display settings (show/hide for mobile, tablet or desktop) "
+"will only take effect once you are on the live page, and not while you're "
+"editing in Gutenberg."
+msgstr ""
+
+#: src/extensions/advanced-controls/index.js:96
+msgid "Responsive"
+msgstr ""
+
+#: src/extensions/block-settings/visibility-settings/components/modal.js:100
+msgid "Close"
+msgstr ""
+
+#: src/extensions/block-settings/visibility-settings/components/modal.js:116
+msgid ""
+"Attention: The display settings (show/hide for mobile, tablet, desktop or "
+"users) will only take effect once you are on the live page, and not while "
+"you're editing in Gutenberg."
+msgstr ""
+
+#: src/extensions/block-settings/visibility-settings/components/modal.js:62
+msgid "Default"
+msgstr ""
+
+#: src/extensions/block-settings/visibility-settings/components/modal.js:70
+msgid "Advanced"
+msgstr ""
+
+#: src/extensions/block-settings/visibility-settings/components/modal.js:98
+msgid "Visibility Settings"
+=======
 #: src/extensions/formats/link/components/edit.js:124
 msgid "Unlink"
 msgstr ""
@@ -46,4 +124,5 @@ msgstr ""
 
 #: src/extensions/formats/link/index.js:21
 msgid "Link"
+>>>>>>> master
 msgstr ""
