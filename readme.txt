@@ -153,6 +153,7 @@ e.g.
 = 1.18 =
 * New: Create [keyboard shortcut to easily select parent block](https://github.com/phpbits/block-options/issues/151) 🎉
 * Tweaks: Remove [unwanted block supports](https://github.com/phpbits/block-options/pull/149) on Import Block
+* Tweaks: Set [Highlights Color](https://github.com/phpbits/block-options/issues/137) to Default Theme Colors
 * Fixes: Fix [issue with old links](https://github.com/phpbits/block-options/pull/148) added before EditorsKit
 
 = 1.17 =
