@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 if( !function_exists( 'editorskit_hide_title' ) ){
 	add_filter( 'the_title', 'editorskit_hide_title', 10, 2 );
 	function editorskit_hide_title( $title, $id = null ){
-		if( !is_admin() && !is_search() ){
+		if( !is_admin() && !is_search() && ( strpos( esc_url( $_SERVER[ 'REQUEST_URI' ] ), '/wp-json/') === false ) ){
 			$hidden = get_post_meta( $id, '_editorskit_title_hidden', true );
 			if( $hidden ){
 				return '';

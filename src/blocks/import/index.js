@@ -43,6 +43,9 @@ const settings = {
 		align: true,
 		alignWide: false,
 		alignFull: false,
+		customClassName: false,
+		className: false,
+		html: false,
 	},
 
 	transforms,

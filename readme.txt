@@ -150,6 +150,14 @@ e.g.
 
 == Changelog ==
 
+= 1.18 =
+* New: Create [keyboard shortcut to easily select parent block](https://github.com/phpbits/block-options/issues/151) 🎉
+* New: Add "[About](https://github.com/phpbits/block-options/pull/154)" button to check the running Gutenberg block editor version
+* Tweaks: Move [Hide Title Toggle](https://github.com/phpbits/block-options/pull/158) on Status and Post Visibility Panel 
+* Tweaks: Remove [unwanted block supports](https://github.com/phpbits/block-options/pull/149) on Import Block
+* Tweaks: Set [Highlights Color](https://github.com/phpbits/block-options/issues/137) to Default Theme Colors
+* Fixes: Fix [issue with old links](https://github.com/phpbits/block-options/pull/148) added before EditorsKit
+
 = 1.17 =
 * New: Add accessible [Help, tips and tricks button](https://github.com/phpbits/block-options/issues/141) 🎉
 * New: Add new shortcut option to [automatically transform 4 consecutive empty paragraphs into Spacer Block](https://github.com/phpbits/block-options/issues/139) 🎊

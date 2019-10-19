@@ -2,6 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import { get } from 'lodash';
 
 /**
  * Internal dependencies
@@ -49,12 +50,8 @@ class Edit extends Component {
 
 		let activeColor;
 
-		const colors = [
-			{
-				name: __( 'Marker Default', 'block-options' ),
-				slug: 'marker-default',
-				color: '#fff9c0',
-			},
+		const definedColors = [
+
 			{
 				name: __( 'Orange Sunrise', 'block-options' ),
 				slug: 'orange-sunrise',
@@ -81,6 +78,8 @@ class Edit extends Component {
 				color: '#d8c3ff',
 			},
 		];
+
+		const colors = get( select( 'core/block-editor' ).getSettings(), [ 'colors' ], definedColors );
 		const activeColorFormat = getActiveFormat( value, name );
 
 		if ( activeColorFormat ) {

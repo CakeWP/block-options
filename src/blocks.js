@@ -52,6 +52,9 @@ import './extensions/transform/empty-paragraphs';
 // Styles
 import './extensions/block-styles/';
 
+// Shortcuts
+import './extensions/shortcuts/select-parent-block';
+
 // Register Blocks
 import * as importBlock from './blocks/import';
 
