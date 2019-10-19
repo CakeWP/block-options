@@ -152,6 +152,7 @@ e.g.
 
 = 1.18 =
 * New: Create [keyboard shortcut to easily select parent block](https://github.com/phpbits/block-options/issues/151) 🎉
+* New : Add [nonbreaking space format](https://github.com/phpbits/block-options/pull/160) with `CTRL/CMD + SHIFT + SPACE` keyboard shortcut
 * New: Add "[About](https://github.com/phpbits/block-options/pull/154)" button to check the running Gutenberg block editor version
 * Tweaks: Move [Hide Title Toggle](https://github.com/phpbits/block-options/pull/158) on Status and Post Visibility Panel 
 * Tweaks: Remove [unwanted block supports](https://github.com/phpbits/block-options/pull/149) on Import Block
