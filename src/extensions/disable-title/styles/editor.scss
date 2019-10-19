@@ -1,12 +1,15 @@
 .editorskit-hide-title-label {
-	text-transform: capitalize;
 
-	.components-base-control__help {
-		margin-top: 5px;
-		background: #fbf9c1;
-		padding: 1px 10px;
-		margin-left: 0;
-		font-size: 13px;
+	&.components-base-control {
+		text-transform: capitalize;
+
+		.components-base-control__help {
+			margin-top: 5px;
+			background: #fbf9c1;
+			padding: 1px 10px;
+			margin-left: 0;
+			font-size: 13px;
+		}
 	}
 }
 

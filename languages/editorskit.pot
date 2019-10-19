@@ -3,10 +3,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/disable-title/controls.js:62
+#: src/extensions/disable-title/controls.js:61
 msgid "Hide  Title"
 msgstr ""
 
-#: src/extensions/disable-title/controls.js:65
+#: src/extensions/disable-title/controls.js:64
 msgid "Title is hidden on your website."
 msgstr ""
