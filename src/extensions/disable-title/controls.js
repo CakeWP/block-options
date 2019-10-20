@@ -53,7 +53,7 @@ class DisableTitle extends Component {
 	render() {
 		const { onToggle, postmeta, posttype } = this.props;
 
-		if( ['wp_block'].includes(posttype) ){
+		if ( [ 'wp_block' ].includes( posttype ) ) {
 			return false;
 		}
 
