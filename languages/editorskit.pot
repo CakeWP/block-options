@@ -3,10 +3,25 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/disable-title/controls.js:66
-msgid "Hide  Title"
+#: src/extensions/block-settings/visibility-settings/components/modal.js:100
+msgid "Close"
 msgstr ""
 
-#: src/extensions/disable-title/controls.js:69
-msgid "Title is hidden on your website."
+#: src/extensions/block-settings/visibility-settings/components/modal.js:116
+msgid ""
+"Attention: The display settings (show/hide for mobile, tablet, desktop or "
+"users) will only take effect once you are on the live page, and not while "
+"you're editing in Gutenberg."
+msgstr ""
+
+#: src/extensions/block-settings/visibility-settings/components/modal.js:62
+msgid "Default"
+msgstr ""
+
+#: src/extensions/block-settings/visibility-settings/components/modal.js:70
+msgid "Advanced"
+msgstr ""
+
+#: src/extensions/block-settings/visibility-settings/components/modal.js:98
+msgid "Visibility Settings"
 msgstr ""
