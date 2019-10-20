@@ -151,6 +151,9 @@ e.g.
 
 == Changelog ==
 
+= 1.18.2 =
+* Fixes: [Fix error with Reusable block](https://wordpress.org/support/topic/error-message-778/) and hide title post meta
+
 = 1.18.1 =
 * Fixes: Fix sudden conflict with CoBlocks - [Use domReady when registering formats](https://github.com/phpbits/block-options/pull/161)
 
