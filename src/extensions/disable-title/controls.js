@@ -29,7 +29,7 @@ class DisableTitle extends Component {
 		const titleBlock = document.querySelector( '.editor-post-title__block' );
 
 		if ( titleBlock ) {
-			const isHidden = postmeta._editorskit_title_hidden;
+			const isHidden = typeof postmeta !== 'undefined' && typeof postmeta._editorskit_title_hidden !== 'undefined' ? postmeta._editorskit_title_hidden : false;
 			const bodyClass = isHidden ? 'editorskit-title-hidden' : 'editorskit-title-visible';
 
 			//remove existing class
@@ -52,7 +52,12 @@ class DisableTitle extends Component {
 
 	render() {
 		const { onToggle, postmeta, posttype } = this.props;
-		const isHidden = postmeta._editorskit_title_hidden;
+
+		if( ['wp_block'].includes(posttype) ){
+			return false;
+		}
+
+		const isHidden = typeof postmeta !== 'undefined' && typeof postmeta._editorskit_title_hidden !== 'undefined' ? postmeta._editorskit_title_hidden : false;
 
 		return (
 			<PluginPostStatusInfo>
