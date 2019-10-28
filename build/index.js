@@ -9652,6 +9652,7 @@ var createHigherOrderComponent = wp.compose.createHigherOrderComponent;
 var hasBlockSupport = wp.blocks.hasBlockSupport;
 var restrictedBlocks = ['core/freeform', 'core/shortcode', 'core/nextpage'];
 var blocksWithFullScreen = ['core/image', 'core/cover', 'core/group', 'core/columns', 'core/media-text'];
+var blocksWithAnchor = ['core/spacer', 'core/separator'];
 /**
  * Filters registered block settings, extending attributes with anchor using ID
  * of the first node.
@@ -9709,6 +9710,17 @@ function addAttributes(settings) {
           });
         }
       }
+    } //enable anchor to selected blocks
+
+
+    if (blocksWithAnchor.includes(settings.name)) {
+      if (!settings.supports) {
+        settings.supports = {};
+      }
+
+      settings.supports = Object.assign(settings.supports, {
+        anchor: true
+      });
     }
   }
 
