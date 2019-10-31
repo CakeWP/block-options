@@ -1,8 +1,9 @@
 /**
  * WordPress dependencies
  */
-const { withSelect } = wp.data;
+const { withSelect, dispatch } = wp.data;
 const { compose } = wp.compose;
+const { parse } = wp.blocks;
 const { Component } = wp.element;
 const { withSpokenMessages } = wp.components;
 
@@ -59,7 +60,19 @@ class CodeEditor extends Component {
 			);
 
 			const textEditor = document.querySelector( '.editor-post-text-editor' );
-			wp.codeEditor.initialize( textEditor, editorSettings );
+			const checkChanges = wp.codeEditor.initialize( textEditor, editorSettings );
+
+			checkChanges.codemirror.on( 'change', function( params ) {
+				const content = params.getValue();
+				textEditor.innerHTML = content;
+				dispatch( 'core/editor' ).editPost( { content } );
+			} );
+
+			checkChanges.codemirror.on( 'blur', function( params ) {
+				const content = params.getValue();
+				const blocks = parse( content );
+				dispatch( 'core/editor' ).resetEditorBlocks( blocks );
+			} );
 
 			this.setState( { isLoaded: true } );
 		} else if ( editorMode === 'visual' && this.state.isLoaded ) {
