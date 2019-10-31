@@ -151,6 +151,9 @@ e.g.
 
 == Changelog ==
 
+= 1.18.3 =
+* Fixes: Resolve issue with Code Editor mode changes not reflecting when switching to to Visual Editor mode
+
 = 1.18.2 =
 * Fixes: [Fix error with Reusable block](https://wordpress.org/support/topic/error-message-778/) and hide title post meta
 
