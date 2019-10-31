@@ -136,7 +136,7 @@ if ( ! class_exists( 'EditorsKit' ) ) :
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-shortcodes.php';
 
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
-				require_once EDITORSKIT_PLUGIN_DIR . 'includes/welcome.php';
+				require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-welcome.php';
 				require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-page-template-support.php';
 				require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-user-feedback.php';
 
