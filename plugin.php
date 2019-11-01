@@ -129,7 +129,7 @@ if ( ! class_exists( 'EditorsKit' ) ) :
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-render-block.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-acf-support.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-features-manager.php';
-			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-post-meta.php';
+			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-post-meta.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/function-hide-title.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-custom-css-classes.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/helper.php';

@@ -33,10 +33,12 @@ class EditorsKit_Post_Meta {
 	 */
 	public function register_meta() {
 		register_meta(
-			'post', '_editorskit_title_hidden', array(
+			'post',
+			'_editorskit_title_hidden',
+			array(
 				'show_in_rest'  => true,
 				'single'        => true,
-				'type' 			=> 'boolean',
+				'type'          => 'boolean',
 				'auth_callback' => function() {
 					return current_user_can( 'edit_posts' );
 				},
@@ -44,10 +46,12 @@ class EditorsKit_Post_Meta {
 		);
 
 		register_meta(
-			'post', '_editorskit_reading_time', array(
+			'post',
+			'_editorskit_reading_time',
+			array(
 				'show_in_rest'  => true,
 				'single'        => true,
-				'type' 			=> 'number',
+				'type'          => 'number',
 				'auth_callback' => function() {
 					return current_user_can( 'edit_posts' );
 				},
@@ -55,18 +59,28 @@ class EditorsKit_Post_Meta {
 		);
 	}
 
-	//fix REST API issue with blocks registered via PHP register_block_type
-	function rest_pre_dispatch( $result, $server, $request ) {
+	/**
+	 * Fix REST API issue with blocks registered via PHP register_block_type.
+	 *
+	 * @param mixed  $result  Response to replace the requested version with.
+	 * @param object $server  Server instance.
+	 * @param object $request Request used to generate the response.
+	 *
+	 * @return array Returns updated results.
+	 */
+	public function rest_pre_dispatch( $result, $server, $request ) {
 
-	    if ( strpos( $request->get_route() , '/wp/v2/block-renderer') !== false ) {
-	        if( isset( $request['attributes'] ) && isset( $request['attributes']['editorskit'] ) ){
-		    	$attributes = $request['attributes'];
-		    	unset( $attributes['editorskit'] );
-		    	$request['attributes'] = $attributes;
-		    }
-	    }
-	    
-	    return $result;
+		if ( strpos( $request->get_route(), '/wp/v2/block-renderer' ) !== false ) {
+
+			if ( isset( $request['attributes'] ) && isset( $request['attributes']['editorskit'] ) ) {
+
+				$attributes = $request['attributes'];
+				unset( $attributes['editorskit'] );
+				$request['attributes'] = $attributes;
+			}
+		}
+
+		return $result;
 	}
 }
 
