@@ -126,7 +126,7 @@ if ( ! class_exists( 'EditorsKit' ) ) :
 		private function includes() {
 
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-block-assets.php';
-			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-render-block.php';
+			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-render-block.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-acf-support.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-features-manager.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-post-meta.php';
