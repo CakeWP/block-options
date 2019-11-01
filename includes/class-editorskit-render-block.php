@@ -375,7 +375,7 @@ class EditorsKit_Render_Block {
 	 *
 	 * @return array Returns the new block attributes.
 	 */
-	function block_lab_get_block_attributes( $attributes, $block ) { // phpcs:ignore
+	public function block_lab_get_block_attributes( $attributes, $block ) {
 
 		if ( ! isset( $attributes['editorskit'] ) ) {
 			$attributes['editorskit'] = array(
