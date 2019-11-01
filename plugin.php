@@ -131,7 +131,7 @@ if ( ! class_exists( 'EditorsKit' ) ) :
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-features-manager.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-post-meta.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/function-hide-title.php';
-			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-custom-css-classes.php';
+			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-custom-css-classes.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/helper.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-shortcodes.php';
 

@@ -39,74 +39,82 @@ class EditorsKit_Custom_CSS_Classes {
 	/**
 	 * The base URL path (without trailing slash).
 	 *
-	 * @var string $_url
+	 * @var string $url
 	 */
-	private $_url;
+	private $url;
 
 	/**
 	 * The Plugin version.
 	 *
-	 * @var string $_version
+	 * @var string $version
 	 */
-	private $_version;
+	private $version;
 
 	/**
 	 * The Plugin version.
 	 *
-	 * @var string $_slug
+	 * @var string $slug
 	 */
-	private $_slug;
+	private $slug;
 
 
 	/**
 	 * The Constructor.
 	 */
 	private function __construct() {
-		$this->_version 	= EDITORSKIT_VERSION;
-		$this->_slug    	= 'editorskit';
-		$this->_url     	= untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
+		$this->version = EDITORSKIT_VERSION;
+		$this->slug    = 'editorskit';
+		$this->url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
 		add_filter( 'block_editor_settings', array( $this, 'block_editor_settings' ), 10, 2 );
 	}
 
-	public function block_editor_settings( $editor_settings, $post ){
-		if( !isset( $editor_settings[ $this->_slug . 'CustomClassNames'] ) ){
+	/**
+	 * Add new block editor settings for custom classes.
+	 *
+	 * @param array  $editor_settings The editor settings.
+	 * @param object $post The post being edited.
+	 *
+	 * @return array Returns updated editors settings.
+	 */
+	public function block_editor_settings( $editor_settings, $post ) {
+		if ( ! isset( $editor_settings[ $this->slug . 'CustomClassNames' ] ) ) {
 			$defaults = array(
-				'ek-padding--sm', 
-				'sm:ek-padding--sm', 
-				'md:ek-padding--sm', 
+				'ek-padding--sm',
+				'sm:ek-padding--sm',
+				'md:ek-padding--sm',
 				'lg:ek-padding--sm',
-				'ek-padding--md', 
-				'sm:ek-padding--md', 
-				'md:ek-padding--md', 
+				'ek-padding--md',
+				'sm:ek-padding--md',
+				'md:ek-padding--md',
 				'lg:ek-padding--md',
-				'ek-padding--lg', 
-				'sm:ek-padding--lg', 
-				'md:ek-padding--lg', 
+				'ek-padding--lg',
+				'sm:ek-padding--lg',
+				'md:ek-padding--lg',
 				'lg:ek-padding--lg',
-				'ek-padding--xl', 
-				'sm:ek-padding-xl', 
-				'md:ek-padding-xl', 
+				'ek-padding--xl',
+				'sm:ek-padding-xl',
+				'md:ek-padding-xl',
 				'lg:ek-padding-xl',
-				'ek-margin--sm', 
-				'sm:ek-margin--sm', 
-				'md:ek-margin--sm', 
+				'ek-margin--sm',
+				'sm:ek-margin--sm',
+				'md:ek-margin--sm',
 				'lg:ek-margin--sm',
-				'ek-margin--md', 
-				'sm:ek-margin--md', 
-				'md:ek-margin--md', 
+				'ek-margin--md',
+				'sm:ek-margin--md',
+				'md:ek-margin--md',
 				'lg:ek-margin--md',
-				'ek-margin--lg', 
-				'sm:ek-margin--lg', 
-				'md:ek-margin--lg', 
+				'ek-margin--lg',
+				'sm:ek-margin--lg',
+				'md:ek-margin--lg',
 				'lg:ek-margin--lg',
-				'ek-margin--xl', 
-				'sm:ek-margin-xl', 
-				'md:ek-margin-xl', 
+				'ek-margin--xl',
+				'sm:ek-margin-xl',
+				'md:ek-margin-xl',
 				'lg:ek-margin-xl',
-				'ek-flex', 
-				'sm:ek-flex', 
-				'md:ek-flex', 
+				'ek-flex',
+				'sm:ek-flex',
+				'md:ek-flex',
 				'lg:ek-flex',
 				'ek-flex-initial',
 				'sm:ek-flex-initial',
@@ -194,7 +202,7 @@ class EditorsKit_Custom_CSS_Classes {
 				'lg:ek-justify-around',
 			);
 
-			$editor_settings[ $this->_slug . 'CustomClassNames'] = apply_filters( 'editorskit_block_editor_classnames', $defaults );
+			$editor_settings[ $this->slug . 'CustomClassNames' ] = apply_filters( 'editorskit_block_editor_classnames', $defaults );
 		}
 
 		return $editor_settings;
