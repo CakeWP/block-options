@@ -3,10 +3,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/admin/docs/index.js:34
+#: src/admin/docs/index.js:39
 msgid "Text Color"
 msgstr ""
 
-#: src/admin/docs/index.js:57
+#: src/admin/docs/index.js:43
+msgid "Background Color"
+msgstr ""
+
+#: src/admin/docs/index.js:70
 msgid "Documentation"
 msgstr ""

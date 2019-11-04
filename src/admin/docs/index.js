@@ -1,4 +1,9 @@
 /**
+ * Internal dependencies
+ */
+import icon from './icon';
+
+/**
  * External dependencies
  */
 import marked from 'marked';
@@ -34,6 +39,10 @@ class EditorsKitDocs extends Component {
 				title: __('Text Color', 'block-options'),
 				name: 'text-color-format.md',
 			},
+			{
+				title: __('Background Color', 'block-options'),
+				name: 'background-color-format.md',
+			},
 		];
 
 		const closeModal = () => (
@@ -42,20 +51,24 @@ class EditorsKitDocs extends Component {
 
 		return (
 			<Fragment>
-				{ map(formatDocs, (formats) => {
-					return(
-						<Button 
-							onClick={ () => {
-								this.openModal(formats.name);
-							}}>
-							{formats.title}
-						</Button>
-					);
-				}) }
+				<ul>
+					{ map(formatDocs, (formats) => {
+						return(
+							<li>
+								<Button 
+									onClick={ () => {
+										this.openModal(formats.name);
+									}}>
+									{formats.title}
+								</Button>
+							</li>
+						);
+					}) }
+				</ul>
 				{this.state.isOpen && this.state.isLoaded ?
 					<Modal
 						title={__('Documentation', 'block-options')}
-						shouldCloseOnClickOutside={false}
+						icon={ icon.book }
 						onRequestClose={() => closeModal()}
 						className="editorskit-modal-component components-modal--editorskit-docs"
 					>

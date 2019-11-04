@@ -62,14 +62,43 @@
 		}
 		.components-panel__body{
 			padding: 50px;
-			p{
-				font-size: 16px;
+
+			.components-tab-panel__tab-content{
+				p,
+				button{
+					font-size: 16px;
+					line-height: 1.5;
+					margin-bottom: 16px;
+				}
+
+				button{
+					color: #0366d6;
+
+					&:hover{
+						text-decoration: underline;
+					}
+
+					&:focus{
+						color: #0366d6;
+						outline-offset: -1px;
+						outline: 1px dotted #555d66;
+						box-shadow: none;
+					}
+				}
 			}
 		}
 	}
 }
 
 .components-modal--editorskit-docs{
+	.components-modal__icon-container{
+		padding-top: 4px;
+    	padding-right: 4px;
+		svg{
+			width: 18px;
+			height: 18px;
+		}
+	}
 	.components-modal--editorskit-doc{
 		padding: 5px 20px 0px;
 
