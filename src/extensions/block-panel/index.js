@@ -117,12 +117,16 @@ function applyTextSettings( extraProps, blockType, attributes ) {
 			extraProps.style = applyStyle( attributes, blockType.name );
 		}
 
-		const { customFontSize, fontSize } = attributes;
+		const { customFontSize, fontSize, textColor } = attributes;
 
 		if ( fontSize ) {
 			extraProps.className = classnames( extraProps.className, 'has-' + fontSize + '-font-size' );
 		} else if ( customFontSize ) {
 			extraProps.className = classnames( extraProps.className, 'has-custom-size' );
+		}
+
+		if ( textColor ) {
+			extraProps.className = classnames( extraProps.className, 'has-' + textColor + '-color' );
 		}
 	}
 

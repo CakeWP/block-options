@@ -78,6 +78,12 @@ function addAttributes( settings ) {
 				settings.attributes = {};
 			}
 			settings.attributes = Object.assign( settings.attributes, {
+				textColor: {
+					type: 'string',
+				},
+				customTextColor: {
+					type: 'string',
+				},
 				fontSize: {
 					type: 'string',
 				},

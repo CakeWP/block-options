@@ -9721,6 +9721,12 @@ function addAttributes(settings) {
       }
 
       settings.attributes = Object.assign(settings.attributes, {
+        textColor: {
+          type: 'string'
+        },
+        customTextColor: {
+          type: 'string'
+        },
         fontSize: {
           type: 'string'
         },
@@ -9916,7 +9922,9 @@ __webpack_require__.r(__webpack_exports__);
 function applyStyle(attributes, blockName) {
   var props = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
   var fontSizes = props.fontSizes;
-  var fontSize = attributes.fontSize,
+  var textColor = attributes.textColor,
+      customTextColor = attributes.customTextColor,
+      fontSize = attributes.fontSize,
       customFontSize = attributes.customFontSize;
   var style = {};
 
@@ -9930,6 +9938,22 @@ function applyStyle(attributes, blockName) {
     }
   } else if (typeof customFontSize !== 'undefined') {
     style.fontSize = customFontSize + 'px';
+  }
+
+  if (typeof textColor !== 'undefined') {
+    var colors = Object(lodash__WEBPACK_IMPORTED_MODULE_0__["get"])(wp.data.select('core/block-editor').getSettings(), ['colors'], []);
+
+    if (typeof colors !== 'undefined') {
+      var textColorValue = Object(lodash__WEBPACK_IMPORTED_MODULE_0__["find"])(colors, {
+        slug: textColor
+      });
+
+      if (typeof textColorValue !== 'undefined' && typeof textColorValue.color !== 'undefined') {
+        style.color = textColorValue.color;
+      }
+    }
+  } else if (typeof customTextColor !== 'undefined') {
+    style.color = customTextColor;
   }
 
   return style;
@@ -9975,7 +9999,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 /**
- * External Dependencies
+ * External dependencies
  */
 
 
@@ -9983,7 +10007,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
  * WordPress Dependencies
  */
 
-var __ = wp.i18n.__;
 var addFilter = wp.hooks.addFilter;
 var Fragment = wp.element.Fragment;
 var withSelect = wp.data.withSelect;
@@ -10063,7 +10086,6 @@ var withBlockPanel = createHigherOrderComponent(function (BlockEdit) {
     var props = _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, _ref2);
 
     var name = props.name,
-        attributes = props.attributes,
         isSelected = props.isSelected,
         isDisabledListTextSettings = props.isDisabledListTextSettings;
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(BlockEdit, props), isSelected && !isDisabledListTextSettings && blocksWithFontSize.includes(name) && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_list_settings__WEBPACK_IMPORTED_MODULE_4__["default"], props));
@@ -10088,12 +10110,17 @@ function applyTextSettings(extraProps, blockType, attributes) {
     }
 
     var customFontSize = attributes.customFontSize,
-        fontSize = attributes.fontSize;
+        fontSize = attributes.fontSize,
+        textColor = attributes.textColor;
 
     if (fontSize) {
       extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_6___default()(extraProps.className, 'has-' + fontSize + '-font-size');
     } else if (customFontSize) {
       extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_6___default()(extraProps.className, 'has-custom-size');
+    }
+
+    if (textColor) {
+      extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_6___default()(extraProps.className, 'has-' + textColor + '-color');
     }
   }
 
@@ -10128,18 +10155,22 @@ var Fragment = wp.element.Fragment;
 var _wp$blockEditor = wp.blockEditor,
     InspectorControls = _wp$blockEditor.InspectorControls,
     FontSizePicker = _wp$blockEditor.FontSizePicker,
-    withFontSizes = _wp$blockEditor.withFontSizes;
+    withFontSizes = _wp$blockEditor.withFontSizes,
+    withColors = _wp$blockEditor.withColors,
+    PanelColorSettings = _wp$blockEditor.PanelColorSettings;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     withFallbackStyles = _wp$components.withFallbackStyles;
 var applyFallbackStyles = withFallbackStyles(function (node, ownProps) {
   var _ownProps$attributes = ownProps.attributes,
       fontSize = _ownProps$attributes.fontSize,
-      customFontSize = _ownProps$attributes.customFontSize;
+      customFontSize = _ownProps$attributes.customFontSize,
+      textColor = _ownProps$attributes.textColor;
   var editableNode = node.querySelector('[contenteditable="true"]'); //verify if editableNode is available, before using getComputedStyle.
 
   var computedStyles = editableNode ? getComputedStyle(editableNode) : null;
   return {
+    fallbackTextColor: textColor || !computedStyles ? undefined : computedStyles.color,
     fallbackFontSize: fontSize || customFontSize || !computedStyles ? undefined : parseInt(computedStyles.fontSize) || undefined
   };
 });
@@ -10147,7 +10178,9 @@ var applyFallbackStyles = withFallbackStyles(function (node, ownProps) {
 var ListTextSettings = function ListTextSettings(props) {
   var fallbackFontSize = props.fallbackFontSize,
       fontSize = props.fontSize,
-      setFontSize = props.setFontSize;
+      setFontSize = props.setFontSize,
+      textColor = props.textColor,
+      setTextColor = props.setTextColor;
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
     title: __('Text Settings', 'block-options'),
     initialOpen: false,
@@ -10156,10 +10189,20 @@ var ListTextSettings = function ListTextSettings(props) {
     fallbackFontSize: fallbackFontSize,
     value: fontSize.size,
     onChange: setFontSize
-  }))));
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelColorSettings, {
+    title: __('Color Settings', 'block-options'),
+    initialOpen: false,
+    colorSettings: [{
+      value: textColor.color,
+      onChange: setTextColor,
+      label: __('Text Color', 'block-options')
+    }]
+  })));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (compose([withFontSizes('fontSize'), applyFallbackStyles])(ListTextSettings));
+/* harmony default export */ __webpack_exports__["default"] = (compose([withColors({
+  textColor: 'color'
+}), withFontSizes('fontSize'), applyFallbackStyles])(ListTextSettings));
 
 /***/ }),
 

@@ -3,17 +3,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/advanced-controls/index.js:101
-msgid ""
-"Attention: The display settings (show/hide for mobile, tablet or desktop) "
-"will only take effect once you are on the live page, and not while you're "
-"editing in Gutenberg."
-msgstr ""
-
-#: src/extensions/advanced-controls/index.js:97
-msgid "Responsive"
-msgstr ""
-
-#: src/extensions/block-panel/list-settings/index.js:31
+#: src/extensions/block-panel/list-settings/index.js:34
 msgid "Text Settings"
+msgstr ""
+
+#: src/extensions/block-panel/list-settings/index.js:45
+msgid "Color Settings"
+msgstr ""
+
+#: src/extensions/block-panel/list-settings/index.js:51
+msgid "Text Color"
 msgstr ""
