@@ -6,4 +6,4 @@
 /**
  * Internal dependencies
  */
-import './admin';
+import './admin/';

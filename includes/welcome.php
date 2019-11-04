@@ -17,24 +17,64 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 if( !class_exists( 'BLOCKOPS_Welcome' ) ){
     class BLOCKOPS_Welcome{
+		/**
+		 * The base URL path (without trailing slash).
+		 *
+		 * @var string $_url
+		 */
+		private $_url;
+
+		/**
+		 * The Plugin version.
+		 *
+		 * @var string $_version
+		 */
+		private $_version;
+
+		/**
+		 * The Plugin version.
+		 *
+		 * @var string $_slug
+		 */
+		private $_slug;
+
         public function __construct() {
+			$this->_version = EDITORSKIT_VERSION;
+			$this->_slug    = 'editorskit';
+			$this->_url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
+
 			add_action( 'admin_enqueue_scripts', array($this, 'enqueue') );
 			add_action( 'admin_menu', array($this, 'screen_page') );
 			add_action( 'activated_plugin', array($this, 'redirect' ), 10, 2 );
-			add_action( 'admin_head', array($this, 'remove_menu' ) );
 		}
 
 		function enqueue(){
 			if ( !isset( $_GET['page'] ) || 'editorskit-getting-started' != $_GET['page'] )
 			return;
 
-			wp_enqueue_style( 'editorskit-welcome', plugins_url( '/build/admin.build.css' , dirname(__FILE__) ) , array(), null );
+			wp_enqueue_style(
+				'editorskit-welcome',
+				plugins_url( '/build/admin.build.css',
+				dirname(__FILE__) ),
+				array( 'wp-components' ),
+				null
+			);
+			
+			// Scripts.
+			wp_enqueue_script(
+				$this->_slug . '-admin',
+				$this->_url . '/build/settings.js',
+				array( 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-api', 'wp-hooks', 'wp-edit-post', 'lodash' ),
+				time(),
+				false
+			);
 		}
 
 		function screen_page(){
-			add_dashboard_page(
+			add_submenu_page(
+				'options-general.php',
 				__( 'Getting started with EditorsKit', 'block-options' ),
-				__( 'Getting started with EditorsKit', 'block-options' ),
+				__( 'EditorsKit', 'block-options' ),
 				apply_filters( 'blockopts_welcome_cap', 'manage_options' ),
 				'editorskit-getting-started',
 				array( $this, 'welcome_content' )
@@ -42,32 +82,7 @@ if( !class_exists( 'BLOCKOPS_Welcome' ) ){
 		}
 
 		function welcome_content(){ ?>
-			<div class="wrap about-wrap editorskit-about-wrap">
-				<div class="getting-started__content">
-					<h1><?php echo esc_html__( 'Get started with EditorsKit.', 'block-options' ); ?></h1>
-					
-					<p><strong><?php echo esc_html__( 'Thank you for choosing EditorsKit!', 'block-options' ); ?></strong></p>
-					
-					<p><?php echo esc_html__( 'You have just enabled set of useful tools that will help you manage each blocks and improve your content workflow with the new editor.', 'block-options' ); ?></p>
-					
-					<p><strong><?php echo esc_html__( 'Here is the video on how the plugin works:', 'block-options' ); ?></strong></p>
-
-					<iframe width="560" height="380" src="https://www.youtube.com/embed/QWgO4lAJAlE" frameborder="0" allowfullscreen></iframe>
-
-					<p>
-						<?php
-						echo sprintf(
-							esc_html__( 'If you have any questions or suggestion, let us know through %1$sTwitter%4$s or our %2$sFacebook community %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what\'s new and upcoming at EditorsKit.', 'block-options' ), '<a href="https://twitter.com/editorskit" target="_blank">', '<a href="https://www.facebook.com/groups/1306393256173179/" target="_blank">', '<a href="https://editorskit.com/" target="_blank">', '</a>'
-						);
-						?>
-					</p>
-
-					<p><?php echo esc_html__( 'Happy building!', 'block-options' ); ?></p>
-
-					<p><img src="<?php echo esc_url( EDITORSKIT_PLUGIN_URL . 'build/images/logo-800.png' ); ?>" alt="<?php echo esc_attr__( 'EditorsKit Team', 'block-options' ); ?>"></p>
-
-				</div>
-			</div>
+			<div class="editorskit-settings-wrap"></div>
 		<?php }
 
 		function redirect($plugin){
@@ -75,9 +90,6 @@ if( !class_exists( 'BLOCKOPS_Welcome' ) ){
 				wp_redirect(admin_url('index.php?page=editorskit-getting-started'));
 				die();
 			}
-		}
-		function remove_menu(){
-		    remove_submenu_page( 'index.php', 'editorskit-getting-started' );
 		}
     }
     new BLOCKOPS_Welcome();

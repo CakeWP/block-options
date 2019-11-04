@@ -1,0 +1,69 @@
+.editorskit-settings-wrap{
+	color: #111;
+	.components-panel{
+		.components-panel__header{
+			border: 0px;
+			padding: 0px;
+			display: block;
+			height: auto;
+			h2{
+				font-size: 45px;
+				line-height: 1;
+				font-weight: 300;
+				padding-bottom: 10px;
+				margin: 0px;
+			}
+			p{
+				color: #333;
+				font-size: 18px;
+				margin-bottom: 50px;
+			}
+		}
+		.editorskit-settings-tab-panel{
+			margin: 0 -50px;
+			width: calc(100% + 100px);
+		}
+		.components-tab-panel__tabs{
+			padding: 0 50px;
+			border-bottom: 1px solid #e2e4e7;
+
+			.components-button{
+				font-size: 18px;
+				padding: 10px 15px;
+				border-bottom: 5px solid transparent;
+				opacity: 0.7;
+				font-weight: 500;
+				&:hover{
+					opacity: 0.9;
+					border-color: #ccc;
+					background: #f5f6f8;
+				}
+				&.active-tab{
+					opacity: 1;
+					&, &:hover{
+						border-color: #272C56;
+						background: #ffffff;
+					}
+				}
+				&:focus{
+					color: #191e23;
+    				outline-offset: -1px;
+					outline: 1px dotted #555d66;
+					box-shadow: none;
+				}
+			}
+		}
+		.components-tab-panel__tab-content{
+			padding: 25px 50px;
+		}
+		.components-panel__body{
+			padding: 50px;
+			p{
+				font-size: 16px;
+			}
+		}
+	}
+}
+.settings_page_editorskit-getting-started #wpcontent{
+	padding-left: 0px;
+}
