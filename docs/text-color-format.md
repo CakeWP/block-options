@@ -1,6 +1,4 @@
----
-title: Using Text Color Format
----
+# Text Color Format
 
 By default Gutenberg block editor doesn't have the "Text Color" available on TinyMCE but you don't have to worry about it because EditorsKit provides this missing text format.
 

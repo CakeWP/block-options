@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import './docs';
+import EditorsKitDocs from './docs';
 
 /**
  * WordPress dependencies
@@ -41,7 +41,21 @@ class EditorsKitSettings extends Component {
 					},
 				]}>
 				{
-					(tab) => <p>{tab.title}</p>
+					(tab) => {
+						switch (tab.name ) {
+							case 'tab2':
+								return(
+									<EditorsKitDocs />
+								);
+								break;
+						
+							default:
+								return(
+									<p>{tab.title}</p>
+								);
+								break;
+						}
+					}
 				}
 			</TabPanel>
 		);

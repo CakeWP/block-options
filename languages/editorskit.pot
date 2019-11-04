@@ -3,6 +3,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/admin/index.js:25
-msgid "Show \"Go premium\" notices"
+#: src/admin/docs/index.js:34
+msgid "Text Color"
+msgstr ""
+
+#: src/admin/docs/index.js:57
+msgid "Documentation"
 msgstr ""
