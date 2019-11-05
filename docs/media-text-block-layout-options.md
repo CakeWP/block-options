@@ -1,0 +1,1 @@
+# Media and Text Block Card Layout

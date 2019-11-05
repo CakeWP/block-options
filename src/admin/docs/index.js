@@ -93,6 +93,14 @@ class EditorsKitDocs extends Component {
 				title: __('Export and Import Blocks', 'block-options'),
 				name: 'export-import-block-options.md',
 			},
+			{
+				title: __('Copy Selected Block(s)', 'block-options'),
+				name: 'copy-selected-blocks-options.md',
+			},
+			{
+				title: __('Media and Text Block Card Layout', 'block-options'),
+				name: 'media-text-block-layout-options.md',
+			},
 		];
 
 		const closeModal = () => (
