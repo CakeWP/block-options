@@ -2180,6 +2180,9 @@ function (_Component) {
       }, {
         title: __('Adding Link "rel" NoFollow or Sponsored Attributes', 'block-options'),
         name: 'link-attributes-format.md'
+      }, {
+        title: __('Subscript and Superscript Text Formatting', 'block-options'),
+        name: 'subscript-superscript-format.md'
       }];
 
       var closeModal = function closeModal() {

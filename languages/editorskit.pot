@@ -15,11 +15,15 @@ msgstr ""
 msgid "Adding Link \"rel\" NoFollow or Sponsored Attributes"
 msgstr ""
 
-#: src/admin/docs/index.js:61
+#: src/admin/docs/index.js:51
+msgid "Subscript and Superscript Text Formatting"
+msgstr ""
+
+#: src/admin/docs/index.js:65
 msgid "Rich Text Formatting"
 msgstr ""
 
-#: src/admin/docs/index.js:80
+#: src/admin/docs/index.js:84
 msgid "Documentation"
 msgstr ""
 
