@@ -2225,6 +2225,9 @@ function (_Component) {
       var toolsDocs = [{
         title: __('Easily Hide Title', 'block-options'),
         name: 'hide-title-tools.md'
+      }, {
+        title: __('Drag and Drop Featured Image', 'block-options'),
+        name: 'drag-drop-featured-image-tools.md'
       }];
 
       var closeModal = function closeModal() {
