@@ -55,6 +55,10 @@ class EditorsKitDocs extends Component {
 				title: __('Justified Paragraph Alignment', 'block-options'),
 				name: 'justified-alignment-format.md',
 			},
+			{
+				title: __('Transform Text to Uppercase', 'block-options'),
+				name: 'uppercase-text-format.md',
+			},
 		];
 
 		const closeModal = () => (

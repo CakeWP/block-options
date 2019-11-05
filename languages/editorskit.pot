@@ -23,11 +23,15 @@ msgstr ""
 msgid "Justified Paragraph Alignment"
 msgstr ""
 
-#: src/admin/docs/index.js:69
+#: src/admin/docs/index.js:59
+msgid "Transform Text to Uppercase"
+msgstr ""
+
+#: src/admin/docs/index.js:73
 msgid "Rich Text Formatting"
 msgstr ""
 
-#: src/admin/docs/index.js:88
+#: src/admin/docs/index.js:92
 msgid "Documentation"
 msgstr ""
 

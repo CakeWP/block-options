@@ -2186,6 +2186,9 @@ function (_Component) {
       }, {
         title: __('Justified Paragraph Alignment', 'block-options'),
         name: 'justified-alignment-format.md'
+      }, {
+        title: __('Transform Text to Uppercase', 'block-options'),
+        name: 'uppercase-text-format.md'
       }];
 
       var closeModal = function closeModal() {
