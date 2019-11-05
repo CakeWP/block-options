@@ -2206,6 +2206,10 @@ function (_Component) {
         title: __('Transform 4 Empty Paragraphs to Spacer Block', 'block-options'),
         name: 'transform-empty-spacer-writing.md'
       }];
+      var optionsDocs = [{
+        title: __('Set Image Block as Featured Image', 'block-options'),
+        name: 'set-image-as-featured-options.md'
+      }];
 
       var closeModal = function closeModal() {
         return _this3.setState({
@@ -2247,7 +2251,7 @@ function (_Component) {
         className: "editorskit-docs-items-title"
       }, __('Block Options', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("ul", {
         className: "editorskit-docs-items-list"
-      }, Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(formatDocs, function (formats) {
+      }, Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(optionsDocs, function (formats) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("li", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
           onClick: function onClick() {
             _this3.openModal(formats.name);

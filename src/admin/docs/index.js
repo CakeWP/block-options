@@ -84,6 +84,13 @@ class EditorsKitDocs extends Component {
 			},
 		];
 
+		const optionsDocs = [
+			{
+				title: __('Set Image Block as Featured Image', 'block-options'),
+				name: 'set-image-as-featured-options.md',
+			},
+		];
+
 		const closeModal = () => (
 			this.setState({ html: '', isOpen: false, isLoaded: false })
 		);
@@ -129,7 +136,7 @@ class EditorsKitDocs extends Component {
 					<div className="editorskit-docs-items-blockoptions">
 						<h3 className="editorskit-docs-items-title">{__('Block Options', 'block-options')}</h3>
 						<ul className="editorskit-docs-items-list">
-							{map(formatDocs, (formats) => {
+							{map(optionsDocs, (formats) => {
 								return (
 									<li>
 										<Button

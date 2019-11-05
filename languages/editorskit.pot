@@ -3,19 +3,23 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/admin/docs/index.js:113
+#: src/admin/docs/index.js:103
+msgid "Rich Text Formatting"
+msgstr ""
+
+#: src/admin/docs/index.js:120
 msgid "Writing"
 msgstr ""
 
-#: src/admin/docs/index.js:130
+#: src/admin/docs/index.js:137
 msgid "Block Options"
 msgstr ""
 
-#: src/admin/docs/index.js:147
+#: src/admin/docs/index.js:154
 msgid "Tools"
 msgstr ""
 
-#: src/admin/docs/index.js:166
+#: src/admin/docs/index.js:173
 msgid "Documentation"
 msgstr ""
 
@@ -63,8 +67,8 @@ msgstr ""
 msgid "Transform 4 Empty Paragraphs to Spacer Block"
 msgstr ""
 
-#: src/admin/docs/index.js:96
-msgid "Rich Text Formatting"
+#: src/admin/docs/index.js:89
+msgid "Set Image Block as Featured Image"
 msgstr ""
 
 #: src/admin/index.js:70
