@@ -2199,6 +2199,9 @@ function (_Component) {
       var writingDocs = [{
         title: __('Markdown Writing Shortcuts', 'block-options'),
         name: 'markdown-writing.md'
+      }, {
+        title: __('View or Add Estimated Reading Time', 'block-options'),
+        name: 'estimated-reading-time-writing.md'
       }];
 
       var closeModal = function closeModal() {

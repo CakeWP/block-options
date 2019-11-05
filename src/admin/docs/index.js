@@ -74,6 +74,10 @@ class EditorsKitDocs extends Component {
 				title: __('Markdown Writing Shortcuts', 'block-options'),
 				name: 'markdown-writing.md',
 			},
+			{
+				title: __('View or Add Estimated Reading Time', 'block-options'),
+				name: 'estimated-reading-time-writing.md',
+			},
 		];
 
 		const closeModal = () => (

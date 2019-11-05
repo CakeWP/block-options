@@ -3,19 +3,19 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/admin/docs/index.js:105
+#: src/admin/docs/index.js:109
 msgid "Writing"
 msgstr ""
 
-#: src/admin/docs/index.js:122
+#: src/admin/docs/index.js:126
 msgid "Block Options"
 msgstr ""
 
-#: src/admin/docs/index.js:139
+#: src/admin/docs/index.js:143
 msgid "Tools"
 msgstr ""
 
-#: src/admin/docs/index.js:158
+#: src/admin/docs/index.js:162
 msgid "Documentation"
 msgstr ""
 
@@ -55,7 +55,11 @@ msgstr ""
 msgid "Markdown Writing Shortcuts"
 msgstr ""
 
-#: src/admin/docs/index.js:88
+#: src/admin/docs/index.js:78
+msgid "View or Add Estimated Reading Time"
+msgstr ""
+
+#: src/admin/docs/index.js:92
 msgid "Rich Text Formatting"
 msgstr ""
 
