@@ -51,6 +51,10 @@ class EditorsKitDocs extends Component {
 				title: __('Subscript and Superscript Text Formatting', 'block-options'),
 				name: 'subscript-superscript-format.md',
 			},
+			{
+				title: __('Justified Paragraph Alignment', 'block-options'),
+				name: 'justified-alignment-format.md',
+			},
 		];
 
 		const closeModal = () => (
