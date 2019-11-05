@@ -59,6 +59,10 @@ class EditorsKitDocs extends Component {
 				title: __('Transform Text to Uppercase', 'block-options'),
 				name: 'uppercase-text-format.md',
 			},
+			{
+				title: __('Add Nonbreaking Space', 'block-options'),
+				name: 'nonbreaking-space-format.md',
+			},
 		];
 
 		const closeModal = () => (

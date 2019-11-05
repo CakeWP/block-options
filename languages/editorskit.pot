@@ -27,11 +27,15 @@ msgstr ""
 msgid "Transform Text to Uppercase"
 msgstr ""
 
-#: src/admin/docs/index.js:73
+#: src/admin/docs/index.js:63
+msgid "Add Nonbreaking Space"
+msgstr ""
+
+#: src/admin/docs/index.js:77
 msgid "Rich Text Formatting"
 msgstr ""
 
-#: src/admin/docs/index.js:92
+#: src/admin/docs/index.js:96
 msgid "Documentation"
 msgstr ""
 
