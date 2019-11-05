@@ -11,23 +11,27 @@ msgstr ""
 msgid "Media & Text Block Links"
 msgstr ""
 
-#: src/admin/docs/index.js:119
+#: src/admin/docs/index.js:112
+msgid "Easily Hide Title"
+msgstr ""
+
+#: src/admin/docs/index.js:127
 msgid "Rich Text Formatting"
 msgstr ""
 
-#: src/admin/docs/index.js:136
+#: src/admin/docs/index.js:144
 msgid "Writing"
 msgstr ""
 
-#: src/admin/docs/index.js:153
+#: src/admin/docs/index.js:161
 msgid "Block Options"
 msgstr ""
 
-#: src/admin/docs/index.js:170
+#: src/admin/docs/index.js:178
 msgid "Tools"
 msgstr ""
 
-#: src/admin/docs/index.js:189
+#: src/admin/docs/index.js:197
 msgid "Documentation"
 msgstr ""
 

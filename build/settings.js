@@ -2222,6 +2222,10 @@ function (_Component) {
         title: __('Media & Text Block Links', 'block-options'),
         name: 'media-text-block-link-options.md'
       }];
+      var toolsDocs = [{
+        title: __('Easily Hide Title', 'block-options'),
+        name: 'hide-title-tools.md'
+      }];
 
       var closeModal = function closeModal() {
         return _this3.setState({
@@ -2270,12 +2274,12 @@ function (_Component) {
           }
         }, formats.title));
       }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
-        className: "editorskit-docs-items-toolt"
+        className: "editorskit-docs-items-tools"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h3", {
         className: "editorskit-docs-items-title"
       }, __('Tools', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("ul", {
         className: "editorskit-docs-items-list"
-      }, Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(writingDocs, function (formats) {
+      }, Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(toolsDocs, function (formats) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("li", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
           onClick: function onClick() {
             _this3.openModal(formats.name);

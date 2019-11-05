@@ -107,6 +107,14 @@ class EditorsKitDocs extends Component {
 			},
 		];
 
+		const toolsDocs = [
+			{
+				title: __('Easily Hide Title', 'block-options'),
+				name: 'hide-title-tools.md',
+			},
+		];
+
+
 		const closeModal = () => (
 			this.setState({ html: '', isOpen: false, isLoaded: false })
 		);
@@ -166,10 +174,10 @@ class EditorsKitDocs extends Component {
 							})}
 						</ul>
 					</div>
-					<div className="editorskit-docs-items-toolt">
+					<div className="editorskit-docs-items-tools">
 						<h3 className="editorskit-docs-items-title">{__('Tools', 'block-options')}</h3>
 						<ul className="editorskit-docs-items-list">
-							{map(writingDocs, (formats) => {
+							{map(toolsDocs, (formats) => {
 								return (
 									<li>
 										<Button
