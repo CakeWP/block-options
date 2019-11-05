@@ -3,6 +3,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+#: src/admin/docs/index.js:100
+msgid "Documentation"
+msgstr ""
+
 #: src/admin/docs/index.js:39
 msgid "Adding Selected Text Color"
 msgstr ""
@@ -31,12 +35,12 @@ msgstr ""
 msgid "Add Nonbreaking Space"
 msgstr ""
 
-#: src/admin/docs/index.js:77
-msgid "Rich Text Formatting"
+#: src/admin/docs/index.js:67
+msgid "Clear Formatting"
 msgstr ""
 
-#: src/admin/docs/index.js:96
-msgid "Documentation"
+#: src/admin/docs/index.js:81
+msgid "Rich Text Formatting"
 msgstr ""
 
 #: src/admin/index.js:70

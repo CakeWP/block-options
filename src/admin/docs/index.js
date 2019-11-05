@@ -63,6 +63,10 @@ class EditorsKitDocs extends Component {
 				title: __('Add Nonbreaking Space', 'block-options'),
 				name: 'nonbreaking-space-format.md',
 			},
+			{
+				title: __('Clear Formatting', 'block-options'),
+				name: 'clear-formatting-format.md',
+			},
 		];
 
 		const closeModal = () => (
