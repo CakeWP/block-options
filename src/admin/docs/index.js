@@ -43,6 +43,10 @@ class EditorsKitDocs extends Component {
 				title: __('Adding Highlighted Text Background Color', 'block-options'),
 				name: 'background-color-format.md',
 			},
+			{
+				title: __('Adding Link "rel" NoFollow or Sponsored Attributes', 'block-options'),
+				name: 'link-attributes-format.md',
+			},
 		];
 
 		const closeModal = () => (
@@ -52,21 +56,25 @@ class EditorsKitDocs extends Component {
 		return (
 			<Fragment>
 				<p>Laboriosam asperiores voluptates qui veritatis similique et culpa. Consequatur mollitia aliquam consequatur accusantium aperiam. Perspiciatis minima earum alias rerum quis itaque.</p>
-				<h3 className="editorskit-docs-items-title">{__('Rich Text Formatting', 'block-options')}</h3>
-				<ul className="editorskit-docs-items-list">
-					{ map(formatDocs, (formats) => {
-						return(
-							<li>
-								<Button 
-									onClick={ () => {
-										this.openModal(formats.name);
-									}}>
-									{formats.title}
-								</Button>
-							</li>
-						);
-					}) }
-				</ul>
+				<div className="editorskit-docs-items-wrapper">
+					<div className="editorskit-docs-items-formatting">
+						<h3 className="editorskit-docs-items-title">{__('Rich Text Formatting', 'block-options')}</h3>
+						<ul className="editorskit-docs-items-list">
+							{map(formatDocs, (formats) => {
+								return (
+									<li>
+										<Button
+											onClick={() => {
+												this.openModal(formats.name);
+											}}>
+											{formats.title}
+										</Button>
+									</li>
+								);
+							})}
+						</ul>
+					</div>
+				</div>
 				{this.state.isOpen && this.state.isLoaded ?
 					<Modal
 						title={__('Documentation', 'block-options')}

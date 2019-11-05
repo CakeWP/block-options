@@ -11,11 +11,15 @@ msgstr ""
 msgid "Adding Highlighted Text Background Color"
 msgstr ""
 
-#: src/admin/docs/index.js:55
+#: src/admin/docs/index.js:47
+msgid "Adding Link \"rel\" NoFollow or Sponsored Attributes"
+msgstr ""
+
+#: src/admin/docs/index.js:61
 msgid "Rich Text Formatting"
 msgstr ""
 
-#: src/admin/docs/index.js:72
+#: src/admin/docs/index.js:80
 msgid "Documentation"
 msgstr ""
 

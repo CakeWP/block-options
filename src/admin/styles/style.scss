@@ -139,6 +139,10 @@
 
 		h1{
 			font-size: 32px;
+
+			&:first-of-type{
+				margin-top: 10px;
+			}
 		}
 
 		h2{
@@ -148,14 +152,15 @@
 			font-size: 20px;
 		}
 
-		ul,
-		ol{
+		ul{
 			display: block;
 			padding-left: 20px;
+			list-style-type: disc;
 		}
 
-		ul{
-			list-style-type: disc;
+		ol{
+			padding: 0px;
+			margin-left: 20px;	
 		}
 
 		img{

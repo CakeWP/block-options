@@ -2177,6 +2177,9 @@ function (_Component) {
       }, {
         title: __('Adding Highlighted Text Background Color', 'block-options'),
         name: 'background-color-format.md'
+      }, {
+        title: __('Adding Link "rel" NoFollow or Sponsored Attributes', 'block-options'),
+        name: 'link-attributes-format.md'
       }];
 
       var closeModal = function closeModal() {
@@ -2187,7 +2190,11 @@ function (_Component) {
         });
       };
 
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, "Laboriosam asperiores voluptates qui veritatis similique et culpa. Consequatur mollitia aliquam consequatur accusantium aperiam. Perspiciatis minima earum alias rerum quis itaque."), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h3", {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, "Laboriosam asperiores voluptates qui veritatis similique et culpa. Consequatur mollitia aliquam consequatur accusantium aperiam. Perspiciatis minima earum alias rerum quis itaque."), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
+        className: "editorskit-docs-items-wrapper"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
+        className: "editorskit-docs-items-formatting"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h3", {
         className: "editorskit-docs-items-title"
       }, __('Rich Text Formatting', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("ul", {
         className: "editorskit-docs-items-list"
@@ -2197,7 +2204,7 @@ function (_Component) {
             _this3.openModal(formats.name);
           }
         }, formats.title));
-      })), this.state.isOpen && this.state.isLoaded ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Modal, {
+      })))), this.state.isOpen && this.state.isLoaded ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Modal, {
         title: __('Documentation', 'block-options'),
         icon: _icon__WEBPACK_IMPORTED_MODULE_6__["default"].book,
         onRequestClose: function onRequestClose() {
