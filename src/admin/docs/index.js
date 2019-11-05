@@ -89,6 +89,10 @@ class EditorsKitDocs extends Component {
 				title: __('Set Image Block as Featured Image', 'block-options'),
 				name: 'set-image-as-featured-options.md',
 			},
+			{
+				title: __('Export and Import Blocks', 'block-options'),
+				name: 'export-import-block-options.md',
+			},
 		];
 
 		const closeModal = () => (

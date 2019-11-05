@@ -3,23 +3,23 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/admin/docs/index.js:103
+#: src/admin/docs/index.js:107
 msgid "Rich Text Formatting"
 msgstr ""
 
-#: src/admin/docs/index.js:120
+#: src/admin/docs/index.js:124
 msgid "Writing"
 msgstr ""
 
-#: src/admin/docs/index.js:137
+#: src/admin/docs/index.js:141
 msgid "Block Options"
 msgstr ""
 
-#: src/admin/docs/index.js:154
+#: src/admin/docs/index.js:158
 msgid "Tools"
 msgstr ""
 
-#: src/admin/docs/index.js:173
+#: src/admin/docs/index.js:177
 msgid "Documentation"
 msgstr ""
 
@@ -69,6 +69,10 @@ msgstr ""
 
 #: src/admin/docs/index.js:89
 msgid "Set Image Block as Featured Image"
+msgstr ""
+
+#: src/admin/docs/index.js:93
+msgid "Export and Import Blocks"
 msgstr ""
 
 #: src/admin/index.js:70
