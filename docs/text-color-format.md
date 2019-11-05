@@ -6,6 +6,8 @@ By default Gutenberg block editor doesn't have the "Text Color" available on Tin
 
 Follow the steps below to change the selected text color easily.
 
+![Gutenberg block editor adding text color](https://cldup.com/6mjmSfmGIT.gif)
+
 - Select or highlight the text that you want to change the color.
 - Click the "A" icon on the block Toolbar. This will open a popover with list or colors to choose from.
 - Select the color you want and it will automatically be applied on the text you've selected.

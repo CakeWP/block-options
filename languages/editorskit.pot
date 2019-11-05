@@ -4,13 +4,21 @@ msgstr ""
 "X-Generator: babel-plugin-makepot\n"
 
 #: src/admin/docs/index.js:39
-msgid "Text Color"
+msgid "Adding Selected Text Color"
 msgstr ""
 
 #: src/admin/docs/index.js:43
-msgid "Background Color"
+msgid "Adding Highlighted Text Background Color"
 msgstr ""
 
-#: src/admin/docs/index.js:70
+#: src/admin/docs/index.js:55
+msgid "Rich Text Formatting"
+msgstr ""
+
+#: src/admin/docs/index.js:72
 msgid "Documentation"
+msgstr ""
+
+#: src/admin/index.js:70
+msgid "Settings → EditorsKit"
 msgstr ""

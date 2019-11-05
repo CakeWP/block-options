@@ -2154,7 +2154,9 @@ function (_Component) {
     value: function openModal(name) {
       var _this2 = this;
 
-      fetch(window.editorskitSettings.url + 'docs/' + name).then(function (response) {
+      fetch(window.editorskitSettings.url + 'docs/' + name, {
+        cache: 'no-cache'
+      }).then(function (response) {
         return response.text();
       }).then(function (markdown) {
         return _this2.setState({
@@ -2170,10 +2172,10 @@ function (_Component) {
       var _this3 = this;
 
       var formatDocs = [{
-        title: __('Text Color', 'block-options'),
+        title: __('Adding Selected Text Color', 'block-options'),
         name: 'text-color-format.md'
       }, {
-        title: __('Background Color', 'block-options'),
+        title: __('Adding Highlighted Text Background Color', 'block-options'),
         name: 'background-color-format.md'
       }];
 
@@ -2185,7 +2187,11 @@ function (_Component) {
         });
       };
 
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("ul", null, Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(formatDocs, function (formats) {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, "Laboriosam asperiores voluptates qui veritatis similique et culpa. Consequatur mollitia aliquam consequatur accusantium aperiam. Perspiciatis minima earum alias rerum quis itaque."), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h3", {
+        className: "editorskit-docs-items-title"
+      }, __('Rich Text Formatting', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("ul", {
+        className: "editorskit-docs-items-list"
+      }, Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(formatDocs, function (formats) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("li", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
           onClick: function onClick() {
             _this3.openModal(formats.name);
@@ -2251,6 +2257,7 @@ __webpack_require__.r(__webpack_exports__);
  * WordPress dependencies
  */
 
+var __ = wp.i18n.__;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component,
@@ -2305,7 +2312,7 @@ function (_Component) {
               break;
 
             default:
-              return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, tab.title);
+              return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, "Laboriosam asperiores voluptates qui veritatis similique et culpa. Consequatur mollitia aliquam consequatur accusantium aperiam. Perspiciatis minima earum alias rerum quis itaque. Itaque fuga commodi omnis distinctio. Laboriosam corporis itaque possimus laboriosam labore. Ad vitae iste ullam et blanditiis. A et libero voluptatem et blanditiis. Asperiores illo quos molestiae eum porro ut.");
               break;
           }
         });
@@ -2316,7 +2323,9 @@ function (_Component) {
           opened: true
         }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
           class: "components-panel__header"
-        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h2", null, "Gettings Started with ", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("strong", null, "EditorsKit")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, "Laboriosam asperiores voluptates qui veritatis similique et culpa. Consequatur mollitia aliquam consequatur accusantium aperiam. Perspiciatis minima earum alias rerum quis itaque. Itaque fuga commodi omnis distinctio. Laboriosam corporis itaque possimus laboriosam labore. Ad vitae iste ullam et blanditiis. A et libero voluptatem et blanditiis. Asperiores illo quos molestiae eum porro ut.")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(MyTabPanel, null))));
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", {
+          class: "editorskit-panel__header-hint"
+        }, __('Settings → EditorsKit', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h2", null, "Gettings Started with ", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("strong", null, "EditorsKit")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, "Laboriosam asperiores voluptates qui veritatis similique et culpa. Consequatur mollitia aliquam consequatur accusantium aperiam. Perspiciatis minima earum alias rerum quis itaque. Itaque fuga commodi omnis distinctio. Laboriosam corporis itaque possimus laboriosam labore. Ad vitae iste ullam et blanditiis. A et libero voluptatem et blanditiis. Asperiores illo quos molestiae eum porro ut.")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(MyTabPanel, null))));
       };
 
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(MyPanel, null));

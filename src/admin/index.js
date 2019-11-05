@@ -6,6 +6,7 @@ import EditorsKitDocs from './docs';
 /**
  * WordPress dependencies
  */
+const { __ } = wp.i18n;
 const { Fragment, Component, render } = wp.element;
 const { TabPanel, Panel, PanelHeader, PanelBody, PanelRow } = wp.components;
 
@@ -51,7 +52,7 @@ class EditorsKitSettings extends Component {
 						
 							default:
 								return(
-									<p>{tab.title}</p>
+									<p>Laboriosam asperiores voluptates qui veritatis similique et culpa. Consequatur mollitia aliquam consequatur accusantium aperiam. Perspiciatis minima earum alias rerum quis itaque. Itaque fuga commodi omnis distinctio. Laboriosam corporis itaque possimus laboriosam labore. Ad vitae iste ullam et blanditiis. A et libero voluptatem et blanditiis. Asperiores illo quos molestiae eum porro ut.</p>
 								);
 								break;
 						}
@@ -66,6 +67,7 @@ class EditorsKitSettings extends Component {
 					opened={true}
 				>
 					<div class="components-panel__header">
+						<p class="editorskit-panel__header-hint">{__('Settings → EditorsKit', 'block-options') }</p>
 						<h2>Gettings Started with <strong>EditorsKit</strong></h2>
 						<p>Laboriosam asperiores voluptates qui veritatis similique et culpa. Consequatur mollitia aliquam consequatur accusantium aperiam. Perspiciatis minima earum alias rerum quis itaque. Itaque fuga commodi omnis distinctio. Laboriosam corporis itaque possimus laboriosam labore. Ad vitae iste ullam et blanditiis. A et libero voluptatem et blanditiis. Asperiores illo quos molestiae eum porro ut.</p>
 					</div>

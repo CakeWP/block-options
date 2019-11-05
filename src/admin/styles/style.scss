@@ -5,6 +5,8 @@
 .editorskit-settings-wrap{
 	color: #111;
 	.components-panel{
+		min-height: 100vh;
+
 		.components-panel__header{
 			border: 0px;
 			padding: 0px;
@@ -21,6 +23,12 @@
 				color: #333;
 				font-size: 18px;
 				margin-bottom: 50px;
+			}
+			.editorskit-panel__header-hint{
+				font-size: 12px;
+				opacity: 0.4;
+				margin: 0px 0px 40px;
+				padding: 0px;
 			}
 		}
 		.editorskit-settings-tab-panel{
@@ -61,7 +69,7 @@
 			padding: 25px 50px;
 		}
 		.components-panel__body{
-			padding: 50px;
+			padding: 25px 50px 50px;
 
 			.components-tab-panel__tab-content{
 				p,
@@ -84,6 +92,14 @@
 						outline: 1px dotted #555d66;
 						box-shadow: none;
 					}
+				}
+				.editorskit-docs-items-title{
+					font-size: 21px;
+					margin-top: 24px;
+					margin-bottom: 16px;
+				}
+				.editorskit-docs-items-list{
+					margin-left: 16px;
 				}
 			}
 		}
@@ -117,12 +133,12 @@
 		h2,
 		h3{
 			line-height: 1.25;
+			border-bottom: 1px solid #eaecef;
+			padding-bottom: .3em;
 		}
 
 		h1{
 			font-size: 32px;
-			padding-bottom: .3em;
-    		border-bottom: 1px solid #eaecef;
 		}
 
 		h2{
@@ -140,6 +156,11 @@
 
 		ul{
 			list-style-type: disc;
+		}
+
+		img{
+			max-width: 590px;
+			border: 1px solid #eaecef;
 		}
 		
 	}

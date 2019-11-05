@@ -27,7 +27,7 @@ class EditorsKitDocs extends Component {
 	}
 
 	openModal( name ) {
-		fetch( window.editorskitSettings.url + 'docs/' + name )
+		fetch(window.editorskitSettings.url + 'docs/' + name, { cache: 'no-cache' } )
 			.then(response => response.text())
 			.then(markdown => this.setState({ html: marked(markdown), isLoaded: true, isOpen: true }));
 	}
@@ -36,11 +36,11 @@ class EditorsKitDocs extends Component {
 	render() {
 		const formatDocs = [
 			{
-				title: __('Text Color', 'block-options'),
+				title: __('Adding Selected Text Color', 'block-options'),
 				name: 'text-color-format.md',
 			},
 			{
-				title: __('Background Color', 'block-options'),
+				title: __('Adding Highlighted Text Background Color', 'block-options'),
 				name: 'background-color-format.md',
 			},
 		];
@@ -51,7 +51,9 @@ class EditorsKitDocs extends Component {
 
 		return (
 			<Fragment>
-				<ul>
+				<p>Laboriosam asperiores voluptates qui veritatis similique et culpa. Consequatur mollitia aliquam consequatur accusantium aperiam. Perspiciatis minima earum alias rerum quis itaque.</p>
+				<h3 className="editorskit-docs-items-title">{__('Rich Text Formatting', 'block-options')}</h3>
+				<ul className="editorskit-docs-items-list">
 					{ map(formatDocs, (formats) => {
 						return(
 							<li>
