@@ -3,19 +3,19 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/admin/docs/index.js:109
+#: src/admin/docs/index.js:113
 msgid "Writing"
 msgstr ""
 
-#: src/admin/docs/index.js:126
+#: src/admin/docs/index.js:130
 msgid "Block Options"
 msgstr ""
 
-#: src/admin/docs/index.js:143
+#: src/admin/docs/index.js:147
 msgid "Tools"
 msgstr ""
 
-#: src/admin/docs/index.js:162
+#: src/admin/docs/index.js:166
 msgid "Documentation"
 msgstr ""
 
@@ -59,7 +59,11 @@ msgstr ""
 msgid "View or Add Estimated Reading Time"
 msgstr ""
 
-#: src/admin/docs/index.js:92
+#: src/admin/docs/index.js:82
+msgid "Transform 4 Empty Paragraphs to Spacer Block"
+msgstr ""
+
+#: src/admin/docs/index.js:96
 msgid "Rich Text Formatting"
 msgstr ""
 

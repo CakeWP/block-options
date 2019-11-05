@@ -78,6 +78,10 @@ class EditorsKitDocs extends Component {
 				title: __('View or Add Estimated Reading Time', 'block-options'),
 				name: 'estimated-reading-time-writing.md',
 			},
+			{
+				title: __('Transform 4 Empty Paragraphs to Spacer Block', 'block-options'),
+				name: 'transform-empty-spacer-writing.md',
+			},
 		];
 
 		const closeModal = () => (
