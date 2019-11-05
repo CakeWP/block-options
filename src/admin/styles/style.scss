@@ -93,13 +93,29 @@
 						box-shadow: none;
 					}
 				}
+				.editorskit-docs-items-wrapper{
+					display: flex;
+					flex-wrap: wrap;
+					> div{
+						flex-grow: 1;
+						width: calc( 33% - 30px );
+					}
+					> div:not(:first-child):not(:nth-child(4)){
+						margin-left: 30px;
+					}
+				}
 				.editorskit-docs-items-title{
 					font-size: 21px;
 					margin-top: 24px;
 					margin-bottom: 16px;
 				}
 				.editorskit-docs-items-list{
-					margin-left: 16px;
+					margin-left: 0px;
+					.components-button{
+						text-align: left;
+						padding-left: 0px;
+						padding-right: 0px;
+					}
 				}
 			}
 		}

@@ -69,6 +69,13 @@ class EditorsKitDocs extends Component {
 			},
 		];
 
+		const writingDocs = [
+			{
+				title: __('Markdown Writing Shortcuts', 'block-options'),
+				name: 'markdown-writing.md',
+			},
+		];
+
 		const closeModal = () => (
 			this.setState({ html: '', isOpen: false, isLoaded: false })
 		);
@@ -81,6 +88,57 @@ class EditorsKitDocs extends Component {
 						<h3 className="editorskit-docs-items-title">{__('Rich Text Formatting', 'block-options')}</h3>
 						<ul className="editorskit-docs-items-list">
 							{map(formatDocs, (formats) => {
+								return (
+									<li>
+										<Button
+											onClick={() => {
+												this.openModal(formats.name);
+											}}>
+											{formats.title}
+										</Button>
+									</li>
+								);
+							})}
+						</ul>
+					</div>
+					<div className="editorskit-docs-items-writing">
+						<h3 className="editorskit-docs-items-title">{__('Writing', 'block-options')}</h3>
+						<ul className="editorskit-docs-items-list">
+							{map(writingDocs, (formats) => {
+								return (
+									<li>
+										<Button
+											onClick={() => {
+												this.openModal(formats.name);
+											}}>
+											{formats.title}
+										</Button>
+									</li>
+								);
+							})}
+						</ul>
+					</div>
+					<div className="editorskit-docs-items-blockoptions">
+						<h3 className="editorskit-docs-items-title">{__('Block Options', 'block-options')}</h3>
+						<ul className="editorskit-docs-items-list">
+							{map(formatDocs, (formats) => {
+								return (
+									<li>
+										<Button
+											onClick={() => {
+												this.openModal(formats.name);
+											}}>
+											{formats.title}
+										</Button>
+									</li>
+								);
+							})}
+						</ul>
+					</div>
+					<div className="editorskit-docs-items-toolt">
+						<h3 className="editorskit-docs-items-title">{__('Tools', 'block-options')}</h3>
+						<ul className="editorskit-docs-items-list">
+							{map(writingDocs, (formats) => {
 								return (
 									<li>
 										<Button
