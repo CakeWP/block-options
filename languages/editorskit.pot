@@ -4,26 +4,30 @@ msgstr ""
 "X-Generator: babel-plugin-makepot\n"
 
 #: src/admin/docs/index.js:101
-msgid "Media and Text Block Card Layout"
+msgid "Media & Text Block Card Layout"
 msgstr ""
 
-#: src/admin/docs/index.js:115
+#: src/admin/docs/index.js:105
+msgid "Media & Text Block Links"
+msgstr ""
+
+#: src/admin/docs/index.js:119
 msgid "Rich Text Formatting"
 msgstr ""
 
-#: src/admin/docs/index.js:132
+#: src/admin/docs/index.js:136
 msgid "Writing"
 msgstr ""
 
-#: src/admin/docs/index.js:149
+#: src/admin/docs/index.js:153
 msgid "Block Options"
 msgstr ""
 
-#: src/admin/docs/index.js:166
+#: src/admin/docs/index.js:170
 msgid "Tools"
 msgstr ""
 
-#: src/admin/docs/index.js:185
+#: src/admin/docs/index.js:189
 msgid "Documentation"
 msgstr ""
 

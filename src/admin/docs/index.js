@@ -98,8 +98,12 @@ class EditorsKitDocs extends Component {
 				name: 'copy-selected-blocks-options.md',
 			},
 			{
-				title: __('Media and Text Block Card Layout', 'block-options'),
+				title: __('Media & Text Block Card Layout', 'block-options'),
 				name: 'media-text-block-layout-options.md',
+			},
+			{
+				title: __('Media & Text Block Links', 'block-options'),
+				name: 'media-text-block-link-options.md',
 			},
 		];
 
