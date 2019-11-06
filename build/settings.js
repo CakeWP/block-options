@@ -2234,6 +2234,9 @@ function (_Component) {
       }, {
         title: __('Disable Auto Saving', 'block-options'),
         name: 'disable-autosave-tools.md'
+      }, {
+        title: __('Enable Block Guide Lines', 'block-options'),
+        name: 'block-guidelines-tools.md'
       }];
 
       var closeModal = function closeModal() {

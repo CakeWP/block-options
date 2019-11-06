@@ -27,23 +27,27 @@ msgstr ""
 msgid "Disable Auto Saving"
 msgstr ""
 
-#: src/admin/docs/index.js:139
+#: src/admin/docs/index.js:128
+msgid "Enable Block Guide Lines"
+msgstr ""
+
+#: src/admin/docs/index.js:143
 msgid "Rich Text Formatting"
 msgstr ""
 
-#: src/admin/docs/index.js:156
+#: src/admin/docs/index.js:160
 msgid "Writing"
 msgstr ""
 
-#: src/admin/docs/index.js:173
+#: src/admin/docs/index.js:177
 msgid "Block Options"
 msgstr ""
 
-#: src/admin/docs/index.js:190
+#: src/admin/docs/index.js:194
 msgid "Tools"
 msgstr ""
 
-#: src/admin/docs/index.js:209
+#: src/admin/docs/index.js:213
 msgid "Documentation"
 msgstr ""
 
