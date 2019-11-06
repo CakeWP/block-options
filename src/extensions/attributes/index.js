@@ -13,7 +13,8 @@ const { hasBlockSupport } = wp.blocks;
 
 const restrictedBlocks = [ 'core/freeform', 'core/shortcode', 'core/nextpage' ];
 const blocksWithFullScreen = [ 'core/image', 'core/cover', 'core/group', 'core/columns', 'core/media-text' ];
-const blocksWithAnchor = [ 'core/spacer', 'core/separator' ];
+const blocksWithFontSize = [ 'core/list' ];
+const blocksWithAnchor = ['core/spacer', 'core/separator'];
 
 /**
  * Filters registered block settings, extending attributes with anchor using ID
@@ -44,12 +45,12 @@ function addAttributes( settings ) {
 			},
 		} );
 
-		//for version 1 compatibility and migration
+		// for version 1 compatibility and migration.
 		settings.attributes = Object.assign( settings.attributes, {
 			blockOpts: { type: 'object' },
 		} );
 
-		//Add vertical full screen support
+		// Add vertical full screen support.
 		if ( blocksWithFullScreen.includes( settings.name ) ) {
 			if ( ! settings.supports ) {
 				settings.supports = {};
@@ -70,6 +71,27 @@ function addAttributes( settings ) {
 					} );
 				}
 			}
+		}
+
+		// Add custom font size picker on selected blocks.
+		if (blocksWithFontSize.includes(settings.name)) {
+			if (!settings.attributes) {
+				settings.attributes = {};
+			}
+			settings.attributes = Object.assign(settings.attributes, {
+				textColor: {
+					type: 'string',
+				},
+				customTextColor: {
+					type: 'string',
+				},
+				fontSize: {
+					type: 'string',
+				},
+				customFontSize: {
+					type: 'number',
+				},
+			});
 		}
 
 		//enable anchor to selected blocks
