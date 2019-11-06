@@ -2270,7 +2270,7 @@ function (_Component) {
         });
       };
 
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, "Laboriosam asperiores voluptates qui veritatis similique et culpa. Consequatur mollitia aliquam consequatur accusantium aperiam. Perspiciatis minima earum alias rerum quis itaque."), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Learn more about each EditorsKit features with the tutorials below. Click on the link to open a modal pop-up with detailed explanation and animated GIF previewing how the features work.', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
         className: "editorskit-docs-items-wrapper"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
         className: "editorskit-docs-items-formatting"
@@ -2404,10 +2404,13 @@ __webpack_require__.r(__webpack_exports__);
  * WordPress dependencies
  */
 
-var __ = wp.i18n.__;
+var _wp$i18n = wp.i18n,
+    __ = _wp$i18n.__,
+    sprintf = _wp$i18n.sprintf;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component,
+    RawHTML = _wp$element.RawHTML,
     render = _wp$element.render;
 var _wp$components = wp.components,
     TabPanel = _wp$components.TabPanel,
@@ -2440,21 +2443,39 @@ function (_Component) {
           activeClass: "active-tab",
           onSelect: onSelect,
           tabs: [{
-            name: 'tab1',
+            name: 'ek-getting-started',
             title: 'Gettings Started',
-            className: 'tab-one'
+            className: 'ek-settings-getting-started'
           }, {
-            name: 'tab2',
+            name: 'ek-docs',
             title: 'Tutorial and Docs',
-            className: 'tab-two'
+            className: 'ek-settings-docs'
           }, {
-            name: 'tab3',
+            name: 'ek-features-manager',
             title: 'Features Manager',
-            className: 'tab-three'
+            className: 'ek-settings-features-manager'
           }]
         }, function (tab) {
           switch (tab.name) {
-            case 'tab2':
+            case 'ek-getting-started':
+              return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
+                className: "editorskit-started-items-wrapper"
+              }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
+                className: "editorskit-started-item"
+              }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('EditorsKit provides set of tools to extend the way you are building content on WordPress Gutenberg block editor. Designed and integrated to help users easily navigate; and control each block the way it should be.', 'block-options'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
+                className: "editorskit-started-item"
+              }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("iframe", {
+                width: "560",
+                height: "380",
+                src: "https://www.youtube.com/embed/QWgO4lAJAlE",
+                frameborder: "0",
+                allowfullscreen: true
+              })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
+                className: "editorskit-started-item"
+              }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(RawHTML, null, sprintf(__('If you have any questions or suggestion, let us know through %1$sTwitter%4$s or our %2$sFacebook community %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what\'s new and upcoming at EditorsKit.', 'block-options'), '<a href="https://twitter.com/editorskit" target="_blank">', '<a href="https://www.facebook.com/groups/1306393256173179/" target="_blank">', '<a href="https://editorskit.com/" target="_blank">', '</a>')))));
+              break;
+
+            case 'ek-docs':
               return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_docs__WEBPACK_IMPORTED_MODULE_6__["default"], null);
               break;
 
@@ -2472,7 +2493,7 @@ function (_Component) {
           class: "components-panel__header"
         }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", {
           class: "editorskit-panel__header-hint"
-        }, __('Settings → EditorsKit', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h2", null, "Gettings Started with ", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("strong", null, "EditorsKit")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, "Laboriosam asperiores voluptates qui veritatis similique et culpa. Consequatur mollitia aliquam consequatur accusantium aperiam. Perspiciatis minima earum alias rerum quis itaque. Itaque fuga commodi omnis distinctio. Laboriosam corporis itaque possimus laboriosam labore. Ad vitae iste ullam et blanditiis. A et libero voluptatem et blanditiis. Asperiores illo quos molestiae eum porro ut.")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(MyTabPanel, null))));
+        }, __('Settings → EditorsKit', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h2", null, __('Gettings Started with', 'block-options'), " ", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("strong", null, "EditorsKit"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("code", null, window.editorskitSettings.version)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Congratulations! You\'ve just unlocked more Gutenberg block editor tools for easier editing and better workflow. Check more information about the plugin below and please make sure to navigate through "Tutorials and Docs" tab to learn more on how to use each available features.', 'block-options'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(MyTabPanel, null))));
       };
 
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(MyPanel, null));

@@ -59,6 +59,13 @@ msgstr ""
 msgid "More Image & Cover Block Styles"
 msgstr ""
 
+#: src/admin/docs/index.js:174
+msgid ""
+"Learn more about each EditorsKit features with the tutorials below. Click "
+"on the link to open a modal pop-up with detailed explanation and animated "
+"GIF previewing how the features work."
+msgstr ""
+
 #: src/admin/docs/index.js:177
 msgid "Rich Text Formatting"
 msgstr ""
@@ -141,4 +148,35 @@ msgstr ""
 
 #: src/admin/docs/index.js:97
 msgid "Copy Selected Block(s)"
+msgstr ""
+
+#: src/admin/index.js:52
+msgid ""
+"EditorsKit provides set of tools to extend the way you are building content "
+"on WordPress Gutenberg block editor. Designed and integrated to help users "
+"easily navigate; and control each block the way it should be."
+msgstr ""
+
+#: src/admin/index.js:60
+msgid ""
+"If you have any questions or suggestion, let us know through "
+"%1$sTwitter%4$s or our %2$sFacebook community %4$s. Also, %3$ssubscribe to "
+"our newsletter%4$s if you want to stay up to date with what's new and "
+"upcoming at EditorsKit."
+msgstr ""
+
+#: src/admin/index.js:95
+msgid "Settings → EditorsKit"
+msgstr ""
+
+#: src/admin/index.js:96
+msgid "Gettings Started with"
+msgstr ""
+
+#: src/admin/index.js:97
+msgid ""
+"Congratulations! You've just unlocked more Gutenberg block editor tools for "
+"easier editing and better workflow. Check more information about the plugin "
+"below and please make sure to navigate through \"Tutorials and Docs\" tab "
+"to learn more on how to use each available features."
 msgstr ""

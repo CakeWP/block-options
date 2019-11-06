@@ -171,7 +171,7 @@ class EditorsKitDocs extends Component {
 
 		return (
 			<Fragment>
-				<p>Laboriosam asperiores voluptates qui veritatis similique et culpa. Consequatur mollitia aliquam consequatur accusantium aperiam. Perspiciatis minima earum alias rerum quis itaque.</p>
+				<p>{ __('Learn more about each EditorsKit features with the tutorials below. Click on the link to open a modal pop-up with detailed explanation and animated GIF previewing how the features work.', 'block-options') }</p>
 				<div className="editorskit-docs-items-wrapper">
 					<div className="editorskit-docs-items-formatting">
 						<h3 className="editorskit-docs-items-title">{__('Rich Text Formatting', 'block-options')}</h3>
