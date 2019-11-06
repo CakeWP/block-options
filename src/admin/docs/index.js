@@ -128,6 +128,10 @@ class EditorsKitDocs extends Component {
 				title: __('Enable Block Guide Lines', 'block-options'),
 				name: 'block-guidelines-tools.md',
 			},
+			{
+				title: __('Additional CSS Class(es) Auto Suggestions', 'block-options'),
+				name: 'custom-classnames-tools.md',
+			},
 		];
 
 

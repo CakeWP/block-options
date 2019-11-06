@@ -31,23 +31,27 @@ msgstr ""
 msgid "Enable Block Guide Lines"
 msgstr ""
 
-#: src/admin/docs/index.js:143
+#: src/admin/docs/index.js:132
+msgid "Additional CSS Class(es) Auto Suggestions"
+msgstr ""
+
+#: src/admin/docs/index.js:147
 msgid "Rich Text Formatting"
 msgstr ""
 
-#: src/admin/docs/index.js:160
+#: src/admin/docs/index.js:164
 msgid "Writing"
 msgstr ""
 
-#: src/admin/docs/index.js:177
+#: src/admin/docs/index.js:181
 msgid "Block Options"
 msgstr ""
 
-#: src/admin/docs/index.js:194
+#: src/admin/docs/index.js:198
 msgid "Tools"
 msgstr ""
 
-#: src/admin/docs/index.js:213
+#: src/admin/docs/index.js:217
 msgid "Documentation"
 msgstr ""
 
