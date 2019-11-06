@@ -147,7 +147,7 @@ class EditorsKit_User_Feedback {
 	 * Check date on admin initiation and add to admin notice if it was more than the time limit.
 	 */
 	public function check_installation_date() {
-		
+
 		if ( ! get_site_option( $this->nobug_option ) || false === get_site_option( $this->nobug_option ) ) {
 
 			add_site_option( $this->date_option, time() );
@@ -172,7 +172,7 @@ class EditorsKit_User_Feedback {
 		if ( isset( $screen->base ) && 'plugins' === $screen->base ) {
 			$no_bug_url = wp_nonce_url( admin_url( 'plugins.php?' . $this->nobug_option . '=true' ), 'editorskit-feedback-nounce' );
 			$time       = $this->seconds_to_words( time() - get_site_option( $this->date_option ) );
-		?>
+			?>
 
 		<style>
 		.notice.editorskit-notice {
@@ -271,7 +271,7 @@ class EditorsKit_User_Feedback {
 			<div class="editorskit-notice-inner">
 				<div class="editorskit-notice-icon">
 					<?php /* translators: 1. Name */ ?>
-					<img src="<?php echo esc_url( EDITORSKIT_PLUGIN_URL . '/build/images/icon-256x256.jpg' );?>" alt="<?php printf( esc_attr__( '%s WordPress Plugin', 'block-options' ), esc_attr( $this->name ) ); ?>" />
+					<img src="<?php echo esc_url( EDITORSKIT_PLUGIN_URL . '/build/images/icon-256x256.jpg' ); ?>" alt="<?php printf( esc_attr__( '%s WordPress Plugin', 'block-options' ), esc_attr( $this->name ) ); ?>" />
 				</div>
 				<div class="editorskit-notice-content">
 					<?php /* translators: 1. Name */ ?>
@@ -287,7 +287,7 @@ class EditorsKit_User_Feedback {
 				</div>
 			</div>
 		</div>
-		<?php
+			<?php
 		}
 	}
 
@@ -297,6 +297,7 @@ class EditorsKit_User_Feedback {
 	public function set_no_bug() {
 
 		// Bail out if not on correct page.
+		// phpcs:ignore
 		if ( ! isset( $_GET['_wpnonce'] ) || ( ! wp_verify_nonce( $_GET['_wpnonce'], 'editorskit-feedback-nounce' ) || ! is_admin() || ! isset( $_GET[ $this->nobug_option ] ) || ! current_user_can( 'manage_options' ) ) ) {
 			return;
 		}

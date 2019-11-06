@@ -40,31 +40,31 @@ class EditorsKit_Block_Assets {
 	/**
 	 * The base URL path (without trailing slash).
 	 *
-	 * @var string $_url
+	 * @var string $url
 	 */
-	private $_url;
+	private $url;
 
 	/**
 	 * The Plugin version.
 	 *
-	 * @var string $_version
+	 * @var string $version
 	 */
-	private $_version;
+	private $version;
 
 	/**
 	 * The Plugin version.
 	 *
-	 * @var string $_slug
+	 * @var string $slug
 	 */
-	private $_slug;
+	private $slug;
 
 	/**
 	 * The Constructor.
 	 */
 	private function __construct() {
-		$this->_version = EDITORSKIT_VERSION;
-		$this->_slug    = 'editorskit';
-		$this->_url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
+		$this->version = EDITORSKIT_VERSION;
+		$this->slug    = 'editorskit';
+		$this->url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
 		add_action( 'init', array( $this, 'editor_assets' ), 9999 );
@@ -79,10 +79,10 @@ class EditorsKit_Block_Assets {
 
 		// Styles.
 		wp_enqueue_style(
-			$this->_slug . '-frontend',
-			$this->_url . '/build/style.build.css',
+			$this->slug . '-frontend',
+			$this->url . '/build/style.build.css',
 			array(),
-			$this->_version
+			$this->version
 		);
 	}
 
@@ -92,12 +92,14 @@ class EditorsKit_Block_Assets {
 	 * @access public
 	 */
 	public function editor_assets() {
-		
-		if( ! is_admin() ){
+
+		if ( ! is_admin() ) {
+
 			return;
 		}
 
-		if( ! $this->is_edit_or_new_admin_page() ){ //load on allowed pages only
+		if ( ! $this->is_edit_or_new_admin_page() ) { // load on allowed pages only.
+
 			return;
 		}
 
@@ -105,16 +107,16 @@ class EditorsKit_Block_Assets {
 
 		// Styles.
 		wp_enqueue_style(
-			$this->_slug . '-editor',
-			$this->_url . '/build/editor.build.css',
+			$this->slug . '-editor',
+			$this->url . '/build/editor.build.css',
 			array(),
-			$this->_version
+			$this->version
 		);
 
 		// Scripts.
 		wp_enqueue_script(
-			$this->_slug . '-editor',
-			$this->_url . '/build/index.js',
+			$this->slug . '-editor',
+			$this->url . '/build/index.js',
 			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api', 'wp-editor', 'wp-hooks', 'lodash' ),
 			time(),
 			false
@@ -123,22 +125,26 @@ class EditorsKit_Block_Assets {
 		$version = '';
 		$is_core = true;
 
-		if( defined('GUTENBERG_VERSION') ){
+		if ( defined( 'GUTENBERG_VERSION' ) ) {
+
 			$version = GUTENBERG_VERSION;
 			$is_core = false;
-		}else{
-			if ( version_compare( $wp_version,'5.0' ) >= 0 && version_compare( $wp_version,'5.2.9' ) <= 0 ) {
+		} else {
+
+			if ( version_compare( $wp_version, '5.0' ) >= 0 && version_compare( $wp_version, '5.2.9' ) <= 0 ) {
+
 				$version = '4.8';
-			}else if( version_compare( $wp_version,'5.3' ) >= 0 ){
+			} elseif ( version_compare( $wp_version, '5.3' ) >= 0 ) {
+
 				$version = '6.5';
 			}
 		}
 
 		$global = array(
 			'plugin' => array(
-				'version' => $this->_version,
+				'version' => $this->version,
 			),
-			'core'	=> array(
+			'core'   => array(
 				'version' => $wp_version,
 			),
 			'editor' => array(
@@ -147,11 +153,11 @@ class EditorsKit_Block_Assets {
 			),
 		);
 
-		wp_add_inline_script( $this->_slug . '-editor', 'window.editorskitInfo = '. json_encode( $global ) .';', 'before' );
+		wp_add_inline_script( $this->slug . '-editor', 'window.editorskitInfo = ' . wp_json_encode( $global ) . ';', 'before' );
 
-		//CodeMirror
+		// CodeMirror assets.
 		wp_enqueue_script( 'code-editor' );
-    	wp_enqueue_style( 'code-editor' );
+		wp_enqueue_style( 'code-editor' );
 	}
 
 	/**
@@ -159,10 +165,10 @@ class EditorsKit_Block_Assets {
 	 *
 	 * @return bool true or false
 	 */
-	function is_edit_or_new_admin_page() {
+	function is_edit_or_new_admin_page() { // phpcs:ignore
 		global $pagenow;
 
- 		return ( is_admin() && ( $pagenow === 'post.php' || $pagenow === 'post-new.php' ) );
+		return ( is_admin() && ( $pagenow === 'post.php' || $pagenow === 'post-new.php' ) ); // phpcs:ignore
 	}
 
 }
