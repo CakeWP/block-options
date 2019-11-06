@@ -39,10 +39,11 @@ const enhance = compose(
 	 * @return {Component} Enhanced component with merged state data props.
 	 */
 	withSelect( ( select ) => {
-		const { fontSizes } = select( 'core/block-editor' ).getSettings();
+		const { fontSizes, colors } = select( 'core/block-editor' ).getSettings();
 
 		return {
 			fontSizes,
+			colors,
 			selected: select( 'core/block-editor' ).getSelectedBlock(),
 			select,
 			isDisabledListTextSettings: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitDevicesVisibility' ),
@@ -56,7 +57,7 @@ const withTextSettings = createHigherOrderComponent( ( BlockListBlock ) => {
 		let customData = {};
 		const attributes = select( 'core/block-editor' ).getBlock( props.clientId ).attributes;
 		const blockName = select( 'core/block-editor' ).getBlockName( props.clientId );
-
+		
 		if ( blocksWithFontSize.includes( blockName ) ) {
 			const { customFontSize, fontSize } = attributes;
 

@@ -6,6 +6,7 @@ import { find, get } from 'lodash';
 function applyStyle( attributes, blockName, props = {} ) {
 	const {
 		fontSizes,
+		colors,
 	} = props;
 
 	const {
@@ -27,7 +28,6 @@ function applyStyle( attributes, blockName, props = {} ) {
 	}
 
 	if ( typeof textColor !== 'undefined' ) {
-		const colors = get( wp.data.select( 'core/block-editor' ).getSettings(), [ 'colors' ], [] );
 		if ( typeof colors !== 'undefined' ) {
 			const textColorValue = find( colors, { slug: textColor } );
 			if ( typeof textColorValue !== 'undefined' && typeof textColorValue.color !== 'undefined' ) {

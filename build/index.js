@@ -9952,7 +9952,8 @@ __webpack_require__.r(__webpack_exports__);
 
 function applyStyle(attributes, blockName) {
   var props = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-  var fontSizes = props.fontSizes;
+  var fontSizes = props.fontSizes,
+      colors = props.colors;
   var textColor = attributes.textColor,
       customTextColor = attributes.customTextColor,
       fontSize = attributes.fontSize,
@@ -9972,8 +9973,6 @@ function applyStyle(attributes, blockName) {
   }
 
   if (typeof textColor !== 'undefined') {
-    var colors = Object(lodash__WEBPACK_IMPORTED_MODULE_0__["get"])(wp.data.select('core/block-editor').getSettings(), ['colors'], []);
-
     if (typeof colors !== 'undefined') {
       var textColorValue = Object(lodash__WEBPACK_IMPORTED_MODULE_0__["find"])(colors, {
         slug: textColor
@@ -10066,10 +10065,12 @@ var enhance = compose(
  */
 withSelect(function (select) {
   var _select$getSettings = select('core/block-editor').getSettings(),
-      fontSizes = _select$getSettings.fontSizes;
+      fontSizes = _select$getSettings.fontSizes,
+      colors = _select$getSettings.colors;
 
   return {
     fontSizes: fontSizes,
+    colors: colors,
     selected: select('core/block-editor').getSelectedBlock(),
     select: select,
     isDisabledListTextSettings: select('core/edit-post').isFeatureActive('disableEditorsKitDevicesVisibility')
