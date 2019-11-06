@@ -2240,6 +2240,9 @@ function (_Component) {
       }, {
         title: __('Additional CSS Class(es) Auto Suggestions', 'block-options'),
         name: 'custom-classnames-tools.md'
+      }, {
+        title: __('Accessible Help, Tips & Tricks', 'block-options'),
+        name: 'tips-tricks-tools.md'
       }];
 
       var closeModal = function closeModal() {

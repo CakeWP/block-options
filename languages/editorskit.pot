@@ -35,23 +35,27 @@ msgstr ""
 msgid "Additional CSS Class(es) Auto Suggestions"
 msgstr ""
 
-#: src/admin/docs/index.js:147
+#: src/admin/docs/index.js:136
+msgid "Accessible Help, Tips & Tricks"
+msgstr ""
+
+#: src/admin/docs/index.js:151
 msgid "Rich Text Formatting"
 msgstr ""
 
-#: src/admin/docs/index.js:164
+#: src/admin/docs/index.js:168
 msgid "Writing"
 msgstr ""
 
-#: src/admin/docs/index.js:181
+#: src/admin/docs/index.js:185
 msgid "Block Options"
 msgstr ""
 
-#: src/admin/docs/index.js:198
+#: src/admin/docs/index.js:202
 msgid "Tools"
 msgstr ""
 
-#: src/admin/docs/index.js:217
+#: src/admin/docs/index.js:221
 msgid "Documentation"
 msgstr ""
 
