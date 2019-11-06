@@ -1,3 +1,6 @@
+$tablet : 768px;
+$mobile : 736px;
+
 .settings_page_editorskit-getting-started #wpcontent {
 	padding-left: 0;
 }
@@ -85,6 +88,11 @@
 					outline: 1px dotted #555d66;
 					box-shadow: none;
 				}
+
+				@media screen and (max-width: $mobile) {
+					display: block;
+					width: 100%;
+				}
 			}
 		}
 
@@ -126,11 +134,22 @@
 					> div {
 						flex-grow: 1;
 						width: calc(33% - 30px);
-					}
 
-					> div:not(:first-child):not(:nth-child(4)) {
-						margin-left: 30px;
+						@media screen and (max-width: $tablet)
+						and (min-width: $mobile + 1) {
+							width: calc(50% - 30px);
+						}
+
+						@media screen and  (max-width: $mobile) {
+							width: 100%;
+						}
 					}
+					@media screen and (min-width: $tablet + 1){
+						> div:not(:first-child):not(:nth-child(3n+1)) {
+							margin-left: 30px;
+						}
+					}
+					
 				}
 
 				.editorskit-docs-items-title {
@@ -160,6 +179,14 @@
 						flex-grow: 1;
 						width: calc(50% - 30px);
 
+						@media screen and (max-width: $tablet) {
+							width: calc(100% - 30px);
+
+							iframe{
+								max-width: 100%;
+							}
+						}
+
 						p {
 							font-size: 21px;
 							font-weight: 300;
@@ -174,6 +201,11 @@
 							line-height: 1.5;
 							text-align: center;
 							color: #444;
+
+							@media screen and (max-width: $tablet) {
+								margin-left: 0px;
+								margin-right: 0px;
+							}
 						}
 					}
 				}
@@ -185,6 +217,15 @@
 					.edit-post-options-modal__section {
 						padding: 10px;
 						width: calc(25% - 20px);
+
+						@media screen and (max-width: $tablet)
+						and (min-width: $mobile + 1) {
+							width: calc(50% - 20px);
+						}
+
+						@media screen and  (max-width: $mobile) {
+							width: 100%;
+						}
 					}
 				}
 			}
