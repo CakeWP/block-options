@@ -10180,6 +10180,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 var __ = wp.i18n.__;
 var compose = wp.compose.compose;
+var withSelect = wp.data.withSelect;
 var Fragment = wp.element.Fragment;
 var _wp$blockEditor = wp.blockEditor,
     InspectorControls = _wp$blockEditor.InspectorControls,
@@ -10209,8 +10210,10 @@ var ListTextSettings = function ListTextSettings(props) {
       fontSize = props.fontSize,
       setFontSize = props.setFontSize,
       textColor = props.textColor,
-      setTextColor = props.setTextColor;
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+      setTextColor = props.setTextColor,
+      isFontSizeDisabled = props.isFontSizeDisabled,
+      isTextColorDisabled = props.isTextColorDisabled;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, !isFontSizeDisabled && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
     title: __('Text Settings', 'block-options'),
     initialOpen: false,
     className: "editorskit-panel"
@@ -10218,7 +10221,7 @@ var ListTextSettings = function ListTextSettings(props) {
     fallbackFontSize: fallbackFontSize,
     value: fontSize.size,
     onChange: setFontSize
-  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelColorSettings, {
+  })), !isTextColorDisabled && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelColorSettings, {
     title: __('Color Settings', 'block-options'),
     initialOpen: false,
     colorSettings: [{
@@ -10229,7 +10232,12 @@ var ListTextSettings = function ListTextSettings(props) {
   })));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (compose([withColors({
+/* harmony default export */ __webpack_exports__["default"] = (compose([withSelect(function (select) {
+  return {
+    isFontSizeDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitListBlockFontSizeOptions'),
+    isTextColorDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitListBlockTextColorOptions')
+  };
+}), withColors({
   textColor: 'color'
 }), withFontSizes('fontSize'), applyFallbackStyles])(ListTextSettings));
 

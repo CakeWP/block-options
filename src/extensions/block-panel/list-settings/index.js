@@ -3,6 +3,7 @@
  */
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
+const { withSelect } = wp.data;
 const { Fragment } = wp.element;
 const { InspectorControls, FontSizePicker, withFontSizes, withColors, PanelColorSettings } = wp.blockEditor;
 const { PanelBody, withFallbackStyles } = wp.components;
@@ -25,40 +26,52 @@ const ListTextSettings = ( props ) => {
 		setFontSize,
 		textColor,
 		setTextColor,
+		isFontSizeDisabled,
+		isTextColorDisabled,
 	} = props;
 
 	return (
 		<Fragment>
 			<InspectorControls>
-				<PanelBody
-					title={ __( 'Text Settings', 'block-options' ) }
-					initialOpen={ false }
-					className="editorskit-panel"
-				>
-					<FontSizePicker
-						fallbackFontSize={ fallbackFontSize }
-						value={ fontSize.size }
-						onChange={ setFontSize }
-					/>
-				</PanelBody>
-				<PanelColorSettings
-					title={ __( 'Color Settings', 'block-options' ) }
-					initialOpen={ false }
-					colorSettings={ [
-						{
-							value: textColor.color,
-							onChange: setTextColor,
-							label: __( 'Text Color', 'block-options' ),
-						},
-					] }
-				>
-				</PanelColorSettings>
+				{ ! isFontSizeDisabled && (
+					<PanelBody
+						title={ __( 'Text Settings', 'block-options' ) }
+						initialOpen={ false }
+						className="editorskit-panel"
+					>
+						<FontSizePicker
+							fallbackFontSize={ fallbackFontSize }
+							value={ fontSize.size }
+							onChange={ setFontSize }
+						/>
+					</PanelBody>
+				) }
+				{ ! isTextColorDisabled && (
+					<PanelColorSettings
+						title={ __( 'Color Settings', 'block-options' ) }
+						initialOpen={ false }
+						colorSettings={ [
+							{
+								value: textColor.color,
+								onChange: setTextColor,
+								label: __( 'Text Color', 'block-options' ),
+							},
+						] }
+					>
+					</PanelColorSettings>
+				) }
 			</InspectorControls>
 		</Fragment>
 	);
 };
 
 export default compose( [
+	withSelect( ( select ) => {
+		return {
+			isFontSizeDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitListBlockFontSizeOptions' ),
+			isTextColorDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitListBlockTextColorOptions' ),
+		};
+	} ),
 	withColors( { textColor: 'color' } ),
 	withFontSizes( 'fontSize' ),
 	applyFallbackStyles,

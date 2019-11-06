@@ -105,7 +105,7 @@ class EditorsKitDocs extends Component {
 				name: 'media-text-block-link-options.md',
 			},
 			{
-				title: __('Changing List Block Font Size & Text Color', 'block-options'),
+				title: __( 'Changing List Block Font Size & Text Color', 'block-options' ),
 				name: 'list-block-options.md',
 			},
 		];

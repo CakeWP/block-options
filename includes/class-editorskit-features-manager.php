@@ -209,6 +209,16 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Export as JSON', 'editorskit' ),
 							'value' => true,
 						),
+						'listBlockFontSize' => array(
+							'name'  => 'listBlockFontSize',
+							'label' => __( 'List Block Font Size', 'editorskit' ),
+							'value' => true,
+						),
+						'listBlockTextColor' => array(
+							'name'  => 'listBlockTextColor',
+							'label' => __( 'List Block Text Color', 'editorskit' ),
+							'value' => true,
+						),
 						'mediaTextLayout' => array(
 							'name'  => 'mediaTextLayout',
 							'label' => __( 'Media Text Block Layout', 'editorskit' ),
