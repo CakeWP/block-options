@@ -6,7 +6,7 @@ Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenberg editor
 Requires at least: 5.0
 Tested up to: 5.2
 Requires PHP: 5.6
-Stable tag: 1.16
+Stable tag: 1.18.3
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FMKC2SLPTULP8
@@ -150,6 +150,13 @@ e.g.
 
 
 == Changelog ==
+
+= 1.19 =
+* New: Better user onboarding and [welcome page with docs & tutorials](https://github.com/phpbits/block-options/issues/162)
+* New: List Block [Font Size and Text Color Settings](https://github.com/phpbits/block-options/issues/165) 🎉
+* New: Add HTML Anchor support to Spacer and Separator blocks
+* Tweaks: WPCS cleanup and improvements
+* Fixes: Few other 🐛 cleanup for errors and Gutenberg compatibility
 
 = 1.18.3 =
 * Fixes: Resolve issue with Code Editor mode changes not reflecting when switching to to Visual Editor mode
