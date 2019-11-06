@@ -158,6 +158,10 @@ class EditorsKitDocs extends Component {
 				title: __('Display Cover and Image Blocks in Fullscreen', 'block-options'),
 				name: 'fullscreen-styling.md',
 			},
+			{
+				title: __('More Image & Cover Block Styles', 'block-options'),
+				name: 'image-cover-styles-styling.md',
+			},
 		];
 
 

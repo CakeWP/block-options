@@ -55,31 +55,35 @@ msgstr ""
 msgid "Display Cover and Image Blocks in Fullscreen"
 msgstr ""
 
-#: src/admin/docs/index.js:173
+#: src/admin/docs/index.js:162
+msgid "More Image & Cover Block Styles"
+msgstr ""
+
+#: src/admin/docs/index.js:177
 msgid "Rich Text Formatting"
 msgstr ""
 
-#: src/admin/docs/index.js:190
+#: src/admin/docs/index.js:194
 msgid "Writing"
 msgstr ""
 
-#: src/admin/docs/index.js:207
+#: src/admin/docs/index.js:211
 msgid "Block Options"
 msgstr ""
 
-#: src/admin/docs/index.js:224
+#: src/admin/docs/index.js:228
 msgid "Tools"
 msgstr ""
 
-#: src/admin/docs/index.js:241
+#: src/admin/docs/index.js:245
 msgid "Block Visibility"
 msgstr ""
 
-#: src/admin/docs/index.js:258
+#: src/admin/docs/index.js:262
 msgid "Block Styling"
 msgstr ""
 
-#: src/admin/docs/index.js:277
+#: src/admin/docs/index.js:281
 msgid "Documentation"
 msgstr ""
 
