@@ -122,7 +122,7 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 		public function redirect( $plugin ) {
 			// phpcs:ignore
 			if ( ( $plugin === 'block-options/plugin.php' || $plugin === 'editorskit/plugin.php' ) && ! isset( $_GET['activate-multi'] ) ) {
-				wp_safe_redirect( admin_url( 'index.php?page=editorskit-getting-started' ) );
+				wp_safe_redirect( admin_url( 'options-general.php?page=editorskit-getting-started' ) );
 				die();
 			}
 		}
