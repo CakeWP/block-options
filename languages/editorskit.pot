@@ -23,23 +23,27 @@ msgstr ""
 msgid "Code Editor Syntax Highlighter"
 msgstr ""
 
-#: src/admin/docs/index.js:135
+#: src/admin/docs/index.js:124
+msgid "Disable Auto Saving"
+msgstr ""
+
+#: src/admin/docs/index.js:139
 msgid "Rich Text Formatting"
 msgstr ""
 
-#: src/admin/docs/index.js:152
+#: src/admin/docs/index.js:156
 msgid "Writing"
 msgstr ""
 
-#: src/admin/docs/index.js:169
+#: src/admin/docs/index.js:173
 msgid "Block Options"
 msgstr ""
 
-#: src/admin/docs/index.js:186
+#: src/admin/docs/index.js:190
 msgid "Tools"
 msgstr ""
 
-#: src/admin/docs/index.js:205
+#: src/admin/docs/index.js:209
 msgid "Documentation"
 msgstr ""
 

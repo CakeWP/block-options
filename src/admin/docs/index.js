@@ -120,6 +120,10 @@ class EditorsKitDocs extends Component {
 				title: __('Code Editor Syntax Highlighter', 'block-options'),
 				name: 'syntax-highlighter-tools.md',
 			},
+			{
+				title: __('Disable Auto Saving', 'block-options'),
+				name: 'disable-autosave-tools.md',
+			},
 		];
 
 
