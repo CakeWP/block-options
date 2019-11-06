@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import map from 'lodash/map';
-
-/**
  * Internal dependencies
  */
 import FeaturesManager from './manager';
@@ -22,7 +17,7 @@ const { withSpokenMessages, Modal } = wp.components;
  */
 class FeaturesManagerModal extends Component {
 	constructor() {
-		super(...arguments);
+		super( ...arguments );
 
 		this.state = {
 			isOpen: false,
@@ -30,38 +25,37 @@ class FeaturesManagerModal extends Component {
 	}
 
 	render() {
-
 		const closeModal = () => (
-			this.setState({ isOpen: false })
+			this.setState( { isOpen: false } )
 		);
 
 		return (
 			<Fragment>
 				<PluginMoreMenuItem
-					icon={null}
+					icon={ null }
 					role="menuitemcheckbox"
-					onClick={() => {
-						this.setState({ isOpen: true });
-					}}
+					onClick={ () => {
+						this.setState( { isOpen: true } );
+					} }
 				>
-					{__('EditorsKit Settings', 'block-options')}
+					{ __( 'EditorsKit Settings', 'block-options' ) }
 				</PluginMoreMenuItem>
-				{this.state.isOpen ?
+				{ this.state.isOpen ?
 					<Modal
-						title={__('EditorsKit Features Manager', 'block-options')}
-						onRequestClose={() => closeModal()}
-						closeLabel={__('Close', 'block-options')}
-						icon={null}
+						title={ __( 'EditorsKit Features Manager', 'block-options' ) }
+						onRequestClose={ () => closeModal() }
+						closeLabel={ __( 'Close', 'block-options' ) }
+						icon={ null }
 						className="editorskit-modal-component components-modal--editorskit-features-manager"
 					>
 						{ <FeaturesManager /> }
 					</Modal> :
-					null}
+					null }
 			</Fragment>
 		);
 	}
 }
 
-export default compose([
+export default compose( [
 	withSpokenMessages,
-])(FeaturesManagerModal);
+] )( FeaturesManagerModal );

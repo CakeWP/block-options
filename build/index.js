@@ -13452,24 +13452,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var lodash_map__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash/map */ "./node_modules/lodash/map.js");
-/* harmony import */ var lodash_map__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash_map__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _manager__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./manager */ "./src/extensions/components/manager/components/manager.js");
+/* harmony import */ var _manager__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./manager */ "./src/extensions/components/manager/components/manager.js");
 
 
 
 
 
 
-
-/**
- * External dependencies
- */
 
 /**
  * Internal dependencies
  */
-
 
 /**
  * WordPress dependencies
@@ -13532,7 +13525,7 @@ function (_Component) {
         closeLabel: __('Close', 'block-options'),
         icon: null,
         className: "editorskit-modal-component components-modal--editorskit-features-manager"
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_manager__WEBPACK_IMPORTED_MODULE_7__["default"], null)) : null);
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_manager__WEBPACK_IMPORTED_MODULE_6__["default"], null)) : null);
     }
   }]);
 
@@ -13591,7 +13584,6 @@ var _wp$element = wp.element,
     Component = _wp$element.Component;
 var _wp$components = wp.components,
     withSpokenMessages = _wp$components.withSpokenMessages,
-    Modal = _wp$components.Modal,
     CheckboxControl = _wp$components.CheckboxControl;
 
 var capitalize = function capitalize(str) {

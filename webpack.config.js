@@ -9,7 +9,7 @@ module.exports = {
 	...defaultConfig,
 	entry: {
 		index: path.resolve( process.cwd(), 'src', 'blocks.js' ),
-		settings: path.resolve(process.cwd(), 'src', 'admin.js' ),
+		settings: path.resolve( process.cwd(), 'src', 'admin.js' ),
 		style: path.resolve( process.cwd(), 'src', 'style.scss' ),
 		editor: path.resolve( process.cwd(), 'src', 'editor.scss' ),
 		admin: path.resolve( process.cwd(), 'src', 'admin.scss' ),

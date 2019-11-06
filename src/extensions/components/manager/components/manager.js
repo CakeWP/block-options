@@ -9,7 +9,7 @@ import map from 'lodash/map';
 const { withSelect, withDispatch, select } = wp.data;
 const { compose } = wp.compose;
 const { Fragment, Component } = wp.element;
-const { withSpokenMessages, Modal, CheckboxControl } = wp.components;
+const { withSpokenMessages, CheckboxControl } = wp.components;
 
 const capitalize = ( str ) => {
 	return str.charAt( 0 ).toUpperCase() + str.slice( 1 );
@@ -35,35 +35,35 @@ class FeaturesManager extends Component {
 
 		let getSettings = editorSettings.editorskit;
 
-		if (typeof getSettings === 'undefined' && typeof window.editorskitSettings !== 'undefined' ){
+		if ( typeof getSettings === 'undefined' && typeof window.editorskitSettings !== 'undefined' ) {
 			getSettings = window.editorskitSettings.editor_settings.editorskit;
 		}
 
 		return (
 			<Fragment>
-				{map(getSettings, (category) => {
+				{ map( getSettings, ( category ) => {
 					return (
 						<section className="edit-post-options-modal__section">
-							<h2 className="edit-post-options-modal__section-title">{category.label}</h2>
+							<h2 className="edit-post-options-modal__section-title">{ category.label }</h2>
 							<ul className="edit-post-editorskit-manager-modal__checklist">
-								{map(category.items, (item) => {
+								{ map( category.items, ( item ) => {
 									return (
 										<li
 											className="edit-post-editorskit-manager-modal__checklist-item"
 										>
 											<CheckboxControl
 												className="edit-post-options-modal__option"
-												label={item.label}
-												checked={!select('core/edit-post').isFeatureActive('disableEditorsKit' + capitalize(item.name) + capitalize(category.name))}
-												onChange={() => onToggle(category.name, item.name)}
+												label={ item.label }
+												checked={ ! select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKit' + capitalize( item.name ) + capitalize( category.name ) ) }
+												onChange={ () => onToggle( category.name, item.name ) }
 											/>
 										</li>
 									);
-								})}
+								} ) }
 							</ul>
 						</section>
 					);
-				})}
+				} ) }
 			</Fragment>
 		);
 	}

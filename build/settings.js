@@ -6670,14 +6670,8 @@ __webpack_require__.r(__webpack_exports__);
 var __ = wp.i18n.__;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
-    Component = _wp$element.Component,
-    render = _wp$element.render;
+    Component = _wp$element.Component;
 var _wp$components = wp.components,
-    TabPanel = _wp$components.TabPanel,
-    Panel = _wp$components.Panel,
-    PanelHeader = _wp$components.PanelHeader,
-    PanelBody = _wp$components.PanelBody,
-    PanelRow = _wp$components.PanelRow,
     Button = _wp$components.Button,
     Modal = _wp$components.Modal;
 
@@ -6968,7 +6962,6 @@ var _wp$element = wp.element,
 var _wp$components = wp.components,
     TabPanel = _wp$components.TabPanel,
     Panel = _wp$components.Panel,
-    PanelHeader = _wp$components.PanelHeader,
     PanelBody = _wp$components.PanelBody,
     PanelRow = _wp$components.PanelRow;
 
@@ -7013,25 +7006,23 @@ function (_Component) {
               }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('EditorsKit provides set of tools to extend the way you are building content on WordPress Gutenberg block editor. Designed and integrated to help users easily navigate; and control each block the way it should be.', 'block-options'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
                 className: "editorskit-started-item"
               }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("iframe", {
+                title: __('EditorsKit video preview', 'block-options'),
                 width: "560",
                 height: "380",
                 src: "https://www.youtube.com/embed/QWgO4lAJAlE",
-                frameborder: "0",
-                allowfullscreen: true
+                frameBorder: "0",
+                allowFullScreen: true
               })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
                 className: "editorskit-started-item"
               }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(RawHTML, null, sprintf(__('If you have any questions or suggestion, let us know through %1$sTwitter%4$s or our %2$sFacebook community %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what\'s new and upcoming at EditorsKit.', 'block-options'), '<a href="https://twitter.com/editorskit" target="_blank">', '<a href="https://www.facebook.com/groups/1306393256173179/" target="_blank">', '<a href="https://editorskit.com/" target="_blank">', '</a>')))));
-              break;
 
             case 'ek-docs':
               return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_docs__WEBPACK_IMPORTED_MODULE_6__["default"], null);
-              break;
 
             case 'ek-features-manager':
               return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('All features are active by default but you have complete control over each one of them. Disable any features do not want to use and re-enable them anytime on this page or under the "EditorsKit Settings" on Gutenberg editor. Just uncheck the box and it will automatically be saved.', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
                 className: "editorskit-features-manager-items-wrapper"
               }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_extensions_components_manager_components_manager__WEBPACK_IMPORTED_MODULE_7__["default"], null)));
-              break;
           }
         });
       };
@@ -7046,11 +7037,7 @@ function (_Component) {
         }, __('Settings → EditorsKit', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h2", null, __('Gettings Started with', 'block-options'), " ", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("strong", null, "EditorsKit"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("code", null, window.editorskitSettings.version)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Congratulations! You\'ve just unlocked more Gutenberg block editor tools for easier editing and better workflow. Check more information about the plugin below and please make sure to navigate through "Tutorials and Docs" tab to learn more on how to use each available features.', 'block-options'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(EditorsKitSettingsPanel, null))));
       };
 
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(MainPanel, null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
-        className: "edit-post-layout__content"
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
-        className: "components-snackbar-list components-editor-notices__snackbar"
-      })));
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(MainPanel, null));
     }
   }]);
 
@@ -7111,7 +7098,6 @@ var _wp$element = wp.element,
     Component = _wp$element.Component;
 var _wp$components = wp.components,
     withSpokenMessages = _wp$components.withSpokenMessages,
-    Modal = _wp$components.Modal,
     CheckboxControl = _wp$components.CheckboxControl;
 
 var capitalize = function capitalize(str) {
