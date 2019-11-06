@@ -43,31 +43,35 @@ msgstr ""
 msgid "Block Visibility on Desktop, Mobile or Tablet"
 msgstr ""
 
-#: src/admin/docs/index.js:158
+#: src/admin/docs/index.js:147
+msgid "Hide Block on Logged-in/out Users"
+msgstr ""
+
+#: src/admin/docs/index.js:162
 msgid "Rich Text Formatting"
 msgstr ""
 
-#: src/admin/docs/index.js:175
+#: src/admin/docs/index.js:179
 msgid "Writing"
 msgstr ""
 
-#: src/admin/docs/index.js:192
+#: src/admin/docs/index.js:196
 msgid "Block Options"
 msgstr ""
 
-#: src/admin/docs/index.js:209
+#: src/admin/docs/index.js:213
 msgid "Tools"
 msgstr ""
 
-#: src/admin/docs/index.js:226
+#: src/admin/docs/index.js:230
 msgid "Block Visibility"
 msgstr ""
 
-#: src/admin/docs/index.js:243
+#: src/admin/docs/index.js:247
 msgid "Block Styling"
 msgstr ""
 
-#: src/admin/docs/index.js:262
+#: src/admin/docs/index.js:266
 msgid "Documentation"
 msgstr ""
 

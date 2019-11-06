@@ -143,6 +143,10 @@ class EditorsKitDocs extends Component {
 				title: __('Block Visibility on Desktop, Mobile or Tablet', 'block-options'),
 				name: 'devices-visibility.md',
 			},
+			{
+				title: __('Hide Block on Logged-in/out Users', 'block-options'),
+				name: 'user-state-visibility.md',
+			},
 		];
 
 
