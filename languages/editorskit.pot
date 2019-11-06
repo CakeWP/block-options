@@ -3,6 +3,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+<<<<<<< HEAD
 #: src/admin/docs/index.js:100
 msgid "Media & Text Block Card Layout"
 msgstr ""
@@ -148,4 +149,16 @@ msgstr ""
 
 #: src/admin/docs/index.js:96
 msgid "Copy Selected Block(s)"
+=======
+#: src/extensions/block-panel/list-settings/index.js:34
+msgid "Text Settings"
+msgstr ""
+
+#: src/extensions/block-panel/list-settings/index.js:45
+msgid "Color Settings"
+msgstr ""
+
+#: src/extensions/block-panel/list-settings/index.js:51
+msgid "Text Color"
+>>>>>>> master
 msgstr ""

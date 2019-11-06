@@ -19,6 +19,7 @@ const { registerBlockType } = wp.blocks;
  * Internal dependencies
  */
 import './extensions/attributes';
+import './extensions/block-panel';
 import './extensions/advanced-controls';
 import './extensions/page-template';
 import './extensions/disable-title';
