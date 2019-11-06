@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import FeaturesManager from './components/manager';
+import FeaturesManagerModal from './components/';
 
 /**
  * WordPress dependencies
@@ -10,5 +10,5 @@ const { registerPlugin } = wp.plugins;
 
 registerPlugin( 'editorskit-features-manager', {
 	icon: false,
-	render: FeaturesManager,
+	render: FeaturesManagerModal,
 } );

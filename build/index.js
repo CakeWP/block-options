@@ -13431,6 +13431,118 @@ registerPlugin('editorskit-help-tips', {
 
 /***/ }),
 
+/***/ "./src/extensions/components/manager/components/index.js":
+/*!***************************************************************!*\
+  !*** ./src/extensions/components/manager/components/index.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var lodash_map__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash/map */ "./node_modules/lodash/map.js");
+/* harmony import */ var lodash_map__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash_map__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _manager__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./manager */ "./src/extensions/components/manager/components/manager.js");
+
+
+
+
+
+
+
+/**
+ * External dependencies
+ */
+
+/**
+ * Internal dependencies
+ */
+
+
+/**
+ * WordPress dependencies
+ */
+
+var __ = wp.i18n.__;
+var compose = wp.compose.compose;
+var _wp$element = wp.element,
+    Fragment = _wp$element.Fragment,
+    Component = _wp$element.Component;
+var PluginMoreMenuItem = wp.editPost.PluginMoreMenuItem;
+var _wp$components = wp.components,
+    withSpokenMessages = _wp$components.withSpokenMessages,
+    Modal = _wp$components.Modal;
+/**
+ * Render plugin
+ */
+
+var FeaturesManagerModal =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(FeaturesManagerModal, _Component);
+
+  function FeaturesManagerModal() {
+    var _this;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, FeaturesManagerModal);
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(FeaturesManagerModal).apply(this, arguments));
+    _this.state = {
+      isOpen: false
+    };
+    return _this;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(FeaturesManagerModal, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var closeModal = function closeModal() {
+        return _this2.setState({
+          isOpen: false
+        });
+      };
+
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PluginMoreMenuItem, {
+        icon: null,
+        role: "menuitemcheckbox",
+        onClick: function onClick() {
+          _this2.setState({
+            isOpen: true
+          });
+        }
+      }, __('EditorsKit Settings', 'block-options')), this.state.isOpen ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Modal, {
+        title: __('EditorsKit Features Manager', 'block-options'),
+        onRequestClose: function onRequestClose() {
+          return closeModal();
+        },
+        closeLabel: __('Close', 'block-options'),
+        icon: null,
+        className: "editorskit-modal-component components-modal--editorskit-features-manager"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_manager__WEBPACK_IMPORTED_MODULE_7__["default"], null)) : null);
+    }
+  }]);
+
+  return FeaturesManagerModal;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (compose([withSpokenMessages])(FeaturesManagerModal));
+
+/***/ }),
+
 /***/ "./src/extensions/components/manager/components/manager.js":
 /*!*****************************************************************!*\
   !*** ./src/extensions/components/manager/components/manager.js ***!
@@ -13469,7 +13581,6 @@ __webpack_require__.r(__webpack_exports__);
  * WordPress dependencies
  */
 
-var __ = wp.i18n.__;
 var _wp$data = wp.data,
     withSelect = _wp$data.withSelect,
     withDispatch = _wp$data.withDispatch,
@@ -13478,7 +13589,6 @@ var compose = wp.compose.compose;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component;
-var PluginMoreMenuItem = wp.editPost.PluginMoreMenuItem;
 var _wp$components = wp.components,
     withSpokenMessages = _wp$components.withSpokenMessages,
     Modal = _wp$components.Modal,
@@ -13512,35 +13622,10 @@ function (_Component) {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(FeaturesManager, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
-
       var _this$props = this.props,
           editorSettings = _this$props.editorSettings,
           onToggle = _this$props.onToggle;
-
-      var closeModal = function closeModal() {
-        return _this2.setState({
-          isOpen: false
-        });
-      };
-
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PluginMoreMenuItem, {
-        icon: null,
-        role: "menuitemcheckbox",
-        onClick: function onClick() {
-          _this2.setState({
-            isOpen: true
-          });
-        }
-      }, __('EditorsKit Settings', 'block-options')), this.state.isOpen ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Modal, {
-        title: __('EditorsKit Features Manager', 'block-options'),
-        onRequestClose: function onRequestClose() {
-          return closeModal();
-        },
-        closeLabel: __('Close', 'block-options'),
-        icon: null,
-        className: "editorskit-modal-component components-modal--editorskit-features-manager"
-      }, lodash_map__WEBPACK_IMPORTED_MODULE_6___default()(editorSettings.editorskit, function (category) {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, lodash_map__WEBPACK_IMPORTED_MODULE_6___default()(editorSettings.editorskit, function (category) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("section", {
           className: "edit-post-options-modal__section"
         }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h2", {
@@ -13559,7 +13644,7 @@ function (_Component) {
             }
           }));
         })));
-      })) : null);
+      }));
     }
   }]);
 
@@ -13590,7 +13675,7 @@ function (_Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_manager__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/manager */ "./src/extensions/components/manager/components/manager.js");
+/* harmony import */ var _components___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/ */ "./src/extensions/components/manager/components/index.js");
 /**
  * Internal dependencies
  */
@@ -13602,7 +13687,7 @@ __webpack_require__.r(__webpack_exports__);
 var registerPlugin = wp.plugins.registerPlugin;
 registerPlugin('editorskit-features-manager', {
   icon: false,
-  render: _components_manager__WEBPACK_IMPORTED_MODULE_0__["default"]
+  render: _components___WEBPACK_IMPORTED_MODULE_0__["default"]
 });
 
 /***/ }),

@@ -180,3 +180,15 @@ msgid ""
 "below and please make sure to navigate through \"Tutorials and Docs\" tab "
 "to learn more on how to use each available features."
 msgstr ""
+
+#: src/extensions/components/manager/components/index.js:47
+msgid "EditorsKit Settings"
+msgstr ""
+
+#: src/extensions/components/manager/components/index.js:51
+msgid "EditorsKit Features Manager"
+msgstr ""
+
+#: src/extensions/components/manager/components/index.js:53
+msgid "Close"
+msgstr ""
