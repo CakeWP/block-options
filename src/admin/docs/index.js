@@ -116,6 +116,10 @@ class EditorsKitDocs extends Component {
 				title: __('Drag and Drop Featured Image', 'block-options'),
 				name: 'drag-drop-featured-image-tools.md',
 			},
+			{
+				title: __('Code Editor Syntax Highlighter', 'block-options'),
+				name: 'syntax-highlighter-tools.md',
+			},
 		];
 
 

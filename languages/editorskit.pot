@@ -19,23 +19,27 @@ msgstr ""
 msgid "Drag and Drop Featured Image"
 msgstr ""
 
-#: src/admin/docs/index.js:131
+#: src/admin/docs/index.js:120
+msgid "Code Editor Syntax Highlighter"
+msgstr ""
+
+#: src/admin/docs/index.js:135
 msgid "Rich Text Formatting"
 msgstr ""
 
-#: src/admin/docs/index.js:148
+#: src/admin/docs/index.js:152
 msgid "Writing"
 msgstr ""
 
-#: src/admin/docs/index.js:165
+#: src/admin/docs/index.js:169
 msgid "Block Options"
 msgstr ""
 
-#: src/admin/docs/index.js:182
+#: src/admin/docs/index.js:186
 msgid "Tools"
 msgstr ""
 
-#: src/admin/docs/index.js:201
+#: src/admin/docs/index.js:205
 msgid "Documentation"
 msgstr ""
 
@@ -93,8 +97,4 @@ msgstr ""
 
 #: src/admin/docs/index.js:97
 msgid "Copy Selected Block(s)"
-msgstr ""
-
-#: src/admin/index.js:70
-msgid "Settings → EditorsKit"
 msgstr ""
