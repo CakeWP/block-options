@@ -47,31 +47,35 @@ msgstr ""
 msgid "Hide Block on Logged-in/out Users"
 msgstr ""
 
-#: src/admin/docs/index.js:162
+#: src/admin/docs/index.js:151
+msgid "Using Custom Display Logic"
+msgstr ""
+
+#: src/admin/docs/index.js:166
 msgid "Rich Text Formatting"
 msgstr ""
 
-#: src/admin/docs/index.js:179
+#: src/admin/docs/index.js:183
 msgid "Writing"
 msgstr ""
 
-#: src/admin/docs/index.js:196
+#: src/admin/docs/index.js:200
 msgid "Block Options"
 msgstr ""
 
-#: src/admin/docs/index.js:213
+#: src/admin/docs/index.js:217
 msgid "Tools"
 msgstr ""
 
-#: src/admin/docs/index.js:230
+#: src/admin/docs/index.js:234
 msgid "Block Visibility"
 msgstr ""
 
-#: src/admin/docs/index.js:247
+#: src/admin/docs/index.js:251
 msgid "Block Styling"
 msgstr ""
 
-#: src/admin/docs/index.js:266
+#: src/admin/docs/index.js:270
 msgid "Documentation"
 msgstr ""
 

@@ -2250,6 +2250,9 @@ function (_Component) {
       }, {
         title: __('Hide Block on Logged-in/out Users', 'block-options'),
         name: 'user-state-visibility.md'
+      }, {
+        title: __('Using Custom Display Logic', 'block-options'),
+        name: 'display-logic-visibility.md'
       }];
 
       var closeModal = function closeModal() {
