@@ -73,6 +73,7 @@ if( !class_exists( 'BLOCKOPS_Welcome' ) ){
 				'url'     => EDITORSKIT_PLUGIN_URL,
 				'dir'     => EDITORSKIT_PLUGIN_DIR,
 				'version' => $this->_version,
+				'editor_settings' => apply_filters( 'block_editor_settings', array(), '' )
 			);
 
 			wp_add_inline_script( $this->_slug . '-admin', 'window.editorskitSettings = '. json_encode( $global ) .';', 'before' );

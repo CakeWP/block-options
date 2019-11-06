@@ -165,15 +165,23 @@ msgid ""
 "upcoming at EditorsKit."
 msgstr ""
 
-#: src/admin/index.js:92
+#: src/admin/index.js:78
+msgid ""
+"All features are active by default but you have complete control over each "
+"one of them. Disable any features do not want to use and re-enable them "
+"anytime on this page or under the \"EditorsKit Settings\" on Gutenberg "
+"editor. Just uncheck the box and it will automatically be saved."
+msgstr ""
+
+#: src/admin/index.js:97
 msgid "Settings → EditorsKit"
 msgstr ""
 
-#: src/admin/index.js:93
+#: src/admin/index.js:98
 msgid "Gettings Started with"
 msgstr ""
 
-#: src/admin/index.js:94
+#: src/admin/index.js:99
 msgid ""
 "Congratulations! You've just unlocked more Gutenberg block editor tools for "
 "easier editing and better workflow. Check more information about the plugin "
@@ -191,4 +199,8 @@ msgstr ""
 
 #: src/extensions/components/manager/components/index.js:53
 msgid "Close"
+msgstr ""
+
+#: src/extensions/components/manager/components/manager.js:87
+msgid "Settings Updated."
 msgstr ""

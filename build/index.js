@@ -13625,7 +13625,13 @@ function (_Component) {
       var _this$props = this.props,
           editorSettings = _this$props.editorSettings,
           onToggle = _this$props.onToggle;
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, lodash_map__WEBPACK_IMPORTED_MODULE_6___default()(editorSettings.editorskit, function (category) {
+      var getSettings = editorSettings.editorskit;
+
+      if (typeof getSettings === 'undefined' && typeof window.editorskitSettings !== 'undefined') {
+        getSettings = window.editorskitSettings.editor_settings.editorskit;
+      }
+
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, lodash_map__WEBPACK_IMPORTED_MODULE_6___default()(getSettings, function (category) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("section", {
           className: "edit-post-options-modal__section"
         }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h2", {

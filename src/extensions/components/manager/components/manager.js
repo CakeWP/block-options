@@ -33,9 +33,15 @@ class FeaturesManager extends Component {
 			onToggle,
 		} = this.props;
 
+		let getSettings = editorSettings.editorskit;
+
+		if (typeof getSettings === 'undefined' && typeof window.editorskitSettings !== 'undefined' ){
+			getSettings = window.editorskitSettings.editor_settings.editorskit;
+		}
+
 		return (
 			<Fragment>
-				{map(editorSettings.editorskit, (category) => {
+				{map(getSettings, (category) => {
 					return (
 						<section className="edit-post-options-modal__section">
 							<h2 className="edit-post-options-modal__section-title">{category.label}</h2>

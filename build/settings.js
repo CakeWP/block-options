@@ -6998,6 +6998,10 @@ function (_Component) {
             name: 'ek-docs',
             title: 'Tutorial and Docs',
             className: 'ek-settings-docs'
+          }, {
+            name: 'ek-features-manager',
+            title: 'Features Manager',
+            className: 'ek-settings-features-manager'
           }]
         }, function (tab) {
           switch (tab.name) {
@@ -7024,23 +7028,29 @@ function (_Component) {
               break;
 
             case 'ek-features-manager':
-              return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_extensions_components_manager_components_manager__WEBPACK_IMPORTED_MODULE_7__["default"], null);
+              return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('All features are active by default but you have complete control over each one of them. Disable any features do not want to use and re-enable them anytime on this page or under the "EditorsKit Settings" on Gutenberg editor. Just uncheck the box and it will automatically be saved.', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
+                className: "editorskit-features-manager-items-wrapper"
+              }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_extensions_components_manager_components_manager__WEBPACK_IMPORTED_MODULE_7__["default"], null)));
               break;
           }
         });
       };
 
-      var MyPanel = function MyPanel() {
+      var MainPanel = function MainPanel() {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Panel, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PanelBody, {
           opened: true
         }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
-          class: "components-panel__header"
+          className: "components-panel__header"
         }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", {
-          class: "editorskit-panel__header-hint"
+          className: "editorskit-panel__header-hint"
         }, __('Settings → EditorsKit', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h2", null, __('Gettings Started with', 'block-options'), " ", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("strong", null, "EditorsKit"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("code", null, window.editorskitSettings.version)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Congratulations! You\'ve just unlocked more Gutenberg block editor tools for easier editing and better workflow. Check more information about the plugin below and please make sure to navigate through "Tutorials and Docs" tab to learn more on how to use each available features.', 'block-options'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(EditorsKitSettingsPanel, null))));
       };
 
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(MyPanel, null));
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(MainPanel, null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
+        className: "edit-post-layout__content"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
+        className: "components-snackbar-list components-editor-notices__snackbar"
+      })));
     }
   }]);
 
@@ -7135,7 +7145,13 @@ function (_Component) {
       var _this$props = this.props,
           editorSettings = _this$props.editorSettings,
           onToggle = _this$props.onToggle;
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, lodash_map__WEBPACK_IMPORTED_MODULE_6___default()(editorSettings.editorskit, function (category) {
+      var getSettings = editorSettings.editorskit;
+
+      if (typeof getSettings === 'undefined' && typeof window.editorskitSettings !== 'undefined') {
+        getSettings = window.editorskitSettings.editor_settings.editorskit;
+      }
+
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, lodash_map__WEBPACK_IMPORTED_MODULE_6___default()(getSettings, function (category) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("section", {
           className: "edit-post-options-modal__section"
         }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h2", {

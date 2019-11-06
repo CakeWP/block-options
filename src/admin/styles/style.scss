@@ -154,6 +154,15 @@
 						}
 					}
 				}
+
+				.editorskit-features-manager-items-wrapper{
+					display: flex;
+					flex-wrap: wrap;
+					.edit-post-options-modal__section{
+						padding: 10px;
+						width: calc( 25% - 20px );
+					}
+				}
 			}
 		}
 	}

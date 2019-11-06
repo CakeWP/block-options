@@ -32,11 +32,11 @@ class EditorsKitSettings extends Component {
 						title: 'Tutorial and Docs',
 						className: 'ek-settings-docs',
 					},
-					// {
-					// 	name: 'ek-features-manager',
-					// 	title: 'Features Manager',
-					// 	className: 'ek-settings-features-manager',
-					// },
+					{
+						name: 'ek-features-manager',
+						title: 'Features Manager',
+						className: 'ek-settings-features-manager',
+					},
 				]}>
 				{
 					(tab) => {
@@ -74,7 +74,12 @@ class EditorsKitSettings extends Component {
 						
 							case 'ek-features-manager':
 								return(
-									<FeaturesManager />
+									<Fragment>
+										<p>{__('All features are active by default but you have complete control over each one of them. Disable any features do not want to use and re-enable them anytime on this page or under the "EditorsKit Settings" on Gutenberg editor. Just uncheck the box and it will automatically be saved.', 'block-options')}</p>
+										<div className="editorskit-features-manager-items-wrapper">
+											<FeaturesManager />
+										</div>
+									</Fragment>
 								);
 								break;
 						}
@@ -83,13 +88,13 @@ class EditorsKitSettings extends Component {
 			</TabPanel>
 		);
 
-		const MyPanel = () => (
+		const MainPanel = () => (
 			<Panel>
 				<PanelBody
 					opened={true}
 				>
-					<div class="components-panel__header">
-						<p class="editorskit-panel__header-hint">{__('Settings → EditorsKit', 'block-options') }</p>
+					<div className="components-panel__header">
+						<p className="editorskit-panel__header-hint">{__('Settings → EditorsKit', 'block-options') }</p>
 						<h2>{__('Gettings Started with', 'block-options')} <strong>EditorsKit</strong><code>{ window.editorskitSettings.version }</code></h2>
 						<p>{__('Congratulations! You\'ve just unlocked more Gutenberg block editor tools for easier editing and better workflow. Check more information about the plugin below and please make sure to navigate through "Tutorials and Docs" tab to learn more on how to use each available features.', 'block-options')}</p>
 					</div>
@@ -102,7 +107,10 @@ class EditorsKitSettings extends Component {
 
 		return (
 			<Fragment>
-				<MyPanel/>
+				<MainPanel/>
+				<div className="edit-post-layout__content">
+					<div className="components-snackbar-list components-editor-notices__snackbar"></div>
+				</div>
 			</Fragment>
 		)
 	}
