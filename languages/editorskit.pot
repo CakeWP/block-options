@@ -51,31 +51,35 @@ msgstr ""
 msgid "Using Custom Display Logic"
 msgstr ""
 
-#: src/admin/docs/index.js:166
+#: src/admin/docs/index.js:158
+msgid "Display Cover and Image Blocks in Fullscreen"
+msgstr ""
+
+#: src/admin/docs/index.js:173
 msgid "Rich Text Formatting"
 msgstr ""
 
-#: src/admin/docs/index.js:183
+#: src/admin/docs/index.js:190
 msgid "Writing"
 msgstr ""
 
-#: src/admin/docs/index.js:200
+#: src/admin/docs/index.js:207
 msgid "Block Options"
 msgstr ""
 
-#: src/admin/docs/index.js:217
+#: src/admin/docs/index.js:224
 msgid "Tools"
 msgstr ""
 
-#: src/admin/docs/index.js:234
+#: src/admin/docs/index.js:241
 msgid "Block Visibility"
 msgstr ""
 
-#: src/admin/docs/index.js:251
+#: src/admin/docs/index.js:258
 msgid "Block Styling"
 msgstr ""
 
-#: src/admin/docs/index.js:270
+#: src/admin/docs/index.js:277
 msgid "Documentation"
 msgstr ""
 

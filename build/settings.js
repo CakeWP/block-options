@@ -2254,6 +2254,10 @@ function (_Component) {
         title: __('Using Custom Display Logic', 'block-options'),
         name: 'display-logic-visibility.md'
       }];
+      var stylingDocs = [{
+        title: __('Display Cover and Image Blocks in Fullscreen', 'block-options'),
+        name: 'fullscreen-styling.md'
+      }];
 
       var closeModal = function closeModal() {
         return _this3.setState({
@@ -2331,7 +2335,7 @@ function (_Component) {
         className: "editorskit-docs-items-title"
       }, __('Block Styling', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("ul", {
         className: "editorskit-docs-items-list"
-      }, Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(writingDocs, function (formats) {
+      }, Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(stylingDocs, function (formats) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("li", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
           onClick: function onClick() {
             _this3.openModal(formats.name);

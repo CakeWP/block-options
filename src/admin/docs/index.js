@@ -153,6 +153,13 @@ class EditorsKitDocs extends Component {
 			},
 		];
 
+		const stylingDocs = [
+			{
+				title: __('Display Cover and Image Blocks in Fullscreen', 'block-options'),
+				name: 'fullscreen-styling.md',
+			},
+		];
+
 
 		const closeModal = () => (
 			this.setState({ html: '', isOpen: false, isLoaded: false })
@@ -250,7 +257,7 @@ class EditorsKitDocs extends Component {
 					<div className="editorskit-docs-items-styling">
 						<h3 className="editorskit-docs-items-title">{__('Block Styling', 'block-options')}</h3>
 						<ul className="editorskit-docs-items-list">
-							{map(writingDocs, (formats) => {
+							{map(stylingDocs, (formats) => {
 								return (
 									<li>
 										<Button
