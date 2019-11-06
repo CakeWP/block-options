@@ -218,6 +218,11 @@ $mobile : 736px;
 						padding: 10px;
 						width: calc(25% - 20px);
 
+						.components-base-control__field{
+							font-size: 15px;
+    						line-height: 1.5;
+						}
+
 						@media screen and (max-width: $tablet)
 						and (min-width: $mobile + 1) {
 							width: calc(50% - 20px);
