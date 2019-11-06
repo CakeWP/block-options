@@ -6699,9 +6699,7 @@ function (_Component) {
     value: function openModal(name) {
       var _this2 = this;
 
-      fetch(window.editorskitSettings.url + 'docs/' + name, {
-        cache: 'no-cache'
-      }).then(function (response) {
+      fetch(window.editorskitSettings.url + 'docs/' + name).then(function (response) {
         return response.text();
       }).then(function (markdown) {
         return _this2.setState({
@@ -6766,6 +6764,9 @@ function (_Component) {
       }, {
         title: __('Media & Text Block Links', 'block-options'),
         name: 'media-text-block-link-options.md'
+      }, {
+        title: __('Changing List Block Font Size & Text Color', 'block-options'),
+        name: 'list-block-options.md'
       }];
       var toolsDocs = [{
         title: __('Easily Hide Title', 'block-options'),

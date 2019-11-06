@@ -27,7 +27,7 @@ class EditorsKitDocs extends Component {
 	}
 
 	openModal( name ) {
-		fetch( window.editorskitSettings.url + 'docs/' + name, { cache: 'no-cache' } )
+		fetch( window.editorskitSettings.url + 'docs/' + name )
 			.then( ( response ) => response.text() )
 			.then( ( markdown ) => this.setState( { html: marked( markdown ), isLoaded: true, isOpen: true } ) );
 	}
@@ -103,6 +103,10 @@ class EditorsKitDocs extends Component {
 			{
 				title: __( 'Media & Text Block Links', 'block-options' ),
 				name: 'media-text-block-link-options.md',
+			},
+			{
+				title: __('Changing List Block Font Size & Text Color', 'block-options'),
+				name: 'list-block-options.md',
 			},
 		];
 
