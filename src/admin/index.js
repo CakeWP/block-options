@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import EditorsKitDocs from './docs';
+import FeaturesManager from '../extensions/components/manager/components/manager';
 
 /**
  * WordPress dependencies
@@ -16,14 +17,10 @@ class EditorsKitSettings extends Component {
 	}
 
 	render() {
-		const onSelect = (tabName) => {
-			console.log('Selecting tab', tabName);
-		};
-
-		const MyTabPanel = () => (
+	
+		const EditorsKitSettingsPanel = () => (
 			<TabPanel className="editorskit-settings-tab-panel"
 				activeClass="active-tab"
-				onSelect={onSelect}
 				tabs={[
 					{
 						name: 'ek-getting-started',
@@ -35,11 +32,11 @@ class EditorsKitSettings extends Component {
 						title: 'Tutorial and Docs',
 						className: 'ek-settings-docs',
 					},
-					{
-						name: 'ek-features-manager',
-						title: 'Features Manager',
-						className: 'ek-settings-features-manager',
-					},
+					// {
+					// 	name: 'ek-features-manager',
+					// 	title: 'Features Manager',
+					// 	className: 'ek-settings-features-manager',
+					// },
 				]}>
 				{
 					(tab) => {
@@ -75,9 +72,9 @@ class EditorsKitSettings extends Component {
 								);
 								break;
 						
-							default:
+							case 'ek-features-manager':
 								return(
-									<p>Laboriosam asperiores voluptates qui veritatis similique et culpa. Consequatur mollitia aliquam consequatur accusantium aperiam. Perspiciatis minima earum alias rerum quis itaque. Itaque fuga commodi omnis distinctio. Laboriosam corporis itaque possimus laboriosam labore. Ad vitae iste ullam et blanditiis. A et libero voluptatem et blanditiis. Asperiores illo quos molestiae eum porro ut.</p>
+									<FeaturesManager />
 								);
 								break;
 						}
@@ -97,7 +94,7 @@ class EditorsKitSettings extends Component {
 						<p>{__('Congratulations! You\'ve just unlocked more Gutenberg block editor tools for easier editing and better workflow. Check more information about the plugin below and please make sure to navigate through "Tutorials and Docs" tab to learn more on how to use each available features.', 'block-options')}</p>
 					</div>
 					<PanelRow>
-						<MyTabPanel />
+						<EditorsKitSettingsPanel />
            			</PanelRow>
 				</PanelBody>
 			</Panel>
