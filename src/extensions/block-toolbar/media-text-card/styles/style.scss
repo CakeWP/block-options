@@ -7,6 +7,11 @@
 			grid-template-areas:
 				"media-text-media"
 				"media-text-content";
+
+			.wp-block-media-text__content {
+				grid-column: 1;
+				grid-row: 2;
+			}
 		}
 
 		&.has-media-on-the-bottom {
@@ -14,6 +19,16 @@
 			grid-template-areas:
 				"media-text-content"
 				"media-text-media";
+
+			.wp-block-media-text__media {
+				grid-column: 1;
+				grid-row: 2;
+			}
+
+			.wp-block-media-text__content {
+				grid-column: 1;
+				grid-row: 1;
+			}
 		}
 	}
 }

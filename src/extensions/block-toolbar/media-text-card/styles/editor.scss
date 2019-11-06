@@ -12,6 +12,32 @@
 	}
 }
 
+.wp-block-media-text {
+
+	&.has-media-on-the-top {
+
+		.editor-inner-blocks,
+		.block-editor-inner-blocks {
+			grid-column: 1;
+			grid-row: 2;
+		}
+	}
+
+	&.has-media-on-the-bottom {
+
+		.editor-inner-blocks,
+		.block-editor-inner-blocks {
+			grid-column: 1;
+			grid-row: 1;
+		}
+
+		.editor-media-container__resizer {
+			grid-column: 1;
+			grid-row: 2;
+		}
+	}
+}
+
 body.editorskit-selected--core-media-text .has-fixed-toolbar,
 .editor-block-list__block[data-type="core/media-text"] {
 

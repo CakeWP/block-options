@@ -24,4 +24,20 @@
 			}
 		}
 	}
+
+	&[data-type="core/cover"] {
+
+		> .editor-block-list__block-edit {
+
+			> div {
+
+				> .components-resizable-box__container {
+
+					> [class*="wp-block-"] {
+						min-height: 100vh;
+					}
+				}
+			}
+		}
+	}
 }

@@ -23,13 +23,35 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 	class EditorsKit_Welcome {
 
 		/**
+		 * The base URL path (without trailing slash).
+		 *
+		 * @var string $url
+		 */
+		private $url;
+		/**
+		 * The Plugin version.
+		 *
+		 * @var string $version
+		 */
+		private $version;
+		/**
+		 * The Plugin version.
+		 *
+		 * @var string $slug
+		 */
+		private $slug;
+
+		/**
 		 * Constructor
 		 */
 		public function __construct() {
+			$this->version = EDITORSKIT_VERSION;
+			$this->slug    = 'editorskit';
+			$this->url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
+
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
 			add_action( 'admin_menu', array( $this, 'screen_page' ) );
 			add_action( 'activated_plugin', array( $this, 'redirect' ), 10, 2 );
-			add_action( 'admin_head', array( $this, 'remove_menu' ) );
 		}
 
 		/**
@@ -44,21 +66,41 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 			if ( ! isset( $_GET['page'] ) || 'editorskit-getting-started' !== $_GET['page'] ) {
 				return;
 			}
+
 			wp_enqueue_style(
 				'editorskit-welcome',
-				plugins_url( '/build/admin.build.css', dirname( __FILE__ ) ),
-				EDITORSKIT_VERSION,
-				true
+				$this->url . '/build/admin.build.css',
+				array( 'wp-components' ),
+				$this->version
 			);
+
+			// Scripts.
+			wp_enqueue_script(
+				$this->slug . '-admin',
+				$this->url . '/build/settings.js',
+				array( 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-api', 'wp-hooks', 'wp-edit-post', 'lodash' ),
+				time(),
+				false
+			);
+
+			$global = array(
+				'url'             => EDITORSKIT_PLUGIN_URL,
+				'dir'             => EDITORSKIT_PLUGIN_DIR,
+				'version'         => $this->version,
+				'editor_settings' => apply_filters( 'block_editor_settings', array(), '' ),
+			);
+
+			wp_add_inline_script( $this->slug . '-admin', 'window.editorskitSettings = ' . wp_json_encode( $global ) . ';', 'before' );
 		}
 
 		/**
 		 * Setup the admin menu.
 		 */
 		public function screen_page() {
-			add_dashboard_page(
+			add_submenu_page(
+				'options-general.php',
 				__( 'Getting started with EditorsKit', 'block-options' ),
-				__( 'Getting started with EditorsKit', 'block-options' ),
+				__( 'EditorsKit', 'block-options' ),
 				apply_filters( 'blockopts_welcome_cap', 'manage_options' ),
 				'editorskit-getting-started',
 				array( $this, 'welcome_content' )
@@ -69,34 +111,7 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 		 * Render page content.
 		 */
 		public function welcome_content(){ ?>
-			<div class="wrap about-wrap editorskit-about-wrap">
-				<div class="getting-started__content">
-					<h1><?php echo esc_html__( 'Get started with EditorsKit.', 'block-options' ); ?></h1>
-					<p><strong><?php echo esc_html__( 'Thank you for choosing EditorsKit!', 'block-options' ); ?></strong></p>
-					<p><?php echo esc_html__( 'You have just enabled set of useful tools that will help you manage each blocks and improve your content workflow with the new editor.', 'block-options' ); ?></p>
-					<p><strong><?php echo esc_html__( 'Here is the video on how the plugin works:', 'block-options' ); ?></strong></p>
-
-					<iframe width="560" height="380" src="https://www.youtube.com/embed/QWgO4lAJAlE" frameborder="0" allowfullscreen></iframe>
-
-					<p>
-						<?php
-						echo sprintf(
-							/* translators: 1: Opening <a> tag to the EditorsKit Twitter account, 2: Opening <a> tag to the EditorsKit Facebook group, 3: Opening <a> tag to the EditorsKit newsletter,  4: Closing </a> tag */
-							esc_html__( 'If you have any questions or suggestion, let us know through %1$sTwitter%4$s or our %2$sFacebook community %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what\'s new and upcoming at EditorsKit.', 'block-options' ),
-							'<a href="https://twitter.com/editorskit" target="_blank">',
-							'<a href="https://www.facebook.com/groups/1306393256173179/" target="_blank">',
-							'<a href="https://editorskit.com/" target="_blank">',
-							'</a>'
-						);
-						?>
-					</p>
-
-					<p><?php echo esc_html__( 'Happy building!', 'block-options' ); ?></p>
-
-					<p><img src="<?php echo esc_url( EDITORSKIT_PLUGIN_URL . 'build/images/logo-800.png' ); ?>" alt="<?php echo esc_attr__( 'EditorsKit Team', 'block-options' ); ?>"></p>
-
-				</div>
-			</div>
+			<div class="editorskit-settings-wrap"></div>
 		<?php }
 
 		/**
@@ -107,16 +122,9 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 		public function redirect( $plugin ) {
 			// phpcs:ignore
 			if ( ( $plugin === 'block-options/plugin.php' || $plugin === 'editorskit/plugin.php' ) && ! isset( $_GET['activate-multi'] ) ) {
-				wp_safe_redirect( admin_url( 'index.php?page=editorskit-getting-started' ) );
+				wp_safe_redirect( admin_url( 'options-general.php?page=editorskit-getting-started' ) );
 				die();
 			}
-		}
-
-		/**
-		 * Remove admin menu.
-		 */
-		public function remove_menu() {
-			remove_submenu_page( 'index.php', 'editorskit-getting-started' );
 		}
 	}
 	new EditorsKit_Welcome();
