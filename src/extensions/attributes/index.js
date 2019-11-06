@@ -14,7 +14,7 @@ const { hasBlockSupport } = wp.blocks;
 const restrictedBlocks = [ 'core/freeform', 'core/shortcode', 'core/nextpage' ];
 const blocksWithFullScreen = [ 'core/image', 'core/cover', 'core/group', 'core/columns', 'core/media-text' ];
 const blocksWithFontSize = [ 'core/list' ];
-const blocksWithAnchor = ['core/spacer', 'core/separator'];
+const blocksWithAnchor = [ 'core/spacer', 'core/separator' ];
 
 /**
  * Filters registered block settings, extending attributes with anchor using ID
@@ -74,11 +74,11 @@ function addAttributes( settings ) {
 		}
 
 		// Add custom font size picker on selected blocks.
-		if (blocksWithFontSize.includes(settings.name)) {
-			if (!settings.attributes) {
+		if ( blocksWithFontSize.includes( settings.name ) ) {
+			if ( ! settings.attributes ) {
 				settings.attributes = {};
 			}
-			settings.attributes = Object.assign(settings.attributes, {
+			settings.attributes = Object.assign( settings.attributes, {
 				textColor: {
 					type: 'string',
 				},
@@ -91,7 +91,7 @@ function addAttributes( settings ) {
 				customFontSize: {
 					type: 'number',
 				},
-			});
+			} );
 		}
 
 		//enable anchor to selected blocks
@@ -111,7 +111,7 @@ function addAttributes( settings ) {
 /**
  * Add custom EditorsKit attributes to selected blocks
  *
- * @param {Function|Component} BlockEdit Original component.
+ * @param {Function} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
 const withAttributes = createHigherOrderComponent( ( BlockEdit ) => {

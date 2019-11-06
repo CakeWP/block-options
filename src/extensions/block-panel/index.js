@@ -34,9 +34,6 @@ const enhance = compose(
 	 * "original" block is not the current one. Thus, an inexisting
 	 * `originalBlockClientId` prop signals that the block is valid.
 	 *
-	 * @param {Component} WrappedBlockEdit A filtered BlockEdit instance.
-	 *
-	 * @return {Component} Enhanced component with merged state data props.
 	 */
 	withSelect( ( select ) => {
 		const { fontSizes, colors } = select( 'core/block-editor' ).getSettings();
@@ -57,7 +54,7 @@ const withTextSettings = createHigherOrderComponent( ( BlockListBlock ) => {
 		let customData = {};
 		const attributes = select( 'core/block-editor' ).getBlock( props.clientId ).attributes;
 		const blockName = select( 'core/block-editor' ).getBlockName( props.clientId );
-		
+
 		if ( blocksWithFontSize.includes( blockName ) ) {
 			const { customFontSize, fontSize } = attributes;
 
@@ -79,7 +76,7 @@ const withTextSettings = createHigherOrderComponent( ( BlockListBlock ) => {
 /**
  * Add custom EditorsKit attributes to selected blocks
  *
- * @param {Function|Component} BlockEdit Original component.
+ * @param {Function} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
 const withBlockPanel = createHigherOrderComponent( ( BlockEdit ) => {

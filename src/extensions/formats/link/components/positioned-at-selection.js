@@ -41,7 +41,6 @@ function getCurrentCaretPositionStyle() {
  * The position is calculated at the time of the component being mounted, so it
  * should only be mounted after the desired selection has been made.
  *
- * @type {WPComponent}
  */
 class PositionedAtSelection extends Component {
 	constructor() {

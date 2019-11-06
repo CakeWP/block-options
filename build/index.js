@@ -8938,7 +8938,7 @@ var enhance = compose(withState({
  * Override the default edit UI to include a new block inspector control for
  * assigning the custom class name, if block supports custom class name.
  *
- * @param {Function|Component} BlockEdit Original component.
+ * @param {Function} BlockEdit Original component.
  *
  * @return {string} Wrapped component.
  */
@@ -9039,7 +9039,7 @@ var enhance = compose(withSelect(function () {
 /**
  * Add custom CoBlocks attributes to selected blocks
  *
- * @param {Function|Component} BlockEdit Original component.
+ * @param {Function} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
 
@@ -9773,7 +9773,7 @@ function addAttributes(settings) {
 /**
  * Add custom EditorsKit attributes to selected blocks
  *
- * @param {Function|Component} BlockEdit Original component.
+ * @param {Function} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
 
@@ -10059,9 +10059,6 @@ var enhance = compose(
  * "original" block is not the current one. Thus, an inexisting
  * `originalBlockClientId` prop signals that the block is valid.
  *
- * @param {Component} WrappedBlockEdit A filtered BlockEdit instance.
- *
- * @return {Component} Enhanced component with merged state data props.
  */
 withSelect(function (select) {
   var _select$getSettings = select('core/block-editor').getSettings(),
@@ -10109,7 +10106,7 @@ var withTextSettings = createHigherOrderComponent(function (BlockListBlock) {
 /**
  * Add custom EditorsKit attributes to selected blocks
  *
- * @param {Function|Component} BlockEdit Original component.
+ * @param {Function} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
 
@@ -11601,7 +11598,7 @@ var allowedBlocks = ['core/columns', 'core/column', 'core/group'];
 /**
  * Override the default edit UI to include a new block toolbar control
  *
- * @param {Function|Component} BlockEdit Original component.
+ * @param {Function} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
 
@@ -11811,7 +11808,7 @@ var allowedBlocks = ['core/media-text'];
 /**
  * Override the default edit UI to include a new block toolbar control
  *
- * @param {Function|Component} BlockEdit Original component.
+ * @param {Function} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
 
@@ -12341,7 +12338,7 @@ function addAttributes(settings) {
 /**
  * Override the default edit UI to include a new block toolbar control
  *
- * @param {Function|Component} BlockEdit Original component.
+ * @param {Function} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
 
@@ -16761,7 +16758,6 @@ function getCurrentCaretPositionStyle() {
  * The position is calculated at the time of the component being mounted, so it
  * should only be mounted after the desired selection has been made.
  *
- * @type {WPComponent}
  */
 
 

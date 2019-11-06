@@ -54,7 +54,7 @@ function addAttributes( settings ) {
 /**
  * Override the default edit UI to include a new block toolbar control
  *
- * @param {Function|Component} BlockEdit Original component.
+ * @param {Function} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
 const withControls = createHigherOrderComponent( ( BlockEdit ) => {

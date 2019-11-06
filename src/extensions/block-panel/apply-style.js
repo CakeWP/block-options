@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { find, get } from 'lodash';
+import { find } from 'lodash';
 
 function applyStyle( attributes, blockName, props = {} ) {
 	const {
