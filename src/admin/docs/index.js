@@ -138,6 +138,13 @@ class EditorsKitDocs extends Component {
 			},
 		];
 
+		const visibilityDocs = [
+			{
+				title: __('Block Visibility on Desktop, Mobile or Tablet', 'block-options'),
+				name: 'devices-visibility.md',
+			},
+		];
+
 
 		const closeModal = () => (
 			this.setState({ html: '', isOpen: false, isLoaded: false })
@@ -202,6 +209,40 @@ class EditorsKitDocs extends Component {
 						<h3 className="editorskit-docs-items-title">{__('Tools', 'block-options')}</h3>
 						<ul className="editorskit-docs-items-list">
 							{map(toolsDocs, (formats) => {
+								return (
+									<li>
+										<Button
+											onClick={() => {
+												this.openModal(formats.name);
+											}}>
+											{formats.title}
+										</Button>
+									</li>
+								);
+							})}
+						</ul>
+					</div>
+					<div className="editorskit-docs-items-visibility">
+						<h3 className="editorskit-docs-items-title">{__('Block Visibility', 'block-options')}</h3>
+						<ul className="editorskit-docs-items-list">
+							{map(visibilityDocs, (formats) => {
+								return (
+									<li>
+										<Button
+											onClick={() => {
+												this.openModal(formats.name);
+											}}>
+											{formats.title}
+										</Button>
+									</li>
+								);
+							})}
+						</ul>
+					</div>
+					<div className="editorskit-docs-items-styling">
+						<h3 className="editorskit-docs-items-title">{__('Block Styling', 'block-options')}</h3>
+						<ul className="editorskit-docs-items-list">
+							{map(writingDocs, (formats) => {
 								return (
 									<li>
 										<Button

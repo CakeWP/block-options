@@ -39,23 +39,35 @@ msgstr ""
 msgid "Accessible Help, Tips & Tricks"
 msgstr ""
 
-#: src/admin/docs/index.js:151
+#: src/admin/docs/index.js:143
+msgid "Block Visibility on Desktop, Mobile or Tablet"
+msgstr ""
+
+#: src/admin/docs/index.js:158
 msgid "Rich Text Formatting"
 msgstr ""
 
-#: src/admin/docs/index.js:168
+#: src/admin/docs/index.js:175
 msgid "Writing"
 msgstr ""
 
-#: src/admin/docs/index.js:185
+#: src/admin/docs/index.js:192
 msgid "Block Options"
 msgstr ""
 
-#: src/admin/docs/index.js:202
+#: src/admin/docs/index.js:209
 msgid "Tools"
 msgstr ""
 
-#: src/admin/docs/index.js:221
+#: src/admin/docs/index.js:226
+msgid "Block Visibility"
+msgstr ""
+
+#: src/admin/docs/index.js:243
+msgid "Block Styling"
+msgstr ""
+
+#: src/admin/docs/index.js:262
 msgid "Documentation"
 msgstr ""
 

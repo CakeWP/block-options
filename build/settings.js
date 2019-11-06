@@ -2244,6 +2244,10 @@ function (_Component) {
         title: __('Accessible Help, Tips & Tricks', 'block-options'),
         name: 'tips-tricks-tools.md'
       }];
+      var visibilityDocs = [{
+        title: __('Block Visibility on Desktop, Mobile or Tablet', 'block-options'),
+        name: 'devices-visibility.md'
+      }];
 
       var closeModal = function closeModal() {
         return _this3.setState({
@@ -2298,6 +2302,30 @@ function (_Component) {
       }, __('Tools', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("ul", {
         className: "editorskit-docs-items-list"
       }, Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(toolsDocs, function (formats) {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("li", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
+          onClick: function onClick() {
+            _this3.openModal(formats.name);
+          }
+        }, formats.title));
+      }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
+        className: "editorskit-docs-items-visibility"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h3", {
+        className: "editorskit-docs-items-title"
+      }, __('Block Visibility', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("ul", {
+        className: "editorskit-docs-items-list"
+      }, Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(visibilityDocs, function (formats) {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("li", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
+          onClick: function onClick() {
+            _this3.openModal(formats.name);
+          }
+        }, formats.title));
+      }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
+        className: "editorskit-docs-items-styling"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h3", {
+        className: "editorskit-docs-items-title"
+      }, __('Block Styling', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("ul", {
+        className: "editorskit-docs-items-list"
+      }, Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(writingDocs, function (formats) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("li", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
           onClick: function onClick() {
             _this3.openModal(formats.name);
