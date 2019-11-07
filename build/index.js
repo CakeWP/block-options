@@ -11442,6 +11442,11 @@ registerBlockStyle('core/list', {
   isDefault: true
 });
 registerBlockStyle('core/list', {
+  name: 'none',
+  label: __('None', 'block-options'),
+  isDefault: true
+});
+registerBlockStyle('core/list', {
   name: 'arrow',
   label: __('Arrow', 'block-options'),
   isDefault: false

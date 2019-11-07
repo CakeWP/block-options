@@ -19,7 +19,7 @@ ol {
 				height: 25px;
 				left: -25px;
 				position: absolute;
-				top: 6px;
+				top: 3px;
 				transform: scale(0.9);
 				width: 25px;
 			}
@@ -73,6 +73,23 @@ ol {
 			border-left: 2px solid currentColor;
 			left: -13px;
 			top: 14px;
+		}
+	}
+
+	&.is-style-none {
+
+		&,
+ li {
+			list-style-type: none !important;
+			padding-left: 0 !important;
+		}
+
+		li {
+			margin-left: 0 !important;
+
+			&::before {
+				content: "";
+			}
 		}
 	}
 }
