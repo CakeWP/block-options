@@ -1,0 +1,78 @@
+ul,
+ol {
+
+	&.is-style-arrow,
+	&.is-style-checked,
+	&.is-style-connected,
+	&.is-style-crossed {
+
+		li {
+			list-style-type: none !important;
+			padding-left: 8px;
+			position: relative;
+
+			&::before {
+				background-color: currentColor;
+				background-size: cover;
+				content: "";
+				display: inline-block;
+				height: 25px;
+				left: -25px;
+				position: absolute;
+				top: 6px;
+				transform: scale(0.9);
+				width: 25px;
+			}
+		}
+	}
+
+	&.is-style-arrow {
+
+		li::before {
+			/* stylelint-disable */
+			mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><rect x="0" fill="none" width="20" height="20"/><g><path d="M5 4l10 6-10 6V4z"/></g></svg>');
+			-webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><rect x="0" fill="none" width="20" height="20"/><g><path d="M5 4l10 6-10 6V4z"/></g></svg>');
+			/* stylelint-enable */
+		}
+	}
+
+	&.is-style-checked {
+
+		li::before {
+			/* stylelint-disable */
+			mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><rect x="0" fill="none" width="20" height="20"/><g><path d="M14.83 4.89l1.34.94-5.81 8.38H9.02L5.78 9.67l1.34-1.25 2.57 2.4z"/></g></svg>');
+			-webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><rect x="0" fill="none" width="20" height="20"/><g><path d="M14.83 4.89l1.34.94-5.81 8.38H9.02L5.78 9.67l1.34-1.25 2.57 2.4z"/></g></svg>');
+			/* stylelint-enable */
+		}
+	}
+
+	&.is-style-crossed {
+
+		li::before {
+			/* stylelint-disable */
+			mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><rect x="0" fill="none" width="20" height="20"/><g><path d="M14.95 6.46L11.41 10l3.54 3.54-1.41 1.41L10 11.42l-3.53 3.53-1.42-1.42L8.58 10 5.05 6.47l1.42-1.42L10 8.58l3.54-3.53z"/></g></svg>');
+			-webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><rect x="0" fill="none" width="20" height="20"/><g><path d="M14.95 6.46L11.41 10l3.54 3.54-1.41 1.41L10 11.42l-3.53 3.53-1.42-1.42L8.58 10 5.05 6.47l1.42-1.42L10 8.58l3.54-3.53z"/></g></svg>');
+			/* stylelint-enable */
+		}
+	}
+
+	&.is-style-connected {
+
+		li::before {
+			border-radius: 9999px;
+			background: currentColor;
+			height: 12px;
+			width: 12px;
+			left: -18px;
+		}
+
+		li:not(:last-of-type)::after {
+			content: "";
+			position: absolute;
+			height: 100%;
+			border-left: 2px solid currentColor;
+			left: -13px;
+			top: 14px;
+		}
+	}
+}
