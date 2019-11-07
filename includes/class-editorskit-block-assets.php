@@ -122,6 +122,14 @@ class EditorsKit_Block_Assets {
 			false
 		);
 
+		wp_enqueue_script(
+			$this->slug . '-devtools',
+			$this->url . '/build/devtools.js',
+			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api', 'wp-editor', 'wp-hooks', 'lodash' ),
+			time(),
+			false
+		);
+
 		$version = '';
 		$is_core = true;
 
