@@ -6,7 +6,6 @@ import { loremIpsum } from 'react-lorem-ipsum';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
 const { select, dispatch } = wp.data;
 

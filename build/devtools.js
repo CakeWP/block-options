@@ -1857,7 +1857,6 @@ __webpack_require__.r(__webpack_exports__);
  * WordPress dependencies
  */
 
-var __ = wp.i18n.__;
 var createBlock = wp.blocks.createBlock;
 var _wp$data = wp.data,
     select = _wp$data.select,
