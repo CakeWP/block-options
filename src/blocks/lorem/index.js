@@ -35,7 +35,7 @@ const settings = {
 	attributes: blockAttributes,
 
 	supports: {
-		// inserter: false,
+		inserter: false,
 	},
 
 	transforms,
