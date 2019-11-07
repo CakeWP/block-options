@@ -16,7 +16,7 @@ const { __ } = wp.i18n;
 const name = 'lorem';
 const icon = 'admin-tools';
 
-const title = __('Lorem Dev Tool', 'block-options');
+const title = __( 'Lorem Dev Tool', 'block-options' );
 
 const blockAttributes = {
 	items: {
@@ -29,8 +29,7 @@ const settings = {
 
 	title,
 
-	description: __('Create lorem ipsum placeholder paragraph.', 'block-options'),
-
+	description: __( 'Create lorem ipsum placeholder paragraph.', 'block-options' ),
 
 	attributes: blockAttributes,
 

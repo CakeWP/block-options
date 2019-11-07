@@ -1,11 +1,11 @@
 /**
  * Dev Tools
- * 
+ *
  */
 
 /**
-* WordPress dependencies
-*/
+ * WordPress dependencies
+ */
 const { registerBlockType } = wp.blocks;
 
 // Register Blocks
@@ -14,14 +14,14 @@ import * as lorem from './blocks/lorem';
 export function registerBlocks() {
 	[
 		lorem,
-	].forEach((block) => {
-		if (!block) {
+	].forEach( ( block ) => {
+		if ( ! block ) {
 			return;
 		}
 
 		const { name, settings } = block;
 
-		registerBlockType(`editorskit/${name}`, { category: 'common', ...settings });
-	});
+		registerBlockType( `editorskit/${ name }`, { category: 'common', ...settings } );
+	} );
 }
 registerBlocks();
