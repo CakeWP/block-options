@@ -81,21 +81,21 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/admin.scss");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/devtools.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/admin.scss":
-/*!************************!*\
-  !*** ./src/admin.scss ***!
-  \************************/
+/***/ "./src/devtools.js":
+/*!*************************!*\
+  !*** ./src/devtools.js ***!
+  \*************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-// extracted by mini-css-extract-plugin
+
 
 /***/ })
 
 /******/ });
-//# sourceMappingURL=admin.js.map
+//# sourceMappingURL=devtools.js.map
