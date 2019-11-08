@@ -167,7 +167,6 @@ class EditorsKit_Block_Assets {
 	 */
 	function is_edit_or_new_admin_page() { // phpcs:ignore
 		global $pagenow;
-
 		return ( is_admin() && ( $pagenow === 'post.php' || $pagenow === 'post-new.php' ) ); // phpcs:ignore
 	}
 
