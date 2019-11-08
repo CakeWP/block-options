@@ -6846,7 +6846,10 @@ __webpack_require__.r(__webpack_exports__);
  * WordPress dependencies
  */
 
-var __ = wp.i18n.__;
+var _wp$i18n = wp.i18n,
+    __ = _wp$i18n.__,
+    _n = _wp$i18n._n,
+    sprintf = _wp$i18n.sprintf;
 var withSelect = wp.data.withSelect;
 var _wp$compose = wp.compose,
     compose = _wp$compose.compose,
@@ -6865,12 +6868,13 @@ function BlockManager(_ref) {
       blockTypes = _ref.blockTypes,
       categories = _ref.categories,
       hasBlockSupport = _ref.hasBlockSupport,
-      isMatchingSearchTerm = _ref.isMatchingSearchTerm;
+      isMatchingSearchTerm = _ref.isMatchingSearchTerm,
+      numberOfHiddenBlocks = _ref.numberOfHiddenBlocks;
   // Filtering occurs here (as opposed to `withSelect`) to avoid wasted
   // wasted renders by consequence of `Array#filter` producing a new
   // value reference on each call.
   blockTypes = blockTypes.filter(function (blockType) {
-    return hasBlockSupport(blockType, 'inserter', true) && blockType.name !== 'core/paragraph' && blockType.name !== 'editorskit/import' && (!search || isMatchingSearchTerm(blockType, search));
+    return hasBlockSupport(blockType, 'inserter', true) && (!search || isMatchingSearchTerm(blockType, search)) && !blockType.parent;
   });
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: "edit-post-manage-blocks-modal__content"
@@ -6884,7 +6888,9 @@ function BlockManager(_ref) {
       });
     },
     className: "edit-post-manage-blocks-modal__search"
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+  }), !!numberOfHiddenBlocks && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: "edit-post-manage-blocks-modal__disabled-blocks-count"
+  }, sprintf(_n('%1$d block is disabled.', '%1$d blocks are disabled.', numberOfHiddenBlocks), numberOfHiddenBlocks)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     tabIndex: "0",
     role: "region",
     "aria-label": __('Available block types'),
@@ -6910,11 +6916,17 @@ function BlockManager(_ref) {
       hasBlockSupport = _select.hasBlockSupport,
       isMatchingSearchTerm = _select.isMatchingSearchTerm;
 
+  var _select2 = select('core/edit-post'),
+      getPreference = _select2.getPreference;
+
+  var hiddenBlockTypes = getPreference('hiddenBlockTypes');
+  var numberOfHiddenBlocks = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["isArray"])(hiddenBlockTypes) && hiddenBlockTypes.length;
   return {
     blockTypes: getBlockTypes(),
     categories: getCategories(),
     hasBlockSupport: hasBlockSupport,
-    isMatchingSearchTerm: isMatchingSearchTerm
+    isMatchingSearchTerm: isMatchingSearchTerm,
+    numberOfHiddenBlocks: numberOfHiddenBlocks
   };
 })])(BlockManager));
 

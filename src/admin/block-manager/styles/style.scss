@@ -8,6 +8,14 @@ $mobile : 736px;
 	}
 }
 
+.edit-post-manage-blocks-modal__disabled-blocks-count{
+	padding: .6rem 24px;
+	margin-right: 15px;
+	margin-top: 20px;
+	background-color: #f3f4f5;
+	font-size: 14px;
+}
+
 .edit-post-manage-blocks-modal__results{
 	display: flex;
 	flex-wrap: wrap;

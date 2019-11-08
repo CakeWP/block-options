@@ -1,12 +1,12 @@
 /**
  * External dependencies
  */
-import { filter } from 'lodash';
+import { filter, isArray } from 'lodash';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _n, sprintf } = wp.i18n;
 const { withSelect } = wp.data;
 const { compose, withState } = wp.compose;
 const { TextControl } = wp.components;
@@ -24,13 +24,15 @@ function BlockManager({
 	categories,
 	hasBlockSupport,
 	isMatchingSearchTerm,
+	numberOfHiddenBlocks,
 }) {
 	// Filtering occurs here (as opposed to `withSelect`) to avoid wasted
 	// wasted renders by consequence of `Array#filter` producing a new
 	// value reference on each call.
 	blockTypes = blockTypes.filter((blockType) => (
-		hasBlockSupport(blockType, 'inserter', true) && blockType.name !== 'core/paragraph' && blockType.name !== 'editorskit/import' &&
-		(!search || isMatchingSearchTerm(blockType, search))
+		hasBlockSupport(blockType, 'inserter', true) &&
+		(!search || isMatchingSearchTerm(blockType, search)) &&
+		!blockType.parent
 	));
 
 	return (
@@ -44,6 +46,20 @@ function BlockManager({
 				})}
 				className="edit-post-manage-blocks-modal__search"
 			/>
+			{!!numberOfHiddenBlocks && (
+				<div className="edit-post-manage-blocks-modal__disabled-blocks-count">
+					{
+						sprintf(
+							_n(
+								'%1$d block is disabled.',
+								'%1$d blocks are disabled.',
+								numberOfHiddenBlocks
+							),
+							numberOfHiddenBlocks
+						)
+					}
+				</div>
+			)}
 			<div
 				tabIndex="0"
 				role="region"
@@ -77,12 +93,16 @@ export default compose([
 			hasBlockSupport,
 			isMatchingSearchTerm,
 		} = select('core/blocks');
+		const { getPreference } = select('core/edit-post');
+		const hiddenBlockTypes = getPreference('hiddenBlockTypes');
+		const numberOfHiddenBlocks = isArray(hiddenBlockTypes) && hiddenBlockTypes.length;
 
 		return {
 			blockTypes: getBlockTypes(),
 			categories: getCategories(),
 			hasBlockSupport,
 			isMatchingSearchTerm,
+			numberOfHiddenBlocks,
 		};
 	}),
 ])(BlockManager);
