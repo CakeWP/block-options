@@ -15,15 +15,15 @@ msgstr ""
 msgid "No blocks found."
 msgstr ""
 
-#: src/admin/index.js:102
+#: src/admin/index.js:106
 msgid "Settings → EditorsKit"
 msgstr ""
 
-#: src/admin/index.js:103
+#: src/admin/index.js:107
 msgid "Gettings Started with"
 msgstr ""
 
-#: src/admin/index.js:104
+#: src/admin/index.js:108
 msgid ""
 "Congratulations! You've just unlocked more Gutenberg block editor tools for "
 "easier editing and better workflow. Check more information about the plugin "
@@ -56,4 +56,11 @@ msgid ""
 "one of them. Disable any features do not want to use and re-enable them "
 "anytime on this page or under the \"EditorsKit Settings\" on Gutenberg "
 "editor. Just uncheck the box and it will automatically be saved."
+msgstr ""
+
+#: src/admin/index.js:89
+msgid ""
+"Manage each individual blocks! You can enable or disable any blocks you "
+"want and it will be reflected on Gutenberg block manager settings. Just "
+"uncheck the box and it will automatically be saved."
 msgstr ""

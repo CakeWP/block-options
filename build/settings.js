@@ -7372,7 +7372,7 @@ function (_Component) {
               }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_extensions_components_manager_components_manager__WEBPACK_IMPORTED_MODULE_7__["default"], null)));
 
             case 'ek-blocks-manager':
-              return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_block_manager___WEBPACK_IMPORTED_MODULE_8__["default"], null);
+              return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Manage each individual blocks! You can enable or disable any blocks you want and it will be reflected on Gutenberg block manager settings. Just uncheck the box and it will automatically be saved.', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_block_manager___WEBPACK_IMPORTED_MODULE_8__["default"], null));
           }
         });
       };
