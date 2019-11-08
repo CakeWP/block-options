@@ -86,10 +86,10 @@ class EditorsKitSettings extends Component {
 							case 'ek-blocks-manager':
 								return (
 									<Fragment>
-										<p>{__('Manage each individual blocks! You can enable or disable any blocks you want and it will be reflected on Gutenberg block manager settings. Just uncheck the box and it will automatically be saved.', 'block-options')}</p>
+										<p>{ __( 'Manage each individual blocks! You can enable or disable any blocks you want and it will be reflected on Gutenberg block manager settings. Just uncheck the box and it will automatically be saved.', 'block-options' ) }</p>
 										<BlockManager />
 									</Fragment>
-									
+
 								);
 						}
 					}

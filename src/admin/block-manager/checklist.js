@@ -10,26 +10,26 @@ const { Fragment } = wp.element;
 const { BlockIcon } = wp.blockEditor;
 const { CheckboxControl } = wp.components;
 
-function BlockTypesChecklist({ blockTypes, value, onItemChange }) {
+function BlockTypesChecklist( { blockTypes, value, onItemChange } ) {
 	return (
 		<ul className="edit-post-manage-blocks-modal__checklist">
-			{blockTypes.map((blockType) => (
+			{ blockTypes.map( ( blockType ) => (
 				<li
-					key={blockType.name}
+					key={ blockType.name }
 					className="edit-post-manage-blocks-modal__checklist-item"
 				>
 					<CheckboxControl
-						label={(
+						label={ (
 							<Fragment>
-								{blockType.title}
-								<BlockIcon icon={blockType.icon} />
+								{ blockType.title }
+								<BlockIcon icon={ blockType.icon } />
 							</Fragment>
-						)}
-						checked={value.includes(blockType.name)}
-						onChange={partial(onItemChange, blockType.name)}
+						) }
+						checked={ value.includes( blockType.name ) }
+						onChange={ partial( onItemChange, blockType.name ) }
 					/>
 				</li>
-			))}
+			) ) }
 		</ul>
 	);
 }
