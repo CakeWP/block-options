@@ -9,7 +9,7 @@ import { get } from 'lodash';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { select, withSelect } = wp.data;
-const { BlockControls } = wp.blockEditor;
+const { BlockControls, getColorClassName, getColorObjectByColorValue, getColorObjectByAttributeValues } = wp.blockEditor;
 const { applyFormat, removeFormat, getActiveFormat } = wp.richText;
 const { Toolbar, IconButton, Popover, ColorPalette } = wp.components;
 const { compose, ifCondition } = wp.compose;
@@ -46,12 +46,22 @@ class Edit extends Component {
 		const colors = get( select( 'core/block-editor' ).getSettings(), [ 'colors' ], [] );
 		const activeColorFormat = getActiveFormat( value, name );
 
-		if ( activeColorFormat ) {
+		if ( activeColorFormat) {
 			const styleColor = activeColorFormat.attributes.style;
-			if ( styleColor ) {
-				activeColor = styleColor.replace( new RegExp( `^color:\\s*` ), '' );
+
+			if (styleColor) {
+				activeColor = styleColor.replace(new RegExp(`^color:\\s*`), '');
+			}
+
+			const currentClass = activeColorFormat.attributes.class;
+
+			if (currentClass) {
+				const colorSlug = currentClass.replace(/.*has-(.*?)-color.*/, '$1');
+				activeColor = getColorObjectByAttributeValues(colors, colorSlug).color;
 			}
 		}
+
+		
 
 		return (
 			<Fragment>
@@ -88,11 +98,15 @@ class Edit extends Component {
 									value={ activeColor }
 									onChange={ ( color ) => {
 										if ( color ) {
+											const colorObject = getColorObjectByColorValue(colors, color);
+
 											onChange(
 												applyFormat( value, {
 													type: name,
-													attributes: {
-														style: `color:${ color }`,
+													attributes: colorObject ? {
+														class: getColorClassName('color', colorObject.slug),
+													} : {
+														style: `color:${color}`,
 													},
 												} )
 											);
