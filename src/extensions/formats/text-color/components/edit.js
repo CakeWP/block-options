@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import { get } from 'lodash';
-
-/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
@@ -39,11 +34,11 @@ class Edit extends Component {
 		const {
 			value,
 			onChange,
+			colors,
 		} = this.props;
 
 		let activeColor;
 
-		const colors = get( select( 'core/block-editor' ).getSettings(), [ 'colors' ], [] );
 		const activeColorFormat = getActiveFormat( value, name );
 
 		if ( activeColorFormat) {
@@ -128,7 +123,10 @@ class Edit extends Component {
 
 export default compose(
 	withSelect( () => {
+		const { colors } = select('core/block-editor').getSettings();
+
 		return {
+			colors: colors ? colors : [],
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitColorsFormats' ),
 		};
 	} ),

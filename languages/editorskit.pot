@@ -3,27 +3,27 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/formats/background-color/components/edit.js:24
+#: src/extensions/formats/background-color/components/edit.js:23
 msgid "Highlight Color"
 msgstr ""
 
-#: src/extensions/formats/background-color/components/edit.js:56
+#: src/extensions/formats/background-color/components/edit.js:27
 msgid "Orange Sunrise"
 msgstr ""
 
-#: src/extensions/formats/background-color/components/edit.js:61
+#: src/extensions/formats/background-color/components/edit.js:32
 msgid "Pink Flamingo"
 msgstr ""
 
-#: src/extensions/formats/background-color/components/edit.js:66
+#: src/extensions/formats/background-color/components/edit.js:37
 msgid "Spring Green"
 msgstr ""
 
-#: src/extensions/formats/background-color/components/edit.js:71
+#: src/extensions/formats/background-color/components/edit.js:42
 msgid "Blue Moon"
 msgstr ""
 
-#: src/extensions/formats/background-color/components/edit.js:76
+#: src/extensions/formats/background-color/components/edit.js:47
 msgid "Purple Mist"
 msgstr ""
 
@@ -31,7 +31,12 @@ msgstr ""
 msgid "Background Color"
 msgstr ""
 
+#: src/extensions/formats/text-color/components/edit.js:14
 #: src/extensions/formats/text-color/components/edit.js:18
 #: src/extensions/formats/text-color/index.js:18
 msgid "Text Color"
+msgstr ""
+
+#: src/extensions/formats/underline/index.js:49
+msgid "Underline"
 msgstr ""

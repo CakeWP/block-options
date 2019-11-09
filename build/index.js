@@ -15209,9 +15209,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../icon */ "./src/extensions/formats/background-color/icon.js");
+/* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../icon */ "./src/extensions/formats/background-color/icon.js");
 
 
 
@@ -15223,7 +15221,6 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * External dependencies
  */
-
 
 /**
  * Internal dependencies
@@ -15262,6 +15259,28 @@ var name = 'editorskit/background';
 
 var title = __('Highlight Color', 'block-options');
 
+var definedColors = [{
+  name: __('Orange Sunrise', 'block-options'),
+  slug: 'orange-sunrise',
+  color: '#f7cc62'
+}, {
+  name: __('Pink Flamingo', 'block-options'),
+  slug: 'pink-flamingo',
+  color: '#ffbfb5'
+}, {
+  name: __('Spring Green', 'block-options'),
+  slug: 'spring-green',
+  color: '#b5dcaf'
+}, {
+  name: __('Blue Moon', 'block-options'),
+  slug: 'blue-moon',
+  color: '#d6e8fa'
+}, {
+  name: __('Purple Mist', 'block-options'),
+  slug: 'purple-mist',
+  color: '#d8c3ff'
+}];
+
 var Edit =
 /*#__PURE__*/
 function (_Component) {
@@ -15298,30 +15317,9 @@ function (_Component) {
       var _this$props = this.props,
           value = _this$props.value,
           _onChange = _this$props.onChange,
-          isActive = _this$props.isActive;
+          isActive = _this$props.isActive,
+          colors = _this$props.colors;
       var activeColor;
-      var definedColors = [{
-        name: __('Orange Sunrise', 'block-options'),
-        slug: 'orange-sunrise',
-        color: '#f7cc62'
-      }, {
-        name: __('Pink Flamingo', 'block-options'),
-        slug: 'pink-flamingo',
-        color: '#ffbfb5'
-      }, {
-        name: __('Spring Green', 'block-options'),
-        slug: 'spring-green',
-        color: '#b5dcaf'
-      }, {
-        name: __('Blue Moon', 'block-options'),
-        slug: 'blue-moon',
-        color: '#d6e8fa'
-      }, {
-        name: __('Purple Mist', 'block-options'),
-        slug: 'purple-mist',
-        color: '#d8c3ff'
-      }];
-      var colors = Object(lodash__WEBPACK_IMPORTED_MODULE_8__["get"])(select('core/block-editor').getSettings(), ['colors'], definedColors);
       var activeColorFormat = getActiveFormat(value, name);
 
       if (activeColorFormat) {
@@ -15345,7 +15343,7 @@ function (_Component) {
         className: classnames__WEBPACK_IMPORTED_MODULE_7___default()('components-button components-icon-button components-editorskit-toolbar__control components-toolbar__control components-editorskit-background-format', {
           'is-active': isActive
         }),
-        icon: _icon__WEBPACK_IMPORTED_MODULE_9__["default"].highlighter,
+        icon: _icon__WEBPACK_IMPORTED_MODULE_8__["default"].highlighter,
         "aria-haspopup": "true",
         tooltip: title,
         onClick: this.toggle
@@ -15387,7 +15385,11 @@ function (_Component) {
 }(Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (compose(withSelect(function () {
+  var _select$getSettings = select('core/block-editor').getSettings(),
+      colors = _select$getSettings.colors;
+
   return {
+    colors: colors ? colors : definedColors,
     isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitHighlightFormats')
   };
 }), ifCondition(function (props) {
@@ -18363,8 +18365,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_7__);
 
 
 
@@ -18372,15 +18372,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-/**
- * External dependencies
- */
 
 /**
  * WordPress dependencies
  */
-
 var __ = wp.i18n.__;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
@@ -18444,9 +18439,9 @@ function (_Component) {
       var isOpen = this.state.isOpen;
       var _this$props = this.props,
           value = _this$props.value,
-          _onChange = _this$props.onChange;
+          _onChange = _this$props.onChange,
+          colors = _this$props.colors;
       var activeColor;
-      var colors = Object(lodash__WEBPACK_IMPORTED_MODULE_7__["get"])(select('core/block-editor').getSettings(), ['colors'], []);
       var activeColorFormat = getActiveFormat(value, name);
 
       if (activeColorFormat) {
@@ -18515,7 +18510,11 @@ function (_Component) {
 }(Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (compose(withSelect(function () {
+  var _select$getSettings = select('core/block-editor').getSettings(),
+      colors = _select$getSettings.colors;
+
   return {
+    colors: colors ? colors : [],
     isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitColorsFormats')
   };
 }), ifCondition(function (props) {

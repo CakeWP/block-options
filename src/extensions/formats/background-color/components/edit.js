@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { get } from 'lodash';
 
 /**
  * Internal dependencies
@@ -22,6 +21,34 @@ const { compose, ifCondition } = wp.compose;
 
 const name = 'editorskit/background';
 const title = __( 'Highlight Color', 'block-options' );
+const definedColors = [
+
+	{
+		name: __('Orange Sunrise', 'block-options'),
+		slug: 'orange-sunrise',
+		color: '#f7cc62',
+	},
+	{
+		name: __('Pink Flamingo', 'block-options'),
+		slug: 'pink-flamingo',
+		color: '#ffbfb5',
+	},
+	{
+		name: __('Spring Green', 'block-options'),
+		slug: 'spring-green',
+		color: '#b5dcaf',
+	},
+	{
+		name: __('Blue Moon', 'block-options'),
+		slug: 'blue-moon',
+		color: '#d6e8fa',
+	},
+	{
+		name: __('Purple Mist', 'block-options'),
+		slug: 'purple-mist',
+		color: '#d8c3ff',
+	},
+];
 
 class Edit extends Component {
 	constructor() {
@@ -46,40 +73,11 @@ class Edit extends Component {
 			value,
 			onChange,
 			isActive,
+			colors,
 		} = this.props;
 
 		let activeColor;
 
-		const definedColors = [
-
-			{
-				name: __( 'Orange Sunrise', 'block-options' ),
-				slug: 'orange-sunrise',
-				color: '#f7cc62',
-			},
-			{
-				name: __( 'Pink Flamingo', 'block-options' ),
-				slug: 'pink-flamingo',
-				color: '#ffbfb5',
-			},
-			{
-				name: __( 'Spring Green', 'block-options' ),
-				slug: 'spring-green',
-				color: '#b5dcaf',
-			},
-			{
-				name: __( 'Blue Moon', 'block-options' ),
-				slug: 'blue-moon',
-				color: '#d6e8fa',
-			},
-			{
-				name: __( 'Purple Mist', 'block-options' ),
-				slug: 'purple-mist',
-				color: '#d8c3ff',
-			},
-		];
-
-		const colors = get( select( 'core/block-editor' ).getSettings(), [ 'colors' ], definedColors );
 		const activeColorFormat = getActiveFormat( value, name );
 
 		if ( activeColorFormat ) {
@@ -159,7 +157,10 @@ class Edit extends Component {
 
 export default compose(
 	withSelect( () => {
+		const { colors } = select('core/block-editor').getSettings();
+
 		return {
+			colors: colors ? colors : definedColors,
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitHighlightFormats' ),
 		};
 	} ),
