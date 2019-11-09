@@ -15,7 +15,7 @@ import icon from '../icon';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { select, withSelect } = wp.data;
-const { BlockControls } = wp.blockEditor;
+const { BlockControls, getColorClassName, getColorObjectByColorValue, getColorObjectByAttributeValues } = wp.blockEditor;
 const { applyFormat, removeFormat, getActiveFormat } = wp.richText;
 const { Toolbar, IconButton, Popover, ColorPalette } = wp.components;
 const { compose, ifCondition } = wp.compose;
@@ -84,8 +84,16 @@ class Edit extends Component {
 
 		if ( activeColorFormat ) {
 			const styleColor = activeColorFormat.attributes.style;
+			
 			if ( styleColor ) {
 				activeColor = styleColor.replace( new RegExp( `^background-color:\\s*` ), '' );
+			}
+
+			const currentClass = activeColorFormat.attributes.class;
+
+			if (currentClass) {
+				const colorSlug = currentClass.replace(/.*has-(.*?)-background-color.*/, '$1');
+				activeColor = getColorObjectByAttributeValues(colors, colorSlug).color;
 			}
 		}
 
@@ -122,11 +130,14 @@ class Edit extends Component {
 									value={ activeColor }
 									onChange={ ( color ) => {
 										if ( color ) {
+											const colorObject = getColorObjectByColorValue(colors, color);
 											onChange(
 												applyFormat( value, {
 													type: name,
-													attributes: {
-														style: `background-color:${ color }`,
+													attributes: colorObject ? {
+														class: getColorClassName('background-color', colorObject.slug),
+													} : {
+														style: `background-color:${color}`,
 													},
 												} )
 											);

@@ -20,6 +20,7 @@ export const textColor = {
 	className: 'has-inline-color',
 	attributes: {
 		style: 'style',
+		class: 'class',
 	},
 	edit: Edit,
 };

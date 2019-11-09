@@ -15241,7 +15241,11 @@ var _wp$element = wp.element,
 var _wp$data = wp.data,
     select = _wp$data.select,
     withSelect = _wp$data.withSelect;
-var BlockControls = wp.blockEditor.BlockControls;
+var _wp$blockEditor = wp.blockEditor,
+    BlockControls = _wp$blockEditor.BlockControls,
+    getColorClassName = _wp$blockEditor.getColorClassName,
+    getColorObjectByColorValue = _wp$blockEditor.getColorObjectByColorValue,
+    getColorObjectByAttributeValues = _wp$blockEditor.getColorObjectByAttributeValues;
 var _wp$richText = wp.richText,
     applyFormat = _wp$richText.applyFormat,
     removeFormat = _wp$richText.removeFormat,
@@ -15326,6 +15330,13 @@ function (_Component) {
         if (styleColor) {
           activeColor = styleColor.replace(new RegExp("^background-color:\\s*"), '');
         }
+
+        var currentClass = activeColorFormat.attributes.class;
+
+        if (currentClass) {
+          var colorSlug = currentClass.replace(/.*has-(.*?)-background-color.*/, '$1');
+          activeColor = getColorObjectByAttributeValues(colors, colorSlug).color;
+        }
       }
 
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Toolbar, {
@@ -15354,9 +15365,13 @@ function (_Component) {
         value: activeColor,
         onChange: function onChange(color) {
           if (color) {
+            var colorObject = getColorObjectByColorValue(colors, color);
+
             _onChange(applyFormat(value, {
               type: name,
-              attributes: {
+              attributes: colorObject ? {
+                class: getColorClassName('background-color', colorObject.slug)
+              } : {
                 style: "background-color:".concat(color)
               }
             }));
@@ -15445,7 +15460,8 @@ var backgroundColor = {
   tagName: 'span',
   className: 'has-inline-background',
   attributes: {
-    style: 'style'
+    style: 'style',
+    class: 'class'
   },
   edit: _components_edit__WEBPACK_IMPORTED_MODULE_0__["default"]
 };
@@ -18539,7 +18555,8 @@ var textColor = {
   tagName: 'span',
   className: 'has-inline-color',
   attributes: {
-    style: 'style'
+    style: 'style',
+    class: 'class'
   },
   edit: _components_edit__WEBPACK_IMPORTED_MODULE_0__["default"]
 };

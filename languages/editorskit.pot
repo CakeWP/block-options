@@ -3,6 +3,35 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+#: src/extensions/formats/background-color/components/edit.js:24
+msgid "Highlight Color"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:56
+msgid "Orange Sunrise"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:61
+msgid "Pink Flamingo"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:66
+msgid "Spring Green"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:71
+msgid "Blue Moon"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:76
+msgid "Purple Mist"
+msgstr ""
+
+#: src/extensions/formats/background-color/index.js:18
+msgid "Background Color"
+msgstr ""
+
 #: src/extensions/formats/text-color/components/edit.js:18
+#: src/extensions/formats/text-color/index.js:18
 msgid "Text Color"
 msgstr ""
