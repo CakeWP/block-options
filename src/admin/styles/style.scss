@@ -136,7 +136,7 @@ $mobile : 736px;
 						width: calc(33% - 30px);
 
 						@media screen and (max-width: $tablet)
-						and (min-width: $mobile + 1) {
+							and (min-width: $mobile + 1) {
 							width: calc(50% - 30px);
 						}
 
@@ -144,12 +144,14 @@ $mobile : 736px;
 							width: 100%;
 						}
 					}
-					@media screen and (min-width: $tablet + 1){
+
+					@media screen and (min-width: $tablet + 1) {
+
 						> div:not(:first-child):not(:nth-child(3n+1)) {
 							margin-left: 30px;
 						}
 					}
-					
+
 				}
 
 				.editorskit-docs-items-title {
@@ -182,7 +184,7 @@ $mobile : 736px;
 						@media screen and (max-width: $tablet) {
 							width: calc(100% - 30px);
 
-							iframe{
+							iframe {
 								max-width: 100%;
 							}
 						}
@@ -203,8 +205,8 @@ $mobile : 736px;
 							color: #444;
 
 							@media screen and (max-width: $tablet) {
-								margin-left: 0px;
-								margin-right: 0px;
+								margin-left: 0;
+								margin-right: 0;
 							}
 						}
 					}
@@ -218,13 +220,13 @@ $mobile : 736px;
 						padding: 10px;
 						width: calc(25% - 20px);
 
-						.components-base-control__field{
+						.components-base-control__field {
 							font-size: 15px;
-    						line-height: 1.5;
+							line-height: 1.5;
 						}
 
 						@media screen and (max-width: $tablet)
-						and (min-width: $mobile + 1) {
+							and (min-width: $mobile + 1) {
 							width: calc(50% - 20px);
 						}
 
