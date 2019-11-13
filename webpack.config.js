@@ -100,6 +100,7 @@ module.exports = {
 			'style.deps.json',
 			'admin.deps.json',
 			'index.js.map',
+			'admin.js.map',
 			'settings.js.map',
 			'devtools.js.map',
 			'editor.build.css.map',

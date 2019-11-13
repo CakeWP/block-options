@@ -1961,12 +1961,12 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 /**
  * Dev Tools
- * 
+ *
  */
 
 /**
-* WordPress dependencies
-*/
+ * WordPress dependencies
+ */
 var registerBlockType = wp.blocks.registerBlockType; // Register Blocks
 
 

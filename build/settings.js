@@ -86,6 +86,27 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+
+    return arr2;
+  }
+}
+
+module.exports = _arrayWithoutHoles;
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/assertThisInitialized.js ***!
@@ -195,6 +216,36 @@ module.exports = _inherits;
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/iterableToArray.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/iterableToArray.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _iterableToArray(iter) {
+  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+}
+
+module.exports = _iterableToArray;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/nonIterableSpread.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/nonIterableSpread.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+module.exports = _nonIterableSpread;
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js":
 /*!**************************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js ***!
@@ -235,6 +286,27 @@ function _setPrototypeOf(o, p) {
 }
 
 module.exports = _setPrototypeOf;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/toConsumableArray.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/toConsumableArray.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayWithoutHoles = __webpack_require__(/*! ./arrayWithoutHoles */ "./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js");
+
+var iterableToArray = __webpack_require__(/*! ./iterableToArray */ "./node_modules/@babel/runtime/helpers/iterableToArray.js");
+
+var nonIterableSpread = __webpack_require__(/*! ./nonIterableSpread */ "./node_modules/@babel/runtime/helpers/nonIterableSpread.js");
+
+function _toConsumableArray(arr) {
+  return arrayWithoutHoles(arr) || iterableToArray(arr) || nonIterableSpread();
+}
+
+module.exports = _toConsumableArray;
 
 /***/ }),
 
@@ -6581,6 +6653,285 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/admin/block-manager/category.js":
+/*!*********************************************!*\
+  !*** ./src/admin/block-manager/category.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "./node_modules/@babel/runtime/helpers/toConsumableArray.js");
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _checklist__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./checklist */ "./src/admin/block-manager/checklist.js");
+
+
+
+/**
+ * External dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+var _wp$data = wp.data,
+    withSelect = _wp$data.withSelect,
+    withDispatch = _wp$data.withDispatch;
+var _wp$compose = wp.compose,
+    compose = _wp$compose.compose,
+    withInstanceId = _wp$compose.withInstanceId;
+var CheckboxControl = wp.components.CheckboxControl;
+/**
+ * Internal dependencies
+ */
+
+
+
+function BlockManagerCategory(_ref) {
+  var instanceId = _ref.instanceId,
+      category = _ref.category,
+      blockTypes = _ref.blockTypes,
+      hiddenBlockTypes = _ref.hiddenBlockTypes,
+      toggleVisible = _ref.toggleVisible,
+      toggleAllVisible = _ref.toggleAllVisible;
+
+  if (!blockTypes.length) {
+    return null;
+  }
+
+  var checkedBlockNames = lodash__WEBPACK_IMPORTED_MODULE_2__["without"].apply(void 0, [Object(lodash__WEBPACK_IMPORTED_MODULE_2__["map"])(blockTypes, 'name')].concat(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(hiddenBlockTypes)));
+  var titleId = 'edit-post-manage-blocks-modal__category-title-' + instanceId;
+  var isAllChecked = checkedBlockNames.length === blockTypes.length;
+  var ariaChecked;
+
+  if (isAllChecked) {
+    ariaChecked = 'true';
+  } else if (checkedBlockNames.length > 0) {
+    ariaChecked = 'mixed';
+  } else {
+    ariaChecked = 'false';
+  }
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+    role: "group",
+    "aria-labelledby": titleId,
+    className: "edit-post-manage-blocks-modal__category"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(CheckboxControl, {
+    checked: isAllChecked,
+    onChange: toggleAllVisible,
+    className: "edit-post-manage-blocks-modal__category-title",
+    "aria-checked": ariaChecked,
+    label: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("span", {
+      id: titleId
+    }, category.title)
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_checklist__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    blockTypes: blockTypes,
+    value: checkedBlockNames,
+    onItemChange: toggleVisible
+  }));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (compose([withInstanceId, withSelect(function (select) {
+  var _select = select('core/edit-post'),
+      getPreference = _select.getPreference;
+
+  return {
+    hiddenBlockTypes: getPreference('hiddenBlockTypes')
+  };
+}), withDispatch(function (dispatch, ownProps) {
+  var _dispatch = dispatch('core/edit-post'),
+      showBlockTypes = _dispatch.showBlockTypes,
+      hideBlockTypes = _dispatch.hideBlockTypes;
+
+  return {
+    toggleVisible: function toggleVisible(blockName, nextIsChecked) {
+      if (nextIsChecked) {
+        showBlockTypes(blockName);
+      } else {
+        hideBlockTypes(blockName);
+      }
+    },
+    toggleAllVisible: function toggleAllVisible(nextIsChecked) {
+      var blockNames = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["map"])(ownProps.blockTypes, 'name');
+
+      if (nextIsChecked) {
+        showBlockTypes(blockNames);
+      } else {
+        hideBlockTypes(blockNames);
+      }
+    }
+  };
+})])(BlockManagerCategory));
+
+/***/ }),
+
+/***/ "./src/admin/block-manager/checklist.js":
+/*!**********************************************!*\
+  !*** ./src/admin/block-manager/checklist.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * External dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+var Fragment = wp.element.Fragment;
+var BlockIcon = wp.blockEditor.BlockIcon;
+var CheckboxControl = wp.components.CheckboxControl;
+
+function BlockTypesChecklist(_ref) {
+  var blockTypes = _ref.blockTypes,
+      value = _ref.value,
+      onItemChange = _ref.onItemChange;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("ul", {
+    className: "edit-post-manage-blocks-modal__checklist"
+  }, blockTypes.map(function (blockType) {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("li", {
+      key: blockType.name,
+      className: "edit-post-manage-blocks-modal__checklist-item"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(CheckboxControl, {
+      label: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, blockType.title, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BlockIcon, {
+        icon: blockType.icon
+      })),
+      checked: value.includes(blockType.name),
+      onChange: Object(lodash__WEBPACK_IMPORTED_MODULE_1__["partial"])(onItemChange, blockType.name)
+    }));
+  }));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (BlockTypesChecklist);
+
+/***/ }),
+
+/***/ "./src/admin/block-manager/index.js":
+/*!******************************************!*\
+  !*** ./src/admin/block-manager/index.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _category__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./category */ "./src/admin/block-manager/category.js");
+
+
+/**
+ * External dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+var _wp$i18n = wp.i18n,
+    __ = _wp$i18n.__,
+    _n = _wp$i18n._n,
+    sprintf = _wp$i18n.sprintf;
+var withSelect = wp.data.withSelect;
+var _wp$compose = wp.compose,
+    compose = _wp$compose.compose,
+    withState = _wp$compose.withState;
+var TextControl = wp.components.TextControl;
+var getBlockTypes = wp.blocks.getBlockTypes;
+/**
+ * Internal dependencies
+ */
+
+
+
+function BlockManager(_ref) {
+  var search = _ref.search,
+      setState = _ref.setState,
+      blockTypes = _ref.blockTypes,
+      categories = _ref.categories,
+      hasBlockSupport = _ref.hasBlockSupport,
+      isMatchingSearchTerm = _ref.isMatchingSearchTerm,
+      numberOfHiddenBlocks = _ref.numberOfHiddenBlocks;
+  // Filtering occurs here (as opposed to `withSelect`) to avoid wasted
+  // wasted renders by consequence of `Array#filter` producing a new
+  // value reference on each call.
+  blockTypes = blockTypes.filter(function (blockType) {
+    return hasBlockSupport(blockType, 'inserter', true) && (!search || isMatchingSearchTerm(blockType, search)) && !blockType.parent;
+  });
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: "edit-post-manage-blocks-modal__content"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    type: "search",
+    label: __('Search for a block'),
+    value: search,
+    onChange: function onChange(nextSearch) {
+      return setState({
+        search: nextSearch
+      });
+    },
+    className: "edit-post-manage-blocks-modal__search"
+  }), !!numberOfHiddenBlocks && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: "edit-post-manage-blocks-modal__disabled-blocks-count"
+  }, sprintf(_n('%1$d block is disabled.', '%1$d blocks are disabled.', numberOfHiddenBlocks), numberOfHiddenBlocks)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    tabIndex: "0",
+    role: "region",
+    "aria-label": __('Available block types'),
+    className: "edit-post-manage-blocks-modal__results"
+  }, blockTypes.length === 0 && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+    className: "edit-post-manage-blocks-modal__no-results"
+  }, __('No blocks found.')), categories.map(function (category) {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_category__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      key: category.slug,
+      category: category,
+      blockTypes: Object(lodash__WEBPACK_IMPORTED_MODULE_1__["filter"])(blockTypes, {
+        category: category.slug
+      })
+    });
+  })));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (compose([withState({
+  search: ''
+}), withSelect(function (select) {
+  var _select = select('core/blocks'),
+      getCategories = _select.getCategories,
+      hasBlockSupport = _select.hasBlockSupport,
+      isMatchingSearchTerm = _select.isMatchingSearchTerm;
+
+  var _select2 = select('core/edit-post'),
+      getPreference = _select2.getPreference;
+
+  var hiddenBlockTypes = getPreference('hiddenBlockTypes');
+  var numberOfHiddenBlocks = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["isArray"])(hiddenBlockTypes) && hiddenBlockTypes.length;
+  return {
+    blockTypes: getBlockTypes(),
+    categories: getCategories(),
+    hasBlockSupport: hasBlockSupport,
+    isMatchingSearchTerm: isMatchingSearchTerm,
+    numberOfHiddenBlocks: numberOfHiddenBlocks
+  };
+})])(BlockManager));
+
+/***/ }),
+
 /***/ "./src/admin/docs/icon.js":
 /*!********************************!*\
   !*** ./src/admin/docs/icon.js ***!
@@ -6936,6 +7287,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _docs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./docs */ "./src/admin/docs/index.js");
 /* harmony import */ var _extensions_components_manager_components_manager__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../extensions/components/manager/components/manager */ "./src/extensions/components/manager/components/manager.js");
+/* harmony import */ var _block_manager___WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./block-manager/ */ "./src/admin/block-manager/index.js");
 
 
 
@@ -6948,6 +7300,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
+
 /**
  * WordPress dependencies
  */
@@ -6955,6 +7308,7 @@ __webpack_require__.r(__webpack_exports__);
 var _wp$i18n = wp.i18n,
     __ = _wp$i18n.__,
     sprintf = _wp$i18n.sprintf;
+var registerCoreBlocks = wp.blockLibrary.registerCoreBlocks;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component,
@@ -6996,6 +7350,10 @@ function (_Component) {
             name: 'ek-features-manager',
             title: 'Features Manager',
             className: 'ek-settings-features-manager'
+          }, {
+            name: 'ek-blocks-manager',
+            title: 'Blocks Manager',
+            className: 'ek-settings-blocks-manager'
           }]
         }, function (tab) {
           switch (tab.name) {
@@ -7024,6 +7382,9 @@ function (_Component) {
               return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('All features are active by default but you have complete control over each one of them. Disable any features do not want to use and re-enable them anytime on this page or under the "EditorsKit Settings" on Gutenberg editor. Just uncheck the box and it will automatically be saved.', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
                 className: "editorskit-features-manager-items-wrapper"
               }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_extensions_components_manager_components_manager__WEBPACK_IMPORTED_MODULE_7__["default"], null)));
+
+            case 'ek-blocks-manager':
+              return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Manage each individual blocks! You can enable or disable any blocks you want and it will be reflected on Gutenberg block manager settings. Just uncheck the box and it will automatically be saved.', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_block_manager___WEBPACK_IMPORTED_MODULE_8__["default"], null));
           }
         });
       };
@@ -7046,6 +7407,7 @@ function (_Component) {
 }(Component);
 
 wp.domReady(function () {
+  registerCoreBlocks();
   render(Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(EditorsKitSettings, null), document.querySelector('.editorskit-settings-wrap'));
 });
 
