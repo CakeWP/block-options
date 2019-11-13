@@ -123,6 +123,22 @@ class EditorsKit_Block_Assets {
 			false
 		);
 
+		if ( current_theme_supports( 'editorskit-devtools' ) ) {
+
+			$theme_support = get_theme_support( 'editorskit-devtools' );
+
+			if ( $theme_support ) {
+
+				wp_enqueue_script(
+					$this->slug . '-devtools',
+					$this->url . '/build/devtools.js',
+					array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api', 'wp-editor', 'wp-hooks', 'lodash' ),
+					time(),
+					false
+				);
+			}
+		}
+
 		$version = '';
 		$is_core = true;
 
@@ -176,6 +192,7 @@ class EditorsKit_Block_Assets {
 
 		// Remove EditorsKit JS file when post is not using Gutenberg.
 		wp_dequeue_script( $this->slug . '-editor' );
+		wp_dequeue_script( $this->slug . '-devtools' );
 	}
 
 	/**
