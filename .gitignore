@@ -1,6 +1,7 @@
 **/node_modules/**
 **/vendor/**
 build/*.php
+build/*.asset.php
 build/*.map
 coverage
 cypress
