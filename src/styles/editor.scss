@@ -174,3 +174,14 @@
 .block-editor-writing-flow {
 	height: auto;
 }
+
+/*--------------------------------------------------------------
+# Improve Block with DropZone
+--------------------------------------------------------------*/
+.components-placeholder {
+
+	&.editor-media-placeholder,
+	&.block-editor-media-placeholder {
+		outline: 1px dashed #8d96a0;
+	}
+}

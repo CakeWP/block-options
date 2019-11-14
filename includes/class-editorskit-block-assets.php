@@ -68,6 +68,7 @@ class EditorsKit_Block_Assets {
 
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
 		add_action( 'init', array( $this, 'editor_assets' ), 9999 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'filter_admin_assets' ) );
 	}
 
 	/**
@@ -122,6 +123,22 @@ class EditorsKit_Block_Assets {
 			false
 		);
 
+		if ( current_theme_supports( 'editorskit-devtools' ) ) {
+
+			$theme_support = get_theme_support( 'editorskit-devtools' );
+
+			if ( $theme_support ) {
+
+				wp_enqueue_script(
+					$this->slug . '-devtools',
+					$this->url . '/build/devtools.js',
+					array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api', 'wp-editor', 'wp-hooks', 'lodash' ),
+					time(),
+					false
+				);
+			}
+		}
+
 		$version = '';
 		$is_core = true;
 
@@ -161,13 +178,30 @@ class EditorsKit_Block_Assets {
 	}
 
 	/**
+	 * Unregister JS assets when post type is not using Gutenberg
+	 *
+	 * @access public
+	 */
+	public function filter_admin_assets() {
+		global $current_screen;
+
+		// Check if Gutenberg editor is loaded on the screen.
+		if ( ( method_exists( $current_screen, 'is_block_editor' ) && $current_screen->is_block_editor() ) ) {
+			return;
+		}
+
+		// Remove EditorsKit JS file when post is not using Gutenberg.
+		wp_dequeue_script( $this->slug . '-editor' );
+		wp_dequeue_script( $this->slug . '-devtools' );
+	}
+
+	/**
 	 * Checks if admin page is the 'edit' or 'new-post' screen.
 	 *
 	 * @return bool true or false
 	 */
 	function is_edit_or_new_admin_page() { // phpcs:ignore
 		global $pagenow;
-
 		return ( is_admin() && ( $pagenow === 'post.php' || $pagenow === 'post-new.php' ) ); // phpcs:ignore
 	}
 

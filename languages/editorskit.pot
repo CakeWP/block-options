@@ -3,6 +3,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+<<<<<<< HEAD
 #: src/extensions/block-styles/list/index.js:15
 msgid "None"
 msgstr ""
@@ -25,4 +26,12 @@ msgstr ""
 
 #: src/extensions/block-styles/list/index.js:9
 msgid "Default"
+=======
+#: src/blocks/lorem/index.js:19
+msgid "Lorem Dev Tool"
+msgstr ""
+
+#: src/blocks/lorem/index.js:32
+msgid "Create lorem ipsum placeholder paragraph."
+>>>>>>> master
 msgstr ""
