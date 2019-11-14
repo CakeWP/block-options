@@ -4,7 +4,7 @@ Plugin URI: https://editorskit.com
 Contributors: phpbits
 Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenberg editor
 Requires at least: 5.0
-Tested up to: 5.2
+Tested up to: 5.3
 Requires PHP: 5.6
 Stable tag: 1.18.3
 License: GPL-3.0
@@ -150,6 +150,13 @@ e.g.
 
 
 == Changelog ==
+
+= 1.20 =
+* New: Add [Gutenberg Block Manager](https://github.com/phpbits/block-options/pull/179) directly on EditorsKit > Settings page.
+* New: Create [developer tools for shortcuts](https://github.com/phpbits/block-options/pull/173) that can be enabled using theme support.
+* New: Add `add_theme_support( 'editorskit-color-palette-classnames' )` in order to use theme color palette specific classnames for color formats.
+* Tweaks: Improve Image and Gallery [Blocks DropZone](https://github.com/phpbits/block-options/pull/175) styling
+* Fixes: Prevent error and [conflicts with third party plugins](https://github.com/phpbits/block-options/pull/184) that is relying on Classic Editor.
 
 = 1.19 =
 * New: Better user onboarding and [welcome page with docs & tutorials](https://github.com/phpbits/block-options/issues/162)
