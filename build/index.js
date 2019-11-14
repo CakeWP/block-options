@@ -15365,7 +15365,7 @@ function (_Component) {
           if (color) {
             var colorObject = null;
 
-            if (typeof window.editorskitInfo !== "undefined" && window.editorskitInfo.supports.color_palette) {
+            if (typeof window.editorskitInfo !== 'undefined' && window.editorskitInfo.supports.color_palette) {
               colorObject = getColorObjectByColorValue(colors, color);
             }
 
@@ -18492,14 +18492,14 @@ function (_Component) {
           if (color) {
             var colorObject = null;
 
-            if (typeof window.editorskitInfo !== "undefined" && window.editorskitInfo.supports.color_palette) {
+            if (typeof window.editorskitInfo !== 'undefined' && window.editorskitInfo.supports.color_palette) {
               colorObject = getColorObjectByColorValue(colors, color);
             }
 
             _onChange(applyFormat(value, {
               type: name,
               attributes: colorObject ? {
-                class: getColorClassName("color", colorObject.slug)
+                class: getColorClassName('color', colorObject.slug)
               } : {
                 style: "color:".concat(color)
               }

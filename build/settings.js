@@ -7120,26 +7120,29 @@ function (_Component) {
         name: 'list-block-options.md'
       }];
       var toolsDocs = [{
-        title: __('Easily Hide Title', 'block-options'),
-        name: 'hide-title-tools.md'
+        title: __("Easily Hide Title", "block-options"),
+        name: "hide-title-tools.md"
       }, {
-        title: __('Drag and Drop Featured Image', 'block-options'),
-        name: 'drag-drop-featured-image-tools.md'
+        title: __("Drag and Drop Featured Image", "block-options"),
+        name: "drag-drop-featured-image-tools.md"
       }, {
-        title: __('Code Editor Syntax Highlighter', 'block-options'),
-        name: 'syntax-highlighter-tools.md'
+        title: __("Code Editor Syntax Highlighter", "block-options"),
+        name: "syntax-highlighter-tools.md"
       }, {
-        title: __('Disable Auto Saving', 'block-options'),
-        name: 'disable-autosave-tools.md'
+        title: __("Disable Auto Saving", "block-options"),
+        name: "disable-autosave-tools.md"
       }, {
-        title: __('Enable Block Guide Lines', 'block-options'),
-        name: 'block-guidelines-tools.md'
+        title: __("Enable Block Guide Lines", "block-options"),
+        name: "block-guidelines-tools.md"
       }, {
-        title: __('Additional CSS Class(es) Auto Suggestions', 'block-options'),
-        name: 'custom-classnames-tools.md'
+        title: __("Additional CSS Class(es) Auto Suggestions", "block-options"),
+        name: "custom-classnames-tools.md"
       }, {
-        title: __('Accessible Help, Tips & Tricks', 'block-options'),
-        name: 'tips-tricks-tools.md'
+        title: __("Accessible Help, Tips & Tricks", "block-options"),
+        name: "tips-tricks-tools.md"
+      }, {
+        title: __("Enable Developer Tools", "block-options"),
+        name: "developer-tools.md"
       }];
       var visibilityDocs = [{
         title: __('Block Visibility on Desktop, Mobile or Tablet', 'block-options'),
