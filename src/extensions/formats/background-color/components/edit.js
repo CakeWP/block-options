@@ -24,27 +24,27 @@ const title = __( 'Highlight Color', 'block-options' );
 const definedColors = [
 
 	{
-		name: __('Orange Sunrise', 'block-options'),
+		name: __( 'Orange Sunrise', 'block-options' ),
 		slug: 'orange-sunrise',
 		color: '#f7cc62',
 	},
 	{
-		name: __('Pink Flamingo', 'block-options'),
+		name: __( 'Pink Flamingo', 'block-options' ),
 		slug: 'pink-flamingo',
 		color: '#ffbfb5',
 	},
 	{
-		name: __('Spring Green', 'block-options'),
+		name: __( 'Spring Green', 'block-options' ),
 		slug: 'spring-green',
 		color: '#b5dcaf',
 	},
 	{
-		name: __('Blue Moon', 'block-options'),
+		name: __( 'Blue Moon', 'block-options' ),
 		slug: 'blue-moon',
 		color: '#d6e8fa',
 	},
 	{
-		name: __('Purple Mist', 'block-options'),
+		name: __( 'Purple Mist', 'block-options' ),
 		slug: 'purple-mist',
 		color: '#d8c3ff',
 	},
@@ -82,16 +82,16 @@ class Edit extends Component {
 
 		if ( activeColorFormat ) {
 			const styleColor = activeColorFormat.attributes.style;
-			
+
 			if ( styleColor ) {
 				activeColor = styleColor.replace( new RegExp( `^background-color:\\s*` ), '' );
 			}
 
 			const currentClass = activeColorFormat.attributes.class;
 
-			if (currentClass) {
-				const colorSlug = currentClass.replace(/.*has-(.*?)-background-color.*/, '$1');
-				activeColor = getColorObjectByAttributeValues(colors, colorSlug).color;
+			if ( currentClass ) {
+				const colorSlug = currentClass.replace( /.*has-(.*?)-background-color.*/, '$1' );
+				activeColor = getColorObjectByAttributeValues( colors, colorSlug ).color;
 			}
 		}
 
@@ -128,14 +128,22 @@ class Edit extends Component {
 									value={ activeColor }
 									onChange={ ( color ) => {
 										if ( color ) {
-											const colorObject = getColorObjectByColorValue(colors, color);
+											let colorObject = null;
+
+											if (
+												typeof window.editorskitInfo !== 'undefined' &&
+												window.editorskitInfo.supports.color_palette
+											) {
+												colorObject = getColorObjectByColorValue( colors, color );
+											}
+
 											onChange(
 												applyFormat( value, {
 													type: name,
 													attributes: colorObject ? {
-														class: getColorClassName('background-color', colorObject.slug),
+														class: getColorClassName( 'background-color', colorObject.slug ),
 													} : {
-														style: `background-color:${color}`,
+														style: `background-color:${ color }`,
 													},
 												} )
 											);
@@ -157,7 +165,7 @@ class Edit extends Component {
 
 export default compose(
 	withSelect( () => {
-		const { colors } = select('core/block-editor').getSettings();
+		const { colors } = select( 'core/block-editor' ).getSettings();
 
 		return {
 			colors: colors ? colors : definedColors,

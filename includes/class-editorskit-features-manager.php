@@ -189,22 +189,22 @@ class EditorsKit_Features_Manager {
 					'name'  => 'options',
 					'label' => __( 'Block Options', 'editorskit' ),
 					'items' => array(
-						'copy'            => array(
+						'copy'               => array(
 							'name'  => 'copy',
 							'label' => __( 'Copy Selected Block(s)', 'editorskit' ),
 							'value' => true,
 						),
-						'navigator'       => array(
+						'navigator'          => array(
 							'name'  => 'navigator',
 							'label' => __( 'Block Navigator', 'editorskit' ),
 							'value' => true,
 						),
-						'export'          => array(
+						'export'             => array(
 							'name'  => 'export',
 							'label' => __( 'Export as JSON', 'editorskit' ),
 							'value' => true,
 						),
-						'listBlockFontSize' => array(
+						'listBlockFontSize'  => array(
 							'name'  => 'listBlockFontSize',
 							'label' => __( 'List Block Font Size', 'editorskit' ),
 							'value' => true,
@@ -214,17 +214,17 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'List Block Text Color', 'editorskit' ),
 							'value' => true,
 						),
-						'mediaTextLayout' => array(
+						'mediaTextLayout'    => array(
 							'name'  => 'mediaTextLayout',
 							'label' => __( 'Media Text Block Layout', 'editorskit' ),
 							'value' => true,
 						),
-						'mediaTextLink'   => array(
+						'mediaTextLink'      => array(
 							'name'  => 'mediaTextLink',
 							'label' => __( 'Media Text Block Link', 'editorskit' ),
 							'value' => true,
 						),
-						'setAsFeatured'   => array(
+						'setAsFeatured'      => array(
 							'name'  => 'setAsFeatured',
 							'label' => __( 'Set Image Block as Featured', 'editorskit' ),
 							'value' => true,

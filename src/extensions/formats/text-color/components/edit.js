@@ -41,22 +41,20 @@ class Edit extends Component {
 
 		const activeColorFormat = getActiveFormat( value, name );
 
-		if ( activeColorFormat) {
+		if ( activeColorFormat ) {
 			const styleColor = activeColorFormat.attributes.style;
 
-			if (styleColor) {
-				activeColor = styleColor.replace(new RegExp(`^color:\\s*`), '');
+			if ( styleColor ) {
+				activeColor = styleColor.replace( new RegExp( `^color:\\s*` ), '' );
 			}
 
 			const currentClass = activeColorFormat.attributes.class;
 
-			if (currentClass) {
-				const colorSlug = currentClass.replace(/.*has-(.*?)-color.*/, '$1');
-				activeColor = getColorObjectByAttributeValues(colors, colorSlug).color;
+			if ( currentClass ) {
+				const colorSlug = currentClass.replace( /.*has-(.*?)-color.*/, '$1' );
+				activeColor = getColorObjectByAttributeValues( colors, colorSlug ).color;
 			}
 		}
-
-		
 
 		return (
 			<Fragment>
@@ -93,16 +91,27 @@ class Edit extends Component {
 									value={ activeColor }
 									onChange={ ( color ) => {
 										if ( color ) {
-											const colorObject = getColorObjectByColorValue(colors, color);
+											let colorObject = null;
 
+											if (
+												typeof window.editorskitInfo !== 'undefined' &&
+												window.editorskitInfo.supports.color_palette
+											) {
+												colorObject = getColorObjectByColorValue( colors, color );
+											}
 											onChange(
 												applyFormat( value, {
 													type: name,
-													attributes: colorObject ? {
-														class: getColorClassName('color', colorObject.slug),
-													} : {
-														style: `color:${color}`,
-													},
+													attributes: colorObject ?
+														{
+															class: getColorClassName(
+																'color',
+																colorObject.slug
+															),
+														} :
+														{
+															style: `color:${ color }`,
+														},
 												} )
 											);
 										} else {
@@ -123,7 +132,7 @@ class Edit extends Component {
 
 export default compose(
 	withSelect( () => {
-		const { colors } = select('core/block-editor').getSettings();
+		const { colors } = select( 'core/block-editor' ).getSettings();
 
 		return {
 			colors: colors ? colors : [],

@@ -3,11 +3,13 @@
  */
 import EditorsKitDocs from './docs';
 import FeaturesManager from '../extensions/components/manager/components/manager';
+import BlockManager from './block-manager/';
 
 /**
  * WordPress dependencies
  */
 const { __, sprintf } = wp.i18n;
+const { registerCoreBlocks } = wp.blockLibrary;
 const { Fragment, Component, RawHTML, render } = wp.element;
 const { TabPanel, Panel, PanelBody, PanelRow } = wp.components;
 
@@ -31,6 +33,11 @@ class EditorsKitSettings extends Component {
 						name: 'ek-features-manager',
 						title: 'Features Manager',
 						className: 'ek-settings-features-manager',
+					},
+					{
+						name: 'ek-blocks-manager',
+						title: 'Blocks Manager',
+						className: 'ek-settings-blocks-manager',
 					},
 				] }>
 				{
@@ -75,6 +82,15 @@ class EditorsKitSettings extends Component {
 										</div>
 									</Fragment>
 								);
+
+							case 'ek-blocks-manager':
+								return (
+									<Fragment>
+										<p>{ __( 'Manage each individual blocks! You can enable or disable any blocks you want and it will be reflected on Gutenberg block manager settings. Just uncheck the box and it will automatically be saved.', 'block-options' ) }</p>
+										<BlockManager />
+									</Fragment>
+
+								);
 						}
 					}
 				}
@@ -107,6 +123,7 @@ class EditorsKitSettings extends Component {
 }
 
 wp.domReady( () => {
+	registerCoreBlocks();
 	render(
 		<EditorsKitSettings />,
 		document.querySelector( '.editorskit-settings-wrap' )

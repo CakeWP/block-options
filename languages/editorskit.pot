@@ -27,16 +27,6 @@ msgstr ""
 msgid "Purple Mist"
 msgstr ""
 
-#: src/extensions/formats/background-color/index.js:18
-msgid "Background Color"
-msgstr ""
-
-#: src/extensions/formats/text-color/components/edit.js:14
-#: src/extensions/formats/text-color/components/edit.js:18
-#: src/extensions/formats/text-color/index.js:18
+#: src/extensions/formats/text-color/components/edit.js:13
 msgid "Text Color"
-msgstr ""
-
-#: src/extensions/formats/underline/index.js:49
-msgid "Underline"
 msgstr ""

@@ -15363,7 +15363,11 @@ function (_Component) {
         value: activeColor,
         onChange: function onChange(color) {
           if (color) {
-            var colorObject = getColorObjectByColorValue(colors, color);
+            var colorObject = null;
+
+            if (typeof window.editorskitInfo !== "undefined" && window.editorskitInfo.supports.color_palette) {
+              colorObject = getColorObjectByColorValue(colors, color);
+            }
 
             _onChange(applyFormat(value, {
               type: name,
@@ -18486,12 +18490,16 @@ function (_Component) {
         value: activeColor,
         onChange: function onChange(color) {
           if (color) {
-            var colorObject = getColorObjectByColorValue(colors, color);
+            var colorObject = null;
+
+            if (typeof window.editorskitInfo !== "undefined" && window.editorskitInfo.supports.color_palette) {
+              colorObject = getColorObjectByColorValue(colors, color);
+            }
 
             _onChange(applyFormat(value, {
               type: name,
               attributes: colorObject ? {
-                class: getColorClassName('color', colorObject.slug)
+                class: getColorClassName("color", colorObject.slug)
               } : {
                 style: "color:".concat(color)
               }
