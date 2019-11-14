@@ -153,7 +153,7 @@ class EditorsKit_Block_Assets {
 				$version = '4.8';
 			} elseif ( version_compare( $wp_version, '5.3' ) >= 0 ) {
 
-				$version = '6.5';
+				$version = '6.6';
 			}
 		}
 

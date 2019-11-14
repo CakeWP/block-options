@@ -12,4 +12,5 @@ node_modules
 .ftppass
 *.cache
 sftp.json.github/
-
+.vscode
+.vscode/
