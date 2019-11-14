@@ -168,6 +168,9 @@ class EditorsKit_Block_Assets {
 				'version' => $version,
 				'is_core' => $is_core,
 			),
+			'supports'   => array(
+				'color_palette' => get_theme_support( 'editorskit-color-palette-classnames' ),
+			),
 		);
 
 		wp_add_inline_script( $this->slug . '-editor', 'window.editorskitInfo = ' . wp_json_encode( $global ) . ';', 'before' );

@@ -1,7 +1,6 @@
 /**
  * Internal dependencies
  */
-import { underline } from './underline';
 import { justify } from './justify';
 import { textColor } from './text-color';
 import { backgroundColor } from './background-color';
@@ -24,7 +23,6 @@ const isDisabled = select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKi
 
 function registerEditorsKitFormats() {
 	[
-		underline,
 		justify,
 		textColor,
 		backgroundColor,

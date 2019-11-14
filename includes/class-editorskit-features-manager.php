@@ -152,11 +152,6 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Text Color', 'editorskit' ),
 							'value' => true,
 						),
-						'underline'        => array(
-							'name'  => 'underline',
-							'label' => __( 'Underline', 'editorskit' ),
-							'value' => true,
-						),
 						'uppercase'        => array(
 							'name'  => 'uppercase',
 							'label' => __( 'Uppercase', 'editorskit' ),

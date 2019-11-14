@@ -15209,9 +15209,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../icon */ "./src/extensions/formats/background-color/icon.js");
+/* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../icon */ "./src/extensions/formats/background-color/icon.js");
 
 
 
@@ -15223,7 +15221,6 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * External dependencies
  */
-
 
 /**
  * Internal dependencies
@@ -15241,7 +15238,11 @@ var _wp$element = wp.element,
 var _wp$data = wp.data,
     select = _wp$data.select,
     withSelect = _wp$data.withSelect;
-var BlockControls = wp.blockEditor.BlockControls;
+var _wp$blockEditor = wp.blockEditor,
+    BlockControls = _wp$blockEditor.BlockControls,
+    getColorClassName = _wp$blockEditor.getColorClassName,
+    getColorObjectByColorValue = _wp$blockEditor.getColorObjectByColorValue,
+    getColorObjectByAttributeValues = _wp$blockEditor.getColorObjectByAttributeValues;
 var _wp$richText = wp.richText,
     applyFormat = _wp$richText.applyFormat,
     removeFormat = _wp$richText.removeFormat,
@@ -15257,6 +15258,28 @@ var _wp$compose = wp.compose,
 var name = 'editorskit/background';
 
 var title = __('Highlight Color', 'block-options');
+
+var definedColors = [{
+  name: __('Orange Sunrise', 'block-options'),
+  slug: 'orange-sunrise',
+  color: '#f7cc62'
+}, {
+  name: __('Pink Flamingo', 'block-options'),
+  slug: 'pink-flamingo',
+  color: '#ffbfb5'
+}, {
+  name: __('Spring Green', 'block-options'),
+  slug: 'spring-green',
+  color: '#b5dcaf'
+}, {
+  name: __('Blue Moon', 'block-options'),
+  slug: 'blue-moon',
+  color: '#d6e8fa'
+}, {
+  name: __('Purple Mist', 'block-options'),
+  slug: 'purple-mist',
+  color: '#d8c3ff'
+}];
 
 var Edit =
 /*#__PURE__*/
@@ -15294,30 +15317,9 @@ function (_Component) {
       var _this$props = this.props,
           value = _this$props.value,
           _onChange = _this$props.onChange,
-          isActive = _this$props.isActive;
+          isActive = _this$props.isActive,
+          colors = _this$props.colors;
       var activeColor;
-      var definedColors = [{
-        name: __('Orange Sunrise', 'block-options'),
-        slug: 'orange-sunrise',
-        color: '#f7cc62'
-      }, {
-        name: __('Pink Flamingo', 'block-options'),
-        slug: 'pink-flamingo',
-        color: '#ffbfb5'
-      }, {
-        name: __('Spring Green', 'block-options'),
-        slug: 'spring-green',
-        color: '#b5dcaf'
-      }, {
-        name: __('Blue Moon', 'block-options'),
-        slug: 'blue-moon',
-        color: '#d6e8fa'
-      }, {
-        name: __('Purple Mist', 'block-options'),
-        slug: 'purple-mist',
-        color: '#d8c3ff'
-      }];
-      var colors = Object(lodash__WEBPACK_IMPORTED_MODULE_8__["get"])(select('core/block-editor').getSettings(), ['colors'], definedColors);
       var activeColorFormat = getActiveFormat(value, name);
 
       if (activeColorFormat) {
@@ -15325,6 +15327,13 @@ function (_Component) {
 
         if (styleColor) {
           activeColor = styleColor.replace(new RegExp("^background-color:\\s*"), '');
+        }
+
+        var currentClass = activeColorFormat.attributes.class;
+
+        if (currentClass) {
+          var colorSlug = currentClass.replace(/.*has-(.*?)-background-color.*/, '$1');
+          activeColor = getColorObjectByAttributeValues(colors, colorSlug).color;
         }
       }
 
@@ -15334,7 +15343,7 @@ function (_Component) {
         className: classnames__WEBPACK_IMPORTED_MODULE_7___default()('components-button components-icon-button components-editorskit-toolbar__control components-toolbar__control components-editorskit-background-format', {
           'is-active': isActive
         }),
-        icon: _icon__WEBPACK_IMPORTED_MODULE_9__["default"].highlighter,
+        icon: _icon__WEBPACK_IMPORTED_MODULE_8__["default"].highlighter,
         "aria-haspopup": "true",
         tooltip: title,
         onClick: this.toggle
@@ -15354,9 +15363,17 @@ function (_Component) {
         value: activeColor,
         onChange: function onChange(color) {
           if (color) {
+            var colorObject = null;
+
+            if (typeof window.editorskitInfo !== "undefined" && window.editorskitInfo.supports.color_palette) {
+              colorObject = getColorObjectByColorValue(colors, color);
+            }
+
             _onChange(applyFormat(value, {
               type: name,
-              attributes: {
+              attributes: colorObject ? {
+                class: getColorClassName('background-color', colorObject.slug)
+              } : {
                 style: "background-color:".concat(color)
               }
             }));
@@ -15372,7 +15389,11 @@ function (_Component) {
 }(Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (compose(withSelect(function () {
+  var _select$getSettings = select('core/block-editor').getSettings(),
+      colors = _select$getSettings.colors;
+
   return {
+    colors: colors ? colors : definedColors,
     isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitHighlightFormats')
   };
 }), ifCondition(function (props) {
@@ -15445,7 +15466,8 @@ var backgroundColor = {
   tagName: 'span',
   className: 'has-inline-background',
   attributes: {
-    style: 'style'
+    style: 'style',
+    class: 'class'
   },
   edit: _components_edit__WEBPACK_IMPORTED_MODULE_0__["default"]
 };
@@ -15624,24 +15646,22 @@ var clear = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js");
 /* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _underline__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./underline */ "./src/extensions/formats/underline/index.js");
-/* harmony import */ var _justify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./justify */ "./src/extensions/formats/justify/index.js");
-/* harmony import */ var _text_color__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./text-color */ "./src/extensions/formats/text-color/index.js");
-/* harmony import */ var _background_color__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./background-color */ "./src/extensions/formats/background-color/index.js");
-/* harmony import */ var _markdown__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./markdown */ "./src/extensions/formats/markdown/index.js");
-/* harmony import */ var _subscript__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./subscript */ "./src/extensions/formats/subscript/index.js");
-/* harmony import */ var _superscript__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./superscript */ "./src/extensions/formats/superscript/index.js");
-/* harmony import */ var _clear__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./clear */ "./src/extensions/formats/clear/index.js");
-/* harmony import */ var _uppercase__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./uppercase */ "./src/extensions/formats/uppercase/index.js");
-/* harmony import */ var _link__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./link */ "./src/extensions/formats/link/index.js");
-/* harmony import */ var _alignment__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./alignment */ "./src/extensions/formats/alignment/index.js");
-/* harmony import */ var _nbsp__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./nbsp */ "./src/extensions/formats/nbsp/index.js");
+/* harmony import */ var _justify__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./justify */ "./src/extensions/formats/justify/index.js");
+/* harmony import */ var _text_color__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./text-color */ "./src/extensions/formats/text-color/index.js");
+/* harmony import */ var _background_color__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./background-color */ "./src/extensions/formats/background-color/index.js");
+/* harmony import */ var _markdown__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./markdown */ "./src/extensions/formats/markdown/index.js");
+/* harmony import */ var _subscript__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./subscript */ "./src/extensions/formats/subscript/index.js");
+/* harmony import */ var _superscript__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./superscript */ "./src/extensions/formats/superscript/index.js");
+/* harmony import */ var _clear__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./clear */ "./src/extensions/formats/clear/index.js");
+/* harmony import */ var _uppercase__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./uppercase */ "./src/extensions/formats/uppercase/index.js");
+/* harmony import */ var _link__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./link */ "./src/extensions/formats/link/index.js");
+/* harmony import */ var _alignment__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./alignment */ "./src/extensions/formats/alignment/index.js");
+/* harmony import */ var _nbsp__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./nbsp */ "./src/extensions/formats/nbsp/index.js");
 
 
 /**
  * Internal dependencies
  */
-
 
 
 
@@ -15662,7 +15682,7 @@ var select = wp.data.select;
 var isDisabled = select('core/edit-post').isFeatureActive('disableEditorsKitLinkFormats');
 
 function registerEditorsKitFormats() {
-  [_underline__WEBPACK_IMPORTED_MODULE_1__["underline"], _justify__WEBPACK_IMPORTED_MODULE_2__["justify"], _text_color__WEBPACK_IMPORTED_MODULE_3__["textColor"], _background_color__WEBPACK_IMPORTED_MODULE_4__["backgroundColor"], _markdown__WEBPACK_IMPORTED_MODULE_5__["markdown"], _subscript__WEBPACK_IMPORTED_MODULE_6__["subscript"], _superscript__WEBPACK_IMPORTED_MODULE_7__["superscript"], _clear__WEBPACK_IMPORTED_MODULE_8__["clear"], _uppercase__WEBPACK_IMPORTED_MODULE_9__["uppercase"], _alignment__WEBPACK_IMPORTED_MODULE_11__["alignment"], _nbsp__WEBPACK_IMPORTED_MODULE_12__["nbsp"], !isDisabled ? _link__WEBPACK_IMPORTED_MODULE_10__["link"] : []].forEach(function (_ref) {
+  [_justify__WEBPACK_IMPORTED_MODULE_1__["justify"], _text_color__WEBPACK_IMPORTED_MODULE_2__["textColor"], _background_color__WEBPACK_IMPORTED_MODULE_3__["backgroundColor"], _markdown__WEBPACK_IMPORTED_MODULE_4__["markdown"], _subscript__WEBPACK_IMPORTED_MODULE_5__["subscript"], _superscript__WEBPACK_IMPORTED_MODULE_6__["superscript"], _clear__WEBPACK_IMPORTED_MODULE_7__["clear"], _uppercase__WEBPACK_IMPORTED_MODULE_8__["uppercase"], _alignment__WEBPACK_IMPORTED_MODULE_10__["alignment"], _nbsp__WEBPACK_IMPORTED_MODULE_11__["nbsp"], !isDisabled ? _link__WEBPACK_IMPORTED_MODULE_9__["link"] : []].forEach(function (_ref) {
     var name = _ref.name,
         settings = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0___default()(_ref, ["name"]);
 
@@ -18347,8 +18367,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_7__);
 
 
 
@@ -18356,15 +18374,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-/**
- * External dependencies
- */
 
 /**
  * WordPress dependencies
  */
-
 var __ = wp.i18n.__;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
@@ -18372,7 +18385,11 @@ var _wp$element = wp.element,
 var _wp$data = wp.data,
     select = _wp$data.select,
     withSelect = _wp$data.withSelect;
-var BlockControls = wp.blockEditor.BlockControls;
+var _wp$blockEditor = wp.blockEditor,
+    BlockControls = _wp$blockEditor.BlockControls,
+    getColorClassName = _wp$blockEditor.getColorClassName,
+    getColorObjectByColorValue = _wp$blockEditor.getColorObjectByColorValue,
+    getColorObjectByAttributeValues = _wp$blockEditor.getColorObjectByAttributeValues;
 var _wp$richText = wp.richText,
     applyFormat = _wp$richText.applyFormat,
     removeFormat = _wp$richText.removeFormat,
@@ -18424,9 +18441,9 @@ function (_Component) {
       var isOpen = this.state.isOpen;
       var _this$props = this.props,
           value = _this$props.value,
-          _onChange = _this$props.onChange;
+          _onChange = _this$props.onChange,
+          colors = _this$props.colors;
       var activeColor;
-      var colors = Object(lodash__WEBPACK_IMPORTED_MODULE_7__["get"])(select('core/block-editor').getSettings(), ['colors'], []);
       var activeColorFormat = getActiveFormat(value, name);
 
       if (activeColorFormat) {
@@ -18434,6 +18451,13 @@ function (_Component) {
 
         if (styleColor) {
           activeColor = styleColor.replace(new RegExp("^color:\\s*"), '');
+        }
+
+        var currentClass = activeColorFormat.attributes.class;
+
+        if (currentClass) {
+          var colorSlug = currentClass.replace(/.*has-(.*?)-color.*/, '$1');
+          activeColor = getColorObjectByAttributeValues(colors, colorSlug).color;
         }
       }
 
@@ -18466,9 +18490,17 @@ function (_Component) {
         value: activeColor,
         onChange: function onChange(color) {
           if (color) {
+            var colorObject = null;
+
+            if (typeof window.editorskitInfo !== "undefined" && window.editorskitInfo.supports.color_palette) {
+              colorObject = getColorObjectByColorValue(colors, color);
+            }
+
             _onChange(applyFormat(value, {
               type: name,
-              attributes: {
+              attributes: colorObject ? {
+                class: getColorClassName("color", colorObject.slug)
+              } : {
                 style: "color:".concat(color)
               }
             }));
@@ -18484,7 +18516,11 @@ function (_Component) {
 }(Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (compose(withSelect(function () {
+  var _select$getSettings = select('core/block-editor').getSettings(),
+      colors = _select$getSettings.colors;
+
   return {
+    colors: colors ? colors : [],
     isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitColorsFormats')
   };
 }), ifCondition(function (props) {
@@ -18524,82 +18560,10 @@ var textColor = {
   tagName: 'span',
   className: 'has-inline-color',
   attributes: {
-    style: 'style'
+    style: 'style',
+    class: 'class'
   },
   edit: _components_edit__WEBPACK_IMPORTED_MODULE_0__["default"]
-};
-
-/***/ }),
-
-/***/ "./src/extensions/formats/underline/index.js":
-/*!***************************************************!*\
-  !*** ./src/extensions/formats/underline/index.js ***!
-  \***************************************************/
-/*! exports provided: underline */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "underline", function() { return underline; });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-
-
-/**
- * WordPress dependencies
- */
-var __ = wp.i18n.__;
-var Fragment = wp.element.Fragment;
-var toggleFormat = wp.richText.toggleFormat;
-var _wp$blockEditor = wp.blockEditor,
-    RichTextToolbarButton = _wp$blockEditor.RichTextToolbarButton,
-    RichTextShortcut = _wp$blockEditor.RichTextShortcut;
-var select = wp.data.select;
-/**
- * Block constants
- */
-
-var name = 'editorskit/underline';
-var underline = {
-  name: name,
-  title: __('Underline', 'block-options'),
-  tagName: 'span',
-  className: null,
-  attributes: {
-    style: 'style'
-  },
-  edit: function edit(_ref) {
-    var isActive = _ref.isActive,
-        value = _ref.value,
-        onChange = _ref.onChange;
-    var isDisabled = select('core/edit-post').isFeatureActive('disableEditorsKitUnderlineFormats');
-    var formatTypes = select('core/rich-text').getFormatTypes();
-    var checkFormats = formatTypes.filter(function (formats) {
-      return formats.name === 'wpcom/underline';
-    });
-
-    var onToggle = function onToggle() {
-      onChange(toggleFormat(value, {
-        type: name,
-        attributes: {
-          style: 'text-decoration: underline;'
-        }
-      }));
-    };
-
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichTextShortcut, {
-      type: "primary",
-      character: "u",
-      onUse: onToggle
-    }), !isDisabled && checkFormats.length === 0 && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichTextToolbarButton, {
-      icon: "editor-underline",
-      title: __('Underline', 'block-options'),
-      onClick: onToggle,
-      isActive: isActive,
-      shortcutType: "primary",
-      shortcutCharacter: "u"
-    }));
-  }
 };
 
 /***/ }),

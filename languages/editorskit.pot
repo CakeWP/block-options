@@ -3,10 +3,30 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/blocks/lorem/index.js:19
-msgid "Lorem Dev Tool"
+#: src/extensions/formats/background-color/components/edit.js:23
+msgid "Highlight Color"
 msgstr ""
 
-#: src/blocks/lorem/index.js:32
-msgid "Create lorem ipsum placeholder paragraph."
+#: src/extensions/formats/background-color/components/edit.js:27
+msgid "Orange Sunrise"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:32
+msgid "Pink Flamingo"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:37
+msgid "Spring Green"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:42
+msgid "Blue Moon"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:47
+msgid "Purple Mist"
+msgstr ""
+
+#: src/extensions/formats/text-color/components/edit.js:13
+msgid "Text Color"
 msgstr ""
