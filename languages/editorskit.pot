@@ -3,6 +3,25 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/formats/text-color/components/edit.js:13
-msgid "Text Color"
+#: src/extensions/advanced-controls/disable-block/index.js:43
+msgid " block has been disabled."
+msgstr ""
+
+#: src/extensions/advanced-controls/disable-block/index.js:89
+msgid "Remove & Disable Block"
+msgstr ""
+
+#: src/extensions/advanced-controls/disable-block/index.js:93
+msgid "Click if you want this block to be disabled on Block Manager."
+msgstr ""
+
+#: src/extensions/advanced-controls/index.js:101
+msgid ""
+"Attention: The display settings (show/hide for mobile, tablet or desktop) "
+"will only take effect once you are on the live page, and not while you're "
+"editing in Gutenberg."
+msgstr ""
+
+#: src/extensions/advanced-controls/index.js:97
+msgid "Responsive"
 msgstr ""
