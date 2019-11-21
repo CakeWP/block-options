@@ -3,6 +3,11 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+#: src/extensions/formats/abbreviation/components/edit.js:27
+#: src/extensions/formats/abbreviation/index.js:19
+msgid "Abbreviation"
+msgstr ""
+
 #: src/extensions/formats/text-color/components/edit.js:13
 msgid "Text Color"
 msgstr ""
