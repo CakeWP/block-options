@@ -14946,12 +14946,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
 /* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
 
 
 
@@ -14959,60 +14959,133 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/**
- * External dependencies
- */
 
 /**
  * WordPress dependencies
  */
-
 var __ = wp.i18n.__;
-var Component = wp.element.Component;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
 var _wp$compose = wp.compose,
     compose = _wp$compose.compose,
     ifCondition = _wp$compose.ifCondition;
-var _wp$data = wp.data,
-    select = _wp$data.select,
-    withSelect = _wp$data.withSelect,
-    withDispatch = _wp$data.withDispatch;
+var withSelect = wp.data.withSelect;
 var RichTextToolbarButton = wp.blockEditor.RichTextToolbarButton;
+var _wp$richText = wp.richText,
+    applyFormat = _wp$richText.applyFormat,
+    removeFormat = _wp$richText.removeFormat,
+    getActiveFormat = _wp$richText.getActiveFormat;
+var _wp$components = wp.components,
+    Modal = _wp$components.Modal,
+    Button = _wp$components.Button,
+    TextControl = _wp$components.TextControl;
+var name = 'editorskit/abbreviation';
 
 var Edit =
 /*#__PURE__*/
 function (_Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(Edit, _Component);
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(Edit, _Component);
 
   function Edit() {
+    var _this;
+
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, Edit);
 
-    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Edit).apply(this, arguments));
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Edit).apply(this, arguments));
+    _this.toggle = _this.toggle.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.state = {
+      isOpen: false,
+      title: '',
+      lang: ''
+    };
+    return _this;
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Edit, [{
+    key: "toggle",
+    value: function toggle() {
+      this.setState(function (state) {
+        return {
+          isOpen: !state.isOpen
+        };
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          blockId = _this$props.blockId,
-          isBlockJustified = _this$props.isBlockJustified,
-          isDisabled = _this$props.isDisabled,
-          updateBlockAttributes = _this$props.updateBlockAttributes;
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(RichTextToolbarButton, {
-        icon: "editor-code",
-        title: __('Abbreviation', 'block-options') // onClick={onToggle}
-        // isActive={isBlockJustified}
+      var _this2 = this;
 
-      });
+      var _this$state = this.state,
+          title = _this$state.title,
+          lang = _this$state.lang;
+      var _this$props = this.props,
+          isActive = _this$props.isActive,
+          value = _this$props.value,
+          onChange = _this$props.onChange;
+      var activeColorFormat = getActiveFormat(value, name);
+      console.log(value);
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(RichTextToolbarButton, {
+        icon: "editor-code",
+        title: __('Abbreviation', 'block-options'),
+        onClick: this.toggle,
+        isActive: isActive
+      }), this.state.isOpen && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Modal, {
+        title: __('Insert Abbreviation', 'block-options'),
+        onRequestClose: this.toggle
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(TextControl, {
+        label: __('Title', 'block-options'),
+        value: activeColorFormat && !title ? activeColorFormat.attributes.title : title,
+        onChange: function onChange(newTitle) {
+          return _this2.setState({
+            title: newTitle
+          });
+        }
+      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(TextControl, {
+        label: __('Language (optional)', 'block-options'),
+        value: activeColorFormat && !lang ? activeColorFormat.attributes.lang : lang,
+        help: __('Example: fr, en, de, etc. Use it only if the abbreviation’s language is different from page main language.', 'block-options'),
+        onChange: function onChange(newLang) {
+          return _this2.setState({
+            lang: newLang
+          });
+        }
+      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Button, {
+        isPrimary: true,
+        isLarge: true,
+        onClick: function onClick() {
+          if (title) {
+            var attributes = {
+              title: title
+            };
+
+            if (lang) {
+              attributes.lang = lang;
+            }
+
+            onChange(applyFormat(value, {
+              type: name,
+              attributes: attributes
+            }));
+          } else {
+            onChange(removeFormat(value, name));
+          }
+
+          _this2.toggle();
+        }
+      }, __('Apply', 'block-options'))));
     }
   }]);
 
   return Edit;
 }(Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (compose(withDispatch(function (dispatch) {
+/* harmony default export */ __webpack_exports__["default"] = (compose(withSelect(function (select) {
   return {
-    updateBlockAttributes: dispatch('core/block-editor').updateBlockAttributes
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitAbbreviationFormats')
   };
+}), ifCondition(function (props) {
+  return !props.isDisabled;
 }))(Edit));
 
 /***/ }),
@@ -15048,6 +15121,10 @@ var abbreviation = {
   title: __('Abbreviation', 'block-options'),
   tagName: 'abbr',
   className: null,
+  attributes: {
+    title: 'title',
+    lang: 'lang'
+  },
   edit: _components_edit__WEBPACK_IMPORTED_MODULE_0__["default"]
 };
 
