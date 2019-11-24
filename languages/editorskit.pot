@@ -3,6 +3,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/formats/text-color/components/edit.js:13
-msgid "Text Color"
+#: src/extensions/block-panel/column-background/index.js:33
+msgid "Color Settings"
+msgstr ""
+
+#: src/extensions/block-panel/column-background/index.js:39
+msgid "Background Color"
 msgstr ""
