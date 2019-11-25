@@ -211,8 +211,12 @@ body:not(.wp-admin) {
 		align-items: center $m;
 	}
 
-	.ek-items-end > div {
-		align-items: flex-end $m;
+	.ek-items-end {
+
+		&.wp-block-cover,
+		> div {
+			align-items: flex-end $m;
+		}
 	}
 
 	.ek-items-baseline > div {
