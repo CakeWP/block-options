@@ -112,6 +112,11 @@ class EditorsKit_Features_Manager {
 					'name'  => 'formats',
 					'label' => __( 'Formats', 'editorskit' ),
 					'items' => array(
+						'abbreviation'  => array(
+							'name'  => 'abbreviation',
+							'label' => __( 'Abbreviation', 'editorskit' ),
+							'value' => true,
+						),
 						'clearFormatting'  => array(
 							'name'  => 'clearFormatting',
 							'label' => __( 'Clear Formatting', 'editorskit' ),
