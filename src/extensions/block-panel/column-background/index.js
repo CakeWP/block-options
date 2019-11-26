@@ -2,11 +2,11 @@
  * WordPress Dependencies
  */
 const { __ } = wp.i18n;
-const { compose } = wp.compose;
+const { compose, ifCondition } = wp.compose;
 const { withSelect } = wp.data;
 const { Fragment } = wp.element;
-const { InspectorControls, FontSizePicker, withColors, PanelColorSettings } = wp.blockEditor;
-const { PanelBody, withFallbackStyles } = wp.components;
+const { InspectorControls, withColors, PanelColorSettings } = wp.blockEditor;
+const { withFallbackStyles } = wp.components;
 
 const applyFallbackStyles = withFallbackStyles((node, ownProps) => {
 	const { backgroundColor } = ownProps.attributes;
@@ -50,10 +50,12 @@ const ColumnColorSettings = (props) => {
 export default compose([
 	withSelect((select) => {
 		return {
-			isFontSizeDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitListBlockFontSizeOptions'),
-			isTextColorDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitListBlockTextColorOptions'),
+			isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitColumnsBackgroundOptions'),
 		};
 	}),
 	withColors({ backgroundColor: 'color' }),
 	applyFallbackStyles,
+	ifCondition((props) => {
+		return !props.isDisabled;
+	}),
 ])(ColumnColorSettings);

@@ -2,6 +2,11 @@
 **/vendor/**
 build/*.php
 build/*.asset.php
+build/admin.asset.php
+build/devtools.asset.php
+build/index.asset.php
+build/settings.asset.php
+build/style.asset.php
 build/*.map
 coverage
 cypress

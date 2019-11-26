@@ -12,6 +12,7 @@ import { uppercase } from './uppercase';
 import { link } from './link';
 import { alignment } from './alignment';
 import { nbsp } from './nbsp';
+import { abbreviation } from './abbreviation';
 
 /**
  * WordPress dependencies
@@ -33,6 +34,7 @@ function registerEditorsKitFormats() {
 		uppercase,
 		alignment,
 		nbsp,
+		abbreviation,
 		! isDisabled ? link : [],
 	].forEach( ( { name, ...settings } ) => {
 		if ( name ) {
