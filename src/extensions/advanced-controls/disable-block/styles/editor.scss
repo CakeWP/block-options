@@ -1,0 +1,27 @@
+.components-base-control {
+
+	&.components-editorskit-disable-block {
+		padding-top: 15px;
+		margin-top: 50px;
+
+		.components-button {
+
+			&.is-primary {
+				background-color: #b52727;
+				border-color: #b52727;
+				height: 34px;
+				line-height: 32px;
+				font-size: 13px;
+
+				&:hover {
+					background-color: #a00;
+					border-color: #a00;
+				}
+			}
+		}
+
+		.components-base-control__help {
+			margin-top: 0;
+		}
+	}
+}

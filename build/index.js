@@ -8293,7 +8293,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _extensions_transform_empty_paragraphs__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./extensions/transform/empty-paragraphs */ "./src/extensions/transform/empty-paragraphs/index.js");
 /* harmony import */ var _extensions_block_styles___WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./extensions/block-styles/ */ "./src/extensions/block-styles/index.js");
 /* harmony import */ var _extensions_shortcuts_select_parent_block__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./extensions/shortcuts/select-parent-block */ "./src/extensions/shortcuts/select-parent-block/index.js");
-/* harmony import */ var _blocks_import__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./blocks/import */ "./src/blocks/import/index.js");
+/* harmony import */ var _extensions_advanced_controls_disable_block__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./extensions/advanced-controls/disable-block */ "./src/extensions/advanced-controls/disable-block/index.js");
+/* harmony import */ var _blocks_import__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./blocks/import */ "./src/blocks/import/index.js");
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -8349,11 +8350,13 @@ var registerBlockType = wp.blocks.registerBlockType; // Extensions
 
  // Shortcuts
 
+ // Disable Block Control
+
  // Register Blocks
 
 
 function registerBlocks() {
-  [_blocks_import__WEBPACK_IMPORTED_MODULE_24__].forEach(function (block) {
+  [_blocks_import__WEBPACK_IMPORTED_MODULE_25__].forEach(function (block) {
     if (!block) {
       return;
     }
@@ -8981,6 +8984,102 @@ function applyFilters() {
 }
 
 applyFilters();
+
+/***/ }),
+
+/***/ "./src/extensions/advanced-controls/disable-block/index.js":
+/*!*****************************************************************!*\
+  !*** ./src/extensions/advanced-controls/disable-block/index.js ***!
+  \*****************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+/**
+ * WordPress Dependencies
+ */
+var __ = wp.i18n.__;
+var addFilter = wp.hooks.addFilter;
+var Fragment = wp.element.Fragment;
+var withDispatch = wp.data.withDispatch;
+var _wp$compose = wp.compose,
+    compose = _wp$compose.compose,
+    createHigherOrderComponent = _wp$compose.createHigherOrderComponent;
+var getBlockType = wp.blocks.getBlockType;
+var InspectorAdvancedControls = wp.blockEditor.InspectorAdvancedControls;
+var Button = wp.components.Button;
+var enhance = compose(withDispatch(function (dispatch) {
+  var _dispatch = dispatch('core/edit-post'),
+      hideBlockTypes = _dispatch.hideBlockTypes;
+
+  var _dispatch2 = dispatch('core/notices'),
+      createNotice = _dispatch2.createNotice;
+
+  var _dispatch3 = dispatch('core/block-editor'),
+      removeBlock = _dispatch3.removeBlock,
+      clearSelectedBlock = _dispatch3.clearSelectedBlock;
+
+  return {
+    editorsKitDisableBlock: function editorsKitDisableBlock(blockName, clientId) {
+      hideBlockTypes(blockName);
+      removeBlock(clientId);
+      clearSelectedBlock();
+      var blockTitle = getBlockType(blockName).title;
+      createNotice('info', blockTitle + __(' block has been disabled.', 'block-options'), {
+        isDismissible: true,
+        type: 'snackbar'
+      });
+    }
+  };
+}));
+/**
+ * Override the default edit UI to include a new block inspector control for
+ * assigning the custom class name, if block supports custom class name.
+ *
+ * @param {Function} BlockEdit Original component.
+ *
+ * @return {string} Wrapped component.
+ */
+
+var withInspectorControl = createHigherOrderComponent(function (BlockEdit) {
+  return enhance(function (_ref) {
+    var props = _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, _ref);
+
+    var name = props.name,
+        clientId = props.clientId,
+        attributes = props.attributes,
+        editorsKitDisableBlock = props.editorsKitDisableBlock;
+    var editorskit = attributes.editorskit;
+
+    if (typeof editorskit !== 'undefined' && typeof editorskit.unit_test !== 'undefined' && editorskit.unit_test && props.isSelected) {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(BlockEdit, props), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InspectorAdvancedControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+        className: "components-base-control components-button-control components-editorskit-disable-block"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+        className: "components-base-control__field"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Button, {
+        isPrimary: true,
+        isLarge: true,
+        isDestructive: true,
+        onClick: function onClick() {
+          editorsKitDisableBlock(name, clientId);
+        }
+      }, __('Remove & Disable Block', 'block-options'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", {
+        className: "components-base-control__help"
+      }, __('Click if you want this block to be disabled on Block Manager.', 'block-options')))));
+    }
+
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(BlockEdit, props);
+  });
+}, 'withInspectorControl');
+addFilter('editor.BlockEdit', 'editorskit/advanced/disable-block', withInspectorControl);
 
 /***/ }),
 
@@ -9700,7 +9799,8 @@ function addAttributes(settings) {
           acf_field: '',
           acf_condition: '',
           acf_value: '',
-          migrated: false
+          migrated: false,
+          unit_test: false
         }
       }
     }); // for version 1 compatibility and migration.
@@ -15024,7 +15124,6 @@ function (_Component) {
           value = _this$props.value,
           onChange = _this$props.onChange;
       var activeColorFormat = getActiveFormat(value, name);
-      console.log(value);
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(RichTextToolbarButton, {
         icon: "editor-code",
         title: __('Abbreviation', 'block-options'),

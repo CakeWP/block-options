@@ -3,11 +3,19 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+#: src/extensions/advanced-controls/disable-block/index.js:38
+msgid " block has been disabled."
+msgstr ""
+
+#: src/extensions/advanced-controls/disable-block/index.js:84
+msgid "Remove & Disable Block"
+msgstr ""
+
+#: src/extensions/advanced-controls/disable-block/index.js:88
+msgid "Click if you want this block to be disabled on Block Manager."
+msgstr ""
+
 #: src/extensions/formats/abbreviation/components/edit.js:47
-#: src/extensions/formats/abbreviation/components/edit.js:53
-#: src/extensions/formats/abbreviation/components/edit.js:51
-#: src/extensions/formats/abbreviation/components/edit.js:50
-#: src/extensions/formats/abbreviation/components/edit.js:49
 #: src/extensions/formats/abbreviation/index.js:19
 msgid "Abbreviation"
 msgstr ""
@@ -30,6 +38,6 @@ msgid ""
 "different from page main language."
 msgstr ""
 
-#: src/extensions/formats/abbreviation/components/edit.js:88
+#: src/extensions/formats/abbreviation/components/edit.js:87
 msgid "Apply"
 msgstr ""

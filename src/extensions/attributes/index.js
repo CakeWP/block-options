@@ -41,6 +41,7 @@ function addAttributes( settings ) {
 					acf_condition: '',
 					acf_value: '',
 					migrated: false,
+					unit_test: false,
 				},
 			},
 		} );
