@@ -3,41 +3,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/advanced-controls/disable-block/index.js:38
-msgid " block has been disabled."
+#: src/extensions/block-panel/column-background/index.js:33
+msgid "Color Settings"
 msgstr ""
 
-#: src/extensions/advanced-controls/disable-block/index.js:84
-msgid "Remove & Disable Block"
-msgstr ""
-
-#: src/extensions/advanced-controls/disable-block/index.js:88
-msgid "Click if you want this block to be disabled on Block Manager."
-msgstr ""
-
-#: src/extensions/formats/abbreviation/components/edit.js:47
-#: src/extensions/formats/abbreviation/index.js:19
-msgid "Abbreviation"
-msgstr ""
-
-#: src/extensions/formats/abbreviation/components/edit.js:53
-msgid "Insert Abbreviation"
-msgstr ""
-
-#: src/extensions/formats/abbreviation/components/edit.js:56
-msgid "Title"
-msgstr ""
-
-#: src/extensions/formats/abbreviation/components/edit.js:61
-msgid "Language (optional)"
-msgstr ""
-
-#: src/extensions/formats/abbreviation/components/edit.js:63
-msgid ""
-"Example: fr, en, de, etc. Use it only if the abbreviation’s language is "
-"different from page main language."
-msgstr ""
-
-#: src/extensions/formats/abbreviation/components/edit.js:87
-msgid "Apply"
+#: src/extensions/block-panel/column-background/index.js:39
+msgid "Background Color"
 msgstr ""

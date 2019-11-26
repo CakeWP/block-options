@@ -9774,6 +9774,7 @@ var restrictedBlocks = ['core/freeform', 'core/shortcode', 'core/nextpage'];
 var blocksWithFullScreen = ['core/image', 'core/cover', 'core/group', 'core/columns', 'core/media-text'];
 var blocksWithFontSize = ['core/list'];
 var blocksWithAnchor = ['core/spacer', 'core/separator'];
+var blocksWithBackgroundColor = ['core/columns', 'core/column'];
 /**
  * Filters registered block settings, extending attributes with anchor using ID
  * of the first node.
@@ -9852,6 +9853,22 @@ function addAttributes(settings) {
         },
         customFontSize: {
           type: 'number'
+        }
+      });
+    } // Add background color on selected blocks.
+
+
+    if (blocksWithBackgroundColor.includes(settings.name)) {
+      if (!settings.attributes) {
+        settings.attributes = {};
+      }
+
+      settings.attributes = Object.assign(settings.attributes, {
+        backgroundColor: {
+          type: 'string'
+        },
+        customBackgroundColor: {
+          type: 'string'
         }
       });
     } //enable anchor to selected blocks
@@ -10056,6 +10073,8 @@ function applyStyle(attributes, blockName) {
       colors = props.colors;
   var textColor = attributes.textColor,
       customTextColor = attributes.customTextColor,
+      backgroundColor = attributes.backgroundColor,
+      customBackgroundColor = attributes.customBackgroundColor,
       fontSize = attributes.fontSize,
       customFontSize = attributes.customFontSize;
   var style = {};
@@ -10086,10 +10105,88 @@ function applyStyle(attributes, blockName) {
     style.color = customTextColor;
   }
 
+  if (typeof backgroundColor !== 'undefined') {
+    if (typeof colors !== 'undefined') {
+      var backgroundColorValue = Object(lodash__WEBPACK_IMPORTED_MODULE_0__["find"])(colors, {
+        slug: backgroundColor
+      });
+
+      if (typeof backgroundColorValue !== 'undefined' && typeof backgroundColorValue.color !== 'undefined') {
+        style.backgroundColor = backgroundColorValue.color;
+      }
+    }
+  } else if (typeof customBackgroundColor !== 'undefined') {
+    style.backgroundColor = customBackgroundColor;
+  }
+
   return style;
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (applyStyle);
+
+/***/ }),
+
+/***/ "./src/extensions/block-panel/column-background/index.js":
+/*!***************************************************************!*\
+  !*** ./src/extensions/block-panel/column-background/index.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress Dependencies
+ */
+var __ = wp.i18n.__;
+var _wp$compose = wp.compose,
+    compose = _wp$compose.compose,
+    ifCondition = _wp$compose.ifCondition;
+var withSelect = wp.data.withSelect;
+var Fragment = wp.element.Fragment;
+var _wp$blockEditor = wp.blockEditor,
+    InspectorControls = _wp$blockEditor.InspectorControls,
+    withColors = _wp$blockEditor.withColors,
+    PanelColorSettings = _wp$blockEditor.PanelColorSettings;
+var withFallbackStyles = wp.components.withFallbackStyles;
+var applyFallbackStyles = withFallbackStyles(function (node, ownProps) {
+  var backgroundColor = ownProps.attributes.backgroundColor;
+  var editableNode = node.querySelector('[contenteditable="true"]'); //verify if editableNode is available, before using getComputedStyle.
+
+  var computedStyles = editableNode ? getComputedStyle(editableNode) : null;
+  return {
+    fallbackBackgroundColor: backgroundColor || !computedStyles ? undefined : computedStyles.backgroundColor
+  };
+});
+
+var ColumnColorSettings = function ColumnColorSettings(props) {
+  var backgroundColor = props.backgroundColor,
+      setBackgroundColor = props.setBackgroundColor,
+      isTextColorDisabled = props.isTextColorDisabled;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, !isTextColorDisabled && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelColorSettings, {
+    title: __('Color Settings', 'block-options'),
+    initialOpen: false,
+    colorSettings: [{
+      value: backgroundColor.color,
+      onChange: setBackgroundColor,
+      label: __('Background Color', 'block-options')
+    }]
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (compose([withSelect(function (select) {
+  return {
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitColumnsBackgroundOptions')
+  };
+}), withColors({
+  backgroundColor: 'color'
+}), applyFallbackStyles, ifCondition(function (props) {
+  return !props.isDisabled;
+})])(ColumnColorSettings));
 
 /***/ }),
 
@@ -10111,9 +10208,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _list_settings__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./list-settings */ "./src/extensions/block-panel/list-settings/index.js");
-/* harmony import */ var _apply_style__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./apply-style */ "./src/extensions/block-panel/apply-style.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _column_background__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./column-background */ "./src/extensions/block-panel/column-background/index.js");
+/* harmony import */ var _apply_style__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./apply-style */ "./src/extensions/block-panel/apply-style.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_7__);
 
 
 
@@ -10126,6 +10224,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 /**
  * Internal dependencies
  */
+
 
 
 /**
@@ -10144,6 +10243,7 @@ var _wp$compose = wp.compose,
     compose = _wp$compose.compose,
     createHigherOrderComponent = _wp$compose.createHigherOrderComponent;
 var blocksWithFontSize = ['core/list'];
+var blocksWithBackgroundColor = ['core/columns', 'core/column'];
 /**
  * Override the default block element to add	wrapper props.
  *
@@ -10183,7 +10283,7 @@ var withTextSettings = createHigherOrderComponent(function (BlockListBlock) {
     var attributes = select('core/block-editor').getBlock(props.clientId).attributes;
     var blockName = select('core/block-editor').getBlockName(props.clientId);
 
-    if (blocksWithFontSize.includes(blockName)) {
+    if (blocksWithFontSize.includes(blockName) || blocksWithBackgroundColor.includes(blockName)) {
       var customFontSize = attributes.customFontSize,
           fontSize = attributes.fontSize;
 
@@ -10194,7 +10294,7 @@ var withTextSettings = createHigherOrderComponent(function (BlockListBlock) {
       }
 
       wrapperProps = _objectSpread({}, wrapperProps, {
-        style: Object(_apply_style__WEBPACK_IMPORTED_MODULE_5__["default"])(attributes, blockName, props)
+        style: Object(_apply_style__WEBPACK_IMPORTED_MODULE_6__["default"])(attributes, blockName, props)
       }, customData);
     }
 
@@ -10217,7 +10317,7 @@ var withBlockPanel = createHigherOrderComponent(function (BlockEdit) {
     var name = props.name,
         isSelected = props.isSelected,
         isDisabledListTextSettings = props.isDisabledListTextSettings;
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(BlockEdit, props), isSelected && !isDisabledListTextSettings && blocksWithFontSize.includes(name) && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_list_settings__WEBPACK_IMPORTED_MODULE_4__["default"], props));
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(BlockEdit, props), isSelected && !isDisabledListTextSettings && blocksWithFontSize.includes(name) && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_list_settings__WEBPACK_IMPORTED_MODULE_4__["default"], props), isSelected && !isDisabledListTextSettings && blocksWithBackgroundColor.includes(name) && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_column_background__WEBPACK_IMPORTED_MODULE_5__["default"], props));
   });
 }, 'withBlockPanel');
 /**
@@ -10231,25 +10331,30 @@ var withBlockPanel = createHigherOrderComponent(function (BlockEdit) {
  */
 
 function applyTextSettings(extraProps, blockType, attributes) {
-  if (blocksWithFontSize.includes(blockType.name)) {
+  if (blocksWithFontSize.includes(blockType.name) || blocksWithBackgroundColor.includes(blockType.name)) {
     if (typeof extraProps.style !== 'undefined') {
-      extraProps.style = Object.assign(extraProps.style, Object(_apply_style__WEBPACK_IMPORTED_MODULE_5__["default"])(attributes, blockType.name));
+      extraProps.style = Object.assign(extraProps.style, Object(_apply_style__WEBPACK_IMPORTED_MODULE_6__["default"])(attributes, blockType.name));
     } else {
-      extraProps.style = Object(_apply_style__WEBPACK_IMPORTED_MODULE_5__["default"])(attributes, blockType.name);
+      extraProps.style = Object(_apply_style__WEBPACK_IMPORTED_MODULE_6__["default"])(attributes, blockType.name);
     }
 
     var customFontSize = attributes.customFontSize,
         fontSize = attributes.fontSize,
-        textColor = attributes.textColor;
+        textColor = attributes.textColor,
+        backgroundColor = attributes.backgroundColor;
 
     if (fontSize) {
-      extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_6___default()(extraProps.className, 'has-' + fontSize + '-font-size');
+      extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_7___default()(extraProps.className, 'has-' + fontSize + '-font-size');
     } else if (customFontSize) {
-      extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_6___default()(extraProps.className, 'has-custom-size');
+      extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_7___default()(extraProps.className, 'has-custom-size');
     }
 
     if (textColor) {
-      extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_6___default()(extraProps.className, 'has-' + textColor + '-color');
+      extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_7___default()(extraProps.className, 'has-' + textColor + '-color');
+    }
+
+    if (backgroundColor) {
+      extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_7___default()(extraProps.className, 'has-' + backgroundColor + '-background-color');
     }
   }
 

@@ -12,6 +12,8 @@ function applyStyle( attributes, blockName, props = {} ) {
 	const {
 		textColor,
 		customTextColor,
+		backgroundColor,
+		customBackgroundColor,
 		fontSize,
 		customFontSize,
 	} = attributes;
@@ -36,6 +38,17 @@ function applyStyle( attributes, blockName, props = {} ) {
 		}
 	} else if ( typeof customTextColor !== 'undefined' ) {
 		style.color = customTextColor;
+	}
+
+	if ( typeof backgroundColor !== 'undefined' ) {
+		if ( typeof colors !== 'undefined' ) {
+			const backgroundColorValue = find( colors, { slug: backgroundColor } );
+			if ( typeof backgroundColorValue !== 'undefined' && typeof backgroundColorValue.color !== 'undefined' ) {
+				style.backgroundColor = backgroundColorValue.color;
+			}
+		}
+	} else if ( typeof customBackgroundColor !== 'undefined' ) {
+		style.backgroundColor = customBackgroundColor;
 	}
 
 	return style;
