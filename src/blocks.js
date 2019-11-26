@@ -38,6 +38,9 @@ import './extensions/components/reading-time';
 import './extensions/components/help-tips';
 import './extensions/components/selected-block';
 
+//Block Transforms
+import './extensions/block-transform';
+
 //Block Settings
 import './extensions/block-settings';
 
