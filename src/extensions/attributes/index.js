@@ -15,6 +15,7 @@ const restrictedBlocks = [ 'core/freeform', 'core/shortcode', 'core/nextpage' ];
 const blocksWithFullScreen = [ 'core/image', 'core/cover', 'core/group', 'core/columns', 'core/media-text' ];
 const blocksWithFontSize = [ 'core/list' ];
 const blocksWithAnchor = [ 'core/spacer', 'core/separator' ];
+const blocksWithBackgroundColor = [ 'core/columns', 'core/column' ];
 
 /**
  * Filters registered block settings, extending attributes with anchor using ID
@@ -41,6 +42,7 @@ function addAttributes( settings ) {
 					acf_condition: '',
 					acf_value: '',
 					migrated: false,
+					unit_test: false,
 				},
 			},
 		} );
@@ -90,6 +92,21 @@ function addAttributes( settings ) {
 				},
 				customFontSize: {
 					type: 'number',
+				},
+			} );
+		}
+
+		// Add background color on selected blocks.
+		if ( blocksWithBackgroundColor.includes( settings.name ) ) {
+			if ( ! settings.attributes ) {
+				settings.attributes = {};
+			}
+			settings.attributes = Object.assign( settings.attributes, {
+				backgroundColor: {
+					type: 'string',
+				},
+				customBackgroundColor: {
+					type: 'string',
 				},
 			} );
 		}
