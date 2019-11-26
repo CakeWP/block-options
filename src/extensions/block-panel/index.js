@@ -57,7 +57,7 @@ const withTextSettings = createHigherOrderComponent( ( BlockListBlock ) => {
 		const attributes = select( 'core/block-editor' ).getBlock( props.clientId ).attributes;
 		const blockName = select( 'core/block-editor' ).getBlockName( props.clientId );
 
-		if (blocksWithFontSize.includes(blockName) || blocksWithBackgroundColor.includes(blockName) ) {
+		if ( blocksWithFontSize.includes( blockName ) || blocksWithBackgroundColor.includes( blockName ) ) {
 			const { customFontSize, fontSize } = attributes;
 
 			if ( customFontSize || fontSize ) {
@@ -113,7 +113,7 @@ const withBlockPanel = createHigherOrderComponent( ( BlockEdit ) => {
  * @return {Object} Filtered props applied to save element.
  */
 function applyTextSettings( extraProps, blockType, attributes ) {
-	if (blocksWithFontSize.includes(blockType.name) || blocksWithBackgroundColor.includes(blockType.name) ) {
+	if ( blocksWithFontSize.includes( blockType.name ) || blocksWithBackgroundColor.includes( blockType.name ) ) {
 		if ( typeof extraProps.style !== 'undefined' ) {
 			extraProps.style = Object.assign( extraProps.style, applyStyle( attributes, blockType.name ) );
 		} else {
@@ -132,8 +132,8 @@ function applyTextSettings( extraProps, blockType, attributes ) {
 			extraProps.className = classnames( extraProps.className, 'has-' + textColor + '-color' );
 		}
 
-		if (backgroundColor) {
-			extraProps.className = classnames(extraProps.className, 'has-' + backgroundColor + '-background-color');
+		if ( backgroundColor ) {
+			extraProps.className = classnames( extraProps.className, 'has-' + backgroundColor + '-background-color' );
 		}
 	}
 

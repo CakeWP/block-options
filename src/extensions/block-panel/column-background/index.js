@@ -8,17 +8,17 @@ const { Fragment } = wp.element;
 const { InspectorControls, withColors, PanelColorSettings } = wp.blockEditor;
 const { withFallbackStyles } = wp.components;
 
-const applyFallbackStyles = withFallbackStyles((node, ownProps) => {
+const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	const { backgroundColor } = ownProps.attributes;
-	const editableNode = node.querySelector('[contenteditable="true"]');
+	const editableNode = node.querySelector( '[contenteditable="true"]' );
 	//verify if editableNode is available, before using getComputedStyle.
-	const computedStyles = editableNode ? getComputedStyle(editableNode) : null;
+	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
 	return {
-		fallbackBackgroundColor: backgroundColor || !computedStyles ? undefined : computedStyles.backgroundColor,
+		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
 	};
-});
+} );
 
-const ColumnColorSettings = (props) => {
+const ColumnColorSettings = ( props ) => {
 	const {
 		backgroundColor,
 		setBackgroundColor,
@@ -28,34 +28,34 @@ const ColumnColorSettings = (props) => {
 	return (
 		<Fragment>
 			<InspectorControls>
-				{!isTextColorDisabled && (
+				{ ! isTextColorDisabled && (
 					<PanelColorSettings
-						title={__('Color Settings', 'block-options')}
-						initialOpen={false}
-						colorSettings={[
+						title={ __( 'Color Settings', 'block-options' ) }
+						initialOpen={ false }
+						colorSettings={ [
 							{
 								value: backgroundColor.color,
 								onChange: setBackgroundColor,
-								label: __('Background Color', 'block-options'),
+								label: __( 'Background Color', 'block-options' ),
 							},
-						]}
+						] }
 					>
 					</PanelColorSettings>
-				)}
+				) }
 			</InspectorControls>
 		</Fragment>
 	);
 };
 
-export default compose([
-	withSelect((select) => {
+export default compose( [
+	withSelect( ( select ) => {
 		return {
-			isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitColumnsBackgroundOptions'),
+			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitColumnsBackgroundOptions' ),
 		};
-	}),
-	withColors({ backgroundColor: 'color' }),
+	} ),
+	withColors( { backgroundColor: 'color' } ),
 	applyFallbackStyles,
-	ifCondition((props) => {
-		return !props.isDisabled;
-	}),
-])(ColumnColorSettings);
+	ifCondition( ( props ) => {
+		return ! props.isDisabled;
+	} ),
+] )( ColumnColorSettings );

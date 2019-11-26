@@ -40,14 +40,14 @@ function applyStyle( attributes, blockName, props = {} ) {
 		style.color = customTextColor;
 	}
 
-	if (typeof backgroundColor !== 'undefined') {
-		if (typeof colors !== 'undefined') {
-			const backgroundColorValue = find(colors, { slug: backgroundColor });
-			if (typeof backgroundColorValue !== 'undefined' && typeof backgroundColorValue.color !== 'undefined') {
+	if ( typeof backgroundColor !== 'undefined' ) {
+		if ( typeof colors !== 'undefined' ) {
+			const backgroundColorValue = find( colors, { slug: backgroundColor } );
+			if ( typeof backgroundColorValue !== 'undefined' && typeof backgroundColorValue.color !== 'undefined' ) {
 				style.backgroundColor = backgroundColorValue.color;
 			}
 		}
-	} else if (typeof customBackgroundColor !== 'undefined') {
+	} else if ( typeof customBackgroundColor !== 'undefined' ) {
 		style.backgroundColor = customBackgroundColor;
 	}
 
