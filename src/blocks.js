@@ -59,6 +59,9 @@ import './extensions/block-styles/';
 // Shortcuts
 import './extensions/shortcuts/select-parent-block';
 
+// Disable Block Control
+import './extensions/advanced-controls/disable-block';
+
 // Register Blocks
 import * as importBlock from './blocks/import';
 

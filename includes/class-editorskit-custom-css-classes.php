@@ -200,6 +200,13 @@ class EditorsKit_Custom_CSS_Classes {
 				'sm:ek-justify-around',
 				'md:ek-justify-around',
 				'lg:ek-justify-around',
+				'ek-rounded-none',
+				'ek-rounded-sm',
+				'ek-rounded-md',
+				'ek-rounded-lg',
+				'ek-rounded-xl',
+				'ek-rounded-full',
+				'ek-align-slim',
 			);
 
 			$editor_settings[ $this->slug . 'CustomClassNames' ] = apply_filters( 'editorskit_block_editor_classnames', $defaults );

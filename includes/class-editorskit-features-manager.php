@@ -112,6 +112,11 @@ class EditorsKit_Features_Manager {
 					'name'  => 'formats',
 					'label' => __( 'Formats', 'editorskit' ),
 					'items' => array(
+						'abbreviation'  => array(
+							'name'  => 'abbreviation',
+							'label' => __( 'Abbreviation', 'editorskit' ),
+							'value' => true,
+						),
 						'clearFormatting'  => array(
 							'name'  => 'clearFormatting',
 							'label' => __( 'Clear Formatting', 'editorskit' ),
@@ -189,6 +194,11 @@ class EditorsKit_Features_Manager {
 					'name'  => 'options',
 					'label' => __( 'Block Options', 'editorskit' ),
 					'items' => array(
+						'columnsBackground'               => array(
+							'name'  => 'columnsBackground',
+							'label' => __( 'Columns Block Background Color', 'editorskit' ),
+							'value' => true,
+						),
 						'copy'               => array(
 							'name'  => 'copy',
 							'label' => __( 'Copy Selected Block(s)', 'editorskit' ),
