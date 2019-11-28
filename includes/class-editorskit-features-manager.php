@@ -84,221 +84,221 @@ class EditorsKit_Features_Manager {
 			$editor_settings['editorskit'] = array(
 				'visibility' => array(
 					'name'  => 'visibility',
-					'label' => __( 'Visibility', 'editorskit' ),
+					'label' => __( 'Visibility', 'block-options' ),
 					'items' => array(
 						'acf'       => array(
 							'name'  => 'acf',
-							'label' => __( 'ACF Support', 'editorskit' ),
+							'label' => __( 'ACF Support', 'block-options' ),
 							'value' => true,
 						),
 						'devices'   => array(
 							'name'  => 'devices',
-							'label' => __( 'Devices', 'editorskit' ),
+							'label' => __( 'Devices', 'block-options' ),
 							'value' => true,
 						),
 						'logic'     => array(
 							'name'  => 'logic',
-							'label' => __( 'Display Logic', 'editorskit' ),
+							'label' => __( 'Display Logic', 'block-options' ),
 							'value' => true,
 						),
 						'userState' => array(
 							'name'  => 'userState',
-							'label' => __( 'User Login State', 'editorskit' ),
+							'label' => __( 'User Login State', 'block-options' ),
 							'value' => true,
 						),
 					),
 				),
 				'formats'    => array(
 					'name'  => 'formats',
-					'label' => __( 'Formats', 'editorskit' ),
+					'label' => __( 'Formats', 'block-options' ),
 					'items' => array(
-						'abbreviation'  => array(
+						'abbreviation'     => array(
 							'name'  => 'abbreviation',
-							'label' => __( 'Abbreviation', 'editorskit' ),
+							'label' => __( 'Abbreviation', 'block-options' ),
 							'value' => true,
 						),
 						'clearFormatting'  => array(
 							'name'  => 'clearFormatting',
-							'label' => __( 'Clear Formatting', 'editorskit' ),
+							'label' => __( 'Clear Formatting', 'block-options' ),
 							'value' => true,
 						),
 						'highlight'        => array(
 							'name'  => 'highlight',
-							'label' => __( 'Highlighted Text Color', 'editorskit' ),
+							'label' => __( 'Highlighted Text Color', 'block-options' ),
 							'value' => true,
 						),
 						'justify'          => array(
 							'name'  => 'justify',
-							'label' => __( 'Justified Alignment', 'editorskit' ),
+							'label' => __( 'Justified Alignment', 'block-options' ),
 							'value' => true,
 						),
 						'link'             => array(
 							'name'  => 'link',
-							'label' => __( 'Link with "rel" Attributes', 'editorskit' ),
+							'label' => __( 'Link with "rel" Attributes', 'block-options' ),
 							'value' => true,
 						),
 						'nonbreakingSpace' => array(
 							'name'  => 'nonbreakingSpace',
-							'label' => __( 'Nonbreaking Space', 'editorskit' ),
+							'label' => __( 'Nonbreaking Space', 'block-options' ),
 							'value' => true,
 						),
 						'subscript'        => array(
 							'name'  => 'subscript',
-							'label' => __( 'Subscript', 'editorskit' ),
+							'label' => __( 'Subscript', 'block-options' ),
 							'value' => true,
 						),
 						'superscript'      => array(
 							'name'  => 'superscript',
-							'label' => __( 'Superscript', 'editorskit' ),
+							'label' => __( 'Superscript', 'block-options' ),
 							'value' => true,
 						),
 						'colors'           => array(
 							'name'  => 'colors',
-							'label' => __( 'Text Color', 'editorskit' ),
+							'label' => __( 'Text Color', 'block-options' ),
 							'value' => true,
 						),
 						'uppercase'        => array(
 							'name'  => 'uppercase',
-							'label' => __( 'Uppercase', 'editorskit' ),
+							'label' => __( 'Uppercase', 'block-options' ),
 							'value' => true,
 						),
 					),
 				),
 				'writing'    => array(
 					'name'  => 'writing',
-					'label' => __( 'Writing', 'editorskit' ),
+					'label' => __( 'Writing', 'block-options' ),
 					'items' => array(
 						'readingTime'    => array(
 							'name'  => 'readingTime',
-							'label' => __( 'Estimated Reading Time', 'editorskit' ),
+							'label' => __( 'Estimated Reading Time', 'block-options' ),
 							'value' => true,
 						),
 						'headingLabel'   => array(
 							'name'  => 'headingLabel',
-							'label' => __( 'Heading Block Label', 'editorskit' ),
+							'label' => __( 'Heading Block Label', 'block-options' ),
 							'value' => true,
 						),
 						'markdown'       => array(
 							'name'  => 'markdown',
-							'label' => __( 'Markdown', 'editorskit' ),
+							'label' => __( 'Markdown', 'block-options' ),
 							'value' => true,
 						),
 						'transformEmpty' => array(
 							'name'  => 'transformEmpty',
-							'label' => __( 'Transform 4 Empty Paragraphs to Spacer Block', 'editorskit' ),
+							'label' => __( 'Transform 4 Empty Paragraphs to Spacer Block', 'block-options' ),
 							'value' => true,
 						),
 					),
 				),
 				'options'    => array(
 					'name'  => 'options',
-					'label' => __( 'Block Options', 'editorskit' ),
+					'label' => __( 'Block Options', 'block-options' ),
 					'items' => array(
-						'columnsBackground'               => array(
+						'columnsBackground'  => array(
 							'name'  => 'columnsBackground',
-							'label' => __( 'Columns Block Background Color', 'editorskit' ),
+							'label' => __( 'Columns Block Background Color', 'block-options' ),
 							'value' => true,
 						),
 						'copy'               => array(
 							'name'  => 'copy',
-							'label' => __( 'Copy Selected Block(s)', 'editorskit' ),
+							'label' => __( 'Copy Selected Block(s)', 'block-options' ),
 							'value' => true,
 						),
 						'navigator'          => array(
 							'name'  => 'navigator',
-							'label' => __( 'Block Navigator', 'editorskit' ),
+							'label' => __( 'Block Navigator', 'block-options' ),
 							'value' => true,
 						),
 						'export'             => array(
 							'name'  => 'export',
-							'label' => __( 'Export as JSON', 'editorskit' ),
+							'label' => __( 'Export as JSON', 'block-options' ),
 							'value' => true,
 						),
 						'listBlockFontSize'  => array(
 							'name'  => 'listBlockFontSize',
-							'label' => __( 'List Block Font Size', 'editorskit' ),
+							'label' => __( 'List Block Font Size', 'block-options' ),
 							'value' => true,
 						),
 						'listBlockTextColor' => array(
 							'name'  => 'listBlockTextColor',
-							'label' => __( 'List Block Text Color', 'editorskit' ),
+							'label' => __( 'List Block Text Color', 'block-options' ),
 							'value' => true,
 						),
 						'mediaTextLayout'    => array(
 							'name'  => 'mediaTextLayout',
-							'label' => __( 'Media Text Block Layout', 'editorskit' ),
+							'label' => __( 'Media Text Block Layout', 'block-options' ),
 							'value' => true,
 						),
 						'mediaTextLink'      => array(
 							'name'  => 'mediaTextLink',
-							'label' => __( 'Media Text Block Link', 'editorskit' ),
+							'label' => __( 'Media Text Block Link', 'block-options' ),
 							'value' => true,
 						),
 						'setAsFeatured'      => array(
 							'name'  => 'setAsFeatured',
-							'label' => __( 'Set Image Block as Featured', 'editorskit' ),
+							'label' => __( 'Set Image Block as Featured', 'block-options' ),
 							'value' => true,
 						),
 					),
 				),
 				'tools'      => array(
 					'name'  => 'tools',
-					'label' => __( 'Tools', 'editorskit' ),
+					'label' => __( 'Tools', 'block-options' ),
 					'items' => array(
 						'guidelines'          => array(
 							'name'  => 'guidelines',
-							'label' => __( 'Block Guide Lines', 'editorskit' ),
+							'label' => __( 'Block Guide Lines', 'block-options' ),
 							'value' => true,
 						),
 						'codeHighlight'       => array(
 							'name'  => 'codeHighlight',
-							'label' => __( 'Code Editor Syntax Highlight', 'editorskit' ),
+							'label' => __( 'Code Editor Syntax Highlight', 'block-options' ),
 							'value' => true,
 						),
 						'customClassNames'    => array(
 							'name'  => 'customClassNames',
-							'label' => __( 'Custom Class Names', 'editorskit' ),
+							'label' => __( 'Custom Class Names', 'block-options' ),
 							'value' => true,
 						),
 						'dragAndDropFeatured' => array(
 							'name'  => 'dragAndDropFeatured',
-							'label' => __( 'Drag and Drop Featured Image', 'editorskit' ),
+							'label' => __( 'Drag and Drop Featured Image', 'block-options' ),
 							'value' => true,
 						),
 						'height'              => array(
 							'name'  => 'height',
-							'label' => __( 'Editor Min-Height', 'editorskit' ),
+							'label' => __( 'Editor Min-Height', 'block-options' ),
 							'value' => true,
 						),
 						'autosave'            => array(
 							'name'  => 'autosave',
-							'label' => __( 'Toggle Auto Save', 'editorskit' ),
+							'label' => __( 'Toggle Auto Save', 'block-options' ),
 							'value' => true,
 						),
 						'help'                => array(
 							'name'  => 'help',
-							'label' => __( 'Help, tips and tricks', 'editorskit' ),
+							'label' => __( 'Help, tips and tricks', 'block-options' ),
 							'value' => true,
 						),
 						'toggleTitle'         => array(
 							'name'  => 'toggleTitle',
-							'label' => __( 'Toggle Title Visibility', 'editorskit' ),
+							'label' => __( 'Toggle Title Visibility', 'block-options' ),
 							'value' => true,
 						),
 						'scrollDown'          => array(
 							'name'  => 'scrollDown',
-							'label' => __( 'View Custom Fields', 'editorskit' ),
+							'label' => __( 'View Custom Fields', 'block-options' ),
 							'value' => true,
 						),
 					),
 				),
 				'shortcuts'  => array(
 					'name'  => 'shortcuts',
-					'label' => __( 'Shortcuts', 'editorskit' ),
+					'label' => __( 'Shortcuts', 'block-options' ),
 					'items' => array(
 						'selectParent' => array(
 							'name'  => 'selectParent',
-							'label' => __( 'Select Parent Block', 'editorskit' ),
+							'label' => __( 'Select Parent Block', 'block-options' ),
 							'value' => true,
 						),
 					),

@@ -158,17 +158,17 @@ class EditorsKit_Block_Assets {
 		}
 
 		$global = array(
-			'plugin' => array(
+			'plugin'   => array(
 				'version' => $this->version,
 			),
-			'core'   => array(
+			'core'     => array(
 				'version' => $wp_version,
 			),
-			'editor' => array(
+			'editor'   => array(
 				'version' => $version,
 				'is_core' => $is_core,
 			),
-			'supports'   => array(
+			'supports' => array(
 				'color_palette' => get_theme_support( 'editorskit-color-palette-classnames' ),
 			),
 		);
