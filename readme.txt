@@ -158,6 +158,7 @@ e.g.
 * New: Add [Background Color Settings](https://github.com/phpbits/block-options/pull/191) to Columns Block 🎉
 * Tweaks: [Fix](https://github.com/phpbits/block-options/pull/193) and add more [EditorsKit CSS classes](https://github.com/phpbits/block-options/pull/189)
 * Tweaks: Blocks Unit Testing only feature to [disable selected block](https://github.com/phpbits/block-options/pull/190)
+* Fixes: Few other 🐛 cleanup for errors and Gutenberg compatibility
 
 = 1.20 =
 * New: Add [Gutenberg Block Manager](https://github.com/phpbits/block-options/pull/179) directly on EditorsKit > Settings page.
