@@ -36,6 +36,7 @@ https://www.youtube.com/watch?v=QWgO4lAJAlE
 * Uppercase Text Transform
 * Images and Embeds Caption Alignment
 * Nonbreaking Space
+* Abbreviation for acronyms
 
 ## Markdown Support
 Starting [EditorsKit 1.6 ](https://jeffreycarandang.com/editorskit-1-6/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit), you can now use markdowns on Gutenberg editor while typing. Markdowns for `*bold*`, `_italic_` and `~strikethrough~` are available upon plugin activation. Lists of available markdowns are also accessible on the settings menu.
@@ -150,6 +151,13 @@ e.g.
 
 
 == Changelog ==
+
+= 1.21 =
+* New: [Abbreviation Format](https://github.com/phpbits/block-options/pull/187) for acronyms 🎉
+* New: Add option to [Transform Group Block to Cover Block](https://github.com/phpbits/block-options/pull/194) 🎉
+* New: Add [Background Color Settings](https://github.com/phpbits/block-options/pull/191) to Columns Block 🎉
+* Tweaks: [Fix](https://github.com/phpbits/block-options/pull/193) and add more [EditorsKit CSS classes](https://github.com/phpbits/block-options/pull/189)
+* Tweaks: Blocks Unit Testing only feature to [disable selected block](https://github.com/phpbits/block-options/pull/190)
 
 = 1.20 =
 * New: Add [Gutenberg Block Manager](https://github.com/phpbits/block-options/pull/179) directly on EditorsKit > Settings page.
