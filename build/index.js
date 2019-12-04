@@ -12613,7 +12613,8 @@ var _wp$element = wp.element,
 var BlockControls = wp.blockEditor.BlockControls;
 var _wp$components = wp.components,
     Toolbar = _wp$components.Toolbar,
-    withSpokenMessages = _wp$components.withSpokenMessages;
+    withSpokenMessages = _wp$components.withSpokenMessages,
+    Button = _wp$components.Button;
 
 var ToolbarControls =
 /*#__PURE__*/
@@ -12637,15 +12638,10 @@ function (_Component) {
         return null;
       }
 
-      var toolbarControls = [{
-        icon: 'controls-repeat',
-        title: __('Convert to Regular Blocks', 'block-options'),
-        onClick: onConvertToStatic
-      }];
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Toolbar, {
-        className: "editorskit-media-text-card-controls",
-        controls: toolbarControls
-      })));
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Toolbar, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
+        onClick: onConvertToStatic,
+        className: "editorskit-reusable-convert-controls"
+      }, __('Convert to Regular Blocks', 'block-options')))));
     }
   }]);
 
@@ -12659,12 +12655,19 @@ function (_Component) {
 }), withDispatch(function (dispatch, _ref) {
   var clientId = _ref.clientId;
 
-  var _dispatch = dispatch('core/editor'),
-      convertBlockToStatic = _dispatch.__experimentalConvertBlockToStatic;
+  var _dispatch = dispatch('core/notices'),
+      createNotice = _dispatch.createNotice;
+
+  var _dispatch2 = dispatch('core/editor'),
+      convertBlockToStatic = _dispatch2.__experimentalConvertBlockToStatic;
 
   return {
     onConvertToStatic: function onConvertToStatic() {
       convertBlockToStatic(clientId);
+      createNotice('info', __('Reusable Block converted.', 'block-options'), {
+        isDismissible: true,
+        type: 'snackbar'
+      });
     }
   };
 }), withSpokenMessages)(ToolbarControls));

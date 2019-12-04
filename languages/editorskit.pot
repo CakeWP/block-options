@@ -3,6 +3,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/block-toolbar/reusable-convert/components/controls.js:24
+#: src/extensions/block-toolbar/reusable-convert/components/controls.js:30
 msgid "Convert to Regular Blocks"
+msgstr ""
+
+#: src/extensions/block-toolbar/reusable-convert/components/controls.js:56
+msgid "Reusable Block converted."
 msgstr ""

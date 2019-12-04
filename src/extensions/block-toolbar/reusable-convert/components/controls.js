@@ -6,7 +6,7 @@ const { withSelect, withDispatch } = wp.data;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { BlockControls } = wp.blockEditor;
-const { Toolbar, withSpokenMessages } = wp.components;
+const { Toolbar, withSpokenMessages, Button } = wp.components;
 
 class ToolbarControls extends Component {
 	render() {
@@ -19,19 +19,17 @@ class ToolbarControls extends Component {
 			return null;
 		}
 
-		const toolbarControls = [ {
-			icon: 'controls-repeat',
-			title: __( 'Convert to Regular Blocks', 'block-options' ),
-			onClick: onConvertToStatic,
-		} ];
-
 		return (
 			<Fragment>
 				<BlockControls>
-					<Toolbar
-						className="editorskit-reusable-convert-controls"
-						controls={ toolbarControls }
-					/>
+					<Toolbar>
+						<Button
+							onClick={ onConvertToStatic }
+							className="editorskit-reusable-convert-controls"
+						>
+							{ __( 'Convert to Regular Blocks', 'block-options' ) }
+						</Button>
+					</Toolbar>
 				</BlockControls>
 			</Fragment>
 		);
@@ -45,6 +43,7 @@ export default compose(
 		};
 	} ),
 	withDispatch( ( dispatch, { clientId } ) => {
+		const { createNotice } = dispatch( 'core/notices' );
 		const {
 			__experimentalConvertBlockToStatic: convertBlockToStatic,
 		} = dispatch( 'core/editor' );
@@ -52,6 +51,14 @@ export default compose(
 		return {
 			onConvertToStatic() {
 				convertBlockToStatic( clientId );
+				createNotice(
+					'info',
+					__( 'Reusable Block converted.', 'block-options' ),
+					{
+						isDismissible: true,
+						type: 'snackbar',
+					}
+				);
 			},
 		};
 	} ),
