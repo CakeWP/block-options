@@ -1,0 +1,39 @@
+.wp-block[data-editorskit-is-vertically-top="1"] {
+
+	&[data-type="core/cover"] {
+
+		> .editor-block-list__block-edit {
+
+			> div {
+
+				> .components-resizable-box__container {
+
+					> .wp-block-cover {
+						align-items: flex-start;
+						align-self: flex-start;
+					}
+				}
+			}
+		}
+	}
+}
+
+.wp-block[data-editorskit-is-vertically-bottom="1"] {
+
+	&[data-type="core/cover"] {
+
+		> .editor-block-list__block-edit {
+
+			> div {
+
+				> .components-resizable-box__container {
+
+					> .wp-block-cover {
+						align-items: flex-end;
+						align-self: flex-end;
+					}
+				}
+			}
+		}
+	}
+}
