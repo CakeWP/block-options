@@ -3,52 +3,25 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/admin/index.js:106
-msgid "Settings → EditorsKit"
+#: src/extensions/advanced-controls/fullwidth/index.js:21
+msgid "Full Width Display"
 msgstr ""
 
-#: src/admin/index.js:107
-msgid "Getting Started with"
+#: src/extensions/advanced-controls/fullwidth/index.js:24
+msgid "Full width display is enabled."
 msgstr ""
 
-#: src/admin/index.js:108
+#: src/extensions/advanced-controls/fullwidth/index.js:24
+msgid "Toggle to display this block's as full width."
+msgstr ""
+
+#: src/extensions/advanced-controls/index.js:104
+msgid "Responsive"
+msgstr ""
+
+#: src/extensions/advanced-controls/index.js:108
 msgid ""
-"Congratulations! You've just unlocked more Gutenberg block editor tools for "
-"easier editing and better workflow. Check more information about the plugin "
-"below and please make sure to navigate through \"Tutorials and Docs\" tab "
-"to learn more on how to use each available features."
-msgstr ""
-
-#: src/admin/index.js:51
-msgid ""
-"EditorsKit provides set of tools to extend the way you are building content "
-"on WordPress Gutenberg block editor. Designed and integrated to help users "
-"easily navigate; and control each block the way it should be."
-msgstr ""
-
-#: src/admin/index.js:54
-msgid "EditorsKit video preview"
-msgstr ""
-
-#: src/admin/index.js:59
-msgid ""
-"If you have any questions or suggestion, let us know through "
-"%1$sTwitter%4$s or our %2$sFacebook community %4$s. Also, %3$ssubscribe to "
-"our newsletter%4$s if you want to stay up to date with what's new and "
-"upcoming at EditorsKit."
-msgstr ""
-
-#: src/admin/index.js:79
-msgid ""
-"All features are active by default but you have complete control over each "
-"one of them. Disable any features do not want to use and re-enable them "
-"anytime on this page or under the \"EditorsKit Settings\" on Gutenberg "
-"editor. Just uncheck the box and it will automatically be saved."
-msgstr ""
-
-#: src/admin/index.js:89
-msgid ""
-"Manage each individual blocks! You can enable or disable any blocks you "
-"want and it will be reflected on Gutenberg block manager settings. Just "
-"uncheck the box and it will automatically be saved."
+"Attention: The display settings (show/hide for mobile, tablet or desktop) "
+"will only take effect once you are on the live page, and not while you're "
+"editing in Gutenberg."
 msgstr ""
