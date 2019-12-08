@@ -3,10 +3,19 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+<<<<<<< HEAD
 #: src/extensions/block-toolbar/cover-vertical-alignment/components/controls.js:65
 msgid "Show media on top"
 msgstr ""
 
 #: src/extensions/block-toolbar/cover-vertical-alignment/components/controls.js:73
 msgid "Show media on bottom"
+=======
+#: src/extensions/block-toolbar/reusable-convert/components/controls.js:30
+msgid "Convert to Regular Blocks"
+msgstr ""
+
+#: src/extensions/block-toolbar/reusable-convert/components/controls.js:56
+msgid "Reusable Block converted."
+>>>>>>> master
 msgstr ""
