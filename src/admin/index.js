@@ -21,7 +21,7 @@ class EditorsKitSettings extends Component {
 				tabs={ [
 					{
 						name: 'ek-getting-started',
-						title: 'Gettings Started',
+						title: 'Getting Started',
 						className: 'ek-settings-getting-started',
 					},
 					{
@@ -104,7 +104,7 @@ class EditorsKitSettings extends Component {
 				>
 					<div className="components-panel__header">
 						<p className="editorskit-panel__header-hint">{ __( 'Settings → EditorsKit', 'block-options' ) }</p>
-						<h2>{ __( 'Gettings Started with', 'block-options' ) } <strong>EditorsKit</strong><code>{ window.editorskitSettings.version }</code></h2>
+						<h2>{ __( 'Getting Started with', 'block-options' ) } <strong>EditorsKit</strong><code>{ window.editorskitSettings.version }</code></h2>
 						<p>{ __( 'Congratulations! You\'ve just unlocked more Gutenberg block editor tools for easier editing and better workflow. Check more information about the plugin below and please make sure to navigate through "Tutorials and Docs" tab to learn more on how to use each available features.', 'block-options' ) }</p>
 					</div>
 					<PanelRow>
