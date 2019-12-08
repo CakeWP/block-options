@@ -3,7 +3,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/formats/link/components/edit.js:130
+#: src/extensions/formats/link/components/edit.js:128
 msgid "Unlink"
 msgstr ""
 
@@ -13,32 +13,4 @@ msgstr ""
 
 #: src/extensions/formats/link/components/edit.js:84
 msgid "Link removed."
-msgstr ""
-
-#: src/extensions/formats/link/components/inline.js:224
-msgid "Warning: the link has been inserted but may have errors. Please test it."
-msgstr ""
-
-#: src/extensions/formats/link/components/inline.js:226
-msgid "Link edited."
-msgstr ""
-
-#: src/extensions/formats/link/components/inline.js:228
-msgid "Link inserted."
-msgstr ""
-
-#: src/extensions/formats/link/components/inline.js:295
-msgid "Open in New Tab"
-msgstr ""
-
-#: src/extensions/formats/link/components/inline.js:300
-msgid "No Follow"
-msgstr ""
-
-#: src/extensions/formats/link/components/inline.js:305
-msgid "Sponsored"
-msgstr ""
-
-#: src/extensions/formats/link/index.js:21
-msgid "Link"
 msgstr ""

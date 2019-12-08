@@ -93,3 +93,41 @@ $m: !important;
 .ek-justify-around > div > .editor-inner-blocks > .editor-block-list__layout {
 	justify-content: space-around $m;
 }
+
+// Fullwidth display.
+.ek-w-full {
+
+	&.wp-block-button {
+
+		> div {
+
+			&,
+			> .wp-block-button__link {
+				width: 100%;
+			}
+		}
+	}
+}
+
+.wp-block[data-editorskit-w-full="1"] {
+
+	&[data-type="core/button"] {
+
+		> .editor-block-list__block-edit,
+		> .block-editor-block-list__block-edit {
+
+			> div[data-block]:not([data-block=""]) {
+				width: 100%;
+
+				.wp-block-button {
+
+					&,
+					> div,
+					.wp-block-button__link {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+}

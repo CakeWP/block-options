@@ -548,3 +548,34 @@ body:not(.wp-admin) {
 		}
 	}
 }
+
+// Fullwidth display.
+.ek-w-full {
+
+	&,
+	> .wp-block-button__link {
+		width: 100%;
+	}
+}
+
+@include break-medium() {
+
+	.md\:ek-w-full {
+
+		&,
+		> .wp-block-button__link {
+			width: 100%;
+		}
+	}
+}
+
+@include break-small() {
+
+	.sm\:ek-w-full {
+
+		&,
+		> .wp-block-button__link {
+			width: 100%;
+		}
+	}
+}

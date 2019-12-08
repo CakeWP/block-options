@@ -207,6 +207,9 @@ class EditorsKit_Custom_CSS_Classes {
 				'ek-rounded-xl',
 				'ek-rounded-full',
 				'ek-align-slim',
+				'ek-w-full',
+				'sm:ek-w-full',
+				'md:ek-w-full',
 			);
 
 			$editor_settings[ $this->slug . 'CustomClassNames' ] = apply_filters( 'editorskit_block_editor_classnames', $defaults );
