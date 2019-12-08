@@ -152,6 +152,13 @@ e.g.
 
 == Changelog ==
 
+= 1.22 =
+* New: Make [Reusable Block easily convertible](https://github.com/phpbits/block-options/issues/198) to regular blocks 🎉
+* New: Add toggle to [Buttons Block full width](https://github.com/phpbits/block-options/pull/203) display 🎉
+* New: Add [Cover Block vertical alignment](https://github.com/phpbits/block-options/pull/201) 🎉
+* Fixes: Fix issue with [link rel nofollow and sponsored toggle not saving](https://wordpress.org/support/topic/nofollow-sponsored-tags-not-saving/)
+* Tweaks: Typo fixes on welcome page
+
 = 1.21 =
 * New: [Abbreviation Format](https://github.com/phpbits/block-options/pull/187) for acronyms 🎉
 * New: Add option to [Transform Group Block to Cover Block](https://github.com/phpbits/block-options/pull/194) 🎉
