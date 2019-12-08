@@ -199,6 +199,11 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Columns Block Background Color', 'block-options' ),
 							'value' => true,
 						),
+						'convertReusable'    => array(
+							'name'  => 'convertReusable',
+							'label' => __( 'Convert Reusable Block Toolbar', 'block-options' ),
+							'value' => true,
+						),
 						'copy'               => array(
 							'name'  => 'copy',
 							'label' => __( 'Copy Selected Block(s)', 'block-options' ),
