@@ -209,6 +209,11 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Copy Selected Block(s)', 'block-options' ),
 							'value' => true,
 						),
+						'coverAlignment'               => array(
+							'name'  => 'coverAlignment',
+							'label' => __( 'Cover Block Vertical Alignment', 'block-options' ),
+							'value' => true,
+						),
 						'navigator'          => array(
 							'name'  => 'navigator',
 							'label' => __( 'Block Navigator', 'block-options' ),

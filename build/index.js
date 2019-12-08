@@ -11988,7 +11988,7 @@ function (_Component) {
 
 /* harmony default export */ __webpack_exports__["default"] = (compose(withSelect(function (select) {
   return {
-    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitMediaTextLayoutOptions')
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitCoverAlignmentOptions')
   };
 }), withSpokenMessages)(ToolbarControls));
 
