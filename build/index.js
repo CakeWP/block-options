@@ -16543,6 +16543,13 @@ function (_Component) {
 
       if (activeFormat) {
         activeFormat.type = name;
+
+        if (typeof activeFormat.unregisteredAttributes !== 'undefined' && typeof activeFormat.unregisteredAttributes.rel !== 'undefined') {
+          activeFormat.attributes = Object.assign(activeFormat.attributes, {
+            rel: activeFormat.unregisteredAttributes.rel
+          });
+        }
+
         var newValue = value;
         newValue = applyFormat(newValue, activeFormat);
         newValue = removeFormat(newValue, 'core/link');
