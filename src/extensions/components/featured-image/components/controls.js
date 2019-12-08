@@ -26,7 +26,7 @@ const DEFAULT_REMOVE_FEATURE_IMAGE_LABEL = __( 'Remove Image', 'block-options' )
 
 const PostFeaturedImage = ( { currentPostId, featuredImageId, onUpdateImage, onRemoveImage, media, postType } ) => {
 	const postLabel = get( postType, [ 'labels' ], {} );
-	const instructions = <p>{__('To edit the featured image, you need permission to upload media.', 'block-options' ) }</p>;
+	const instructions = <p>{ __( 'To edit the featured image, you need permission to upload media.', 'block-options' ) }</p>;
 
 	let mediaWidth, mediaHeight, mediaSourceUrl;
 	if ( media ) {
@@ -65,7 +65,7 @@ const PostFeaturedImage = ( { currentPostId, featuredImageId, onUpdateImage, onR
 							<Button
 								className={ ! featuredImageId ? 'editor-post-featured-image__toggle' : 'editor-post-featured-image__preview' }
 								onClick={ open }
-								aria-label={!featuredImageId ? null : __('Edit or update the image', 'block-options' ) }>
+								aria-label={ ! featuredImageId ? null : __( 'Edit or update the image', 'block-options' ) }>
 								{ !! featuredImageId && media &&
 									<ResponsiveWrapper
 										naturalWidth={ mediaWidth }
@@ -90,7 +90,7 @@ const PostFeaturedImage = ( { currentPostId, featuredImageId, onUpdateImage, onR
 							modalClass="editor-post-featured-image__media-modal"
 							render={ ( { open } ) => (
 								<Button onClick={ open } isDefault isLarge>
-									{__('Replace Image', 'block-options' ) }
+									{ __( 'Replace Image', 'block-options' ) }
 								</Button>
 							) }
 						/>

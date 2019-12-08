@@ -41,7 +41,7 @@ class ToolbarControls extends Component {
 export default compose(
 	withSelect( ( select ) => {
 		return {
-			isDisabled: select('core/edit-post').isFeatureActive( 'disableEditorsKitCoverAlignmentOptions' ),
+			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitCoverAlignmentOptions' ),
 		};
 	} ),
 	withSpokenMessages

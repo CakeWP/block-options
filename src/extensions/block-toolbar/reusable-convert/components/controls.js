@@ -39,7 +39,7 @@ class ToolbarControls extends Component {
 export default compose(
 	withSelect( ( select ) => {
 		return {
-			isDisabled: select('core/edit-post').isFeatureActive( 'disableEditorsKitConvertReusableOptions' ),
+			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitConvertReusableOptions' ),
 		};
 	} ),
 	withDispatch( ( dispatch, { clientId } ) => {

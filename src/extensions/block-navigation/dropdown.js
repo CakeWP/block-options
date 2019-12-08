@@ -35,7 +35,7 @@ function BlockNavigationDropdown( { hasBlocks, isDisabled } ) {
 						icon={ MenuIcon }
 						aria-expanded={ isOpen }
 						onClick={ isEnabled ? onToggle : undefined }
-						label={__('Block navigation', 'block-options' ) }
+						label={ __( 'Block navigation', 'block-options' ) }
 						className="editor-block-navigation block-editor-block-navigation"
 						shortcut={ displayShortcut.access( 'o' ) }
 						aria-disabled={ ! isEnabled }
