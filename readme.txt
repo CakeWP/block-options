@@ -152,6 +152,9 @@ e.g.
 
 == Changelog ==
 
+= 1.22.1 =
+* Tweaks: Add new features to Features Manager
+
 = 1.22 =
 * New: Make [Reusable Block easily convertible](https://github.com/phpbits/block-options/issues/198) to regular blocks 🎉
 * New: Add toggle to [Buttons Block full width](https://github.com/phpbits/block-options/pull/203) display 🎉
