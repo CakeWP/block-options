@@ -3,14 +3,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/advanced-controls/fullwidth/index.js:21
-msgid "Full Width Display"
+#: src/extensions/formats/link/components/edit.js:128
+msgid "Unlink"
 msgstr ""
 
-#: src/extensions/advanced-controls/fullwidth/index.js:24
-msgid "Full width display is enabled."
+#: src/extensions/formats/link/components/edit.js:29
+msgid "Add Link"
 msgstr ""
 
-#: src/extensions/advanced-controls/fullwidth/index.js:24
-msgid "Toggle to display this block's as full width."
+#: src/extensions/formats/link/components/edit.js:84
+msgid "Link removed."
 msgstr ""

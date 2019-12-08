@@ -93,6 +93,10 @@ class Edit extends Component {
 		if ( activeFormat ) {
 			activeFormat.type = name;
 
+			if ( typeof activeFormat.unregisteredAttributes !== 'undefined' && typeof activeFormat.unregisteredAttributes.rel !== 'undefined' ) {
+				activeFormat.attributes = Object.assign( activeFormat.attributes, { rel: activeFormat.unregisteredAttributes.rel } );
+			}
+
 			let newValue = value;
 			newValue = applyFormat( newValue, activeFormat );
 			newValue = removeFormat( newValue, 'core/link' );
