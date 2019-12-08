@@ -14,14 +14,3 @@ msgstr ""
 #: src/extensions/advanced-controls/fullwidth/index.js:24
 msgid "Toggle to display this block's as full width."
 msgstr ""
-
-#: src/extensions/advanced-controls/index.js:104
-msgid "Responsive"
-msgstr ""
-
-#: src/extensions/advanced-controls/index.js:108
-msgid ""
-"Attention: The display settings (show/hide for mobile, tablet or desktop) "
-"will only take effect once you are on the live page, and not while you're "
-"editing in Gutenberg."
-msgstr ""
