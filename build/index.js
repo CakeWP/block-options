@@ -9086,6 +9086,46 @@ addFilter('editor.BlockEdit', 'editorskit/advanced/disable-block', withInspector
 
 /***/ }),
 
+/***/ "./src/extensions/advanced-controls/fullwidth/index.js":
+/*!*************************************************************!*\
+  !*** ./src/extensions/advanced-controls/fullwidth/index.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress Dependencies
+ */
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+var ToggleControl = wp.components.ToggleControl;
+
+var FullWidthToggle = function FullWidthToggle(props) {
+  var attributes = props.attributes,
+      setAttributes = props.setAttributes;
+  var isFullWidth = attributes.isFullWidth;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ToggleControl, {
+    label: __('Full Width Display', 'block-options'),
+    checked: !!isFullWidth,
+    onChange: function onChange() {
+      return setAttributes({
+        isFullWidth: !isFullWidth
+      });
+    },
+    help: isFullWidth ? __('Full width display is enabled.', 'block-options') : __('Toggle to display this block\'s as full width.', 'block-options')
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (FullWidthToggle);
+
+/***/ }),
+
 /***/ "./src/extensions/advanced-controls/index.js":
 /*!***************************************************!*\
   !*** ./src/extensions/advanced-controls/index.js ***!
@@ -9103,12 +9143,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _options_devices___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./options/devices/ */ "./src/extensions/advanced-controls/options/devices/index.js");
 /* harmony import */ var _options_state___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./options/state/ */ "./src/extensions/advanced-controls/options/state/index.js");
 /* harmony import */ var _options_height___WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./options/height/ */ "./src/extensions/advanced-controls/options/height/index.js");
+/* harmony import */ var _fullwidth__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./fullwidth */ "./src/extensions/advanced-controls/fullwidth/index.js");
 
 
 
 /**
  * Internal dependencies
  */
+
 
 
 
@@ -9157,7 +9199,8 @@ var withAdvancedControls = createHigherOrderComponent(function (BlockEdit) {
         isDisabledUserState = props.isDisabledUserState;
     var editorskit = attributes.editorskit,
         blockOpts = attributes.blockOpts;
-    var withFullScreenHeight = hasBlockSupport(name, 'hasHeightFullScreen'); //compatibility with version 1
+    var withFullScreenHeight = hasBlockSupport(name, 'hasHeightFullScreen');
+    var withFullWidthDisplay = hasBlockSupport(name, 'hasFullWidthDisplay'); //compatibility with version 1
 
     if (typeof editorskit !== 'undefined' && !editorskit.migrated && blockOpts) {
       props.attributes.editorskit = Object.assign(props.attributes.editorskit, {
@@ -9188,7 +9231,7 @@ var withAdvancedControls = createHigherOrderComponent(function (BlockEdit) {
       });
     }
 
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(BlockEdit, props), withFullScreenHeight && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InspectorAdvancedControls, null, Object(_options_height___WEBPACK_IMPORTED_MODULE_5__["default"])(props)), isSelected && !isDisabledDevices && !restrictedBlocks.includes(name) && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelBody, {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(BlockEdit, props), withFullScreenHeight && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InspectorAdvancedControls, null, Object(_options_height___WEBPACK_IMPORTED_MODULE_5__["default"])(props)), withFullWidthDisplay && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InspectorAdvancedControls, null, Object(_fullwidth__WEBPACK_IMPORTED_MODULE_6__["default"])(props)), isSelected && !isDisabledDevices && !restrictedBlocks.includes(name) && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelBody, {
       title: __('Responsive', 'block-options'),
       initialOpen: false,
       className: "editorskit-panel"
@@ -9778,6 +9821,7 @@ var blocksWithFullScreen = ['core/image', 'core/cover', 'core/group', 'core/colu
 var blocksWithFontSize = ['core/list'];
 var blocksWithAnchor = ['core/spacer', 'core/separator'];
 var blocksWithBackgroundColor = ['core/columns', 'core/column'];
+var blocksWithFullWidth = ['core/button'];
 /**
  * Filters registered block settings, extending attributes with anchor using ID
  * of the first node.
@@ -9830,6 +9874,30 @@ function addAttributes(settings) {
         if (!settings.attributes.isHeightFullScreen) {
           settings.attributes = Object.assign(settings.attributes, {
             isHeightFullScreen: {
+              type: 'boolean',
+              default: false
+            }
+          });
+        }
+      }
+    } // Add full width display support.
+
+
+    if (blocksWithFullWidth.includes(settings.name)) {
+      if (!settings.supports) {
+        settings.supports = {};
+      }
+
+      settings.supports = Object.assign(settings.supports, {
+        hasFullWidthDisplay: true
+      });
+    }
+
+    if (hasBlockSupport(settings, 'hasFullWidthDisplay')) {
+      if (typeof settings.attributes !== 'undefined') {
+        if (!settings.attributes.isFullWidth) {
+          settings.attributes = Object.assign(settings.attributes, {
+            isFullWidth: {
               type: 'boolean',
               default: false
             }
@@ -9921,7 +9989,8 @@ var withAttributes = createHigherOrderComponent(function (BlockEdit) {
 
 function applyExtraClass(extraProps, blockType, attributes) {
   var editorskit = attributes.editorskit,
-      isHeightFullScreen = attributes.isHeightFullScreen;
+      isHeightFullScreen = attributes.isHeightFullScreen,
+      isFullWidth = attributes.isFullWidth;
 
   if (typeof editorskit !== 'undefined' && !restrictedBlocks.includes(blockType.name)) {
     if (typeof editorskit.id !== 'undefined') {
@@ -9945,6 +10014,10 @@ function applyExtraClass(extraProps, blockType, attributes) {
     extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_3___default()(extraProps.className, 'h-screen');
   }
 
+  if (hasBlockSupport(blockType.name, 'hasFullWidthDisplay') && isFullWidth) {
+    extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_3___default()(extraProps.className, 'ek-w-full');
+  }
+
   return extraProps;
 }
 
@@ -9952,13 +10025,20 @@ var addEditorBlockAttributes = createHigherOrderComponent(function (BlockListBlo
   return function (props) {
     var name = props.name,
         attributes = props.attributes;
-    var isHeightFullScreen = attributes.isHeightFullScreen;
+    var isHeightFullScreen = attributes.isHeightFullScreen,
+        isFullWidth = attributes.isFullWidth;
     var wrapperProps = props.wrapperProps;
     var customData = {};
 
     if (hasBlockSupport(name, 'hasHeightFullScreen') && isHeightFullScreen) {
       customData = Object.assign(customData, {
         'data-editorskit-h-screen': 1
+      });
+    }
+
+    if (hasBlockSupport(name, 'hasFullWidthDisplay') && isFullWidth) {
+      customData = Object.assign(customData, {
+        'data-editorskit-w-full': 1
       });
     }
 

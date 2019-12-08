@@ -3,19 +3,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-<<<<<<< HEAD
-#: src/extensions/block-toolbar/cover-vertical-alignment/components/controls.js:65
-msgid "Show media on top"
+#: src/extensions/advanced-controls/fullwidth/index.js:21
+msgid "Full Width Display"
 msgstr ""
 
-#: src/extensions/block-toolbar/cover-vertical-alignment/components/controls.js:73
-msgid "Show media on bottom"
-=======
-#: src/extensions/block-toolbar/reusable-convert/components/controls.js:30
-msgid "Convert to Regular Blocks"
+#: src/extensions/advanced-controls/fullwidth/index.js:24
+msgid "Full width display is enabled."
 msgstr ""
 
-#: src/extensions/block-toolbar/reusable-convert/components/controls.js:56
-msgid "Reusable Block converted."
->>>>>>> master
+#: src/extensions/advanced-controls/fullwidth/index.js:24
+msgid "Toggle to display this block's as full width."
 msgstr ""

@@ -16,6 +16,7 @@ const blocksWithFullScreen = [ 'core/image', 'core/cover', 'core/group', 'core/c
 const blocksWithFontSize = [ 'core/list' ];
 const blocksWithAnchor = [ 'core/spacer', 'core/separator' ];
 const blocksWithBackgroundColor = [ 'core/columns', 'core/column' ];
+const blocksWithFullWidth = [ 'core/button' ];
 
 /**
  * Filters registered block settings, extending attributes with anchor using ID
@@ -67,6 +68,29 @@ function addAttributes( settings ) {
 				if ( ! settings.attributes.isHeightFullScreen ) {
 					settings.attributes = Object.assign( settings.attributes, {
 						isHeightFullScreen: {
+							type: 'boolean',
+							default: false,
+						},
+					} );
+				}
+			}
+		}
+
+		// Add full width display support.
+		if ( blocksWithFullWidth.includes( settings.name ) ) {
+			if ( ! settings.supports ) {
+				settings.supports = {};
+			}
+			settings.supports = Object.assign( settings.supports, {
+				hasFullWidthDisplay: true,
+			} );
+		}
+
+		if ( hasBlockSupport( settings, 'hasFullWidthDisplay' ) ) {
+			if ( typeof settings.attributes !== 'undefined' ) {
+				if ( ! settings.attributes.isFullWidth ) {
+					settings.attributes = Object.assign( settings.attributes, {
+						isFullWidth: {
 							type: 'boolean',
 							default: false,
 						},
@@ -159,7 +183,7 @@ const withAttributes = createHigherOrderComponent( ( BlockEdit ) => {
  * @return {Object} Filtered props applied to save element.
  */
 function applyExtraClass( extraProps, blockType, attributes ) {
-	const { editorskit, isHeightFullScreen } = attributes;
+	const { editorskit, isHeightFullScreen, isFullWidth } = attributes;
 
 	if ( typeof editorskit !== 'undefined' && ! restrictedBlocks.includes( blockType.name ) ) {
 		if ( typeof editorskit.id !== 'undefined' ) {
@@ -183,19 +207,27 @@ function applyExtraClass( extraProps, blockType, attributes ) {
 		extraProps.className = classnames( extraProps.className, 'h-screen' );
 	}
 
+	if ( hasBlockSupport( blockType.name, 'hasFullWidthDisplay' ) && isFullWidth ) {
+		extraProps.className = classnames( extraProps.className, 'ek-w-full' );
+	}
+
 	return extraProps;
 }
 
 const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
 		const { name, attributes } = props;
-		const { isHeightFullScreen } = attributes;
+		const { isHeightFullScreen, isFullWidth } = attributes;
 
 		let wrapperProps 	= props.wrapperProps;
 		let customData 	 	= {};
 
 		if ( hasBlockSupport( name, 'hasHeightFullScreen' ) && isHeightFullScreen ) {
 			customData = Object.assign( customData, { 'data-editorskit-h-screen': 1 } );
+		}
+
+		if ( hasBlockSupport( name, 'hasFullWidthDisplay' ) && isFullWidth ) {
+			customData = Object.assign( customData, { 'data-editorskit-w-full': 1 } );
 		}
 
 		wrapperProps = {
