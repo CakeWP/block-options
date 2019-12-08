@@ -9176,6 +9176,7 @@ var hasBlockSupport = wp.blocks.hasBlockSupport;
 var restrictedBlocks = ['core/block', 'core/freeform', 'core/shortcode', 'core/template', 'core/nextpage', 'editorskit/import'];
 var enhance = compose(withSelect(function () {
   return {
+    isDisabledButtonWidth: select('core/edit-post').isFeatureActive('disableEditorsKitButtonFullwidthOptions'),
     isDisabledDevices: select('core/edit-post').isFeatureActive('disableEditorsKitDevicesVisibility'),
     isDisabledUserState: select('core/edit-post').isFeatureActive('disableEditorsKitUserStateVisibility')
   };
@@ -9196,7 +9197,8 @@ var withAdvancedControls = createHigherOrderComponent(function (BlockEdit) {
         setAttributes = props.setAttributes,
         isSelected = props.isSelected,
         isDisabledDevices = props.isDisabledDevices,
-        isDisabledUserState = props.isDisabledUserState;
+        isDisabledUserState = props.isDisabledUserState,
+        isDisabledButtonWidth = props.isDisabledButtonWidth;
     var editorskit = attributes.editorskit,
         blockOpts = attributes.blockOpts;
     var withFullScreenHeight = hasBlockSupport(name, 'hasHeightFullScreen');
@@ -9231,7 +9233,7 @@ var withAdvancedControls = createHigherOrderComponent(function (BlockEdit) {
       });
     }
 
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(BlockEdit, props), withFullScreenHeight && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InspectorAdvancedControls, null, Object(_options_height___WEBPACK_IMPORTED_MODULE_5__["default"])(props)), withFullWidthDisplay && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InspectorAdvancedControls, null, Object(_fullwidth__WEBPACK_IMPORTED_MODULE_6__["default"])(props)), isSelected && !isDisabledDevices && !restrictedBlocks.includes(name) && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelBody, {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(BlockEdit, props), withFullScreenHeight && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InspectorAdvancedControls, null, Object(_options_height___WEBPACK_IMPORTED_MODULE_5__["default"])(props)), !isDisabledButtonWidth && withFullWidthDisplay && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InspectorAdvancedControls, null, Object(_fullwidth__WEBPACK_IMPORTED_MODULE_6__["default"])(props)), isSelected && !isDisabledDevices && !restrictedBlocks.includes(name) && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelBody, {
       title: __('Responsive', 'block-options'),
       initialOpen: false,
       className: "editorskit-panel"

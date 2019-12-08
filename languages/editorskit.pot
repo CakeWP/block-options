@@ -3,84 +3,13 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/admin/block-manager/index.js:42
-msgid "Search for a block"
+#: src/extensions/advanced-controls/index.js:106
+msgid "Responsive"
 msgstr ""
 
-#: src/admin/block-manager/index.js:53
-msgid "%1$d block is disabled."
-msgid_plural "%1$d blocks are disabled."
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/admin/block-manager/index.js:66
-msgid "Available block types"
-msgstr ""
-
-#: src/admin/block-manager/index.js:71
-msgid "No blocks found."
-msgstr ""
-
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:111
-msgid "Edit Media Link"
-msgstr ""
-
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:111
-msgid "Media Link"
-msgstr ""
-
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:162
-msgid "Remove Link"
-msgstr ""
-
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:228
-msgid "Media File"
-msgstr ""
-
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:234
-msgid "Attachment Page"
-msgstr ""
-
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:266
-msgid "Open in New Tab"
-msgstr ""
-
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:271
-msgid "No follow"
-msgstr ""
-
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:278
-msgid "Sponsored"
-msgstr ""
-
-#: src/extensions/block-toolbar/media-text-link/components/controls.js:285
-msgid "Apply link to whole block"
-msgstr ""
-
-#: src/extensions/components/featured-image/components/controls.js:23
-msgid "Featured Image"
-msgstr ""
-
-#: src/extensions/components/featured-image/components/controls.js:24
-msgid "Set Featured Image"
-msgstr ""
-
-#: src/extensions/components/featured-image/components/controls.js:25
-msgid "Remove Image"
-msgstr ""
-
-#: src/extensions/components/featured-image/components/controls.js:29
-msgid "To edit the featured image, you need permission to upload media."
-msgstr ""
-
-#: src/extensions/components/featured-image/components/controls.js:47
-msgid "Upload Featured Image"
-msgstr ""
-
-#: src/extensions/components/featured-image/components/controls.js:68
-msgid "Edit or update the image"
-msgstr ""
-
-#: src/extensions/components/featured-image/components/controls.js:93
-msgid "Replace Image"
+#: src/extensions/advanced-controls/index.js:110
+msgid ""
+"Attention: The display settings (show/hide for mobile, tablet or desktop) "
+"will only take effect once you are on the live page, and not while you're "
+"editing in Gutenberg."
 msgstr ""
