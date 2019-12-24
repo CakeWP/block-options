@@ -39,7 +39,7 @@ function BlockManager( {
 		<div className="edit-post-manage-blocks-modal__content">
 			<TextControl
 				type="search"
-				label={ __( 'Search for a block' ) }
+				label={ __( 'Search for a block', 'block-options' ) }
 				value={ search }
 				onChange={ ( nextSearch ) => setState( {
 					search: nextSearch,
@@ -63,12 +63,12 @@ function BlockManager( {
 			<div
 				tabIndex="0"
 				role="region"
-				aria-label={ __( 'Available block types' ) }
+				aria-label={ __( 'Available block types', 'block-options' ) }
 				className="edit-post-manage-blocks-modal__results"
 			>
 				{ blockTypes.length === 0 && (
 					<p className="edit-post-manage-blocks-modal__no-results">
-						{ __( 'No blocks found.' ) }
+						{ __( 'No blocks found.', 'block-options' ) }
 					</p>
 				) }
 				{ categories.map( ( category ) => (

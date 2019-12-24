@@ -76,7 +76,7 @@ class ManageAutoSave extends Component {
 					info={ __( 'Toggle to disable or enable editor autosaving feature.', 'block-options' ) }
 					onClick={ onToggle }
 				>
-					{ __( 'Auto Save', 'block-options', 'block-options' ) }
+					{ __( 'Auto Save', 'block-options' ) }
 				</PluginMoreMenuItem>
 
 			</Fragment>

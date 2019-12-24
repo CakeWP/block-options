@@ -1,6 +1,13 @@
 @import "./breakpoints";
 $m: !important;
 
+//Width
+.ek-align-slim {
+	max-width: 500px $m;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 //Padding
 .ek-padding--sm {
 	padding: 14px $m;
@@ -16,6 +23,31 @@ $m: !important;
 
 .ek-padding--xl {
 	padding: 60px $m;
+}
+
+//Border Radius
+.ek-rounded-none {
+	border-radius: 0 $m;
+}
+
+.ek-rounded-sm {
+	border-radius: 0.125rem $m;
+}
+
+.ek-rounded-md {
+	border-radius: 0.25rem $m;
+}
+
+.ek-rounded-lg {
+	border-radius: 0.5rem $m;
+}
+
+.ek-rounded-xl {
+	border-radius: 0.9rem $m;
+}
+
+.ek-rounded-full {
+	border-radius: 9999px $m;
 }
 
 @include break-large() {
@@ -211,8 +243,12 @@ body:not(.wp-admin) {
 		align-items: center $m;
 	}
 
-	.ek-items-end > div {
-		align-items: flex-end $m;
+	.ek-items-end {
+
+		&.wp-block-cover,
+		> div {
+			align-items: flex-end $m;
+		}
 	}
 
 	.ek-items-baseline > div {
@@ -509,6 +545,37 @@ body:not(.wp-admin) {
 
 		.sm\:ek-justify-around > div {
 			justify-content: space-around $m;
+		}
+	}
+}
+
+// Fullwidth display.
+.ek-w-full {
+
+	&,
+	> .wp-block-button__link {
+		width: 100%;
+	}
+}
+
+@include break-medium() {
+
+	.md\:ek-w-full {
+
+		&,
+		> .wp-block-button__link {
+			width: 100%;
+		}
+	}
+}
+
+@include break-small() {
+
+	.sm\:ek-w-full {
+
+		&,
+		> .wp-block-button__link {
+			width: 100%;
 		}
 	}
 }

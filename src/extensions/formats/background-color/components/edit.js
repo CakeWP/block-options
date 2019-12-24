@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { get } from 'lodash';
 
 /**
  * Internal dependencies
@@ -15,13 +14,41 @@ import icon from '../icon';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { select, withSelect } = wp.data;
-const { BlockControls } = wp.blockEditor;
+const { BlockControls, getColorClassName, getColorObjectByColorValue, getColorObjectByAttributeValues } = wp.blockEditor;
 const { applyFormat, removeFormat, getActiveFormat } = wp.richText;
 const { Toolbar, IconButton, Popover, ColorPalette } = wp.components;
 const { compose, ifCondition } = wp.compose;
 
 const name = 'editorskit/background';
 const title = __( 'Highlight Color', 'block-options' );
+const definedColors = [
+
+	{
+		name: __( 'Orange Sunrise', 'block-options' ),
+		slug: 'orange-sunrise',
+		color: '#f7cc62',
+	},
+	{
+		name: __( 'Pink Flamingo', 'block-options' ),
+		slug: 'pink-flamingo',
+		color: '#ffbfb5',
+	},
+	{
+		name: __( 'Spring Green', 'block-options' ),
+		slug: 'spring-green',
+		color: '#b5dcaf',
+	},
+	{
+		name: __( 'Blue Moon', 'block-options' ),
+		slug: 'blue-moon',
+		color: '#d6e8fa',
+	},
+	{
+		name: __( 'Purple Mist', 'block-options' ),
+		slug: 'purple-mist',
+		color: '#d8c3ff',
+	},
+];
 
 class Edit extends Component {
 	constructor() {
@@ -46,46 +73,25 @@ class Edit extends Component {
 			value,
 			onChange,
 			isActive,
+			colors,
 		} = this.props;
 
 		let activeColor;
 
-		const definedColors = [
-
-			{
-				name: __( 'Orange Sunrise', 'block-options' ),
-				slug: 'orange-sunrise',
-				color: '#f7cc62',
-			},
-			{
-				name: __( 'Pink Flamingo', 'block-options' ),
-				slug: 'pink-flamingo',
-				color: '#ffbfb5',
-			},
-			{
-				name: __( 'Spring Green', 'block-options' ),
-				slug: 'spring-green',
-				color: '#b5dcaf',
-			},
-			{
-				name: __( 'Blue Moon', 'block-options' ),
-				slug: 'blue-moon',
-				color: '#d6e8fa',
-			},
-			{
-				name: __( 'Purple Mist', 'block-options' ),
-				slug: 'purple-mist',
-				color: '#d8c3ff',
-			},
-		];
-
-		const colors = get( select( 'core/block-editor' ).getSettings(), [ 'colors' ], definedColors );
 		const activeColorFormat = getActiveFormat( value, name );
 
 		if ( activeColorFormat ) {
 			const styleColor = activeColorFormat.attributes.style;
+
 			if ( styleColor ) {
 				activeColor = styleColor.replace( new RegExp( `^background-color:\\s*` ), '' );
+			}
+
+			const currentClass = activeColorFormat.attributes.class;
+
+			if ( currentClass ) {
+				const colorSlug = currentClass.replace( /.*has-(.*?)-background-color.*/, '$1' );
+				activeColor = getColorObjectByAttributeValues( colors, colorSlug ).color;
 			}
 		}
 
@@ -122,10 +128,21 @@ class Edit extends Component {
 									value={ activeColor }
 									onChange={ ( color ) => {
 										if ( color ) {
+											let colorObject = null;
+
+											if (
+												typeof window.editorskitInfo !== 'undefined' &&
+												window.editorskitInfo.supports.color_palette
+											) {
+												colorObject = getColorObjectByColorValue( colors, color );
+											}
+
 											onChange(
 												applyFormat( value, {
 													type: name,
-													attributes: {
+													attributes: colorObject ? {
+														class: getColorClassName( 'background-color', colorObject.slug ),
+													} : {
 														style: `background-color:${ color }`,
 													},
 												} )
@@ -148,7 +165,10 @@ class Edit extends Component {
 
 export default compose(
 	withSelect( () => {
+		const { colors } = select( 'core/block-editor' ).getSettings();
+
 		return {
+			colors: colors ? colors : definedColors,
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitHighlightFormats' ),
 		};
 	} ),

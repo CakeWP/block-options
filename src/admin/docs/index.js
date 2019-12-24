@@ -139,6 +139,10 @@ class EditorsKitDocs extends Component {
 				title: __( 'Accessible Help, Tips & Tricks', 'block-options' ),
 				name: 'tips-tricks-tools.md',
 			},
+			{
+				title: __( 'Enable Developer Tools', 'block-options' ),
+				name: 'developer-tools.md',
+			},
 		];
 
 		const visibilityDocs = [

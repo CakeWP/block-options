@@ -6880,7 +6880,7 @@ function BlockManager(_ref) {
     className: "edit-post-manage-blocks-modal__content"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
     type: "search",
-    label: __('Search for a block'),
+    label: __('Search for a block', 'block-options'),
     value: search,
     onChange: function onChange(nextSearch) {
       return setState({
@@ -6893,11 +6893,11 @@ function BlockManager(_ref) {
   }, sprintf(_n('%1$d block is disabled.', '%1$d blocks are disabled.', numberOfHiddenBlocks), numberOfHiddenBlocks)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     tabIndex: "0",
     role: "region",
-    "aria-label": __('Available block types'),
+    "aria-label": __('Available block types', 'block-options'),
     className: "edit-post-manage-blocks-modal__results"
   }, blockTypes.length === 0 && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
     className: "edit-post-manage-blocks-modal__no-results"
-  }, __('No blocks found.')), categories.map(function (category) {
+  }, __('No blocks found.', 'block-options')), categories.map(function (category) {
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_category__WEBPACK_IMPORTED_MODULE_2__["default"], {
       key: category.slug,
       category: category,
@@ -7140,6 +7140,9 @@ function (_Component) {
       }, {
         title: __('Accessible Help, Tips & Tricks', 'block-options'),
         name: 'tips-tricks-tools.md'
+      }, {
+        title: __('Enable Developer Tools', 'block-options'),
+        name: 'developer-tools.md'
       }];
       var visibilityDocs = [{
         title: __('Block Visibility on Desktop, Mobile or Tablet', 'block-options'),
@@ -7340,7 +7343,7 @@ function (_Component) {
           activeClass: "active-tab",
           tabs: [{
             name: 'ek-getting-started',
-            title: 'Gettings Started',
+            title: 'Getting Started',
             className: 'ek-settings-getting-started'
           }, {
             name: 'ek-docs',
@@ -7396,7 +7399,7 @@ function (_Component) {
           className: "components-panel__header"
         }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", {
           className: "editorskit-panel__header-hint"
-        }, __('Settings → EditorsKit', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h2", null, __('Gettings Started with', 'block-options'), " ", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("strong", null, "EditorsKit"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("code", null, window.editorskitSettings.version)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Congratulations! You\'ve just unlocked more Gutenberg block editor tools for easier editing and better workflow. Check more information about the plugin below and please make sure to navigate through "Tutorials and Docs" tab to learn more on how to use each available features.', 'block-options'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(EditorsKitSettingsPanel, null))));
+        }, __('Settings → EditorsKit', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h2", null, __('Getting Started with', 'block-options'), " ", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("strong", null, "EditorsKit"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("code", null, window.editorskitSettings.version)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Congratulations! You\'ve just unlocked more Gutenberg block editor tools for easier editing and better workflow. Check more information about the plugin below and please make sure to navigate through "Tutorials and Docs" tab to learn more on how to use each available features.', 'block-options'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(EditorsKitSettingsPanel, null))));
       };
 
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(MainPanel, null));

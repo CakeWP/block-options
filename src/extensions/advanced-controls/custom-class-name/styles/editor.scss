@@ -2,90 +2,132 @@
 $m: !important;
 
 //Flexbox
-.flex > div > .editor-inner-blocks > .editor-block-list__layout {
+.ek-flex > div > .editor-inner-blocks > .editor-block-list__layout {
 	display: flex $m;
 }
 
-.flex-initial > div > .editor-inner-blocks > .editor-block-list__layout {
+.ek-flex-initial > div > .editor-inner-blocks > .editor-block-list__layout {
 	flex: 0 1 auto $m;
 }
 
-.flex-1 > div > .editor-inner-blocks > .editor-block-list__layout {
+.ek-flex-1 > div > .editor-inner-blocks > .editor-block-list__layout {
 	flex: 1 1 0% $m;
 }
 
-.flex-auto > div > .editor-inner-blocks > .editor-block-list__layout {
+.ek-flex-auto > div > .editor-inner-blocks > .editor-block-list__layout {
 	flex: 1 1 auto $m;
 }
 
-.flex-none > div > .editor-inner-blocks > .editor-block-list__layout {
+.ek-flex-none > div > .editor-inner-blocks > .editor-block-list__layout {
 	flex: none $m;
 }
 
-.flex-no-wrap > div > .editor-inner-blocks > .editor-block-list__layout {
+.ek-flex-no-wrap > div > .editor-inner-blocks > .editor-block-list__layout {
 	flex-wrap: nowrap $m;
 }
 
-.flex-wrap > div > .editor-inner-blocks > .editor-block-list__layout {
+.ek-flex-wrap > div > .editor-inner-blocks > .editor-block-list__layout {
 	flex-wrap: wrap $m;
 }
 
-.flex-wrap-reverse > div > .editor-inner-blocks > .editor-block-list__layout {
+.ek-flex-wrap-reverse > div > .editor-inner-blocks > .editor-block-list__layout {
 	flex-wrap: wrap-reverse $m;
 }
 
-.flex-row > div > .editor-inner-blocks > .editor-block-list__layout {
+.ek-flex-row > div > .editor-inner-blocks > .editor-block-list__layout {
 	flex-direction: row $m;
 }
 
-.flex-row-reverse > div > .editor-inner-blocks > .editor-block-list__layout {
+.ek-flex-row-reverse > div > .editor-inner-blocks > .editor-block-list__layout {
 	flex-direction: row-reverse $m;
 }
 
-.flex-col > div > .editor-inner-blocks > .editor-block-list__layout {
+.ek-flex-col > div > .editor-inner-blocks > .editor-block-list__layout {
 	flex-direction: column $m;
 }
 
-.flex-col-reverse > div > .editor-inner-blocks > .editor-block-list__layout {
+.ek-flex-col-reverse > div > .editor-inner-blocks > .editor-block-list__layout {
 	flex-direction: column-reverse $m;
 }
 
-.items-stretch > div > .editor-inner-blocks > .editor-block-list__layout {
+.ek-items-stretch > div > .editor-inner-blocks > .editor-block-list__layout {
 	align-items: stretch $m;
 }
 
-.items-start > div > .editor-inner-blocks > .editor-block-list__layout {
+.ek-items-start > div > .editor-inner-blocks > .editor-block-list__layout {
 	align-items: flex-start $m;
 }
 
-.items-center > div > .editor-inner-blocks > .editor-block-list__layout {
+.ek-items-center > div > .editor-inner-blocks > .editor-block-list__layout {
 	align-items: center $m;
 }
 
-.items-end > div > .editor-inner-blocks > .editor-block-list__layout {
-	align-items: flex-end $m;
+.ek-items-end {
+
+	&.wp-block-cover,
+	> div > .editor-inner-blocks > .editor-block-list__layout {
+		align-items: flex-end $m;
+	}
 }
 
-.items-baseline > div > .editor-inner-blocks > .editor-block-list__layout {
+.ek-items-baseline > div > .editor-inner-blocks > .editor-block-list__layout {
 	align-items: baseline $m;
 }
 
-.justify-start > div > .editor-inner-blocks > .editor-block-list__layout {
+.ek-justify-start > div > .editor-inner-blocks > .editor-block-list__layout {
 	justify-content: flex-start $m;
 }
 
-.justify-center > div > .editor-inner-blocks > .editor-block-list__layout {
+.ek-justify-center > div > .editor-inner-blocks > .editor-block-list__layout {
 	justify-content: center $m;
 }
 
-.justify-end > div > .editor-inner-blocks > .editor-block-list__layout {
+.ek-justify-end > div > .editor-inner-blocks > .editor-block-list__layout {
 	justify-content: flex-end $m;
 }
 
-.justify-between > div > .editor-inner-blocks > .editor-block-list__layout {
+.ek-justify-between > div > .editor-inner-blocks > .editor-block-list__layout {
 	justify-content: space-between $m;
 }
 
-.justify-around > div > .editor-inner-blocks > .editor-block-list__layout {
+.ek-justify-around > div > .editor-inner-blocks > .editor-block-list__layout {
 	justify-content: space-around $m;
+}
+
+// Fullwidth display.
+.ek-w-full {
+
+	&.wp-block-button {
+
+		> div {
+
+			&,
+			> .wp-block-button__link {
+				width: 100%;
+			}
+		}
+	}
+}
+
+.wp-block[data-editorskit-w-full="1"] {
+
+	&[data-type="core/button"] {
+
+		> .editor-block-list__block-edit,
+		> .block-editor-block-list__block-edit {
+
+			> div[data-block]:not([data-block=""]) {
+				width: 100%;
+
+				.wp-block-button {
+
+					&,
+					> div,
+					.wp-block-button__link {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
 }

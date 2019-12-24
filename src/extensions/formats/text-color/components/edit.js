@@ -1,15 +1,10 @@
 /**
- * External dependencies
- */
-import { get } from 'lodash';
-
-/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { select, withSelect } = wp.data;
-const { BlockControls } = wp.blockEditor;
+const { BlockControls, getColorClassName, getColorObjectByColorValue, getColorObjectByAttributeValues } = wp.blockEditor;
 const { applyFormat, removeFormat, getActiveFormat } = wp.richText;
 const { Toolbar, IconButton, Popover, ColorPalette } = wp.components;
 const { compose, ifCondition } = wp.compose;
@@ -39,17 +34,25 @@ class Edit extends Component {
 		const {
 			value,
 			onChange,
+			colors,
 		} = this.props;
 
 		let activeColor;
 
-		const colors = get( select( 'core/block-editor' ).getSettings(), [ 'colors' ], [] );
 		const activeColorFormat = getActiveFormat( value, name );
 
 		if ( activeColorFormat ) {
 			const styleColor = activeColorFormat.attributes.style;
+
 			if ( styleColor ) {
 				activeColor = styleColor.replace( new RegExp( `^color:\\s*` ), '' );
+			}
+
+			const currentClass = activeColorFormat.attributes.class;
+
+			if ( currentClass ) {
+				const colorSlug = currentClass.replace( /.*has-(.*?)-color.*/, '$1' );
+				activeColor = getColorObjectByAttributeValues( colors, colorSlug ).color;
 			}
 		}
 
@@ -88,12 +91,27 @@ class Edit extends Component {
 									value={ activeColor }
 									onChange={ ( color ) => {
 										if ( color ) {
+											let colorObject = null;
+
+											if (
+												typeof window.editorskitInfo !== 'undefined' &&
+												window.editorskitInfo.supports.color_palette
+											) {
+												colorObject = getColorObjectByColorValue( colors, color );
+											}
 											onChange(
 												applyFormat( value, {
 													type: name,
-													attributes: {
-														style: `color:${ color }`,
-													},
+													attributes: colorObject ?
+														{
+															class: getColorClassName(
+																'color',
+																colorObject.slug
+															),
+														} :
+														{
+															style: `color:${ color }`,
+														},
 												} )
 											);
 										} else {
@@ -114,7 +132,10 @@ class Edit extends Component {
 
 export default compose(
 	withSelect( () => {
+		const { colors } = select( 'core/block-editor' ).getSettings();
+
 		return {
+			colors: colors ? colors : [],
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitColorsFormats' ),
 		};
 	} ),

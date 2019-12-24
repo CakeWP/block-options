@@ -38,6 +38,9 @@ import './extensions/components/reading-time';
 import './extensions/components/help-tips';
 import './extensions/components/selected-block';
 
+//Block Transforms
+import './extensions/block-transform';
+
 //Block Settings
 import './extensions/block-settings';
 
@@ -55,6 +58,9 @@ import './extensions/block-styles/';
 
 // Shortcuts
 import './extensions/shortcuts/select-parent-block';
+
+// Disable Block Control
+import './extensions/advanced-controls/disable-block';
 
 // Register Blocks
 import * as importBlock from './blocks/import';

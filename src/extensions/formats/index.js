@@ -1,7 +1,6 @@
 /**
  * Internal dependencies
  */
-import { underline } from './underline';
 import { justify } from './justify';
 import { textColor } from './text-color';
 import { backgroundColor } from './background-color';
@@ -13,6 +12,7 @@ import { uppercase } from './uppercase';
 import { link } from './link';
 import { alignment } from './alignment';
 import { nbsp } from './nbsp';
+import { abbreviation } from './abbreviation';
 
 /**
  * WordPress dependencies
@@ -24,7 +24,6 @@ const isDisabled = select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKi
 
 function registerEditorsKitFormats() {
 	[
-		underline,
 		justify,
 		textColor,
 		backgroundColor,
@@ -35,6 +34,7 @@ function registerEditorsKitFormats() {
 		uppercase,
 		alignment,
 		nbsp,
+		abbreviation,
 		! isDisabled ? link : [],
 	].forEach( ( { name, ...settings } ) => {
 		if ( name ) {

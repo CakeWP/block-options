@@ -4,7 +4,7 @@ Plugin URI: https://editorskit.com
 Contributors: phpbits
 Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenberg editor
 Requires at least: 5.0
-Tested up to: 5.2
+Tested up to: 5.3
 Requires PHP: 5.6
 Stable tag: 1.18.3
 License: GPL-3.0
@@ -36,6 +36,7 @@ https://www.youtube.com/watch?v=QWgO4lAJAlE
 * Uppercase Text Transform
 * Images and Embeds Caption Alignment
 * Nonbreaking Space
+* Abbreviation for acronyms
 
 ## Markdown Support
 Starting [EditorsKit 1.6 ](https://jeffreycarandang.com/editorskit-1-6/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit), you can now use markdowns on Gutenberg editor while typing. Markdowns for `*bold*`, `_italic_` and `~strikethrough~` are available upon plugin activation. Lists of available markdowns are also accessible on the settings menu.
@@ -150,6 +151,31 @@ e.g.
 
 
 == Changelog ==
+
+= 1.22.1 =
+* Tweaks: Add new features to Features Manager
+
+= 1.22 =
+* New: Make [Reusable Block easily convertible](https://github.com/phpbits/block-options/issues/198) to regular blocks 🎉
+* New: Add toggle to [Buttons Block full width](https://github.com/phpbits/block-options/pull/203) display 🎉
+* New: Add [Cover Block vertical alignment](https://github.com/phpbits/block-options/pull/201) 🎉
+* Fixes: Fix issue with [link rel nofollow and sponsored toggle not saving](https://wordpress.org/support/topic/nofollow-sponsored-tags-not-saving/)
+* Tweaks: Typo fixes on welcome page
+
+= 1.21 =
+* New: [Abbreviation Format](https://github.com/phpbits/block-options/pull/187) for acronyms 🎉
+* New: Add option to [Transform Group Block to Cover Block](https://github.com/phpbits/block-options/pull/194) 🎉
+* New: Add [Background Color Settings](https://github.com/phpbits/block-options/pull/191) to Columns Block 🎉
+* Tweaks: [Fix](https://github.com/phpbits/block-options/pull/193) and add more [EditorsKit CSS classes](https://github.com/phpbits/block-options/pull/189)
+* Tweaks: Blocks Unit Testing only feature to [disable selected block](https://github.com/phpbits/block-options/pull/190)
+* Fixes: Few other 🐛 cleanup for errors and Gutenberg compatibility
+
+= 1.20 =
+* New: Add [Gutenberg Block Manager](https://github.com/phpbits/block-options/pull/179) directly on EditorsKit > Settings page.
+* New: Create [developer tools for shortcuts](https://github.com/phpbits/block-options/pull/173) that can be enabled using theme support.
+* New: Add `add_theme_support( 'editorskit-color-palette-classnames' )` in order to use theme color palette specific classnames for color formats.
+* Tweaks: Improve Image and Gallery [Blocks DropZone](https://github.com/phpbits/block-options/pull/175) styling
+* Fixes: Prevent error and [conflicts with third party plugins](https://github.com/phpbits/block-options/pull/184) that is relying on Classic Editor.
 
 = 1.19 =
 * New: Better user onboarding and [welcome page with docs & tutorials](https://github.com/phpbits/block-options/issues/162)

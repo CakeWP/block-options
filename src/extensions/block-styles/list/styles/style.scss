@@ -19,7 +19,7 @@ ol {
 				height: 25px;
 				left: -25px;
 				position: absolute;
-				top: 3px;
+				top: 1px;
 				transform: scale(0.9);
 				width: 25px;
 			}
@@ -63,24 +63,24 @@ ol {
 			background: currentColor;
 			height: 12px;
 			width: 12px;
-			top: 8px;
+			top: 0.6em;
 			left: -18px;
 		}
 
 		li:not(:last-of-type)::after {
 			content: "";
 			position: absolute;
-			height: 100%;
+			height: calc( 100%+5px );
 			border-left: 2px solid currentColor;
 			left: -13px;
-			top: 14px;
+			top: 0.75em;
 		}
 	}
 
 	&.is-style-none {
 
 		&,
- li {
+ 		li {
 			list-style-type: none !important;
 			padding-left: 0 !important;
 		}

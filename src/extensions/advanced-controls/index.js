@@ -5,6 +5,7 @@ import './custom-class-name';
 import DevicesOptions from './options/devices/';
 import UserStateOptions from './options/state/';
 import VerticalHeightToggle from './options/height/';
+import FullWidthToggle from './fullwidth';
 
 /**
  * WordPress Dependencies
@@ -23,6 +24,7 @@ const restrictedBlocks = [ 'core/block', 'core/freeform', 'core/shortcode', 'cor
 const enhance = compose(
 	withSelect( () => {
 		return {
+			isDisabledButtonWidth: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitButtonFullwidthOptions' ),
 			isDisabledDevices: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitDevicesVisibility' ),
 			isDisabledUserState: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitUserStateVisibility' ),
 		};
@@ -44,6 +46,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 			isSelected,
 			isDisabledDevices,
 			isDisabledUserState,
+			isDisabledButtonWidth,
 		} = props;
 
 		const {
@@ -52,6 +55,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 		} = attributes;
 
 		const withFullScreenHeight = hasBlockSupport( name, 'hasHeightFullScreen' );
+		const withFullWidthDisplay = hasBlockSupport( name, 'hasFullWidthDisplay' );
 
 		//compatibility with version 1
 		if ( typeof editorskit !== 'undefined' && ! editorskit.migrated && blockOpts ) {
@@ -88,6 +92,12 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 					withFullScreenHeight &&
 					<InspectorAdvancedControls>
 						{ VerticalHeightToggle( props ) }
+					</InspectorAdvancedControls>
+				}
+				{
+					! isDisabledButtonWidth && withFullWidthDisplay &&
+					<InspectorAdvancedControls>
+						{ FullWidthToggle( props ) }
 					</InspectorAdvancedControls>
 				}
 				{ isSelected && ! isDisabledDevices && ! restrictedBlocks.includes( name ) &&

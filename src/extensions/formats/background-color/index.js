@@ -20,6 +20,7 @@ export const backgroundColor = {
 	className: 'has-inline-background',
 	attributes: {
 		style: 'style',
+		class: 'class',
 	},
 	edit: Edit,
 };
