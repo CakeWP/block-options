@@ -12,16 +12,24 @@ ol {
 			position: relative;
 
 			&::before {
+				content: "";
 				background-color: currentColor;
 				background-size: cover;
-				content: "";
 				display: inline-block;
 				height: 25px;
 				left: -25px;
 				position: absolute;
-				top: 1px;
+				top: 3px;
 				transform: scale(0.9);
 				width: 25px;
+			}
+		}
+	}
+
+	&.has-list-bullet-color{
+		li{
+			&::before {
+				background-color: var(--ek-bullet-color);
 			}
 		}
 	}
@@ -30,8 +38,8 @@ ol {
 
 		li::before {
 			/* stylelint-disable */
-			mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><rect x="0" fill="none" width="20" height="20"/><g><path d="M5 4l10 6-10 6V4z"/></g></svg>');
-			-webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><rect x="0" fill="none" width="20" height="20"/><g><path d="M5 4l10 6-10 6V4z"/></g></svg>');
+			mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" > <path d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z"></path><path fill="none" d="M0 0h24v24H0z"></path></svg>');
+			-webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" > <path d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z"></path><path fill="none" d="M0 0h24v24H0z"></path></svg>');
 			/* stylelint-enable */
 		}
 	}
@@ -40,8 +48,8 @@ ol {
 
 		li::before {
 			/* stylelint-disable */
-			mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><rect x="0" fill="none" width="20" height="20"/><g><path d="M14.83 4.89l1.34.94-5.81 8.38H9.02L5.78 9.67l1.34-1.25 2.57 2.4z"/></g></svg>');
-			-webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><rect x="0" fill="none" width="20" height="20"/><g><path d="M14.83 4.89l1.34.94-5.81 8.38H9.02L5.78 9.67l1.34-1.25 2.57 2.4z"/></g></svg>');
+			mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" ><path fill="none" d="M0 0h24v24H0z"></path><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>');
+			-webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" ><path fill="none" d="M0 0h24v24H0z"></path><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>');
 			/* stylelint-enable */
 		}
 	}
@@ -50,8 +58,8 @@ ol {
 
 		li::before {
 			/* stylelint-disable */
-			mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><rect x="0" fill="none" width="20" height="20"/><g><path d="M14.95 6.46L11.41 10l3.54 3.54-1.41 1.41L10 11.42l-3.53 3.53-1.42-1.42L8.58 10 5.05 6.47l1.42-1.42L10 8.58l3.54-3.53z"/></g></svg>');
-			-webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><rect x="0" fill="none" width="20" height="20"/><g><path d="M14.95 6.46L11.41 10l3.54 3.54-1.41 1.41L10 11.42l-3.53 3.53-1.42-1.42L8.58 10 5.05 6.47l1.42-1.42L10 8.58l3.54-3.53z"/></g></svg>');
+			mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" ><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path><path fill="none" d="M0 0h24v24H0z"></path></svg>');
+			-webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" ><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path><path fill="none" d="M0 0h24v24H0z"></path></svg>');
 			/* stylelint-enable */
 		}
 	}
@@ -63,7 +71,7 @@ ol {
 			background: currentColor;
 			height: 12px;
 			width: 12px;
-			top: 0.6em;
+			top: 0.55em;
 			left: -18px;
 		}
 
@@ -74,6 +82,17 @@ ol {
 			border-left: 2px solid currentColor;
 			left: -13px;
 			top: 0.75em;
+		}
+
+		&.has-list-bullet-color{
+			li{
+				&::before{
+					background-color: var(--ek-bullet-color);
+				}
+				&::after{
+					border-color: var(--ek-bullet-color);
+				}
+			}
 		}
 	}
 

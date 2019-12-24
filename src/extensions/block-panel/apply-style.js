@@ -14,6 +14,8 @@ function applyStyle( attributes, blockName, props = {} ) {
 		customTextColor,
 		backgroundColor,
 		customBackgroundColor,
+		bulletColor,
+		customBulletColor,
 		fontSize,
 		customFontSize,
 	} = attributes;
@@ -51,6 +53,17 @@ function applyStyle( attributes, blockName, props = {} ) {
 		style.backgroundColor = customBackgroundColor;
 	}
 
+	if (typeof bulletColor !== 'undefined') {
+		if (typeof colors !== 'undefined') {
+			const bulletColorValue = find(colors, { slug: bulletColor });
+			if (typeof bulletColorValue !== 'undefined' && typeof bulletColorValue.color !== 'undefined') {
+				style['--ek-bullet-color'] = bulletColorValue.color;
+			}
+		}
+	} else if (typeof customBulletColor !== 'undefined') {
+		style['--ek-bullet-color'] = customBulletColor;
+	}
+	console.log(style);
 	return style;
 }
 

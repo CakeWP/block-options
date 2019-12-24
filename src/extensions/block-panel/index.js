@@ -9,6 +9,7 @@ import applyStyle from './apply-style';
  * External dependencies
  */
 import classnames from 'classnames';
+import { find } from 'lodash';
 
 /**
  * WordPress Dependencies
@@ -63,7 +64,7 @@ const withTextSettings = createHigherOrderComponent( ( BlockListBlock ) => {
 			if ( customFontSize || fontSize ) {
 				customData = Object.assign( customData, { 'data-custom-fontsize': 1 } );
 			}
-
+			
 			wrapperProps = {
 				...wrapperProps,
 				style: applyStyle( attributes, blockName, props ),
@@ -120,7 +121,7 @@ function applyTextSettings( extraProps, blockType, attributes ) {
 			extraProps.style = applyStyle( attributes, blockType.name );
 		}
 
-		const { customFontSize, fontSize, textColor, backgroundColor } = attributes;
+		const { customFontSize, fontSize, textColor, backgroundColor, bulletColor, customBulletColor } = attributes;
 
 		if ( fontSize ) {
 			extraProps.className = classnames( extraProps.className, 'has-' + fontSize + '-font-size' );
@@ -134,6 +135,11 @@ function applyTextSettings( extraProps, blockType, attributes ) {
 
 		if ( backgroundColor ) {
 			extraProps.className = classnames( extraProps.className, 'has-' + backgroundColor + '-background-color' );
+		}
+
+		if ( bulletColor || customBulletColor ){
+			extraProps.className = classnames(extraProps.className, 'has-list-bullet-color');
+			console.log(attributes);
 		}
 	}
 

@@ -14,6 +14,7 @@ const { hasBlockSupport } = wp.blocks;
 const restrictedBlocks = [ 'core/freeform', 'core/shortcode', 'core/nextpage' ];
 const blocksWithFullScreen = [ 'core/image', 'core/cover', 'core/group', 'core/columns', 'core/media-text' ];
 const blocksWithFontSize = [ 'core/list' ];
+const blocksWithBulletColor = [ 'core/list' ];
 const blocksWithAnchor = [ 'core/spacer', 'core/separator' ];
 const blocksWithBackgroundColor = [ 'core/columns', 'core/column' ];
 const blocksWithFullWidth = [ 'core/button' ];
@@ -118,6 +119,21 @@ function addAttributes( settings ) {
 					type: 'number',
 				},
 			} );
+		}
+
+		// Add Bullet Color
+		if (blocksWithBulletColor.includes(settings.name)) {
+			if (!settings.attributes) {
+				settings.attributes = {};
+			}
+			settings.attributes = Object.assign(settings.attributes, {
+				bulletColor: {
+					type: 'string',
+				},
+				customBulletColor: {
+					type: 'string',
+				},
+			});
 		}
 
 		// Add background color on selected blocks.

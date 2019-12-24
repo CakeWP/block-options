@@ -9821,6 +9821,7 @@ var hasBlockSupport = wp.blocks.hasBlockSupport;
 var restrictedBlocks = ['core/freeform', 'core/shortcode', 'core/nextpage'];
 var blocksWithFullScreen = ['core/image', 'core/cover', 'core/group', 'core/columns', 'core/media-text'];
 var blocksWithFontSize = ['core/list'];
+var blocksWithBulletColor = ['core/list'];
 var blocksWithAnchor = ['core/spacer', 'core/separator'];
 var blocksWithBackgroundColor = ['core/columns', 'core/column'];
 var blocksWithFullWidth = ['core/button'];
@@ -9926,6 +9927,22 @@ function addAttributes(settings) {
         },
         customFontSize: {
           type: 'number'
+        }
+      });
+    } // Add Bullet Color
+
+
+    if (blocksWithBulletColor.includes(settings.name)) {
+      if (!settings.attributes) {
+        settings.attributes = {};
+      }
+
+      settings.attributes = Object.assign(settings.attributes, {
+        bulletColor: {
+          type: 'string'
+        },
+        customBulletColor: {
+          type: 'string'
         }
       });
     } // Add background color on selected blocks.
@@ -10160,6 +10177,8 @@ function applyStyle(attributes, blockName) {
       customTextColor = attributes.customTextColor,
       backgroundColor = attributes.backgroundColor,
       customBackgroundColor = attributes.customBackgroundColor,
+      bulletColor = attributes.bulletColor,
+      customBulletColor = attributes.customBulletColor,
       fontSize = attributes.fontSize,
       customFontSize = attributes.customFontSize;
   var style = {};
@@ -10204,6 +10223,21 @@ function applyStyle(attributes, blockName) {
     style.backgroundColor = customBackgroundColor;
   }
 
+  if (typeof bulletColor !== 'undefined') {
+    if (typeof colors !== 'undefined') {
+      var bulletColorValue = Object(lodash__WEBPACK_IMPORTED_MODULE_0__["find"])(colors, {
+        slug: bulletColor
+      });
+
+      if (typeof bulletColorValue !== 'undefined' && typeof bulletColorValue.color !== 'undefined') {
+        style['--ek-bullet-color'] = bulletColorValue.color;
+      }
+    }
+  } else if (typeof customBulletColor !== 'undefined') {
+    style['--ek-bullet-color'] = customBulletColor;
+  }
+
+  console.log(style);
   return style;
 }
 
@@ -10297,6 +10331,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _apply_style__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./apply-style */ "./src/extensions/block-panel/apply-style.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_8__);
 
 
 
@@ -10315,6 +10351,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 /**
  * External dependencies
  */
+
 
 
 /**
@@ -10426,7 +10463,9 @@ function applyTextSettings(extraProps, blockType, attributes) {
     var customFontSize = attributes.customFontSize,
         fontSize = attributes.fontSize,
         textColor = attributes.textColor,
-        backgroundColor = attributes.backgroundColor;
+        backgroundColor = attributes.backgroundColor,
+        bulletColor = attributes.bulletColor,
+        customBulletColor = attributes.customBulletColor;
 
     if (fontSize) {
       extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_7___default()(extraProps.className, 'has-' + fontSize + '-font-size');
@@ -10440,6 +10479,11 @@ function applyTextSettings(extraProps, blockType, attributes) {
 
     if (backgroundColor) {
       extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_7___default()(extraProps.className, 'has-' + backgroundColor + '-background-color');
+    }
+
+    if (bulletColor || customBulletColor) {
+      extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_7___default()(extraProps.className, 'has-list-bullet-color');
+      console.log(attributes);
     }
   }
 
@@ -10485,12 +10529,14 @@ var applyFallbackStyles = withFallbackStyles(function (node, ownProps) {
   var _ownProps$attributes = ownProps.attributes,
       fontSize = _ownProps$attributes.fontSize,
       customFontSize = _ownProps$attributes.customFontSize,
-      textColor = _ownProps$attributes.textColor;
+      textColor = _ownProps$attributes.textColor,
+      bulletColor = _ownProps$attributes.bulletColor;
   var editableNode = node.querySelector('[contenteditable="true"]'); //verify if editableNode is available, before using getComputedStyle.
 
   var computedStyles = editableNode ? getComputedStyle(editableNode) : null;
   return {
     fallbackTextColor: textColor || !computedStyles ? undefined : computedStyles.color,
+    fallbackBulletColor: bulletColor || !computedStyles ? undefined : computedStyles.color,
     fallbackFontSize: fontSize || customFontSize || !computedStyles ? undefined : parseInt(computedStyles.fontSize) || undefined
   };
 });
@@ -10501,6 +10547,8 @@ var ListTextSettings = function ListTextSettings(props) {
       setFontSize = props.setFontSize,
       textColor = props.textColor,
       setTextColor = props.setTextColor,
+      bulletColor = props.bulletColor,
+      setBulletColor = props.setBulletColor,
       isFontSizeDisabled = props.isFontSizeDisabled,
       isTextColorDisabled = props.isTextColorDisabled;
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, !isFontSizeDisabled && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
@@ -10518,6 +10566,10 @@ var ListTextSettings = function ListTextSettings(props) {
       value: textColor.color,
       onChange: setTextColor,
       label: __('Text Color', 'block-options')
+    }, {
+      value: bulletColor.color,
+      onChange: setBulletColor,
+      label: __('Bullet/Icon Color', 'block-options')
     }]
   })));
 };
@@ -10528,7 +10580,8 @@ var ListTextSettings = function ListTextSettings(props) {
     isTextColorDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitListBlockTextColorOptions')
   };
 }), withColors({
-  textColor: 'color'
+  textColor: 'color',
+  bulletColor: 'color'
 }), withFontSizes('fontSize'), applyFallbackStyles])(ListTextSettings));
 
 /***/ }),
