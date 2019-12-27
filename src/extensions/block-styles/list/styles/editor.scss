@@ -4,8 +4,8 @@
 
 		.block-library-list {
 
-			ol,
-			ul {
+			ol:not(.is-style-connected),
+			ul:not(.is-style-connected) {
 
 				li {
 					list-style-type: none !important;
@@ -26,6 +26,31 @@
 						color: var(--ek-bullet-color);
 					}
 				}
+			}
+
+			ul:not(.is-style-connected) {
+
+				li {
+
+					&::before {
+						content: "\2022";
+						font-weight: 900;
+					}
+				}
+			}
+
+			ol:not(.is-style-connected) {
+
+				li {
+
+					&::before {
+						content: counter(li) ".";
+					}
+				}
+			}
+
+			ol,
+			ul {
 
 				&.has-list-bullet-color,
 				&.is-style-arrow,
@@ -42,27 +67,6 @@
 						&::after {
 							border-color: var(--ek-bullet-color);
 						}
-					}
-				}
-			}
-
-			ul {
-
-				li {
-
-					&::before {
-						content: "\2022";
-						font-weight: 900;
-					}
-				}
-			}
-
-			ol {
-
-				li {
-
-					&::before {
-						content: counter(li) ".";
 					}
 				}
 			}
