@@ -3,18 +3,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/block-panel/list-settings/index.js:41
+#: src/extensions/block-panel/list-settings/index.js:40
 msgid "Text Settings"
 msgstr ""
 
-#: src/extensions/block-panel/list-settings/index.js:54
+#: src/extensions/block-panel/list-settings/index.js:53
 msgid "Color Settings"
 msgstr ""
 
-#: src/extensions/block-panel/list-settings/index.js:60
+#: src/extensions/block-panel/list-settings/index.js:59
 msgid "Text Color"
 msgstr ""
 
-#: src/extensions/block-panel/list-settings/index.js:65
+#: src/extensions/block-panel/list-settings/index.js:64
 msgid "Bullet/Icon Color"
 msgstr ""

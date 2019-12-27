@@ -1,6 +1,47 @@
+ul{
+	&.has-list-bullet-color{
+		li{
+			&::before {
+				top: 2px;
+				content: "\2022";
+				text-align: center;
+				font-weight: 900;
+				background-color: transparent;
+				color: var(--ek-bullet-color);
+			}
+		}
+	}
+}
+
+ol {
+	&.has-list-bullet-color{
+		li{
+			counter-increment: li;
+			&::before {
+				content: counter(li)".";
+				top: 2px;
+				text-align: center;
+				background-color: transparent;
+				color: var(--ek-bullet-color);
+			}
+		}
+
+		&.is-style-default{
+			li{
+				counter-increment: li;
+				&::before {
+					top: 1em;
+					margin-top: -.95em;
+					// height: auto;
+				}
+			}
+		}
+	}
+}
+
 ul,
 ol {
-
+	&.has-list-bullet-color,
 	&.is-style-arrow,
 	&.is-style-checked,
 	&.is-style-connected,
@@ -12,22 +53,29 @@ ol {
 			position: relative;
 
 			&::before {
-				content: "";
-				background-color: currentColor;
 				background-size: cover;
 				display: inline-block;
 				height: 25px;
 				left: -25px;
 				position: absolute;
-				top: 3px;
+				top: 1em;
+				margin-top: -18px;
 				transform: scale(0.9);
 				width: 25px;
 			}
 		}
 	}
 
-	&.has-list-bullet-color{
+	&.is-style-arrow,
+	&.is-style-checked,
+	&.is-style-connected,
+	&.is-style-crossed {
 		li{
+			&::before {
+				content: "";
+				background-color: currentColor;
+			}
+
 			&::before {
 				background-color: var(--ek-bullet-color);
 			}

@@ -9,13 +9,12 @@ const { InspectorControls, FontSizePicker, withFontSizes, withColors, PanelColor
 const { PanelBody, withFallbackStyles } = wp.components;
 
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { fontSize, customFontSize, textColor, bulletColor } = ownProps.attributes;
+	const { fontSize, customFontSize, textColor } = ownProps.attributes;
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
 	//verify if editableNode is available, before using getComputedStyle.
 	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
 	return {
 		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
-		fallbackBulletColor: bulletColor || ! computedStyles ? undefined : computedStyles.color,
 		fallbackFontSize: fontSize || customFontSize || ! computedStyles ? undefined : parseInt( computedStyles.fontSize ) || undefined,
 	};
 } );
@@ -28,9 +27,9 @@ const ListTextSettings = ( props ) => {
 		textColor,
 		setTextColor,
 		bulletColor,
-		setBulletColor,
 		isFontSizeDisabled,
 		isTextColorDisabled,
+		setAttributes,
 	} = props;
 
 	return (
@@ -60,8 +59,8 @@ const ListTextSettings = ( props ) => {
 								label: __( 'Text Color', 'block-options' ),
 							},
 							{
-								value: bulletColor.color,
-								onChange: setBulletColor,
+								value: bulletColor,
+								onChange: (newBulletColor) => setAttributes({ bulletColor: newBulletColor }),
 								label: __('Bullet/Icon Color', 'block-options'),
 							},
 						] }
@@ -80,7 +79,7 @@ export default compose( [
 			isTextColorDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitListBlockTextColorOptions' ),
 		};
 	} ),
-	withColors({ textColor: 'color', bulletColor: 'color' } ),
+	withColors({ textColor: 'color' } ),
 	withFontSizes( 'fontSize' ),
 	applyFallbackStyles,
 ] )( ListTextSettings );

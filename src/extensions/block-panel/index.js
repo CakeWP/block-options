@@ -59,10 +59,14 @@ const withTextSettings = createHigherOrderComponent( ( BlockListBlock ) => {
 		const blockName = select( 'core/block-editor' ).getBlockName( props.clientId );
 
 		if ( blocksWithFontSize.includes( blockName ) || blocksWithBackgroundColor.includes( blockName ) ) {
-			const { customFontSize, fontSize } = attributes;
+			const { customFontSize, fontSize, bulletColor } = attributes;
 
 			if ( customFontSize || fontSize ) {
 				customData = Object.assign( customData, { 'data-custom-fontsize': 1 } );
+			}
+
+			if (bulletColor) {
+				customData = Object.assign(customData, { 'data-custom-bulletcolor': 1 });
 			}
 			
 			wrapperProps = {
@@ -139,7 +143,6 @@ function applyTextSettings( extraProps, blockType, attributes ) {
 
 		if ( bulletColor || customBulletColor ){
 			extraProps.className = classnames(extraProps.className, 'has-list-bullet-color');
-			console.log(attributes);
 		}
 	}
 

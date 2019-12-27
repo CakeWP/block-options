@@ -130,9 +130,6 @@ function addAttributes( settings ) {
 				bulletColor: {
 					type: 'string',
 				},
-				customBulletColor: {
-					type: 'string',
-				},
 			});
 		}
 

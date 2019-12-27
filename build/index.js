@@ -9940,9 +9940,6 @@ function addAttributes(settings) {
       settings.attributes = Object.assign(settings.attributes, {
         bulletColor: {
           type: 'string'
-        },
-        customBulletColor: {
-          type: 'string'
         }
       });
     } // Add background color on selected blocks.
@@ -10178,7 +10175,6 @@ function applyStyle(attributes, blockName) {
       backgroundColor = attributes.backgroundColor,
       customBackgroundColor = attributes.customBackgroundColor,
       bulletColor = attributes.bulletColor,
-      customBulletColor = attributes.customBulletColor,
       fontSize = attributes.fontSize,
       customFontSize = attributes.customFontSize;
   var style = {};
@@ -10224,20 +10220,9 @@ function applyStyle(attributes, blockName) {
   }
 
   if (typeof bulletColor !== 'undefined') {
-    if (typeof colors !== 'undefined') {
-      var bulletColorValue = Object(lodash__WEBPACK_IMPORTED_MODULE_0__["find"])(colors, {
-        slug: bulletColor
-      });
-
-      if (typeof bulletColorValue !== 'undefined' && typeof bulletColorValue.color !== 'undefined') {
-        style['--ek-bullet-color'] = bulletColorValue.color;
-      }
-    }
-  } else if (typeof customBulletColor !== 'undefined') {
-    style['--ek-bullet-color'] = customBulletColor;
+    style['--ek-bullet-color'] = bulletColor;
   }
 
-  console.log(style);
   return style;
 }
 
@@ -10407,11 +10392,18 @@ var withTextSettings = createHigherOrderComponent(function (BlockListBlock) {
 
     if (blocksWithFontSize.includes(blockName) || blocksWithBackgroundColor.includes(blockName)) {
       var customFontSize = attributes.customFontSize,
-          fontSize = attributes.fontSize;
+          fontSize = attributes.fontSize,
+          bulletColor = attributes.bulletColor;
 
       if (customFontSize || fontSize) {
         customData = Object.assign(customData, {
           'data-custom-fontsize': 1
+        });
+      }
+
+      if (bulletColor) {
+        customData = Object.assign(customData, {
+          'data-custom-bulletcolor': 1
         });
       }
 
@@ -10483,7 +10475,6 @@ function applyTextSettings(extraProps, blockType, attributes) {
 
     if (bulletColor || customBulletColor) {
       extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_7___default()(extraProps.className, 'has-list-bullet-color');
-      console.log(attributes);
     }
   }
 
@@ -10529,14 +10520,12 @@ var applyFallbackStyles = withFallbackStyles(function (node, ownProps) {
   var _ownProps$attributes = ownProps.attributes,
       fontSize = _ownProps$attributes.fontSize,
       customFontSize = _ownProps$attributes.customFontSize,
-      textColor = _ownProps$attributes.textColor,
-      bulletColor = _ownProps$attributes.bulletColor;
+      textColor = _ownProps$attributes.textColor;
   var editableNode = node.querySelector('[contenteditable="true"]'); //verify if editableNode is available, before using getComputedStyle.
 
   var computedStyles = editableNode ? getComputedStyle(editableNode) : null;
   return {
     fallbackTextColor: textColor || !computedStyles ? undefined : computedStyles.color,
-    fallbackBulletColor: bulletColor || !computedStyles ? undefined : computedStyles.color,
     fallbackFontSize: fontSize || customFontSize || !computedStyles ? undefined : parseInt(computedStyles.fontSize) || undefined
   };
 });
@@ -10548,9 +10537,9 @@ var ListTextSettings = function ListTextSettings(props) {
       textColor = props.textColor,
       setTextColor = props.setTextColor,
       bulletColor = props.bulletColor,
-      setBulletColor = props.setBulletColor,
       isFontSizeDisabled = props.isFontSizeDisabled,
-      isTextColorDisabled = props.isTextColorDisabled;
+      isTextColorDisabled = props.isTextColorDisabled,
+      setAttributes = props.setAttributes;
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, !isFontSizeDisabled && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
     title: __('Text Settings', 'block-options'),
     initialOpen: false,
@@ -10567,8 +10556,12 @@ var ListTextSettings = function ListTextSettings(props) {
       onChange: setTextColor,
       label: __('Text Color', 'block-options')
     }, {
-      value: bulletColor.color,
-      onChange: setBulletColor,
+      value: bulletColor,
+      onChange: function onChange(newBulletColor) {
+        return setAttributes({
+          bulletColor: newBulletColor
+        });
+      },
       label: __('Bullet/Icon Color', 'block-options')
     }]
   })));
@@ -10580,8 +10573,7 @@ var ListTextSettings = function ListTextSettings(props) {
     isTextColorDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitListBlockTextColorOptions')
   };
 }), withColors({
-  textColor: 'color',
-  bulletColor: 'color'
+  textColor: 'color'
 }), withFontSizes('fontSize'), applyFallbackStyles])(ListTextSettings));
 
 /***/ }),
