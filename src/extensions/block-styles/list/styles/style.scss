@@ -54,6 +54,7 @@ ol {
 	&.is-style-arrow,
 	&.is-style-checked,
 	&.is-style-connected,
+	&.is-style-starred,
 	&.is-style-crossed {
 
 		li {
@@ -78,6 +79,7 @@ ol {
 	&.is-style-arrow,
 	&.is-style-checked,
 	&.is-style-connected,
+	&.is-style-starred,
 	&.is-style-crossed {
 
 		li {
@@ -119,6 +121,16 @@ ol {
 		}
 	}
 
+	&.is-style-starred {
+
+		li::before {
+			/* stylelint-disable */
+			mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" > <path fill="none" d="M0 0h24v24H0z"></path><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path><path fill="none" d="M0 0h24v24H0z"></path></svg>');
+			-webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" > <path fill="none" d="M0 0h24v24H0z"></path><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path><path fill="none" d="M0 0h24v24H0z"></path></svg>');
+			/* stylelint-enable */
+		}
+	}
+
 	&.is-style-connected {
 
 		li::before {
@@ -137,7 +149,7 @@ ol {
 			height: calc(100% + 5px);
 			border-left: 2px solid currentColor;
 			left: -13px;
-			top: 0.75em;
+			top: 0.9em;
 		}
 
 		&.has-list-bullet-color {

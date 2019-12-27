@@ -11797,6 +11797,11 @@ registerBlockStyle('core/list', {
   label: __('Connected', 'block-options'),
   isDefault: false
 });
+registerBlockStyle('core/list', {
+  name: 'starred',
+  label: __('Starred', 'block-options'),
+  isDefault: false
+});
 
 /***/ }),
 
