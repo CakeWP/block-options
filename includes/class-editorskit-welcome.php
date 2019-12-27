@@ -51,7 +51,12 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
 			add_action( 'admin_menu', array( $this, 'screen_page' ) );
-			add_action( 'activated_plugin', array( $this, 'redirect' ), 10, 2 );
+
+			if ( defined( 'WP_CLI' ) && WP_CLI ) {
+				// Do nothing if WP CLI.
+			}else{
+				add_action( 'activated_plugin', array( $this, 'redirect' ), 10, 2 );	
+			}
 		}
 
 		/**
