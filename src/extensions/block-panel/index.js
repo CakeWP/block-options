@@ -125,7 +125,7 @@ function applyTextSettings( extraProps, blockType, attributes ) {
 			extraProps.style = applyStyle( attributes, blockType.name );
 		}
 
-		const { customFontSize, fontSize, textColor, backgroundColor, bulletColor, customBulletColor } = attributes;
+		const { customFontSize, fontSize, textColor, backgroundColor, bulletColor } = attributes;
 
 		if ( fontSize ) {
 			extraProps.className = classnames( extraProps.className, 'has-' + fontSize + '-font-size' );
@@ -141,7 +141,7 @@ function applyTextSettings( extraProps, blockType, attributes ) {
 			extraProps.className = classnames( extraProps.className, 'has-' + backgroundColor + '-background-color' );
 		}
 
-		if ( bulletColor || customBulletColor ){
+		if ( bulletColor ){
 			extraProps.className = classnames(extraProps.className, 'has-list-bullet-color');
 		}
 	}

@@ -1,6 +1,9 @@
-ul{
-	&.has-list-bullet-color{
-		li{
+ul {
+
+	&.has-list-bullet-color {
+
+		li {
+
 			&::before {
 				top: 2px;
 				content: "\2022";
@@ -14,11 +17,14 @@ ul{
 }
 
 ol {
-	&.has-list-bullet-color{
-		li{
+
+	&.has-list-bullet-color {
+
+		li {
 			counter-increment: li;
+
 			&::before {
-				content: counter(li)".";
+				content: counter(li) ".";
 				top: 2px;
 				text-align: center;
 				background-color: transparent;
@@ -26,12 +32,14 @@ ol {
 			}
 		}
 
-		&.is-style-default{
-			li{
+		&.is-style-default {
+
+			li {
 				counter-increment: li;
+
 				&::before {
 					top: 1em;
-					margin-top: -.95em;
+					margin-top: -0.95em;
 					// height: auto;
 				}
 			}
@@ -41,6 +49,7 @@ ol {
 
 ul,
 ol {
+
 	&.has-list-bullet-color,
 	&.is-style-arrow,
 	&.is-style-checked,
@@ -70,14 +79,12 @@ ol {
 	&.is-style-checked,
 	&.is-style-connected,
 	&.is-style-crossed {
-		li{
+
+		li {
+
 			&::before {
 				content: "";
 				background-color: currentColor;
-			}
-
-			&::before {
-				background-color: var(--ek-bullet-color);
 			}
 		}
 	}
@@ -126,18 +133,21 @@ ol {
 		li:not(:last-of-type)::after {
 			content: "";
 			position: absolute;
-			height: calc( 100%+5px );
+			height: calc(100% + 5px);
 			border-left: 2px solid currentColor;
 			left: -13px;
 			top: 0.75em;
 		}
 
-		&.has-list-bullet-color{
-			li{
-				&::before{
+		&.has-list-bullet-color {
+
+			li {
+
+				&::before {
 					background-color: var(--ek-bullet-color);
 				}
-				&::after{
+
+				&::after {
 					border-color: var(--ek-bullet-color);
 				}
 			}
@@ -147,7 +157,7 @@ ol {
 	&.is-style-none {
 
 		&,
- 		li {
+		li {
 			list-style-type: none !important;
 			padding-left: 0 !important;
 		}

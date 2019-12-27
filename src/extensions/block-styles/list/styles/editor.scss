@@ -1,13 +1,18 @@
 .wp-block[data-custom-bulletcolor="1"] {
+
 	&[data-type="core/list"] {
-		.block-library-list{
+
+		.block-library-list {
+
 			ol,
-			ul{
-				li{
+			ul {
+
+				li {
 					list-style-type: none !important;
 					counter-increment: li;
 					position: relative;
 					padding-left: 8px;
+
 					&::before {
 						text-align: center;
 						background-size: cover;
@@ -21,10 +26,30 @@
 						color: var(--ek-bullet-color);
 					}
 				}
+
+				&.has-list-bullet-color,
+				&.is-style-arrow,
+				&.is-style-checked,
+				&.is-style-connected,
+				&.is-style-crossed {
+
+					li {
+
+						&::before {
+							background-color: var(--ek-bullet-color);
+						}
+
+						&::after {
+							border-color: var(--ek-bullet-color);
+						}
+					}
+				}
 			}
 
-			ul{
-				li{
+			ul {
+
+				li {
+
 					&::before {
 						content: "\2022";
 						font-weight: 900;
@@ -32,29 +57,12 @@
 				}
 			}
 
-			ol{
-				li{
-					&::before {
-						content: counter(li)".";
-					}
-				}
-			}
-			
+			ol {
 
-			ul,
-			ol{
-				&.has-list-bullet-color,
-				&.is-style-arrow,
-				&.is-style-checked,
-				&.is-style-connected,
-				&.is-style-crossed{
-					li{
-						&::before {
-							background-color: var(--ek-bullet-color);
-						}
-						&::after {
-							border-color: var(--ek-bullet-color);
-						}
+				li {
+
+					&::before {
+						content: counter(li) ".";
 					}
 				}
 			}

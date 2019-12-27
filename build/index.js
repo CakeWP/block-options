@@ -10456,8 +10456,7 @@ function applyTextSettings(extraProps, blockType, attributes) {
         fontSize = attributes.fontSize,
         textColor = attributes.textColor,
         backgroundColor = attributes.backgroundColor,
-        bulletColor = attributes.bulletColor,
-        customBulletColor = attributes.customBulletColor;
+        bulletColor = attributes.bulletColor;
 
     if (fontSize) {
       extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_7___default()(extraProps.className, 'has-' + fontSize + '-font-size');
@@ -10473,7 +10472,7 @@ function applyTextSettings(extraProps, blockType, attributes) {
       extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_7___default()(extraProps.className, 'has-' + backgroundColor + '-background-color');
     }
 
-    if (bulletColor || customBulletColor) {
+    if (bulletColor) {
       extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_7___default()(extraProps.className, 'has-list-bullet-color');
     }
   }
