@@ -10316,8 +10316,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _apply_style__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./apply-style */ "./src/extensions/block-panel/apply-style.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_8__);
 
 
 
@@ -10336,7 +10334,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 /**
  * External dependencies
  */
-
 
 
 /**

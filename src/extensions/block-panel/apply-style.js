@@ -3,7 +3,7 @@
  */
 import { find } from 'lodash';
 
-function applyStyle(attributes, blockName, props = {} ) {
+function applyStyle( attributes, blockName, props = {} ) {
 	const {
 		fontSizes,
 		colors,
@@ -20,7 +20,6 @@ function applyStyle(attributes, blockName, props = {} ) {
 	} = attributes;
 
 	const style = {};
-
 
 	if ( typeof fontSize !== 'undefined' ) {
 		const fontSizeObject = find( fontSizes, { slug: fontSize } );
@@ -52,9 +51,9 @@ function applyStyle(attributes, blockName, props = {} ) {
 	} else if ( typeof customBackgroundColor !== 'undefined' ) {
 		style.backgroundColor = customBackgroundColor;
 	}
-	
-	if (typeof bulletColor !== 'undefined') {
-		style['--ek-bullet-color'] = bulletColor;
+
+	if ( typeof bulletColor !== 'undefined' ) {
+		style[ '--ek-bullet-color' ] = bulletColor;
 	}
 
 	return style;

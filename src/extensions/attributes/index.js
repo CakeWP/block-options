@@ -122,15 +122,15 @@ function addAttributes( settings ) {
 		}
 
 		// Add Bullet Color
-		if (blocksWithBulletColor.includes(settings.name)) {
-			if (!settings.attributes) {
+		if ( blocksWithBulletColor.includes( settings.name ) ) {
+			if ( ! settings.attributes ) {
 				settings.attributes = {};
 			}
-			settings.attributes = Object.assign(settings.attributes, {
+			settings.attributes = Object.assign( settings.attributes, {
 				bulletColor: {
 					type: 'string',
 				},
-			});
+			} );
 		}
 
 		// Add background color on selected blocks.

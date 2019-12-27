@@ -60,8 +60,8 @@ const ListTextSettings = ( props ) => {
 							},
 							{
 								value: bulletColor,
-								onChange: (newBulletColor) => setAttributes({ bulletColor: newBulletColor }),
-								label: __('Bullet/Icon Color', 'block-options'),
+								onChange: ( newBulletColor ) => setAttributes( { bulletColor: newBulletColor } ),
+								label: __( 'Bullet/Icon Color', 'block-options' ),
 							},
 						] }
 					>
@@ -79,7 +79,7 @@ export default compose( [
 			isTextColorDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitListBlockTextColorOptions' ),
 		};
 	} ),
-	withColors({ textColor: 'color' } ),
+	withColors( { textColor: 'color' } ),
 	withFontSizes( 'fontSize' ),
 	applyFallbackStyles,
 ] )( ListTextSettings );
