@@ -46,6 +46,8 @@
 
 					&::before {
 						content: counter(li) ".";
+						width: auto !important;
+						min-width: 25px;
 					}
 				}
 			}

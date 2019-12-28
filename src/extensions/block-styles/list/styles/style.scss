@@ -26,6 +26,8 @@ ol {
 
 			&::before {
 				content: counter(li) ".";
+				width: auto !important;
+				min-width: 25px;
 				top: 2px;
 				text-align: center;
 				background-color: transparent;
@@ -74,6 +76,8 @@ ol {
 				margin-top: -18px;
 				transform: scale(0.9);
 				width: 25px;
+				mask-repeat: no-repeat;
+				-webkit-mask-repeat: no-repeat;
 			}
 		}
 	}
