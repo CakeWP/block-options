@@ -2,7 +2,7 @@
 
 	&[data-type="core/list"] {
 
-		.block-library-list {
+		div[data-block]:not([data-block=""]) {
 
 			ol:not(.is-style-connected),
 			ul:not(.is-style-connected) {
@@ -28,7 +28,7 @@
 				}
 			}
 
-			ul:not(.is-style-connected) {
+			ul:not(.is-style-connected):not(.is-style-none) {
 
 				li {
 
@@ -39,7 +39,7 @@
 				}
 			}
 
-			ol:not(.is-style-connected) {
+			ol:not(.is-style-connected):not(.is-style-none) {
 
 				li {
 

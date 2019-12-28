@@ -132,6 +132,7 @@ ol {
 	}
 
 	&.is-style-connected {
+		overflow: hidden;
 
 		li::before {
 			border-radius: 9999px;
@@ -143,13 +144,13 @@ ol {
 			margin-top: 0;
 		}
 
-		li:not(:last-of-type)::after {
+		li::after {
 			content: "";
 			position: absolute;
-			height: calc(100% + 5px);
+			height: 125%;
 			border-left: 2px solid currentColor;
 			left: -13px;
-			top: 0.9em;
+			top: 0;
 		}
 
 		&.has-list-bullet-color {
