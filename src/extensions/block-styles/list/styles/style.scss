@@ -26,12 +26,19 @@ ol {
 
 			&::before {
 				content: counter(li) ".";
-				width: auto !important;
-				min-width: 25px;
 				top: 2px;
 				text-align: center;
 				background-color: transparent;
 				color: var(--ek-bullet-color);
+			}
+		}
+
+		&:not(.is-style-connected){
+			li {
+				&::before {
+					width: auto !important;
+					min-width: 25px;
+				}
 			}
 		}
 
