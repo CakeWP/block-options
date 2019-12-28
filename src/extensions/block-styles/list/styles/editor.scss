@@ -40,6 +40,7 @@
 			}
 
 			ol:not(.is-style-connected):not(.is-style-none) {
+				counter-reset: li var(--li-start, 0);
 
 				li {
 

@@ -17,6 +17,7 @@ function applyStyle( attributes, blockName, props = {} ) {
 		bulletColor,
 		fontSize,
 		customFontSize,
+		start,
 	} = attributes;
 
 	const style = {};
@@ -54,6 +55,12 @@ function applyStyle( attributes, blockName, props = {} ) {
 
 	if ( typeof bulletColor !== 'undefined' ) {
 		style[ '--ek-bullet-color' ] = bulletColor;
+	}
+
+	if (['core/list'].includes(blockName) ){
+		if (typeof start !== 'undefined' ){
+			style['--li-start'] = ( start - 1 ) + '';
+		}
 	}
 
 	return style;

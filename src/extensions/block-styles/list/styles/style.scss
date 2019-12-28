@@ -19,6 +19,7 @@ ul {
 ol {
 
 	&.has-list-bullet-color {
+		counter-reset: li var(--li-start, 0);
 
 		li {
 			counter-increment: li;
@@ -36,6 +37,7 @@ ol {
 
 			li {
 				counter-increment: li;
+				counter-reset: li counter(li);
 
 				&::before {
 					top: 1em;

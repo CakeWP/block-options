@@ -10176,7 +10176,8 @@ function applyStyle(attributes, blockName) {
       customBackgroundColor = attributes.customBackgroundColor,
       bulletColor = attributes.bulletColor,
       fontSize = attributes.fontSize,
-      customFontSize = attributes.customFontSize;
+      customFontSize = attributes.customFontSize,
+      start = attributes.start;
   var style = {};
 
   if (typeof fontSize !== 'undefined') {
@@ -10221,6 +10222,12 @@ function applyStyle(attributes, blockName) {
 
   if (typeof bulletColor !== 'undefined') {
     style['--ek-bullet-color'] = bulletColor;
+  }
+
+  if (['core/list'].includes(blockName)) {
+    if (typeof start !== 'undefined') {
+      style['--li-start'] = start - 1 + '';
+    }
   }
 
   return style;
