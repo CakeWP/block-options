@@ -145,7 +145,11 @@ ol {
 	}
 
 	&.is-style-connected {
-		overflow: hidden;
+		&,
+		ol,
+		ul{
+			overflow: hidden;
+		}
 
 		li::before {
 			border-radius: 9999px;
