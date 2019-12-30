@@ -16701,11 +16701,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _alignment__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./alignment */ "./src/extensions/formats/alignment/index.js");
 /* harmony import */ var _nbsp__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./nbsp */ "./src/extensions/formats/nbsp/index.js");
 /* harmony import */ var _abbreviation__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./abbreviation */ "./src/extensions/formats/abbreviation/index.js");
+/* harmony import */ var _underline__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./underline */ "./src/extensions/formats/underline/index.js");
 
 
 /**
  * Internal dependencies
  */
+
 
 
 
@@ -16727,7 +16729,7 @@ var select = wp.data.select;
 var isDisabled = select('core/edit-post').isFeatureActive('disableEditorsKitLinkFormats');
 
 function registerEditorsKitFormats() {
-  [_justify__WEBPACK_IMPORTED_MODULE_1__["justify"], _text_color__WEBPACK_IMPORTED_MODULE_2__["textColor"], _background_color__WEBPACK_IMPORTED_MODULE_3__["backgroundColor"], _markdown__WEBPACK_IMPORTED_MODULE_4__["markdown"], _subscript__WEBPACK_IMPORTED_MODULE_5__["subscript"], _superscript__WEBPACK_IMPORTED_MODULE_6__["superscript"], _clear__WEBPACK_IMPORTED_MODULE_7__["clear"], _uppercase__WEBPACK_IMPORTED_MODULE_8__["uppercase"], _alignment__WEBPACK_IMPORTED_MODULE_10__["alignment"], _nbsp__WEBPACK_IMPORTED_MODULE_11__["nbsp"], _abbreviation__WEBPACK_IMPORTED_MODULE_12__["abbreviation"], !isDisabled ? _link__WEBPACK_IMPORTED_MODULE_9__["link"] : []].forEach(function (_ref) {
+  [_justify__WEBPACK_IMPORTED_MODULE_1__["justify"], _text_color__WEBPACK_IMPORTED_MODULE_2__["textColor"], _background_color__WEBPACK_IMPORTED_MODULE_3__["backgroundColor"], _markdown__WEBPACK_IMPORTED_MODULE_4__["markdown"], _subscript__WEBPACK_IMPORTED_MODULE_5__["subscript"], _superscript__WEBPACK_IMPORTED_MODULE_6__["superscript"], _clear__WEBPACK_IMPORTED_MODULE_7__["clear"], _uppercase__WEBPACK_IMPORTED_MODULE_8__["uppercase"], _alignment__WEBPACK_IMPORTED_MODULE_10__["alignment"], _nbsp__WEBPACK_IMPORTED_MODULE_11__["nbsp"], _abbreviation__WEBPACK_IMPORTED_MODULE_12__["abbreviation"], _underline__WEBPACK_IMPORTED_MODULE_13__["underline"], !isDisabled ? _link__WEBPACK_IMPORTED_MODULE_9__["link"] : []].forEach(function (_ref) {
     var name = _ref.name,
         settings = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0___default()(_ref, ["name"]);
 
@@ -19616,6 +19618,79 @@ var textColor = {
     class: 'class'
   },
   edit: _components_edit__WEBPACK_IMPORTED_MODULE_0__["default"]
+};
+
+/***/ }),
+
+/***/ "./src/extensions/formats/underline/index.js":
+/*!***************************************************!*\
+  !*** ./src/extensions/formats/underline/index.js ***!
+  \***************************************************/
+/*! exports provided: underline */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "underline", function() { return underline; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+var toggleFormat = wp.richText.toggleFormat;
+var _wp$blockEditor = wp.blockEditor,
+    RichTextToolbarButton = _wp$blockEditor.RichTextToolbarButton,
+    RichTextShortcut = _wp$blockEditor.RichTextShortcut;
+var select = wp.data.select;
+/**
+ * Block constants
+ */
+
+var name = 'editorskit/underline';
+var underline = {
+  name: name,
+  title: __('Underline', 'block-options'),
+  tagName: 'span',
+  className: null,
+  attributes: {
+    style: 'style'
+  },
+  edit: function edit(_ref) {
+    var isActive = _ref.isActive,
+        value = _ref.value,
+        onChange = _ref.onChange;
+    var isDisabled = select('core/edit-post').isFeatureActive('disableEditorsKitUnderlineFormats');
+    var formatTypes = select('core/rich-text').getFormatTypes();
+    var checkFormats = formatTypes.filter(function (formats) {
+      return formats.name === 'wpcom/underline';
+    });
+
+    var onToggle = function onToggle() {
+      onChange(toggleFormat(value, {
+        type: name,
+        attributes: {
+          style: 'text-decoration: underline;'
+        }
+      }));
+    };
+
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichTextShortcut, {
+      type: "primary",
+      character: "u",
+      onUse: onToggle
+    }), !isDisabled && checkFormats.length === 0 && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichTextToolbarButton, {
+      icon: "editor-underline",
+      title: __('Underline', 'block-options'),
+      onClick: onToggle,
+      isActive: isActive,
+      shortcutType: "primary",
+      shortcutCharacter: "u"
+    }));
+  }
 };
 
 /***/ }),
