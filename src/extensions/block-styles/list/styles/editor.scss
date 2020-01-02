@@ -73,6 +73,15 @@
 						}
 					}
 				}
+
+				&.is-style-arrow{
+					li {
+						&::before {
+							transform: scale(.65);
+							margin-top: -16px;
+						}
+					}
+				}
 			}
 		}
 	}
