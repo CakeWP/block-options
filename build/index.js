@@ -9821,6 +9821,7 @@ var hasBlockSupport = wp.blocks.hasBlockSupport;
 var restrictedBlocks = ['core/freeform', 'core/shortcode', 'core/nextpage'];
 var blocksWithFullScreen = ['core/image', 'core/cover', 'core/group', 'core/columns', 'core/media-text'];
 var blocksWithFontSize = ['core/list'];
+var blocksWithBulletColor = ['core/list'];
 var blocksWithAnchor = ['core/spacer', 'core/separator'];
 var blocksWithBackgroundColor = ['core/columns', 'core/column'];
 var blocksWithFullWidth = ['core/button'];
@@ -9926,6 +9927,19 @@ function addAttributes(settings) {
         },
         customFontSize: {
           type: 'number'
+        }
+      });
+    } // Add Bullet Color
+
+
+    if (blocksWithBulletColor.includes(settings.name)) {
+      if (!settings.attributes) {
+        settings.attributes = {};
+      }
+
+      settings.attributes = Object.assign(settings.attributes, {
+        bulletColor: {
+          type: 'string'
         }
       });
     } // Add background color on selected blocks.
@@ -10160,8 +10174,10 @@ function applyStyle(attributes, blockName) {
       customTextColor = attributes.customTextColor,
       backgroundColor = attributes.backgroundColor,
       customBackgroundColor = attributes.customBackgroundColor,
+      bulletColor = attributes.bulletColor,
       fontSize = attributes.fontSize,
-      customFontSize = attributes.customFontSize;
+      customFontSize = attributes.customFontSize,
+      start = attributes.start;
   var style = {};
 
   if (typeof fontSize !== 'undefined') {
@@ -10202,6 +10218,16 @@ function applyStyle(attributes, blockName) {
     }
   } else if (typeof customBackgroundColor !== 'undefined') {
     style.backgroundColor = customBackgroundColor;
+  }
+
+  if (typeof bulletColor !== 'undefined') {
+    style['--ek-bullet-color'] = bulletColor;
+
+    if (['core/list'].includes(blockName)) {
+      if (typeof start !== 'undefined') {
+        style['--li-start'] = start - 1 + '';
+      }
+    }
   }
 
   return style;
@@ -10370,11 +10396,18 @@ var withTextSettings = createHigherOrderComponent(function (BlockListBlock) {
 
     if (blocksWithFontSize.includes(blockName) || blocksWithBackgroundColor.includes(blockName)) {
       var customFontSize = attributes.customFontSize,
-          fontSize = attributes.fontSize;
+          fontSize = attributes.fontSize,
+          bulletColor = attributes.bulletColor;
 
       if (customFontSize || fontSize) {
         customData = Object.assign(customData, {
           'data-custom-fontsize': 1
+        });
+      }
+
+      if (bulletColor) {
+        customData = Object.assign(customData, {
+          'data-custom-bulletcolor': 1
         });
       }
 
@@ -10426,7 +10459,8 @@ function applyTextSettings(extraProps, blockType, attributes) {
     var customFontSize = attributes.customFontSize,
         fontSize = attributes.fontSize,
         textColor = attributes.textColor,
-        backgroundColor = attributes.backgroundColor;
+        backgroundColor = attributes.backgroundColor,
+        bulletColor = attributes.bulletColor;
 
     if (fontSize) {
       extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_7___default()(extraProps.className, 'has-' + fontSize + '-font-size');
@@ -10440,6 +10474,10 @@ function applyTextSettings(extraProps, blockType, attributes) {
 
     if (backgroundColor) {
       extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_7___default()(extraProps.className, 'has-' + backgroundColor + '-background-color');
+    }
+
+    if (bulletColor) {
+      extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_7___default()(extraProps.className, 'has-list-bullet-color');
     }
   }
 
@@ -10501,8 +10539,10 @@ var ListTextSettings = function ListTextSettings(props) {
       setFontSize = props.setFontSize,
       textColor = props.textColor,
       setTextColor = props.setTextColor,
+      bulletColor = props.bulletColor,
       isFontSizeDisabled = props.isFontSizeDisabled,
-      isTextColorDisabled = props.isTextColorDisabled;
+      isTextColorDisabled = props.isTextColorDisabled,
+      setAttributes = props.setAttributes;
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, !isFontSizeDisabled && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
     title: __('Text Settings', 'block-options'),
     initialOpen: false,
@@ -10518,6 +10558,14 @@ var ListTextSettings = function ListTextSettings(props) {
       value: textColor.color,
       onChange: setTextColor,
       label: __('Text Color', 'block-options')
+    }, {
+      value: bulletColor,
+      onChange: function onChange(newBulletColor) {
+        return setAttributes({
+          bulletColor: newBulletColor
+        });
+      },
+      label: __('Bullet/Icon Color', 'block-options')
     }]
   })));
 };
@@ -11704,10 +11752,63 @@ registerStyles();
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _image_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./image/index.js */ "./src/extensions/block-styles/image/index.js");
 /* harmony import */ var _image_index_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_image_index_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _list_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./list/index.js */ "./src/extensions/block-styles/list/index.js");
+/* harmony import */ var _list_index_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_list_index_js__WEBPACK_IMPORTED_MODULE_1__);
 /**
  * Internal dependencies
  */
 
+
+
+/***/ }),
+
+/***/ "./src/extensions/block-styles/list/index.js":
+/*!***************************************************!*\
+  !*** ./src/extensions/block-styles/list/index.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var registerBlockStyle = wp.blocks.registerBlockStyle;
+registerBlockStyle('core/list', {
+  name: 'default',
+  label: __('Default', 'block-options'),
+  isDefault: true
+});
+registerBlockStyle('core/list', {
+  name: 'none',
+  label: __('None', 'block-options'),
+  isDefault: true
+});
+registerBlockStyle('core/list', {
+  name: 'arrow',
+  label: __('Arrow', 'block-options'),
+  isDefault: false
+});
+registerBlockStyle('core/list', {
+  name: 'checked',
+  label: __('Checked', 'block-options'),
+  isDefault: false
+});
+registerBlockStyle('core/list', {
+  name: 'crossed',
+  label: __('Crossed', 'block-options'),
+  isDefault: false
+});
+registerBlockStyle('core/list', {
+  name: 'connected',
+  label: __('Connected', 'block-options'),
+  isDefault: false
+});
+registerBlockStyle('core/list', {
+  name: 'starred',
+  label: __('Starred', 'block-options'),
+  isDefault: false
+});
 
 /***/ }),
 

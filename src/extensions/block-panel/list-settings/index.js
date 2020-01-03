@@ -26,8 +26,10 @@ const ListTextSettings = ( props ) => {
 		setFontSize,
 		textColor,
 		setTextColor,
+		bulletColor,
 		isFontSizeDisabled,
 		isTextColorDisabled,
+		setAttributes,
 	} = props;
 
 	return (
@@ -55,6 +57,11 @@ const ListTextSettings = ( props ) => {
 								value: textColor.color,
 								onChange: setTextColor,
 								label: __( 'Text Color', 'block-options' ),
+							},
+							{
+								value: bulletColor,
+								onChange: ( newBulletColor ) => setAttributes( { bulletColor: newBulletColor } ),
+								label: __( 'Bullet/Icon Color', 'block-options' ),
 							},
 						] }
 					>

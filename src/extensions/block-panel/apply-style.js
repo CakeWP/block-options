@@ -14,8 +14,10 @@ function applyStyle( attributes, blockName, props = {} ) {
 		customTextColor,
 		backgroundColor,
 		customBackgroundColor,
+		bulletColor,
 		fontSize,
 		customFontSize,
+		start,
 	} = attributes;
 
 	const style = {};
@@ -49,6 +51,16 @@ function applyStyle( attributes, blockName, props = {} ) {
 		}
 	} else if ( typeof customBackgroundColor !== 'undefined' ) {
 		style.backgroundColor = customBackgroundColor;
+	}
+
+	if ( typeof bulletColor !== 'undefined' ) {
+		style[ '--ek-bullet-color' ] = bulletColor;
+
+		if (['core/list'].includes(blockName)) {
+			if (typeof start !== 'undefined') {
+				style['--li-start'] = (start - 1) + '';
+			}
+		}
 	}
 
 	return style;
