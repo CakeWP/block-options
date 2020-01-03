@@ -170,7 +170,7 @@ class EditorsKitDocs extends Component {
 				name: 'image-cover-styles-styling.md',
 			},
 			{
-				title: __('Additional List Block Styles', 'block-options'),
+				title: __( 'Additional List Block Styles', 'block-options' ),
 				name: 'list-block-styles-styling.md',
 			},
 		];

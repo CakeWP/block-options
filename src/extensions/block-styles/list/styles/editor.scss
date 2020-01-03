@@ -74,10 +74,12 @@
 					}
 				}
 
-				&.is-style-arrow{
+				&.is-style-arrow {
+
 					li {
+
 						&::before {
-							transform: scale(.65);
+							transform: scale(0.65);
 							margin-top: -16px;
 						}
 					}
