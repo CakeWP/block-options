@@ -157,6 +157,11 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Text Color', 'block-options' ),
 							'value' => true,
 						),
+						'underline'        => array(
+							'name'  => 'underline',
+							'label' => __( 'Underline', 'block-options' ),
+							'value' => true,
+						),
 						'uppercase'        => array(
 							'name'  => 'uppercase',
 							'label' => __( 'Uppercase', 'block-options' ),

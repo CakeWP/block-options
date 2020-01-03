@@ -16,7 +16,7 @@ export const underline = {
 	name,
 	title: __( 'Underline', 'block-options' ),
 	tagName: 'span',
-	className: null,
+	className: 'ek-underline',
 	attributes: {
 		style: 'style',
 	},
