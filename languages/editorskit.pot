@@ -3,6 +3,19 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+<<<<<<< HEAD
 #: src/extensions/formats/underline/index.js:48
 msgid "Underline"
+=======
+#: src/extensions/formats/alignment/components/control.js:21
+msgid "Align caption left"
+msgstr ""
+
+#: src/extensions/formats/alignment/components/control.js:26
+msgid "Align caption center"
+msgstr ""
+
+#: src/extensions/formats/alignment/components/control.js:31
+msgid "Align caption right"
+>>>>>>> master
 msgstr ""

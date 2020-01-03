@@ -13,6 +13,7 @@ import { link } from './link';
 import { alignment } from './alignment';
 import { nbsp } from './nbsp';
 import { abbreviation } from './abbreviation';
+import { underline } from './underline';
 
 /**
  * WordPress dependencies
@@ -35,6 +36,7 @@ function registerEditorsKitFormats() {
 		alignment,
 		nbsp,
 		abbreviation,
+		underline,
 		! isDisabled ? link : [],
 	].forEach( ( { name, ...settings } ) => {
 		if ( name ) {
