@@ -7160,6 +7160,9 @@ function (_Component) {
       }, {
         title: __('More Image & Cover Block Styles', 'block-options'),
         name: 'image-cover-styles-styling.md'
+      }, {
+        title: __('Additional List Block Styles', 'block-options'),
+        name: 'list-block-styles-styling.md'
       }];
 
       var closeModal = function closeModal() {
