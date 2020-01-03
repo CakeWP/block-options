@@ -152,6 +152,12 @@ e.g.
 
 == Changelog ==
 
+= 1.23 =
+* New: `List Block Styles` such as [Arrow, Checked, Crossed, Connected and Starred](https://github.com/phpbits/block-options/pull/210) 🎊
+* New: Add [caption alignment option](https://github.com/phpbits/block-options/pull/213) for Table Block
+* Tweaks: Re-enable [underline format](https://github.com/phpbits/block-options/pull/214)
+* Fixes: Prevent [error when activating via WP CLI](https://github.com/phpbits/block-options/pull/211)
+
 = 1.22.1 =
 * Tweaks: Add new features to Features Manager
 
