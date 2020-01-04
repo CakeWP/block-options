@@ -4,42 +4,55 @@
 import EditorsKitDocs from './docs';
 import FeaturesManager from '../extensions/components/manager/components/manager';
 import BlockManager from './block-manager/';
+import AddonSettings from './addon-settings';
 
 /**
  * WordPress dependencies
  */
 const { __, sprintf } = wp.i18n;
 const { registerCoreBlocks } = wp.blockLibrary;
+const { hasFilter, applyFilters } = wp.hooks;
 const { Fragment, Component, RawHTML, render } = wp.element;
 const { TabPanel, Panel, PanelBody, PanelRow } = wp.components;
 
 class EditorsKitSettings extends Component {
 	render() {
+
+		let tabs = [
+			{
+				name: 'ek-getting-started',
+				title: 'Getting Started',
+				className: 'ek-settings-getting-started',
+			},
+			{
+				name: 'ek-docs',
+				title: 'Tutorial and Docs',
+				className: 'ek-settings-docs',
+			},
+			{
+				name: 'ek-features-manager',
+				title: 'Features Manager',
+				className: 'ek-settings-features-manager',
+			},
+			{
+				name: 'ek-blocks-manager',
+				title: 'Blocks Manager',
+				className: 'ek-settings-blocks-manager',
+			},
+		];
+
+		if ( ! hasFilter('editorskit.addOn.extraPanel') ){
+			tabs.push({
+				name: 'ek-addons',
+				title: 'Add Ons',
+				className: 'ek-settings-addons',
+			});
+		}
+
 		const EditorsKitSettingsPanel = () => (
 			<TabPanel className="editorskit-settings-tab-panel"
 				activeClass="active-tab"
-				tabs={ [
-					{
-						name: 'ek-getting-started',
-						title: 'Getting Started',
-						className: 'ek-settings-getting-started',
-					},
-					{
-						name: 'ek-docs',
-						title: 'Tutorial and Docs',
-						className: 'ek-settings-docs',
-					},
-					{
-						name: 'ek-features-manager',
-						title: 'Features Manager',
-						className: 'ek-settings-features-manager',
-					},
-					{
-						name: 'ek-blocks-manager',
-						title: 'Blocks Manager',
-						className: 'ek-settings-blocks-manager',
-					},
-				] }>
+				tabs={ tabs }>
 				{
 					( tab ) => {
 						switch ( tab.name ) {
@@ -90,6 +103,10 @@ class EditorsKitSettings extends Component {
 										<BlockManager />
 									</Fragment>
 
+								);
+							case 'ek-addons':
+								return(
+									<AddonSettings />
 								);
 						}
 					}
