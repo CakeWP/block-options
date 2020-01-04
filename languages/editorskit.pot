@@ -3,10 +3,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/admin/addon-settings.js:12
-msgid "This area provide settings for all activated EditorsKit add ons."
-msgstr ""
-
 #: src/admin/index.js:102
 msgid ""
 "Manage each individual blocks! You can enable or disable any blocks you "

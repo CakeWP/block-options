@@ -41,7 +41,7 @@ class EditorsKitSettings extends Component {
 			},
 		];
 
-		if ( ! hasFilter('editorskit.addOn.extraPanel') ){
+		if ( hasFilter('editorskit.addOn.extraPanel') ){
 			tabs.push({
 				name: 'ek-addons',
 				title: 'Add Ons',

@@ -7390,7 +7390,7 @@ function (_Component) {
         className: 'ek-settings-blocks-manager'
       }];
 
-      if (!hasFilter('editorskit.addOn.extraPanel')) {
+      if (hasFilter('editorskit.addOn.extraPanel')) {
         tabs.push({
           name: 'ek-addons',
           title: 'Add Ons',
