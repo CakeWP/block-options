@@ -5,6 +5,7 @@ import EditorsKitDocs from './docs';
 import FeaturesManager from '../extensions/components/manager/components/manager';
 import BlockManager from './block-manager/';
 import AddonSettings from './addon-settings';
+import Notices from './notices';
 
 /**
  * WordPress dependencies
@@ -134,6 +135,7 @@ class EditorsKitSettings extends Component {
 		return (
 			<Fragment>
 				<MainPanel />
+				<Notices />
 			</Fragment>
 		);
 	}
