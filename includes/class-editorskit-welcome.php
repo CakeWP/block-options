@@ -95,6 +95,9 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 				}
 			}
 
+			// Remove lifterlms to prevent error.
+			wp_dequeue_script('lifterlms_blocks-cgb-block-js');
+
 			wp_enqueue_style(
 				'editorskit-welcome',
 				$this->url . '/build/admin.build.css',
