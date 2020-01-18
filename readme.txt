@@ -152,6 +152,11 @@ e.g.
 
 == Changelog ==
 
+= 1.23.1 =
+
+* Fixes: Text Color toolbar styling [issue with latest Gutenberg Plugin](https://wordpress.org/support/topic/text-color-indicator-shifted-using-gutenberg-plugin/) 🐛
+* Fixes: Prevent error and [conflict with lifterlms plugin activated](https://github.com/phpbits/block-options/issues/208) 🐛
+
 = 1.23 =
 * New: `List Block Styles` such as [Arrow, Checked, Crossed, Connected and Starred](https://github.com/phpbits/block-options/pull/210) 🎊
 * New: Add [caption alignment option](https://github.com/phpbits/block-options/pull/213) for Table Block

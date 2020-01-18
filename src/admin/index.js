@@ -5,6 +5,7 @@ import EditorsKitDocs from './docs';
 import FeaturesManager from '../extensions/components/manager/components/manager';
 import BlockManager from './block-manager/';
 import AddonSettings from './addon-settings';
+import LicensesSettings from './licenses-settings';
 import Notices from './notices';
 
 /**
@@ -12,42 +13,47 @@ import Notices from './notices';
  */
 const { __, sprintf } = wp.i18n;
 const { registerCoreBlocks } = wp.blockLibrary;
-const { hasFilter, applyFilters } = wp.hooks;
+const { hasFilter } = wp.hooks;
 const { Fragment, Component, RawHTML, render } = wp.element;
 const { TabPanel, Panel, PanelBody, PanelRow } = wp.components;
 
 class EditorsKitSettings extends Component {
 	render() {
-
-		let tabs = [
+		const tabs = [
 			{
 				name: 'ek-getting-started',
-				title: 'Getting Started',
+				title: __( 'Getting Started', 'block-options' ),
 				className: 'ek-settings-getting-started',
 			},
 			{
 				name: 'ek-docs',
-				title: 'Tutorial and Docs',
+				title: __( 'Tutorial and Docs', 'block-options' ),
 				className: 'ek-settings-docs',
 			},
 			{
 				name: 'ek-features-manager',
-				title: 'Features Manager',
+				title: __( 'Features Manager', 'block-options' ),
 				className: 'ek-settings-features-manager',
 			},
 			{
 				name: 'ek-blocks-manager',
-				title: 'Blocks Manager',
+				title: __( 'Blocks Manager', 'block-options' ),
 				className: 'ek-settings-blocks-manager',
 			},
 		];
 
-		if ( hasFilter('editorskit.addOn.extraPanel') ){
-			tabs.push({
+		if ( hasFilter( 'editorskit.addOn.extraPanel' ) ) {
+			tabs.push( {
 				name: 'ek-addons',
-				title: 'Add Ons',
+				title: __( 'Extensions', 'block-options' ),
 				className: 'ek-settings-addons',
-			});
+			} );
+
+			tabs.push( {
+				name: 'ek-licenses',
+				title: __( 'Licenses', 'block-options' ),
+				className: 'ek-settings-licenses',
+			} );
 		}
 
 		const EditorsKitSettingsPanel = () => (
@@ -106,8 +112,14 @@ class EditorsKitSettings extends Component {
 
 								);
 							case 'ek-addons':
-								return(
+								return (
 									<AddonSettings />
+								);
+							case 'ek-licenses':
+								return (
+									<div className="ek-admin-licenses">
+										<LicensesSettings />
+									</div>
 								);
 						}
 					}
