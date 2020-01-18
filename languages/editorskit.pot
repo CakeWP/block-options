@@ -3,30 +3,26 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/admin/index.js:100
-msgid ""
-"All features are active by default but you have complete control over each "
-"one of them. Disable any features do not want to use and re-enable them "
-"anytime on this page or under the \"EditorsKit Settings\" on Gutenberg "
-"editor. Just uncheck the box and it will automatically be saved."
+#: src/admin/addon-settings.js:11
+msgid "This area provide settings for all activated EditorsKit add ons."
 msgstr ""
 
-#: src/admin/index.js:110
+#: src/admin/index.js:109
 msgid ""
 "Manage each individual blocks! You can enable or disable any blocks you "
 "want and it will be reflected on Gutenberg block manager settings. Just "
 "uncheck the box and it will automatically be saved."
 msgstr ""
 
-#: src/admin/index.js:137
+#: src/admin/index.js:136
 msgid "Settings → EditorsKit"
 msgstr ""
 
-#: src/admin/index.js:138
+#: src/admin/index.js:137
 msgid "Getting Started with"
 msgstr ""
 
-#: src/admin/index.js:139
+#: src/admin/index.js:138
 msgid ""
 "Congratulations! You've just unlocked more Gutenberg block editor tools for "
 "easier editing and better workflow. Check more information about the plugin "
@@ -34,42 +30,42 @@ msgid ""
 "to learn more on how to use each available features."
 msgstr ""
 
-#: src/admin/index.js:26
+#: src/admin/index.js:25
 msgid "Getting Started"
 msgstr ""
 
-#: src/admin/index.js:31
+#: src/admin/index.js:30
 msgid "Tutorial and Docs"
 msgstr ""
 
-#: src/admin/index.js:36
+#: src/admin/index.js:35
 msgid "Features Manager"
 msgstr ""
 
-#: src/admin/index.js:41
+#: src/admin/index.js:40
 msgid "Blocks Manager"
 msgstr ""
 
-#: src/admin/index.js:49
+#: src/admin/index.js:48
 msgid "Extensions"
 msgstr ""
 
-#: src/admin/index.js:55
+#: src/admin/index.js:54
 msgid "Licenses"
 msgstr ""
 
-#: src/admin/index.js:72
+#: src/admin/index.js:71
 msgid ""
 "EditorsKit provides set of tools to extend the way you are building content "
 "on WordPress Gutenberg block editor. Designed and integrated to help users "
 "easily navigate; and control each block the way it should be."
 msgstr ""
 
-#: src/admin/index.js:75
+#: src/admin/index.js:74
 msgid "EditorsKit video preview"
 msgstr ""
 
-#: src/admin/index.js:80
+#: src/admin/index.js:79
 msgid ""
 "If you have any questions or suggestion, let us know through "
 "%1$sTwitter%4$s or our %2$sFacebook community %4$s. Also, %3$ssubscribe to "
@@ -77,7 +73,15 @@ msgid ""
 "upcoming at EditorsKit."
 msgstr ""
 
-#: src/admin/licenses-settings.js:15
+#: src/admin/index.js:99
+msgid ""
+"All features are active by default but you have complete control over each "
+"one of them. Disable any features do not want to use and re-enable them "
+"anytime on this page or under the \"EditorsKit Settings\" on Gutenberg "
+"editor. Just uncheck the box and it will automatically be saved."
+msgstr ""
+
+#: src/admin/licenses-settings.js:14
 msgid ""
 "Enter your extension license keys here to receive updates for purchased "
 "extensions. If your license key has expired, please %1$srenew your "

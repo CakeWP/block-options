@@ -6673,7 +6673,7 @@ __webpack_require__.r(__webpack_exports__);
 var __ = wp.i18n.__;
 var Fragment = wp.element.Fragment;
 var withFilters = wp.components.withFilters;
-var AddonSettings = function AddonSettings(props) {
+var AddonSettings = function AddonSettings() {
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, __('This area provide settings for all activated EditorsKit add ons.', 'block-options')));
 };
 /* harmony default export */ __webpack_exports__["default"] = (withFilters('editorskit.addOn.extraPanel')(AddonSettings));
@@ -7348,9 +7348,7 @@ var _wp$i18n = wp.i18n,
     __ = _wp$i18n.__,
     sprintf = _wp$i18n.sprintf;
 var registerCoreBlocks = wp.blockLibrary.registerCoreBlocks;
-var _wp$hooks = wp.hooks,
-    hasFilter = _wp$hooks.hasFilter,
-    applyFilters = _wp$hooks.applyFilters;
+var hasFilter = wp.hooks.hasFilter;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component,

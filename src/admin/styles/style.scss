@@ -309,6 +309,18 @@ $mobile : 736px;
 	}
 }
 
+.ek-admin-licenses{
+	display: flex;
+	flex-wrap: wrap;
+	> p{
+		width: 100%;
+	}
+
+	> div{
+  		width: 33%;
+	}
+}
+
 .components-editor-notices__snackbar {
 	position: fixed;
 	right: 0;
