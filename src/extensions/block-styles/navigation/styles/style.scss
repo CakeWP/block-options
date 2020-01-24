@@ -1,0 +1,32 @@
+.wp-block-navigation{
+	&.ek-vertical-navigation{
+		> ul{
+			flex-direction: column;
+			align-items: flex-start;
+
+			> li > a{
+				padding-left: 0px;
+			}
+
+			> li > ul{
+				left: 100%;
+				top: 10%;
+			}
+			
+			> li > ul:before,
+			> li > ul:after{
+				top: 6px;
+   				left: -10px;
+			}
+
+			> li > ul:before{
+				border-width: 10px;
+				border-color: transparent #e2e4e7 transparent transparent;
+			}
+
+			> li > ul:after{
+				border-color: transparent #FFF transparent transparent
+			}
+		}
+	}
+}
