@@ -8,6 +8,10 @@
 				padding-left: 0px;
 			}
 
+			> li:last-of-type > a{
+				padding-right: 16px;
+			}
+
 			> li > ul{
 				left: 100%;
 				top: 10%;
