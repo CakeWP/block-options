@@ -117,6 +117,9 @@ $mobile : 736px;
 
 					&:hover {
 						text-decoration: underline;
+						box-shadow: none !important;
+						border: 0px;
+						outline: none;
 					}
 
 					&:focus {
