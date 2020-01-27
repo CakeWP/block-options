@@ -157,6 +157,16 @@ function addAttributes( settings ) {
 				anchor: true,
 			} );
 		}
+
+		// Check if block has alignment attribute
+		if (settings.attributes.hasOwnProperty('align') || settings.attributes.hasOwnProperty('textAlign')) {
+			settings.attributes = Object.assign(settings.attributes, {
+				hasAlignmentOption: {
+					type: 'boolean',
+					default: true,
+				},
+			});
+		}
 	}
 
 	return settings;

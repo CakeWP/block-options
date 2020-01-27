@@ -25,3 +25,22 @@
 		}
 	}
 }
+
+.ek-responsive-tabpanel{
+	.components-tab-panel__tabs{
+		text-align: right;
+		.components-button:first-child{
+			border-right: 0px;
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+		.components-button:nth-child(2){
+			border-radius: 0px;
+		}
+		.components-button:last-child{
+			border-left: 0px;
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+	}
+}
