@@ -9594,10 +9594,6 @@ var DevicesOptions = function DevicesOptions(props) {
     }
   };
 
-  var onTabSelect = function onTabSelect(tabName) {
-    console.log('Selecting tab', tabName);
-  };
-
   if (typeof editorskit === 'undefined') {
     return;
   }
@@ -9620,37 +9616,37 @@ var DevicesOptions = function DevicesOptions(props) {
     onChange: function onChange() {
       return onSelectionChange('mobile');
     }
-  }), typeof hasAlignmentOption !== 'undefined' && hasAlignmentOption && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("h3", null, __('Responsive Text Alignment', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TabPanel, {
+  }), typeof hasAlignmentOption !== 'undefined' && hasAlignmentOption && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("h3", null, __('Responsive Text Alignment', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("small", null, __('Assign different alignment for tablet and mobile devices aside from the option you already have for desktop on the block toolbar.', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TabPanel, {
     className: "ek-responsive-tabpanel",
     activeClass: "is-primary",
-    onSelect: onTabSelect,
     tabs: [{
-      name: 'desktop',
-      title: __('Desktop', 'block-options'),
+      name: 'mobile',
+      title: __('Mobile', 'block-options'),
       className: 'is-button is-default is-small'
     }, {
       name: 'tablet',
       title: __('Tablet', 'block-options'),
       className: 'is-button is-default is-small'
-    }, {
-      name: 'mobile',
-      title: __('Mobile', 'block-options'),
-      className: 'is-button is-default is-small'
     }]
   }, function (tab) {
     switch (tab.name) {
-      case 'desktop':
-        break;
+      case 'mobile':
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", null, __('Alignment for Mobile Devices', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(AlignmentToolbar, {
+          isCollapsed: false,
+          value: typeof editorskit.mobileAlignment !== 'undefined' ? editorskit.mobileAlignment : '',
+          onChange: function onChange(value) {
+            return onSelectionChange('mobileAlignment', value);
+          }
+        }));
 
-      default:
-        break;
-    }
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(AlignmentToolbar, {
-    isCollapsed: false,
-    label: __('Alignment for Tablet', 'block-options'),
-    value: typeof editorskit.tabletAlignment !== 'undefined' ? editorskit.tabletAlignment : '',
-    onChange: function onChange(value) {
-      return onSelectionChange('tabletAlignment', value);
+      case 'tablet':
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", null, __('Alignment for Tablet Devices', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(AlignmentToolbar, {
+          isCollapsed: false,
+          value: typeof editorskit.tabletAlignment !== 'undefined' ? editorskit.tabletAlignment : '',
+          onChange: function onChange(value) {
+            return onSelectionChange('tabletAlignment', value);
+          }
+        }));
     }
   })));
 };
@@ -9841,6 +9837,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
@@ -9852,6 +9850,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 /**
  * External dependencies
  */
+
 
 /**
  * WordPress Dependencies
@@ -10015,7 +10014,7 @@ function addAttributes(settings) {
     } // Check if block has alignment attribute
 
 
-    if (settings.attributes.hasOwnProperty('align') || settings.attributes.hasOwnProperty('textAlign')) {
+    if (lodash__WEBPACK_IMPORTED_MODULE_4___default()(settings, 'attributes.align') || lodash__WEBPACK_IMPORTED_MODULE_4___default()(settings, 'attributes.textAlign')) {
       settings.attributes = Object.assign(settings.attributes, {
         hasAlignmentOption: {
           type: 'boolean',
@@ -10076,6 +10075,14 @@ function applyExtraClass(extraProps, blockType, attributes) {
 
     if (typeof editorskit.mobile !== 'undefined' && !editorskit.mobile) {
       extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_3___default()(extraProps.className, 'editorskit-no-mobile');
+    }
+
+    if (typeof editorskit.tabletAlignment !== 'undefined' && editorskit.tabletAlignment) {
+      extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_3___default()(extraProps.className, 'has-tablet-text-align-' + editorskit.tabletAlignment);
+    }
+
+    if (typeof editorskit.mobileAlignment !== 'undefined' && editorskit.mobileAlignment) {
+      extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_3___default()(extraProps.className, 'has-mobile-text-align-' + editorskit.mobileAlignment);
     }
   }
 

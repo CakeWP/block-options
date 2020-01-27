@@ -20,9 +20,8 @@ const DevicesOptions = ( props ) => {
 	} = attributes;
 
 	const onSelectionChange = ( key, newValue ) => {
-		
-		if ( typeof newValue === 'undefined' ){
-			newValue = !editorskit[key];
+		if ( typeof newValue === 'undefined' ) {
+			newValue = ! editorskit[ key ];
 		}
 
 		delete editorskit[ key ];
@@ -36,17 +35,13 @@ const DevicesOptions = ( props ) => {
 		}
 	};
 
-	const onTabSelect = (tabName) => {
-		console.log('Selecting tab', tabName);
-	};
-
 	if ( typeof editorskit === 'undefined' ) {
 		return;
 	}
 
 	return (
 		<Fragment>
-			<h3>{__('Responsive Visibility', 'block-options')}</h3>
+			<h3>{ __( 'Responsive Visibility', 'block-options' ) }</h3>
 			<ToggleControl
 				label={ __( 'Hide on Desktop', 'block-options' ) }
 				checked={ typeof editorskit.desktop !== 'undefined' && ! editorskit.desktop }
@@ -62,50 +57,56 @@ const DevicesOptions = ( props ) => {
 				checked={ typeof editorskit.mobile !== 'undefined' && ! editorskit.mobile }
 				onChange={ () => onSelectionChange( 'mobile' ) }
 			/>
-			{typeof hasAlignmentOption !== 'undefined' && hasAlignmentOption && (
+			{ typeof hasAlignmentOption !== 'undefined' && hasAlignmentOption && (
 				<Fragment>
-					<h3>{__('Responsive Text Alignment', 'block-options')}</h3>
+					<h3>{ __( 'Responsive Text Alignment', 'block-options' ) }</h3>
+					<small>{ __( 'Assign different alignment for tablet and mobile devices aside from the option you already have for desktop on the block toolbar.', 'block-options' ) }</small>
 					<TabPanel className="ek-responsive-tabpanel"
 						activeClass="is-primary"
-						onSelect={onTabSelect}
-						tabs={[
+						tabs={ [
 							{
-								name: 'desktop',
-								title: __('Desktop', 'block-options'),
+								name: 'mobile',
+								title: __( 'Mobile', 'block-options' ),
 								className: 'is-button is-default is-small',
 							},
 							{
 								name: 'tablet',
-								title: __('Tablet', 'block-options'),
+								title: __( 'Tablet', 'block-options' ),
 								className: 'is-button is-default is-small',
 							},
-							{
-								name: 'mobile',
-								title: __('Mobile', 'block-options'),
-								className: 'is-button is-default is-small',
-							},
-						]}>
+						] }>
 						{
-							(tab) => {
-								switch (tab.name) {
-									case 'desktop':
-										
-										break;
-								
-									default:
-										break;
+							( tab ) => {
+								switch ( tab.name ) {
+									case 'mobile':
+										return (
+											<Fragment>
+												<p>{ __( 'Alignment for Mobile Devices', 'block-options' ) }</p>
+												<AlignmentToolbar
+													isCollapsed={ false }
+													value={ typeof editorskit.mobileAlignment !== 'undefined' ? editorskit.mobileAlignment : '' }
+													onChange={ ( value ) => onSelectionChange( 'mobileAlignment', value ) }
+												/>
+											</Fragment>
+										);
+
+									case 'tablet':
+										return (
+											<Fragment>
+												<p>{ __( 'Alignment for Tablet Devices', 'block-options' ) }</p>
+												<AlignmentToolbar
+													isCollapsed={ false }
+													value={ typeof editorskit.tabletAlignment !== 'undefined' ? editorskit.tabletAlignment : '' }
+													onChange={ ( value ) => onSelectionChange( 'tabletAlignment', value ) }
+												/>
+											</Fragment>
+										);
 								}
 							}
 						}
 					</TabPanel>
-					<AlignmentToolbar
-						isCollapsed={false}
-						label={__('Alignment for Tablet', 'block-options')}
-						value={typeof editorskit.tabletAlignment !== 'undefined' ? editorskit.tabletAlignment : ''}
-						onChange={(value) => onSelectionChange('tabletAlignment', value)}
-					/>
 				</Fragment>
-			)}
+			) }
 		</Fragment>
 	);
 };
