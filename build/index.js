@@ -17156,10 +17156,14 @@ function (_Component) {
 
 /* harmony default export */ __webpack_exports__["default"] = (compose(withSelect(function () {
   return {
-    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitLinkFormats')
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitLinkFormats'),
+    formatTypes: select('core/rich-text').getFormatTypes()
   };
 }), ifCondition(function (props) {
-  return !props.isDisabled;
+  var checkFormats = props.formatTypes.filter(function (formats) {
+    return formats.name === 'rankmath/link';
+  });
+  return !props.isDisabled && checkFormats.length === 0;
 }), withSpokenMessages)(Edit));
 
 /***/ }),
