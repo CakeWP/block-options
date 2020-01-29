@@ -37,6 +37,22 @@ body:not(.wp-admin) {
 		.blockopts-show.blockopts-tablet {
 			display: block;
 		}
+
+		.has-tablet-text-align-center {
+			text-align: center;
+		}
+
+		.has-tablet-text-align-right {
+			text-align: right;
+		}
+
+		.has-tablet-text-align-left {
+			text-align: left;
+		}
+
+		.has-tablet-text-align-justify {
+			text-align: justify;
+		}
 	}
 
 	@media screen and (max-width: $mobile) {
@@ -48,6 +64,22 @@ body:not(.wp-admin) {
 
 		.blockopts-show.blockopts-mobile {
 			display: block;
+		}
+
+		.has-mobile-text-align-center {
+			text-align: center;
+		}
+
+		.has-mobile-text-align-right {
+			text-align: right;
+		}
+
+		.has-mobile-text-align-left {
+			text-align: left;
+		}
+
+		.has-mobile-text-align-justify {
+			text-align: justify;
 		}
 	}
 }

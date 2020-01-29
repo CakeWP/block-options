@@ -3,10 +3,22 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/block-styles/columns/index.js:15
-msgid "Gapless"
+#: src/extensions/advanced-controls/options/devices/alignment-toolbar.js:15
+msgid "Align text left"
 msgstr ""
 
-#: src/extensions/block-styles/columns/index.js:9
-msgid "Default"
+#: src/extensions/advanced-controls/options/devices/alignment-toolbar.js:20
+msgid "Align text center"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/alignment-toolbar.js:25
+msgid "Align text right"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/alignment-toolbar.js:30
+msgid "Align text justify"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/alignment-toolbar.js:40
+msgid "Change text alignment"
 msgstr ""

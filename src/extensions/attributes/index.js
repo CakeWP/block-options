@@ -2,6 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import has from 'lodash';
 
 /**
  * WordPress Dependencies
@@ -157,6 +158,16 @@ function addAttributes( settings ) {
 				anchor: true,
 			} );
 		}
+
+		// Check if block has alignment attribute
+		if ( has( settings, 'attributes.align' ) || has( settings, 'attributes.textAlign' ) ) {
+			settings.attributes = Object.assign( settings.attributes, {
+				hasAlignmentOption: {
+					type: 'boolean',
+					default: true,
+				},
+			} );
+		}
 	}
 
 	return settings;
@@ -213,6 +224,14 @@ function applyExtraClass( extraProps, blockType, attributes ) {
 
 		if ( typeof editorskit.mobile !== 'undefined' && ! editorskit.mobile ) {
 			extraProps.className = classnames( extraProps.className, 'editorskit-no-mobile' );
+		}
+
+		if ( typeof editorskit.tabletAlignment !== 'undefined' && editorskit.tabletAlignment ) {
+			extraProps.className = classnames( extraProps.className, 'has-tablet-text-align-' + editorskit.tabletAlignment );
+		}
+
+		if ( typeof editorskit.mobileAlignment !== 'undefined' && editorskit.mobileAlignment ) {
+			extraProps.className = classnames( extraProps.className, 'has-mobile-text-align-' + editorskit.mobileAlignment );
 		}
 	}
 
