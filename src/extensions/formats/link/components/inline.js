@@ -289,6 +289,7 @@ class InlineLinkUI extends Component {
 						}
 					} }
 					focusOnMount={ showInput ? 'firstElement' : false }
+					className="editorskit-url-popover"
 					renderSettings={ () => (
 						<Fragment>
 							<ToggleControl

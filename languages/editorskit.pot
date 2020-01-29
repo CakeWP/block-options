@@ -1,7 +1,12 @@
-# Copyright (C) 2020 Jeffrey Carandang
-# This file is distributed under the same license as the EditorsKit plugin.
 msgid ""
 msgstr ""
+<<<<<<< HEAD
+"Content-Type: text/plain; charset=utf-8\n"
+"X-Generator: babel-plugin-makepot\n"
+
+#: src/extensions/formats/link/components/edit.js:128
+msgid "Unlink"
+=======
 "Project-Id-Version: EditorsKit 1.24\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/block-options\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -932,6 +937,7 @@ msgstr ""
 
 #: src/extensions/formats/link/components/url-input.js:280
 msgid "(no title)"
+>>>>>>> master
 msgstr ""
 
 #: src/extensions/formats/link/components/edit.js:29
@@ -940,6 +946,9 @@ msgstr ""
 
 #: src/extensions/formats/link/components/edit.js:84
 msgid "Link removed."
+<<<<<<< HEAD
+msgstr ""
+=======
 msgstr ""
 
 #: src/extensions/formats/link/components/edit.js:128
@@ -1288,3 +1297,4 @@ msgstr ""
 #: src/extensions/transform/empty-paragraphs/components/controls.js:90
 msgid "This prompt will only be shown once and will remember your preference. Thanks!"
 msgstr ""
+>>>>>>> master

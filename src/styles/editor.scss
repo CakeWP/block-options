@@ -6,26 +6,30 @@
 
 	&.block-editor-url-popover__settings {
 
-		.components-base-control__field {
-			display: flex;
-			flex-direction: row-reverse;
+		.components-toggle-control {
 
-			.components-form-toggle,
-			.components-toggle-control__label,
-			.components-checkbox-control__label {
+			.components-base-control__field {
 				display: flex;
-				flex-direction: column;
-				flex: 1;
-			}
+				flex-direction: row-reverse;
 
-			.components-form-toggle {
-				margin-right: 0;
-				margin-left: 16px;
-			}
+				.components-form-toggle,
+				.components-toggle-control__label,
+				.components-checkbox-control__label {
+					display: flex;
+					flex-direction: column;
+					flex: 1;
+				}
 
-			.components-toggle-control__label,
-			.components-checkbox-control__label {
-				flex-basis: 100%;
+				.components-form-toggle {
+					margin-right: 0;
+					margin-left: 16px;
+				}
+
+				.components-toggle-control__label,
+				.components-checkbox-control__label {
+					flex-basis: 100%;
+				}
+
 			}
 
 		}
