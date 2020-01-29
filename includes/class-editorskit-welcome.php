@@ -120,7 +120,7 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 				'url'             => EDITORSKIT_PLUGIN_URL,
 				'dir'             => EDITORSKIT_PLUGIN_DIR,
 				'licenses'        => array(
-					'typography' => get_option( 'editorskit_typography_addon_license_active' )
+					'typography' => get_option( 'editorskit_typography_addon_license_active' ),
 				),
 				'version'         => $this->version,
 				'editor_settings' => apply_filters( 'block_editor_settings', array(), '' ),
