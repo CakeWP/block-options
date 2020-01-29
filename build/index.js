@@ -9579,19 +9579,19 @@ var __ = wp.i18n.__;
 var Toolbar = wp.components.Toolbar;
 var DEFAULT_ALIGNMENT_CONTROLS = [{
   icon: 'editor-alignleft',
-  title: __('Align text left'),
+  title: __('Align text left', 'block-options'),
   align: 'left'
 }, {
   icon: 'editor-aligncenter',
-  title: __('Align text center'),
+  title: __('Align text center', 'block-options'),
   align: 'center'
 }, {
   icon: 'editor-alignright',
-  title: __('Align text right'),
+  title: __('Align text right', 'block-options'),
   align: 'right'
 }, {
   icon: 'editor-justify',
-  title: __('Align text justify'),
+  title: __('Align text justify', 'block-options'),
   align: 'justify'
 }];
 function AlignmentToolbar(props) {
@@ -9600,7 +9600,7 @@ function AlignmentToolbar(props) {
       _props$alignmentContr = props.alignmentControls,
       alignmentControls = _props$alignmentContr === void 0 ? DEFAULT_ALIGNMENT_CONTROLS : _props$alignmentContr,
       _props$label = props.label,
-      label = _props$label === void 0 ? __('Change text alignment') : _props$label,
+      label = _props$label === void 0 ? __('Change text alignment', 'block-options') : _props$label,
       _props$isCollapsed = props.isCollapsed,
       isCollapsed = _props$isCollapsed === void 0 ? true : _props$isCollapsed;
 
@@ -11842,6 +11842,31 @@ registerPlugin('editorskit-block-settings', {
 
 /***/ }),
 
+/***/ "./src/extensions/block-styles/columns/index.js":
+/*!******************************************************!*\
+  !*** ./src/extensions/block-styles/columns/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var registerBlockStyle = wp.blocks.registerBlockStyle;
+registerBlockStyle('core/columns', {
+  name: 'default',
+  label: __('Default', 'block-options'),
+  isDefault: true
+});
+registerBlockStyle('core/columns', {
+  name: 'gapless',
+  label: __('Gapless', 'block-options'),
+  isDefault: false
+});
+
+/***/ }),
+
 /***/ "./src/extensions/block-styles/image/index.js":
 /*!****************************************************!*\
   !*** ./src/extensions/block-styles/image/index.js ***!
@@ -11907,9 +11932,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _image_index_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_image_index_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _list_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./list/index.js */ "./src/extensions/block-styles/list/index.js");
 /* harmony import */ var _list_index_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_list_index_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _columns_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./columns/index.js */ "./src/extensions/block-styles/columns/index.js");
+/* harmony import */ var _columns_index_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_columns_index_js__WEBPACK_IMPORTED_MODULE_2__);
 /**
  * Internal dependencies
  */
+
 
 
 
@@ -11935,7 +11963,7 @@ registerBlockStyle('core/list', {
 registerBlockStyle('core/list', {
   name: 'none',
   label: __('None', 'block-options'),
-  isDefault: true
+  isDefault: false
 });
 registerBlockStyle('core/list', {
   name: 'arrow',
