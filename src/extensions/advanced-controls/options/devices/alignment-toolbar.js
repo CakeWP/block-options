@@ -12,22 +12,22 @@ const { Toolbar } = wp.components;
 const DEFAULT_ALIGNMENT_CONTROLS = [
 	{
 		icon: 'editor-alignleft',
-		title: __( 'Align text left' ),
+		title: __( 'Align text left', 'block-options' ),
 		align: 'left',
 	},
 	{
 		icon: 'editor-aligncenter',
-		title: __( 'Align text center' ),
+		title: __( 'Align text center', 'block-options' ),
 		align: 'center',
 	},
 	{
 		icon: 'editor-alignright',
-		title: __( 'Align text right' ),
+		title: __( 'Align text right', 'block-options' ),
 		align: 'right',
 	},
 	{
 		icon: 'editor-justify',
-		title: __( 'Align text justify' ),
+		title: __( 'Align text justify', 'block-options' ),
 		align: 'justify',
 	},
 ];
@@ -37,7 +37,7 @@ export function AlignmentToolbar( props ) {
 		value,
 		onChange,
 		alignmentControls = DEFAULT_ALIGNMENT_CONTROLS,
-		label = __( 'Change text alignment' ),
+		label = __( 'Change text alignment', 'block-options' ),
 		isCollapsed = true,
 	} = props;
 
