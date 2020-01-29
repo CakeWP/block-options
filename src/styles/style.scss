@@ -49,6 +49,10 @@ body:not(.wp-admin) {
 		.has-tablet-text-align-left {
 			text-align: left;
 		}
+
+		.has-tablet-text-align-justify {
+			text-align: justify;
+		}
 	}
 
 	@media screen and (max-width: $mobile) {
@@ -72,6 +76,10 @@ body:not(.wp-admin) {
 
 		.has-mobile-text-align-left {
 			text-align: left;
+		}
+
+		.has-mobile-text-align-justify {
+			text-align: justify;
 		}
 	}
 }

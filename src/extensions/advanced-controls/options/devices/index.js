@@ -1,11 +1,15 @@
 /**
+ * Internal dependencies
+ */
+import AlignmentToolbar from './alignment-toolbar';
+
+/**
  * WordPress Dependencies
  */
 const { __ } = wp.i18n;
 const { dispatch } = wp.data;
 const { Fragment } = wp.element;
 const { ToggleControl, TabPanel } = wp.components;
-const { AlignmentToolbar } = wp.blockEditor;
 
 const DevicesOptions = ( props ) => {
 	const {
