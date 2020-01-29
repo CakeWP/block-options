@@ -1,0 +1,11 @@
+.is-style-gapless {
+
+	&.wp-block-columns {
+
+		> .wp-block-column {
+			margin-left: 0;
+			margin-right: 0;
+			flex-basis: 50%;
+		}
+	}
+}

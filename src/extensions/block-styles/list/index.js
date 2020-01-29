@@ -13,7 +13,7 @@ registerBlockStyle( 'core/list', {
 registerBlockStyle( 'core/list', {
 	name: 'none',
 	label: __( 'None', 'block-options' ),
-	isDefault: true,
+	isDefault: false,
 } );
 
 registerBlockStyle( 'core/list', {

@@ -25,3 +25,35 @@
 		}
 	}
 }
+
+.ek-responsive-tabpanel {
+
+	.components-tab-panel__tabs {
+		text-align: right;
+		margin-bottom: 7px;
+
+		.components-button:first-child {
+			border-right: 0;
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+
+		.components-button:last-child {
+			border-left: 0;
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+	}
+
+	.components-tab-panel__tab-content {
+
+		> p {
+			padding-bottom: 10px;
+			margin-bottom: 10px;
+		}
+
+		.components-toolbar {
+			display: inline-flex;
+		}
+	}
+}
