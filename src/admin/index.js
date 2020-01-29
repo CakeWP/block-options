@@ -4,42 +4,62 @@
 import EditorsKitDocs from './docs';
 import FeaturesManager from '../extensions/components/manager/components/manager';
 import BlockManager from './block-manager/';
+import AddonSettings from './addon-settings';
+import LicensesSettings from './licenses-settings';
+import Notices from './notices';
 
 /**
  * WordPress dependencies
  */
 const { __, sprintf } = wp.i18n;
 const { registerCoreBlocks } = wp.blockLibrary;
+const { hasFilter } = wp.hooks;
 const { Fragment, Component, RawHTML, render } = wp.element;
 const { TabPanel, Panel, PanelBody, PanelRow } = wp.components;
 
 class EditorsKitSettings extends Component {
 	render() {
+		const tabs = [
+			{
+				name: 'ek-getting-started',
+				title: __( 'Getting Started', 'block-options' ),
+				className: 'ek-settings-getting-started',
+			},
+			{
+				name: 'ek-docs',
+				title: __( 'Tutorial and Docs', 'block-options' ),
+				className: 'ek-settings-docs',
+			},
+			{
+				name: 'ek-features-manager',
+				title: __( 'Features Manager', 'block-options' ),
+				className: 'ek-settings-features-manager',
+			},
+			{
+				name: 'ek-blocks-manager',
+				title: __( 'Blocks Manager', 'block-options' ),
+				className: 'ek-settings-blocks-manager',
+			},
+		];
+
+		if ( hasFilter( 'editorskit.addOn.extraPanel' ) ) {
+			tabs.push( {
+				name: 'ek-addons',
+				title: __( 'Extensions', 'block-options' ),
+				className: 'ek-settings-addons',
+			} );
+
+			tabs.push( {
+				name: 'ek-licenses',
+				title: __( 'Licenses', 'block-options' ),
+				className: 'ek-settings-licenses',
+			} );
+		}
+
 		const EditorsKitSettingsPanel = () => (
 			<TabPanel className="editorskit-settings-tab-panel"
 				activeClass="active-tab"
-				tabs={ [
-					{
-						name: 'ek-getting-started',
-						title: 'Getting Started',
-						className: 'ek-settings-getting-started',
-					},
-					{
-						name: 'ek-docs',
-						title: 'Tutorial and Docs',
-						className: 'ek-settings-docs',
-					},
-					{
-						name: 'ek-features-manager',
-						title: 'Features Manager',
-						className: 'ek-settings-features-manager',
-					},
-					{
-						name: 'ek-blocks-manager',
-						title: 'Blocks Manager',
-						className: 'ek-settings-blocks-manager',
-					},
-				] }>
+				tabs={ tabs }>
 				{
 					( tab ) => {
 						switch ( tab.name ) {
@@ -91,6 +111,16 @@ class EditorsKitSettings extends Component {
 									</Fragment>
 
 								);
+							case 'ek-addons':
+								return (
+									<AddonSettings />
+								);
+							case 'ek-licenses':
+								return (
+									<div className="ek-admin-licenses">
+										<LicensesSettings />
+									</div>
+								);
 						}
 					}
 				}
@@ -117,6 +147,7 @@ class EditorsKitSettings extends Component {
 		return (
 			<Fragment>
 				<MainPanel />
+				<Notices />
 			</Fragment>
 		);
 	}

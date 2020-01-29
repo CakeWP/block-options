@@ -117,6 +117,9 @@ $mobile : 736px;
 
 					&:hover {
 						text-decoration: underline;
+						box-shadow: none !important;
+						border: 0px;
+						outline: none;
 					}
 
 					&:focus {
@@ -307,4 +310,47 @@ $mobile : 736px;
 		}
 
 	}
+}
+
+.ek-admin-licenses{
+	display: flex;
+	flex-wrap: wrap;
+	> p,
+	.editorskit-typography-admin-settings--items{
+		width: 100%;
+	}
+
+	> div{
+		width: 33%;
+		
+		.components-panel__row{
+			padding: 20px;
+
+			.components-base-control{
+				margin-bottom: 10px;
+				width: 100%;
+			}
+			.components-text-control__input{
+				width: 100%;
+			}
+			button{
+				text-transform: capitalize;
+				margin-bottom: 0px !important;
+			}
+		}
+	}
+}
+
+.ek-panel-footer{
+	background: #fafafa;
+	border-top: 1px solid #eee;
+}
+
+.components-editor-notices__snackbar {
+	position: fixed;
+	right: 0;
+	bottom: 20px;
+	padding-left: 16px;
+	padding-right: 16px;
+	left: 0;
 }
