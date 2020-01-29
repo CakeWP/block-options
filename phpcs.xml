@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<ruleset name="WordPress Coding Standards for Gutenberg Plugin">
+    <description>Sniffs for WordPress plugins, with minor modifications for Gutenberg</description>
+    <rule ref="WordPress" />
+	 <rule ref="WordPress.NamingConventions.ValidVariableName.PropertyNotSnakeCase">
+        <exclude-pattern>/includes/*.php</exclude-pattern>
+    </rule>
+	<rule ref="WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase">
+        <exclude-pattern>/includes/*.php</exclude-pattern>
+    </rule>
+
+    <rule ref="WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase">
+        <exclude-pattern>/includes/*.php</exclude-pattern>
+    </rule>
+</ruleset>

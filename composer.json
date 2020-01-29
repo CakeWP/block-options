@@ -20,7 +20,8 @@
 		"post-install-cmd": "./vendor/bin/phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs",
 		"post-update-cmd": "./vendor/bin/phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs",
 		"test": [
-			"phpcs --report=full --colors -p --standard=WordPress --ignore=*/vendor/*,*/node_modules/*,*/build/* * --extensions=php"
-		]
+			"phpcs --report=full --colors -p --standard=phpcs.xml --ignore=*/vendor/*,*/node_modules/*,*/build/* * --extensions=php"
+		],
+		"format": "phpcbf --standard=phpcs.xml --report-summary --report-source --ignore=*/vendor/*,*/node_modules/*,*/build/* * --extensions=php"
 	}
 }

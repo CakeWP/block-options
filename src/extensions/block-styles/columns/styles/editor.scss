@@ -1,0 +1,22 @@
+.is-style-gapless {
+
+	&.wp-block-columns {
+
+		> .block-editor-inner-blocks {
+
+			> .block-editor-block-list__layout {
+
+				> .wp-block[data-type="core/column"] {
+					margin-left: 0;
+					margin-right: 0;
+					flex-basis: 50%;
+
+					> .editor-block-list__block-edit{
+						margin-left: 0;
+						margin-right: 0;
+					}
+				}
+			}
+		}
+	}
+}

@@ -6653,6 +6653,33 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/admin/addon-settings.js":
+/*!*************************************!*\
+  !*** ./src/admin/addon-settings.js ***!
+  \*************************************/
+/*! exports provided: AddonSettings, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddonSettings", function() { return AddonSettings; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+var withFilters = wp.components.withFilters;
+var AddonSettings = function AddonSettings() {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, __('This area provide settings for all activated EditorsKit add ons.', 'block-options')));
+};
+/* harmony default export */ __webpack_exports__["default"] = (withFilters('editorskit.addOn.extraPanel')(AddonSettings));
+
+/***/ }),
+
 /***/ "./src/admin/block-manager/category.js":
 /*!*********************************************!*\
   !*** ./src/admin/block-manager/category.js ***!
@@ -7294,6 +7321,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _docs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./docs */ "./src/admin/docs/index.js");
 /* harmony import */ var _extensions_components_manager_components_manager__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../extensions/components/manager/components/manager */ "./src/extensions/components/manager/components/manager.js");
 /* harmony import */ var _block_manager___WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./block-manager/ */ "./src/admin/block-manager/index.js");
+/* harmony import */ var _addon_settings__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./addon-settings */ "./src/admin/addon-settings.js");
+/* harmony import */ var _licenses_settings__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./licenses-settings */ "./src/admin/licenses-settings.js");
+/* harmony import */ var _notices__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./notices */ "./src/admin/notices.js");
 
 
 
@@ -7307,6 +7337,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 /**
  * WordPress dependencies
  */
@@ -7315,6 +7348,7 @@ var _wp$i18n = wp.i18n,
     __ = _wp$i18n.__,
     sprintf = _wp$i18n.sprintf;
 var registerCoreBlocks = wp.blockLibrary.registerCoreBlocks;
+var hasFilter = wp.hooks.hasFilter;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component,
@@ -7340,27 +7374,42 @@ function (_Component) {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(EditorsKitSettings, [{
     key: "render",
     value: function render() {
+      var tabs = [{
+        name: 'ek-getting-started',
+        title: __('Getting Started', 'block-options'),
+        className: 'ek-settings-getting-started'
+      }, {
+        name: 'ek-docs',
+        title: __('Tutorial and Docs', 'block-options'),
+        className: 'ek-settings-docs'
+      }, {
+        name: 'ek-features-manager',
+        title: __('Features Manager', 'block-options'),
+        className: 'ek-settings-features-manager'
+      }, {
+        name: 'ek-blocks-manager',
+        title: __('Blocks Manager', 'block-options'),
+        className: 'ek-settings-blocks-manager'
+      }];
+
+      if (hasFilter('editorskit.addOn.extraPanel')) {
+        tabs.push({
+          name: 'ek-addons',
+          title: __('Extensions', 'block-options'),
+          className: 'ek-settings-addons'
+        });
+        tabs.push({
+          name: 'ek-licenses',
+          title: __('Licenses', 'block-options'),
+          className: 'ek-settings-licenses'
+        });
+      }
+
       var EditorsKitSettingsPanel = function EditorsKitSettingsPanel() {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(TabPanel, {
           className: "editorskit-settings-tab-panel",
           activeClass: "active-tab",
-          tabs: [{
-            name: 'ek-getting-started',
-            title: 'Getting Started',
-            className: 'ek-settings-getting-started'
-          }, {
-            name: 'ek-docs',
-            title: 'Tutorial and Docs',
-            className: 'ek-settings-docs'
-          }, {
-            name: 'ek-features-manager',
-            title: 'Features Manager',
-            className: 'ek-settings-features-manager'
-          }, {
-            name: 'ek-blocks-manager',
-            title: 'Blocks Manager',
-            className: 'ek-settings-blocks-manager'
-          }]
+          tabs: tabs
         }, function (tab) {
           switch (tab.name) {
             case 'ek-getting-started':
@@ -7391,6 +7440,14 @@ function (_Component) {
 
             case 'ek-blocks-manager':
               return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Manage each individual blocks! You can enable or disable any blocks you want and it will be reflected on Gutenberg block manager settings. Just uncheck the box and it will automatically be saved.', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_block_manager___WEBPACK_IMPORTED_MODULE_8__["default"], null));
+
+            case 'ek-addons':
+              return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_addon_settings__WEBPACK_IMPORTED_MODULE_9__["default"], null);
+
+            case 'ek-licenses':
+              return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
+                className: "ek-admin-licenses"
+              }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_licenses_settings__WEBPACK_IMPORTED_MODULE_10__["default"], null));
           }
         });
       };
@@ -7405,7 +7462,7 @@ function (_Component) {
         }, __('Settings → EditorsKit', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h2", null, __('Getting Started with', 'block-options'), " ", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("strong", null, "EditorsKit"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("code", null, window.editorskitSettings.version)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Congratulations! You\'ve just unlocked more Gutenberg block editor tools for easier editing and better workflow. Check more information about the plugin below and please make sure to navigate through "Tutorials and Docs" tab to learn more on how to use each available features.', 'block-options'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(EditorsKitSettingsPanel, null))));
       };
 
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(MainPanel, null));
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(MainPanel, null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_notices__WEBPACK_IMPORTED_MODULE_11__["default"], null));
     }
   }]);
 
@@ -7416,6 +7473,77 @@ wp.domReady(function () {
   registerCoreBlocks();
   render(Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(EditorsKitSettings, null), document.querySelector('.editorskit-settings-wrap'));
 });
+
+/***/ }),
+
+/***/ "./src/admin/licenses-settings.js":
+/*!****************************************!*\
+  !*** ./src/admin/licenses-settings.js ***!
+  \****************************************/
+/*! exports provided: LicensesSettings, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LicensesSettings", function() { return LicensesSettings; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress dependencies
+ */
+var _wp$i18n = wp.i18n,
+    __ = _wp$i18n.__,
+    sprintf = _wp$i18n.sprintf;
+var _wp$element = wp.element,
+    Fragment = _wp$element.Fragment,
+    RawHTML = _wp$element.RawHTML;
+var withFilters = wp.components.withFilters;
+var LicensesSettings = function LicensesSettings() {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RawHTML, null, sprintf(__('Enter your extension license keys here to receive updates for purchased extensions. If your license key has expired, please %1$srenew your license%2$s.', 'block-options'), '<a href="https://editorskit.com/" target="_blank">', '</a>'))));
+};
+/* harmony default export */ __webpack_exports__["default"] = (withFilters('editorskit.addOn.licensePanel')(LicensesSettings));
+
+/***/ }),
+
+/***/ "./src/admin/notices.js":
+/*!******************************!*\
+  !*** ./src/admin/notices.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Notices; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress dependencies
+ */
+var _wp$data = wp.data,
+    useSelect = _wp$data.useSelect,
+    useDispatch = _wp$data.useDispatch;
+var SnackbarList = wp.components.SnackbarList;
+function Notices() {
+  var notices = useSelect(function (select) {
+    return select('core/notices').getNotices().filter(function (notice) {
+      return notice.type === 'snackbar';
+    });
+  }, []);
+
+  var _useDispatch = useDispatch('core/notices'),
+      removeNotice = _useDispatch.removeNotice;
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SnackbarList, {
+    className: "components-editor-notices__snackbar",
+    notices: notices,
+    onRemove: removeNotice
+  });
+}
 
 /***/ }),
 

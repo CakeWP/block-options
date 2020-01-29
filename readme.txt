@@ -44,13 +44,6 @@ Starting [EditorsKit 1.6 ](https://jeffreycarandang.com/editorskit-1-6/?utm_medi
 = Watch it in action =
 https://www.youtube.com/watch?v=ZgI8gdfxlaA
 
-
-## Block Guide Lines
-[EditorsKit](https://editorskit.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit) features other tool aside from visibility management. With the new Block Guide Lines, you can easily toggle visible guide lines on title and each editor blocks in order to check the element boundaries. This feature will also help your workflow on handling nested blocks.
-
-= Watch it in action =
-https://www.youtube.com/watch?v=G8x5QkKGzhw
-
 ## Block Visibility
 Using EditorsKit you will have the following visibility control in order to manage and display better contents.
 
@@ -71,11 +64,27 @@ Powered by shortcode you can display the Estimated Reading Time on your content 
 * `tag` : default `div` : Html tag container 
 * `fallback` : set value to 'true' to display PHP based wordcount on old posts that are not edited or created through Gutenberg
 
+## Block Guide Lines
+[EditorsKit](https://editorskit.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit) features other tool aside from visibility management. With the new Block Guide Lines, you can easily toggle visible guide lines on title and each editor blocks in order to check the element boundaries. This feature will also help your workflow on handling nested blocks.
+
 ## Copy and Paste Selected Blocks
 Easily copy single or multiple selected blocks then paste across the website or separate website using `CMD + V`, `CTRL + V` or paste right click option.
 
 ## Image and Cover Block Styles
 Comes with selection of styles on Cover and Image Block for custom shapes and layouts such as diagonal, circular and rounder corners; and even add drop shadows.
+
+## List Block Additional Styles
+Provides the following additional styling for list block:
+
+* Checked List
+* Arrow
+* Crossed
+* Connected
+* Starred
+* None
+
+## Responsive Text Alignment
+Easily change text alignment per devices. This will help you provide different alignment view on mobile and tablet devices aside from the existing option for desktop.
 
 ## Full Height Screen Option
 Easily display selected blocks as full screen layout by toggling "Full Screen Height" option under the advanced panel. You'll instantly have beautiful hero section by just using core blocks.
@@ -151,6 +160,13 @@ e.g.
 
 
 == Changelog ==
+
+= 1.24 =
+* New: "[Responsive Text Alignment](https://github.com/phpbits/block-options/pull/223)" for Tablet and Mobile 🎊
+* New: Add [Gapless](https://github.com/phpbits/block-options/pull/218) Columns Block Style 🎊
+* Tweaks: Make EditorsKit settings page more extensible
+* Fixes: Prevent [title from being removed on breadcrumbs](https://github.com/phpbits/block-options/issues/222)
+* Fixes: Compatibility fixes for Gutenberg plugin
 
 = 1.23.1 =
 

@@ -23,7 +23,7 @@ if ( ! function_exists( 'editorskit_hide_title' ) ) {
 	 */
 	function editorskit_hide_title( $title, $id = null ) {
 		// phpcs:ignore
-		if ( ! is_admin() && ! is_search() && ( strpos( esc_url( $_SERVER[ 'REQUEST_URI' ] ), '/wp-json/' ) === false ) ) {
+		if ( ! is_admin() && ! is_search() && in_the_loop() && ( strpos( esc_url( $_SERVER[ 'REQUEST_URI' ] ), '/wp-json/' ) === false ) ) {
 
 			$hidden = get_post_meta( $id, '_editorskit_title_hidden', true );
 			if ( $hidden ) {
