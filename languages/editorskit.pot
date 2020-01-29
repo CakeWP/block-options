@@ -8,31 +8,5 @@ msgid "Gapless"
 msgstr ""
 
 #: src/extensions/block-styles/columns/index.js:9
-#: src/extensions/block-styles/list/index.js:9
 msgid "Default"
-msgstr ""
-
-#: src/extensions/block-styles/columns/index.js:15
-#: src/extensions/block-styles/list/index.js:15
-msgid "None"
-msgstr ""
-
-#: src/extensions/block-styles/list/index.js:21
-msgid "Arrow"
-msgstr ""
-
-#: src/extensions/block-styles/list/index.js:27
-msgid "Checked"
-msgstr ""
-
-#: src/extensions/block-styles/list/index.js:33
-msgid "Crossed"
-msgstr ""
-
-#: src/extensions/block-styles/list/index.js:39
-msgid "Connected"
-msgstr ""
-
-#: src/extensions/block-styles/list/index.js:45
-msgid "Starred"
 msgstr ""

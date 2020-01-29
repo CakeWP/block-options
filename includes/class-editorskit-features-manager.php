@@ -219,7 +219,7 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Copy Selected Block(s)', 'block-options' ),
 							'value' => true,
 						),
-						'coverAlignment'      => array(
+						'coverAlignment'     => array(
 							'name'  => 'coverAlignment',
 							'label' => __( 'Cover Block Vertical Alignment', 'block-options' ),
 							'value' => true,

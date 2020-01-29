@@ -52,10 +52,12 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
 			add_action( 'admin_menu', array( $this, 'screen_page' ) );
 
+			// phpcs:ignore
 			if ( defined( 'WP_CLI' ) && WP_CLI ) {
 				// Do nothing if WP CLI.
-			}else{
-				add_action( 'activated_plugin', array( $this, 'redirect' ), 10, 2 );	
+			} else {
+
+				add_action( 'activated_plugin', array( $this, 'redirect' ), 10, 2 );
 			}
 		}
 
@@ -94,6 +96,9 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 					wp_enqueue_script( $block_type->editor_script );
 				}
 			}
+
+			// Remove lifterlms to prevent error.
+			wp_dequeue_script( 'lifterlms_blocks-cgb-block-js' );
 
 			wp_enqueue_style(
 				'editorskit-welcome',
