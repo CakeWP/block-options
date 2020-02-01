@@ -78,6 +78,13 @@ class EditorsKit_Post_Meta {
 				unset( $attributes['editorskit'] );
 				$request['attributes'] = $attributes;
 			}
+
+			if ( isset( $request['attributes'] ) && isset( $request['attributes']['hasAlignmentOption'] ) ) {
+
+				$attributes = $request['attributes'];
+				unset( $attributes['hasAlignmentOption'] );
+				$request['attributes'] = $attributes;
+			}
 		}
 
 		return $result;
