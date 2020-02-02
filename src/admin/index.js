@@ -5,7 +5,6 @@ import EditorsKitDocs from './docs';
 import FeaturesManager from '../extensions/components/manager/components/manager';
 import BlockManager from './block-manager/';
 import AddonSettings from './addon-settings';
-import LicensesSettings from './licenses-settings';
 import Notices from './notices';
 
 /**
