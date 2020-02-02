@@ -36,6 +36,36 @@
 		}
 	}
 
+	/* Gutenberg 7 and up */
+	&.is-guide-lines-new{
+		.block-editor-block-list__layout {
+
+			.block-editor-block-list__block:not([data-type="core/columns"]):not([data-type="core/column"]):not([data-type="coblocks/accordion"]):not([data-type="coblocks/accordion-item"]):not([data-type="coblocks/row"]):not([data-type="coblocks/column"]):not([data-type="coblocks/buttons"]):not([data-type="atomic-blocks/ab-container"]):not([data-type="atomic-blocks/ab-pricing-table"]) {
+				
+				&:before{
+					border: 1px solid rgba(66, 88, 99, 0.2);
+				}
+
+				&.is-selected {
+					&:before{
+						border: 1px solid rgba(66, 88, 99, 0.4);
+						border-left: none;
+					}
+				}
+			}
+
+			.block-editor-block-list__block[data-type="atomic-blocks/ab-pricing-table"] {
+
+				.block-editor-block-list__block {
+					&:before{
+						left: -3px;
+						right: -3px;
+					}
+				}
+			}
+		}
+	}
+
 	/* Backward Compatibility */
 	.editor-block-list__layout {
 

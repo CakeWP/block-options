@@ -26,11 +26,22 @@ class BlockGuideLines extends Component {
 
 	sync() {
 		const { isActive, isDisabled } = this.props;
+		const { editor } = window.editorskitInfo;
+
 		if ( isActive && ! isDisabled ) {
 			document.body.classList.add( 'is-guide-lines-on' );
 		} else {
 			document.body.classList.remove( 'is-guide-lines-on' );
 		}
+
+		// Custom body class to fix Gutenberg plugin conflict
+		if (typeof editor.version !== 'undefined' && ! isDisabled ){
+			let version = parseFloat(editor.version);
+			if ( version >= 7 ){
+				document.body.classList.add('is-guide-lines-new');
+			}
+		}
+
 	}
 
 	render() {
