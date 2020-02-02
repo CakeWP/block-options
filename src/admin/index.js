@@ -48,12 +48,6 @@ class EditorsKitSettings extends Component {
 				title: __( 'Extensions', 'block-options' ),
 				className: 'ek-settings-addons',
 			} );
-
-			tabs.push( {
-				name: 'ek-licenses',
-				title: __( 'Licenses', 'block-options' ),
-				className: 'ek-settings-licenses',
-			} );
 		}
 
 		const EditorsKitSettingsPanel = () => (
@@ -114,12 +108,6 @@ class EditorsKitSettings extends Component {
 							case 'ek-addons':
 								return (
 									<AddonSettings />
-								);
-							case 'ek-licenses':
-								return (
-									<div className="ek-admin-licenses">
-										<LicensesSettings />
-									</div>
 								);
 						}
 					}
