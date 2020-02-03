@@ -14280,11 +14280,21 @@ function (_Component) {
       var _this$props = this.props,
           isActive = _this$props.isActive,
           isDisabled = _this$props.isDisabled;
+      var editor = window.editorskitInfo.editor;
 
       if (isActive && !isDisabled) {
         document.body.classList.add('is-guide-lines-on');
       } else {
         document.body.classList.remove('is-guide-lines-on');
+      } // Custom body class to fix Gutenberg plugin conflict
+
+
+      if (typeof editor.version !== 'undefined' && !isDisabled) {
+        var version = parseFloat(editor.version);
+
+        if (version >= 7) {
+          document.body.classList.add('is-guide-lines-new');
+        }
       }
     }
   }, {

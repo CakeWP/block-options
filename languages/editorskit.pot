@@ -3,22 +3,22 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/admin/index.js:103
+#: src/admin/index.js:102
 msgid ""
 "Manage each individual blocks! You can enable or disable any blocks you "
 "want and it will be reflected on Gutenberg block manager settings. Just "
 "uncheck the box and it will automatically be saved."
 msgstr ""
 
-#: src/admin/index.js:124
+#: src/admin/index.js:123
 msgid "Settings → EditorsKit"
 msgstr ""
 
-#: src/admin/index.js:125
+#: src/admin/index.js:124
 msgid "Getting Started with"
 msgstr ""
 
-#: src/admin/index.js:126
+#: src/admin/index.js:125
 msgid ""
 "Congratulations! You've just unlocked more Gutenberg block editor tools for "
 "easier editing and better workflow. Check more information about the plugin "
@@ -26,38 +26,38 @@ msgid ""
 "to learn more on how to use each available features."
 msgstr ""
 
-#: src/admin/index.js:25
+#: src/admin/index.js:24
 msgid "Getting Started"
 msgstr ""
 
-#: src/admin/index.js:30
+#: src/admin/index.js:29
 msgid "Tutorial and Docs"
 msgstr ""
 
-#: src/admin/index.js:35
+#: src/admin/index.js:34
 msgid "Features Manager"
 msgstr ""
 
-#: src/admin/index.js:40
+#: src/admin/index.js:39
 msgid "Blocks Manager"
 msgstr ""
 
-#: src/admin/index.js:48
+#: src/admin/index.js:47
 msgid "Extensions"
 msgstr ""
 
-#: src/admin/index.js:65
+#: src/admin/index.js:64
 msgid ""
 "EditorsKit provides set of tools to extend the way you are building content "
 "on WordPress Gutenberg block editor. Designed and integrated to help users "
 "easily navigate; and control each block the way it should be."
 msgstr ""
 
-#: src/admin/index.js:68
+#: src/admin/index.js:67
 msgid "EditorsKit video preview"
 msgstr ""
 
-#: src/admin/index.js:73
+#: src/admin/index.js:72
 msgid ""
 "If you have any questions or suggestion, let us know through "
 "%1$sTwitter%4$s or our %2$sFacebook community %4$s. Also, %3$ssubscribe to "
@@ -65,7 +65,7 @@ msgid ""
 "upcoming at EditorsKit."
 msgstr ""
 
-#: src/admin/index.js:93
+#: src/admin/index.js:92
 msgid ""
 "All features are active by default but you have complete control over each "
 "one of them. Disable any features do not want to use and re-enable them "
