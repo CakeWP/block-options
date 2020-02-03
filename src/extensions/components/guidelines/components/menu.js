@@ -35,13 +35,12 @@ class BlockGuideLines extends Component {
 		}
 
 		// Custom body class to fix Gutenberg plugin conflict
-		if (typeof editor.version !== 'undefined' && ! isDisabled ){
-			let version = parseFloat(editor.version);
-			if ( version >= 7 ){
-				document.body.classList.add('is-guide-lines-new');
+		if ( typeof editor.version !== 'undefined' && ! isDisabled ) {
+			const version = parseFloat( editor.version );
+			if ( version >= 7 ) {
+				document.body.classList.add( 'is-guide-lines-new' );
 			}
 		}
-
 	}
 
 	render() {
