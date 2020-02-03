@@ -7322,8 +7322,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _extensions_components_manager_components_manager__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../extensions/components/manager/components/manager */ "./src/extensions/components/manager/components/manager.js");
 /* harmony import */ var _block_manager___WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./block-manager/ */ "./src/admin/block-manager/index.js");
 /* harmony import */ var _addon_settings__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./addon-settings */ "./src/admin/addon-settings.js");
-/* harmony import */ var _licenses_settings__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./licenses-settings */ "./src/admin/licenses-settings.js");
-/* harmony import */ var _notices__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./notices */ "./src/admin/notices.js");
+/* harmony import */ var _notices__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./notices */ "./src/admin/notices.js");
 
 
 
@@ -7334,7 +7333,6 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Internal dependencies
  */
-
 
 
 
@@ -7398,11 +7396,6 @@ function (_Component) {
           title: __('Extensions', 'block-options'),
           className: 'ek-settings-addons'
         });
-        tabs.push({
-          name: 'ek-licenses',
-          title: __('Licenses', 'block-options'),
-          className: 'ek-settings-licenses'
-        });
       }
 
       var EditorsKitSettingsPanel = function EditorsKitSettingsPanel() {
@@ -7443,11 +7436,6 @@ function (_Component) {
 
             case 'ek-addons':
               return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_addon_settings__WEBPACK_IMPORTED_MODULE_9__["default"], null);
-
-            case 'ek-licenses':
-              return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
-                className: "ek-admin-licenses"
-              }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_licenses_settings__WEBPACK_IMPORTED_MODULE_10__["default"], null));
           }
         });
       };
@@ -7462,7 +7450,7 @@ function (_Component) {
         }, __('Settings → EditorsKit', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h2", null, __('Getting Started with', 'block-options'), " ", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("strong", null, "EditorsKit"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("code", null, window.editorskitSettings.version)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Congratulations! You\'ve just unlocked more Gutenberg block editor tools for easier editing and better workflow. Check more information about the plugin below and please make sure to navigate through "Tutorials and Docs" tab to learn more on how to use each available features.', 'block-options'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(EditorsKitSettingsPanel, null))));
       };
 
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(MainPanel, null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_notices__WEBPACK_IMPORTED_MODULE_11__["default"], null));
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(MainPanel, null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_notices__WEBPACK_IMPORTED_MODULE_10__["default"], null));
     }
   }]);
 
@@ -7473,37 +7461,6 @@ wp.domReady(function () {
   registerCoreBlocks();
   render(Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(EditorsKitSettings, null), document.querySelector('.editorskit-settings-wrap'));
 });
-
-/***/ }),
-
-/***/ "./src/admin/licenses-settings.js":
-/*!****************************************!*\
-  !*** ./src/admin/licenses-settings.js ***!
-  \****************************************/
-/*! exports provided: LicensesSettings, default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LicensesSettings", function() { return LicensesSettings; });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-
-
-/**
- * WordPress dependencies
- */
-var _wp$i18n = wp.i18n,
-    __ = _wp$i18n.__,
-    sprintf = _wp$i18n.sprintf;
-var _wp$element = wp.element,
-    Fragment = _wp$element.Fragment,
-    RawHTML = _wp$element.RawHTML;
-var withFilters = wp.components.withFilters;
-var LicensesSettings = function LicensesSettings() {
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RawHTML, null, sprintf(__('Enter your extension license keys here to receive updates for purchased extensions. If your license key has expired, please %1$srenew your license%2$s.', 'block-options'), '<a href="https://editorskit.com/" target="_blank">', '</a>'))));
-};
-/* harmony default export */ __webpack_exports__["default"] = (withFilters('editorskit.addOn.licensePanel')(LicensesSettings));
 
 /***/ }),
 

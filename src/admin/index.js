@@ -5,7 +5,6 @@ import EditorsKitDocs from './docs';
 import FeaturesManager from '../extensions/components/manager/components/manager';
 import BlockManager from './block-manager/';
 import AddonSettings from './addon-settings';
-import LicensesSettings from './licenses-settings';
 import Notices from './notices';
 
 /**
@@ -47,12 +46,6 @@ class EditorsKitSettings extends Component {
 				name: 'ek-addons',
 				title: __( 'Extensions', 'block-options' ),
 				className: 'ek-settings-addons',
-			} );
-
-			tabs.push( {
-				name: 'ek-licenses',
-				title: __( 'Licenses', 'block-options' ),
-				className: 'ek-settings-licenses',
 			} );
 		}
 
@@ -114,12 +107,6 @@ class EditorsKitSettings extends Component {
 							case 'ek-addons':
 								return (
 									<AddonSettings />
-								);
-							case 'ek-licenses':
-								return (
-									<div className="ek-admin-licenses">
-										<LicensesSettings />
-									</div>
 								);
 						}
 					}
