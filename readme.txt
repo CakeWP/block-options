@@ -161,6 +161,11 @@ e.g.
 
 == Changelog ==
 
+= 1.24.1 =
+* Fixes: Prevent compatibility error with [plugin using REST API block preview](https://github.com/phpbits/block-options/issues/228). 🐛
+* Fixes: Block Guide Lines [compatibility with Gutenberg 7.3](https://wordpress.org/support/topic/block-guide-lines-go-missing-when-gut-7-3-is-activated/) 🐛
+* Tweaks: Improvement for utility classes and settings styling
+
 = 1.24 =
 * New: "[Responsive Text Alignment](https://github.com/phpbits/block-options/pull/223)" for Tablet and Mobile 🎊
 * New: Add [Gapless](https://github.com/phpbits/block-options/pull/218) Columns Block Style 🎊
