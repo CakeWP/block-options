@@ -50,6 +50,14 @@ $m: !important;
 	border-radius: 9999px $m;
 }
 
+.ek-rounded-sm,
+.ek-rounded-md,
+.ek-rounded-lg,
+.ek-rounded-xl,
+.ek-rounded-full {
+	overflow: hidden;
+}
+
 @include break-large() {
 
 	.lg\:ek-padding--sm {
