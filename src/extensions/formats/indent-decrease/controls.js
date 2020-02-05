@@ -57,16 +57,22 @@ export default compose(
 		}
 		return {
 			selectedBlock: selectedBlock,
+			isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitIndentFormats'),
 		};
 	}),
 	withDispatch((dispatch) => ({
 		updateBlockAttributes: dispatch('core/block-editor').updateBlockAttributes,
 	})),
 	ifCondition((props) => {
+		
+		if ( props.isDisabled ){
+			return false;
+		}
+
 		if ( typeof props.selectedBlock !== 'undefined' ){
 			const { editorskit } = props.selectedBlock.attributes;
 			if (typeof editorskit.indent !== 'undefined' && editorskit.indent ){
-				return true
+				return true;
 			}
 		}
 		return false;

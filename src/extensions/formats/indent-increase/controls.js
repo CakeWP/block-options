@@ -57,9 +57,11 @@ export default compose(
 		}
 		return {
 			selectedBlock: selectedBlock,
+			isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitIndentFormats'),
 		};
 	}),
 	withDispatch((dispatch) => ({
 		updateBlockAttributes: dispatch('core/block-editor').updateBlockAttributes,
 	})),
+	ifCondition((props) => !props.isDisabled),
 )(IncreaseIndent);

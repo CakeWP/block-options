@@ -3,22 +3,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/components/guidelines/components/menu.js:62
-msgid "Show visible guide lines on title and blocks"
-msgstr ""
-
-#: src/extensions/components/guidelines/components/menu.js:65
-msgid "Block Guide Lines"
-msgstr ""
-
 #: src/extensions/formats/indent-decrease/controls.js:44
-#: src/extensions/formats/indent-decrease/controls.js:49
-#: src/extensions/formats/indent-decrease/index.js:19
 msgid "Indent Decrease"
 msgstr ""
 
 #: src/extensions/formats/indent-increase/controls.js:44
-#: src/extensions/formats/indent-increase/controls.js:49
-#: src/extensions/formats/indent-increase/index.js:19
 msgid "Indent Increase"
 msgstr ""

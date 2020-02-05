@@ -16980,13 +16980,18 @@ function (_Component) {
   }
 
   return {
-    selectedBlock: selectedBlock
+    selectedBlock: selectedBlock,
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitIndentFormats')
   };
 }), withDispatch(function (dispatch) {
   return {
     updateBlockAttributes: dispatch('core/block-editor').updateBlockAttributes
   };
 }), ifCondition(function (props) {
+  if (props.isDisabled) {
+    return false;
+  }
+
   if (typeof props.selectedBlock !== 'undefined') {
     var editorskit = props.selectedBlock.attributes.editorskit;
 
@@ -17161,12 +17166,15 @@ function (_Component) {
   }
 
   return {
-    selectedBlock: selectedBlock
+    selectedBlock: selectedBlock,
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitIndentFormats')
   };
 }), withDispatch(function (dispatch) {
   return {
     updateBlockAttributes: dispatch('core/block-editor').updateBlockAttributes
   };
+}), ifCondition(function (props) {
+  return !props.isDisabled;
 }))(IncreaseIndent));
 
 /***/ }),
