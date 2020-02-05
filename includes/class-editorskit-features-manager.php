@@ -127,6 +127,11 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Highlighted Text Color', 'block-options' ),
 							'value' => true,
 						),
+						'indent'        => array(
+							'name'  => 'indent',
+							'label' => __( 'Indents', 'block-options' ),
+							'value' => true,
+						),
 						'justify'          => array(
 							'name'  => 'justify',
 							'label' => __( 'Justified Alignment', 'block-options' ),
