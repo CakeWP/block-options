@@ -16,16 +16,16 @@ const name = 'editorskit/indentincrease';
 
 export const increaseIndent = {
 	name,
-	title: __('Indent Increase', 'block-options'),
+	title: __( 'Indent Increase', 'block-options' ),
 	tagName: 'p',
 	className: 'ek-indent-increase',
 	attributes: {
 		style: 'style',
 	},
-	edit({ isActive, value, onChange, activeAttributes }) {
+	edit( { isActive, value, onChange, activeAttributes } ) {
 		return (
 			<Fragment>
-				<IncreaseIndent name={name} isActive={isActive} value={value} onChange={onChange} activeAttributes={activeAttributes} />
+				<IncreaseIndent name={ name } isActive={ isActive } value={ value } onChange={ onChange } activeAttributes={ activeAttributes } />
 			</Fragment>
 		);
 	},

@@ -127,7 +127,7 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Highlighted Text Color', 'block-options' ),
 							'value' => true,
 						),
-						'indent'        => array(
+						'indent'           => array(
 							'name'  => 'indent',
 							'label' => __( 'Indents', 'block-options' ),
 							'value' => true,

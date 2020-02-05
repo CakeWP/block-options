@@ -64,7 +64,7 @@ function applyStyle( attributes, blockName, props = {} ) {
 		}
 	}
 
-	if (typeof editorskit.indent !== 'undefined' ){
+	if ( typeof editorskit.indent !== 'undefined' ) {
 		style.paddingLeft = editorskit.indent + 'px';
 	}
 

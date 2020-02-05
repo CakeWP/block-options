@@ -19,62 +19,60 @@ class DecreaseIndent extends Component {
 		const { clientId, attributes } = selectedBlock;
 		const { editorskit } = attributes;
 
-		if (isDisabled) {
+		if ( isDisabled ) {
 			return null;
 		}
 
 		const onToggle = () => {
-
 			let indent = 0;
 
-			if (typeof editorskit !== 'undefined' && typeof editorskit.indent !== 'undefined') {
+			if ( typeof editorskit !== 'undefined' && typeof editorskit.indent !== 'undefined' ) {
 				indent = editorskit.indent;
 			}
 
-			delete editorskit['indent'];
+			delete editorskit.indent;
 
-			const blockOptions = Object.assign({ ['indent']: indent - 20 }, editorskit);
+			const blockOptions = Object.assign( { indent: indent - 20 }, editorskit );
 
-			updateBlockAttributes(clientId, { editorskit: blockOptions });
+			updateBlockAttributes( clientId, { editorskit: blockOptions } );
 		};
 
 		return (
 			<RichTextToolbarButton
 				icon="editor-outdent"
-				title={__('Indent Decrease', 'block-options')}
-				onClick={onToggle}
-				isActive={isBlockJustified}
+				title={ __( 'Indent Decrease', 'block-options' ) }
+				onClick={ onToggle }
+				isActive={ isBlockJustified }
 			/>
 		);
 	}
 }
 
 export default compose(
-	withSelect(() => {
-		const selectedBlock = select('core/block-editor').getSelectedBlock();
-		if (!selectedBlock) {
+	withSelect( () => {
+		const selectedBlock = select( 'core/block-editor' ).getSelectedBlock();
+		if ( ! selectedBlock ) {
 			return {};
 		}
 		return {
-			selectedBlock: selectedBlock,
-			isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitIndentFormats'),
+			selectedBlock,
+			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitIndentFormats' ),
 		};
-	}),
-	withDispatch((dispatch) => ({
-		updateBlockAttributes: dispatch('core/block-editor').updateBlockAttributes,
-	})),
-	ifCondition((props) => {
-		
-		if ( props.isDisabled ){
+	} ),
+	withDispatch( ( dispatch ) => ( {
+		updateBlockAttributes: dispatch( 'core/block-editor' ).updateBlockAttributes,
+	} ) ),
+	ifCondition( ( props ) => {
+		if ( props.isDisabled ) {
 			return false;
 		}
 
-		if ( typeof props.selectedBlock !== 'undefined' ){
+		if ( typeof props.selectedBlock !== 'undefined' ) {
 			const { editorskit } = props.selectedBlock.attributes;
-			if (typeof editorskit.indent !== 'undefined' && editorskit.indent ){
+			if ( typeof editorskit.indent !== 'undefined' && editorskit.indent ) {
 				return true;
 			}
 		}
 		return false;
-	})
-)(DecreaseIndent);
+	} )
+)( DecreaseIndent );

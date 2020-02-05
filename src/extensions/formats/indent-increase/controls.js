@@ -19,49 +19,48 @@ class IncreaseIndent extends Component {
 		const { clientId, attributes } = selectedBlock;
 		const { editorskit } = attributes;
 
-		if (isDisabled) {
+		if ( isDisabled ) {
 			return null;
 		}
 
 		const onToggle = () => {
-
 			let indent = 0;
 
-			if (typeof editorskit !== 'undefined' && typeof editorskit.indent !== 'undefined' ){
+			if ( typeof editorskit !== 'undefined' && typeof editorskit.indent !== 'undefined' ) {
 				indent = editorskit.indent;
 			}
 
-			delete editorskit['indent'];
+			delete editorskit.indent;
 
-			const blockOptions = Object.assign({ ['indent']: indent + 20 }, editorskit);
+			const blockOptions = Object.assign( { indent: indent + 20 }, editorskit );
 
-			updateBlockAttributes(clientId, { editorskit: blockOptions });
+			updateBlockAttributes( clientId, { editorskit: blockOptions } );
 		};
-		
+
 		return (
 			<RichTextToolbarButton
 				icon="editor-indent"
-				title={__('Indent Increase', 'block-options')}
-				onClick={onToggle}
-				isActive={isBlockJustified}
+				title={ __( 'Indent Increase', 'block-options' ) }
+				onClick={ onToggle }
+				isActive={ isBlockJustified }
 			/>
 		);
 	}
 }
 
 export default compose(
-	withSelect(() => {
-		const selectedBlock = select('core/block-editor').getSelectedBlock();
-		if (!selectedBlock) {
+	withSelect( () => {
+		const selectedBlock = select( 'core/block-editor' ).getSelectedBlock();
+		if ( ! selectedBlock ) {
 			return {};
 		}
 		return {
-			selectedBlock: selectedBlock,
-			isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitIndentFormats'),
+			selectedBlock,
+			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitIndentFormats' ),
 		};
-	}),
-	withDispatch((dispatch) => ({
-		updateBlockAttributes: dispatch('core/block-editor').updateBlockAttributes,
-	})),
-	ifCondition((props) => !props.isDisabled),
-)(IncreaseIndent);
+	} ),
+	withDispatch( ( dispatch ) => ( {
+		updateBlockAttributes: dispatch( 'core/block-editor' ).updateBlockAttributes,
+	} ) ),
+	ifCondition( ( props ) => ! props.isDisabled ),
+)( IncreaseIndent );
