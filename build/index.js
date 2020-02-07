@@ -9960,7 +9960,7 @@ var blocksWithBulletColor = ['core/list'];
 var blocksWithAnchor = ['core/spacer', 'core/separator'];
 var blocksWithBackgroundColor = ['core/columns', 'core/column'];
 var blocksWithFullWidth = ['core/button'];
-var blocksWithLinkToolbar = ['core/group', 'core/column'];
+var blocksWithLinkToolbar = ['core/group', 'core/column', 'core/cover'];
 /**
  * Filters registered block settings, extending attributes with anchor using ID
  * of the first node.
@@ -12183,7 +12183,7 @@ var addFilter = wp.hooks.addFilter;
 var Fragment = wp.element.Fragment;
 var createHigherOrderComponent = wp.compose.createHigherOrderComponent;
 var hasBlockSupport = wp.blocks.hasBlockSupport;
-var allowedBlocks = ['core/group', 'core/column'];
+var allowedBlocks = ['core/group', 'core/column', 'core/cover'];
 /**
  * Override the default edit UI to include a new block toolbar control
  *

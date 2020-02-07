@@ -347,7 +347,7 @@ class EditorsKit_Render_Block {
 	 * @return mixed Returns the new block content.
 	 */
 	private function render_link_toolbar( $block_content, $block ) {
-		if ( isset( $block['blockName'] ) && ( in_array( $block['blockName'], array( 'core/group', 'core/column' ) ) ) ) {
+		if ( isset( $block['blockName'] ) && ( in_array( $block['blockName'], array( 'core/group', 'core/column', 'core/cover' ) ) ) ) {
 			$attributes = $block['attrs'];
 
 			if ( isset( $attributes['href'] ) && ! empty( $attributes['href'] ) ) {

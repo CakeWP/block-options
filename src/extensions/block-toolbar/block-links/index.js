@@ -11,7 +11,7 @@ const { Fragment } = wp.element;
 const { createHigherOrderComponent } = wp.compose;
 const { hasBlockSupport } = wp.blocks;
 
-const allowedBlocks = ['core/group', 'core/column'];
+const allowedBlocks = ['core/group', 'core/column', 'core/cover'];
 
 /**
  * Override the default edit UI to include a new block toolbar control
