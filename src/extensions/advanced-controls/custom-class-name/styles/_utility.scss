@@ -587,3 +587,24 @@ body:not(.wp-admin) {
 		}
 	}
 }
+
+// Gradient Animations
+.ek-animate-gradient {
+	[class*="__gradient-background"],
+	[class*="-gradient-background"]{
+		background-size: 200% 200% !important;
+    	animation: ek-gradient-anim 5s ease infinite;
+	}
+}
+ 
+@keyframes ek-gradient-anim {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
