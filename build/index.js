@@ -16018,7 +16018,7 @@ var _wp$element = wp.element,
     useCallback = _wp$element.useCallback,
     Fragment = _wp$element.Fragment;
 var _wp$components = wp.components,
-    Button = _wp$components.Button,
+    IconButton = _wp$components.IconButton,
     ToggleControl = _wp$components.ToggleControl;
 var URLPopover = wp.blockEditor.URLPopover;
 var _wp$keycodes = wp.keycodes,
@@ -16164,7 +16164,7 @@ var URLInputUI = function URLInputUI(_ref) {
     checked: hasAnimation
   }));
   var linkEditorValue = urlInput !== null ? urlInput : url;
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Button, {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(IconButton, {
     icon: "admin-links",
     className: "components-toolbar__control",
     label: url ? __("Edit link", "block-options") : __("Insert link", "block-options"),
@@ -16189,7 +16189,7 @@ var URLInputUI = function URLInputUI(_ref) {
     onKeyPress: stopPropagation,
     url: url,
     onEditLinkClick: startEditLink
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Button, {
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(IconButton, {
     icon: "no",
     label: __("Remove link", "block-options"),
     onClick: onLinkRemove
