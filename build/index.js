@@ -10139,6 +10139,10 @@ function addAttributes(settings) {
           linkSponsored: {
             type: "boolean",
             default: false
+          },
+          hasAnimation: {
+            type: "boolean",
+            default: false
           }
         });
       }
@@ -10180,7 +10184,8 @@ function applyExtraClass(extraProps, blockType, attributes) {
   var editorskit = attributes.editorskit,
       isHeightFullScreen = attributes.isHeightFullScreen,
       isFullWidth = attributes.isFullWidth,
-      href = attributes.href;
+      href = attributes.href,
+      hasAnimation = attributes.hasAnimation;
 
   if (typeof editorskit !== 'undefined' && !restrictedBlocks.includes(blockType.name)) {
     if (typeof editorskit.id !== 'undefined') {
@@ -10218,6 +10223,10 @@ function applyExtraClass(extraProps, blockType, attributes) {
 
   if ((blocksWithLinkToolbar.includes(blockType.name) || hasBlockSupport(blockType.name, "editorsKitLinkToolbar")) && typeof href !== "undefined" && href) {
     extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_3___default()(extraProps.className, "ek-linked-block");
+
+    if (typeof hasAnimation !== 'undefined' && hasAnimation) {
+      extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_3___default()(extraProps.className, "ek-linked-block-animate");
+    }
   }
 
   return extraProps;
@@ -12113,12 +12122,14 @@ function (_Component) {
       var href = attributes.href,
           opensInNewTab = attributes.opensInNewTab,
           linkNoFollow = attributes.linkNoFollow,
-          linkSponsored = attributes.linkSponsored;
+          linkSponsored = attributes.linkSponsored,
+          hasAnimation = attributes.hasAnimation;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Toolbar, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_components_url_popover_url_input_ui__WEBPACK_IMPORTED_MODULE_7__["default"], {
         url: href || "",
         opensInNewTab: opensInNewTab || false,
         linkNoFollow: linkNoFollow || false,
         linkSponsored: linkSponsored || false,
+        hasAnimation: hasAnimation || false,
         onChangeUrl: this.onSetHref
       }))));
     }
@@ -16023,7 +16034,8 @@ var URLInputUI = function URLInputUI(_ref) {
       url = _ref.url,
       opensInNewTab = _ref.opensInNewTab,
       linkNoFollow = _ref.linkNoFollow,
-      linkSponsored = _ref.linkSponsored;
+      linkSponsored = _ref.linkSponsored,
+      hasAnimation = _ref.hasAnimation;
 
   var _useState = useState(false),
       _useState2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState, 2),
@@ -16128,6 +16140,12 @@ var URLInputUI = function URLInputUI(_ref) {
     });
   };
 
+  var onSetLinkAnimation = function onSetLinkAnimation(value) {
+    onChangeUrl({
+      hasAnimation: value
+    });
+  };
+
   var advancedOptions = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(ToggleControl, {
     label: __("Open in New Tab", "block-options"),
     onChange: onSetNewTab,
@@ -16140,6 +16158,10 @@ var URLInputUI = function URLInputUI(_ref) {
     label: __("Sponsored", "block-options"),
     onChange: onSetLinkSponsored,
     checked: linkSponsored
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(ToggleControl, {
+    label: __("Hover Animation", "block-options"),
+    onChange: onSetLinkAnimation,
+    checked: hasAnimation
   }));
   var linkEditorValue = urlInput !== null ? urlInput : url;
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Button, {

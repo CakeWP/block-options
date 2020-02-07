@@ -192,6 +192,10 @@ function addAttributes( settings ) {
 					linkSponsored: {
 						type: "boolean",
 						default: false
+					},
+					hasAnimation: {
+						type: "boolean",
+						default: false
 					}
 				});
 			}
@@ -235,7 +239,13 @@ const withAttributes = createHigherOrderComponent( ( BlockEdit ) => {
  * @return {Object} Filtered props applied to save element.
  */
 function applyExtraClass( extraProps, blockType, attributes ) {
-	const { editorskit, isHeightFullScreen, isFullWidth, href } = attributes;
+	const {
+		editorskit,
+		isHeightFullScreen,
+		isFullWidth,
+		href,
+		hasAnimation
+	} = attributes;
 
 	if ( typeof editorskit !== 'undefined' && ! restrictedBlocks.includes( blockType.name ) ) {
 		if ( typeof editorskit.id !== 'undefined' ) {
@@ -278,6 +288,10 @@ function applyExtraClass( extraProps, blockType, attributes ) {
 		href
 	) {
 		extraProps.className = classnames(extraProps.className, "ek-linked-block");
+
+		if( typeof hasAnimation !== 'undefined' && hasAnimation ){
+			extraProps.className = classnames(extraProps.className, "ek-linked-block-animate");
+		}
 	}
 
 	return extraProps;

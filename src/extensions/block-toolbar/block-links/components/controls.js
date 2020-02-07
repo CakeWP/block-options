@@ -29,7 +29,13 @@ class withLinkToolbar extends Component {
 			attributes,
 		} = this.props;
 
-		const { href, opensInNewTab, linkNoFollow, linkSponsored } = attributes;
+		const {
+			href,
+			opensInNewTab,
+			linkNoFollow,
+			linkSponsored,
+			hasAnimation
+		} = attributes;
 
 		return (
 			<Fragment>
@@ -40,6 +46,7 @@ class withLinkToolbar extends Component {
 							opensInNewTab={ opensInNewTab || false } 
 							linkNoFollow={ linkNoFollow || false } 
 							linkSponsored={ linkSponsored || false } 
+							hasAnimation={ hasAnimation || false } 
 							onChangeUrl={ this.onSetHref }
 						/>
 					</Toolbar>

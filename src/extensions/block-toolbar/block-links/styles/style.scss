@@ -9,4 +9,12 @@
 		height: 100%;
 		z-index: 90;
 	}
+
+	&.ek-linked-block-animate{
+		transition:0.35s;
+
+		&:hover{
+			transform:translatey(-15px);
+		}
+	}
 }

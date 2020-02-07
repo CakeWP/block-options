@@ -3,30 +3,30 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/block-toolbar/block-links/components/controls.js:54
-msgid "Open block navigator"
-msgstr ""
-
-#: src/extensions/components/url-popover/url-input-ui.js:109
+#: src/extensions/components/url-popover/url-input-ui.js:114
 msgid "Open in New Tab"
 msgstr ""
 
-#: src/extensions/components/url-popover/url-input-ui.js:114
+#: src/extensions/components/url-popover/url-input-ui.js:119
 msgid "No Follow"
 msgstr ""
 
-#: src/extensions/components/url-popover/url-input-ui.js:119
+#: src/extensions/components/url-popover/url-input-ui.js:124
 msgid "Sponsored"
 msgstr ""
 
-#: src/extensions/components/url-popover/url-input-ui.js:135
+#: src/extensions/components/url-popover/url-input-ui.js:129
+msgid "Hover Animation"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:145
 msgid "Edit link"
 msgstr ""
 
-#: src/extensions/components/url-popover/url-input-ui.js:136
+#: src/extensions/components/url-popover/url-input-ui.js:146
 msgid "Insert link"
 msgstr ""
 
-#: src/extensions/components/url-popover/url-input-ui.js:168
+#: src/extensions/components/url-popover/url-input-ui.js:178
 msgid "Remove link"
 msgstr ""

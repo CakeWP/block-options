@@ -16,6 +16,7 @@ const URLInputUI = ({
 	opensInNewTab,
 	linkNoFollow,
 	linkSponsored,
+	hasAnimation,
 }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const openLinkUI = useCallback(() => {
@@ -103,6 +104,10 @@ const URLInputUI = ({
 		onChangeUrl({ linkSponsored: value });
 	};
 
+	const onSetLinkAnimation = value => {
+		onChangeUrl({ hasAnimation: value });
+	};
+
 	const advancedOptions = (
 		<>
 			<ToggleControl
@@ -119,6 +124,11 @@ const URLInputUI = ({
 				label={__("Sponsored", "block-options")}
 				onChange={onSetLinkSponsored}
 				checked={linkSponsored}
+			/>
+			<ToggleControl
+				label={__("Hover Animation", "block-options")}
+				onChange={onSetLinkAnimation}
+				checked={hasAnimation}
 			/>
 		</>
 	);
