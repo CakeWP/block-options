@@ -235,7 +235,7 @@ const withAttributes = createHigherOrderComponent( ( BlockEdit ) => {
  * @return {Object} Filtered props applied to save element.
  */
 function applyExtraClass( extraProps, blockType, attributes ) {
-	const { editorskit, isHeightFullScreen, isFullWidth } = attributes;
+	const { editorskit, isHeightFullScreen, isFullWidth, href } = attributes;
 
 	if ( typeof editorskit !== 'undefined' && ! restrictedBlocks.includes( blockType.name ) ) {
 		if ( typeof editorskit.id !== 'undefined' ) {
@@ -269,6 +269,15 @@ function applyExtraClass( extraProps, blockType, attributes ) {
 
 	if ( hasBlockSupport( blockType.name, 'hasFullWidthDisplay' ) && isFullWidth ) {
 		extraProps.className = classnames( extraProps.className, 'ek-w-full' );
+	}
+
+	if (
+		( blocksWithLinkToolbar.includes(blockType.name) ||
+			hasBlockSupport(blockType.name, "editorsKitLinkToolbar")) &&
+		typeof href !== "undefined" &&
+		href
+	) {
+		extraProps.className = classnames(extraProps.className, "ek-linked-block");
 	}
 
 	return extraProps;

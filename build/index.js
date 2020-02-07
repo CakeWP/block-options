@@ -10179,7 +10179,8 @@ var withAttributes = createHigherOrderComponent(function (BlockEdit) {
 function applyExtraClass(extraProps, blockType, attributes) {
   var editorskit = attributes.editorskit,
       isHeightFullScreen = attributes.isHeightFullScreen,
-      isFullWidth = attributes.isFullWidth;
+      isFullWidth = attributes.isFullWidth,
+      href = attributes.href;
 
   if (typeof editorskit !== 'undefined' && !restrictedBlocks.includes(blockType.name)) {
     if (typeof editorskit.id !== 'undefined') {
@@ -10213,6 +10214,10 @@ function applyExtraClass(extraProps, blockType, attributes) {
 
   if (hasBlockSupport(blockType.name, 'hasFullWidthDisplay') && isFullWidth) {
     extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_3___default()(extraProps.className, 'ek-w-full');
+  }
+
+  if ((blocksWithLinkToolbar.includes(blockType.name) || hasBlockSupport(blockType.name, "editorsKitLinkToolbar")) && typeof href !== "undefined" && href) {
+    extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_3___default()(extraProps.className, "ek-linked-block");
   }
 
   return extraProps;
