@@ -354,7 +354,7 @@ class EditorsKit_Render_Block {
 				$linked = '<a href="' . $attributes['href'] . '" class="editorskit-block-link"';
 				$rel    = 'rel="';
 
-				if ( isset( $attributes['linkTarget'] ) && '_blank' === $attributes['linkTarget'] ) {
+				if ( isset( $attributes['opensInNewTab'] ) &&  $attributes['opensInNewTab'] ) {
 					$linked .= ' target="_blank"';
 					$rel    .= ' noreferrer noopener';
 				}
