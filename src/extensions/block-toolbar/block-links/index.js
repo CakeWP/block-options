@@ -11,7 +11,7 @@ const { Fragment } = wp.element;
 const { createHigherOrderComponent } = wp.compose;
 const { hasBlockSupport } = wp.blocks;
 
-const allowedBlocks = ['core/group'];
+const allowedBlocks = ['core/group', 'core/column'];
 
 /**
  * Override the default edit UI to include a new block toolbar control
@@ -32,6 +32,6 @@ const withLinkToolbar = createHigherOrderComponent((BlockEdit) => {
 
 addFilter(
 	'editor.BlockEdit',
-	'editorskit/media-text-link',
+	'editorskit/block-link-toolbar',
 	withLinkToolbar
 );

@@ -9960,7 +9960,7 @@ var blocksWithBulletColor = ['core/list'];
 var blocksWithAnchor = ['core/spacer', 'core/separator'];
 var blocksWithBackgroundColor = ['core/columns', 'core/column'];
 var blocksWithFullWidth = ['core/button'];
-var blocksWithLinkToolbar = ['core/group'];
+var blocksWithLinkToolbar = ['core/group', 'core/column'];
 /**
  * Filters registered block settings, extending attributes with anchor using ID
  * of the first node.
@@ -12183,7 +12183,7 @@ var addFilter = wp.hooks.addFilter;
 var Fragment = wp.element.Fragment;
 var createHigherOrderComponent = wp.compose.createHigherOrderComponent;
 var hasBlockSupport = wp.blocks.hasBlockSupport;
-var allowedBlocks = ['core/group'];
+var allowedBlocks = ['core/group', 'core/column'];
 /**
  * Override the default edit UI to include a new block toolbar control
  *
@@ -12196,7 +12196,7 @@ var withLinkToolbar = createHigherOrderComponent(function (BlockEdit) {
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(BlockEdit, props), props.isSelected && (allowedBlocks.includes(props.name) || hasBlockSupport(props.name, 'editorsKitLinkToolbar')) && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_components_controls__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread({}, props)));
   };
 }, 'withLinkToolbar');
-addFilter('editor.BlockEdit', 'editorskit/media-text-link', withLinkToolbar);
+addFilter('editor.BlockEdit', 'editorskit/block-link-toolbar', withLinkToolbar);
 
 /***/ }),
 

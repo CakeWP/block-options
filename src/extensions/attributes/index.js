@@ -19,7 +19,7 @@ const blocksWithBulletColor = [ 'core/list' ];
 const blocksWithAnchor = [ 'core/spacer', 'core/separator' ];
 const blocksWithBackgroundColor = [ 'core/columns', 'core/column' ];
 const blocksWithFullWidth = [ 'core/button' ];
-const blocksWithLinkToolbar = [ 'core/group' ];
+const blocksWithLinkToolbar = [ 'core/group', 'core/column' ];
 
 /**
  * Filters registered block settings, extending attributes with anchor using ID
