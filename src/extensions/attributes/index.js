@@ -19,6 +19,7 @@ const blocksWithBulletColor = [ 'core/list' ];
 const blocksWithAnchor = [ 'core/spacer', 'core/separator' ];
 const blocksWithBackgroundColor = [ 'core/columns', 'core/column' ];
 const blocksWithFullWidth = [ 'core/button' ];
+const blocksWithLinkToolbar = [ 'core/group' ];
 
 /**
  * Filters registered block settings, extending attributes with anchor using ID
@@ -167,6 +168,33 @@ function addAttributes( settings ) {
 					default: true,
 				},
 			} );
+		}
+
+		// Add LinkToolbar Support
+		if ( blocksWithLinkToolbar.includes(settings.name) || hasBlockSupport(settings, 'editorsKitLinkToolbar')) {
+			if (typeof settings.attributes !== 'undefined') {
+				settings.attributes = Object.assign(settings.attributes, {
+					href: {
+						type: "string"
+					},
+					linkDestination: {
+						type: "string",
+						default: "none"
+					},
+					opensInNewTab: {
+						type: "boolean",
+						default: false
+					},
+					linkNoFollow: {
+						type: "boolean",
+						default: false
+					},
+					linkSponsored: {
+						type: "boolean",
+						default: false
+					}
+				});
+			}
 		}
 	}
 
