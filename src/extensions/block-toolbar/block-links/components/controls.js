@@ -63,7 +63,7 @@ export default compose(
 
 		return {
 			attributes,
-			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitNavigatorOptions' ),
+			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitLinkBlockToolbarOptions' ),
 		};
 	} ),
 	ifCondition( ( props ) => {

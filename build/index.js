@@ -12153,7 +12153,7 @@ function (_Component) {
   var attributes = props.attributes;
   return {
     attributes: attributes,
-    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitNavigatorOptions')
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitLinkBlockToolbarOptions')
   };
 }), ifCondition(function (props) {
   return !props.isDisabled;

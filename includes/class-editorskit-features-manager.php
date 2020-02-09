@@ -239,6 +239,11 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Export as JSON', 'block-options' ),
 							'value' => true,
 						),
+						'linkBlockToolbar'  => array(
+							'name'  => 'linkBlockToolbar',
+							'label' => __( 'Link Toolbar for Cover, Group & Column', 'block-options' ),
+							'value' => true,
+						),
 						'listBlockFontSize'  => array(
 							'name'  => 'listBlockFontSize',
 							'label' => __( 'List Block Font Size', 'block-options' ),
