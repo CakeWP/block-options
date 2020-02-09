@@ -25,8 +25,6 @@ const { URLPopover } = wp.blockEditor;
  */
 import { createLinkFormat, isValidHref } from './utils';
 import PositionedAtSelection from './positioned-at-selection';
-import LinkEditor from './link-editor';
-import LinkViewer from './link-viewer';
 
 const stopKeyPropagation = ( event ) => event.stopPropagation();
 
@@ -276,60 +274,65 @@ class InlineLinkUI extends Component {
 
 		return (
 			<PositionedAtSelection
-				key={ `${ value.start }${ value.end }` /* Used to force rerender on selection change */ }
+				key={
+					`${value.start}${value.end}` /* Used to force rerender on selection change */
+				}
 			>
 				<URLPopoverAtLink
-					value={ value }
-					isActive={ isActive }
-					addingLink={ addingLink }
-					onFocusOutside={ this.onFocusOutside }
-					onClose={ () => {
-						if ( ! inputValue ) {
+					value={value}
+					isActive={isActive}
+					addingLink={addingLink}
+					onFocusOutside={this.onFocusOutside}
+					onClose={() => {
+						if (!inputValue) {
 							this.resetState();
 						}
-					} }
-					focusOnMount={ showInput ? 'firstElement' : false }
+					}}
+					focusOnMount={showInput ? "firstElement" : false}
 					className="editorskit-url-popover"
-					renderSettings={ () => (
+					renderSettings={() => (
 						<Fragment>
 							<ToggleControl
-								label={ __( 'Open in New Tab', 'block-options' ) }
-								checked={ opensInNewWindow }
-								onChange={ this.setLinkTarget }
+								label={__("Open in New Tab", "block-options")}
+								checked={opensInNewWindow}
+								onChange={this.setLinkTarget}
 							/>
 							<ToggleControl
-								label={ __( 'No Follow', 'block-options' ) }
-								checked={ noFollow }
-								onChange={ this.setNoFollow }
+								label={__("No Follow", "block-options")}
+								checked={noFollow}
+								onChange={this.setNoFollow}
 							/>
 							<ToggleControl
-								label={ __( 'Sponsored', 'block-options' ) }
-								checked={ sponsored }
-								onChange={ this.setSponsored }
+								label={__("Sponsored", "block-options")}
+								checked={sponsored}
+								onChange={this.setSponsored}
 							/>
 						</Fragment>
-					) }
+					)}
 				>
-					{ showInput ? (
-						<LinkEditor
+					{showInput ? (
+						<URLPopover.LinkEditor
 							className="editor-format-toolbar__link-container-content block-editor-format-toolbar__link-container-content"
-							value={ inputValue }
-							onChangeInputValue={ this.onChangeInputValue }
-							onKeyDown={ this.onKeyDown }
-							onKeyPress={ stopKeyPropagation }
-							onSubmit={ this.submitLink }
-							autocompleteRef={ this.autocompleteRef }
+							value={inputValue}
+							onChangeInputValue={this.onChangeInputValue}
+							onKeyDown={this.onKeyDown}
+							onKeyPress={stopKeyPropagation}
+							onSubmit={this.submitLink}
+							autocompleteRef={this.autocompleteRef}
 						/>
 					) : (
-						<LinkViewer
+						<URLPopover.LinkViewer
 							className="editor-format-toolbar__link-container-content block-editor-format-toolbar__link-container-content"
-							onKeyPress={ stopKeyPropagation }
-							url={ url }
-							onEditLinkClick={ this.editLink }
-							linkClassName={ url && isValidHref( prependHTTP( url ) ) ? undefined : 'has-invalid-link' }
+							onKeyPress={stopKeyPropagation}
+							url={url}
+							onEditLinkClick={this.editLink}
+							linkClassName={
+								url && isValidHref(prependHTTP(url))
+									? undefined
+									: "has-invalid-link"
+							}
 						/>
-					) }
-
+					)}
 				</URLPopoverAtLink>
 			</PositionedAtSelection>
 		);

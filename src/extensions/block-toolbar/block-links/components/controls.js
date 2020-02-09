@@ -41,13 +41,14 @@ class withLinkToolbar extends Component {
 			<Fragment>
 				<BlockControls>
 					<Toolbar>
-						<URLInputUI 
-							url={ href || "" } 
-							opensInNewTab={ opensInNewTab || false } 
-							linkNoFollow={ linkNoFollow || false } 
-							linkSponsored={ linkSponsored || false } 
-							hasAnimation={ hasAnimation || false } 
-							onChangeUrl={ this.onSetHref }
+						<URLInputUI
+							url={href || ""}
+							opensInNewTab={opensInNewTab || false}
+							linkNoFollow={linkNoFollow || false}
+							linkSponsored={linkSponsored || false}
+							hasAnimation={hasAnimation || false}
+							onChangeUrl={this.onSetHref}
+							enableAnimation={true}
 						/>
 					</Toolbar>
 				</BlockControls>

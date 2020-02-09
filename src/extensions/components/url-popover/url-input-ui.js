@@ -17,6 +17,7 @@ const URLInputUI = ({
 	linkNoFollow,
 	linkSponsored,
 	hasAnimation,
+	enableAnimation = false
 }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const openLinkUI = useCallback(() => {
@@ -109,7 +110,7 @@ const URLInputUI = ({
 	};
 
 	const advancedOptions = (
-		<>
+		<Fragment>
 			<ToggleControl
 				label={__("Open in New Tab", "block-options")}
 				onChange={onSetNewTab}
@@ -125,12 +126,14 @@ const URLInputUI = ({
 				onChange={onSetLinkSponsored}
 				checked={linkSponsored}
 			/>
+			{ ( enableAnimation &&
 			<ToggleControl
 				label={__("Hover Animation", "block-options")}
 				onChange={onSetLinkAnimation}
 				checked={hasAnimation}
 			/>
-		</>
+			) }
+		</Fragment>
 	);
 
 	const linkEditorValue = urlInput !== null ? urlInput : url;
