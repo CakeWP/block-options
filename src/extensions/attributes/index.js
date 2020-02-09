@@ -19,6 +19,7 @@ const blocksWithBulletColor = [ 'core/list' ];
 const blocksWithAnchor = [ 'core/spacer', 'core/separator' ];
 const blocksWithBackgroundColor = [ 'core/columns', 'core/column' ];
 const blocksWithFullWidth = [ 'core/button' ];
+const blocksWithLinkToolbar = [ 'core/group', 'core/column', 'core/cover' ];
 
 /**
  * Filters registered block settings, extending attributes with anchor using ID
@@ -168,6 +169,37 @@ function addAttributes( settings ) {
 				},
 			} );
 		}
+
+		// Add LinkToolbar Support
+		if ( blocksWithLinkToolbar.includes(settings.name) || hasBlockSupport(settings, 'editorsKitLinkToolbar')) {
+			if (typeof settings.attributes !== 'undefined') {
+				settings.attributes = Object.assign(settings.attributes, {
+					href: {
+						type: "string"
+					},
+					linkDestination: {
+						type: "string",
+						default: "none"
+					},
+					opensInNewTab: {
+						type: "boolean",
+						default: false
+					},
+					linkNoFollow: {
+						type: "boolean",
+						default: false
+					},
+					linkSponsored: {
+						type: "boolean",
+						default: false
+					},
+					hasAnimation: {
+						type: "boolean",
+						default: false
+					}
+				});
+			}
+		}
 	}
 
 	return settings;
@@ -207,7 +239,13 @@ const withAttributes = createHigherOrderComponent( ( BlockEdit ) => {
  * @return {Object} Filtered props applied to save element.
  */
 function applyExtraClass( extraProps, blockType, attributes ) {
-	const { editorskit, isHeightFullScreen, isFullWidth } = attributes;
+	const {
+		editorskit,
+		isHeightFullScreen,
+		isFullWidth,
+		href,
+		hasAnimation
+	} = attributes;
 
 	if ( typeof editorskit !== 'undefined' && ! restrictedBlocks.includes( blockType.name ) ) {
 		if ( typeof editorskit.id !== 'undefined' ) {
@@ -241,6 +279,19 @@ function applyExtraClass( extraProps, blockType, attributes ) {
 
 	if ( hasBlockSupport( blockType.name, 'hasFullWidthDisplay' ) && isFullWidth ) {
 		extraProps.className = classnames( extraProps.className, 'ek-w-full' );
+	}
+
+	if (
+		( blocksWithLinkToolbar.includes(blockType.name) ||
+			hasBlockSupport(blockType.name, "editorsKitLinkToolbar")) &&
+		typeof href !== "undefined" &&
+		href
+	) {
+		extraProps.className = classnames(extraProps.className, "ek-linked-block");
+
+		if( typeof hasAnimation !== 'undefined' && hasAnimation ){
+			extraProps.className = classnames(extraProps.className, "ek-linked-block-animate");
+		}
 	}
 
 	return extraProps;

@@ -34,7 +34,7 @@ if ( ! function_exists( 'editorskit_hide_title' ) ) {
 
 		return $title;
 	}
-	add_filter( 'the_title', 'editorskit_hide_title', 10, 2 );
+	add_filter( 'the_title', 'editorskit_hide_title', 90, 2 );
 }
 
 if ( ! function_exists( 'editorskit_hidden_title_body_class' ) ) {

@@ -9960,6 +9960,7 @@ var blocksWithBulletColor = ['core/list'];
 var blocksWithAnchor = ['core/spacer', 'core/separator'];
 var blocksWithBackgroundColor = ['core/columns', 'core/column'];
 var blocksWithFullWidth = ['core/button'];
+var blocksWithLinkToolbar = ['core/group', 'core/column', 'core/cover'];
 /**
  * Filters registered block settings, extending attributes with anchor using ID
  * of the first node.
@@ -10114,6 +10115,37 @@ function addAttributes(settings) {
           default: true
         }
       });
+    } // Add LinkToolbar Support
+
+
+    if (blocksWithLinkToolbar.includes(settings.name) || hasBlockSupport(settings, 'editorsKitLinkToolbar')) {
+      if (typeof settings.attributes !== 'undefined') {
+        settings.attributes = Object.assign(settings.attributes, {
+          href: {
+            type: "string"
+          },
+          linkDestination: {
+            type: "string",
+            default: "none"
+          },
+          opensInNewTab: {
+            type: "boolean",
+            default: false
+          },
+          linkNoFollow: {
+            type: "boolean",
+            default: false
+          },
+          linkSponsored: {
+            type: "boolean",
+            default: false
+          },
+          hasAnimation: {
+            type: "boolean",
+            default: false
+          }
+        });
+      }
     }
   }
 
@@ -10151,7 +10183,9 @@ var withAttributes = createHigherOrderComponent(function (BlockEdit) {
 function applyExtraClass(extraProps, blockType, attributes) {
   var editorskit = attributes.editorskit,
       isHeightFullScreen = attributes.isHeightFullScreen,
-      isFullWidth = attributes.isFullWidth;
+      isFullWidth = attributes.isFullWidth,
+      href = attributes.href,
+      hasAnimation = attributes.hasAnimation;
 
   if (typeof editorskit !== 'undefined' && !restrictedBlocks.includes(blockType.name)) {
     if (typeof editorskit.id !== 'undefined') {
@@ -10185,6 +10219,14 @@ function applyExtraClass(extraProps, blockType, attributes) {
 
   if (hasBlockSupport(blockType.name, 'hasFullWidthDisplay') && isFullWidth) {
     extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_3___default()(extraProps.className, 'ek-w-full');
+  }
+
+  if ((blocksWithLinkToolbar.includes(blockType.name) || hasBlockSupport(blockType.name, "editorsKitLinkToolbar")) && typeof href !== "undefined" && href) {
+    extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_3___default()(extraProps.className, "ek-linked-block");
+
+    if (typeof hasAnimation !== 'undefined' && hasAnimation) {
+      extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_3___default()(extraProps.className, "ek-linked-block-animate");
+    }
   }
 
   return extraProps;
@@ -10323,7 +10365,8 @@ function applyStyle(attributes, blockName) {
   var props = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
   var fontSizes = props.fontSizes,
       colors = props.colors;
-  var textColor = attributes.textColor,
+  var editorskit = attributes.editorskit,
+      textColor = attributes.textColor,
       customTextColor = attributes.customTextColor,
       backgroundColor = attributes.backgroundColor,
       customBackgroundColor = attributes.customBackgroundColor,
@@ -10381,6 +10424,10 @@ function applyStyle(attributes, blockName) {
         style['--li-start'] = start - 1 + '';
       }
     }
+  }
+
+  if (typeof editorskit.indent !== 'undefined') {
+    style['--ek-indent'] = editorskit.indent + 'px';
   }
 
   return style;
@@ -10549,10 +10596,11 @@ var withTextSettings = createHigherOrderComponent(function (BlockListBlock) {
     var attributes = select('core/block-editor').getBlock(props.clientId).attributes;
     var blockName = select('core/block-editor').getBlockName(props.clientId);
 
-    if (blocksWithFontSize.includes(blockName) || blocksWithBackgroundColor.includes(blockName)) {
+    if (blocksWithFontSize.includes(blockName) || blocksWithBackgroundColor.includes(blockName) || typeof attributes.editorskit !== 'undefined' && typeof attributes.editorskit.indent !== 'undefined' && attributes.editorskit.indent) {
       var customFontSize = attributes.customFontSize,
           fontSize = attributes.fontSize,
-          bulletColor = attributes.bulletColor;
+          bulletColor = attributes.bulletColor,
+          editorskit = attributes.editorskit;
 
       if (customFontSize || fontSize) {
         customData = Object.assign(customData, {
@@ -10563,6 +10611,12 @@ var withTextSettings = createHigherOrderComponent(function (BlockListBlock) {
       if (bulletColor) {
         customData = Object.assign(customData, {
           'data-custom-bulletcolor': 1
+        });
+      }
+
+      if (typeof editorskit !== "undefined" && typeof editorskit.indent !== "undefined" && editorskit.indent) {
+        customData = Object.assign(customData, {
+          'data-ek-indent': 1
         });
       }
 
@@ -10604,7 +10658,7 @@ var withBlockPanel = createHigherOrderComponent(function (BlockEdit) {
  */
 
 function applyTextSettings(extraProps, blockType, attributes) {
-  if (blocksWithFontSize.includes(blockType.name) || blocksWithBackgroundColor.includes(blockType.name)) {
+  if (blocksWithFontSize.includes(blockType.name) || blocksWithBackgroundColor.includes(blockType.name) || typeof attributes.editorskit !== 'undefined' && typeof attributes.editorskit.indent !== 'undefined' && attributes.editorskit.indent) {
     if (typeof extraProps.style !== 'undefined') {
       extraProps.style = Object.assign(extraProps.style, Object(_apply_style__WEBPACK_IMPORTED_MODULE_6__["default"])(attributes, blockType.name));
     } else {
@@ -10615,7 +10669,8 @@ function applyTextSettings(extraProps, blockType, attributes) {
         fontSize = attributes.fontSize,
         textColor = attributes.textColor,
         backgroundColor = attributes.backgroundColor,
-        bulletColor = attributes.bulletColor;
+        bulletColor = attributes.bulletColor,
+        editorskit = attributes.editorskit;
 
     if (fontSize) {
       extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_7___default()(extraProps.className, 'has-' + fontSize + '-font-size');
@@ -10633,6 +10688,10 @@ function applyTextSettings(extraProps, blockType, attributes) {
 
     if (bulletColor) {
       extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_7___default()(extraProps.className, 'has-list-bullet-color');
+    }
+
+    if (typeof editorskit !== "undefined" && typeof editorskit.indent !== "undefined" && editorskit.indent) {
+      extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_7___default()(extraProps.className, 'has-ek-indent');
     }
   }
 
@@ -11995,6 +12054,171 @@ registerBlockStyle('core/list', {
 
 /***/ }),
 
+/***/ "./src/extensions/block-toolbar/block-links/components/controls.js":
+/*!*************************************************************************!*\
+  !*** ./src/extensions/block-toolbar/block-links/components/controls.js ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _components_url_popover_url_input_ui__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../components/url-popover/url-input-ui */ "./src/extensions/components/url-popover/url-input-ui.js");
+
+
+
+
+
+
+
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
+var BlockControls = wp.blockEditor.BlockControls;
+var _wp$components = wp.components,
+    Toolbar = _wp$components.Toolbar,
+    withSpokenMessages = _wp$components.withSpokenMessages,
+    IconButton = _wp$components.IconButton,
+    SVG = _wp$components.SVG,
+    Path = _wp$components.Path,
+    Modal = _wp$components.Modal,
+    Popover = _wp$components.Popover;
+var _wp$data = wp.data,
+    withSelect = _wp$data.withSelect,
+    withDispatch = _wp$data.withDispatch;
+var _wp$compose = wp.compose,
+    compose = _wp$compose.compose,
+    ifCondition = _wp$compose.ifCondition;
+/**
+ * Internal dependencies
+ */
+
+
+
+var withLinkToolbar =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(withLinkToolbar, _Component);
+
+  function withLinkToolbar() {
+    var _this;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, withLinkToolbar);
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(withLinkToolbar).apply(this, arguments));
+    _this.onSetHref = _this.onSetHref.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    return _this;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(withLinkToolbar, [{
+    key: "onSetHref",
+    value: function onSetHref(props) {
+      this.props.setAttributes(props);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var attributes = this.props.attributes;
+      var href = attributes.href,
+          opensInNewTab = attributes.opensInNewTab,
+          linkNoFollow = attributes.linkNoFollow,
+          linkSponsored = attributes.linkSponsored,
+          hasAnimation = attributes.hasAnimation;
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Toolbar, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_components_url_popover_url_input_ui__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        url: href || "",
+        opensInNewTab: opensInNewTab || false,
+        linkNoFollow: linkNoFollow || false,
+        linkSponsored: linkSponsored || false,
+        hasAnimation: hasAnimation || false,
+        onChangeUrl: this.onSetHref
+      }))));
+    }
+  }]);
+
+  return withLinkToolbar;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (compose(withSelect(function (select, props) {
+  var attributes = props.attributes;
+  return {
+    attributes: attributes,
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitNavigatorOptions')
+  };
+}), ifCondition(function (props) {
+  return !props.isDisabled;
+}), withSpokenMessages)(withLinkToolbar));
+
+/***/ }),
+
+/***/ "./src/extensions/block-toolbar/block-links/index.js":
+/*!***********************************************************!*\
+  !*** ./src/extensions/block-toolbar/block-links/index.js ***!
+  \***********************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_controls__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/controls */ "./src/extensions/block-toolbar/block-links/components/controls.js");
+
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+/**
+ * Internal dependencies
+ */
+
+/**
+ * WordPress Dependencies
+ */
+
+var addFilter = wp.hooks.addFilter;
+var Fragment = wp.element.Fragment;
+var createHigherOrderComponent = wp.compose.createHigherOrderComponent;
+var hasBlockSupport = wp.blocks.hasBlockSupport;
+var allowedBlocks = ['core/group', 'core/column', 'core/cover'];
+/**
+ * Override the default edit UI to include a new block toolbar control
+ *
+ * @param {Function} BlockEdit Original component.
+ * @return {string} Wrapped component.
+ */
+
+var withLinkToolbar = createHigherOrderComponent(function (BlockEdit) {
+  return function (props) {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(BlockEdit, props), props.isSelected && (allowedBlocks.includes(props.name) || hasBlockSupport(props.name, 'editorsKitLinkToolbar')) && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_components_controls__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread({}, props)));
+  };
+}, 'withLinkToolbar');
+addFilter('editor.BlockEdit', 'editorskit/block-link-toolbar', withLinkToolbar);
+
+/***/ }),
+
 /***/ "./src/extensions/block-toolbar/block-navigator/components/controls.js":
 /*!*****************************************************************************!*\
   !*** ./src/extensions/block-toolbar/block-navigator/components/controls.js ***!
@@ -12422,9 +12646,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _block_navigator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block-navigator */ "./src/extensions/block-toolbar/block-navigator/index.js");
 /* harmony import */ var _reusable_convert__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reusable-convert */ "./src/extensions/block-toolbar/reusable-convert/index.js");
 /* harmony import */ var _cover_vertical_alignment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./cover-vertical-alignment */ "./src/extensions/block-toolbar/cover-vertical-alignment/index.js");
+/* harmony import */ var _block_links__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block-links */ "./src/extensions/block-toolbar/block-links/index.js");
 /**
  * Internal dependencies
  */
+
 
 
 
@@ -15785,6 +16011,214 @@ registerPlugin('editorskit-selected-block', {
 
 /***/ }),
 
+/***/ "./src/extensions/components/url-popover/url-input-ui.js":
+/*!***************************************************************!*\
+  !*** ./src/extensions/components/url-popover/url-input-ui.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    useRef = _wp$element.useRef,
+    useState = _wp$element.useState,
+    useCallback = _wp$element.useCallback,
+    Fragment = _wp$element.Fragment;
+var _wp$components = wp.components,
+    IconButton = _wp$components.IconButton,
+    ToggleControl = _wp$components.ToggleControl;
+var URLPopover = wp.blockEditor.URLPopover;
+var _wp$keycodes = wp.keycodes,
+    LEFT = _wp$keycodes.LEFT,
+    RIGHT = _wp$keycodes.RIGHT,
+    UP = _wp$keycodes.UP,
+    DOWN = _wp$keycodes.DOWN,
+    BACKSPACE = _wp$keycodes.BACKSPACE,
+    ENTER = _wp$keycodes.ENTER;
+
+var URLInputUI = function URLInputUI(_ref) {
+  var onChangeUrl = _ref.onChangeUrl,
+      url = _ref.url,
+      opensInNewTab = _ref.opensInNewTab,
+      linkNoFollow = _ref.linkNoFollow,
+      linkSponsored = _ref.linkSponsored,
+      hasAnimation = _ref.hasAnimation;
+
+  var _useState = useState(false),
+      _useState2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState, 2),
+      isOpen = _useState2[0],
+      setIsOpen = _useState2[1];
+
+  var openLinkUI = useCallback(function () {
+    setIsOpen(true);
+  });
+
+  var _useState3 = useState(false),
+      _useState4 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState3, 2),
+      isEditingLink = _useState4[0],
+      setIsEditingLink = _useState4[1];
+
+  var _useState5 = useState(null),
+      _useState6 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState5, 2),
+      urlInput = _useState6[0],
+      setUrlInput = _useState6[1];
+
+  var autocompleteRef = useRef(null);
+
+  var stopPropagation = function stopPropagation(event) {
+    event.stopPropagation();
+  };
+
+  var stopPropagationRelevantKeys = function stopPropagationRelevantKeys(event) {
+    if ([LEFT, DOWN, RIGHT, UP, BACKSPACE, ENTER].indexOf(event.keyCode) > -1) {
+      // Stop the key event from propagating up to ObserveTyping.startTypingInTextField.
+      event.stopPropagation();
+    }
+  };
+
+  var startEditLink = useCallback(function () {
+    setIsEditingLink(true);
+  });
+  var stopEditLink = useCallback(function () {
+    setIsEditingLink(false);
+  });
+  var closeLinkUI = useCallback(function () {
+    setUrlInput(null);
+    stopEditLink();
+    setIsOpen(false);
+  });
+  var onFocusOutside = useCallback(function () {
+    return function (event) {
+      // The autocomplete suggestions list renders in a separate popover (in a portal),
+      // so onFocusOutside fails to detect that a click on a suggestion occurred in the
+      // LinkContainer. Detect clicks on autocomplete suggestions using a ref here, and
+      // return to avoid the popover being closed.
+      var autocompleteElement = autocompleteRef.current;
+
+      if (autocompleteElement && autocompleteElement.contains(event.target)) {
+        return;
+      }
+
+      setIsOpen(false);
+      setUrlInput(null);
+      stopEditLink();
+    };
+  });
+  var onSubmitLinkChange = useCallback(function () {
+    return function (event) {
+      if (urlInput) {
+        onChangeUrl({
+          href: urlInput
+        });
+      }
+
+      stopEditLink();
+      setUrlInput(null);
+      event.preventDefault();
+    };
+  });
+  var onLinkRemove = useCallback(function () {
+    onChangeUrl({
+      href: ""
+    });
+  });
+
+  var onSetHref = function onSetHref(value) {
+    onChangeUrl({
+      href: value
+    });
+  };
+
+  var onSetNewTab = function onSetNewTab(value) {
+    onChangeUrl({
+      opensInNewTab: value
+    });
+  };
+
+  var onSetLinkNoFollow = function onSetLinkNoFollow(value) {
+    onChangeUrl({
+      linkNoFollow: value
+    });
+  };
+
+  var onSetLinkSponsored = function onSetLinkSponsored(value) {
+    onChangeUrl({
+      linkSponsored: value
+    });
+  };
+
+  var onSetLinkAnimation = function onSetLinkAnimation(value) {
+    onChangeUrl({
+      hasAnimation: value
+    });
+  };
+
+  var advancedOptions = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(ToggleControl, {
+    label: __("Open in New Tab", "block-options"),
+    onChange: onSetNewTab,
+    checked: opensInNewTab
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(ToggleControl, {
+    label: __("No Follow", "block-options"),
+    onChange: onSetLinkNoFollow,
+    checked: linkNoFollow
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(ToggleControl, {
+    label: __("Sponsored", "block-options"),
+    onChange: onSetLinkSponsored,
+    checked: linkSponsored
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(ToggleControl, {
+    label: __("Hover Animation", "block-options"),
+    onChange: onSetLinkAnimation,
+    checked: hasAnimation
+  }));
+  var linkEditorValue = urlInput !== null ? urlInput : url;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(IconButton, {
+    icon: "admin-links",
+    className: "components-toolbar__control",
+    label: url ? __("Edit link", "block-options") : __("Insert link", "block-options"),
+    "aria-expanded": isOpen,
+    onClick: openLinkUI
+  }), isOpen && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(URLPopover, {
+    onFocusOutside: onFocusOutside(),
+    onClose: closeLinkUI,
+    renderSettings: function renderSettings() {
+      return advancedOptions;
+    }
+  }, (!url || isEditingLink) && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(URLPopover.LinkEditor, {
+    className: "block-editor-format-toolbar__link-container-content",
+    value: linkEditorValue,
+    onChangeInputValue: setUrlInput,
+    onKeyDown: stopPropagationRelevantKeys,
+    onKeyPress: stopPropagation,
+    onSubmit: onSubmitLinkChange(),
+    autocompleteRef: autocompleteRef
+  }), url && !isEditingLink && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(URLPopover.LinkViewer, {
+    className: "block-editor-format-toolbar__link-container-content",
+    onKeyPress: stopPropagation,
+    url: url,
+    onEditLinkClick: startEditLink
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(IconButton, {
+    icon: "no",
+    label: __("Remove link", "block-options"),
+    onClick: onLinkRemove
+  }))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (URLInputUI);
+
+/***/ }),
+
 /***/ "./src/extensions/disable-title/controls.js":
 /*!**************************************************!*\
   !*** ./src/extensions/disable-title/controls.js ***!
@@ -16871,6 +17305,364 @@ var clear = {
 
 /***/ }),
 
+/***/ "./src/extensions/formats/indent-decrease/controls.js":
+/*!************************************************************!*\
+  !*** ./src/extensions/formats/indent-decrease/controls.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var Component = wp.element.Component;
+var _wp$compose = wp.compose,
+    compose = _wp$compose.compose,
+    ifCondition = _wp$compose.ifCondition;
+var _wp$data = wp.data,
+    select = _wp$data.select,
+    withSelect = _wp$data.withSelect,
+    withDispatch = _wp$data.withDispatch;
+var RichTextToolbarButton = wp.blockEditor.RichTextToolbarButton;
+
+var DecreaseIndent =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(DecreaseIndent, _Component);
+
+  function DecreaseIndent() {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, DecreaseIndent);
+
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(DecreaseIndent).apply(this, arguments));
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(DecreaseIndent, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          selectedBlock = _this$props.selectedBlock,
+          isBlockJustified = _this$props.isBlockJustified,
+          isDisabled = _this$props.isDisabled,
+          updateBlockAttributes = _this$props.updateBlockAttributes;
+      var clientId = selectedBlock.clientId,
+          attributes = selectedBlock.attributes;
+      var editorskit = attributes.editorskit;
+
+      if (isDisabled) {
+        return null;
+      }
+
+      var onToggle = function onToggle() {
+        var indent = 0;
+
+        if (typeof editorskit !== 'undefined' && typeof editorskit.indent !== 'undefined') {
+          indent = editorskit.indent;
+        }
+
+        delete editorskit.indent;
+        var blockOptions = Object.assign({
+          indent: indent - 20
+        }, editorskit);
+        updateBlockAttributes(clientId, {
+          editorskit: blockOptions
+        });
+      };
+
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(RichTextToolbarButton, {
+        icon: "editor-outdent",
+        title: __('Indent Decrease', 'block-options'),
+        onClick: onToggle,
+        isActive: isBlockJustified
+      });
+    }
+  }]);
+
+  return DecreaseIndent;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (compose(withSelect(function () {
+  var selectedBlock = select('core/block-editor').getSelectedBlock();
+
+  if (!selectedBlock) {
+    return {};
+  }
+
+  return {
+    selectedBlock: selectedBlock,
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitIndentFormats')
+  };
+}), withDispatch(function (dispatch) {
+  return {
+    updateBlockAttributes: dispatch('core/block-editor').updateBlockAttributes
+  };
+}), ifCondition(function (props) {
+  if (props.isDisabled) {
+    return false;
+  }
+
+  if (typeof props.selectedBlock !== 'undefined') {
+    var editorskit = props.selectedBlock.attributes.editorskit;
+
+    if (typeof editorskit.indent !== 'undefined' && editorskit.indent) {
+      return true;
+    }
+  }
+
+  return false;
+}))(DecreaseIndent));
+
+/***/ }),
+
+/***/ "./src/extensions/formats/indent-decrease/index.js":
+/*!*********************************************************!*\
+  !*** ./src/extensions/formats/indent-decrease/index.js ***!
+  \*********************************************************/
+/*! exports provided: decreaseIndent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "decreaseIndent", function() { return decreaseIndent; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _controls__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./controls */ "./src/extensions/formats/indent-decrease/controls.js");
+
+
+/**
+ * Internal dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+/**
+ * Block constants
+ */
+
+var name = 'editorskit/indentdecrease';
+var decreaseIndent = {
+  name: name,
+  title: __('Indent Decrease', 'block-options'),
+  tagName: 'p',
+  className: 'ek-indent-decrease',
+  attributes: {
+    style: 'style'
+  },
+  edit: function edit(_ref) {
+    var isActive = _ref.isActive,
+        value = _ref.value,
+        onChange = _ref.onChange,
+        activeAttributes = _ref.activeAttributes;
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_controls__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      name: name,
+      isActive: isActive,
+      value: value,
+      onChange: onChange,
+      activeAttributes: activeAttributes
+    }));
+  }
+};
+
+/***/ }),
+
+/***/ "./src/extensions/formats/indent-increase/controls.js":
+/*!************************************************************!*\
+  !*** ./src/extensions/formats/indent-increase/controls.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var Component = wp.element.Component;
+var _wp$compose = wp.compose,
+    compose = _wp$compose.compose,
+    ifCondition = _wp$compose.ifCondition;
+var _wp$data = wp.data,
+    select = _wp$data.select,
+    withSelect = _wp$data.withSelect,
+    withDispatch = _wp$data.withDispatch;
+var RichTextToolbarButton = wp.blockEditor.RichTextToolbarButton;
+
+var IncreaseIndent =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(IncreaseIndent, _Component);
+
+  function IncreaseIndent() {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, IncreaseIndent);
+
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(IncreaseIndent).apply(this, arguments));
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(IncreaseIndent, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          selectedBlock = _this$props.selectedBlock,
+          isBlockJustified = _this$props.isBlockJustified,
+          isDisabled = _this$props.isDisabled,
+          updateBlockAttributes = _this$props.updateBlockAttributes;
+      var clientId = selectedBlock.clientId,
+          attributes = selectedBlock.attributes;
+      var editorskit = attributes.editorskit;
+
+      if (isDisabled) {
+        return null;
+      }
+
+      var onToggle = function onToggle() {
+        var indent = 0;
+
+        if (typeof editorskit !== 'undefined' && typeof editorskit.indent !== 'undefined') {
+          indent = editorskit.indent;
+        }
+
+        delete editorskit.indent;
+        var blockOptions = Object.assign({
+          indent: indent + 20
+        }, editorskit);
+        updateBlockAttributes(clientId, {
+          editorskit: blockOptions
+        });
+      };
+
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(RichTextToolbarButton, {
+        icon: "editor-indent",
+        title: __('Indent Increase', 'block-options'),
+        onClick: onToggle,
+        isActive: isBlockJustified
+      });
+    }
+  }]);
+
+  return IncreaseIndent;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (compose(withSelect(function () {
+  var selectedBlock = select('core/block-editor').getSelectedBlock();
+
+  if (!selectedBlock) {
+    return {};
+  }
+
+  return {
+    selectedBlock: selectedBlock,
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitIndentFormats')
+  };
+}), withDispatch(function (dispatch) {
+  return {
+    updateBlockAttributes: dispatch('core/block-editor').updateBlockAttributes
+  };
+}), ifCondition(function (props) {
+  return !props.isDisabled;
+}))(IncreaseIndent));
+
+/***/ }),
+
+/***/ "./src/extensions/formats/indent-increase/index.js":
+/*!*********************************************************!*\
+  !*** ./src/extensions/formats/indent-increase/index.js ***!
+  \*********************************************************/
+/*! exports provided: increaseIndent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "increaseIndent", function() { return increaseIndent; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _controls__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./controls */ "./src/extensions/formats/indent-increase/controls.js");
+
+
+/**
+ * Internal dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+/**
+ * Block constants
+ */
+
+var name = 'editorskit/indentincrease';
+var increaseIndent = {
+  name: name,
+  title: __('Indent Increase', 'block-options'),
+  tagName: 'p',
+  className: 'ek-indent-increase',
+  attributes: {
+    style: 'style'
+  },
+  edit: function edit(_ref) {
+    var isActive = _ref.isActive,
+        value = _ref.value,
+        onChange = _ref.onChange,
+        activeAttributes = _ref.activeAttributes;
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_controls__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      name: name,
+      isActive: isActive,
+      value: value,
+      onChange: onChange,
+      activeAttributes: activeAttributes
+    }));
+  }
+};
+
+/***/ }),
+
 /***/ "./src/extensions/formats/index.js":
 /*!*****************************************!*\
   !*** ./src/extensions/formats/index.js ***!
@@ -16895,11 +17687,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _nbsp__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./nbsp */ "./src/extensions/formats/nbsp/index.js");
 /* harmony import */ var _abbreviation__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./abbreviation */ "./src/extensions/formats/abbreviation/index.js");
 /* harmony import */ var _underline__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./underline */ "./src/extensions/formats/underline/index.js");
+/* harmony import */ var _indent_increase__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./indent-increase */ "./src/extensions/formats/indent-increase/index.js");
+/* harmony import */ var _indent_decrease__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./indent-decrease */ "./src/extensions/formats/indent-decrease/index.js");
 
 
 /**
  * Internal dependencies
  */
+
+
 
 
 
@@ -16922,7 +17718,7 @@ var select = wp.data.select;
 var isDisabled = select('core/edit-post').isFeatureActive('disableEditorsKitLinkFormats');
 
 function registerEditorsKitFormats() {
-  [_justify__WEBPACK_IMPORTED_MODULE_1__["justify"], _text_color__WEBPACK_IMPORTED_MODULE_2__["textColor"], _background_color__WEBPACK_IMPORTED_MODULE_3__["backgroundColor"], _markdown__WEBPACK_IMPORTED_MODULE_4__["markdown"], _subscript__WEBPACK_IMPORTED_MODULE_5__["subscript"], _superscript__WEBPACK_IMPORTED_MODULE_6__["superscript"], _clear__WEBPACK_IMPORTED_MODULE_7__["clear"], _uppercase__WEBPACK_IMPORTED_MODULE_8__["uppercase"], _alignment__WEBPACK_IMPORTED_MODULE_10__["alignment"], _nbsp__WEBPACK_IMPORTED_MODULE_11__["nbsp"], _abbreviation__WEBPACK_IMPORTED_MODULE_12__["abbreviation"], _underline__WEBPACK_IMPORTED_MODULE_13__["underline"], !isDisabled ? _link__WEBPACK_IMPORTED_MODULE_9__["link"] : []].forEach(function (_ref) {
+  [_justify__WEBPACK_IMPORTED_MODULE_1__["justify"], _text_color__WEBPACK_IMPORTED_MODULE_2__["textColor"], _background_color__WEBPACK_IMPORTED_MODULE_3__["backgroundColor"], _markdown__WEBPACK_IMPORTED_MODULE_4__["markdown"], _subscript__WEBPACK_IMPORTED_MODULE_5__["subscript"], _superscript__WEBPACK_IMPORTED_MODULE_6__["superscript"], _clear__WEBPACK_IMPORTED_MODULE_7__["clear"], _uppercase__WEBPACK_IMPORTED_MODULE_8__["uppercase"], _alignment__WEBPACK_IMPORTED_MODULE_10__["alignment"], _nbsp__WEBPACK_IMPORTED_MODULE_11__["nbsp"], _abbreviation__WEBPACK_IMPORTED_MODULE_12__["abbreviation"], _underline__WEBPACK_IMPORTED_MODULE_13__["underline"], _indent_increase__WEBPACK_IMPORTED_MODULE_14__["increaseIndent"], _indent_decrease__WEBPACK_IMPORTED_MODULE_15__["decreaseIndent"], !isDisabled ? _link__WEBPACK_IMPORTED_MODULE_9__["link"] : []].forEach(function (_ref) {
     var name = _ref.name,
         settings = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0___default()(_ref, ["name"]);
 
