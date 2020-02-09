@@ -10,6 +10,7 @@ function applyStyle( attributes, blockName, props = {} ) {
 	} = props;
 
 	const {
+		editorskit,
 		textColor,
 		customTextColor,
 		backgroundColor,
@@ -61,6 +62,10 @@ function applyStyle( attributes, blockName, props = {} ) {
 				style[ '--li-start' ] = ( start - 1 ) + '';
 			}
 		}
+	}
+
+	if ( typeof editorskit.indent !== 'undefined' ) {
+		style.paddingLeft = editorskit.indent + 'px';
 	}
 
 	return style;
