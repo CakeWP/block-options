@@ -3,10 +3,11 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/formats/indent-decrease/controls.js:44
+#: src/extensions/formats/indent-decrease/controls.js:43
 msgid "Indent Decrease"
 msgstr ""
 
-#: src/extensions/formats/indent-increase/controls.js:44
+#: src/extensions/formats/indent-increase/controls.js:43
+#: src/extensions/formats/indent-increase/index.js:19
 msgid "Indent Increase"
 msgstr ""
