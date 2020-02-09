@@ -10385,7 +10385,7 @@ function applyStyle(attributes, blockName) {
   }
 
   if (typeof editorskit.indent !== 'undefined') {
-    style.paddingLeft = editorskit.indent + 'px';
+    style['--ek-indent'] = editorskit.indent + 'px';
   }
 
   return style;
@@ -10555,7 +10555,8 @@ var withTextSettings = createHigherOrderComponent(function (BlockListBlock) {
     if (blocksWithFontSize.includes(blockName) || blocksWithBackgroundColor.includes(blockName) || typeof attributes.editorskit !== 'undefined' && typeof attributes.editorskit.indent !== 'undefined' && attributes.editorskit.indent) {
       var customFontSize = attributes.customFontSize,
           fontSize = attributes.fontSize,
-          bulletColor = attributes.bulletColor;
+          bulletColor = attributes.bulletColor,
+          editorskit = attributes.editorskit;
 
       if (customFontSize || fontSize) {
         customData = Object.assign(customData, {
@@ -10566,6 +10567,12 @@ var withTextSettings = createHigherOrderComponent(function (BlockListBlock) {
       if (bulletColor) {
         customData = Object.assign(customData, {
           'data-custom-bulletcolor': 1
+        });
+      }
+
+      if (typeof editorskit !== "undefined" && typeof editorskit.indent !== "undefined" && editorskit.indent) {
+        customData = Object.assign(customData, {
+          'data-ek-indent': 1
         });
       }
 
@@ -10618,7 +10625,8 @@ function applyTextSettings(extraProps, blockType, attributes) {
         fontSize = attributes.fontSize,
         textColor = attributes.textColor,
         backgroundColor = attributes.backgroundColor,
-        bulletColor = attributes.bulletColor;
+        bulletColor = attributes.bulletColor,
+        editorskit = attributes.editorskit;
 
     if (fontSize) {
       extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_7___default()(extraProps.className, 'has-' + fontSize + '-font-size');
@@ -10636,6 +10644,10 @@ function applyTextSettings(extraProps, blockType, attributes) {
 
     if (bulletColor) {
       extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_7___default()(extraProps.className, 'has-list-bullet-color');
+    }
+
+    if (typeof editorskit !== "undefined" && typeof editorskit.indent !== "undefined" && editorskit.indent) {
+      extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_7___default()(extraProps.className, 'has-ek-indent');
     }
   }
 
