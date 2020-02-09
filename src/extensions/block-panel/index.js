@@ -58,7 +58,7 @@ const withTextSettings = createHigherOrderComponent( ( BlockListBlock ) => {
 		const blockName = select( 'core/block-editor' ).getBlockName( props.clientId );
 
 		if ( blocksWithFontSize.includes( blockName ) || blocksWithBackgroundColor.includes( blockName ) || ( typeof attributes.editorskit !== 'undefined' && typeof attributes.editorskit.indent !== 'undefined' && attributes.editorskit.indent ) ) {
-			const { customFontSize, fontSize, bulletColor } = attributes;
+			const { customFontSize, fontSize, bulletColor, editorskit } = attributes;
 
 			if ( customFontSize || fontSize ) {
 				customData = Object.assign( customData, { 'data-custom-fontsize': 1 } );
@@ -68,10 +68,18 @@ const withTextSettings = createHigherOrderComponent( ( BlockListBlock ) => {
 				customData = Object.assign( customData, { 'data-custom-bulletcolor': 1 } );
 			}
 
+			if (
+				typeof editorskit !== "undefined" &&
+				typeof editorskit.indent !== "undefined" &&
+				editorskit.indent
+			){
+				customData = Object.assign( customData, { 'data-ek-indent': 1 } );
+			}
+
 			wrapperProps = {
 				...wrapperProps,
-				style: applyStyle( attributes, blockName, props ),
-				...customData,
+				style: applyStyle(attributes, blockName, props),
+				...customData
 			};
 		}
 
@@ -124,7 +132,7 @@ function applyTextSettings( extraProps, blockType, attributes ) {
 			extraProps.style = applyStyle( attributes, blockType.name );
 		}
 
-		const { customFontSize, fontSize, textColor, backgroundColor, bulletColor } = attributes;
+		const { customFontSize, fontSize, textColor, backgroundColor, bulletColor, editorskit } = attributes;
 
 		if ( fontSize ) {
 			extraProps.className = classnames( extraProps.className, 'has-' + fontSize + '-font-size' );
@@ -142,6 +150,14 @@ function applyTextSettings( extraProps, blockType, attributes ) {
 
 		if ( bulletColor ) {
 			extraProps.className = classnames( extraProps.className, 'has-list-bullet-color' );
+		}
+
+		if (
+			typeof editorskit !== "undefined" &&
+			typeof editorskit.indent !== "undefined" &&
+			editorskit.indent
+		){
+			extraProps.className = classnames( extraProps.className, 'has-ek-indent' );
 		}
 	}
 
