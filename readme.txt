@@ -6,7 +6,7 @@ Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenberg editor
 Requires at least: 5.0
 Tested up to: 5.3
 Requires PHP: 5.6
-Stable tag: 1.18.3
+Stable tag: 1.24.1
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FMKC2SLPTULP8
@@ -33,6 +33,7 @@ https://www.youtube.com/watch?v=QWgO4lAJAlE
 * Underline Text Format
 * Superscript
 * Subscript
+* Indent Paragraph, Heading or List Block
 * Uppercase Text Transform
 * Images and Embeds Caption Alignment
 * Nonbreaking Space
@@ -113,6 +114,9 @@ Improve display when on "Code Editor Mode". Powered by WordPress default CodeMir
 ## Media and Text Block Link and Card Layout Option
 Assign custom link to Image on Media and Text Block. Add custom, media or attachment link easily. You can also set open to new tab, add no follow and/or set link to the whole block. Additionally, you can set Media and Text Block to display as card layout with option to set image on top or bottom. Integrated perfectly with the toolbar layour selection.
 
+## Add Link to Cover, Group and Column Blocks
+Assign link to cover, group and column blocks at ease with option to enable link attributes like open to new tab, apply nofollow and/or sponsored rel value. Additionally, you can enable the extra option to apply hover animation.
+
 ## Block Navigator
 Display "Block Navigator" on block that can contain multiple child blocks. Available on Columns Block and Group Block. 
 
@@ -160,6 +164,13 @@ e.g.
 
 
 == Changelog ==
+
+= 1.25 =
+* New: [Link Toolbar Option](https://github.com/phpbits/block-options/pull/239) for Cover, Column and Group Blocks 🎊
+* New: [Indent format](https://github.com/phpbits/block-options/pull/238) for paragraph, heading and list block 🎊
+* Tweaks: Apply more compatibility improvements and fixes for Gutenberg Plugin
+* Tweaks: Add Extensions tab on Settings Page
+* Fixes: Prevent [issue with BuddyBoss them when hiding title](https://wordpress.org/support/topic/hide-title-half-working/)
 
 = 1.24.1 =
 * Fixes: Prevent compatibility error with [plugin using REST API block preview](https://github.com/phpbits/block-options/issues/228). 🐛
