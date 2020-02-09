@@ -1,0 +1,10 @@
+.editor-styles-wrapper{
+	.wp-block[data-ek-indent="1"]{
+		
+		> .block-editor-rich-text__editable,
+		.editor-block-list__block-edit,
+		.block-editor-block-list__block-edit{
+			padding-left: var( --ek-indent, 20px );
+		}
+	}
+}

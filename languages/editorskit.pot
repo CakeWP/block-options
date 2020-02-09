@@ -25,15 +25,15 @@ msgstr ""
 msgid "Get this Extension"
 msgstr ""
 
-#: src/admin/index.js:142
+#: src/admin/index.js:140
 msgid "Settings → EditorsKit"
 msgstr ""
 
-#: src/admin/index.js:143
+#: src/admin/index.js:141
 msgid "Getting Started with"
 msgstr ""
 
-#: src/admin/index.js:144
+#: src/admin/index.js:142
 msgid ""
 "Congratulations! You've just unlocked more Gutenberg block editor tools for "
 "easier editing and better workflow. Check more information about the plugin "

@@ -7439,16 +7439,15 @@ function (_Component) {
                 }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
                   className: "ek-extension"
                 }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h3", {
-                  class: "edd-extension-title"
+                  className: "edd-extension-title"
                 }, __('Typography and Google Fonts', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Easily define typography on your WordPress posts and pages directly on the Gutenberg editor. With sets of predefined Google Fonts combination you can choose from or create your own to best match your website\'s branding.', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
                   isDefault: true,
                   isSecondary: true,
                   href: "https://editorskit.com/wordpress-gutenberg-editor-typography-and-google-fonts-add-on/"
                 }, __('Get this Extension', 'block-options')))));
-              } else {
-                return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_addon_settings__WEBPACK_IMPORTED_MODULE_9__["default"], null);
               }
 
+              return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_addon_settings__WEBPACK_IMPORTED_MODULE_9__["default"], null);
           }
         });
       };
