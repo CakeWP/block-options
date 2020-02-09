@@ -14,7 +14,7 @@ const { __, sprintf } = wp.i18n;
 const { registerCoreBlocks } = wp.blockLibrary;
 const { hasFilter } = wp.hooks;
 const { Fragment, Component, RawHTML, render } = wp.element;
-const { TabPanel, Panel, PanelBody, PanelRow } = wp.components;
+const { TabPanel, Panel, PanelBody, PanelRow, Button } = wp.components;
 
 class EditorsKitSettings extends Component {
 	render() {
@@ -41,13 +41,11 @@ class EditorsKitSettings extends Component {
 			},
 		];
 
-		if ( hasFilter( 'editorskit.addOn.extraPanel' ) ) {
-			tabs.push( {
-				name: 'ek-addons',
-				title: __( 'Extensions', 'block-options' ),
-				className: 'ek-settings-addons',
-			} );
-		}
+		tabs.push( {
+			name: 'ek-addons',
+			title: __( 'Extensions', 'block-options' ),
+			className: 'ek-settings-addons',
+		} );
 
 		const EditorsKitSettingsPanel = () => (
 			<TabPanel className="editorskit-settings-tab-panel"
@@ -105,6 +103,25 @@ class EditorsKitSettings extends Component {
 
 								);
 							case 'ek-addons':
+								if ( ! hasFilter( 'editorskit.addOn.extraPanel' ) ) {
+									return (
+										<Fragment>
+											<div className="ek-addons-list">
+												<div className="ek-extension">
+													<h3 className="edd-extension-title">{ __( 'Typography and Google Fonts', 'block-options' ) }</h3>
+													<p>{ __( 'Easily define typography on your WordPress posts and pages directly on the Gutenberg editor. With sets of predefined Google Fonts combination you can choose from or create your own to best match your website\'s branding.', 'block-options' ) }</p>
+													<Button
+														isDefault
+														isSecondary
+														href="https://editorskit.com/wordpress-gutenberg-editor-typography-and-google-fonts-add-on/"
+													>
+														{ __( 'Get this Extension', 'block-options' ) }
+													</Button>
+												</div>
+											</div>
+										</Fragment>
+									);
+								}
 								return (
 									<AddonSettings />
 								);

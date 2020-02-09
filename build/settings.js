@@ -7356,7 +7356,8 @@ var _wp$components = wp.components,
     TabPanel = _wp$components.TabPanel,
     Panel = _wp$components.Panel,
     PanelBody = _wp$components.PanelBody,
-    PanelRow = _wp$components.PanelRow;
+    PanelRow = _wp$components.PanelRow,
+    Button = _wp$components.Button;
 
 var EditorsKitSettings =
 /*#__PURE__*/
@@ -7389,14 +7390,11 @@ function (_Component) {
         title: __('Blocks Manager', 'block-options'),
         className: 'ek-settings-blocks-manager'
       }];
-
-      if (hasFilter('editorskit.addOn.extraPanel')) {
-        tabs.push({
-          name: 'ek-addons',
-          title: __('Extensions', 'block-options'),
-          className: 'ek-settings-addons'
-        });
-      }
+      tabs.push({
+        name: 'ek-addons',
+        title: __('Extensions', 'block-options'),
+        className: 'ek-settings-addons'
+      });
 
       var EditorsKitSettingsPanel = function EditorsKitSettingsPanel() {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(TabPanel, {
@@ -7435,6 +7433,20 @@ function (_Component) {
               return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Manage each individual blocks! You can enable or disable any blocks you want and it will be reflected on Gutenberg block manager settings. Just uncheck the box and it will automatically be saved.', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_block_manager___WEBPACK_IMPORTED_MODULE_8__["default"], null));
 
             case 'ek-addons':
+              if (!hasFilter('editorskit.addOn.extraPanel')) {
+                return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
+                  className: "ek-addons-list"
+                }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
+                  className: "ek-extension"
+                }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h3", {
+                  className: "edd-extension-title"
+                }, __('Typography and Google Fonts', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Easily define typography on your WordPress posts and pages directly on the Gutenberg editor. With sets of predefined Google Fonts combination you can choose from or create your own to best match your website\'s branding.', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
+                  isDefault: true,
+                  isSecondary: true,
+                  href: "https://editorskit.com/wordpress-gutenberg-editor-typography-and-google-fonts-add-on/"
+                }, __('Get this Extension', 'block-options')))));
+              }
+
               return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_addon_settings__WEBPACK_IMPORTED_MODULE_9__["default"], null);
           }
         });
