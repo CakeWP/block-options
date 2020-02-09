@@ -354,7 +354,7 @@ class EditorsKit_Render_Block {
 				$linked = '<a href="' . $attributes['href'] . '" class="editorskit-block-link"';
 				$rel    = 'rel="';
 
-				if ( isset( $attributes['opensInNewTab'] ) &&  $attributes['opensInNewTab'] ) {
+				if ( isset( $attributes['opensInNewTab'] ) && $attributes['opensInNewTab'] ) {
 					$linked .= ' target="_blank"';
 					$rel    .= ' noreferrer noopener';
 				}
@@ -372,7 +372,7 @@ class EditorsKit_Render_Block {
 
 				$linked .= '></a>';
 
-				$reg = '~(.*)</div>~su';
+				$reg   = '~(.*)</div>~su';
 				$subst = '${1}' . $linked . '</div>';
 
 				$block_content = preg_replace( $reg, $subst, $block_content );
@@ -407,7 +407,6 @@ class EditorsKit_Render_Block {
 
 		// Media Text Block Link.
 		$block_content = $this->media_text_link( $block_content, $block );
-
 
 		// Add Block Link.
 		$block_content = $this->render_link_toolbar( $block_content, $block );
