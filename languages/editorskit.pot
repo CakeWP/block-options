@@ -3,6 +3,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+<<<<<<< HEAD
+#: src/extensions/block-panel/column-background/index.js:33
+msgid "Color Settings"
+msgstr ""
+
+#: src/extensions/block-panel/column-background/index.js:39
+msgid "Background Color"
+=======
 #: src/admin/index.js:100
 msgid ""
 "Manage each individual blocks! You can enable or disable any blocks you "
@@ -86,4 +94,5 @@ msgid ""
 "one of them. Disable any features do not want to use and re-enable them "
 "anytime on this page or under the \"EditorsKit Settings\" on Gutenberg "
 "editor. Just uncheck the box and it will automatically be saved."
+>>>>>>> master
 msgstr ""

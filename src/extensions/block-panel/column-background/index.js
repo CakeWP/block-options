@@ -56,6 +56,8 @@ export default compose( [
 	withColors( { backgroundColor: 'color' } ),
 	applyFallbackStyles,
 	ifCondition( ( props ) => {
-		return ! props.isDisabled;
+		const { editor } = window.editorskitInfo;
+		const version = parseFloat( editor.version );
+		return !props.isDisabled && version < 7.4;
 	} ),
 ] )( ColumnColorSettings );

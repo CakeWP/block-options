@@ -10496,7 +10496,9 @@ var ColumnColorSettings = function ColumnColorSettings(props) {
 }), withColors({
   backgroundColor: 'color'
 }), applyFallbackStyles, ifCondition(function (props) {
-  return !props.isDisabled;
+  var editor = window.editorskitInfo.editor;
+  var version = parseFloat(editor.version);
+  return !props.isDisabled && version < 7.4;
 })])(ColumnColorSettings));
 
 /***/ }),
