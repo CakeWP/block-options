@@ -6,3 +6,4 @@ import './media-text-link';
 import './block-navigator';
 import './reusable-convert';
 import './cover-vertical-alignment';
+import './block-links';

@@ -3,10 +3,40 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/formats/indent-decrease/controls.js:44
+<<<<<<< HEAD
+#: src/extensions/components/url-popover/url-input-ui.js:114
+msgid "Open in New Tab"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:119
+msgid "No Follow"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:124
+msgid "Sponsored"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:129
+msgid "Hover Animation"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:145
+msgid "Edit link"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:146
+msgid "Insert link"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:178
+msgid "Remove link"
+=======
+#: src/extensions/formats/indent-decrease/controls.js:43
 msgid "Indent Decrease"
 msgstr ""
 
-#: src/extensions/formats/indent-increase/controls.js:44
+#: src/extensions/formats/indent-increase/controls.js:43
+#: src/extensions/formats/indent-increase/index.js:19
 msgid "Indent Increase"
+>>>>>>> master
 msgstr ""
