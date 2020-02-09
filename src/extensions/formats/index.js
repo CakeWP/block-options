@@ -14,6 +14,8 @@ import { alignment } from './alignment';
 import { nbsp } from './nbsp';
 import { abbreviation } from './abbreviation';
 import { underline } from './underline';
+import { increaseIndent } from './indent-increase';
+import { decreaseIndent } from './indent-decrease';
 
 /**
  * WordPress dependencies
@@ -37,6 +39,8 @@ function registerEditorsKitFormats() {
 		nbsp,
 		abbreviation,
 		underline,
+		increaseIndent,
+		decreaseIndent,
 		! isDisabled ? link : [],
 	].forEach( ( { name, ...settings } ) => {
 		if ( name ) {

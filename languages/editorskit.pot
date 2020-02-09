@@ -3,6 +3,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+<<<<<<< HEAD
 #: src/extensions/components/url-popover/url-input-ui.js:114
 msgid "Open in New Tab"
 msgstr ""
@@ -29,4 +30,13 @@ msgstr ""
 
 #: src/extensions/components/url-popover/url-input-ui.js:178
 msgid "Remove link"
+=======
+#: src/extensions/formats/indent-decrease/controls.js:43
+msgid "Indent Decrease"
+msgstr ""
+
+#: src/extensions/formats/indent-increase/controls.js:43
+#: src/extensions/formats/indent-increase/index.js:19
+msgid "Indent Increase"
+>>>>>>> master
 msgstr ""

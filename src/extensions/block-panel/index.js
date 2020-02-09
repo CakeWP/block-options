@@ -57,8 +57,8 @@ const withTextSettings = createHigherOrderComponent( ( BlockListBlock ) => {
 		const attributes = select( 'core/block-editor' ).getBlock( props.clientId ).attributes;
 		const blockName = select( 'core/block-editor' ).getBlockName( props.clientId );
 
-		if ( blocksWithFontSize.includes( blockName ) || blocksWithBackgroundColor.includes( blockName ) ) {
-			const { customFontSize, fontSize, bulletColor } = attributes;
+		if ( blocksWithFontSize.includes( blockName ) || blocksWithBackgroundColor.includes( blockName ) || ( typeof attributes.editorskit !== 'undefined' && typeof attributes.editorskit.indent !== 'undefined' && attributes.editorskit.indent ) ) {
+			const { customFontSize, fontSize, bulletColor, editorskit } = attributes;
 
 			if ( customFontSize || fontSize ) {
 				customData = Object.assign( customData, { 'data-custom-fontsize': 1 } );
@@ -68,10 +68,18 @@ const withTextSettings = createHigherOrderComponent( ( BlockListBlock ) => {
 				customData = Object.assign( customData, { 'data-custom-bulletcolor': 1 } );
 			}
 
+			if (
+				typeof editorskit !== "undefined" &&
+				typeof editorskit.indent !== "undefined" &&
+				editorskit.indent
+			){
+				customData = Object.assign( customData, { 'data-ek-indent': 1 } );
+			}
+
 			wrapperProps = {
 				...wrapperProps,
-				style: applyStyle( attributes, blockName, props ),
-				...customData,
+				style: applyStyle(attributes, blockName, props),
+				...customData
 			};
 		}
 
@@ -117,14 +125,14 @@ const withBlockPanel = createHigherOrderComponent( ( BlockEdit ) => {
  * @return {Object} Filtered props applied to save element.
  */
 function applyTextSettings( extraProps, blockType, attributes ) {
-	if ( blocksWithFontSize.includes( blockType.name ) || blocksWithBackgroundColor.includes( blockType.name ) ) {
+	if ( blocksWithFontSize.includes( blockType.name ) || blocksWithBackgroundColor.includes( blockType.name ) || ( typeof attributes.editorskit !== 'undefined' && typeof attributes.editorskit.indent !== 'undefined' && attributes.editorskit.indent ) ) {
 		if ( typeof extraProps.style !== 'undefined' ) {
 			extraProps.style = Object.assign( extraProps.style, applyStyle( attributes, blockType.name ) );
 		} else {
 			extraProps.style = applyStyle( attributes, blockType.name );
 		}
 
-		const { customFontSize, fontSize, textColor, backgroundColor, bulletColor } = attributes;
+		const { customFontSize, fontSize, textColor, backgroundColor, bulletColor, editorskit } = attributes;
 
 		if ( fontSize ) {
 			extraProps.className = classnames( extraProps.className, 'has-' + fontSize + '-font-size' );
@@ -142,6 +150,14 @@ function applyTextSettings( extraProps, blockType, attributes ) {
 
 		if ( bulletColor ) {
 			extraProps.className = classnames( extraProps.className, 'has-list-bullet-color' );
+		}
+
+		if (
+			typeof editorskit !== "undefined" &&
+			typeof editorskit.indent !== "undefined" &&
+			editorskit.indent
+		){
+			extraProps.className = classnames( extraProps.className, 'has-ek-indent' );
 		}
 	}
 
