@@ -114,6 +114,7 @@ class EditorsKitSettings extends Component {
 														isDefault
 														isSecondary
 														href="https://editorskit.com/wordpress-gutenberg-editor-typography-and-google-fonts-add-on/"
+														target="_blank"
 													>
 														{ __( 'Get this Extension', 'block-options' ) }
 													</Button>

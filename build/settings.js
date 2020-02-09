@@ -7443,7 +7443,8 @@ function (_Component) {
                 }, __('Typography and Google Fonts', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Easily define typography on your WordPress posts and pages directly on the Gutenberg editor. With sets of predefined Google Fonts combination you can choose from or create your own to best match your website\'s branding.', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
                   isDefault: true,
                   isSecondary: true,
-                  href: "https://editorskit.com/wordpress-gutenberg-editor-typography-and-google-fonts-add-on/"
+                  href: "https://editorskit.com/wordpress-gutenberg-editor-typography-and-google-fonts-add-on/",
+                  target: "_blank"
                 }, __('Get this Extension', 'block-options')))));
               }
 
