@@ -65,7 +65,7 @@ function applyStyle( attributes, blockName, props = {} ) {
 	}
 
 	if ( typeof editorskit.indent !== 'undefined' ) {
-		style.paddingLeft = editorskit.indent + 'px';
+		style[ '--ek-indent' ] = editorskit.indent + 'px';
 	}
 
 	return style;
