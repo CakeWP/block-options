@@ -10122,26 +10122,26 @@ function addAttributes(settings) {
       if (typeof settings.attributes !== 'undefined') {
         settings.attributes = Object.assign(settings.attributes, {
           href: {
-            type: "string"
+            type: 'string'
           },
           linkDestination: {
-            type: "string",
-            default: "none"
+            type: 'string',
+            default: 'none'
           },
           opensInNewTab: {
-            type: "boolean",
+            type: 'boolean',
             default: false
           },
           linkNoFollow: {
-            type: "boolean",
+            type: 'boolean',
             default: false
           },
           linkSponsored: {
-            type: "boolean",
+            type: 'boolean',
             default: false
           },
           hasAnimation: {
-            type: "boolean",
+            type: 'boolean',
             default: false
           }
         });
@@ -10221,11 +10221,11 @@ function applyExtraClass(extraProps, blockType, attributes) {
     extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_3___default()(extraProps.className, 'ek-w-full');
   }
 
-  if ((blocksWithLinkToolbar.includes(blockType.name) || hasBlockSupport(blockType.name, "editorsKitLinkToolbar")) && typeof href !== "undefined" && href) {
-    extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_3___default()(extraProps.className, "ek-linked-block");
+  if ((blocksWithLinkToolbar.includes(blockType.name) || hasBlockSupport(blockType.name, 'editorsKitLinkToolbar')) && typeof href !== 'undefined' && href) {
+    extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_3___default()(extraProps.className, 'ek-linked-block');
 
     if (typeof hasAnimation !== 'undefined' && hasAnimation) {
-      extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_3___default()(extraProps.className, "ek-linked-block-animate");
+      extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_3___default()(extraProps.className, 'ek-linked-block-animate');
     }
   }
 
@@ -10614,7 +10614,7 @@ var withTextSettings = createHigherOrderComponent(function (BlockListBlock) {
         });
       }
 
-      if (typeof editorskit !== "undefined" && typeof editorskit.indent !== "undefined" && editorskit.indent) {
+      if (typeof editorskit !== 'undefined' && typeof editorskit.indent !== 'undefined' && editorskit.indent) {
         customData = Object.assign(customData, {
           'data-ek-indent': 1
         });
@@ -10690,7 +10690,7 @@ function applyTextSettings(extraProps, blockType, attributes) {
       extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_7___default()(extraProps.className, 'has-list-bullet-color');
     }
 
-    if (typeof editorskit !== "undefined" && typeof editorskit.indent !== "undefined" && editorskit.indent) {
+    if (typeof editorskit !== 'undefined' && typeof editorskit.indent !== 'undefined' && editorskit.indent) {
       extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_7___default()(extraProps.className, 'has-ek-indent');
     }
   }
@@ -12089,22 +12089,14 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * WordPress dependencies
  */
-var __ = wp.i18n.__;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
 var BlockControls = wp.blockEditor.BlockControls;
 var _wp$components = wp.components,
     Toolbar = _wp$components.Toolbar,
-    withSpokenMessages = _wp$components.withSpokenMessages,
-    IconButton = _wp$components.IconButton,
-    SVG = _wp$components.SVG,
-    Path = _wp$components.Path,
-    Modal = _wp$components.Modal,
-    Popover = _wp$components.Popover;
-var _wp$data = wp.data,
-    withSelect = _wp$data.withSelect,
-    withDispatch = _wp$data.withDispatch;
+    withSpokenMessages = _wp$components.withSpokenMessages;
+var withSelect = wp.data.withSelect;
 var _wp$compose = wp.compose,
     compose = _wp$compose.compose,
     ifCondition = _wp$compose.ifCondition;
@@ -12144,7 +12136,7 @@ function (_Component) {
           linkSponsored = attributes.linkSponsored,
           hasAnimation = attributes.hasAnimation;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Toolbar, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_components_url_popover_url_input_ui__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        url: href || "",
+        url: href || '',
         opensInNewTab: opensInNewTab || false,
         linkNoFollow: linkNoFollow || false,
         linkSponsored: linkSponsored || false,
@@ -16131,15 +16123,9 @@ var URLInputUI = function URLInputUI(_ref) {
   });
   var onLinkRemove = useCallback(function () {
     onChangeUrl({
-      href: ""
+      href: ''
     });
   });
-
-  var onSetHref = function onSetHref(value) {
-    onChangeUrl({
-      href: value
-    });
-  };
 
   var onSetNewTab = function onSetNewTab(value) {
     onChangeUrl({
@@ -16166,19 +16152,19 @@ var URLInputUI = function URLInputUI(_ref) {
   };
 
   var advancedOptions = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(ToggleControl, {
-    label: __("Open in New Tab", "block-options"),
+    label: __('Open in New Tab', 'block-options'),
     onChange: onSetNewTab,
     checked: opensInNewTab
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(ToggleControl, {
-    label: __("No Follow", "block-options"),
+    label: __('No Follow', 'block-options'),
     onChange: onSetLinkNoFollow,
     checked: linkNoFollow
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(ToggleControl, {
-    label: __("Sponsored", "block-options"),
+    label: __('Sponsored', 'block-options'),
     onChange: onSetLinkSponsored,
     checked: linkSponsored
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(ToggleControl, {
-    label: __("Hover Animation", "block-options"),
+    label: __('Hover Animation', 'block-options'),
     onChange: onSetLinkAnimation,
     checked: hasAnimation
   }));
@@ -16186,7 +16172,7 @@ var URLInputUI = function URLInputUI(_ref) {
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(IconButton, {
     icon: "admin-links",
     className: "components-toolbar__control",
-    label: url ? __("Edit link", "block-options") : __("Insert link", "block-options"),
+    label: url ? __('Edit link', 'block-options') : __('Insert link', 'block-options'),
     "aria-expanded": isOpen,
     onClick: openLinkUI
   }), isOpen && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(URLPopover, {
@@ -16210,7 +16196,7 @@ var URLInputUI = function URLInputUI(_ref) {
     onEditLinkClick: startEditLink
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(IconButton, {
     icon: "no",
-    label: __("Remove link", "block-options"),
+    label: __('Remove link', 'block-options'),
     onClick: onLinkRemove
   }))));
 };

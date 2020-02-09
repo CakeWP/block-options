@@ -11,7 +11,7 @@ const { Fragment } = wp.element;
 const { createHigherOrderComponent } = wp.compose;
 const { hasBlockSupport } = wp.blocks;
 
-const allowedBlocks = ['core/group', 'core/column', 'core/cover'];
+const allowedBlocks = [ 'core/group', 'core/column', 'core/cover' ];
 
 /**
  * Override the default edit UI to include a new block toolbar control
@@ -19,16 +19,16 @@ const allowedBlocks = ['core/group', 'core/column', 'core/cover'];
  * @param {Function} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
-const withLinkToolbar = createHigherOrderComponent((BlockEdit) => {
-	return (props) => {
+const withLinkToolbar = createHigherOrderComponent( ( BlockEdit ) => {
+	return ( props ) => {
 		return (
 			<Fragment>
-				<BlockEdit {...props} />
-				{props.isSelected && (allowedBlocks.includes(props.name) || hasBlockSupport(props.name, 'editorsKitLinkToolbar')) && <LinkToolbar {...{ ...props }} />}
+				<BlockEdit { ...props } />
+				{ props.isSelected && ( allowedBlocks.includes( props.name ) || hasBlockSupport( props.name, 'editorsKitLinkToolbar' ) ) && <LinkToolbar { ...{ ...props } } /> }
 			</Fragment>
 		);
 	};
-}, 'withLinkToolbar');
+}, 'withLinkToolbar' );
 
 addFilter(
 	'editor.BlockEdit',

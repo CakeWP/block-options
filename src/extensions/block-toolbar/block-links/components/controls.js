@@ -1,27 +1,26 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { BlockControls } = wp.blockEditor;
-const { Toolbar, withSpokenMessages, IconButton, SVG, Path, Modal, Popover } = wp.components;
-const { withSelect, withDispatch } = wp.data;
+const { Toolbar, withSpokenMessages } = wp.components;
+const { withSelect } = wp.data;
 const { compose, ifCondition } = wp.compose;
 
 /**
  * Internal dependencies
  */
-import URLInputUI from "../../../components/url-popover/url-input-ui";
+import URLInputUI from '../../../components/url-popover/url-input-ui';
 
 class withLinkToolbar extends Component {
 	constructor() {
-		super(...arguments);
+		super( ...arguments );
 
-		this.onSetHref = this.onSetHref.bind(this);
+		this.onSetHref = this.onSetHref.bind( this );
 	}
 
-	onSetHref(props) {
-		this.props.setAttributes(props);
+	onSetHref( props ) {
+		this.props.setAttributes( props );
 	}
 
 	render() {
@@ -34,19 +33,19 @@ class withLinkToolbar extends Component {
 			opensInNewTab,
 			linkNoFollow,
 			linkSponsored,
-			hasAnimation
+			hasAnimation,
 		} = attributes;
 
 		return (
 			<Fragment>
 				<BlockControls>
 					<Toolbar>
-						<URLInputUI 
-							url={ href || "" } 
-							opensInNewTab={ opensInNewTab || false } 
-							linkNoFollow={ linkNoFollow || false } 
-							linkSponsored={ linkSponsored || false } 
-							hasAnimation={ hasAnimation || false } 
+						<URLInputUI
+							url={ href || '' }
+							opensInNewTab={ opensInNewTab || false }
+							linkNoFollow={ linkNoFollow || false }
+							linkSponsored={ linkSponsored || false }
+							hasAnimation={ hasAnimation || false }
 							onChangeUrl={ this.onSetHref }
 						/>
 					</Toolbar>
@@ -57,18 +56,18 @@ class withLinkToolbar extends Component {
 }
 
 export default compose(
-	withSelect((select, props) => {
+	withSelect( ( select, props ) => {
 		const {
 			attributes,
 		} = props;
 
 		return {
 			attributes,
-			isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitNavigatorOptions'),
+			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitNavigatorOptions' ),
 		};
-	}),
-	ifCondition((props) => {
-		return !props.isDisabled;
-	}),
+	} ),
+	ifCondition( ( props ) => {
+		return ! props.isDisabled;
+	} ),
 	withSpokenMessages
-)(withLinkToolbar);
+)( withLinkToolbar );

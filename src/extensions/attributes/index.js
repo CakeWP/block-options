@@ -171,33 +171,33 @@ function addAttributes( settings ) {
 		}
 
 		// Add LinkToolbar Support
-		if ( blocksWithLinkToolbar.includes(settings.name) || hasBlockSupport(settings, 'editorsKitLinkToolbar')) {
-			if (typeof settings.attributes !== 'undefined') {
-				settings.attributes = Object.assign(settings.attributes, {
+		if ( blocksWithLinkToolbar.includes( settings.name ) || hasBlockSupport( settings, 'editorsKitLinkToolbar' ) ) {
+			if ( typeof settings.attributes !== 'undefined' ) {
+				settings.attributes = Object.assign( settings.attributes, {
 					href: {
-						type: "string"
+						type: 'string',
 					},
 					linkDestination: {
-						type: "string",
-						default: "none"
+						type: 'string',
+						default: 'none',
 					},
 					opensInNewTab: {
-						type: "boolean",
-						default: false
+						type: 'boolean',
+						default: false,
 					},
 					linkNoFollow: {
-						type: "boolean",
-						default: false
+						type: 'boolean',
+						default: false,
 					},
 					linkSponsored: {
-						type: "boolean",
-						default: false
+						type: 'boolean',
+						default: false,
 					},
 					hasAnimation: {
-						type: "boolean",
-						default: false
-					}
-				});
+						type: 'boolean',
+						default: false,
+					},
+				} );
 			}
 		}
 	}
@@ -244,7 +244,7 @@ function applyExtraClass( extraProps, blockType, attributes ) {
 		isHeightFullScreen,
 		isFullWidth,
 		href,
-		hasAnimation
+		hasAnimation,
 	} = attributes;
 
 	if ( typeof editorskit !== 'undefined' && ! restrictedBlocks.includes( blockType.name ) ) {
@@ -282,15 +282,15 @@ function applyExtraClass( extraProps, blockType, attributes ) {
 	}
 
 	if (
-		( blocksWithLinkToolbar.includes(blockType.name) ||
-			hasBlockSupport(blockType.name, "editorsKitLinkToolbar")) &&
-		typeof href !== "undefined" &&
+		( blocksWithLinkToolbar.includes( blockType.name ) ||
+			hasBlockSupport( blockType.name, 'editorsKitLinkToolbar' ) ) &&
+		typeof href !== 'undefined' &&
 		href
 	) {
-		extraProps.className = classnames(extraProps.className, "ek-linked-block");
+		extraProps.className = classnames( extraProps.className, 'ek-linked-block' );
 
-		if( typeof hasAnimation !== 'undefined' && hasAnimation ){
-			extraProps.className = classnames(extraProps.className, "ek-linked-block-animate");
+		if ( typeof hasAnimation !== 'undefined' && hasAnimation ) {
+			extraProps.className = classnames( extraProps.className, 'ek-linked-block-animate' );
 		}
 	}
 

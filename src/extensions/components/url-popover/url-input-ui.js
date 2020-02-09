@@ -10,125 +10,119 @@ const {
 const { URLPopover } = wp.blockEditor;
 const { LEFT, RIGHT, UP, DOWN, BACKSPACE, ENTER } = wp.keycodes;
 
-const URLInputUI = ({
+const URLInputUI = ( {
 	onChangeUrl,
 	url,
 	opensInNewTab,
 	linkNoFollow,
 	linkSponsored,
 	hasAnimation,
-}) => {
-	const [isOpen, setIsOpen] = useState(false);
-	const openLinkUI = useCallback(() => {
-		setIsOpen(true);
-	});
+} ) => {
+	const [ isOpen, setIsOpen ] = useState( false );
+	const openLinkUI = useCallback( () => {
+		setIsOpen( true );
+	} );
 
-	const [isEditingLink, setIsEditingLink] = useState(false);
-	const [urlInput, setUrlInput] = useState(null);
+	const [ isEditingLink, setIsEditingLink ] = useState( false );
+	const [ urlInput, setUrlInput ] = useState( null );
 
-	const autocompleteRef = useRef(null);
+	const autocompleteRef = useRef( null );
 
-	const stopPropagation = event => {
+	const stopPropagation = ( event ) => {
 		event.stopPropagation();
 	};
 
-	const stopPropagationRelevantKeys = event => {
-		if ([LEFT, DOWN, RIGHT, UP, BACKSPACE, ENTER].indexOf(event.keyCode) > -1) {
+	const stopPropagationRelevantKeys = ( event ) => {
+		if ( [ LEFT, DOWN, RIGHT, UP, BACKSPACE, ENTER ].indexOf( event.keyCode ) > -1 ) {
 			// Stop the key event from propagating up to ObserveTyping.startTypingInTextField.
 			event.stopPropagation();
 		}
 	};
 
-	const startEditLink = useCallback(() => {
-		setIsEditingLink(true);
-	});
+	const startEditLink = useCallback( () => {
+		setIsEditingLink( true );
+	} );
 
-	const stopEditLink = useCallback(() => {
-		setIsEditingLink(false);
-	});
+	const stopEditLink = useCallback( () => {
+		setIsEditingLink( false );
+	} );
 
-	const closeLinkUI = useCallback(() => {
-		setUrlInput(null);
+	const closeLinkUI = useCallback( () => {
+		setUrlInput( null );
 		stopEditLink();
-		setIsOpen(false);
-	});
+		setIsOpen( false );
+	} );
 
-	const onFocusOutside = useCallback(() => {
-		return event => {
+	const onFocusOutside = useCallback( () => {
+		return ( event ) => {
 			// The autocomplete suggestions list renders in a separate popover (in a portal),
 			// so onFocusOutside fails to detect that a click on a suggestion occurred in the
 			// LinkContainer. Detect clicks on autocomplete suggestions using a ref here, and
 			// return to avoid the popover being closed.
 			const autocompleteElement = autocompleteRef.current;
-			if (autocompleteElement && autocompleteElement.contains(event.target)) {
+			if ( autocompleteElement && autocompleteElement.contains( event.target ) ) {
 				return;
 			}
-			setIsOpen(false);
-			setUrlInput(null);
+			setIsOpen( false );
+			setUrlInput( null );
 			stopEditLink();
 		};
-	});
+	} );
 
-	const onSubmitLinkChange = useCallback(() => {
-		return event => {
-			if (urlInput) {
-				onChangeUrl({ href: urlInput });
+	const onSubmitLinkChange = useCallback( () => {
+		return ( event ) => {
+			if ( urlInput ) {
+				onChangeUrl( { href: urlInput } );
 			}
 			stopEditLink();
-			setUrlInput(null);
+			setUrlInput( null );
 			event.preventDefault();
 		};
-	});
+	} );
 
-	const onLinkRemove = useCallback(() => {
-		onChangeUrl({
-			href: ""
-		});
-	});
+	const onLinkRemove = useCallback( () => {
+		onChangeUrl( {
+			href: '',
+		} );
+	} );
 
-	const onSetHref = value => {
-		onChangeUrl({
-			href: value
-		});
+	const onSetNewTab = ( value ) => {
+		onChangeUrl( { opensInNewTab: value } );
 	};
 
-	const onSetNewTab = value => {
-		onChangeUrl({ opensInNewTab: value });
+	const onSetLinkNoFollow = ( value ) => {
+		onChangeUrl( { linkNoFollow: value } );
 	};
 
-	const onSetLinkNoFollow = value => {
-		onChangeUrl({ linkNoFollow: value });
+	const onSetLinkSponsored = ( value ) => {
+		onChangeUrl( { linkSponsored: value } );
 	};
 
-	const onSetLinkSponsored = value => {
-		onChangeUrl({ linkSponsored: value });
-	};
-
-	const onSetLinkAnimation = value => {
-		onChangeUrl({ hasAnimation: value });
+	const onSetLinkAnimation = ( value ) => {
+		onChangeUrl( { hasAnimation: value } );
 	};
 
 	const advancedOptions = (
 		<>
 			<ToggleControl
-				label={__("Open in New Tab", "block-options")}
-				onChange={onSetNewTab}
-				checked={opensInNewTab}
+				label={ __( 'Open in New Tab', 'block-options' ) }
+				onChange={ onSetNewTab }
+				checked={ opensInNewTab }
 			/>
 			<ToggleControl
-				label={__("No Follow", "block-options")}
-				onChange={onSetLinkNoFollow}
-				checked={linkNoFollow}
+				label={ __( 'No Follow', 'block-options' ) }
+				onChange={ onSetLinkNoFollow }
+				checked={ linkNoFollow }
 			/>
 			<ToggleControl
-				label={__("Sponsored", "block-options")}
-				onChange={onSetLinkSponsored}
-				checked={linkSponsored}
+				label={ __( 'Sponsored', 'block-options' ) }
+				onChange={ onSetLinkSponsored }
+				checked={ linkSponsored }
 			/>
 			<ToggleControl
-				label={__("Hover Animation", "block-options")}
-				onChange={onSetLinkAnimation}
-				checked={hasAnimation}
+				label={ __( 'Hover Animation', 'block-options' ) }
+				onChange={ onSetLinkAnimation }
+				checked={ hasAnimation }
 			/>
 		</>
 	);
@@ -141,47 +135,47 @@ const URLInputUI = ({
 				icon="admin-links"
 				className="components-toolbar__control"
 				label={
-					url
-						? __("Edit link", "block-options")
-						: __("Insert link", "block-options")
+					url ?
+						__( 'Edit link', 'block-options' ) :
+						__( 'Insert link', 'block-options' )
 				}
-				aria-expanded={isOpen}
-				onClick={openLinkUI}
+				aria-expanded={ isOpen }
+				onClick={ openLinkUI }
 			/>
-			{isOpen && (
+			{ isOpen && (
 				<URLPopover
-					onFocusOutside={onFocusOutside()}
-					onClose={closeLinkUI}
-					renderSettings={() => advancedOptions}
+					onFocusOutside={ onFocusOutside() }
+					onClose={ closeLinkUI }
+					renderSettings={ () => advancedOptions }
 				>
-					{(!url || isEditingLink) && (
+					{ ( ! url || isEditingLink ) && (
 						<URLPopover.LinkEditor
 							className="block-editor-format-toolbar__link-container-content"
-							value={linkEditorValue}
-							onChangeInputValue={setUrlInput}
-							onKeyDown={stopPropagationRelevantKeys}
-							onKeyPress={stopPropagation}
-							onSubmit={onSubmitLinkChange()}
-							autocompleteRef={autocompleteRef}
+							value={ linkEditorValue }
+							onChangeInputValue={ setUrlInput }
+							onKeyDown={ stopPropagationRelevantKeys }
+							onKeyPress={ stopPropagation }
+							onSubmit={ onSubmitLinkChange() }
+							autocompleteRef={ autocompleteRef }
 						/>
-					)}
-					{url && !isEditingLink && (
+					) }
+					{ url && ! isEditingLink && (
 						<>
 							<URLPopover.LinkViewer
 								className="block-editor-format-toolbar__link-container-content"
-								onKeyPress={stopPropagation}
-								url={url}
-								onEditLinkClick={startEditLink}
+								onKeyPress={ stopPropagation }
+								url={ url }
+								onEditLinkClick={ startEditLink }
 							/>
 							<IconButton
 								icon="no"
-								label={__("Remove link", "block-options")}
-								onClick={onLinkRemove}
+								label={ __( 'Remove link', 'block-options' ) }
+								onClick={ onLinkRemove }
 							/>
 						</>
-					)}
+					) }
 				</URLPopover>
-			)}
+			) }
 		</Fragment>
 	);
 };

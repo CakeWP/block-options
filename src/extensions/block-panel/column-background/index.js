@@ -58,6 +58,6 @@ export default compose( [
 	ifCondition( ( props ) => {
 		const { editor } = window.editorskitInfo;
 		const version = parseFloat( editor.version );
-		return !props.isDisabled && version < 7.4;
+		return ! props.isDisabled && version < 7.4;
 	} ),
 ] )( ColumnColorSettings );

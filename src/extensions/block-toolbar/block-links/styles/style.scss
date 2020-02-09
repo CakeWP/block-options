@@ -1,20 +1,20 @@
-.ek-linked-block{
+.ek-linked-block {
 	position: relative !important;
 
-	a.editorskit-block-link{
+	a.editorskit-block-link {
 		position: absolute;
-		top:0;
+		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
 		z-index: 90;
 	}
 
-	&.ek-linked-block-animate{
-		transition:0.35s;
+	&.ek-linked-block-animate {
+		transition: 0.35s;
 
-		&:hover{
-			transform:translatey(-15px);
+		&:hover {
+			transform: translateY(-15px);
 		}
 	}
 }

@@ -69,17 +69,17 @@ const withTextSettings = createHigherOrderComponent( ( BlockListBlock ) => {
 			}
 
 			if (
-				typeof editorskit !== "undefined" &&
-				typeof editorskit.indent !== "undefined" &&
+				typeof editorskit !== 'undefined' &&
+				typeof editorskit.indent !== 'undefined' &&
 				editorskit.indent
-			){
+			) {
 				customData = Object.assign( customData, { 'data-ek-indent': 1 } );
 			}
 
 			wrapperProps = {
 				...wrapperProps,
-				style: applyStyle(attributes, blockName, props),
-				...customData
+				style: applyStyle( attributes, blockName, props ),
+				...customData,
 			};
 		}
 
@@ -153,10 +153,10 @@ function applyTextSettings( extraProps, blockType, attributes ) {
 		}
 
 		if (
-			typeof editorskit !== "undefined" &&
-			typeof editorskit.indent !== "undefined" &&
+			typeof editorskit !== 'undefined' &&
+			typeof editorskit.indent !== 'undefined' &&
 			editorskit.indent
-		){
+		) {
 			extraProps.className = classnames( extraProps.className, 'has-ek-indent' );
 		}
 	}
