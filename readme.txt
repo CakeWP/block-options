@@ -169,6 +169,7 @@ e.g.
 * New: [Link Toolbar Option](https://github.com/phpbits/block-options/pull/239) for Cover, Column and Group Blocks 🎊
 * New: [Indent format](https://github.com/phpbits/block-options/pull/238) for paragraph, heading and list block 🎊
 * Tweaks: Apply more compatibility improvements and fixes for Gutenberg Plugin
+* Tweaks: Better onboarding after activation w/o redirect
 * Tweaks: Add Extensions tab on Settings Page
 * Fixes: Prevent [issue with BuddyBoss them when hiding title](https://wordpress.org/support/topic/hide-title-half-working/)
 
