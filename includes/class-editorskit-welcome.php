@@ -57,7 +57,7 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 				// Do nothing if WP CLI.
 			} else {
 
-				add_action( 'activated_plugin', array( $this, 'redirect' ), 10, 2 );
+				add_action( 'admin_notices', array( $this, 'admin_notices' ), 10, 2 );
 			}
 		}
 
@@ -148,7 +148,39 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 		 */
 		public function welcome_content(){ ?>
 			<div class="editorskit-settings-wrap"></div>
+			<?php
+		}
+
+		/**
+		 * Adds a marker to remember to activation.
+		 */
+		public static function add_activation_marker() {
+			update_option( 'editorskit_activation_marker', '1' );
+		}
+
+		/**
+		 * Activation notice on plugins.php only
+		 */
+		public function admin_notices() {
+			global $pagenow;
+			if ( get_option( 'editorskit_activation_marker' ) && 'plugins.php' === $pagenow ) {
+				delete_option( 'editorskit_activation_marker' );
+				?>
+
+				<div class="notice notice-success is-dismissible">
+					<p>
+					<?php
+						echo sprintf(
+							esc_html__( 'Thank you for installing and activating EditorsKit Plugin. Please go to %1$sSettings > EditorsKit%2$s to get started.', 'block-options' ),
+							'<a href="' . admin_url( 'options-general.php?page=editorskit-getting-started' ) . '" style="font-weight:700; text-decoration:none;">',
+							'</a>'
+						);
+					?>
+					</p>
+				</div>
+
 		<?php }
+		}
 
 		/**
 		 * Redirect after activation
@@ -165,5 +197,8 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 	}
 	new EditorsKit_Welcome();
 }
+
+// Redirect to the welcome screen.
+register_activation_hook( EDITORSKIT_PLUGIN_FILE, array( 'EditorsKit_Welcome', 'add_activation_marker' ) );
 
 ?>

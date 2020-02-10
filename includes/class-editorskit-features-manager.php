@@ -239,7 +239,7 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Export as JSON', 'block-options' ),
 							'value' => true,
 						),
-						'linkBlockToolbar'  => array(
+						'linkBlockToolbar'   => array(
 							'name'  => 'linkBlockToolbar',
 							'label' => __( 'Link Toolbar for Cover, Group & Column', 'block-options' ),
 							'value' => true,
