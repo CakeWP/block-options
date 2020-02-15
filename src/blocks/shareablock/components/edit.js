@@ -69,7 +69,7 @@ class Edit extends Component {
 	}
 
 	updateApiKey(apiKey = this.state.apiKey, accessToken = this.state.accessToken) {
-		const { attributes, setAttributes } = this.props;
+		const { setAttributes } = this.props;
 		apiKey = apiKey.trim();
 		accessToken = accessToken.trim();
 
@@ -82,6 +82,8 @@ class Edit extends Component {
 	}
 
 	saveApiKey(apiKey = this.state.apiKey, accessToken = this.state.accessToken) {
+		const { setAttributes } = this.props;
+
 		this.setState({ apiKey, accessToken, isSaving: true });
 
 		const model = new wp.api.models.Settings({
@@ -95,20 +97,28 @@ class Edit extends Component {
 			});
 			settings.fetch();
 
+			setAttributes({ hasApiKey: true, hasValidApiKey: false });
 			this.fetchDownloads(apiKey, accessToken);
 		});
 	}
 
 	fetchDownloads(apiKey = this.state.apiKey, accessToken = this.state.accessToken){
+		const { setAttributes } = this.props;
+
 		this.setState({ isLoading: true });
 		const fetchApi = async () => {
 			let response = await fetch(
 				`${apiPath}?key=${apiKey}&token=${accessToken}`
-			).catch(error => this.setState({ error, isLoading: false }));
+			);
 
 			let data = await response.json();
-			
-			this.setState({ downloads: data, isLoading: false });
+			if (data.error !== 'undefined'){
+				this.setState({ error: data.error, isLoading: false });
+				setAttributes({ hasValidApiKey: false });
+			}else{
+				this.setState({ downloads: data, isLoading: false });
+				setAttributes({ hasValidApiKey: true });
+			}
 		};
 
 		fetchApi();
@@ -116,6 +126,9 @@ class Edit extends Component {
 
 	render() {
 
+		const { attributes } = this.props;
+		const { hasApiKey, hasValidApiKey } = attributes;
+		console.log(hasValidApiKey);
 		return (
 			<Placeholder
 				icon="layout"
@@ -126,35 +139,49 @@ class Edit extends Component {
 				)}
 			>
 				<Fragment>
-					{this.state.isLoading ? 'loading': ''}
-					<TextControl
-						value={this.state.apiKey}
-						label={__("API Settings", "block-options")}
-						placeholder={__("Enter Public API Key…", "block-options")}
-						onChange={newKey => {
-							this.setState({ apiKey: newKey });
-						}}
-					/>
-					<TextControl
-						value={this.state.accessToken}
-						placeholder={__("Enter Access Token…", "block-options")}
-						help={__(
-							"You will only be asked once for API keys. Learn more on how to generate you API key and access token.",
-							"block-options"
-						)}
-						onChange={newToken => {
-							this.setState({ accessToken: newToken });
-						}}
-					/>
-					<Button
-						isPrimary
-						isLarge
-						onClick={() => {
-							this.updateApiKey();
-						}}
-					>
-						{__("Apply & View Downloads", "block-options")}
-					</Button>
+					{this.state.error || (hasApiKey && !hasValidApiKey) ? (
+						<div className="editorskit-inline-error notice-error notice">
+							{__("Invalid API or Access Token.", "block-options")}
+						</div>
+					) : null}
+					{hasValidApiKey ? (
+						<Fragment>
+							<Button isPrimary isLarge onClick={() => {}}>
+								{__("View Downloads", "block-options")}
+							</Button>
+						</Fragment>
+					) : (
+						<Fragment>
+							<TextControl
+								value={this.state.apiKey}
+								label={__("API Settings", "block-options")}
+								placeholder={__("Enter Public API Key…", "block-options")}
+								onChange={newKey => {
+									this.setState({ apiKey: newKey });
+								}}
+							/>
+							<TextControl
+								value={this.state.accessToken}
+								placeholder={__("Enter Access Token…", "block-options")}
+								help={__(
+									"You will only be asked once for API keys. Learn more on how to generate you API key and access token.",
+									"block-options"
+								)}
+								onChange={newToken => {
+									this.setState({ accessToken: newToken });
+								}}
+							/>
+							<Button
+								isPrimary
+								isLarge
+								onClick={() => {
+									this.updateApiKey();
+								}}
+							>
+								{__("Apply & View Downloads", "block-options")}
+							</Button>
+						</Fragment>
+					)}
 				</Fragment>
 			</Placeholder>
 		);

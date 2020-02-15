@@ -9025,9 +9025,7 @@ function (_Component) {
     value: function updateApiKey() {
       var apiKey = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.state.apiKey;
       var accessToken = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.state.accessToken;
-      var _this$props = this.props,
-          attributes = _this$props.attributes,
-          setAttributes = _this$props.setAttributes;
+      var setAttributes = this.props.setAttributes;
       apiKey = apiKey.trim();
       accessToken = accessToken.trim();
       this.saveApiKey(apiKey, accessToken);
@@ -9046,6 +9044,7 @@ function (_Component) {
 
       var apiKey = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.state.apiKey;
       var accessToken = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.state.accessToken;
+      var setAttributes = this.props.setAttributes;
       this.setState({
         apiKey: apiKey,
         accessToken: accessToken,
@@ -9064,6 +9063,10 @@ function (_Component) {
         });
 
         settings.fetch();
+        setAttributes({
+          hasApiKey: true,
+          hasValidApiKey: false
+        });
 
         _this2.fetchDownloads(apiKey, accessToken);
       });
@@ -9075,6 +9078,7 @@ function (_Component) {
 
       var apiKey = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.state.apiKey;
       var accessToken = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.state.accessToken;
+      var setAttributes = this.props.setAttributes;
       this.setState({
         isLoading: true
       });
@@ -9091,12 +9095,7 @@ function (_Component) {
               switch (_context.prev = _context.next) {
                 case 0:
                   _context.next = 2;
-                  return fetch("".concat(apiPath, "?key=").concat(apiKey, "&token=").concat(accessToken)).catch(function (error) {
-                    return _this3.setState({
-                      error: error,
-                      isLoading: false
-                    });
-                  });
+                  return fetch("".concat(apiPath, "?key=").concat(apiKey, "&token=").concat(accessToken));
 
                 case 2:
                   response = _context.sent;
@@ -9106,10 +9105,25 @@ function (_Component) {
                 case 5:
                   data = _context.sent;
 
-                  _this3.setState({
-                    downloads: data,
-                    isLoading: false
-                  });
+                  if (data.error !== 'undefined') {
+                    _this3.setState({
+                      error: data.error,
+                      isLoading: false
+                    });
+
+                    setAttributes({
+                      hasValidApiKey: false
+                    });
+                  } else {
+                    _this3.setState({
+                      downloads: data,
+                      isLoading: false
+                    });
+
+                    setAttributes({
+                      hasValidApiKey: true
+                    });
+                  }
 
                 case 7:
                 case "end":
@@ -9131,11 +9145,21 @@ function (_Component) {
     value: function render() {
       var _this4 = this;
 
+      var attributes = this.props.attributes;
+      var hasApiKey = attributes.hasApiKey,
+          hasValidApiKey = attributes.hasValidApiKey;
+      console.log(hasValidApiKey);
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Placeholder, {
         icon: "layout",
         label: __("ShareABlock from EditorsKit", "block-options"),
         instructions: __("Insert your downloads from shareablock.com at ease.", "block-options")
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Fragment, null, this.state.isLoading ? 'loading' : '', Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(TextControl, {
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Fragment, null, this.state.error || hasApiKey && !hasValidApiKey ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])("div", {
+        className: "editorskit-inline-error notice-error notice"
+      }, __("Invalid API or Access Token.", "block-options")) : null, hasValidApiKey ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Button, {
+        isPrimary: true,
+        isLarge: true,
+        onClick: function onClick() {}
+      }, __("View Downloads", "block-options"))) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(TextControl, {
         value: this.state.apiKey,
         label: __("API Settings", "block-options"),
         placeholder: __("Enter Public API Key…", "block-options"),
@@ -9159,7 +9183,7 @@ function (_Component) {
         onClick: function onClick() {
           _this4.updateApiKey();
         }
-      }, __("Apply & View Downloads", "block-options"))));
+      }, __("Apply & View Downloads", "block-options")))));
     }
   }]);
 
