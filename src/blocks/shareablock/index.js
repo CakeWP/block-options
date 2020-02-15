@@ -7,6 +7,7 @@ const { __ } = wp.i18n;
  * Internal dependencies
  */
 import metadata from './block.json';
+import Edit from './components/edit';
 
 /**
  * Block constants
@@ -26,9 +27,7 @@ const settings = {
 	icon: 'layout',
 	keywords,
 	attributes,
-	edit() {
-		return null;
-	},
+	edit: Edit,
 	save() {
 		return null;
 	},

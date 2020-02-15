@@ -8891,6 +8891,206 @@ module.exports = JSON.parse("{\"name\":\"shareablock\",\"category\":\"layout\",\
 
 /***/ }),
 
+/***/ "./src/blocks/shareablock/components/edit.js":
+/*!***************************************************!*\
+  !*** ./src/blocks/shareablock/components/edit.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
+
+
+
+
+
+
+
+
+/**
+ * Internal dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var _wp$data = wp.data,
+    select = _wp$data.select,
+    dispatch = _wp$data.dispatch;
+var withInstanceId = wp.compose.withInstanceId;
+var _wp$element = wp.element,
+    Fragment = _wp$element.Fragment,
+    Component = _wp$element.Component;
+var _wp$blocks = wp.blocks,
+    parse = _wp$blocks.parse,
+    createBlock = _wp$blocks.createBlock;
+var MediaUploadCheck = wp.blockEditor.MediaUploadCheck;
+var _wp$components = wp.components,
+    DropZone = _wp$components.DropZone,
+    FormFileUpload = _wp$components.FormFileUpload,
+    Placeholder = _wp$components.Placeholder,
+    Notice = _wp$components.Notice,
+    TextControl = _wp$components.TextControl,
+    Button = _wp$components.Button;
+/**
+ * Get settings.
+ */
+
+var settings;
+wp.api.loadPromise.then(function () {
+  settings = new wp.api.models.Settings();
+});
+/**
+ * Block edit function
+ */
+
+var Edit =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(Edit, _Component);
+
+  function Edit() {
+    var _this;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, Edit);
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Edit).apply(this, arguments));
+    _this.state = {
+      apiKey: '',
+      accessToken: '',
+      isSaving: false,
+      keySaved: false,
+      error: null
+    }; // settings.on('change:shareablock_api_key', (model) => {
+    // 	const apiKey = model.get('shareablock_api_key');
+    // 	// this.setState({
+    // 	// 	apiKey: settings.get('shareablock_api_key'),
+    // 	// 	isSavedKey: apiKey !== '',
+    // 	// });
+    // });
+
+    settings.fetch().then(function (response) {
+      if (typeof response.shareablock_api_key !== 'undefined' && response.shareablock_api_key) {
+        var apiSettings = JSON.parse(response.shareablock_api_key);
+      } // this.setState({ apiKey: response.shareablock_api_key });
+
+
+      if (_this.state.apiKey && _this.state.apiKey !== '') {
+        _this.setState({
+          isSavedKey: true
+        });
+      }
+    });
+    _this.saveApiKey = _this.saveApiKey.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.updateApiKey = _this.updateApiKey.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    return _this;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Edit, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {}
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {}
+  }, {
+    key: "updateApiKey",
+    value: function updateApiKey() {
+      var apiKey = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.state.apiKey;
+      var accessToken = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.state.accessToken;
+      var _this$props = this.props,
+          attributes = _this$props.attributes,
+          setAttributes = _this$props.setAttributes;
+      apiKey = apiKey.trim();
+      accessToken = accessToken.trim();
+      this.saveApiKey(apiKey, accessToken);
+
+      if (apiKey === '') {
+        setAttributes({
+          hasApiKey: false
+        });
+        return;
+      }
+    }
+  }, {
+    key: "saveApiKey",
+    value: function saveApiKey() {
+      var _this2 = this;
+
+      var apiKey = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.state.apiKey;
+      var accessToken = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.state.accessToken;
+      this.setState({
+        apiKey: apiKey,
+        accessToken: accessToken,
+        isSaving: true
+      });
+      var model = new wp.api.models.Settings({
+        shareablock_api_key: JSON.stringify({
+          apiKey: apiKey,
+          accessToken: accessToken
+        })
+      });
+      model.save().then(function () {
+        _this2.setState({
+          isSaving: false,
+          keySaved: true
+        });
+
+        settings.fetch();
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Placeholder, {
+        icon: "layout",
+        label: __('ShareABlock from EditorsKit', 'block-options'),
+        instructions: __('Insert your downloads from shareablock.com at ease.', 'block-options')
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(TextControl, {
+        label: __('API Settings', 'block-options'),
+        placeholder: __('Enter Public API Key…', 'block-options'),
+        onChange: function onChange(newKey) {
+          return setState({
+            apiKey: newKey
+          });
+        }
+      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(TextControl, {
+        placeholder: __('Enter Access Token…', 'block-options'),
+        help: __('You will only be asked once for API keys. Learn more on how to generate you API key and access token.', 'block-options'),
+        onChange: function onChange(newToken) {
+          return setState({
+            accessToken: newToken
+          });
+        }
+      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Button, {
+        isPrimary: true,
+        isLarge: true
+      }, __('Apply & View Downloads', 'block-options'))));
+    }
+  }]);
+
+  return Edit;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (withInstanceId(Edit));
+
+/***/ }),
+
 /***/ "./src/blocks/shareablock/index.js":
 /*!*****************************************!*\
   !*** ./src/blocks/shareablock/index.js ***!
@@ -8905,6 +9105,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "settings", function() { return settings; });
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./block.json */ "./src/blocks/shareablock/block.json");
 var _block_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./block.json */ "./src/blocks/shareablock/block.json", 1);
+/* harmony import */ var _components_edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/edit */ "./src/blocks/shareablock/components/edit.js");
 /**
  * WordPress dependencies
  */
@@ -8912,6 +9113,7 @@ var __ = wp.i18n.__;
 /**
  * Internal dependencies
  */
+
 
 
 /**
@@ -8933,9 +9135,7 @@ var settings = {
   icon: 'layout',
   keywords: keywords,
   attributes: attributes,
-  edit: function edit() {
-    return null;
-  },
+  edit: _components_edit__WEBPACK_IMPORTED_MODULE_1__["default"],
   save: function save() {
     return null;
   }

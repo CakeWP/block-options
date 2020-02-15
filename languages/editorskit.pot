@@ -3,42 +3,32 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/blocks/import/index.js:20
-msgid "Import"
+#: src/blocks/shareablock/components/edit.js:103
+msgid "ShareABlock from EditorsKit"
 msgstr ""
 
-#: src/blocks/import/index.js:23
-msgid "import"
+#: src/blocks/shareablock/components/edit.js:104
+msgid "Insert your downloads from shareablock.com at ease."
 msgstr ""
 
-#: src/blocks/import/index.js:24
-msgid "download"
+#: src/blocks/shareablock/components/edit.js:108
+msgid "API Settings"
 msgstr ""
 
-#: src/blocks/import/index.js:25
-msgid "migrate"
+#: src/blocks/shareablock/components/edit.js:109
+msgid "Enter Public API Key…"
 msgstr ""
 
-#: src/blocks/import/index.js:38
-msgid "Import blocks exported using EditorsKit plugin."
+#: src/blocks/shareablock/components/edit.js:113
+msgid "Enter Access Token…"
 msgstr ""
 
-#: src/blocks/shareablock/index.js:15
-msgid "ShareABlock"
+#: src/blocks/shareablock/components/edit.js:114
+msgid ""
+"You will only be asked once for API keys. Learn more on how to generate you "
+"API key and access token."
 msgstr ""
 
-#: src/blocks/shareablock/index.js:16
-msgid "Easily insert your downloads from shareablock.com"
-msgstr ""
-
-#: src/blocks/shareablock/index.js:18
-msgid "template"
-msgstr ""
-
-#: src/blocks/shareablock/index.js:19
-msgid "block patterns"
-msgstr ""
-
-#: src/blocks/shareablock/index.js:20
-msgid "shareablock"
+#: src/blocks/shareablock/components/edit.js:121
+msgid "Apply & View Downloads"
 msgstr ""
