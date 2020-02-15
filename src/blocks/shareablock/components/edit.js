@@ -20,6 +20,8 @@ wp.api.loadPromise.then(() => {
 	settings = new wp.api.models.Settings();
 });
 
+const apiPath = "https://staging-shareablock.kinsta.cloud/edd-api/my-files";
+
 /**
  * Block edit function
  */
@@ -32,30 +34,31 @@ class Edit extends Component {
 			accessToken: '',
 			isSaving: false,
 			keySaved: false,
+			isSavedKey: false,
+			isLoading: false,
+			downloads: {},
 			error: null,
 		};
 
-		// settings.on('change:shareablock_api_key', (model) => {
-		// 	const apiKey = model.get('shareablock_api_key');
-		// 	// this.setState({
-		// 	// 	apiKey: settings.get('shareablock_api_key'),
-		// 	// 	isSavedKey: apiKey !== '',
-		// 	// });
-		// });
+		settings.on('change:shareablock_api_key', (model) => {
+			const apiSettings = JSON.parse(model.get('shareablock_api_key'));
+			this.setState({
+				apiKey: apiSettings.apiKey,
+				accessToken: apiSettings.accessToken,
+				isSavedKey: apiSettings.apiKey !== '',
+			});
+		});
 
 		settings.fetch().then((response) => {
 			if( typeof response.shareablock_api_key !== 'undefined' && response.shareablock_api_key ){
 				const apiSettings = JSON.parse(response.shareablock_api_key);
-			}
-			
-			// this.setState({ apiKey: response.shareablock_api_key });
-			if (this.state.apiKey && this.state.apiKey !== '') {
-				this.setState({ isSavedKey: true });
+				this.setState({ apiKey: apiSettings.apiKey, accessToken: apiSettings.accessToken, isSavedKey: true });
 			}
 		});
 
 		this.saveApiKey = this.saveApiKey.bind(this);
 		this.updateApiKey = this.updateApiKey.bind(this);
+		this.fetchDownloads = this.fetchDownloads.bind(this);
 
 	}
 
@@ -67,7 +70,6 @@ class Edit extends Component {
 
 	updateApiKey(apiKey = this.state.apiKey, accessToken = this.state.accessToken) {
 		const { attributes, setAttributes } = this.props;
-
 		apiKey = apiKey.trim();
 		accessToken = accessToken.trim();
 
@@ -79,7 +81,7 @@ class Edit extends Component {
 		}
 	}
 
-	saveApiKey(apiKey = this.state.apiKey, accessToken = this.state.accessToken ) {
+	saveApiKey(apiKey = this.state.apiKey, accessToken = this.state.accessToken) {
 		this.setState({ apiKey, accessToken, isSaving: true });
 
 		const model = new wp.api.models.Settings({
@@ -92,7 +94,24 @@ class Edit extends Component {
 				keySaved: true,
 			});
 			settings.fetch();
+
+			this.fetchDownloads(apiKey, accessToken);
 		});
+	}
+
+	fetchDownloads(apiKey = this.state.apiKey, accessToken = this.state.accessToken){
+		this.setState({ isLoading: true });
+		const fetchApi = async () => {
+			let response = await fetch(
+				`${apiPath}?key=${apiKey}&token=${accessToken}`
+			).catch(error => this.setState({ error, isLoading: false }));
+
+			let data = await response.json();
+			
+			this.setState({ downloads: data, isLoading: false });
+		};
+
+		fetchApi();
 	}
 
 	render() {
@@ -100,25 +119,41 @@ class Edit extends Component {
 		return (
 			<Placeholder
 				icon="layout"
-				label={__('ShareABlock from EditorsKit', 'block-options')}
-				instructions={__('Insert your downloads from shareablock.com at ease.', 'block-options')}
+				label={__("ShareABlock from EditorsKit", "block-options")}
+				instructions={__(
+					"Insert your downloads from shareablock.com at ease.",
+					"block-options"
+				)}
 			>
 				<Fragment>
+					{this.state.isLoading ? 'loading': ''}
 					<TextControl
-						label={__('API Settings', 'block-options')}
-						placeholder={__('Enter Public API Key…', 'block-options')}
-						onChange={(newKey) => setState({ apiKey: newKey })}
+						value={this.state.apiKey}
+						label={__("API Settings", "block-options")}
+						placeholder={__("Enter Public API Key…", "block-options")}
+						onChange={newKey => {
+							this.setState({ apiKey: newKey });
+						}}
 					/>
 					<TextControl
-						placeholder={__('Enter Access Token…', 'block-options')}
-						help={__('You will only be asked once for API keys. Learn more on how to generate you API key and access token.', 'block-options')}
-						onChange={(newToken) => setState({ accessToken: newToken })}
+						value={this.state.accessToken}
+						placeholder={__("Enter Access Token…", "block-options")}
+						help={__(
+							"You will only be asked once for API keys. Learn more on how to generate you API key and access token.",
+							"block-options"
+						)}
+						onChange={newToken => {
+							this.setState({ accessToken: newToken });
+						}}
 					/>
 					<Button
 						isPrimary
 						isLarge
+						onClick={() => {
+							this.updateApiKey();
+						}}
 					>
-						{ __('Apply & View Downloads', 'block-options') }
+						{__("Apply & View Downloads", "block-options")}
 					</Button>
 				</Fragment>
 			</Placeholder>
