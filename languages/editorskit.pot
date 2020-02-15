@@ -3,40 +3,42 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/blocks/shareablock/components/edit.js:135
+#: src/blocks/shareablock/components/edit.js:141
 msgid "ShareABlock from EditorsKit"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:136
+#: src/blocks/shareablock/components/edit.js:142
 msgid "Insert your downloads from shareablock.com at ease."
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:144
+#: src/blocks/shareablock/components/edit.js:150
 msgid "Invalid API or Access Token."
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:150
+#: src/blocks/shareablock/components/edit.js:156
 msgid "View Downloads"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:157
+#: src/blocks/shareablock/components/edit.js:163
 msgid "API Settings"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:158
+#: src/blocks/shareablock/components/edit.js:164
 msgid "Enter Public API Key…"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:165
+#: src/blocks/shareablock/components/edit.js:171
 msgid "Enter Access Token…"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:166
-msgid ""
-"You will only be asked once for API keys. Learn more on how to generate you "
-"API key and access token."
+#: src/blocks/shareablock/components/edit.js:183
+msgid "Apply & View Downloads"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:181
-msgid "Apply & View Downloads"
+#: src/blocks/shareablock/components/edit.js:189
+msgid "Get API Key"
+msgstr ""
+
+#: src/blocks/shareablock/components/loading.js:10
+msgid "Loading…"
 msgstr ""

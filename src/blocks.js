@@ -77,7 +77,7 @@ export function registerBlocks() {
 
 		const { name, settings, category } = block;
 
-		registerBlockType(`editorskit/${name}`, { category: category, ...settings } );
+		registerBlockType( `editorskit/${ name }`, { category, ...settings } );
 	} );
 }
 registerBlocks();

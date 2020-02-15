@@ -8918,6 +8918,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _loading__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./loading */ "./src/blocks/shareablock/components/loading.js");
 
 
 
@@ -8932,9 +8933,11 @@ __webpack_require__.r(__webpack_exports__);
  * Internal dependencies
  */
 
+;
 /**
  * WordPress dependencies
  */
+
 var __ = wp.i18n.__;
 var _wp$data = wp.data,
     select = _wp$data.select,
@@ -8951,7 +8954,7 @@ var _wp$components = wp.components,
     DropZone = _wp$components.DropZone,
     FormFileUpload = _wp$components.FormFileUpload,
     Placeholder = _wp$components.Placeholder,
-    Notice = _wp$components.Notice,
+    Modal = _wp$components.Modal,
     TextControl = _wp$components.TextControl,
     Button = _wp$components.Button;
 /**
@@ -8962,7 +8965,7 @@ var settings;
 wp.api.loadPromise.then(function () {
   settings = new wp.api.models.Settings();
 });
-var apiPath = "https://staging-shareablock.kinsta.cloud/edd-api/my-files";
+var apiPath = 'https://staging-shareablock.kinsta.cloud/edd-api/my-files';
 /**
  * Block edit function
  */
@@ -9034,7 +9037,6 @@ function (_Component) {
         setAttributes({
           hasApiKey: false
         });
-        return;
       }
     }
   }, {
@@ -9105,24 +9107,26 @@ function (_Component) {
                 case 5:
                   data = _context.sent;
 
-                  if (data.error !== 'undefined') {
-                    _this3.setState({
-                      error: data.error,
-                      isLoading: false
-                    });
+                  if (data) {
+                    if (typeof data.error !== "undefined") {
+                      _this3.setState({
+                        error: data.error,
+                        isLoading: false
+                      });
 
-                    setAttributes({
-                      hasValidApiKey: false
-                    });
-                  } else {
-                    _this3.setState({
-                      downloads: data,
-                      isLoading: false
-                    });
+                      setAttributes({
+                        hasValidApiKey: false
+                      });
+                    } else {
+                      _this3.setState({
+                        downloads: data,
+                        isLoading: false
+                      });
 
-                    setAttributes({
-                      hasValidApiKey: true
-                    });
+                      setAttributes({
+                        hasValidApiKey: true
+                      });
+                    }
                   }
 
                 case 7:
@@ -9148,21 +9152,26 @@ function (_Component) {
       var attributes = this.props.attributes;
       var hasApiKey = attributes.hasApiKey,
           hasValidApiKey = attributes.hasValidApiKey;
+
+      if (this.state.isLoading) {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(_loading__WEBPACK_IMPORTED_MODULE_9__["default"], null);
+      }
+
       console.log(hasValidApiKey);
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Placeholder, {
         icon: "layout",
-        label: __("ShareABlock from EditorsKit", "block-options"),
-        instructions: __("Insert your downloads from shareablock.com at ease.", "block-options")
+        label: __('ShareABlock from EditorsKit', 'block-options'),
+        instructions: __('Insert your downloads from shareablock.com at ease.', 'block-options')
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Fragment, null, this.state.error || hasApiKey && !hasValidApiKey ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])("div", {
         className: "editorskit-inline-error notice-error notice"
-      }, __("Invalid API or Access Token.", "block-options")) : null, hasValidApiKey ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Button, {
+      }, __('Invalid API or Access Token.', 'block-options')) : null, hasValidApiKey ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Button, {
         isPrimary: true,
         isLarge: true,
         onClick: function onClick() {}
-      }, __("View Downloads", "block-options"))) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(TextControl, {
+      }, __('View Downloads', 'block-options'))) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(TextControl, {
         value: this.state.apiKey,
-        label: __("API Settings", "block-options"),
-        placeholder: __("Enter Public API Key…", "block-options"),
+        label: __('API Settings', 'block-options'),
+        placeholder: __('Enter Public API Key…', 'block-options'),
         onChange: function onChange(newKey) {
           _this4.setState({
             apiKey: newKey
@@ -9170,8 +9179,7 @@ function (_Component) {
         }
       }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(TextControl, {
         value: this.state.accessToken,
-        placeholder: __("Enter Access Token…", "block-options"),
-        help: __("You will only be asked once for API keys. Learn more on how to generate you API key and access token.", "block-options"),
+        placeholder: __('Enter Access Token…', 'block-options'),
         onChange: function onChange(newToken) {
           _this4.setState({
             accessToken: newToken
@@ -9183,7 +9191,10 @@ function (_Component) {
         onClick: function onClick() {
           _this4.updateApiKey();
         }
-      }, __("Apply & View Downloads", "block-options")))));
+      }, __('Apply & View Downloads', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Button, {
+        isTertiary: true,
+        isLarge: true
+      }, __('Get API Key', 'block-options')))));
     }
   }]);
 
@@ -9191,6 +9202,35 @@ function (_Component) {
 }(Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (withInstanceId(Edit));
+
+/***/ }),
+
+/***/ "./src/blocks/shareablock/components/loading.js":
+/*!******************************************************!*\
+  !*** ./src/blocks/shareablock/components/loading.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var Spinner = wp.components.Spinner;
+
+var ShareABlockLoading = function ShareABlockLoading() {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: "wp-block-embed is-loading"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Spinner, null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, __('Loading…', 'block-options')));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ShareABlockLoading);
 
 /***/ }),
 
