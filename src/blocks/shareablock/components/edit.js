@@ -39,6 +39,7 @@ class Edit extends Component {
 			keySaved: false,
 			isSavedKey: false,
 			isLoading: false,
+			isInserting: 0,
 			downloads: {},
 			isOpen: false,
 			error: null
@@ -130,13 +131,17 @@ class Edit extends Component {
 		fetchApi();
 	}
 
+	setIsInserting(key){
+		this.setState({ isInserting: key });
+	}
+
 	onClose(){
 		this.setState({ isOpen: !this.state.isOpen });
 	}
 
 	render() {
 		const { attributes } = this.props;
-		const { error, apiKey, accessToken, isLoading, isOpen, downloads } = this.state;
+		const { error, apiKey, accessToken, isLoading, isInserting, isOpen, downloads } = this.state;
 		const { hasApiKey, hasValidApiKey } = attributes;
 
 		if (isLoading) {
@@ -158,7 +163,7 @@ class Edit extends Component {
 							{ __( 'Invalid API or Access Token.', 'block-options' ) }
 						</div>
 					) : null }
-					{isOpen && (<DownloadsModal onClose={() => { this.onClose() }} downloads={ downloads } /> ) }
+					{isOpen && (<DownloadsModal clientId={this.props.clientId} onClose={() => { this.onClose() }} setIsInserting={(key) => { this.setIsInserting(key) }} isInserting={ isInserting } downloads={ downloads } /> ) }
 					{ hasValidApiKey ? (
 						<Fragment>
 							<Button 

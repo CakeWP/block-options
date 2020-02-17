@@ -4,6 +4,11 @@
 import {map} from 'lodash';
 
 /**
+ * Internal dependencies
+ */
+import insertImportedBlocks from '../../import/utils/insert';
+
+/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
@@ -11,30 +16,18 @@ const { parse, createBlock } = wp.blocks;
 const { Fragment, Component } = wp.element;
 const { Modal, TabPanel, Button } = wp.components;
 
-const DownloadsModal = ({ onClose, downloads }) => {
+const DownloadsModal = ({ clientId, onClose, downloads, isInserting, setIsInserting }) => {
 	const onSelect = (tabName) => {
 		console.log('Selecting tab', tabName);
 	};
 
 	const fetchDownload = async ( url ) => {
-		console.log(url);
 		const response = await fetch(url);
 
 		const data = await response.json();
 		if( data ){
-			const created = createBlock('editorskit/import', { file: data });
-			console.log(created);
+			insertImportedBlocks(clientId, data.content, onClose);
 		}
-		// if (data) {
-		// 	if (typeof data.error !== "undefined") {
-		// 		this.setState({ error: data.error, isLoading: false });
-		// 		setAttributes({ hasValidApiKey: false });
-		// 	} else {
-		// 		this.setState({ downloads: data, isLoading: false });
-		// 		setAttributes({ hasValidApiKey: true });
-		// 	}
-		// }
-
 	};
 
 	// if no purchases
@@ -72,7 +65,6 @@ const DownloadsModal = ({ onClose, downloads }) => {
 								<Fragment>
 									<ul className="shareablock-downloads">
 										{map(downloads.purchased_files, (download, key) => {
-											console.log(key);
 											return (
 												<li key={'shareablock-' + key} >
 													<div>
@@ -81,17 +73,18 @@ const DownloadsModal = ({ onClose, downloads }) => {
 													<h3>{download.name}</h3>
 													<Button
 														isPrimary
+														disabled={ isInserting && key === isInserting ? true: false }
 														onClick={()=>{
+															setIsInserting(key);
 															map(download.files, (files) => {
 																if ( files.download_url ){
 																	fetchDownload(files.download_url);
-
 																	return;
 																}
 															});
 														}}
 													>
-														{__( 'Insert', 'block-options' )}
+														{isInserting && key === isInserting ? __('Downloading....', 'block-options'): __( 'Insert', 'block-options' )}
 													</Button>
 													<Button
 														isTertiary

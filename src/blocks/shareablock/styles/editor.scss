@@ -22,6 +22,7 @@
 		margin-bottom: 50px;
 		flex: 1 1 30%;
 		overflow: hidden;
+		padding: 4px;
 
 		&:not(:first-child){
 			
@@ -42,6 +43,10 @@
 			color: #fff;
 			background: #272c51;
     		border-color: #272c51;
+		}
+
+		.components-spinner{
+			margin: 0px 7px;
 		}
 	}
 }

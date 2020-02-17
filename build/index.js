@@ -8936,6 +8936,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "lodash");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _import_utils_insert__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../import/utils/insert */ "./src/blocks/import/utils/insert.js");
 
 
 
@@ -8943,6 +8944,11 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * External dependencies
  */
+
+/**
+ * Internal dependencies
+ */
+
 
 /**
  * WordPress dependencies
@@ -8961,8 +8967,11 @@ var _wp$components = wp.components,
     Button = _wp$components.Button;
 
 var DownloadsModal = function DownloadsModal(_ref) {
-  var onClose = _ref.onClose,
-      downloads = _ref.downloads;
+  var clientId = _ref.clientId,
+      onClose = _ref.onClose,
+      downloads = _ref.downloads,
+      isInserting = _ref.isInserting,
+      setIsInserting = _ref.setIsInserting;
 
   var onSelect = function onSelect(tabName) {
     console.log('Selecting tab', tabName);
@@ -8974,40 +8983,27 @@ var DownloadsModal = function DownloadsModal(_ref) {
     var _ref2 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(url) {
-      var response, data, created;
+      var response, data;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              console.log(url);
-              _context.next = 3;
+              _context.next = 2;
               return fetch(url);
 
-            case 3:
+            case 2:
               response = _context.sent;
-              _context.next = 6;
+              _context.next = 5;
               return response.json();
 
-            case 6:
+            case 5:
               data = _context.sent;
 
               if (data) {
-                created = createBlock('editorskit/import', {
-                  file: data
-                });
-                console.log(created);
-              } // if (data) {
-              // 	if (typeof data.error !== "undefined") {
-              // 		this.setState({ error: data.error, isLoading: false });
-              // 		setAttributes({ hasValidApiKey: false });
-              // 	} else {
-              // 		this.setState({ downloads: data, isLoading: false });
-              // 		setAttributes({ hasValidApiKey: true });
-              // 	}
-              // }
+                Object(_import_utils_insert__WEBPACK_IMPORTED_MODULE_4__["default"])(clientId, data.content, onClose);
+              }
 
-
-            case 8:
+            case 7:
             case "end":
               return _context.stop();
           }
@@ -9048,14 +9044,15 @@ var DownloadsModal = function DownloadsModal(_ref) {
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("ul", {
       className: "shareablock-downloads"
     }, Object(lodash__WEBPACK_IMPORTED_MODULE_3__["map"])(downloads.purchased_files, function (download, key) {
-      console.log(key);
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("li", {
         key: 'shareablock-' + key
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", null, typeof download.thumbnail !== 'undefined' && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("img", {
         src: download.thumbnail
       })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("h3", null, download.name), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(Button, {
         isPrimary: true,
+        disabled: isInserting && key === isInserting ? true : false,
         onClick: function onClick() {
+          setIsInserting(key);
           Object(lodash__WEBPACK_IMPORTED_MODULE_3__["map"])(download.files, function (files) {
             if (files.download_url) {
               fetchDownload(files.download_url);
@@ -9063,7 +9060,7 @@ var DownloadsModal = function DownloadsModal(_ref) {
             }
           });
         }
-      }, __('Insert', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(Button, {
+      }, isInserting && key === isInserting ? __('Downloading....', 'block-options') : __('Insert', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(Button, {
         isTertiary: true,
         href: 'https://shareablock.com?p=' + key,
         target: "_blank"
@@ -9175,6 +9172,7 @@ function (_Component) {
       keySaved: false,
       isSavedKey: false,
       isLoading: false,
+      isInserting: 0,
       downloads: {},
       isOpen: false,
       error: null
@@ -9335,6 +9333,13 @@ function (_Component) {
       fetchApi();
     }
   }, {
+    key: "setIsInserting",
+    value: function setIsInserting(key) {
+      this.setState({
+        isInserting: key
+      });
+    }
+  }, {
     key: "onClose",
     value: function onClose() {
       this.setState({
@@ -9352,6 +9357,7 @@ function (_Component) {
           apiKey = _this$state.apiKey,
           accessToken = _this$state.accessToken,
           isLoading = _this$state.isLoading,
+          isInserting = _this$state.isInserting,
           isOpen = _this$state.isOpen,
           downloads = _this$state.downloads;
       var hasApiKey = attributes.hasApiKey,
@@ -9368,9 +9374,14 @@ function (_Component) {
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Fragment, null, error || hasApiKey && !hasValidApiKey ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])("div", {
         className: "editorskit-inline-error notice-error notice"
       }, __('Invalid API or Access Token.', 'block-options')) : null, isOpen && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(_downloads__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        clientId: this.props.clientId,
         onClose: function onClose() {
           _this4.onClose();
         },
+        setIsInserting: function setIsInserting(key) {
+          _this4.setIsInserting(key);
+        },
+        isInserting: isInserting,
         downloads: downloads
       }), hasValidApiKey ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Button, {
         isPrimary: true,
