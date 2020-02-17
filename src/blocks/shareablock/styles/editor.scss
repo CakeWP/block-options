@@ -15,7 +15,8 @@
 .shareablock-downloads{
 	display: flex;
 	flex-wrap: wrap;
-    justify-content: center;
+	align-items: flex-start;
+    justify-content: left;
 	margin-left: -32px;
 	li{
 		margin-left: 32px;
@@ -24,8 +25,8 @@
 		overflow: hidden;
 		padding: 4px;
 
-		&:not(:first-child){
-			
+		@media only screen and (min-width: 768px){
+			max-width: 30%;
 		}
 
 		img{

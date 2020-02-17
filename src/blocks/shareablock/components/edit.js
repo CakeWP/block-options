@@ -41,6 +41,7 @@ class Edit extends Component {
 			isLoading: false,
 			isInserting: 0,
 			downloads: {},
+			filtered: {},
 			isOpen: false,
 			error: null
 		};
@@ -131,6 +132,26 @@ class Edit extends Component {
 		fetchApi();
 	}
 
+	filterDownloads(keyword){
+		let filtered = {};
+
+		if ('all' === keyword ){
+			this.setState({ filtered: {} });
+
+			return;
+		}
+
+		let updatedList = Object.entries(this.state.downloads.purchased_files).filter(function (item) {
+			return item[1].category.toLowerCase().search(
+				keyword.toLowerCase()) !== -1;
+		});
+
+		updatedList.forEach(([key]) => {
+			filtered[key] = this.state.downloads.purchased_files[key];
+		});
+		this.setState({ filtered: { 'purchased_files': filtered } });
+	}
+
 	setIsInserting(key){
 		this.setState({ isInserting: key });
 	}
@@ -141,7 +162,7 @@ class Edit extends Component {
 
 	render() {
 		const { attributes } = this.props;
-		const { error, apiKey, accessToken, isLoading, isInserting, isOpen, downloads } = this.state;
+		const { error, apiKey, accessToken, isLoading, isInserting, isOpen, downloads, filtered } = this.state;
 		const { hasApiKey, hasValidApiKey } = attributes;
 
 		if (isLoading) {
@@ -163,8 +184,8 @@ class Edit extends Component {
 							{ __( 'Invalid API or Access Token.', 'block-options' ) }
 						</div>
 					) : null }
-					{isOpen && (<DownloadsModal clientId={this.props.clientId} onClose={() => { this.onClose() }} setIsInserting={(key) => { this.setIsInserting(key) }} isInserting={ isInserting } downloads={ downloads } /> ) }
-					{ hasValidApiKey ? (
+					{isOpen && (<DownloadsModal clientId={this.props.clientId} onClose={() => { this.onClose() }} setIsInserting={(key) => { this.setIsInserting(key) }} isInserting={isInserting} downloads={Object.keys(filtered).length > 0 ? filtered : downloads} filterDownloads={(keyword) => { this.filterDownloads(keyword) } } /> ) }
+					{ apiKey && accessToken ? (
 						<Fragment>
 							<Button 
 								isPrimary 

@@ -16,9 +16,9 @@ const { parse, createBlock } = wp.blocks;
 const { Fragment, Component } = wp.element;
 const { Modal, TabPanel, Button } = wp.components;
 
-const DownloadsModal = ({ clientId, onClose, downloads, isInserting, setIsInserting }) => {
+const DownloadsModal = ({ clientId, onClose, downloads, isInserting, setIsInserting, filterDownloads }) => {
 	const onSelect = (tabName) => {
-		console.log('Selecting tab', tabName);
+		filterDownloads(tabName);
 	};
 
 	const fetchDownload = async ( url ) => {
@@ -34,7 +34,7 @@ const DownloadsModal = ({ clientId, onClose, downloads, isInserting, setIsInsert
 	if (typeof downloads.purchased_files === 'undefined' ){
 		return false;
 	}
-
+	
 	return(
 		<Fragment>
 			<Modal
@@ -57,6 +57,11 @@ const DownloadsModal = ({ clientId, onClose, downloads, isInserting, setIsInsert
 							name: 'block-patterns',
 							title: __('Block Patterns', 'block-options'),
 							className: 'shareablock-block-patterns',
+						},
+						{
+							name: 'templates',
+							title: __('Templates', 'block-options'),
+							className: 'shareablock-templates',
 						},
 					]}>
 					{

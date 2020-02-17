@@ -8971,10 +8971,11 @@ var DownloadsModal = function DownloadsModal(_ref) {
       onClose = _ref.onClose,
       downloads = _ref.downloads,
       isInserting = _ref.isInserting,
-      setIsInserting = _ref.setIsInserting;
+      setIsInserting = _ref.setIsInserting,
+      filterDownloads = _ref.filterDownloads;
 
   var onSelect = function onSelect(tabName) {
-    console.log('Selecting tab', tabName);
+    filterDownloads(tabName);
   };
 
   var fetchDownload =
@@ -9039,6 +9040,10 @@ var DownloadsModal = function DownloadsModal(_ref) {
       name: 'block-patterns',
       title: __('Block Patterns', 'block-options'),
       className: 'shareablock-block-patterns'
+    }, {
+      name: 'templates',
+      title: __('Templates', 'block-options'),
+      className: 'shareablock-templates'
     }]
   }, function (tab) {
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("ul", {
@@ -9082,26 +9087,29 @@ var DownloadsModal = function DownloadsModal(_ref) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "@babel/runtime/regenerator");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/asyncToGenerator.js");
-/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _loading__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./loading */ "./src/blocks/shareablock/components/loading.js");
-/* harmony import */ var _downloads__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./downloads */ "./src/blocks/shareablock/components/downloads.js");
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/regenerator */ "@babel/runtime/regenerator");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/asyncToGenerator.js");
+/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _loading__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./loading */ "./src/blocks/shareablock/components/loading.js");
+/* harmony import */ var _downloads__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./downloads */ "./src/blocks/shareablock/components/downloads.js");
+
 
 
 
@@ -9157,14 +9165,14 @@ var apiPath = 'https://shareablock.com/edd-api/my-files';
 var Edit =
 /*#__PURE__*/
 function (_Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_7___default()(Edit, _Component);
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_8___default()(Edit, _Component);
 
   function Edit() {
     var _this;
 
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2___default()(this, Edit);
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_3___default()(this, Edit);
 
-    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5___default()(Edit).apply(this, arguments));
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6___default()(Edit).apply(this, arguments));
     _this.state = {
       apiKey: "",
       accessToken: "",
@@ -9174,6 +9182,7 @@ function (_Component) {
       isLoading: false,
       isInserting: 0,
       downloads: {},
+      filtered: {},
       isOpen: false,
       error: null
     };
@@ -9197,13 +9206,13 @@ function (_Component) {
         });
       }
     });
-    _this.saveApiKey = _this.saveApiKey.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6___default()(_this));
-    _this.updateApiKey = _this.updateApiKey.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6___default()(_this));
-    _this.fetchDownloads = _this.fetchDownloads.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6___default()(_this));
+    _this.saveApiKey = _this.saveApiKey.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7___default()(_this));
+    _this.updateApiKey = _this.updateApiKey.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7___default()(_this));
+    _this.fetchDownloads = _this.fetchDownloads.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7___default()(_this));
     return _this;
   }
 
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3___default()(Edit, [{
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_4___default()(Edit, [{
     key: "componentDidMount",
     value: function componentDidMount() {}
   }, {
@@ -9276,11 +9285,11 @@ function (_Component) {
       var fetchApi =
       /*#__PURE__*/
       function () {
-        var _ref = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
+        var _ref = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()(
         /*#__PURE__*/
-        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee() {
           var response, data;
-          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee$(_context) {
             while (1) {
               switch (_context.prev = _context.next) {
                 case 0:
@@ -9333,6 +9342,35 @@ function (_Component) {
       fetchApi();
     }
   }, {
+    key: "filterDownloads",
+    value: function filterDownloads(keyword) {
+      var _this4 = this;
+
+      var filtered = {};
+
+      if ('all' === keyword) {
+        this.setState({
+          filtered: {}
+        });
+        return;
+      }
+
+      var updatedList = Object.entries(this.state.downloads.purchased_files).filter(function (item) {
+        return item[1].category.toLowerCase().search(keyword.toLowerCase()) !== -1;
+      });
+      updatedList.forEach(function (_ref2) {
+        var _ref3 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_ref2, 1),
+            key = _ref3[0];
+
+        filtered[key] = _this4.state.downloads.purchased_files[key];
+      });
+      this.setState({
+        filtered: {
+          'purchased_files': filtered
+        }
+      });
+    }
+  }, {
     key: "setIsInserting",
     value: function setIsInserting(key) {
       this.setState({
@@ -9349,7 +9387,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
 
       var attributes = this.props.attributes;
       var _this$state = this.state,
@@ -9359,59 +9397,63 @@ function (_Component) {
           isLoading = _this$state.isLoading,
           isInserting = _this$state.isInserting,
           isOpen = _this$state.isOpen,
-          downloads = _this$state.downloads;
+          downloads = _this$state.downloads,
+          filtered = _this$state.filtered;
       var hasApiKey = attributes.hasApiKey,
           hasValidApiKey = attributes.hasValidApiKey;
 
       if (isLoading) {
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(_loading__WEBPACK_IMPORTED_MODULE_9__["default"], null);
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_9__["createElement"])(_loading__WEBPACK_IMPORTED_MODULE_10__["default"], null);
       }
 
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Placeholder, {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_9__["createElement"])(Placeholder, {
         icon: "layout",
         label: __('ShareABlock from EditorsKit', 'block-options'),
         instructions: __('Insert your downloads from shareablock.com at ease.', 'block-options')
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Fragment, null, error || hasApiKey && !hasValidApiKey ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])("div", {
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_9__["createElement"])(Fragment, null, error || hasApiKey && !hasValidApiKey ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_9__["createElement"])("div", {
         className: "editorskit-inline-error notice-error notice"
-      }, __('Invalid API or Access Token.', 'block-options')) : null, isOpen && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(_downloads__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      }, __('Invalid API or Access Token.', 'block-options')) : null, isOpen && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_9__["createElement"])(_downloads__WEBPACK_IMPORTED_MODULE_11__["default"], {
         clientId: this.props.clientId,
         onClose: function onClose() {
-          _this4.onClose();
+          _this5.onClose();
         },
         setIsInserting: function setIsInserting(key) {
-          _this4.setIsInserting(key);
+          _this5.setIsInserting(key);
         },
         isInserting: isInserting,
-        downloads: downloads
-      }), hasValidApiKey ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Button, {
+        downloads: Object.keys(filtered).length > 0 ? filtered : downloads,
+        filterDownloads: function filterDownloads(keyword) {
+          _this5.filterDownloads(keyword);
+        }
+      }), apiKey && accessToken ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_9__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_9__["createElement"])(Button, {
         isPrimary: true,
         isLarge: true,
         onClick: function onClick() {
-          _this4.updateApiKey();
+          _this5.updateApiKey();
         }
-      }, __('View Downloads', 'block-options'))) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(TextControl, {
+      }, __('View Downloads', 'block-options'))) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_9__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_9__["createElement"])(TextControl, {
         value: apiKey,
         label: __('API Settings', 'block-options'),
         placeholder: __('Enter Public API Key…', 'block-options'),
         onChange: function onChange(newKey) {
-          _this4.setState({
+          _this5.setState({
             apiKey: newKey
           });
         }
-      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(TextControl, {
+      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_9__["createElement"])(TextControl, {
         value: accessToken,
         placeholder: __('Enter Access Token…', 'block-options'),
         onChange: function onChange(newToken) {
-          _this4.setState({
+          _this5.setState({
             accessToken: newToken
           });
         }
-      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Button, {
+      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_9__["createElement"])(Button, {
         isPrimary: true,
         onClick: function onClick() {
-          _this4.updateApiKey();
+          _this5.updateApiKey();
         }
-      }, __('Apply & View Downloads', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Button, {
+      }, __('Apply & View Downloads', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_9__["createElement"])(Button, {
         isTertiary: true
       }, __('Get API Key', 'block-options')))));
     }
