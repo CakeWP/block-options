@@ -6,6 +6,43 @@
 		.components-base-control__help{
 			margin-bottom: 0px;
 		}
+		.components-button{
+			margin-right: 8px;
+		}
+	}
+}
+
+.shareablock-downloads{
+	display: flex;
+	flex-wrap: wrap;
+    justify-content: center;
+	margin-left: -32px;
+	li{
+		margin-left: 32px;
+		margin-bottom: 50px;
+		flex: 1 1 30%;
+		overflow: hidden;
+
+		&:not(:first-child){
+			
+		}
+
+		img{
+			max-width: 100%;
+		}
+
+		> div{
+			max-height: 305px;
+			overflow: hidden;
+			border: 3px solid #f0f0f0;
+			line-height: 0;
+		}
+
+		.components-button.is-primary{
+			color: #fff;
+			background: #272c51;
+    		border-color: #272c51;
+		}
 	}
 }
 

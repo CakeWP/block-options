@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import ShareABlockLoading from "./loading";
+import DownloadsModal from "./downloads";
 ;
 /**
  * WordPress dependencies
@@ -22,7 +23,7 @@ wp.api.loadPromise.then( () => {
 	settings = new wp.api.models.Settings();
 } );
 
-const apiPath = 'https://staging-shareablock.kinsta.cloud/edd-api/my-files';
+const apiPath = 'https://shareablock.com/edd-api/my-files';
 
 /**
  * Block edit function
@@ -100,6 +101,7 @@ class Edit extends Component {
 
 			setAttributes( { hasApiKey: true, hasValidApiKey: false } );
 			this.fetchDownloads( apiKey, accessToken );
+			this.onClose();
 		} );
 	}
 
@@ -128,14 +130,19 @@ class Edit extends Component {
 		fetchApi();
 	}
 
+	onClose(){
+		this.setState({ isOpen: !this.state.isOpen });
+	}
+
 	render() {
 		const { attributes } = this.props;
+		const { error, apiKey, accessToken, isLoading, isOpen, downloads } = this.state;
 		const { hasApiKey, hasValidApiKey } = attributes;
 
-		if (this.state.isLoading) {
+		if (isLoading) {
 			return <ShareABlockLoading />;
 		}
-		console.log(hasValidApiKey);
+
 		return (
 			<Placeholder
 				icon="layout"
@@ -146,21 +153,27 @@ class Edit extends Component {
 				) }
 			>
 				<Fragment>
-					{ this.state.error || ( hasApiKey && ! hasValidApiKey ) ? (
+					{ error || ( hasApiKey && ! hasValidApiKey ) ? (
 						<div className="editorskit-inline-error notice-error notice">
 							{ __( 'Invalid API or Access Token.', 'block-options' ) }
 						</div>
 					) : null }
+					{isOpen && (<DownloadsModal onClose={() => { this.onClose() }} downloads={ downloads } /> ) }
 					{ hasValidApiKey ? (
 						<Fragment>
-							<Button isPrimary isLarge onClick={ () => {} }>
+							<Button 
+								isPrimary 
+								isLarge 
+								onClick={() => { 
+									this.updateApiKey();
+								} }>
 								{ __( 'View Downloads', 'block-options' ) }
 							</Button>
 						</Fragment>
 					) : (
 						<Fragment>
 							<TextControl
-								value={ this.state.apiKey }
+								value={ apiKey }
 								label={ __( 'API Settings', 'block-options' ) }
 								placeholder={ __( 'Enter Public API Key…', 'block-options' ) }
 								onChange={ ( newKey ) => {
@@ -168,7 +181,7 @@ class Edit extends Component {
 								} }
 							/>
 							<TextControl
-								value={ this.state.accessToken }
+								value={ accessToken }
 								placeholder={ __( 'Enter Access Token…', 'block-options' ) }
 								onChange={ ( newToken ) => {
 									this.setState( { accessToken: newToken } );
@@ -176,7 +189,6 @@ class Edit extends Component {
 							/>
 							<Button
 								isPrimary
-								isLarge
 								onClick={ () => {
 									this.updateApiKey();
 								} }
@@ -185,7 +197,6 @@ class Edit extends Component {
 							</Button>
 							<Button
 								isTertiary
-								isLarge
 							>
 								{ __( 'Get API Key', 'block-options' ) }
 							</Button>

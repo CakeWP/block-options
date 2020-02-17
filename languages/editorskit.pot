@@ -3,42 +3,82 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/blocks/shareablock/components/edit.js:141
+#: src/blocks/import/components/edit.js:110
+msgid "Import from JSON"
+msgstr ""
+
+#: src/blocks/import/components/edit.js:121
+msgid "Upload"
+msgstr ""
+
+#: src/blocks/import/components/edit.js:78
+msgid "Invalid JSON file"
+msgstr ""
+
+#: src/blocks/import/components/edit.js:81
+msgid "Invalid Reusable Block JSON file"
+msgstr ""
+
+#: src/blocks/import/components/edit.js:84
+msgid "Unknown error"
+msgstr ""
+
+#: src/blocks/import/components/edit.js:98
+msgid "Drag a file or upload a new one from your device."
+msgstr ""
+
+#: src/blocks/shareablock/components/downloads.js:102
+msgid "Preview"
+msgstr ""
+
+#: src/blocks/shareablock/components/downloads.js:49
+msgid "ShareABlock Patterns and Templates"
+msgstr ""
+
+#: src/blocks/shareablock/components/downloads.js:61
+msgid "All Downloads"
+msgstr ""
+
+#: src/blocks/shareablock/components/downloads.js:66
+msgid "Block Patterns"
+msgstr ""
+
+#: src/blocks/shareablock/components/downloads.js:95
+msgid "Insert"
+msgstr ""
+
+#: src/blocks/shareablock/components/edit.js:149
 msgid "ShareABlock from EditorsKit"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:142
+#: src/blocks/shareablock/components/edit.js:150
 msgid "Insert your downloads from shareablock.com at ease."
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:150
+#: src/blocks/shareablock/components/edit.js:158
 msgid "Invalid API or Access Token."
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:156
+#: src/blocks/shareablock/components/edit.js:170
 msgid "View Downloads"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:163
+#: src/blocks/shareablock/components/edit.js:177
 msgid "API Settings"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:164
+#: src/blocks/shareablock/components/edit.js:178
 msgid "Enter Public API Key…"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:171
+#: src/blocks/shareablock/components/edit.js:185
 msgid "Enter Access Token…"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:183
+#: src/blocks/shareablock/components/edit.js:196
 msgid "Apply & View Downloads"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:189
+#: src/blocks/shareablock/components/edit.js:201
 msgid "Get API Key"
-msgstr ""
-
-#: src/blocks/shareablock/components/loading.js:10
-msgid "Loading…"
 msgstr ""

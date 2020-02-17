@@ -8402,6 +8402,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _utils_import__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/import */ "./src/blocks/import/utils/import.js");
+/* harmony import */ var _utils_insert__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/insert */ "./src/blocks/import/utils/insert.js");
 
 
 
@@ -8413,6 +8414,7 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Internal dependencies
  */
+
 
 /**
  * WordPress dependencies
@@ -8478,34 +8480,6 @@ function (_Component) {
       this.isStillMounted = false;
     }
   }, {
-    key: "insertImportedBlocks",
-    value: function insertImportedBlocks(blocks) {
-      var onClose = this.props.onClose;
-      blocks = parse(blocks);
-      var toSelect = [];
-      var blockIndex = select('core/block-editor').getBlockInsertionPoint();
-
-      if (blocks.length > 0) {
-        for (var block in blocks) {
-          var created = createBlock(blocks[block].name, blocks[block].attributes, blocks[block].innerBlocks);
-          dispatch('core/block-editor').insertBlocks(created, parseInt(blockIndex.index) + parseInt(block));
-
-          if (typeof created !== 'undefined') {
-            toSelect.push(created.clientId);
-          }
-        } //remove insertion point if empty
-
-
-        dispatch('core/block-editor').removeBlock(this.props.clientId); //select inserted blocks
-
-        if (toSelect.length > 0) {
-          dispatch('core/block-editor').multiSelect(toSelect[0], toSelect.reverse()[0]);
-        }
-      }
-
-      onClose();
-    }
-  }, {
     key: "addFile",
     value: function addFile(files) {
       var _this2 = this;
@@ -8532,7 +8506,7 @@ function (_Component) {
           isLoading: false
         });
 
-        _this2.insertImportedBlocks(reusableBlock);
+        Object(_utils_insert__WEBPACK_IMPORTED_MODULE_8__["default"])(_this2.props.clientId, reusableBlock, _this2.props.onClose);
       }).catch(function (error) {
         if (!_this2.isStillMounted) {
           return;
@@ -8880,6 +8854,60 @@ function importCoreBlocks(parsedContent) {
 
 /***/ }),
 
+/***/ "./src/blocks/import/utils/insert.js":
+/*!*******************************************!*\
+  !*** ./src/blocks/import/utils/insert.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return insertImportedBlocks; });
+/**
+ * WordPress dependencies
+ */
+var _wp$data = wp.data,
+    select = _wp$data.select,
+    dispatch = _wp$data.dispatch;
+var _wp$blocks = wp.blocks,
+    parse = _wp$blocks.parse,
+    createBlock = _wp$blocks.createBlock;
+/**
+ * Reads the textual content of the given file.
+ *
+ * @param  {File} file        File.
+ * @return {Promise<string>}  Content of the file.
+ */
+
+function insertImportedBlocks(clientId, blocks, onClose) {
+  blocks = parse(blocks);
+  var toSelect = [];
+  var blockIndex = select('core/block-editor').getBlockInsertionPoint();
+
+  if (blocks.length > 0) {
+    for (var block in blocks) {
+      var created = createBlock(blocks[block].name, blocks[block].attributes, blocks[block].innerBlocks);
+      dispatch('core/block-editor').insertBlocks(created, parseInt(blockIndex.index) + parseInt(block));
+
+      if (typeof created !== 'undefined') {
+        toSelect.push(created.clientId);
+      }
+    } //remove insertion point if empty
+
+
+    dispatch('core/block-editor').removeBlock(clientId); //select inserted blocks
+
+    if (toSelect.length > 0) {
+      dispatch('core/block-editor').multiSelect(toSelect[0], toSelect.reverse()[0]);
+    }
+  }
+
+  onClose();
+}
+
+/***/ }),
+
 /***/ "./src/blocks/shareablock/block.json":
 /*!*******************************************!*\
   !*** ./src/blocks/shareablock/block.json ***!
@@ -8888,6 +8916,163 @@ function importCoreBlocks(parsedContent) {
 /***/ (function(module) {
 
 module.exports = JSON.parse("{\"name\":\"shareablock\",\"category\":\"layout\",\"attributes\":{\"hasApiKey\":{\"type\":\"boolean\",\"default\":false},\"hasValidApiKey\":{\"type\":\"boolean\",\"default\":false}}}");
+
+/***/ }),
+
+/***/ "./src/blocks/shareablock/components/downloads.js":
+/*!********************************************************!*\
+  !*** ./src/blocks/shareablock/components/downloads.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "@babel/runtime/regenerator");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/asyncToGenerator.js");
+/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+/**
+ * External dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+var __ = wp.i18n.__;
+var _wp$blocks = wp.blocks,
+    parse = _wp$blocks.parse,
+    createBlock = _wp$blocks.createBlock;
+var _wp$element = wp.element,
+    Fragment = _wp$element.Fragment,
+    Component = _wp$element.Component;
+var _wp$components = wp.components,
+    Modal = _wp$components.Modal,
+    TabPanel = _wp$components.TabPanel,
+    Button = _wp$components.Button;
+
+var DownloadsModal = function DownloadsModal(_ref) {
+  var onClose = _ref.onClose,
+      downloads = _ref.downloads;
+
+  var onSelect = function onSelect(tabName) {
+    console.log('Selecting tab', tabName);
+  };
+
+  var fetchDownload =
+  /*#__PURE__*/
+  function () {
+    var _ref2 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(url) {
+      var response, data, created;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              console.log(url);
+              _context.next = 3;
+              return fetch(url);
+
+            case 3:
+              response = _context.sent;
+              _context.next = 6;
+              return response.json();
+
+            case 6:
+              data = _context.sent;
+
+              if (data) {
+                created = createBlock('editorskit/import', {
+                  file: data
+                });
+                console.log(created);
+              } // if (data) {
+              // 	if (typeof data.error !== "undefined") {
+              // 		this.setState({ error: data.error, isLoading: false });
+              // 		setAttributes({ hasValidApiKey: false });
+              // 	} else {
+              // 		this.setState({ downloads: data, isLoading: false });
+              // 		setAttributes({ hasValidApiKey: true });
+              // 	}
+              // }
+
+
+            case 8:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function fetchDownload(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }(); // if no purchases
+
+
+  if (typeof downloads.purchased_files === 'undefined') {
+    return false;
+  }
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(Modal, {
+    title: __('ShareABlock Patterns and Templates', 'block-options'),
+    className: "editorskit-fullscreen-modal",
+    onRequestClose: function onRequestClose() {
+      onClose();
+    }
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(TabPanel, {
+    className: "my-tab-panel",
+    activeClass: "is-active-tab",
+    onSelect: onSelect,
+    tabs: [{
+      name: 'all',
+      title: __('All Downloads', 'block-options'),
+      className: 'shareablock-all-downloads'
+    }, {
+      name: 'block-patterns',
+      title: __('Block Patterns', 'block-options'),
+      className: 'shareablock-block-patterns'
+    }]
+  }, function (tab) {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("ul", {
+      className: "shareablock-downloads"
+    }, Object(lodash__WEBPACK_IMPORTED_MODULE_3__["map"])(downloads.purchased_files, function (download, key) {
+      console.log(key);
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("li", {
+        key: 'shareablock-' + key
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", null, typeof download.thumbnail !== 'undefined' && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("img", {
+        src: download.thumbnail
+      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("h3", null, download.name), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(Button, {
+        isPrimary: true,
+        onClick: function onClick() {
+          Object(lodash__WEBPACK_IMPORTED_MODULE_3__["map"])(download.files, function (files) {
+            if (files.download_url) {
+              fetchDownload(files.download_url);
+              return;
+            }
+          });
+        }
+      }, __('Insert', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(Button, {
+        isTertiary: true,
+        href: 'https://shareablock.com?p=' + key,
+        target: "_blank"
+      }, __('Preview', 'block-options')));
+    })));
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (DownloadsModal);
 
 /***/ }),
 
@@ -8919,6 +9104,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _loading__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./loading */ "./src/blocks/shareablock/components/loading.js");
+/* harmony import */ var _downloads__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./downloads */ "./src/blocks/shareablock/components/downloads.js");
 
 
 
@@ -8932,6 +9118,7 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Internal dependencies
  */
+
 
 ;
 /**
@@ -8965,7 +9152,7 @@ var settings;
 wp.api.loadPromise.then(function () {
   settings = new wp.api.models.Settings();
 });
-var apiPath = 'https://staging-shareablock.kinsta.cloud/edd-api/my-files';
+var apiPath = 'https://shareablock.com/edd-api/my-files';
 /**
  * Block edit function
  */
@@ -8982,13 +9169,14 @@ function (_Component) {
 
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5___default()(Edit).apply(this, arguments));
     _this.state = {
-      apiKey: '',
-      accessToken: '',
+      apiKey: "",
+      accessToken: "",
       isSaving: false,
       keySaved: false,
       isSavedKey: false,
       isLoading: false,
       downloads: {},
+      isOpen: false,
       error: null
     };
     settings.on('change:shareablock_api_key', function (model) {
@@ -9071,6 +9259,8 @@ function (_Component) {
         });
 
         _this2.fetchDownloads(apiKey, accessToken);
+
+        _this2.onClose();
       });
     }
   }, {
@@ -9145,31 +9335,51 @@ function (_Component) {
       fetchApi();
     }
   }, {
+    key: "onClose",
+    value: function onClose() {
+      this.setState({
+        isOpen: !this.state.isOpen
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this4 = this;
 
       var attributes = this.props.attributes;
+      var _this$state = this.state,
+          error = _this$state.error,
+          apiKey = _this$state.apiKey,
+          accessToken = _this$state.accessToken,
+          isLoading = _this$state.isLoading,
+          isOpen = _this$state.isOpen,
+          downloads = _this$state.downloads;
       var hasApiKey = attributes.hasApiKey,
           hasValidApiKey = attributes.hasValidApiKey;
 
-      if (this.state.isLoading) {
+      if (isLoading) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(_loading__WEBPACK_IMPORTED_MODULE_9__["default"], null);
       }
 
-      console.log(hasValidApiKey);
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Placeholder, {
         icon: "layout",
         label: __('ShareABlock from EditorsKit', 'block-options'),
         instructions: __('Insert your downloads from shareablock.com at ease.', 'block-options')
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Fragment, null, this.state.error || hasApiKey && !hasValidApiKey ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])("div", {
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Fragment, null, error || hasApiKey && !hasValidApiKey ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])("div", {
         className: "editorskit-inline-error notice-error notice"
-      }, __('Invalid API or Access Token.', 'block-options')) : null, hasValidApiKey ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Button, {
+      }, __('Invalid API or Access Token.', 'block-options')) : null, isOpen && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(_downloads__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        onClose: function onClose() {
+          _this4.onClose();
+        },
+        downloads: downloads
+      }), hasValidApiKey ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Button, {
         isPrimary: true,
         isLarge: true,
-        onClick: function onClick() {}
+        onClick: function onClick() {
+          _this4.updateApiKey();
+        }
       }, __('View Downloads', 'block-options'))) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(TextControl, {
-        value: this.state.apiKey,
+        value: apiKey,
         label: __('API Settings', 'block-options'),
         placeholder: __('Enter Public API Key…', 'block-options'),
         onChange: function onChange(newKey) {
@@ -9178,7 +9388,7 @@ function (_Component) {
           });
         }
       }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(TextControl, {
-        value: this.state.accessToken,
+        value: accessToken,
         placeholder: __('Enter Access Token…', 'block-options'),
         onChange: function onChange(newToken) {
           _this4.setState({
@@ -9187,13 +9397,11 @@ function (_Component) {
         }
       }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Button, {
         isPrimary: true,
-        isLarge: true,
         onClick: function onClick() {
           _this4.updateApiKey();
         }
       }, __('Apply & View Downloads', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__["createElement"])(Button, {
-        isTertiary: true,
-        isLarge: true
+        isTertiary: true
       }, __('Get API Key', 'block-options')))));
     }
   }]);
