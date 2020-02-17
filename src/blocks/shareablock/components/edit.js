@@ -32,14 +32,15 @@ class Edit extends Component {
 		super( ...arguments );
 
 		this.state = {
-			apiKey: '',
-			accessToken: '',
+			apiKey: "",
+			accessToken: "",
 			isSaving: false,
 			keySaved: false,
 			isSavedKey: false,
 			isLoading: false,
 			downloads: {},
-			error: null,
+			isOpen: false,
+			error: null
 		};
 
 		settings.on( 'change:shareablock_api_key', ( model ) => {
