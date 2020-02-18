@@ -12,6 +12,25 @@
 	}
 }
 
+.shareablock-downloads-panel{
+	.components-tab-panel__tabs{
+		.components-button{
+			margin-right: 5px;
+			padding: 5px 10px;
+			border-radius: 3px;
+
+			&:hover{
+				background: #f0f0f0;
+			}
+
+			&.is-active-tab{
+				color: #fff;
+				background: #272c51;
+			}
+		}
+	}
+}
+
 .shareablock-downloads{
 	display: flex;
 	flex-wrap: wrap;

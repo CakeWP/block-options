@@ -44,7 +44,7 @@ const DownloadsModal = ({ clientId, onClose, downloads, isInserting, setIsInsert
 					onClose();
 				}}
 			>
-				<TabPanel className="my-tab-panel"
+				<TabPanel className="shareablock-downloads-panel"
 					activeClass="is-active-tab"
 					onSelect={onSelect}
 					tabs={[

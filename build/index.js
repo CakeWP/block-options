@@ -9029,7 +9029,7 @@ var DownloadsModal = function DownloadsModal(_ref) {
       onClose();
     }
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(TabPanel, {
-    className: "my-tab-panel",
+    className: "shareablock-downloads-panel",
     activeClass: "is-active-tab",
     onSelect: onSelect,
     tabs: [{
