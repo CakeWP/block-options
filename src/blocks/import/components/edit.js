@@ -8,10 +8,8 @@ import insertImportedBlocks from '../utils/insert';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { select, dispatch } = wp.data;
 const { withInstanceId } = wp.compose;
 const { Fragment, Component } = wp.element;
-const { parse, createBlock } = wp.blocks;
 const { MediaUploadCheck } = wp.blockEditor;
 const { DropZone, FormFileUpload, Placeholder, Notice } = wp.components;
 
@@ -65,7 +63,7 @@ class Edit extends Component {
 				}
 
 				this.setState( { isLoading: false } );
-				insertImportedBlocks(this.props.clientId, reusableBlock, this.props.onClose );
+				insertImportedBlocks( this.props.clientId, reusableBlock, this.props.onClose );
 			} )
 			.catch( ( error ) => {
 				if ( ! this.isStillMounted ) {

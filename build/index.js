@@ -8421,16 +8421,10 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 var __ = wp.i18n.__;
-var _wp$data = wp.data,
-    select = _wp$data.select,
-    dispatch = _wp$data.dispatch;
 var withInstanceId = wp.compose.withInstanceId;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component;
-var _wp$blocks = wp.blocks,
-    parse = _wp$blocks.parse,
-    createBlock = _wp$blocks.createBlock;
 var MediaUploadCheck = wp.blockEditor.MediaUploadCheck;
 var _wp$components = wp.components,
     DropZone = _wp$components.DropZone,
@@ -8873,13 +8867,6 @@ var _wp$data = wp.data,
 var _wp$blocks = wp.blocks,
     parse = _wp$blocks.parse,
     createBlock = _wp$blocks.createBlock;
-/**
- * Reads the textual content of the given file.
- *
- * @param  {File} file        File.
- * @return {Promise<string>}  Content of the file.
- */
-
 function insertImportedBlocks(clientId, blocks, onClose) {
   blocks = parse(blocks);
   var toSelect = [];
@@ -8955,12 +8942,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 var __ = wp.i18n.__;
-var _wp$blocks = wp.blocks,
-    parse = _wp$blocks.parse,
-    createBlock = _wp$blocks.createBlock;
-var _wp$element = wp.element,
-    Fragment = _wp$element.Fragment,
-    Component = _wp$element.Component;
+var Fragment = wp.element.Fragment;
 var _wp$components = wp.components,
     Modal = _wp$components.Modal,
     TabPanel = _wp$components.TabPanel,
@@ -9045,14 +9027,15 @@ var DownloadsModal = function DownloadsModal(_ref) {
       title: __('Templates', 'block-options'),
       className: 'shareablock-templates'
     }]
-  }, function (tab) {
+  }, function () {
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("ul", {
       className: "shareablock-downloads"
     }, Object(lodash__WEBPACK_IMPORTED_MODULE_3__["map"])(downloads.purchased_files, function (download, key) {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("li", {
         key: 'shareablock-' + key
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", null, typeof download.thumbnail !== 'undefined' && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("img", {
-        src: download.thumbnail
+        src: download.thumbnail,
+        alt: download.name
       })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("h3", null, download.name), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(Button, {
         isPrimary: true,
         disabled: isInserting && key === isInserting ? true : false,
@@ -9061,7 +9044,6 @@ var DownloadsModal = function DownloadsModal(_ref) {
           Object(lodash__WEBPACK_IMPORTED_MODULE_3__["map"])(download.files, function (files) {
             if (files.download_url) {
               fetchDownload(files.download_url);
-              return;
             }
           });
         }
@@ -9130,28 +9112,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-;
 /**
  * WordPress dependencies
  */
 
 var __ = wp.i18n.__;
-var _wp$data = wp.data,
-    select = _wp$data.select,
-    dispatch = _wp$data.dispatch;
 var withInstanceId = wp.compose.withInstanceId;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component;
-var _wp$blocks = wp.blocks,
-    parse = _wp$blocks.parse,
-    createBlock = _wp$blocks.createBlock;
-var MediaUploadCheck = wp.blockEditor.MediaUploadCheck;
 var _wp$components = wp.components,
-    DropZone = _wp$components.DropZone,
-    FormFileUpload = _wp$components.FormFileUpload,
     Placeholder = _wp$components.Placeholder,
-    Modal = _wp$components.Modal,
     TextControl = _wp$components.TextControl,
     Button = _wp$components.Button;
 /**
@@ -9179,8 +9150,8 @@ function (_Component) {
 
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_6___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_7___default()(Edit).apply(this, arguments));
     _this.state = {
-      apiKey: "",
-      accessToken: "",
+      apiKey: '',
+      accessToken: '',
       hasValidApiKey: false,
       isSaving: false,
       keySaved: false,
@@ -9293,8 +9264,6 @@ function (_Component) {
 
       var apiKey = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.state.apiKey;
       var accessToken = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.state.accessToken;
-      var hasValidApiKey = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.state.hasValidApiKey;
-      var setAttributes = this.props.setAttributes;
       this.setState({
         isLoading: true
       });
@@ -9322,7 +9291,7 @@ function (_Component) {
                   data = _context.sent;
 
                   if (data) {
-                    if (typeof data.error !== "undefined") {
+                    if (typeof data.error !== 'undefined') {
                       _this3.setState({
                         error: data.error,
                         isLoading: false
@@ -9379,7 +9348,7 @@ function (_Component) {
       });
       this.setState({
         filtered: {
-          'purchased_files': filtered
+          purchased_files: filtered
         }
       });
     }

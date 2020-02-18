@@ -1,29 +1,35 @@
-.wp-block[data-type="editorskit/shareablock"]{
-	.components-placeholder__fieldset{
-		.components-base-control{
+.wp-block[data-type="editorskit/shareablock"] {
+
+	.components-placeholder__fieldset {
+
+		.components-base-control {
 			width: 100%;
 		}
-		.components-base-control__help{
-			margin-bottom: 0px;
+
+		.components-base-control__help {
+			margin-bottom: 0;
 		}
-		.components-button{
+
+		.components-button {
 			margin-right: 8px;
 		}
 	}
 }
 
-.shareablock-downloads-panel{
-	.components-tab-panel__tabs{
-		.components-button{
+.shareablock-downloads-panel {
+
+	.components-tab-panel__tabs {
+
+		.components-button {
 			margin-right: 5px;
 			padding: 5px 10px;
 			border-radius: 3px;
 
-			&:hover{
+			&:hover {
 				background: #f0f0f0;
 			}
 
-			&.is-active-tab{
+			&.is-active-tab {
 				color: #fff;
 				background: #272c51;
 			}
@@ -31,53 +37,55 @@
 	}
 }
 
-.shareablock-downloads{
+.shareablock-downloads {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: flex-start;
-    justify-content: left;
+	justify-content: left;
 	margin-left: -32px;
-	li{
+
+	li {
 		margin-left: 32px;
 		margin-bottom: 50px;
 		flex: 1 1 30%;
 		overflow: hidden;
 		padding: 4px;
 
-		@media only screen and (min-width: 768px){
+		@media only screen and (min-width: 768px) {
 			max-width: 30%;
 		}
 
-		img{
+		img {
 			max-width: 100%;
 		}
 
-		> div{
+		> div {
 			max-height: 305px;
 			overflow: hidden;
 			border: 3px solid #f0f0f0;
 			line-height: 0;
 		}
 
-		.components-button.is-primary{
+		.components-button.is-primary {
 			color: #fff;
 			background: #272c51;
-    		border-color: #272c51;
+			border-color: #272c51;
 		}
 
-		.components-spinner{
-			margin: 0px 7px;
+		.components-spinner {
+			margin: 0 7px;
 		}
 	}
 }
 
-.components-shareablock-block-settings-sidebar{
-	.components-button{
+.components-shareablock-block-settings-sidebar {
+
+	.components-button {
 		margin-right: 5px;
 	}
 }
 
-.editorskit-inline-error{
+.editorskit-inline-error {
 	margin: 0 0 15px 0;
 	width: 100%;
 	padding: 8px 15px;
