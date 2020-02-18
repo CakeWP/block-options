@@ -9176,6 +9176,7 @@ function (_Component) {
     _this.state = {
       apiKey: "",
       accessToken: "",
+      hasValidApiKey: false,
       isSaving: false,
       keySaved: false,
       isSavedKey: false,
@@ -9192,6 +9193,7 @@ function (_Component) {
       _this.setState({
         apiKey: apiSettings.apiKey,
         accessToken: apiSettings.accessToken,
+        hasValidApiKey: apiSettings.hasValidApiKey,
         isSavedKey: apiSettings.apiKey !== ''
       });
     });
@@ -9202,6 +9204,7 @@ function (_Component) {
         _this.setState({
           apiKey: apiSettings.apiKey,
           accessToken: apiSettings.accessToken,
+          hasValidApiKey: apiSettings.hasValidApiKey,
           isSavedKey: true
         });
       }
@@ -9226,7 +9229,7 @@ function (_Component) {
       var setAttributes = this.props.setAttributes;
       apiKey = apiKey.trim();
       accessToken = accessToken.trim();
-      this.saveApiKey(apiKey, accessToken);
+      this.fetchDownloads(apiKey, accessToken);
 
       if (apiKey === '') {
         setAttributes({
@@ -9241,6 +9244,7 @@ function (_Component) {
 
       var apiKey = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.state.apiKey;
       var accessToken = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.state.accessToken;
+      var hasValidApiKey = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.state.hasValidApiKey;
       var setAttributes = this.props.setAttributes;
       this.setState({
         apiKey: apiKey,
@@ -9250,7 +9254,8 @@ function (_Component) {
       var model = new wp.api.models.Settings({
         shareablock_api_key: JSON.stringify({
           apiKey: apiKey,
-          accessToken: accessToken
+          accessToken: accessToken,
+          hasValidApiKey: hasValidApiKey
         })
       });
       model.save().then(function () {
@@ -9261,11 +9266,8 @@ function (_Component) {
 
         settings.fetch();
         setAttributes({
-          hasApiKey: true,
-          hasValidApiKey: false
+          hasApiKey: true
         });
-
-        _this2.fetchDownloads(apiKey, accessToken);
 
         _this2.onClose();
       });
@@ -9277,6 +9279,7 @@ function (_Component) {
 
       var apiKey = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.state.apiKey;
       var accessToken = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.state.accessToken;
+      var hasValidApiKey = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.state.hasValidApiKey;
       var setAttributes = this.props.setAttributes;
       this.setState({
         isLoading: true
@@ -9310,19 +9313,13 @@ function (_Component) {
                         error: data.error,
                         isLoading: false
                       });
-
-                      setAttributes({
-                        hasValidApiKey: false
-                      });
                     } else {
                       _this3.setState({
                         downloads: data,
                         isLoading: false
                       });
 
-                      setAttributes({
-                        hasValidApiKey: true
-                      });
+                      _this3.saveApiKey(apiKey, accessToken, true);
                     }
                   }
 
@@ -9398,9 +9395,9 @@ function (_Component) {
           isInserting = _this$state.isInserting,
           isOpen = _this$state.isOpen,
           downloads = _this$state.downloads,
-          filtered = _this$state.filtered;
-      var hasApiKey = attributes.hasApiKey,
-          hasValidApiKey = attributes.hasValidApiKey;
+          filtered = _this$state.filtered,
+          hasValidApiKey = _this$state.hasValidApiKey;
+      var hasApiKey = attributes.hasApiKey;
 
       if (isLoading) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_9__["createElement"])(_loading__WEBPACK_IMPORTED_MODULE_10__["default"], null);
@@ -9425,7 +9422,7 @@ function (_Component) {
         filterDownloads: function filterDownloads(keyword) {
           _this5.filterDownloads(keyword);
         }
-      }), apiKey && accessToken ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_9__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_9__["createElement"])(Button, {
+      }), apiKey && accessToken && hasValidApiKey ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_9__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_9__["createElement"])(Button, {
         isPrimary: true,
         isLarge: true,
         onClick: function onClick() {

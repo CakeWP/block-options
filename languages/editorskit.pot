@@ -3,66 +3,38 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/blocks/shareablock/components/downloads.js:41
-msgid "ShareABlock Patterns and Templates"
-msgstr ""
-
-#: src/blocks/shareablock/components/downloads.js:53
-msgid "All Downloads"
-msgstr ""
-
-#: src/blocks/shareablock/components/downloads.js:58
-msgid "Block Patterns"
-msgstr ""
-
-#: src/blocks/shareablock/components/downloads.js:63
-msgid "Templates"
-msgstr ""
-
-#: src/blocks/shareablock/components/downloads.js:92
-msgid "Downloading...."
-msgstr ""
-
-#: src/blocks/shareablock/components/downloads.js:92
-msgid "Insert"
-msgstr ""
-
-#: src/blocks/shareablock/components/downloads.js:99
-msgid "Preview"
-msgstr ""
-
-#: src/blocks/shareablock/components/edit.js:175
+#: src/blocks/shareablock/components/edit.js:174
 msgid "ShareABlock from EditorsKit"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:176
+#: src/blocks/shareablock/components/edit.js:175
 msgid "Insert your downloads from shareablock.com at ease."
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:184
+#: src/blocks/shareablock/components/edit.js:183
 msgid "Invalid API or Access Token."
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:196
+#: src/blocks/shareablock/components/edit.js:195
 msgid "View Downloads"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:203
+#: src/blocks/shareablock/components/edit.js:202
 msgid "API Settings"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:204
+#: src/blocks/shareablock/components/edit.js:203
 msgid "Enter Public API Key…"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:211
+#: src/blocks/shareablock/components/edit.js:210
 msgid "Enter Access Token…"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:222
+#: src/blocks/shareablock/components/edit.js:221
 msgid "Apply & View Downloads"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:227
+#: src/blocks/shareablock/components/edit.js:226
 msgid "Get API Key"
 msgstr ""

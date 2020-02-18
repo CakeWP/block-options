@@ -35,6 +35,7 @@ class Edit extends Component {
 		this.state = {
 			apiKey: "",
 			accessToken: "",
+			hasValidApiKey: false,
 			isSaving: false,
 			keySaved: false,
 			isSavedKey: false,
@@ -51,6 +52,7 @@ class Edit extends Component {
 			this.setState( {
 				apiKey: apiSettings.apiKey,
 				accessToken: apiSettings.accessToken,
+				hasValidApiKey: apiSettings.hasValidApiKey,
 				isSavedKey: apiSettings.apiKey !== '',
 			} );
 		} );
@@ -58,7 +60,7 @@ class Edit extends Component {
 		settings.fetch().then( ( response ) => {
 			if ( typeof response.shareablock_api_key !== 'undefined' && response.shareablock_api_key ) {
 				const apiSettings = JSON.parse( response.shareablock_api_key );
-				this.setState( { apiKey: apiSettings.apiKey, accessToken: apiSettings.accessToken, isSavedKey: true } );
+				this.setState({ apiKey: apiSettings.apiKey, accessToken: apiSettings.accessToken, hasValidApiKey: apiSettings.hasValidApiKey,isSavedKey: true } );
 			}
 		} );
 
@@ -78,20 +80,20 @@ class Edit extends Component {
 		apiKey = apiKey.trim();
 		accessToken = accessToken.trim();
 
-		this.saveApiKey( apiKey, accessToken );
+		this.fetchDownloads( apiKey, accessToken );
 
 		if ( apiKey === '' ) {
 			setAttributes( { hasApiKey: false } );
 		}
 	}
 
-	saveApiKey( apiKey = this.state.apiKey, accessToken = this.state.accessToken ) {
+	saveApiKey(apiKey = this.state.apiKey, accessToken = this.state.accessToken, hasValidApiKey = this.state.hasValidApiKey ) {
 		const { setAttributes } = this.props;
 
 		this.setState( { apiKey, accessToken, isSaving: true } );
 
 		const model = new wp.api.models.Settings( {
-			shareablock_api_key: JSON.stringify( { apiKey, accessToken } ),
+			shareablock_api_key: JSON.stringify({ apiKey, accessToken, hasValidApiKey } ),
 		} );
 
 		model.save().then( () => {
@@ -100,14 +102,12 @@ class Edit extends Component {
 				keySaved: true,
 			} );
 			settings.fetch();
-
-			setAttributes( { hasApiKey: true, hasValidApiKey: false } );
-			this.fetchDownloads( apiKey, accessToken );
+			setAttributes( { hasApiKey: true } );
 			this.onClose();
 		} );
 	}
 
-	fetchDownloads( apiKey = this.state.apiKey, accessToken = this.state.accessToken ) {
+	fetchDownloads(apiKey = this.state.apiKey, accessToken = this.state.accessToken, hasValidApiKey = this.state.hasValidApiKey ) {
 		const { setAttributes } = this.props;
 
 		this.setState( { isLoading: true } );
@@ -120,10 +120,9 @@ class Edit extends Component {
 			if (data){
 				if ( typeof data.error !== "undefined") {
 					this.setState({ error: data.error, isLoading: false });
-					setAttributes({ hasValidApiKey: false });
 				} else {
 					this.setState({ downloads: data, isLoading: false });
-					setAttributes({ hasValidApiKey: true });
+					this.saveApiKey(apiKey, accessToken, true);
 				}
 			}
 				
@@ -162,8 +161,8 @@ class Edit extends Component {
 
 	render() {
 		const { attributes } = this.props;
-		const { error, apiKey, accessToken, isLoading, isInserting, isOpen, downloads, filtered } = this.state;
-		const { hasApiKey, hasValidApiKey } = attributes;
+		const { error, apiKey, accessToken, isLoading, isInserting, isOpen, downloads, filtered, hasValidApiKey } = this.state;
+		const { hasApiKey } = attributes;
 
 		if (isLoading) {
 			return <ShareABlockLoading />;
@@ -185,7 +184,7 @@ class Edit extends Component {
 						</div>
 					) : null }
 					{isOpen && (<DownloadsModal clientId={this.props.clientId} onClose={() => { this.onClose() }} setIsInserting={(key) => { this.setIsInserting(key) }} isInserting={isInserting} downloads={Object.keys(filtered).length > 0 ? filtered : downloads} filterDownloads={(keyword) => { this.filterDownloads(keyword) } } /> ) }
-					{ apiKey && accessToken ? (
+					{ apiKey && accessToken && hasValidApiKey ? (
 						<Fragment>
 							<Button 
 								isPrimary 
