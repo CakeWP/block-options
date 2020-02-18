@@ -13,6 +13,8 @@ class Inspector extends Component {
 
 		this.state = {
 			apiKey: props.apiKey,
+			accessToken: props.accessToken,
+			hasValidApiKey: props.hasValidApiKey,
 			isSavedKey: false,
 			isLoading: true,
 			isSaving: false,
@@ -26,16 +28,16 @@ class Inspector extends Component {
 	}
 
 	componentDidMount() {
-		this.setState({ apiKey: this.props.apiKey });
+		this.setState({ apiKey: this.props.apiKey, accessToken: this.props.accessToken, hasValidApiKey: this.props.hasValidApiKey });
 	}
 
 	updateApiKey() {
-		this.props.updateApiKeyCallBack(this.state.apiKey);
+		this.props.updateApiKeyCallBack(this.state.apiKey, this.state.accessToken, this.state.hasValidApiKey);
 	}
 
 	removeApiKey() {
-		this.setState({ apiKey: '' });
-		this.props.updateApiKeyCallBack('');
+		this.setState({ apiKey: '', accessToken: '' });
+		this.props.updateApiKeyCallBack('', '');
 	}
 
 	handleKeyDown(keyCode) {
@@ -49,6 +51,7 @@ class Inspector extends Component {
 	render() {
 		const {
 			apiKey,
+			accessToken,
 		} = this.props;
 
 		return (
@@ -66,15 +69,22 @@ class Inspector extends Component {
 							placeholder={__('Enter API Key…', 'block-options')}
 							onKeyDown={({ keyCode }) => this.handleKeyDown(keyCode)}
 						/>
+
+						<TextControl
+							value={this.state.accessToken}
+							onChange={(value) => this.setState({ accessToken: value })}
+							placeholder={__('Enter Access Token…', 'block-options')}
+							onKeyDown={({ keyCode }) => this.handleKeyDown(keyCode)}
+						/>
 						<Button
 							isPrimary
 							isLarge
 							onClick={this.updateApiKey}
-							disabled={(this.state.apiKey === '') || (this.state.apiKey === this.props.apiKey)}
+							disabled={(this.state.apiKey === '' && this.state.accessToken === '') || (this.state.apiKey === this.props.apiKey && this.state.accessToken === this.props.accessToken)}
 						>
-							{(this.state.apiKey === this.props.apiKey && this.props.apiKey !== '') ? __('Saved', 'block-options') : __('Save', 'block-options')}
+							{(this.state.apiKey === this.props.apiKey && this.props.apiKey !== '') && (this.state.accessToken === this.props.accessToken && this.props.accessToken !== '') ? __('Saved', 'block-options') : __('Save', 'block-options')}
 						</Button>
-						{apiKey &&
+						{apiKey && accessToken &&
 							<Button
 								isSecondary
 								isLarge

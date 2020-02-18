@@ -3,72 +3,66 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/blocks/shareablock/components/edit.js:184
+#: src/blocks/shareablock/components/edit.js:189
 msgid "ShareABlock from EditorsKit"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:185
+#: src/blocks/shareablock/components/edit.js:190
 msgid "Insert your downloads from shareablock.com at ease."
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:193
+#: src/blocks/shareablock/components/edit.js:198
 msgid "Invalid API or Access Token."
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:205
+#: src/blocks/shareablock/components/edit.js:210
 msgid "View Downloads"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:212
-#: src/blocks/shareablock/components/inspector.js:58
+#: src/blocks/shareablock/components/edit.js:217
+#: src/blocks/shareablock/components/edit.js:213
+#: src/blocks/shareablock/components/edit.js:215
+#: src/blocks/shareablock/components/inspector.js:61
 msgid "API Settings"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:213
+#: src/blocks/shareablock/components/edit.js:218
 msgid "Enter Public API Key…"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:220
+#: src/blocks/shareablock/components/edit.js:225
+#: src/blocks/shareablock/components/edit.js:221
+#: src/blocks/shareablock/components/edit.js:223
+#: src/blocks/shareablock/components/inspector.js:76
 msgid "Enter Access Token…"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:231
+#: src/blocks/shareablock/components/edit.js:236
 msgid "Apply & View Downloads"
 msgstr ""
 
-#: src/blocks/shareablock/components/edit.js:236
+#: src/blocks/shareablock/components/edit.js:241
 msgid "Get API Key"
 msgstr ""
 
-#: src/blocks/shareablock/components/inspector.js:62
+#: src/blocks/shareablock/components/inspector.js:65
 msgid ""
 "Add API key and Access Token. Updating this API key will set all your "
 "downloads to use the new key."
 msgstr ""
 
-#: src/blocks/shareablock/components/inspector.js:66
+#: src/blocks/shareablock/components/inspector.js:69
 msgid "Enter API Key…"
 msgstr ""
 
-#: src/blocks/shareablock/components/inspector.js:75
+#: src/blocks/shareablock/components/inspector.js:85
 msgid "Saved"
 msgstr ""
 
-#: src/blocks/shareablock/components/inspector.js:75
+#: src/blocks/shareablock/components/inspector.js:85
 msgid "Save"
 msgstr ""
 
-#: src/blocks/shareablock/components/inspector.js:84
+#: src/blocks/shareablock/components/inspector.js:94
 msgid "Remove"
-msgstr ""
-
-#: src/extensions/advanced-controls/index.js:106
-msgid "Responsive"
-msgstr ""
-
-#: src/extensions/advanced-controls/index.js:110
-msgid ""
-"Attention: The display settings (show/hide for mobile, tablet or desktop) "
-"will only take effect once you are on the live page, and not while you're "
-"editing in Gutenberg."
 msgstr ""

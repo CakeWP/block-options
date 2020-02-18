@@ -9234,12 +9234,18 @@ function (_Component) {
       var setAttributes = this.props.setAttributes;
       apiKey = apiKey.trim();
       accessToken = accessToken.trim();
-      this.fetchDownloads(apiKey, accessToken);
 
-      if (apiKey === '') {
+      if (apiKey === '' && accessToken === '') {
+        this.saveApiKey(apiKey, accessToken, false, false);
+        this.setState({
+          apiKey: apiKey,
+          accessToken: accessToken
+        });
         setAttributes({
           hasApiKey: false
         });
+      } else {
+        this.fetchDownloads(apiKey, accessToken);
       }
     }
   }, {
@@ -9250,6 +9256,7 @@ function (_Component) {
       var apiKey = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.state.apiKey;
       var accessToken = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.state.accessToken;
       var hasValidApiKey = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.state.hasValidApiKey;
+      var toggleModal = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
       var setAttributes = this.props.setAttributes;
       this.setState({
         apiKey: apiKey,
@@ -9274,7 +9281,9 @@ function (_Component) {
           hasApiKey: true
         });
 
-        _this2.onClose();
+        if (toggleModal) {
+          _this2.onClose();
+        }
       });
     }
   }, {
@@ -9318,6 +9327,8 @@ function (_Component) {
                         error: data.error,
                         isLoading: false
                       });
+
+                      _this3.saveApiKey(apiKey, accessToken, false);
                     } else {
                       _this3.setState({
                         downloads: data,
@@ -9405,16 +9416,12 @@ function (_Component) {
           filtered = _this$state.filtered,
           hasValidApiKey = _this$state.hasValidApiKey;
       var hasApiKey = attributes.hasApiKey;
-
-      if (isLoading) {
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_10__["createElement"])(_loading__WEBPACK_IMPORTED_MODULE_11__["default"], null);
-      }
-
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_10__["createElement"])(Fragment, null, isSelected && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_10__["createElement"])(_inspector__WEBPACK_IMPORTED_MODULE_13__["default"], _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, this.props, {
         apiKey: apiKey,
         accessToken: accessToken,
+        hasValidApiKey: hasValidApiKey,
         updateApiKeyCallBack: this.updateApiKey
-      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_10__["createElement"])(Placeholder, {
+      })), isLoading ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_10__["createElement"])(_loading__WEBPACK_IMPORTED_MODULE_11__["default"], null) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_10__["createElement"])(Placeholder, {
         icon: "layout",
         label: __('ShareABlock from EditorsKit', 'block-options'),
         instructions: __('Insert your downloads from shareablock.com at ease.', 'block-options')
@@ -9532,6 +9539,8 @@ function (_Component) {
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Inspector).apply(this, arguments));
     _this.state = {
       apiKey: props.apiKey,
+      accessToken: props.accessToken,
+      hasValidApiKey: props.hasValidApiKey,
       isSavedKey: false,
       isLoading: true,
       isSaving: false,
@@ -9548,21 +9557,24 @@ function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.setState({
-        apiKey: this.props.apiKey
+        apiKey: this.props.apiKey,
+        accessToken: this.props.accessToken,
+        hasValidApiKey: this.props.hasValidApiKey
       });
     }
   }, {
     key: "updateApiKey",
     value: function updateApiKey() {
-      this.props.updateApiKeyCallBack(this.state.apiKey);
+      this.props.updateApiKeyCallBack(this.state.apiKey, this.state.accessToken, this.state.hasValidApiKey);
     }
   }, {
     key: "removeApiKey",
     value: function removeApiKey() {
       this.setState({
-        apiKey: ''
+        apiKey: '',
+        accessToken: ''
       });
-      this.props.updateApiKeyCallBack('');
+      this.props.updateApiKeyCallBack('', '');
     }
   }, {
     key: "handleKeyDown",
@@ -9578,7 +9590,9 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var apiKey = this.props.apiKey;
+      var _this$props = this.props,
+          apiKey = _this$props.apiKey,
+          accessToken = _this$props.accessToken;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(PanelBody, {
         title: __('API Settings', 'block-options'),
         initialOpen: false,
@@ -9595,12 +9609,24 @@ function (_Component) {
           var keyCode = _ref.keyCode;
           return _this2.handleKeyDown(keyCode);
         }
+      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(TextControl, {
+        value: this.state.accessToken,
+        onChange: function onChange(value) {
+          return _this2.setState({
+            accessToken: value
+          });
+        },
+        placeholder: __('Enter Access Token…', 'block-options'),
+        onKeyDown: function onKeyDown(_ref2) {
+          var keyCode = _ref2.keyCode;
+          return _this2.handleKeyDown(keyCode);
+        }
       }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Button, {
         isPrimary: true,
         isLarge: true,
         onClick: this.updateApiKey,
-        disabled: this.state.apiKey === '' || this.state.apiKey === this.props.apiKey
-      }, this.state.apiKey === this.props.apiKey && this.props.apiKey !== '' ? __('Saved', 'block-options') : __('Save', 'block-options')), apiKey && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Button, {
+        disabled: this.state.apiKey === '' && this.state.accessToken === '' || this.state.apiKey === this.props.apiKey && this.state.accessToken === this.props.accessToken
+      }, this.state.apiKey === this.props.apiKey && this.props.apiKey !== '' && this.state.accessToken === this.props.accessToken && this.props.accessToken !== '' ? __('Saved', 'block-options') : __('Save', 'block-options')), apiKey && accessToken && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Button, {
         isSecondary: true,
         isLarge: true,
         onClick: this.removeApiKey,

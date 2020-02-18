@@ -81,14 +81,16 @@ class Edit extends Component {
 		apiKey = apiKey.trim();
 		accessToken = accessToken.trim();
 
-		this.fetchDownloads( apiKey, accessToken );
-
-		if ( apiKey === '' ) {
+		if (apiKey === '' && accessToken === '' ) {
+			this.saveApiKey( apiKey, accessToken, false, false );
+			this.setState({ apiKey, accessToken });
 			setAttributes( { hasApiKey: false } );
+		}else{
+			this.fetchDownloads(apiKey, accessToken);
 		}
 	}
 
-	saveApiKey(apiKey = this.state.apiKey, accessToken = this.state.accessToken, hasValidApiKey = this.state.hasValidApiKey ) {
+	saveApiKey(apiKey = this.state.apiKey, accessToken = this.state.accessToken, hasValidApiKey = this.state.hasValidApiKey, toggleModal = true ) {
 		const { setAttributes } = this.props;
 
 		this.setState( { apiKey, accessToken, isSaving: true } );
@@ -104,7 +106,11 @@ class Edit extends Component {
 			} );
 			settings.fetch();
 			setAttributes( { hasApiKey: true } );
-			this.onClose();
+
+			if (toggleModal ){
+				this.onClose();
+			}
+			
 		} );
 	}
 
@@ -121,6 +127,7 @@ class Edit extends Component {
 			if (data){
 				if ( typeof data.error !== "undefined") {
 					this.setState({ error: data.error, isLoading: false });
+					this.saveApiKey(apiKey, accessToken, false);
 				} else {
 					this.setState({ downloads: data, isLoading: false });
 					this.saveApiKey(apiKey, accessToken, true);
@@ -165,10 +172,6 @@ class Edit extends Component {
 		const { error, apiKey, accessToken, isLoading, isInserting, isOpen, downloads, filtered, hasValidApiKey } = this.state;
 		const { hasApiKey } = attributes;
 
-		if (isLoading) {
-			return <ShareABlockLoading />;
-		}
-
 		return (
 			<Fragment>
 				{isSelected && (
@@ -176,69 +179,72 @@ class Edit extends Component {
 						{...this.props}
 						apiKey={apiKey}
 						accessToken={accessToken}
+						hasValidApiKey={hasValidApiKey}
 						updateApiKeyCallBack={this.updateApiKey}
 					/>
 				)}
-				<Placeholder
-					icon="layout"
-					label={ __( 'ShareABlock from EditorsKit', 'block-options' ) }
-					instructions={ __(
-						'Insert your downloads from shareablock.com at ease.',
-						'block-options'
-					) }
-				>
-					<Fragment>
-						{ error || ( hasApiKey && ! hasValidApiKey ) ? (
-							<div className="editorskit-inline-error notice-error notice">
-								{ __( 'Invalid API or Access Token.', 'block-options' ) }
-							</div>
-						) : null }
-						{isOpen && (<DownloadsModal clientId={this.props.clientId} onClose={() => { this.onClose() }} setIsInserting={(key) => { this.setIsInserting(key) }} isInserting={isInserting} downloads={Object.keys(filtered).length > 0 ? filtered : downloads} filterDownloads={(keyword) => { this.filterDownloads(keyword) } } /> ) }
-						{ apiKey && accessToken && hasValidApiKey ? (
-							<Fragment>
-								<Button 
-									isPrimary 
-									isLarge 
-									onClick={() => { 
-										this.updateApiKey();
-									} }>
-									{ __( 'View Downloads', 'block-options' ) }
-								</Button>
-							</Fragment>
-						) : (
-							<Fragment>
-								<TextControl
-									value={ apiKey }
-									label={ __( 'API Settings', 'block-options' ) }
-									placeholder={ __( 'Enter Public API Key…', 'block-options' ) }
-									onChange={ ( newKey ) => {
-										this.setState( { apiKey: newKey } );
-									} }
-								/>
-								<TextControl
-									value={ accessToken }
-									placeholder={ __( 'Enter Access Token…', 'block-options' ) }
-									onChange={ ( newToken ) => {
-										this.setState( { accessToken: newToken } );
-									} }
-								/>
-								<Button
-									isPrimary
-									onClick={ () => {
-										this.updateApiKey();
-									} }
-								>
-									{ __( 'Apply & View Downloads', 'block-options' ) }
-								</Button>
-								<Button
-									isTertiary
-								>
-									{ __( 'Get API Key', 'block-options' ) }
-								</Button>
-							</Fragment>
+				{isLoading ? <ShareABlockLoading /> :
+					<Placeholder
+						icon="layout"
+						label={ __( 'ShareABlock from EditorsKit', 'block-options' ) }
+						instructions={ __(
+							'Insert your downloads from shareablock.com at ease.',
+							'block-options'
 						) }
-					</Fragment>
-				</Placeholder>
+					>
+						<Fragment>
+							{error || ( hasApiKey && !hasValidApiKey ) ? (
+								<div className="editorskit-inline-error notice-error notice">
+									{ __( 'Invalid API or Access Token.', 'block-options' ) }
+								</div>
+							) : null }
+							{isOpen && (<DownloadsModal clientId={this.props.clientId} onClose={() => { this.onClose() }} setIsInserting={(key) => { this.setIsInserting(key) }} isInserting={isInserting} downloads={Object.keys(filtered).length > 0 ? filtered : downloads} filterDownloads={(keyword) => { this.filterDownloads(keyword) } } /> ) }
+							{ apiKey && accessToken && hasValidApiKey ? (
+								<Fragment>
+									<Button 
+										isPrimary 
+										isLarge 
+										onClick={() => { 
+											this.updateApiKey();
+										} }>
+										{ __( 'View Downloads', 'block-options' ) }
+									</Button>
+								</Fragment>
+							) : (
+								<Fragment>
+									<TextControl
+										value={ apiKey }
+										label={ __( 'API Settings', 'block-options' ) }
+										placeholder={ __( 'Enter Public API Key…', 'block-options' ) }
+										onChange={ ( newKey ) => {
+											this.setState( { apiKey: newKey } );
+										} }
+									/>
+									<TextControl
+										value={ accessToken }
+										placeholder={ __( 'Enter Access Token…', 'block-options' ) }
+										onChange={ ( newToken ) => {
+											this.setState( { accessToken: newToken } );
+										} }
+									/>
+									<Button
+										isPrimary
+										onClick={ () => {
+											this.updateApiKey();
+										} }
+									>
+										{ __( 'Apply & View Downloads', 'block-options' ) }
+									</Button>
+									<Button
+										isTertiary
+									>
+										{ __( 'Get API Key', 'block-options' ) }
+									</Button>
+								</Fragment>
+							) }
+						</Fragment>
+					</Placeholder>
+				}
 			</Fragment>
 		);
 	}
