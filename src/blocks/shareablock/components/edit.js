@@ -237,6 +237,8 @@ class Edit extends Component {
 									</Button>
 									<Button
 										isTertiary
+										href="https://shareablock.com/generate-api-key/"
+										target="_blank"
 									>
 										{ __( 'Get API Key', 'block-options' ) }
 									</Button>

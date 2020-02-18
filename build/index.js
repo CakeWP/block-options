@@ -9438,7 +9438,9 @@ function (_Component) {
           _this5.updateApiKey();
         }
       }, __('Apply & View Downloads', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_10__["createElement"])(Button, {
-        isTertiary: true
+        isTertiary: true,
+        href: "https://shareablock.com/generate-api-key/",
+        target: "_blank"
       }, __('Get API Key', 'block-options'))))));
     }
   }]);
