@@ -3,30 +3,72 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/blocks/shareablock/components/downloads.js:41
-msgid "ShareABlock Patterns and Templates"
+#: src/blocks/shareablock/components/edit.js:184
+msgid "ShareABlock from EditorsKit"
 msgstr ""
 
-#: src/blocks/shareablock/components/downloads.js:53
-msgid "All Downloads"
+#: src/blocks/shareablock/components/edit.js:185
+msgid "Insert your downloads from shareablock.com at ease."
 msgstr ""
 
-#: src/blocks/shareablock/components/downloads.js:58
-msgid "Block Patterns"
+#: src/blocks/shareablock/components/edit.js:193
+msgid "Invalid API or Access Token."
 msgstr ""
 
-#: src/blocks/shareablock/components/downloads.js:63
-msgid "Templates"
+#: src/blocks/shareablock/components/edit.js:205
+msgid "View Downloads"
 msgstr ""
 
-#: src/blocks/shareablock/components/downloads.js:92
-msgid "Downloading...."
+#: src/blocks/shareablock/components/edit.js:212
+#: src/blocks/shareablock/components/inspector.js:58
+msgid "API Settings"
 msgstr ""
 
-#: src/blocks/shareablock/components/downloads.js:92
-msgid "Insert"
+#: src/blocks/shareablock/components/edit.js:213
+msgid "Enter Public API Key…"
 msgstr ""
 
-#: src/blocks/shareablock/components/downloads.js:99
-msgid "Preview"
+#: src/blocks/shareablock/components/edit.js:220
+msgid "Enter Access Token…"
+msgstr ""
+
+#: src/blocks/shareablock/components/edit.js:231
+msgid "Apply & View Downloads"
+msgstr ""
+
+#: src/blocks/shareablock/components/edit.js:236
+msgid "Get API Key"
+msgstr ""
+
+#: src/blocks/shareablock/components/inspector.js:62
+msgid ""
+"Add API key and Access Token. Updating this API key will set all your "
+"downloads to use the new key."
+msgstr ""
+
+#: src/blocks/shareablock/components/inspector.js:66
+msgid "Enter API Key…"
+msgstr ""
+
+#: src/blocks/shareablock/components/inspector.js:75
+msgid "Saved"
+msgstr ""
+
+#: src/blocks/shareablock/components/inspector.js:75
+msgid "Save"
+msgstr ""
+
+#: src/blocks/shareablock/components/inspector.js:84
+msgid "Remove"
+msgstr ""
+
+#: src/extensions/advanced-controls/index.js:106
+msgid "Responsive"
+msgstr ""
+
+#: src/extensions/advanced-controls/index.js:110
+msgid ""
+"Attention: The display settings (show/hide for mobile, tablet or desktop) "
+"will only take effect once you are on the live page, and not while you're "
+"editing in Gutenberg."
 msgstr ""

@@ -3,6 +3,7 @@
  */
 import ShareABlockLoading from "./loading";
 import DownloadsModal from "./downloads";
+import Inspector from './inspector';
 ;
 /**
  * WordPress dependencies
@@ -160,7 +161,7 @@ class Edit extends Component {
 	}
 
 	render() {
-		const { attributes } = this.props;
+		const { attributes, isSelected } = this.props;
 		const { error, apiKey, accessToken, isLoading, isInserting, isOpen, downloads, filtered, hasValidApiKey } = this.state;
 		const { hasApiKey } = attributes;
 
@@ -169,66 +170,76 @@ class Edit extends Component {
 		}
 
 		return (
-			<Placeholder
-				icon="layout"
-				label={ __( 'ShareABlock from EditorsKit', 'block-options' ) }
-				instructions={ __(
-					'Insert your downloads from shareablock.com at ease.',
-					'block-options'
-				) }
-			>
-				<Fragment>
-					{ error || ( hasApiKey && ! hasValidApiKey ) ? (
-						<div className="editorskit-inline-error notice-error notice">
-							{ __( 'Invalid API or Access Token.', 'block-options' ) }
-						</div>
-					) : null }
-					{isOpen && (<DownloadsModal clientId={this.props.clientId} onClose={() => { this.onClose() }} setIsInserting={(key) => { this.setIsInserting(key) }} isInserting={isInserting} downloads={Object.keys(filtered).length > 0 ? filtered : downloads} filterDownloads={(keyword) => { this.filterDownloads(keyword) } } /> ) }
-					{ apiKey && accessToken && hasValidApiKey ? (
-						<Fragment>
-							<Button 
-								isPrimary 
-								isLarge 
-								onClick={() => { 
-									this.updateApiKey();
-								} }>
-								{ __( 'View Downloads', 'block-options' ) }
-							</Button>
-						</Fragment>
-					) : (
-						<Fragment>
-							<TextControl
-								value={ apiKey }
-								label={ __( 'API Settings', 'block-options' ) }
-								placeholder={ __( 'Enter Public API Key…', 'block-options' ) }
-								onChange={ ( newKey ) => {
-									this.setState( { apiKey: newKey } );
-								} }
-							/>
-							<TextControl
-								value={ accessToken }
-								placeholder={ __( 'Enter Access Token…', 'block-options' ) }
-								onChange={ ( newToken ) => {
-									this.setState( { accessToken: newToken } );
-								} }
-							/>
-							<Button
-								isPrimary
-								onClick={ () => {
-									this.updateApiKey();
-								} }
-							>
-								{ __( 'Apply & View Downloads', 'block-options' ) }
-							</Button>
-							<Button
-								isTertiary
-							>
-								{ __( 'Get API Key', 'block-options' ) }
-							</Button>
-						</Fragment>
+			<Fragment>
+				{isSelected && (
+					<Inspector
+						{...this.props}
+						apiKey={apiKey}
+						accessToken={accessToken}
+						updateApiKeyCallBack={this.updateApiKey}
+					/>
+				)}
+				<Placeholder
+					icon="layout"
+					label={ __( 'ShareABlock from EditorsKit', 'block-options' ) }
+					instructions={ __(
+						'Insert your downloads from shareablock.com at ease.',
+						'block-options'
 					) }
-				</Fragment>
-			</Placeholder>
+				>
+					<Fragment>
+						{ error || ( hasApiKey && ! hasValidApiKey ) ? (
+							<div className="editorskit-inline-error notice-error notice">
+								{ __( 'Invalid API or Access Token.', 'block-options' ) }
+							</div>
+						) : null }
+						{isOpen && (<DownloadsModal clientId={this.props.clientId} onClose={() => { this.onClose() }} setIsInserting={(key) => { this.setIsInserting(key) }} isInserting={isInserting} downloads={Object.keys(filtered).length > 0 ? filtered : downloads} filterDownloads={(keyword) => { this.filterDownloads(keyword) } } /> ) }
+						{ apiKey && accessToken && hasValidApiKey ? (
+							<Fragment>
+								<Button 
+									isPrimary 
+									isLarge 
+									onClick={() => { 
+										this.updateApiKey();
+									} }>
+									{ __( 'View Downloads', 'block-options' ) }
+								</Button>
+							</Fragment>
+						) : (
+							<Fragment>
+								<TextControl
+									value={ apiKey }
+									label={ __( 'API Settings', 'block-options' ) }
+									placeholder={ __( 'Enter Public API Key…', 'block-options' ) }
+									onChange={ ( newKey ) => {
+										this.setState( { apiKey: newKey } );
+									} }
+								/>
+								<TextControl
+									value={ accessToken }
+									placeholder={ __( 'Enter Access Token…', 'block-options' ) }
+									onChange={ ( newToken ) => {
+										this.setState( { accessToken: newToken } );
+									} }
+								/>
+								<Button
+									isPrimary
+									onClick={ () => {
+										this.updateApiKey();
+									} }
+								>
+									{ __( 'Apply & View Downloads', 'block-options' ) }
+								</Button>
+								<Button
+									isTertiary
+								>
+									{ __( 'Get API Key', 'block-options' ) }
+								</Button>
+							</Fragment>
+						) }
+					</Fragment>
+				</Placeholder>
+			</Fragment>
 		);
 	}
 }
