@@ -41,7 +41,7 @@ class TransformControls extends Component {
 
 	render() {
 		const { getBlocks, getBlockIndex, createSpacer, onToggle, isPrompted } = this.props;
-		const isValid = getBlockIndex - 3;
+		const isValid = getBlockIndex - 2;
 
 		const closeModal = () => {
 			onToggle( 1 );
@@ -53,13 +53,12 @@ class TransformControls extends Component {
 		const getFirst = getBlocks[ isValid ];
 		const getSecond = getBlocks[ isValid + 1 ];
 		const getThird = getBlocks[ isValid + 2 ];
-		const getFourth = getBlocks[ isValid + 3 ];
 
-		if ( getFirst.name !== 'core/paragraph' || getSecond.name !== 'core/paragraph' || getThird.name !== 'core/paragraph' || getFourth.name !== 'core/paragraph' ) {
+		if ( getFirst.name !== 'core/paragraph' || getSecond.name !== 'core/paragraph' || getThird.name !== 'core/paragraph' ) {
 			return null;
 		}
 
-		if ( ! isEmpty( getFirst.attributes.content ) || ! isEmpty( getSecond.attributes.content ) || ! isEmpty( getThird.attributes.content ) || ! isEmpty( getFourth.attributes.content ) ) {
+		if ( ! isEmpty( getFirst.attributes.content ) || ! isEmpty( getSecond.attributes.content ) || ! isEmpty( getThird.attributes.content ) ) {
 			return null;
 		}
 
@@ -74,11 +73,11 @@ class TransformControls extends Component {
 						icon={ null }
 						className="editorskit-modal-component components-modal--editorskit-transform-empty"
 					>
-						<p>{ __( 'Do you want to automatically transform four(4) consecutive empty paragraphs into Spacer Block?', 'block-options' ) }</p>
+						<p>{ __( 'Do you want to automatically transform three(3) consecutive empty paragraphs into Spacer Block?', 'block-options' ) }</p>
 						<Button isPrimary isLarge onClick={
 							() => {
 								onToggle( 0 );
-								createSpacer( getFirst.clientId, getSecond.clientId, getThird.clientId, getFourth.clientId );
+								createSpacer( getFirst.clientId, getSecond.clientId, getThird.clientId );
 							}
 						} ref={ this.nameInput } >
 							{ __( 'Yes Enable', 'block-options' ) }
@@ -92,7 +91,7 @@ class TransformControls extends Component {
 				</Fragment>
 			);
 		}
-		createSpacer( getFirst.clientId, getSecond.clientId, getThird.clientId, getFourth.clientId );
+		createSpacer( getFirst.clientId, getSecond.clientId, getThird.clientId );
 
 		return null;
 	}
@@ -119,11 +118,11 @@ export default compose(
 		};
 	} ),
 	withDispatch( () => ( {
-		createSpacer( getFirst, getSecond, getThird, getFourth ) {
+		createSpacer( getFirst, getSecond, getThird ) {
 			const { selectBlock, replaceBlock, removeBlocks } = dispatch( 'core/block-editor' );
 			const createSpacer = createBlock( 'core/spacer', {} );
-			removeBlocks( [ getFirst, getSecond, getThird ] );
-			replaceBlock( getFourth, createSpacer );
+			removeBlocks( [ getFirst, getSecond ] );
+			replaceBlock( getThird, createSpacer );
 			selectBlock( createSpacer.clientId );
 		},
 		onToggle( disabled ) {

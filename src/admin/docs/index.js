@@ -78,7 +78,7 @@ class EditorsKitDocs extends Component {
 				name: 'estimated-reading-time-writing.md',
 			},
 			{
-				title: __( 'Transform 4 Empty Paragraphs to Spacer Block', 'block-options' ),
+				title: __( 'Transform 3 Empty Paragraphs to Spacer Block', 'block-options' ),
 				name: 'transform-empty-spacer-writing.md',
 			},
 		];
