@@ -8941,8 +8941,12 @@ __webpack_require__.r(__webpack_exports__);
  * WordPress dependencies
  */
 
-var __ = wp.i18n.__;
-var Fragment = wp.element.Fragment;
+var _wp$i18n = wp.i18n,
+    __ = _wp$i18n.__,
+    sprintf = _wp$i18n.sprintf;
+var _wp$element = wp.element,
+    Fragment = _wp$element.Fragment,
+    RawHTML = _wp$element.RawHTML;
 var _wp$components = wp.components,
     Modal = _wp$components.Modal,
     TabPanel = _wp$components.TabPanel,
@@ -9027,8 +9031,10 @@ var DownloadsModal = function DownloadsModal(_ref) {
       title: __('Templates', 'block-options'),
       className: 'shareablock-templates'
     }]
-  }, function () {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("ul", {
+  }, function (tab) {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(Fragment, null, Object.keys(downloads.purchased_files).length < 1 ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("p", {
+      class: "shareablock-no-results"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(RawHTML, null, sprintf(__('No %1$s Found. %2$sClick here to browse.%3$s', 'block-options'), tab.name !== 'all' ? tab.title : __('Downloads', 'block-options'), '<a href="https://shareablock.com/" target="_blank">', '</a>'))) : null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("ul", {
       className: "shareablock-downloads"
     }, Object(lodash__WEBPACK_IMPORTED_MODULE_3__["map"])(downloads.purchased_files, function (download, key) {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("li", {

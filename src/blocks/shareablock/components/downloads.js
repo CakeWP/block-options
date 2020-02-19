@@ -11,8 +11,8 @@ import insertImportedBlocks from '../../import/utils/insert';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Fragment } = wp.element;
+const { __, sprintf } = wp.i18n;
+const { Fragment, RawHTML } = wp.element;
 const { Modal, TabPanel, Button } = wp.components;
 
 const DownloadsModal = ( { clientId, onClose, downloads, isInserting, setIsInserting, filterDownloads } ) => {
@@ -64,9 +64,20 @@ const DownloadsModal = ( { clientId, onClose, downloads, isInserting, setIsInser
 						},
 					] }>
 					{
-						() => {
+						( tab ) => {
 							return (
 								<Fragment>
+									{ Object.keys( downloads.purchased_files ).length < 1 ?
+										<p className="shareablock-no-results">
+											<RawHTML>
+												{ sprintf(
+													__( 'No %1$s Found. %2$sClick here to browse.%3$s', 'block-options' ),
+													tab.name !== 'all' ? tab.title : __( 'Downloads', 'block-options' ),
+													'<a href="https://shareablock.com/" target="_blank">',
+													'</a>'
+												) }
+											</RawHTML>
+										</p> : null }
 									<ul className="shareablock-downloads">
 										{ map( downloads.purchased_files, ( download, key ) => {
 											return (
