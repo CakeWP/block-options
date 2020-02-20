@@ -3,34 +3,38 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/block-styles/list/index.js:15
-msgid "None"
+#: src/blocks/shareablock/components/downloads.js:101
+msgid "Downloading...."
 msgstr ""
 
-#: src/extensions/block-styles/list/index.js:21
-msgid "Arrow"
+#: src/blocks/shareablock/components/downloads.js:101
+msgid "Insert"
 msgstr ""
 
-#: src/extensions/block-styles/list/index.js:27
-msgid "Checked"
+#: src/blocks/shareablock/components/downloads.js:108
+msgid "Preview"
 msgstr ""
 
-#: src/extensions/block-styles/list/index.js:33
-msgid "Crossed"
+#: src/blocks/shareablock/components/downloads.js:40
+msgid "ShareABlock Patterns and Templates"
 msgstr ""
 
-#: src/extensions/block-styles/list/index.js:39
-msgid "Connected"
+#: src/blocks/shareablock/components/downloads.js:52
+msgid "All Downloads"
 msgstr ""
 
-#: src/extensions/block-styles/list/index.js:45
-msgid "Dashed"
+#: src/blocks/shareablock/components/downloads.js:57
+msgid "Block Patterns"
 msgstr ""
 
-#: src/extensions/block-styles/list/index.js:51
-msgid "Starred"
+#: src/blocks/shareablock/components/downloads.js:62
+msgid "Templates"
 msgstr ""
 
-#: src/extensions/block-styles/list/index.js:9
-msgid "Default"
+#: src/blocks/shareablock/components/downloads.js:74
+msgid "No %1$s Found. %2$sClick here to browse.%3$s"
+msgstr ""
+
+#: src/blocks/shareablock/components/downloads.js:75
+msgid "Downloads"
 msgstr ""

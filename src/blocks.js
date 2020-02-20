@@ -64,18 +64,20 @@ import './extensions/advanced-controls/disable-block';
 
 // Register Blocks
 import * as importBlock from './blocks/import';
+import * as shareABlock from './blocks/shareablock';
 
 export function registerBlocks() {
 	[
 		importBlock,
+		shareABlock,
 	].forEach( ( block ) => {
 		if ( ! block ) {
 			return;
 		}
 
-		const { name, settings } = block;
+		const { name, settings, category } = block;
 
-		registerBlockType( `editorskit/${ name }`, { category: 'common', ...settings } );
+		registerBlockType( `editorskit/${ name }`, { category, ...settings } );
 	} );
 }
 registerBlocks();
