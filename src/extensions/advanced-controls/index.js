@@ -19,7 +19,7 @@ const { compose, createHigherOrderComponent } = wp.compose;
 const { PanelBody } = wp.components;
 const { hasBlockSupport } = wp.blocks;
 
-const restrictedBlocks = [ 'core/block', 'core/freeform', 'core/shortcode', 'core/template', 'core/nextpage', 'editorskit/import' ];
+const restrictedBlocks = [ 'core/block', 'core/freeform', 'core/shortcode', 'core/template', 'core/nextpage', 'editorskit/import', 'editorskit/shareablock' ];
 
 const enhance = compose(
 	withSelect( () => {

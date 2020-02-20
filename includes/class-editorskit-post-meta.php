@@ -25,6 +25,7 @@ class EditorsKit_Post_Meta {
 	 */
 	public function __construct() {
 		add_filter( 'init', array( $this, 'register_meta' ) );
+		add_action( 'init', array( $this, 'register_settings' ) );
 		add_filter( 'rest_pre_dispatch', array( $this, 'rest_pre_dispatch' ), 10, 3 );
 	}
 
@@ -55,6 +56,25 @@ class EditorsKit_Post_Meta {
 				'auth_callback' => function() {
 					return current_user_can( 'edit_posts' );
 				},
+			)
+		);
+	}
+
+	/**
+	 * Register block settings.
+	 *
+	 * @access public
+	 */
+	public function register_settings() {
+		register_setting(
+			'shareablock_api_key',
+			'shareablock_api_key',
+			array(
+				'type'              => 'string',
+				'description'       => __( 'API key and token from shareablock.com', 'block-options' ),
+				'sanitize_callback' => 'sanitize_text_field',
+				'show_in_rest'      => true,
+				'default'           => '',
 			)
 		);
 	}
