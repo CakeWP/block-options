@@ -2,15 +2,14 @@
  * Internal dependencies
  */
 import importReusableBlock from '../utils/import';
+import insertImportedBlocks from '../utils/insert';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { select, dispatch } = wp.data;
 const { withInstanceId } = wp.compose;
 const { Fragment, Component } = wp.element;
-const { parse, createBlock } = wp.blocks;
 const { MediaUploadCheck } = wp.blockEditor;
 const { DropZone, FormFileUpload, Placeholder, Notice } = wp.components;
 
@@ -45,33 +44,6 @@ class Edit extends Component {
 		this.isStillMounted = false;
 	}
 
-	insertImportedBlocks( blocks ) {
-		const { onClose } = this.props;
-		blocks = parse( blocks );
-		const toSelect = [];
-		const blockIndex = select( 'core/block-editor' ).getBlockInsertionPoint();
-		if ( blocks.length > 0 ) {
-			for ( const block in blocks ) {
-				const created = createBlock( blocks[ block ].name, blocks[ block ].attributes, blocks[ block ].innerBlocks );
-				dispatch( 'core/block-editor' ).insertBlocks( created, parseInt( blockIndex.index ) + parseInt( block ) );
-
-				if ( typeof created !== 'undefined' ) {
-					toSelect.push( created.clientId );
-				}
-			}
-
-			//remove insertion point if empty
-			dispatch( 'core/block-editor' ).removeBlock( this.props.clientId );
-
-			//select inserted blocks
-			if ( toSelect.length > 0 ) {
-				dispatch( 'core/block-editor' ).multiSelect( toSelect[ 0 ], toSelect.reverse()[ 0 ] );
-			}
-		}
-
-		onClose();
-	}
-
 	addFile( files ) {
 		let file = files[ 0 ];
 
@@ -91,7 +63,7 @@ class Edit extends Component {
 				}
 
 				this.setState( { isLoading: false } );
-				this.insertImportedBlocks( reusableBlock );
+				insertImportedBlocks( this.props.clientId, reusableBlock, this.props.onClose );
 			} )
 			.catch( ( error ) => {
 				if ( ! this.isStillMounted ) {

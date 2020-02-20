@@ -15,6 +15,8 @@ const { __ } = wp.i18n;
  */
 const name = 'import';
 
+const category = 'common';
+
 const title = __( 'Import', 'block-options' );
 
 const keywords = [
@@ -57,4 +59,4 @@ const settings = {
 	},
 };
 
-export { name, title, icon, settings };
+export { name, title, category, icon, settings };

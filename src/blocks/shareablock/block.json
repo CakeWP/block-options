@@ -1,0 +1,14 @@
+{
+	"name": "shareablock",
+	"category": "layout",
+	"attributes": {
+		"hasApiKey": {
+			"type": "boolean",
+			"default": false
+		},
+		"hasValidApiKey": {
+			"type": "boolean",
+			"default": false
+		}
+	}
+}

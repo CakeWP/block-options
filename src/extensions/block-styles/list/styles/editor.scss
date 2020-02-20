@@ -2,7 +2,8 @@
 
 	&[data-type="core/list"] {
 
-		div[data-block]:not([data-block=""]) {
+		div[data-block]:not([data-block=""]),
+		> {
 
 			ol:not(.is-style-connected),
 			ul:not(.is-style-connected) {
@@ -81,6 +82,19 @@
 						&::before {
 							transform: scale(0.65);
 							margin-top: -16px;
+						}
+					}
+				}
+
+				&.is-style-dashed {
+					list-style-type: none;
+
+					li {
+
+						&::before {
+							content: "–" !important;
+							text-align: right;
+							color: var(--ek-bullet-color);
 						}
 					}
 				}
