@@ -82,6 +82,7 @@ Provides the following additional styling for list block:
 * Crossed
 * Connected
 * Starred
+* Dashed
 * None
 
 ## Responsive Text Alignment
@@ -132,6 +133,9 @@ Enable or disable EditorsKit features using "EditorsKit Settings" menu. This wil
 ## Accessible Help, Tips and Tricks
 Add help, tips and tricks button on the bottom right side of the editor to help users discover several helpful power tips and shortcuts. These tips will definitely improve your workflow and save time navigating the new block editor.
 
+## ShareABlock block
+Insert your downloads from [shareablock.com](https://shareablock.com/) easily using this block. Browse through your block patterns and templates then add them to your content in just a click.
+
 ## Helping you with the new Gutenberg Editor
 EditorsKit is created to help you navigate through the new editor. Each new features will make your page building more convenient and easier. You can help achieving this goal through the community: 
 
@@ -164,6 +168,12 @@ e.g.
 
 
 == Changelog ==
+
+= 1.26 =
+* New: New ShareABlock block. [#251](https://github.com/phpbits/block-options/pull/251)🎉
+* New: New 'dashed' list block style. [#252](https://github.com/phpbits/block-options/pull/252)
+* Tweaks: Use three empty paragraph to show shortcut for spacer block transform instead of four.
+* Tweaks: Few more compatibility with Gutenberg plugin
 
 = 1.25 =
 * New: [Link Toolbar Option](https://github.com/phpbits/block-options/pull/239) for Cover, Column and Group Blocks 🎊
