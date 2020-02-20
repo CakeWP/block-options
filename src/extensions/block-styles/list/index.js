@@ -41,6 +41,12 @@ registerBlockStyle( 'core/list', {
 } );
 
 registerBlockStyle( 'core/list', {
+	name: 'dashed',
+	label: __( 'Dashed', 'block-options' ),
+	isDefault: false,
+} );
+
+registerBlockStyle( 'core/list', {
 	name: 'starred',
 	label: __( 'Starred', 'block-options' ),
 	isDefault: false,

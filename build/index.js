@@ -9033,7 +9033,7 @@ var DownloadsModal = function DownloadsModal(_ref) {
     }]
   }, function (tab) {
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(Fragment, null, Object.keys(downloads.purchased_files).length < 1 ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("p", {
-      class: "shareablock-no-results"
+      className: "shareablock-no-results"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(RawHTML, null, sprintf(__('No %1$s Found. %2$sClick here to browse.%3$s', 'block-options'), tab.name !== 'all' ? tab.title : __('Downloads', 'block-options'), '<a href="https://shareablock.com/" target="_blank">', '</a>'))) : null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("ul", {
       className: "shareablock-downloads"
     }, Object(lodash__WEBPACK_IMPORTED_MODULE_3__["map"])(downloads.purchased_files, function (download, key) {
@@ -12870,6 +12870,11 @@ registerBlockStyle('core/list', {
 registerBlockStyle('core/list', {
   name: 'connected',
   label: __('Connected', 'block-options'),
+  isDefault: false
+});
+registerBlockStyle('core/list', {
+  name: 'dashed',
+  label: __('Dashed', 'block-options'),
   isDefault: false
 });
 registerBlockStyle('core/list', {
