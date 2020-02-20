@@ -22016,7 +22016,7 @@ function (_Component) {
           createSpacer = _this$props.createSpacer,
           onToggle = _this$props.onToggle,
           isPrompted = _this$props.isPrompted;
-      var isValid = getBlockIndex - 3;
+      var isValid = getBlockIndex - 2;
 
       var closeModal = function closeModal() {
         onToggle(1);
@@ -22029,13 +22029,12 @@ function (_Component) {
       var getFirst = getBlocks[isValid];
       var getSecond = getBlocks[isValid + 1];
       var getThird = getBlocks[isValid + 2];
-      var getFourth = getBlocks[isValid + 3];
 
-      if (getFirst.name !== 'core/paragraph' || getSecond.name !== 'core/paragraph' || getThird.name !== 'core/paragraph' || getFourth.name !== 'core/paragraph') {
+      if (getFirst.name !== 'core/paragraph' || getSecond.name !== 'core/paragraph' || getThird.name !== 'core/paragraph') {
         return null;
       }
 
-      if (!Object(lodash__WEBPACK_IMPORTED_MODULE_7__["isEmpty"])(getFirst.attributes.content) || !Object(lodash__WEBPACK_IMPORTED_MODULE_7__["isEmpty"])(getSecond.attributes.content) || !Object(lodash__WEBPACK_IMPORTED_MODULE_7__["isEmpty"])(getThird.attributes.content) || !Object(lodash__WEBPACK_IMPORTED_MODULE_7__["isEmpty"])(getFourth.attributes.content)) {
+      if (!Object(lodash__WEBPACK_IMPORTED_MODULE_7__["isEmpty"])(getFirst.attributes.content) || !Object(lodash__WEBPACK_IMPORTED_MODULE_7__["isEmpty"])(getSecond.attributes.content) || !Object(lodash__WEBPACK_IMPORTED_MODULE_7__["isEmpty"])(getThird.attributes.content)) {
         return null;
       }
 
@@ -22049,12 +22048,12 @@ function (_Component) {
           closeLabel: __('Close', 'block-options'),
           icon: null,
           className: "editorskit-modal-component components-modal--editorskit-transform-empty"
-        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("p", null, __('Do you want to automatically transform four(4) consecutive empty paragraphs into Spacer Block?', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Button, {
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("p", null, __('Do you want to automatically transform three(3) consecutive empty paragraphs into Spacer Block?', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Button, {
           isPrimary: true,
           isLarge: true,
           onClick: function onClick() {
             onToggle(0);
-            createSpacer(getFirst.clientId, getSecond.clientId, getThird.clientId, getFourth.clientId);
+            createSpacer(getFirst.clientId, getSecond.clientId, getThird.clientId);
           },
           ref: this.nameInput
         }, __('Yes Enable', 'block-options')), "\xA0", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Button, {
@@ -22066,7 +22065,7 @@ function (_Component) {
         }, __('No, Thanks', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("small", null, __('This prompt will only be shown once and will remember your preference. Thanks!', 'block-options')))));
       }
 
-      createSpacer(getFirst.clientId, getSecond.clientId, getThird.clientId, getFourth.clientId);
+      createSpacer(getFirst.clientId, getSecond.clientId, getThird.clientId);
       return null;
     }
   }]);
@@ -22100,15 +22099,15 @@ function (_Component) {
   };
 }), withDispatch(function () {
   return {
-    createSpacer: function createSpacer(getFirst, getSecond, getThird, getFourth) {
+    createSpacer: function createSpacer(getFirst, getSecond, getThird) {
       var _dispatch = dispatch('core/block-editor'),
           selectBlock = _dispatch.selectBlock,
           replaceBlock = _dispatch.replaceBlock,
           removeBlocks = _dispatch.removeBlocks;
 
       var createSpacer = createBlock('core/spacer', {});
-      removeBlocks([getFirst, getSecond, getThird]);
-      replaceBlock(getFourth, createSpacer);
+      removeBlocks([getFirst, getSecond]);
+      replaceBlock(getThird, createSpacer);
       selectBlock(createSpacer.clientId);
     },
     onToggle: function onToggle(disabled) {

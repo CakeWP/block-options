@@ -7124,7 +7124,7 @@ function (_Component) {
         title: __('View or Add Estimated Reading Time', 'block-options'),
         name: 'estimated-reading-time-writing.md'
       }, {
-        title: __('Transform 4 Empty Paragraphs to Spacer Block', 'block-options'),
+        title: __('Transform 3 Empty Paragraphs to Spacer Block', 'block-options'),
         name: 'transform-empty-spacer-writing.md'
       }];
       var optionsDocs = [{
