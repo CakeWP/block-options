@@ -18055,7 +18055,7 @@ function (_Component) {
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default()(CharacterMap).apply(this, arguments));
     _this.state = {
       characters: _characters_json__WEBPACK_IMPORTED_MODULE_8__.Misc,
-      keyword: ""
+      keyword: ''
     };
     return _this;
   }
@@ -18095,7 +18095,7 @@ function (_Component) {
         anchorRange = selection.rangeCount > 0 ? selection.getRangeAt(0) : null;
 
         _this2.setState({
-          keyword: "",
+          keyword: '',
           characters: _characters_json__WEBPACK_IMPORTED_MODULE_8__.Misc
         });
 
@@ -18109,7 +18109,7 @@ function (_Component) {
       };
 
       var onSelect = function onSelect(tab) {
-        var tabContent = typeof _characters_json__WEBPACK_IMPORTED_MODULE_8__[tab] !== "undefined" ? _characters_json__WEBPACK_IMPORTED_MODULE_8__[tab] : {};
+        var tabContent = typeof _characters_json__WEBPACK_IMPORTED_MODULE_8__[tab] !== 'undefined' ? _characters_json__WEBPACK_IMPORTED_MODULE_8__[tab] : {};
 
         _this2.setState({
           characters: tabContent,
@@ -18117,7 +18117,7 @@ function (_Component) {
         });
       };
 
-      var container = "editorskit-charmap-popover";
+      var container = 'editorskit-charmap-popover';
 
       if (keyword) {
         container += ' is-searching';
@@ -18131,7 +18131,7 @@ function (_Component) {
           onClick: function onClick() {},
           getAnchorRect: anchorRect,
           expandOnMobile: true,
-          headerTitle: __("Insert Special Character", "block-options"),
+          headerTitle: __('Insert Special Character', 'block-options'),
           onClose: function onClose() {
             onChange(toggleFormat(value, {
               type: name
@@ -18139,7 +18139,7 @@ function (_Component) {
           }
         }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(TextControl, {
           value: keyword,
-          placeholder: __("Search", "block-options"),
+          placeholder: __('Search', 'block-options'),
           onChange: function onChange(newKeyword) {
             _this2.onSearch(newKeyword);
           }
@@ -18148,41 +18148,41 @@ function (_Component) {
           activeClass: "is-active-tab",
           onSelect: onSelect,
           tabs: [{
-            name: "Misc",
-            title: __("Misc", "block-options"),
-            className: "editorskit-charmap-misc"
+            name: 'Misc',
+            title: __('Misc', 'block-options'),
+            className: 'editorskit-charmap-misc'
           }, {
-            name: "Math",
-            title: __("Math", "block-options"),
-            className: "editorskit-charmap-math"
+            name: 'Math',
+            title: __('Math', 'block-options'),
+            className: 'editorskit-charmap-math'
           }, {
-            name: "Latin",
-            title: __("Latin", "block-options"),
-            className: "editorskit-charmap-latin"
+            name: 'Latin',
+            title: __('Latin', 'block-options'),
+            className: 'editorskit-charmap-latin'
           }, {
-            name: "Arrows",
-            title: __("Arrows", "block-options"),
-            className: "editorskit-charmap-arrows"
+            name: 'Arrows',
+            title: __('Arrows', 'block-options'),
+            className: 'editorskit-charmap-arrows'
           }]
-        }, function (tab) {
+        }, function () {
           return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object.keys(characters).length > 0 ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("ul", {
             className: "editorskit-charmap-list"
           }, lodash_map__WEBPACK_IMPORTED_MODULE_7___default()(characters, function (character, key) {
             return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("li", {
-              key: "editorskit-charmap-" + key
+              key: 'editorskit-charmap-' + key
             }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Button, {
               isTertiary: true,
               onClick: function onClick() {
                 onChange(insert(value, character.char));
               }
             }, character.char));
-          })) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("p", null, __("No characters found.", "block-options")));
+          })) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("p", null, __('No characters found.', 'block-options')));
         }));
       }
 
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(RichTextToolbarButton, {
         icon: "editor-customchar",
-        title: __("Special Characters", "block-options"),
+        title: __('Special Characters', 'block-options'),
         onClick: onToggle,
         isActive: isActive
       });
@@ -18194,7 +18194,7 @@ function (_Component) {
 
 /* harmony default export */ __webpack_exports__["default"] = (compose(withSelect(function () {
   return {
-    isDisabled: select("core/edit-post").isFeatureActive("disableEditorsKitClearFormattingFormats")
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitCharmapFormats')
   };
 }), ifCondition(function (props) {
   return !props.isDisabled;
@@ -18214,7 +18214,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "charmap", function() { return charmap; });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _controls__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./controls */ "./src/extensions/formats/charmap/controls.js");
+/* harmony import */ var _controls__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./controls */ "./src/extensions/formats/charmap/controls.js");
 
 
 /**
@@ -18231,18 +18231,18 @@ var Fragment = wp.element.Fragment;
  * Block constants
  */
 
-var name = "editorskit/charmap";
+var name = 'editorskit/charmap';
 var charmap = {
   name: name,
-  title: __("Special Characters", "block-options"),
-  tagName: "span",
-  className: "editorskit-charmap",
+  title: __('Special Characters', 'block-options'),
+  tagName: 'span',
+  className: 'editorskit-charmap',
   edit: function edit(_ref) {
     var isActive = _ref.isActive,
         value = _ref.value,
         onChange = _ref.onChange,
         activeAttributes = _ref.activeAttributes;
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_controls__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_controls__WEBPACK_IMPORTED_MODULE_1__["default"], {
       name: name,
       isActive: isActive,
       value: value,
