@@ -18039,7 +18039,8 @@ var _wp$components = wp.components,
     Popover = _wp$components.Popover,
     TabPanel = _wp$components.TabPanel,
     Button = _wp$components.Button,
-    TextControl = _wp$components.TextControl;
+    TextControl = _wp$components.TextControl,
+    Tooltip = _wp$components.Tooltip;
 var anchorRange;
 
 var CharacterMap =
@@ -18170,12 +18171,16 @@ function (_Component) {
           }, lodash_map__WEBPACK_IMPORTED_MODULE_7___default()(characters, function (character, key) {
             return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("li", {
               key: 'editorskit-charmap-' + key
+            }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Tooltip, {
+              text: character.name.toLowerCase().replace(/(^|\s)\S/g, function (t) {
+                return t.toUpperCase();
+              })
             }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Button, {
               isTertiary: true,
               onClick: function onClick() {
                 onChange(insert(value, character.char));
               }
-            }, character.char));
+            }, character.char)));
           })) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("p", null, __('No characters found.', 'block-options')));
         }));
       }

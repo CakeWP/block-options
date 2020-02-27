@@ -19,12 +19,11 @@ msgstr ""
 msgid "Arrows"
 msgstr ""
 
-#: src/extensions/formats/charmap/controls.js:146
+#: src/extensions/formats/charmap/controls.js:148
 msgid "No characters found."
 msgstr ""
 
-#: src/extensions/formats/charmap/controls.js:159
-#: src/extensions/formats/charmap/index.js:19
+#: src/extensions/formats/charmap/controls.js:161
 msgid "Special Characters"
 msgstr ""
 

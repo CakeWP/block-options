@@ -18,7 +18,7 @@ const { compose, ifCondition } = wp.compose;
 const { select, withSelect } = wp.data;
 const { RichTextToolbarButton } = wp.blockEditor;
 const { toggleFormat, insert } = wp.richText;
-const { Popover, TabPanel, Button, TextControl } = wp.components;
+const { Popover, TabPanel, Button, TextControl, Tooltip } = wp.components;
 
 let anchorRange;
 
@@ -130,14 +130,16 @@ class CharacterMap extends Component {
 											{ map( characters, ( character, key ) => {
 												return (
 													<li key={ 'editorskit-charmap-' + key }>
-														<Button
-															isTertiary
-															onClick={ () => {
-																onChange( insert( value, character.char ) );
-															} }
-														>
-															{ character.char }
-														</Button>
+														<Tooltip text={ character.name.toLowerCase().replace(/(^|\s)\S/g, function (t) { return t.toUpperCase() }) }>
+															<Button
+																isTertiary
+																onClick={ () => {
+																	onChange( insert( value, character.char ) );
+																} }
+															>
+																{ character.char }
+															</Button>
+														</Tooltip>
 													</li>
 												);
 											} ) }
