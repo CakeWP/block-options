@@ -17995,8 +17995,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var lodash_map__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lodash/map */ "./node_modules/lodash/map.js");
-/* harmony import */ var lodash_map__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(lodash_map__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _characters_json__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./characters.json */ "./src/extensions/formats/charmap/characters.json");
 var _characters_json__WEBPACK_IMPORTED_MODULE_8___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./characters.json */ "./src/extensions/formats/charmap/characters.json", 1);
 
@@ -18065,8 +18065,8 @@ function (_Component) {
     key: "onSearch",
     value: function onSearch(keyword) {
       var filtered = {};
-      lodash_map__WEBPACK_IMPORTED_MODULE_7___default()(_characters_json__WEBPACK_IMPORTED_MODULE_8__, function (characters) {
-        lodash_map__WEBPACK_IMPORTED_MODULE_7___default()(characters, function (character, key) {
+      Object(lodash__WEBPACK_IMPORTED_MODULE_7__["map"])(_characters_json__WEBPACK_IMPORTED_MODULE_8__, function (characters) {
+        Object(lodash__WEBPACK_IMPORTED_MODULE_7__["map"])(characters, function (character, key) {
           if (character.name.toLowerCase().search(keyword.toLowerCase()) !== -1) {
             filtered = Object.assign(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, key, character), filtered);
           }
@@ -18168,13 +18168,11 @@ function (_Component) {
         }, function () {
           return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object.keys(characters).length > 0 ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("ul", {
             className: "editorskit-charmap-list"
-          }, lodash_map__WEBPACK_IMPORTED_MODULE_7___default()(characters, function (character, key) {
+          }, Object(lodash__WEBPACK_IMPORTED_MODULE_7__["map"])(characters, function (character, key) {
             return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("li", {
               key: 'editorskit-charmap-' + key
             }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Tooltip, {
-              text: character.name.toLowerCase().replace(/(^|\s)\S/g, function (t) {
-                return t.toUpperCase();
-              })
+              text: Object(lodash__WEBPACK_IMPORTED_MODULE_7__["upperFirst"])(character.name.toLowerCase())
             }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Button, {
               isTertiary: true,
               onClick: function onClick() {
