@@ -58,6 +58,7 @@ import './extensions/block-styles/';
 
 // Shortcuts
 import './extensions/shortcuts/select-parent-block';
+import './extensions/shortcuts/headings';
 
 // Disable Block Control
 import './extensions/advanced-controls/disable-block';
