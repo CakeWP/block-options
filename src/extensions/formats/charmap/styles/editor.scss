@@ -8,7 +8,7 @@
 			&.is-active-tab {
 
 				&,
- &:hover {
+ 				&:hover {
 					background: #555d66 !important;
 					color: #fff !important;
 				}
@@ -52,6 +52,8 @@ ul.editorskit-charmap-list {
 			height: 36px;
 			color: #111;
 			border: 1px solid transparent;
+			text-align: center;
+    		padding: 0px;
 
 			&:hover {
 				border-color: #111;
