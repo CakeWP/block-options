@@ -16542,11 +16542,15 @@ function (_Component) {
         if (shouldTriggerSave) {
           var calculatedTime = _this2.calculateReadingTime();
 
-          _this2.setState({
-            readingTime: calculatedTime
-          });
-
           updateReadingTime(calculatedTime);
+
+          if (calculatedTime !== _this2.state.readingTime) {
+            _this2.setState({
+              readingTime: calculatedTime
+            });
+
+            wp.data.dispatch('core/editor').savePost();
+          }
         }
       }); // return unssubscribe;
     }

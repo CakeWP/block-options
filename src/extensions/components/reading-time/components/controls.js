@@ -88,23 +88,23 @@ class ReadingTime extends Component {
 	updateMeta() {
 		const { updateReadingTime } = this.props;
 
-		let wasSavingPost = select('core/editor').isSavingPost();
-		let wasAutosavingPost = select('core/editor').isAutosavingPost();
+		let wasSavingPost = select( 'core/editor' ).isSavingPost();
+		let wasAutosavingPost = select( 'core/editor' ).isAutosavingPost();
 
 		// First remove any existing subscription in order to prevent multiple saves
-		if ( !!saveUnsubscribe ) {
+		if ( saveUnsubscribe ) {
 			saveUnsubscribe();
 		}
 
 		saveUnsubscribe = subscribe( () => {
 			const isSavingPost = select( 'core/editor' ).isSavingPost();
 			const isAutosavingPost = select( 'core/editor' ).isAutosavingPost();
-			
+
 			// Save metaboxes on save completion, except for autosaves that are not a post preview.
 			const shouldTriggerSave =
 				wasSavingPost &&
-				!isSavingPost &&
-				!wasAutosavingPost;
+				! isSavingPost &&
+				! wasAutosavingPost;
 
 			// Save current state for next inspection.
 			wasSavingPost = isSavingPost;
@@ -112,8 +112,13 @@ class ReadingTime extends Component {
 
 			if ( shouldTriggerSave ) {
 				const calculatedTime = this.calculateReadingTime();
-				this.setState({ readingTime: calculatedTime });
+
 				updateReadingTime( calculatedTime );
+
+				if ( calculatedTime !== this.state.readingTime ) {
+					this.setState( { readingTime: calculatedTime } );
+					wp.data.dispatch( 'core/editor' ).savePost();
+				}
 			}
 		} );
 
