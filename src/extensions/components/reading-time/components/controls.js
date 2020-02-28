@@ -19,6 +19,8 @@ const { withSpokenMessages } = wp.components;
 
 const mediaBlocks = [ 'core/image', 'core/gallery', 'core/cover' ];
 
+let saveUnsubscribe;
+
 /**
  * Render plugin
  */
@@ -80,26 +82,42 @@ class ReadingTime extends Component {
 			estimated = 1;
 		}
 
-		return estimated.toFixed();
+		return parseInt( estimated.toFixed() );
 	}
 
 	updateMeta() {
 		const { updateReadingTime } = this.props;
 
-		const unssubscribe = subscribe( () => {
+		let wasSavingPost = select('core/editor').isSavingPost();
+		let wasAutosavingPost = select('core/editor').isAutosavingPost();
+
+		// First remove any existing subscription in order to prevent multiple saves
+		if ( !!saveUnsubscribe ) {
+			saveUnsubscribe();
+		}
+
+		saveUnsubscribe = subscribe( () => {
 			const isSavingPost = select( 'core/editor' ).isSavingPost();
 			const isAutosavingPost = select( 'core/editor' ).isAutosavingPost();
+			
+			// Save metaboxes on save completion, except for autosaves that are not a post preview.
+			const shouldTriggerSave =
+				wasSavingPost &&
+				!isSavingPost &&
+				!wasAutosavingPost;
 
-			if ( isSavingPost && ! isAutosavingPost ) {
+			// Save current state for next inspection.
+			wasSavingPost = isSavingPost;
+			wasAutosavingPost = isAutosavingPost;
+
+			if ( shouldTriggerSave ) {
 				const calculatedTime = this.calculateReadingTime();
-				if ( calculatedTime !== this.state.readingTime ) {
-					this.setState( { readingTime: calculatedTime } );
-					updateReadingTime( parseInt( calculatedTime ) );
-				}
+				this.setState({ readingTime: calculatedTime });
+				updateReadingTime( calculatedTime );
 			}
 		} );
 
-		return unssubscribe;
+		// return unssubscribe;
 	}
 
 	render() {
