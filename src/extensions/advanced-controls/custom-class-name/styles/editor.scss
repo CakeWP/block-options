@@ -112,10 +112,13 @@ $m: !important;
 .wp-block[data-editorskit-w-full="1"] {
 
 	&[data-type="core/button"] {
+		display: block !important;
 
 		> .editor-block-list__block-edit,
-		> .block-editor-block-list__block-edit {
+		> .block-editor-block-list__block-edit,
+		> .is-block-content {
 
+			&.is-block-content > div:not([class]),
 			> div[data-block]:not([data-block=""]) {
 				width: 100%;
 
@@ -126,6 +129,19 @@ $m: !important;
 					.wp-block-button__link {
 						width: 100%;
 					}
+				}
+			}
+		}
+
+		> div:not([class]) {
+			width: 100%;
+
+			.wp-block-button {
+
+				&,
+				> div,
+				.wp-block-button__link {
+					width: 100%;
 				}
 			}
 		}
