@@ -8,7 +8,7 @@
 			&.is-active-tab {
 
 				&,
- 				&:hover {
+				&:hover {
 					background: #555d66 !important;
 					color: #fff !important;
 				}
@@ -23,13 +23,14 @@
 		overflow-y: auto !important;
 
 
-		> div{
+		> div {
 			height: auto;
 		}
 	}
 
-	&.is-expanded{
-		.components-popover__content{
+	&.is-expanded {
+
+		.components-popover__content {
 			width: auto;
 			max-width: 100%;
 			max-height: 100%;
@@ -67,7 +68,7 @@ ul.editorskit-charmap-list {
 			color: #111;
 			border: 1px solid transparent;
 			text-align: center;
-    		padding: 0px;
+			padding: 0;
 
 			&:hover {
 				border-color: #111;

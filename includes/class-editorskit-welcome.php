@@ -171,8 +171,9 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 					<p>
 					<?php
 						echo sprintf(
+							/* translators: %s: EditorsKit settings page link */
 							esc_html__( 'Thank you for installing and activating EditorsKit Plugin. Please go to %1$sSettings > EditorsKit%2$s to get started.', 'block-options' ),
-							'<a href="' . admin_url( 'options-general.php?page=editorskit-getting-started' ) . '" style="font-weight:700; text-decoration:none;">',
+							'<a href="' . esc_url( admin_url( 'options-general.php?page=editorskit-getting-started' ) ) . '" style="font-weight:700; text-decoration:none;">',
 							'</a>'
 						);
 					?>

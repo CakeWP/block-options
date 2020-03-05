@@ -38,8 +38,8 @@ class CodeEditor extends Component {
 		if ( isDisabled ) {
 			return null;
 		}
-		
-		const textEditor = document.querySelector(".editor-post-text-editor");
+
+		const textEditor = document.querySelector( '.editor-post-text-editor' );
 
 		if ( editorMode === 'text' && textEditor && ! this.state.isLoaded ) {
 			const editorSettings = wp.codeEditor.defaultSettings ? _.clone( wp.codeEditor.defaultSettings ) : {};

@@ -8294,9 +8294,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _extensions_transform_empty_paragraphs__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./extensions/transform/empty-paragraphs */ "./src/extensions/transform/empty-paragraphs/index.js");
 /* harmony import */ var _extensions_block_styles___WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./extensions/block-styles/ */ "./src/extensions/block-styles/index.js");
 /* harmony import */ var _extensions_shortcuts_select_parent_block__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./extensions/shortcuts/select-parent-block */ "./src/extensions/shortcuts/select-parent-block/index.js");
-/* harmony import */ var _extensions_advanced_controls_disable_block__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./extensions/advanced-controls/disable-block */ "./src/extensions/advanced-controls/disable-block/index.js");
-/* harmony import */ var _blocks_import__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./blocks/import */ "./src/blocks/import/index.js");
-/* harmony import */ var _blocks_shareablock__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./blocks/shareablock */ "./src/blocks/shareablock/index.js");
+/* harmony import */ var _extensions_shortcuts_heading_level__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./extensions/shortcuts/heading-level */ "./src/extensions/shortcuts/heading-level/index.js");
+/* harmony import */ var _extensions_shortcuts_alignment__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./extensions/shortcuts/alignment */ "./src/extensions/shortcuts/alignment/index.js");
+/* harmony import */ var _extensions_advanced_controls_disable_block__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./extensions/advanced-controls/disable-block */ "./src/extensions/advanced-controls/disable-block/index.js");
+/* harmony import */ var _blocks_import__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./blocks/import */ "./src/blocks/import/index.js");
+/* harmony import */ var _blocks_shareablock__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./blocks/shareablock */ "./src/blocks/shareablock/index.js");
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -8354,6 +8356,8 @@ var registerBlockType = wp.blocks.registerBlockType; // Extensions
 
  // Shortcuts
 
+
+
  // Disable Block Control
 
  // Register Blocks
@@ -8361,7 +8365,7 @@ var registerBlockType = wp.blocks.registerBlockType; // Extensions
 
 
 function registerBlocks() {
-  [_blocks_import__WEBPACK_IMPORTED_MODULE_26__, _blocks_shareablock__WEBPACK_IMPORTED_MODULE_27__].forEach(function (block) {
+  [_blocks_import__WEBPACK_IMPORTED_MODULE_28__, _blocks_shareablock__WEBPACK_IMPORTED_MODULE_29__].forEach(function (block) {
     if (!block) {
       return;
     }
@@ -22045,6 +22049,346 @@ function PageTemplateBodyClass() {
 }
 
 wp.domReady(PageTemplateBodyClass);
+
+/***/ }),
+
+/***/ "./src/extensions/shortcuts/alignment/components/controls.js":
+/*!*******************************************************************!*\
+  !*** ./src/extensions/shortcuts/alignment/components/controls.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
+
+
+
+
+
+
+
+
+/**
+ * WordPress dependencies
+ */
+var _wp$data = wp.data,
+    withSelect = _wp$data.withSelect,
+    withDispatch = _wp$data.withDispatch,
+    select = _wp$data.select;
+var _wp$compose = wp.compose,
+    compose = _wp$compose.compose,
+    ifCondition = _wp$compose.ifCondition;
+var _wp$element = wp.element,
+    Fragment = _wp$element.Fragment,
+    Component = _wp$element.Component;
+var _wp$components = wp.components,
+    withSpokenMessages = _wp$components.withSpokenMessages,
+    KeyboardShortcuts = _wp$components.KeyboardShortcuts;
+/**
+ * Render plugin
+ */
+
+var RegisterAlignmentShortcut =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(RegisterAlignmentShortcut, _Component);
+
+  function RegisterAlignmentShortcut() {
+    var _this;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, RegisterAlignmentShortcut);
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(RegisterAlignmentShortcut).apply(this, arguments));
+    _this.triggerShortcut = _this.triggerShortcut.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.state = {
+      isOpen: false
+    };
+    return _this;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(RegisterAlignmentShortcut, [{
+    key: "triggerShortcut",
+    value: function triggerShortcut(event) {
+      var keyCode = event.keyCode,
+          code = event.code;
+      var _this$props = this.props,
+          selectedBlock = _this$props.selectedBlock,
+          updateBlockAttributes = _this$props.updateBlockAttributes;
+
+      if (typeof selectedBlock.attributes.hasAlignmentOption !== 'undefined' && selectedBlock.attributes.hasAlignmentOption) {
+        if (67 === keyCode || code === 'KeyC') {
+          updateBlockAttributes(selectedBlock.clientId, {
+            textAlign: 'center',
+            align: 'center'
+          });
+        } else if (76 === keyCode || code === 'KeyL') {
+          updateBlockAttributes(selectedBlock.clientId, {
+            textAlign: 'left',
+            align: 'left'
+          });
+        } else if (82 === keyCode || code === 'KeyR') {
+          updateBlockAttributes(selectedBlock.clientId, {
+            textAlign: 'right',
+            align: 'right'
+          });
+        } else if ((74 === keyCode || code === 'KeyJ') && 'core/paragraph' === selectedBlock.name) {
+          updateBlockAttributes(selectedBlock.clientId, {
+            textAlign: 'justify',
+            align: 'justify'
+          });
+        }
+      }
+
+      event.preventDefault();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var selectedBlock = this.props.selectedBlock;
+
+      if (typeof selectedBlock === 'undefined') {
+        return false;
+      }
+
+      if (typeof selectedBlock.attributes.hasAlignmentOption === 'undefined') {
+        return false;
+      }
+
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(KeyboardShortcuts, {
+        bindGlobal: true,
+        shortcuts: {
+          'ctrl+alt+c': this.triggerShortcut,
+          'ctrl+alt+r': this.triggerShortcut,
+          'ctrl+alt+l': this.triggerShortcut,
+          'ctrl+alt+j': this.triggerShortcut
+        }
+      }));
+    }
+  }]);
+
+  return RegisterAlignmentShortcut;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (compose([withSelect(function () {
+  var _select = select('core/block-editor'),
+      getSelectedBlock = _select.getSelectedBlock;
+
+  var selectedBlock = getSelectedBlock();
+
+  if (!selectedBlock) {
+    return {};
+  }
+
+  return {
+    selectedBlock: selectedBlock,
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitSelectParentShortcuts')
+  };
+}), withDispatch(function (dispatch) {
+  return {
+    updateBlockAttributes: dispatch('core/block-editor').updateBlockAttributes
+  };
+}), ifCondition(function (props) {
+  return !props.isDisabled && props.selectedBlock !== 'undefined' && props.selectedBlock !== 'undefined';
+}), withSpokenMessages])(RegisterAlignmentShortcut));
+
+/***/ }),
+
+/***/ "./src/extensions/shortcuts/alignment/index.js":
+/*!*****************************************************!*\
+  !*** ./src/extensions/shortcuts/alignment/index.js ***!
+  \*****************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_controls__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/controls */ "./src/extensions/shortcuts/alignment/components/controls.js");
+/**
+ * Internal dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+var registerPlugin = wp.plugins.registerPlugin;
+registerPlugin('editorskit-shortcuts--alignment', {
+  icon: false,
+  render: _components_controls__WEBPACK_IMPORTED_MODULE_0__["default"]
+});
+
+/***/ }),
+
+/***/ "./src/extensions/shortcuts/heading-level/components/controls.js":
+/*!***********************************************************************!*\
+  !*** ./src/extensions/shortcuts/heading-level/components/controls.js ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
+
+
+
+
+
+
+
+
+/**
+ * WordPress dependencies
+ */
+var _wp$data = wp.data,
+    withSelect = _wp$data.withSelect,
+    withDispatch = _wp$data.withDispatch,
+    select = _wp$data.select;
+var _wp$compose = wp.compose,
+    compose = _wp$compose.compose,
+    ifCondition = _wp$compose.ifCondition;
+var _wp$element = wp.element,
+    Fragment = _wp$element.Fragment,
+    Component = _wp$element.Component;
+var _wp$components = wp.components,
+    withSpokenMessages = _wp$components.withSpokenMessages,
+    KeyboardShortcuts = _wp$components.KeyboardShortcuts;
+/**
+ * Render plugin
+ */
+
+var RegisterHeadingShortcuts =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(RegisterHeadingShortcuts, _Component);
+
+  function RegisterHeadingShortcuts() {
+    var _this;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, RegisterHeadingShortcuts);
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(RegisterHeadingShortcuts).apply(this, arguments));
+    _this.triggerShortcut = _this.triggerShortcut.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    return _this;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(RegisterHeadingShortcuts, [{
+    key: "triggerShortcut",
+    value: function triggerShortcut(event) {
+      var _this$props = this.props,
+          selectedBlock = _this$props.selectedBlock,
+          updateBlockAttributes = _this$props.updateBlockAttributes;
+      var level = event.code.replace(/^\D+/g, '');
+      updateBlockAttributes(selectedBlock.clientId, {
+        level: parseInt(level)
+      });
+      event.preventDefault();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var selectedBlock = this.props.selectedBlock;
+
+      if (typeof selectedBlock === 'undefined') {
+        return false;
+      }
+
+      if (!['core/heading'].includes(selectedBlock.name)) {
+        return false;
+      }
+
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(KeyboardShortcuts, {
+        bindGlobal: true,
+        shortcuts: {
+          'ctrl+alt+1': this.triggerShortcut,
+          'ctrl+alt+2': this.triggerShortcut,
+          'ctrl+alt+3': this.triggerShortcut,
+          'ctrl+alt+4': this.triggerShortcut,
+          'ctrl+alt+5': this.triggerShortcut,
+          'ctrl+alt+6': this.triggerShortcut
+        }
+      }));
+    }
+  }]);
+
+  return RegisterHeadingShortcuts;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (compose([withSelect(function () {
+  var _select = select('core/block-editor'),
+      getSelectedBlock = _select.getSelectedBlock;
+
+  var selectedBlock = getSelectedBlock();
+
+  if (!selectedBlock) {
+    return {};
+  }
+
+  return {
+    selectedBlock: selectedBlock,
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitHeadingShortcuts')
+  };
+}), withDispatch(function (dispatch) {
+  return {
+    updateBlockAttributes: dispatch('core/block-editor').updateBlockAttributes
+  };
+}), ifCondition(function (props) {
+  return !props.isDisabled && props.selectedBlock !== 'undefined' && props.selectedBlock !== 'undefined';
+}), withSpokenMessages])(RegisterHeadingShortcuts));
+
+/***/ }),
+
+/***/ "./src/extensions/shortcuts/heading-level/index.js":
+/*!*********************************************************!*\
+  !*** ./src/extensions/shortcuts/heading-level/index.js ***!
+  \*********************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_controls__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/controls */ "./src/extensions/shortcuts/heading-level/components/controls.js");
+/**
+ * Internal dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+var registerPlugin = wp.plugins.registerPlugin;
+registerPlugin('editorskit-shortcuts--heading', {
+  icon: false,
+  render: _components_controls__WEBPACK_IMPORTED_MODULE_0__["default"]
+});
 
 /***/ }),
 

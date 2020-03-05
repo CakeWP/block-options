@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { map, upperFirst} from 'lodash';
+import { map, upperFirst } from 'lodash';
 
 /**
  * Internal dependencies
@@ -130,7 +130,7 @@ class CharacterMap extends Component {
 											{ map( characters, ( character, key ) => {
 												return (
 													<li key={ 'editorskit-charmap-' + key }>
-														<Tooltip text={ upperFirst(character.name.toLowerCase()) }>
+														<Tooltip text={ upperFirst( character.name.toLowerCase() ) }>
 															<Button
 																isTertiary
 																onClick={ () => {
