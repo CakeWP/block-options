@@ -147,7 +147,7 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Nonbreaking Space', 'block-options' ),
 							'value' => true,
 						),
-						'charmap'        => array(
+						'charmap'          => array(
 							'name'  => 'charmap',
 							'label' => __( 'Special Characters', 'block-options' ),
 							'value' => true,
