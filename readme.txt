@@ -39,6 +39,9 @@ https://www.youtube.com/watch?v=QWgO4lAJAlE
 * Nonbreaking Space
 * Abbreviation for acronyms
 
+## Glyphs and Special Characters
+Insert special characters and symbols on Gutenberg editor at ease. Special characters are categorized and you can use the search field to find specific symbol.
+
 ## Markdown Support
 Starting [EditorsKit 1.6 ](https://jeffreycarandang.com/editorskit-1-6/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit), you can now use markdowns on Gutenberg editor while typing. Markdowns for `*bold*`, `_italic_` and `~strikethrough~` are available upon plugin activation. Lists of available markdowns are also accessible on the settings menu.
 
@@ -118,6 +121,21 @@ Assign custom link to Image on Media and Text Block. Add custom, media or attach
 ## Add Link to Cover, Group and Column Blocks
 Assign link to cover, group and column blocks at ease with option to enable link attributes like open to new tab, apply nofollow and/or sponsored rel value. Additionally, you can enable the extra option to apply hover animation.
 
+## Keyboard Shortcuts
+EditorsKit adds the missing keyboard shortcuts from Classic Editor. When activated you can use the following shortcuts to easily save time and improve writing workflow.
+
+* `CTRL + ALT + 1` : Heading 1
+* `CTRL + ALT + 2` : Heading 2
+* `CTRL + ALT + 3` : Heading 3
+* `CTRL + ALT + 4` : Heading 4
+* `CTRL + ALT + 5` : Heading 5
+* `CTRL + ALT + 6` : Heading 6
+* `CTRL + ALT + c` : Align center
+* `CTRL + ALT + r` : Align right
+* `CTRL + ALT + l` : Align left
+* `CTRL + ALT + j` : Justify
+* `CMD + SHIFT + .` : Select Parent Block
+
 ## Block Navigator
 Display "Block Navigator" on block that can contain multiple child blocks. Available on Columns Block and Group Block. 
 
@@ -168,6 +186,12 @@ e.g.
 
 
 == Changelog ==
+
+= 1.27 =
+* New: Special Characters Inserter Format. [#254](https://github.com/phpbits/block-options/pull/254) 🎊
+* New: Heading and alignment keyboard shortcuts. [#262](https://github.com/phpbits/block-options/pull/262)🎉
+* Tweaks: Add more compatibility changes for Gutenberg plugin
+* Fixes: Prevent error when switching to Code Editor using keyboard shortcut. [#255](https://github.com/phpbits/block-options/pull/262)
 
 = 1.26 =
 * New: New ShareABlock block. [#251](https://github.com/phpbits/block-options/pull/251)🎉
