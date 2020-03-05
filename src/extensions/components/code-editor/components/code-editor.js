@@ -38,8 +38,10 @@ class CodeEditor extends Component {
 		if ( isDisabled ) {
 			return null;
 		}
+		
+		const textEditor = document.querySelector(".editor-post-text-editor");
 
-		if ( editorMode === 'text' && ! this.state.isLoaded ) {
+		if ( editorMode === 'text' && textEditor && ! this.state.isLoaded ) {
 			const editorSettings = wp.codeEditor.defaultSettings ? _.clone( wp.codeEditor.defaultSettings ) : {};
 
 			//add placeholder class
@@ -59,7 +61,6 @@ class CodeEditor extends Component {
 				}
 			);
 
-			const textEditor = document.querySelector( '.editor-post-text-editor' );
 			const checkChanges = wp.codeEditor.initialize( textEditor, editorSettings );
 
 			checkChanges.codemirror.on( 'change', function( params ) {

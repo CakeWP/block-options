@@ -14689,7 +14689,9 @@ function (_Component) {
         return null;
       }
 
-      if (editorMode === 'text' && !this.state.isLoaded) {
+      var textEditor = document.querySelector(".editor-post-text-editor");
+
+      if (editorMode === 'text' && textEditor && !this.state.isLoaded) {
         var editorSettings = wp.codeEditor.defaultSettings ? _.clone(wp.codeEditor.defaultSettings) : {}; //add placeholder class
 
         document.body.classList.add('editorskit-editor-loaded');
@@ -14702,7 +14704,6 @@ function (_Component) {
           lineWrapping: true,
           scrollbarStyle: 'null'
         });
-        var textEditor = document.querySelector('.editor-post-text-editor');
         var checkChanges = wp.codeEditor.initialize(textEditor, editorSettings);
         checkChanges.codemirror.on('change', function (params) {
           var content = params.getValue();
