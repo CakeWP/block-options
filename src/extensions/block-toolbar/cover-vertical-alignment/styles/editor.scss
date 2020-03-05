@@ -15,6 +15,14 @@
 				}
 			}
 		}
+
+		> .components-resizable-box__container {
+
+			> .wp-block-cover {
+				align-items: flex-start;
+				align-self: flex-start;
+			}
+		}
 	}
 }
 
@@ -33,6 +41,14 @@
 						align-self: flex-end;
 					}
 				}
+			}
+		}
+
+		> .components-resizable-box__container {
+
+			> .wp-block-cover {
+				align-items: flex-end;
+				align-self: flex-end;
 			}
 		}
 	}

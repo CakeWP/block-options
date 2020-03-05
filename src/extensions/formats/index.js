@@ -16,6 +16,7 @@ import { abbreviation } from './abbreviation';
 import { underline } from './underline';
 import { increaseIndent } from './indent-increase';
 import { decreaseIndent } from './indent-decrease';
+import { charmap } from './charmap';
 
 /**
  * WordPress dependencies
@@ -41,6 +42,7 @@ function registerEditorsKitFormats() {
 		underline,
 		increaseIndent,
 		decreaseIndent,
+		charmap,
 		! isDisabled ? link : [],
 	].forEach( ( { name, ...settings } ) => {
 		if ( name ) {
