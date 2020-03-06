@@ -6,7 +6,7 @@ Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenberg editor
 Requires at least: 5.0
 Tested up to: 5.3
 Requires PHP: 5.6
-Stable tag: 1.24.1
+Stable tag: 1.26
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FMKC2SLPTULP8
@@ -38,6 +38,7 @@ https://www.youtube.com/watch?v=QWgO4lAJAlE
 * Images and Embeds Caption Alignment
 * Nonbreaking Space
 * Abbreviation for acronyms
+* Insert Special Characters
 
 ## Glyphs and Special Characters
 Insert special characters and symbols on Gutenberg editor at ease. Special characters are categorized and you can use the search field to find specific symbol.
