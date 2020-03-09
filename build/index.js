@@ -15313,6 +15313,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 var __ = wp.i18n.__;
+var getRectangleFromRange = wp.dom.getRectangleFromRange;
 var _wp$data = wp.data,
     withSelect = _wp$data.withSelect,
     withDispatch = _wp$data.withDispatch,
@@ -15327,8 +15328,12 @@ var _wp$element = wp.element,
 var hasBlockSupport = wp.blocks.hasBlockSupport;
 var _wp$components = wp.components,
     withSpokenMessages = _wp$components.withSpokenMessages,
+    Button = _wp$components.Button,
     IconButton = _wp$components.IconButton,
-    Tooltip = _wp$components.Tooltip;
+    Tooltip = _wp$components.Tooltip,
+    ClipboardButton = _wp$components.ClipboardButton,
+    Popover = _wp$components.Popover,
+    TextControl = _wp$components.TextControl;
 var mediaBlocks = ['core/image', 'core/gallery', 'core/cover'];
 /**
  * Render plugin
@@ -15345,7 +15350,12 @@ function (_Component) {
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, GradientControls);
 
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(GradientControls).apply(this, arguments));
-    _this.onCopy = _this.onCopy.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.handleClickListener = _this.handleClickListener.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.state = {
+      isOpen: false,
+      anchorRect: {},
+      value: ''
+    };
     return _this;
   }
 
@@ -15362,51 +15372,96 @@ function (_Component) {
   }, {
     key: "handleClickListener",
     value: function handleClickListener(event) {
-      var ButtonControls = function ButtonControls() {
+      var _this2 = this;
+
+      var _this$props = this.props,
+          onCopy = _this$props.onCopy,
+          updateBlockAttributes = _this$props.updateBlockAttributes;
+
+      var ButtonControls = function ButtonControls(_ref) {
+        var count = _ref.count;
+        var selectedBlock = select('core/block-editor').getSelectedBlock();
+        var customGradient = selectedBlock.attributes.customGradient;
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Tooltip, {
           text: __('Copy Gradient Value', 'block-options')
-        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(IconButton, {
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(ClipboardButton, {
+          text: customGradient,
+          icon: _icons__WEBPACK_IMPORTED_MODULE_9__["default"].copy,
           isSecondary: true,
           isSmall: true,
-          icon: _icons__WEBPACK_IMPORTED_MODULE_9__["default"].copy
+          disabled: typeof customGradient !== 'undefined' ? false : true,
+          onCopy: onCopy
         })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Tooltip, {
           text: __('Paste Gradient', 'block-options')
         }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(IconButton, {
+          className: "ek-paste",
           isSecondary: true,
           isSmall: true,
-          icon: _icons__WEBPACK_IMPORTED_MODULE_9__["default"].paste
+          icon: _icons__WEBPACK_IMPORTED_MODULE_9__["default"].paste,
+          onClick: function onClick(evt) {
+            _this2.setState({
+              isOpen: !_this2.state.isOpen,
+              anchorRect: evt.target.getBoundingClientRect()
+            });
+          }
         })));
       };
 
       setTimeout(function () {
-        var container = document.querySelector('.block-editor-color-gradient-control');
-        var wrapper = document.querySelector('.components-circular-option-picker__custom-clear-wrapper');
+        var wrapper = document.querySelectorAll('.components-circular-option-picker__custom-clear-wrapper');
+        Array.from(wrapper).map(function (elem, count) {
+          var container = elem.parentNode;
 
-        if (container && wrapper && !wrapper.classList.contains('ek-gradient-controls')) {
-          wrapper.classList.add('ek-gradient-controls');
-          wrapper.insertAdjacentHTML('beforeend', '<div id="ek-gradient-controls-wrapper"></div>');
-          ReactDOM.render(Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(ButtonControls, null), document.getElementById('ek-gradient-controls-wrapper'));
-        }
-      }, 150); // if (document.querySelector('.table-of-contents').contains(event.target) && button === 'false') {
-      // 	const estimated = this.calculateReadingTime();
-      // 	const checkExist = setInterval(function () {
-      // 		if (document.querySelector('.table-of-contents__popover')) {
-      // 			document.querySelector('.table-of-contents__counts').insertAdjacentHTML('beforeend',
-      // 				`<li class="table-of-contents__count table-of-contents__wordcount">${__('Reading Time', 'block-options')}<span class="table-of-contents__number">${estimated} min</span></li>`
-      // 			);
-      // 			clearInterval(checkExist);
-      // 		}
-      // 	}, 100); // check every 100ms
-      // }
-    }
-  }, {
-    key: "onCopy",
-    value: function onCopy() {
-      console.log('copied');
+          if (container.querySelector('.components-custom-gradient-picker') && elem && !elem.classList.contains('ek-gradient-controls')) {
+            elem.classList.add('ek-gradient-controls');
+            elem.insertAdjacentHTML('beforeend', '<div class="ek-gradient-controls-wrapper" id="ek-gradient-controls-wrapper' + count + '"></div>');
+            ReactDOM.render(Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(ButtonControls, {
+              count: count
+            }), document.getElementById('ek-gradient-controls-wrapper' + count));
+          }
+        });
+      }, 100);
     }
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
+      var updateBlockAttributes = this.props.updateBlockAttributes;
+      var selectedBlock = select('core/block-editor').getSelectedBlock();
+
+      if (this.state.isOpen) {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Popover, {
+          className: "ek-gradient-control-popover",
+          position: "bottom center",
+          onClick: function onClick() {},
+          anchorRect: this.state.anchorRect,
+          expandOnMobile: true,
+          headerTitle: __('Paste Gradient Value', 'block-options'),
+          onFocusOutside: function onFocusOutside() {
+            _this3.setState({
+              isOpen: false
+            });
+          }
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(TextControl, {
+          label: __('Paste Gradient Value', 'block-options'),
+          value: this.state.value,
+          onChange: function onChange(newValue) {
+            return _this3.setState({
+              value: newValue
+            });
+          }
+        }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Button, {
+          isPrimary: true,
+          onClick: function onClick() {
+            updateBlockAttributes(selectedBlock.clientId, {
+              gradient: '',
+              customGradient: _this3.state.value
+            });
+          }
+        }, __('Apply', 'block-options')));
+      }
+
       return null;
     }
   }]);
@@ -15415,19 +15470,28 @@ function (_Component) {
 }(Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (compose([withSelect(function () {
+  var _select = select('core/block-editor'),
+      getSelectedBlock = _select.getSelectedBlock;
+
+  if (!getSelectedBlock()) {
+    return {};
+  }
+
   return {
-    content: select('core/editor').getEditedPostAttribute('content'),
-    blocks: select('core/editor').getEditedPostAttribute('blocks')
+    selectedBlock: getSelectedBlock()
   };
 }), withDispatch(function (dispatch) {
+  var _dispatch = dispatch('core/notices'),
+      createNotice = _dispatch.createNotice;
+
   return {
-    updateReadingTime: function updateReadingTime(estimated) {
-      dispatch('core/editor').editPost({
-        meta: {
-          _editorskit_reading_time: estimated
-        }
+    onCopy: function onCopy() {
+      createNotice('info', __('Custom Gradient copied to your clipboard.', 'block-options'), {
+        isDismissible: true,
+        type: 'snackbar'
       });
-    }
+    },
+    updateBlockAttributes: dispatch('core/block-editor').updateBlockAttributes
   };
 }), // ifCondition((props) => {
 // 	return !props.isDisabled;

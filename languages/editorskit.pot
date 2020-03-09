@@ -3,10 +3,22 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/components/gradient-controls/components/controls.js:45
+#: src/extensions/components/gradient-controls/components/controls.js:124
+msgid "Paste Gradient Value"
+msgstr ""
+
+#: src/extensions/components/gradient-controls/components/controls.js:134
+msgid "Apply"
+msgstr ""
+
+#: src/extensions/components/gradient-controls/components/controls.js:161
+msgid "Custom Gradient copied to your clipboard."
+msgstr ""
+
+#: src/extensions/components/gradient-controls/components/controls.js:55
 msgid "Copy Gradient Value"
 msgstr ""
 
-#: src/extensions/components/gradient-controls/components/controls.js:54
+#: src/extensions/components/gradient-controls/components/controls.js:67
 msgid "Paste Gradient"
 msgstr ""

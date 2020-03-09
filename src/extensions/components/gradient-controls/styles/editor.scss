@@ -1,4 +1,4 @@
-#ek-gradient-controls-wrapper{
+.ek-gradient-controls-wrapper{
 	padding-left: 5px;
 	.components-button{
 		padding: 0px !important;
@@ -15,5 +15,10 @@
 		&:first-child{
 			margin: 0 5px;
 		}
+	}
+}
+.ek-gradient-control-popover{
+	.components-popover__content{
+		padding: 15px;
 	}
 }

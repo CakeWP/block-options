@@ -12,11 +12,12 @@ import icon from './icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
+const { getRectangleFromRange } = wp.dom;
 const { withSelect, withDispatch, select, subscribe } = wp.data;
 const { compose, ifCondition } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { hasBlockSupport } = wp.blocks;
-const { withSpokenMessages, IconButton, Tooltip } = wp.components;
+const { withSpokenMessages, Button, IconButton, Tooltip, ClipboardButton, Popover, TextControl } = wp.components;
 
 const mediaBlocks = ['core/image', 'core/gallery', 'core/cover'];
 
@@ -26,7 +27,13 @@ const mediaBlocks = ['core/image', 'core/gallery', 'core/cover'];
 class GradientControls extends Component {
 	constructor() {
 		super(...arguments);
-		this.onCopy = this.onCopy.bind(this);
+		this.handleClickListener = this.handleClickListener.bind(this);
+
+		this.state = {
+			isOpen: false,
+			anchorRect:{},
+			value:'',
+		};
 	}
 
 	componentDidMount() {
@@ -38,86 +45,127 @@ class GradientControls extends Component {
 	}
 
 	handleClickListener(event) {
+		const { onCopy, updateBlockAttributes } = this.props;
+		const ButtonControls = ({ count }) => {
 
-		const ButtonControls = () => {
+			const selectedBlock = select('core/block-editor').getSelectedBlock();
+			const { customGradient } = selectedBlock.attributes;
 			return (
 				<Fragment>
 					<Tooltip text={ __('Copy Gradient Value', 'block-options') }>
-						<IconButton
+						<ClipboardButton
+							text={customGradient}
+							icon={icon.copy}
 							isSecondary
 							isSmall
-							icon={ icon.copy }
+							disabled={typeof customGradient !== 'undefined' ? false : true}
+							onCopy={onCopy}
 						>
-						</IconButton>
+						</ClipboardButton>
 					</Tooltip>
 
 					<Tooltip text={__('Paste Gradient', 'block-options')}>
 						<IconButton
+							className="ek-paste"
 							isSecondary
 							isSmall
 							icon={icon.paste}
+							onClick={ (evt)=>{
+								this.setState({ isOpen: !this.state.isOpen, anchorRect: evt.target.getBoundingClientRect() });
+							} }
 						>
 						</IconButton>
 					</Tooltip>
+					
 				</Fragment>
 			);
 		};
 		
 		setTimeout(function () {
 
-			const container = document.querySelector('.block-editor-color-gradient-control');
-			const wrapper = document.querySelector('.components-circular-option-picker__custom-clear-wrapper');
-			if (container && wrapper && !wrapper.classList.contains('ek-gradient-controls') ) {
-				wrapper.classList.add('ek-gradient-controls');
-				wrapper.insertAdjacentHTML('beforeend',
-					'<div id="ek-gradient-controls-wrapper"></div>'
-				);
+			const wrapper = document.querySelectorAll('.components-circular-option-picker__custom-clear-wrapper');
 
-				ReactDOM.render(
-					<ButtonControls />,
-					document.getElementById('ek-gradient-controls-wrapper')
-				);
-			}
+			Array.from(wrapper).map(( elem, count ) => {
+				let container = elem.parentNode;
+				if (container.querySelector('.components-custom-gradient-picker') && elem && !elem.classList.contains('ek-gradient-controls')) {
+					elem.classList.add('ek-gradient-controls');
+					elem.insertAdjacentHTML('beforeend',
+						'<div class="ek-gradient-controls-wrapper" id="ek-gradient-controls-wrapper' + count +'"></div>'
+					);
 
-		}, 150);
-		
-		// if (document.querySelector('.table-of-contents').contains(event.target) && button === 'false') {
-		// 	const estimated = this.calculateReadingTime();
+					ReactDOM.render(
+						<ButtonControls count={count} />,
+						document.getElementById('ek-gradient-controls-wrapper' + count)
+					);
+				}
+			})
 
-		// 	const checkExist = setInterval(function () {
-		// 		if (document.querySelector('.table-of-contents__popover')) {
-		// 			document.querySelector('.table-of-contents__counts').insertAdjacentHTML('beforeend',
-		// 				`<li class="table-of-contents__count table-of-contents__wordcount">${__('Reading Time', 'block-options')}<span class="table-of-contents__number">${estimated} min</span></li>`
-		// 			);
-		// 			clearInterval(checkExist);
-		// 		}
-		// 	}, 100); // check every 100ms
-		// }
-	}
-
-	onCopy(){
-		console.log('copied');
+		}, 100);
 	}
 
 	render() {
+		const { updateBlockAttributes } = this.props;
+		const selectedBlock = select('core/block-editor').getSelectedBlock();
+
+		if( this.state.isOpen ){
+			return (
+				<Popover
+					className="ek-gradient-control-popover"
+					position="bottom center"
+					onClick={() => { }}
+					anchorRect={this.state.anchorRect}
+					expandOnMobile={true}
+					headerTitle={__('Paste Gradient Value', 'block-options')}
+					onFocusOutside={()=>{
+						this.setState({ isOpen: false });
+					}}
+				>
+					<TextControl
+						label={__('Paste Gradient Value', 'block-options')}
+						value={this.state.value}
+						onChange={(newValue) => this.setState({ value: newValue })}
+					/>
+					<Button
+						isPrimary
+						onClick={()=>{
+							updateBlockAttributes(selectedBlock.clientId, { gradient: '', customGradient: this.state.value} );
+						}}
+					>
+						{__('Apply', 'block-options') }
+					</Button>
+				</Popover>
+			)
+		}
 		return null;
 	}
 }
 
 export default compose([
-	withSelect(() => ({
-		content: select('core/editor').getEditedPostAttribute('content'),
-		blocks: select('core/editor').getEditedPostAttribute('blocks'),
-	})),
-	withDispatch((dispatch) => {
+	withSelect(() => {
+		const { getSelectedBlock } = select('core/block-editor');
+		if (!getSelectedBlock()) {
+			return {};
+		}
+
 		return {
-			updateReadingTime(estimated) {
-				dispatch('core/editor').editPost({
-					meta: {
-						_editorskit_reading_time: estimated,
-					},
-				});
+			selectedBlock: getSelectedBlock(),
+		};
+	}),
+	withDispatch((dispatch) => {
+		const { createNotice } = dispatch('core/notices');
+
+		return {
+			onCopy() {
+				createNotice(
+					'info',
+					__('Custom Gradient copied to your clipboard.', 'block-options'),
+					{
+						isDismissible: true,
+						type: 'snackbar',
+					}
+				);
 			},
+			updateBlockAttributes: dispatch('core/block-editor').updateBlockAttributes,
 		};
 	}),
 	// ifCondition((props) => {
