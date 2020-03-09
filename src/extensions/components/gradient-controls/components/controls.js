@@ -1,21 +1,22 @@
 /**
  * External dependencies
  */
-/**
- * WordPress dependencies
- */
 import { count as wordcount } from '@wordpress/wordcount';
 import { map } from 'lodash';
 
+/**
+ * Internal dependencies
+ */
+import icon from './icons';
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { withSelect, withDispatch, select, subscribe } = wp.data;
 const { compose, ifCondition } = wp.compose;
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 const { hasBlockSupport } = wp.blocks;
-const { withSpokenMessages } = wp.components;
+const { withSpokenMessages, IconButton, Tooltip } = wp.components;
 
 const mediaBlocks = ['core/image', 'core/gallery', 'core/cover'];
 
@@ -25,25 +26,57 @@ const mediaBlocks = ['core/image', 'core/gallery', 'core/cover'];
 class GradientControls extends Component {
 	constructor() {
 		super(...arguments);
-		// this.updateMeta = this.updateMeta.bind(this);
+		this.onCopy = this.onCopy.bind(this);
 	}
 
 	componentDidMount() {
-		document.addEventListener('mousedown', this.handleButtonClick);
+		document.addEventListener('mousedown', this.handleClickListener);
 	}
 
 	componentWillUnmount() {
-		document.removeEventListener('mousedown', this.handleButtonClick);
+		document.removeEventListener('mousedown', this.handleClickListener);
 	}
 
-	handleButtonClick(event) {
+	handleClickListener(event) {
+
+		const ButtonControls = () => {
+			return (
+				<Fragment>
+					<Tooltip text={ __('Copy Gradient Value', 'block-options') }>
+						<IconButton
+							isSecondary
+							isSmall
+							icon={ icon.copy }
+						>
+						</IconButton>
+					</Tooltip>
+
+					<Tooltip text={__('Paste Gradient', 'block-options')}>
+						<IconButton
+							isSecondary
+							isSmall
+							icon={icon.paste}
+						>
+						</IconButton>
+					</Tooltip>
+				</Fragment>
+			);
+		};
 		
 		setTimeout(function () {
 
 			const container = document.querySelector('.block-editor-color-gradient-control');
 			const wrapper = document.querySelector('.components-circular-option-picker__custom-clear-wrapper');
-			if ( container && wrapper ) {
-				// container.remove();
+			if (container && wrapper && !wrapper.classList.contains('ek-gradient-controls') ) {
+				wrapper.classList.add('ek-gradient-controls');
+				wrapper.insertAdjacentHTML('beforeend',
+					'<div id="ek-gradient-controls-wrapper"></div>'
+				);
+
+				ReactDOM.render(
+					<ButtonControls />,
+					document.getElementById('ek-gradient-controls-wrapper')
+				);
 			}
 
 		}, 150);
@@ -60,6 +93,10 @@ class GradientControls extends Component {
 		// 		}
 		// 	}, 100); // check every 100ms
 		// }
+	}
+
+	onCopy(){
+		console.log('copied');
 	}
 
 	render() {

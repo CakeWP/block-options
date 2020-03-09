@@ -3,34 +3,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/formats/charmap/controls.js:105
-msgid "Misc"
+#: src/extensions/components/gradient-controls/components/controls.js:45
+msgid "Copy Gradient Value"
 msgstr ""
 
-#: src/extensions/formats/charmap/controls.js:110
-msgid "Math"
-msgstr ""
-
-#: src/extensions/formats/charmap/controls.js:115
-msgid "Latin"
-msgstr ""
-
-#: src/extensions/formats/charmap/controls.js:120
-msgid "Arrows"
-msgstr ""
-
-#: src/extensions/formats/charmap/controls.js:148
-msgid "No characters found."
-msgstr ""
-
-#: src/extensions/formats/charmap/controls.js:161
-msgid "Special Characters"
-msgstr ""
-
-#: src/extensions/formats/charmap/controls.js:86
-msgid "Insert Special Character"
-msgstr ""
-
-#: src/extensions/formats/charmap/controls.js:93
-msgid "Search"
+#: src/extensions/components/gradient-controls/components/controls.js:54
+msgid "Paste Gradient"
 msgstr ""

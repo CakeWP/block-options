@@ -15279,12 +15279,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
 /* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_wordcount__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/wordcount */ "@wordpress/wordcount");
-/* harmony import */ var _wordpress_wordcount__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_wordcount__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _wordpress_wordcount__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/wordcount */ "@wordpress/wordcount");
+/* harmony import */ var _wordpress_wordcount__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_wordcount__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./icons */ "./src/extensions/components/gradient-controls/components/icons.js");
+
+
 
 
 
@@ -15295,8 +15302,9 @@ __webpack_require__.r(__webpack_exports__);
  * External dependencies
  */
 
+
 /**
- * WordPress dependencies
+ * Internal dependencies
  */
 
 
@@ -15313,9 +15321,14 @@ var _wp$data = wp.data,
 var _wp$compose = wp.compose,
     compose = _wp$compose.compose,
     ifCondition = _wp$compose.ifCondition;
-var Component = wp.element.Component;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
 var hasBlockSupport = wp.blocks.hasBlockSupport;
-var withSpokenMessages = wp.components.withSpokenMessages;
+var _wp$components = wp.components,
+    withSpokenMessages = _wp$components.withSpokenMessages,
+    IconButton = _wp$components.IconButton,
+    Tooltip = _wp$components.Tooltip;
 var mediaBlocks = ['core/image', 'core/gallery', 'core/cover'];
 /**
  * Render plugin
@@ -15324,32 +15337,55 @@ var mediaBlocks = ['core/image', 'core/gallery', 'core/cover'];
 var GradientControls =
 /*#__PURE__*/
 function (_Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(GradientControls, _Component);
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(GradientControls, _Component);
 
   function GradientControls() {
+    var _this;
+
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, GradientControls);
 
-    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(GradientControls).apply(this, arguments)); // this.updateMeta = this.updateMeta.bind(this);
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(GradientControls).apply(this, arguments));
+    _this.onCopy = _this.onCopy.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    return _this;
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(GradientControls, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      document.addEventListener('mousedown', this.handleButtonClick);
+      document.addEventListener('mousedown', this.handleClickListener);
     }
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
-      document.removeEventListener('mousedown', this.handleButtonClick);
+      document.removeEventListener('mousedown', this.handleClickListener);
     }
   }, {
-    key: "handleButtonClick",
-    value: function handleButtonClick(event) {
+    key: "handleClickListener",
+    value: function handleClickListener(event) {
+      var ButtonControls = function ButtonControls() {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Tooltip, {
+          text: __('Copy Gradient Value', 'block-options')
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(IconButton, {
+          isSecondary: true,
+          isSmall: true,
+          icon: _icons__WEBPACK_IMPORTED_MODULE_9__["default"].copy
+        })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Tooltip, {
+          text: __('Paste Gradient', 'block-options')
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(IconButton, {
+          isSecondary: true,
+          isSmall: true,
+          icon: _icons__WEBPACK_IMPORTED_MODULE_9__["default"].paste
+        })));
+      };
+
       setTimeout(function () {
         var container = document.querySelector('.block-editor-color-gradient-control');
         var wrapper = document.querySelector('.components-circular-option-picker__custom-clear-wrapper');
 
-        if (container && wrapper) {// container.remove();
+        if (container && wrapper && !wrapper.classList.contains('ek-gradient-controls')) {
+          wrapper.classList.add('ek-gradient-controls');
+          wrapper.insertAdjacentHTML('beforeend', '<div id="ek-gradient-controls-wrapper"></div>');
+          ReactDOM.render(Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(ButtonControls, null), document.getElementById('ek-gradient-controls-wrapper'));
         }
       }, 150); // if (document.querySelector('.table-of-contents').contains(event.target) && button === 'false') {
       // 	const estimated = this.calculateReadingTime();
@@ -15362,6 +15398,11 @@ function (_Component) {
       // 		}
       // 	}, 100); // check every 100ms
       // }
+    }
+  }, {
+    key: "onCopy",
+    value: function onCopy() {
+      console.log('copied');
     }
   }, {
     key: "render",
@@ -15392,6 +15433,46 @@ function (_Component) {
 // 	return !props.isDisabled;
 // }),
 withSpokenMessages])(GradientControls));
+
+/***/ }),
+
+/***/ "./src/extensions/components/gradient-controls/components/icons.js":
+/*!*************************************************************************!*\
+  !*** ./src/extensions/components/gradient-controls/components/icons.js ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * Custom icon
+ */
+var icon = {};
+icon.copy = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  height: "24",
+  viewBox: "0 0 24 24",
+  width: "24"
+}, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+  d: "M0 0h24v24H0z",
+  fill: "none"
+}), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+  d: "M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4l6 6v10c0 1.1-.9 2-2 2H7.99C6.89 23 6 22.1 6 21l.01-14c0-1.1.89-2 1.99-2h7zm-1 7h5.5L14 6.5V12z"
+}));
+icon.paste = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "24",
+  height: "24",
+  viewBox: "0 0 24 24"
+}, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+  d: "M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (icon);
 
 /***/ }),
 
