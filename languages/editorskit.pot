@@ -7,12 +7,16 @@ msgstr ""
 msgid "Paste Gradient Value"
 msgstr ""
 
-#: src/extensions/components/gradient-controls/components/controls.js:134
+#: src/extensions/components/gradient-controls/components/controls.js:136
 msgid "Apply"
 msgstr ""
 
-#: src/extensions/components/gradient-controls/components/controls.js:161
+#: src/extensions/components/gradient-controls/components/controls.js:163
 msgid "Custom Gradient copied to your clipboard."
+msgstr ""
+
+#: src/extensions/components/gradient-controls/components/controls.js:173
+msgid "Custom Gradient applied to selected block."
 msgstr ""
 
 #: src/extensions/components/gradient-controls/components/controls.js:55

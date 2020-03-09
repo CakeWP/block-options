@@ -15427,7 +15427,9 @@ function (_Component) {
     value: function render() {
       var _this3 = this;
 
-      var updateBlockAttributes = this.props.updateBlockAttributes;
+      var _this$props2 = this.props,
+          updateBlockAttributes = _this$props2.updateBlockAttributes,
+          onPaste = _this$props2.onPaste;
       var selectedBlock = select('core/block-editor').getSelectedBlock();
 
       if (this.state.isOpen) {
@@ -15458,6 +15460,11 @@ function (_Component) {
               gradient: '',
               customGradient: _this3.state.value
             });
+            onPaste();
+
+            _this3.setState({
+              value: ''
+            });
           }
         }, __('Apply', 'block-options')));
       }
@@ -15487,6 +15494,12 @@ function (_Component) {
   return {
     onCopy: function onCopy() {
       createNotice('info', __('Custom Gradient copied to your clipboard.', 'block-options'), {
+        isDismissible: true,
+        type: 'snackbar'
+      });
+    },
+    onPaste: function onPaste() {
+      createNotice('info', __('Custom Gradient applied to selected block.', 'block-options'), {
         isDismissible: true,
         type: 'snackbar'
       });

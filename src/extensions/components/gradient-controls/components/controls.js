@@ -104,7 +104,7 @@ class GradientControls extends Component {
 	}
 
 	render() {
-		const { updateBlockAttributes } = this.props;
+		const { updateBlockAttributes, onPaste } = this.props;
 		const selectedBlock = select('core/block-editor').getSelectedBlock();
 
 		if( this.state.isOpen ){
@@ -129,6 +129,8 @@ class GradientControls extends Component {
 						isPrimary
 						onClick={()=>{
 							updateBlockAttributes(selectedBlock.clientId, { gradient: '', customGradient: this.state.value} );
+							onPaste();
+							this.setState({ value: '' });
 						}}
 					>
 						{__('Apply', 'block-options') }
@@ -159,6 +161,16 @@ export default compose([
 				createNotice(
 					'info',
 					__('Custom Gradient copied to your clipboard.', 'block-options'),
+					{
+						isDismissible: true,
+						type: 'snackbar',
+					}
+				);
+			},
+			onPaste() {
+				createNotice(
+					'info',
+					__('Custom Gradient applied to selected block.', 'block-options'),
 					{
 						isDismissible: true,
 						type: 'snackbar',
