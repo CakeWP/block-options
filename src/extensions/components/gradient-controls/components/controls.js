@@ -33,6 +33,7 @@ class GradientControls extends Component {
 			isOpen: false,
 			anchorRect:{},
 			value:'',
+			count: null
 		};
 	}
 
@@ -71,7 +72,7 @@ class GradientControls extends Component {
 							isSmall
 							icon={icon.paste}
 							onClick={ (evt)=>{
-								this.setState({ isOpen: !this.state.isOpen, anchorRect: evt.target.getBoundingClientRect() });
+								this.setState({ isOpen: !this.state.isOpen, anchorRect: evt.target.getBoundingClientRect(), count:count });
 							} }
 						>
 						</IconButton>
@@ -131,6 +132,12 @@ class GradientControls extends Component {
 							updateBlockAttributes(selectedBlock.clientId, { gradient: '', customGradient: this.state.value} );
 							onPaste();
 							this.setState({ value: '' });
+
+							//reload buttons
+							let wrapper = document.getElementById('ek-gradient-controls-wrapper' + this.state.count);
+							wrapper.parentNode.classList.remove('ek-gradient-controls');
+							wrapper.remove();
+							this.handleClickListener();
 						}}
 					>
 						{__('Apply', 'block-options') }

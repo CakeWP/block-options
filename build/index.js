@@ -15354,7 +15354,8 @@ function (_Component) {
     _this.state = {
       isOpen: false,
       anchorRect: {},
-      value: ''
+      value: '',
+      count: null
     };
     return _this;
   }
@@ -15401,7 +15402,8 @@ function (_Component) {
           onClick: function onClick(evt) {
             _this2.setState({
               isOpen: !_this2.state.isOpen,
-              anchorRect: evt.target.getBoundingClientRect()
+              anchorRect: evt.target.getBoundingClientRect(),
+              count: count
             });
           }
         })));
@@ -15464,7 +15466,14 @@ function (_Component) {
 
             _this3.setState({
               value: ''
-            });
+            }); //reload buttons
+
+
+            var wrapper = document.getElementById('ek-gradient-controls-wrapper' + _this3.state.count);
+            wrapper.parentNode.classList.remove('ek-gradient-controls');
+            wrapper.remove();
+
+            _this3.handleClickListener();
           }
         }, __('Apply', 'block-options')));
       }
