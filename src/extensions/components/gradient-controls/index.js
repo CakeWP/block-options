@@ -8,7 +8,7 @@ import GradientControls from './components/controls';
  */
 const { registerPlugin } = wp.plugins;
 
-registerPlugin('editorskit-gradient-controls', {
+registerPlugin( 'editorskit-gradient-controls', {
 	icon: false,
 	render: GradientControls,
-});
+} );

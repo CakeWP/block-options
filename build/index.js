@@ -15285,47 +15285,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _wordpress_wordcount__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/wordcount */ "@wordpress/wordcount");
-/* harmony import */ var _wordpress_wordcount__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_wordcount__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./icons */ "./src/extensions/components/gradient-controls/components/icons.js");
+/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./icons */ "./src/extensions/components/gradient-controls/components/icons.js");
 
 
 
 
 
 
-
-
-/**
- * External dependencies
- */
 
 
 /**
  * Internal dependencies
  */
 
-
 /**
  * WordPress dependencies
  */
 
 var __ = wp.i18n.__;
-var getRectangleFromRange = wp.dom.getRectangleFromRange;
 var _wp$data = wp.data,
     withSelect = _wp$data.withSelect,
     withDispatch = _wp$data.withDispatch,
-    select = _wp$data.select,
-    subscribe = _wp$data.subscribe;
-var _wp$compose = wp.compose,
-    compose = _wp$compose.compose,
-    ifCondition = _wp$compose.ifCondition;
+    select = _wp$data.select;
+var compose = wp.compose.compose;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
-var hasBlockSupport = wp.blocks.hasBlockSupport;
 var _wp$components = wp.components,
     withSpokenMessages = _wp$components.withSpokenMessages,
     Button = _wp$components.Button,
@@ -15334,7 +15319,6 @@ var _wp$components = wp.components,
     ClipboardButton = _wp$components.ClipboardButton,
     Popover = _wp$components.Popover,
     TextControl = _wp$components.TextControl;
-var mediaBlocks = ['core/image', 'core/gallery', 'core/cover'];
 /**
  * Render plugin
  */
@@ -15372,12 +15356,10 @@ function (_Component) {
     }
   }, {
     key: "handleClickListener",
-    value: function handleClickListener(event) {
+    value: function handleClickListener() {
       var _this2 = this;
 
-      var _this$props = this.props,
-          onCopy = _this$props.onCopy,
-          updateBlockAttributes = _this$props.updateBlockAttributes;
+      var onCopy = this.props.onCopy;
 
       var ButtonControls = function ButtonControls(_ref) {
         var count = _ref.count;
@@ -15387,7 +15369,7 @@ function (_Component) {
           text: __('Copy Gradient Value', 'block-options')
         }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(ClipboardButton, {
           text: customGradient,
-          icon: _icons__WEBPACK_IMPORTED_MODULE_9__["default"].copy,
+          icon: _icons__WEBPACK_IMPORTED_MODULE_7__["default"].copy,
           isSecondary: true,
           isSmall: true,
           disabled: typeof customGradient !== 'undefined' ? false : true,
@@ -15398,7 +15380,7 @@ function (_Component) {
           className: "ek-paste",
           isSecondary: true,
           isSmall: true,
-          icon: _icons__WEBPACK_IMPORTED_MODULE_9__["default"].paste,
+          icon: _icons__WEBPACK_IMPORTED_MODULE_7__["default"].paste,
           onClick: function onClick(evt) {
             _this2.setState({
               isOpen: !_this2.state.isOpen,
@@ -15421,6 +15403,8 @@ function (_Component) {
               count: count
             }), document.getElementById('ek-gradient-controls-wrapper' + count));
           }
+
+          return false;
         });
       }, 100);
     }
@@ -15429,9 +15413,9 @@ function (_Component) {
     value: function render() {
       var _this3 = this;
 
-      var _this$props2 = this.props,
-          updateBlockAttributes = _this$props2.updateBlockAttributes,
-          onPaste = _this$props2.onPaste;
+      var _this$props = this.props,
+          updateBlockAttributes = _this$props.updateBlockAttributes,
+          onPaste = _this$props.onPaste;
       var selectedBlock = select('core/block-editor').getSelectedBlock();
 
       if (this.state.isOpen) {
