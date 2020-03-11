@@ -305,6 +305,11 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Editor Min-Height', 'block-options' ),
 							'value' => true,
 						),
+						'gradientControls'    => array(
+							'name'  => 'gradientControls',
+							'label' => __( 'Gradient Controls', 'block-options' ),
+							'value' => true,
+						),
 						'autosave'            => array(
 							'name'  => 'autosave',
 							'label' => __( 'Toggle Auto Save', 'block-options' ),

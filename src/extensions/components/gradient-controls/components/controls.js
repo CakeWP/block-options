@@ -7,7 +7,7 @@ import icon from './icons';
  */
 const { __ } = wp.i18n;
 const { withSelect, withDispatch, select } = wp.data;
-const { compose } = wp.compose;
+const { compose, ifCondition } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { withSpokenMessages, Button, IconButton, Tooltip, ClipboardButton, Popover, TextControl } = wp.components;
 
@@ -37,6 +37,7 @@ class GradientControls extends Component {
 
 	handleClickListener() {
 		const { onCopy } = this.props;
+
 		const ButtonControls = ( { count } ) => {
 			const selectedBlock = select( 'core/block-editor' ).getSelectedBlock();
 			const { customGradient } = selectedBlock.attributes;
@@ -140,13 +141,8 @@ class GradientControls extends Component {
 
 export default compose( [
 	withSelect( () => {
-		const { getSelectedBlock } = select( 'core/block-editor' );
-		if ( ! getSelectedBlock() ) {
-			return {};
-		}
-
 		return {
-			selectedBlock: getSelectedBlock(),
+			isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitGradientControlsTools'),
 		};
 	} ),
 	withDispatch( ( dispatch ) => {
@@ -176,8 +172,8 @@ export default compose( [
 			updateBlockAttributes: dispatch( 'core/block-editor' ).updateBlockAttributes,
 		};
 	} ),
-	// ifCondition((props) => {
-	// 	return !props.isDisabled;
-	// }),
+	ifCondition((props) => {
+		return !props.isDisabled;
+	}),
 	withSpokenMessages,
 ] )( GradientControls );

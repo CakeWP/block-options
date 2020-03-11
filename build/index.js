@@ -15307,7 +15307,9 @@ var _wp$data = wp.data,
     withSelect = _wp$data.withSelect,
     withDispatch = _wp$data.withDispatch,
     select = _wp$data.select;
-var compose = wp.compose.compose;
+var _wp$compose = wp.compose,
+    compose = _wp$compose.compose,
+    ifCondition = _wp$compose.ifCondition;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
@@ -15470,15 +15472,8 @@ function (_Component) {
 }(Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (compose([withSelect(function () {
-  var _select = select('core/block-editor'),
-      getSelectedBlock = _select.getSelectedBlock;
-
-  if (!getSelectedBlock()) {
-    return {};
-  }
-
   return {
-    selectedBlock: getSelectedBlock()
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitGradientControlsTools')
   };
 }), withDispatch(function (dispatch) {
   var _dispatch = dispatch('core/notices'),
@@ -15499,10 +15494,9 @@ function (_Component) {
     },
     updateBlockAttributes: dispatch('core/block-editor').updateBlockAttributes
   };
-}), // ifCondition((props) => {
-// 	return !props.isDisabled;
-// }),
-withSpokenMessages])(GradientControls));
+}), ifCondition(function (props) {
+  return !props.isDisabled;
+}), withSpokenMessages])(GradientControls));
 
 /***/ }),
 
