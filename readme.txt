@@ -6,7 +6,7 @@ Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenberg editor
 Requires at least: 5.0
 Tested up to: 5.3
 Requires PHP: 5.6
-Stable tag: 1.26
+Stable tag: 1.27
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FMKC2SLPTULP8
@@ -143,6 +143,9 @@ Display "Block Navigator" on block that can contain multiple child blocks. Avail
 ## UI and User Experience Improvements
 Improve interface and provide better writing experience.
 
+## Copy and Paste Custom Gradients
+Easily copy custom gradient colors to your clipboard and paste them anywhere. You can also select [CopyGradients](https://copygradients.com/) available combinations and easily paste the colors to Cover and Button blocks.
+
 ## Features Manager
 Enable or disable EditorsKit features using "EditorsKit Settings" menu. This will give you full control over the plugin features and let you disable the features that you don't need on your website.
 
@@ -187,6 +190,10 @@ e.g.
 
 
 == Changelog ==
+
+= 1.28 =
+* New: Gradient picker copy and paste controls. [#264](https://github.com/phpbits/block-options/pull/264) 🎊
+* Fixes: Compatibility with new Gutenberg plugin UI and block guide lines. [#265](https://github.com/phpbits/block-options/pull/265)
 
 = 1.27 =
 * New: Special Characters Inserter Format. [#254](https://github.com/phpbits/block-options/pull/254) 🎊
