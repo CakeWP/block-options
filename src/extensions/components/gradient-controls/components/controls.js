@@ -142,7 +142,7 @@ class GradientControls extends Component {
 export default compose( [
 	withSelect( () => {
 		return {
-			isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitGradientControlsTools'),
+			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitGradientControlsTools' ),
 		};
 	} ),
 	withDispatch( ( dispatch ) => {
@@ -172,8 +172,8 @@ export default compose( [
 			updateBlockAttributes: dispatch( 'core/block-editor' ).updateBlockAttributes,
 		};
 	} ),
-	ifCondition((props) => {
-		return !props.isDisabled;
-	}),
+	ifCondition( ( props ) => {
+		return ! props.isDisabled;
+	} ),
 	withSpokenMessages,
 ] )( GradientControls );
