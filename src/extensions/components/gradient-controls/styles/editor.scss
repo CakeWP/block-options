@@ -8,6 +8,10 @@
 		box-shadow: none !important;
 		background: transparent !important;
 
+		&.has-icon{
+			min-width: auto;
+		}
+
 		svg {
 			margin: 0;
 			width: 16px;
