@@ -1,0 +1,31 @@
+.ek-gradient-controls-wrapper {
+	padding-left: 5px;
+
+	.components-button {
+		padding: 0 !important;
+		border: 0 !important;
+		outline: none !important;
+		box-shadow: none !important;
+		background: transparent !important;
+
+		&.has-icon{
+			min-width: auto;
+		}
+
+		svg {
+			margin: 0;
+			width: 16px;
+		}
+
+		&:first-child {
+			margin: 0 5px;
+		}
+	}
+}
+
+.ek-gradient-control-popover {
+
+	.components-popover__content {
+		padding: 15px;
+	}
+}

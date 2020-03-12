@@ -8287,18 +8287,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _extensions_components_reading_time__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./extensions/components/reading-time */ "./src/extensions/components/reading-time/index.js");
 /* harmony import */ var _extensions_components_help_tips__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./extensions/components/help-tips */ "./src/extensions/components/help-tips/index.js");
 /* harmony import */ var _extensions_components_selected_block__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./extensions/components/selected-block */ "./src/extensions/components/selected-block/index.js");
-/* harmony import */ var _extensions_block_transform__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./extensions/block-transform */ "./src/extensions/block-transform/index.js");
-/* harmony import */ var _extensions_block_settings__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./extensions/block-settings */ "./src/extensions/block-settings/index.js");
-/* harmony import */ var _extensions_formats___WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./extensions/formats/ */ "./src/extensions/formats/index.js");
-/* harmony import */ var _extensions_block_toolbar__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./extensions/block-toolbar */ "./src/extensions/block-toolbar/index.js");
-/* harmony import */ var _extensions_transform_empty_paragraphs__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./extensions/transform/empty-paragraphs */ "./src/extensions/transform/empty-paragraphs/index.js");
-/* harmony import */ var _extensions_block_styles___WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./extensions/block-styles/ */ "./src/extensions/block-styles/index.js");
-/* harmony import */ var _extensions_shortcuts_select_parent_block__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./extensions/shortcuts/select-parent-block */ "./src/extensions/shortcuts/select-parent-block/index.js");
-/* harmony import */ var _extensions_shortcuts_heading_level__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./extensions/shortcuts/heading-level */ "./src/extensions/shortcuts/heading-level/index.js");
-/* harmony import */ var _extensions_shortcuts_alignment__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./extensions/shortcuts/alignment */ "./src/extensions/shortcuts/alignment/index.js");
-/* harmony import */ var _extensions_advanced_controls_disable_block__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./extensions/advanced-controls/disable-block */ "./src/extensions/advanced-controls/disable-block/index.js");
-/* harmony import */ var _blocks_import__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./blocks/import */ "./src/blocks/import/index.js");
-/* harmony import */ var _blocks_shareablock__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./blocks/shareablock */ "./src/blocks/shareablock/index.js");
+/* harmony import */ var _extensions_components_gradient_controls__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./extensions/components/gradient-controls */ "./src/extensions/components/gradient-controls/index.js");
+/* harmony import */ var _extensions_block_transform__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./extensions/block-transform */ "./src/extensions/block-transform/index.js");
+/* harmony import */ var _extensions_block_settings__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./extensions/block-settings */ "./src/extensions/block-settings/index.js");
+/* harmony import */ var _extensions_formats___WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./extensions/formats/ */ "./src/extensions/formats/index.js");
+/* harmony import */ var _extensions_block_toolbar__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./extensions/block-toolbar */ "./src/extensions/block-toolbar/index.js");
+/* harmony import */ var _extensions_transform_empty_paragraphs__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./extensions/transform/empty-paragraphs */ "./src/extensions/transform/empty-paragraphs/index.js");
+/* harmony import */ var _extensions_block_styles___WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./extensions/block-styles/ */ "./src/extensions/block-styles/index.js");
+/* harmony import */ var _extensions_shortcuts_select_parent_block__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./extensions/shortcuts/select-parent-block */ "./src/extensions/shortcuts/select-parent-block/index.js");
+/* harmony import */ var _extensions_shortcuts_heading_level__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./extensions/shortcuts/heading-level */ "./src/extensions/shortcuts/heading-level/index.js");
+/* harmony import */ var _extensions_shortcuts_alignment__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./extensions/shortcuts/alignment */ "./src/extensions/shortcuts/alignment/index.js");
+/* harmony import */ var _extensions_advanced_controls_disable_block__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./extensions/advanced-controls/disable-block */ "./src/extensions/advanced-controls/disable-block/index.js");
+/* harmony import */ var _blocks_import__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./blocks/import */ "./src/blocks/import/index.js");
+/* harmony import */ var _blocks_shareablock__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./blocks/shareablock */ "./src/blocks/shareablock/index.js");
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -8342,6 +8343,7 @@ var registerBlockType = wp.blocks.registerBlockType; // Extensions
 
 
 
+
  //Block Transforms
 
  //Block Settings
@@ -8365,7 +8367,7 @@ var registerBlockType = wp.blocks.registerBlockType; // Extensions
 
 
 function registerBlocks() {
-  [_blocks_import__WEBPACK_IMPORTED_MODULE_28__, _blocks_shareablock__WEBPACK_IMPORTED_MODULE_29__].forEach(function (block) {
+  [_blocks_import__WEBPACK_IMPORTED_MODULE_29__, _blocks_shareablock__WEBPACK_IMPORTED_MODULE_30__].forEach(function (block) {
     if (!block) {
       return;
     }
@@ -15257,6 +15259,310 @@ var withDragandDropFeaturedImage = createHigherOrderComponent(function (Original
   });
 }, 'withDragandDropFeaturedImage');
 addFilter('editor.PostFeaturedImage', 'editorskit/post-featured-image', withDragandDropFeaturedImage);
+
+/***/ }),
+
+/***/ "./src/extensions/components/gradient-controls/components/controls.js":
+/*!****************************************************************************!*\
+  !*** ./src/extensions/components/gradient-controls/components/controls.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./icons */ "./src/extensions/components/gradient-controls/components/icons.js");
+
+
+
+
+
+
+
+
+/**
+ * Internal dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+var __ = wp.i18n.__;
+var _wp$data = wp.data,
+    withSelect = _wp$data.withSelect,
+    withDispatch = _wp$data.withDispatch,
+    select = _wp$data.select;
+var _wp$compose = wp.compose,
+    compose = _wp$compose.compose,
+    ifCondition = _wp$compose.ifCondition;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
+var _wp$components = wp.components,
+    withSpokenMessages = _wp$components.withSpokenMessages,
+    Button = _wp$components.Button,
+    IconButton = _wp$components.IconButton,
+    Tooltip = _wp$components.Tooltip,
+    ClipboardButton = _wp$components.ClipboardButton,
+    Popover = _wp$components.Popover,
+    TextControl = _wp$components.TextControl;
+/**
+ * Render plugin
+ */
+
+var GradientControls =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(GradientControls, _Component);
+
+  function GradientControls() {
+    var _this;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, GradientControls);
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(GradientControls).apply(this, arguments));
+    _this.handleClickListener = _this.handleClickListener.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.state = {
+      isOpen: false,
+      anchorRect: {},
+      value: '',
+      count: null
+    };
+    return _this;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(GradientControls, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      document.addEventListener('mousedown', this.handleClickListener);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      document.removeEventListener('mousedown', this.handleClickListener);
+    }
+  }, {
+    key: "handleClickListener",
+    value: function handleClickListener() {
+      var _this2 = this;
+
+      var onCopy = this.props.onCopy;
+
+      var ButtonControls = function ButtonControls(_ref) {
+        var count = _ref.count;
+        var selectedBlock = select('core/block-editor').getSelectedBlock();
+        var customGradient = selectedBlock.attributes.customGradient;
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Tooltip, {
+          text: __('Copy Gradient Value', 'block-options')
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(ClipboardButton, {
+          text: customGradient,
+          icon: _icons__WEBPACK_IMPORTED_MODULE_7__["default"].copy,
+          isSecondary: true,
+          isSmall: true,
+          disabled: typeof customGradient !== 'undefined' ? false : true,
+          onCopy: onCopy
+        })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Tooltip, {
+          text: __('Paste Gradient', 'block-options')
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(IconButton, {
+          className: "ek-paste",
+          isSecondary: true,
+          isSmall: true,
+          icon: _icons__WEBPACK_IMPORTED_MODULE_7__["default"].paste,
+          onClick: function onClick(evt) {
+            _this2.setState({
+              isOpen: !_this2.state.isOpen,
+              anchorRect: evt.target.getBoundingClientRect(),
+              count: count
+            });
+          }
+        })));
+      };
+
+      setTimeout(function () {
+        var wrapper = document.querySelectorAll('.components-circular-option-picker__custom-clear-wrapper');
+        Array.from(wrapper).map(function (elem, count) {
+          var container = elem.parentNode;
+
+          if (container.querySelector('.components-custom-gradient-picker') && elem && !elem.classList.contains('ek-gradient-controls')) {
+            elem.classList.add('ek-gradient-controls');
+            elem.insertAdjacentHTML('beforeend', '<div class="ek-gradient-controls-wrapper" id="ek-gradient-controls-wrapper' + count + '"></div>');
+            ReactDOM.render(Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(ButtonControls, {
+              count: count
+            }), document.getElementById('ek-gradient-controls-wrapper' + count));
+          }
+
+          return false;
+        });
+      }, 100);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      var _this$props = this.props,
+          updateBlockAttributes = _this$props.updateBlockAttributes,
+          onPaste = _this$props.onPaste;
+      var selectedBlock = select('core/block-editor').getSelectedBlock();
+
+      if (this.state.isOpen) {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Popover, {
+          className: "ek-gradient-control-popover",
+          position: "bottom center",
+          onClick: function onClick() {},
+          anchorRect: this.state.anchorRect,
+          expandOnMobile: true,
+          headerTitle: __('Paste Gradient Value', 'block-options'),
+          onFocusOutside: function onFocusOutside() {
+            _this3.setState({
+              isOpen: false
+            });
+          }
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(TextControl, {
+          label: __('Paste Gradient Value', 'block-options'),
+          value: this.state.value,
+          onChange: function onChange(newValue) {
+            return _this3.setState({
+              value: newValue
+            });
+          }
+        }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Button, {
+          isPrimary: true,
+          onClick: function onClick() {
+            updateBlockAttributes(selectedBlock.clientId, {
+              gradient: '',
+              customGradient: _this3.state.value
+            });
+            onPaste();
+
+            _this3.setState({
+              value: ''
+            }); //reload buttons
+
+
+            var wrapper = document.getElementById('ek-gradient-controls-wrapper' + _this3.state.count);
+            wrapper.parentNode.classList.remove('ek-gradient-controls');
+            wrapper.remove();
+
+            _this3.handleClickListener();
+          }
+        }, __('Apply', 'block-options')));
+      }
+
+      return null;
+    }
+  }]);
+
+  return GradientControls;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (compose([withSelect(function () {
+  return {
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitGradientControlsTools')
+  };
+}), withDispatch(function (dispatch) {
+  var _dispatch = dispatch('core/notices'),
+      createNotice = _dispatch.createNotice;
+
+  return {
+    onCopy: function onCopy() {
+      createNotice('info', __('Custom Gradient copied to your clipboard.', 'block-options'), {
+        isDismissible: true,
+        type: 'snackbar'
+      });
+    },
+    onPaste: function onPaste() {
+      createNotice('info', __('Custom Gradient applied to selected block.', 'block-options'), {
+        isDismissible: true,
+        type: 'snackbar'
+      });
+    },
+    updateBlockAttributes: dispatch('core/block-editor').updateBlockAttributes
+  };
+}), ifCondition(function (props) {
+  return !props.isDisabled;
+}), withSpokenMessages])(GradientControls));
+
+/***/ }),
+
+/***/ "./src/extensions/components/gradient-controls/components/icons.js":
+/*!*************************************************************************!*\
+  !*** ./src/extensions/components/gradient-controls/components/icons.js ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * Custom icon
+ */
+var icon = {};
+icon.copy = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  height: "24",
+  viewBox: "0 0 24 24",
+  width: "24"
+}, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+  d: "M0 0h24v24H0z",
+  fill: "none"
+}), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+  d: "M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4l6 6v10c0 1.1-.9 2-2 2H7.99C6.89 23 6 22.1 6 21l.01-14c0-1.1.89-2 1.99-2h7zm-1 7h5.5L14 6.5V12z"
+}));
+icon.paste = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "24",
+  height: "24",
+  viewBox: "0 0 24 24"
+}, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+  d: "M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (icon);
+
+/***/ }),
+
+/***/ "./src/extensions/components/gradient-controls/index.js":
+/*!**************************************************************!*\
+  !*** ./src/extensions/components/gradient-controls/index.js ***!
+  \**************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_controls__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/controls */ "./src/extensions/components/gradient-controls/components/controls.js");
+/**
+ * Internal dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+var registerPlugin = wp.plugins.registerPlugin;
+registerPlugin('editorskit-gradient-controls', {
+  icon: false,
+  render: _components_controls__WEBPACK_IMPORTED_MODULE_0__["default"]
+});
 
 /***/ }),
 

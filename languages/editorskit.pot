@@ -3,10 +3,35 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+<<<<<<< HEAD
+#: src/extensions/components/gradient-controls/components/controls.js:115
+msgid "Paste Gradient Value"
+msgstr ""
+
+#: src/extensions/components/gradient-controls/components/controls.js:133
+msgid "Apply"
+msgstr ""
+
+#: src/extensions/components/gradient-controls/components/controls.js:155
+msgid "Custom Gradient copied to your clipboard."
+msgstr ""
+
+#: src/extensions/components/gradient-controls/components/controls.js:165
+msgid "Custom Gradient applied to selected block."
+msgstr ""
+
+#: src/extensions/components/gradient-controls/components/controls.js:46
+msgid "Copy Gradient Value"
+msgstr ""
+
+#: src/extensions/components/gradient-controls/components/controls.js:58
+msgid "Paste Gradient"
+=======
 #: src/extensions/components/guidelines/components/menu.js:64
 msgid "Show visible guide lines on title and blocks"
 msgstr ""
 
 #: src/extensions/components/guidelines/components/menu.js:67
 msgid "Block Guide Lines"
+>>>>>>> master
 msgstr ""
