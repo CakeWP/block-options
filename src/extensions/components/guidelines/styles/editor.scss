@@ -69,6 +69,41 @@
 		}
 	}
 
+	/* For new Gutenberg UI */
+	&.is-guide-lines-new-ui {
+
+		.editor-styles-wrapper:not(.block-editor-block-preview__container) {
+
+			.editor-post-title__block .editor-post-title__input {
+				border: 0;
+			}
+
+			.wp-block {
+
+				&:not([data-type="core/columns"]):not([data-type="core/column"]):not([data-type="coblocks/accordion"]):not([data-type="coblocks/accordion-item"]):not([data-type="coblocks/row"]):not([data-type="coblocks/column"]):not([data-type="coblocks/buttons"]):not([data-type="atomic-blocks/ab-container"]):not([data-type="atomic-blocks/ab-pricing-table"]) {
+
+					&::before {
+						content: "";
+						position: absolute;
+						pointer-events: none;
+						content: "";
+						top: 0;
+						bottom: 0;
+						left: 0;
+						right: 0;
+						margin: -10px;
+						border: 1px solid rgba(66, 88, 99, 0.4);
+						background: transparent !important;
+						-webkit-animation: none !important;
+						-moz-animation: none !important;
+						-o-animation: none !important;
+						animation: none !important;
+					}
+				}
+			}
+		}
+	}
+
 	/* Backward Compatibility */
 	.editor-block-list__layout {
 

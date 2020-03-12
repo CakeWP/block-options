@@ -15654,8 +15654,10 @@ function (_Component) {
       if (typeof editor.version !== 'undefined' && !isDisabled) {
         var version = parseFloat(editor.version);
 
-        if (version >= 7) {
+        if (version >= 7 && version < 7.7) {
           document.body.classList.add('is-guide-lines-new');
+        } else if (version >= 7.7) {
+          document.body.classList.add('is-guide-lines-new-ui');
         }
       }
     }
