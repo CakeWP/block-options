@@ -10,7 +10,8 @@
 			max-width: 100%;
 			padding-left: 15px;
 			overflow: hidden;
-			border-bottom: 1px solid #151a23;
+			background: #23282e;
+			border-bottom: 1px solid #fff;
 			
 			.wp-full-overlay-footer{
 				display: flex;
@@ -25,14 +26,16 @@
 
 					.close-full-overlay{
 						float: none;
-						border-left: 1px solid #151a23;
+						background: #23282e;
+						color: #fff;
+						border: 0px;
+						border-left: 1px solid #fff;
 						border-radius: 0px;
 						height: 50px;
 						width: 50px;
 						margin-top: -1px;
 
 						&:hover{
-							border-color: #151a23 !important;
 							background: #151a23 !important;
 							color: #fff !important;
 							outline: none !important;
@@ -50,12 +53,14 @@
 
 				h3{
 					margin-right: 25px;
+					color: #fff;
 				}
 
 				.devices{
 					background: transparent;
 					box-shadow: none;
 					button{
+						color: #fff;
 						margin: 0 1px;
 					}
 				}
@@ -70,7 +75,11 @@
 		&.preview-desktop{
 			button{
 				&.preview-desktop{
-					border-bottom-color: #191e23;
+					background: #fff;
+					border-bottom-color: #007cba;
+					&:before{
+						color: #007cba;
+					}
 				}
 			}
 		}
@@ -78,7 +87,11 @@
 		&.preview-tablet{
 			button{
 				&.preview-tablet{
-					border-bottom-color: #191e23;
+					background: #fff;
+					border-bottom-color: #007cba;
+					&:before{
+						color: #007cba;
+					}
 				}
 			}
 		}
@@ -86,7 +99,11 @@
 		&.preview-mobile{
 			button{
 				&.preview-mobile{
-					border-bottom-color: #191e23;
+					background: #fff;
+					border-bottom-color: #007cba;
+					&:before{
+						color: #007cba;
+					}
 				}
 			}
 		}
