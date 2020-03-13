@@ -25,6 +25,7 @@ import './extensions/page-template';
 import './extensions/disable-title';
 
 //Components on Dropdown Menu
+import './extensions/components/preview';
 import './extensions/components/autosave';
 import './extensions/components/guidelines';
 import './extensions/components/editor-height';
@@ -38,7 +39,6 @@ import './extensions/components/reading-time';
 import './extensions/components/help-tips';
 import './extensions/components/selected-block';
 import './extensions/components/gradient-controls';
-import './extensions/components/preview';
 
 //Block Transforms
 import './extensions/block-transform';
