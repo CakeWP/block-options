@@ -29,6 +29,7 @@ class CustomizerPreview extends Component {
 		super(...arguments);
 
 		this.handleEscape = this.handleEscape.bind(this);
+		this.openPreview = this.openPreview.bind(this);
 
 		this.state = {
 			isOpen: false,
@@ -52,6 +53,21 @@ class CustomizerPreview extends Component {
 		}
 	}
 
+	openPreview(){
+		const { isDraft, savePost, autosave } = this.props;
+		// Request an autosave. This happens asynchronously and causes the component
+		// to update when finished.
+		if (isDraft) {
+			savePost({ isPreview: true });
+		} else {
+			autosave({ isPreview: true });
+		}
+
+		setTimeout(() => {
+			this.setState({ isOpen: true });
+		}, 100);
+	}
+
 	render() {
 		const { previewLink } = this.props;
 		const { isOpen } = this.state;
@@ -64,7 +80,7 @@ class CustomizerPreview extends Component {
 					role="menuitemcheckbox"
 					info={__('Show preview without opening new window.', 'block-options')}
 					onClick={()=>{
-						this.setState({ isOpen: true });
+						this.openPreview();
 					}}
 					shortcut={displayShortcut.primaryShift('p')}
 				>
@@ -74,7 +90,7 @@ class CustomizerPreview extends Component {
 					bindGlobal
 					shortcuts={{
 						[rawShortcut.primaryShift('p')]: ()=>{
-							this.setState({ isOpen: !isOpen });
+							this.openPreview();
 						},
 					}}
 				/>
@@ -143,6 +159,7 @@ export default compose([
 	withSelect(({ forcePreviewLink }) => {
 		const {
 			getEditedPostPreviewLink,
+			getEditedPostAttribute,
 		} = select('core/editor');
 
 		const previewLink = getEditedPostPreviewLink();
@@ -150,9 +167,17 @@ export default compose([
 		return{
 			previewLink:
 				forcePreviewLink !== undefined ? forcePreviewLink : previewLink,
+			isDraft:
+				['draft', 'auto-draft'].indexOf(
+					getEditedPostAttribute('status')
+				) !== -1,
 			isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitReadingTimeWriting'),
 		}
 	}),
+	withDispatch((dispatch) => ({
+		autosave: dispatch('core/editor').autosave,
+		savePost: dispatch('core/editor').savePost,
+	})),
 	ifCondition((props) => {
 		return !props.isDisabled;
 	}),

@@ -16782,6 +16782,7 @@ function (_Component) {
 
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default()(CustomizerPreview).apply(this, arguments));
     _this.handleEscape = _this.handleEscape.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this));
+    _this.openPreview = _this.openPreview.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this));
     _this.state = {
       isOpen: false,
       deviceType: 'desktop'
@@ -16811,9 +16812,36 @@ function (_Component) {
       }
     }
   }, {
+    key: "openPreview",
+    value: function openPreview() {
+      var _this2 = this;
+
+      var _this$props = this.props,
+          isDraft = _this$props.isDraft,
+          savePost = _this$props.savePost,
+          autosave = _this$props.autosave; // Request an autosave. This happens asynchronously and causes the component
+      // to update when finished.
+
+      if (isDraft) {
+        savePost({
+          isPreview: true
+        });
+      } else {
+        autosave({
+          isPreview: true
+        });
+      }
+
+      setTimeout(function () {
+        _this2.setState({
+          isOpen: true
+        });
+      }, 100);
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var previewLink = this.props.previewLink;
       var isOpen = this.state.isOpen;
@@ -16822,17 +16850,13 @@ function (_Component) {
         role: "menuitemcheckbox",
         info: __('Show preview without opening new window.', 'block-options'),
         onClick: function onClick() {
-          _this2.setState({
-            isOpen: true
-          });
+          _this3.openPreview();
         },
         shortcut: displayShortcut.primaryShift('p')
       }, __('Preview', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(KeyboardShortcuts, {
         bindGlobal: true,
         shortcuts: _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, rawShortcut.primaryShift('p'), function () {
-          _this2.setState({
-            isOpen: !isOpen
-          });
+          _this3.openPreview();
         })
       }), isOpen ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
         className: "wp-full-overlay sites-preview editorskit-preview theme-install-overlay " + ' preview-' + this.state.deviceType,
@@ -16851,7 +16875,7 @@ function (_Component) {
         className: "preview-desktop",
         isActive: true,
         onClick: function onClick() {
-          _this2.setState({
+          _this3.setState({
             deviceType: 'desktop'
           });
         }
@@ -16860,7 +16884,7 @@ function (_Component) {
       }, __('Enter desktop preview mode', 'block-options'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(Button, {
         className: "preview-tablet",
         onClick: function onClick() {
-          _this2.setState({
+          _this3.setState({
             deviceType: 'tablet'
           });
         }
@@ -16869,7 +16893,7 @@ function (_Component) {
       }, __('Enter tablet preview mode', 'block-options'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(Button, {
         className: "preview-mobile",
         onClick: function onClick() {
-          _this2.setState({
+          _this3.setState({
             deviceType: 'mobile'
           });
         }
@@ -16880,7 +16904,7 @@ function (_Component) {
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(Button, {
         className: "close-full-overlay",
         onClick: function onClick() {
-          _this2.setState({
+          _this3.setState({
             isOpen: false
           });
         }
@@ -16902,12 +16926,19 @@ function (_Component) {
   var forcePreviewLink = _ref2.forcePreviewLink;
 
   var _select = select('core/editor'),
-      getEditedPostPreviewLink = _select.getEditedPostPreviewLink;
+      getEditedPostPreviewLink = _select.getEditedPostPreviewLink,
+      getEditedPostAttribute = _select.getEditedPostAttribute;
 
   var previewLink = getEditedPostPreviewLink();
   return {
     previewLink: forcePreviewLink !== undefined ? forcePreviewLink : previewLink,
+    isDraft: ['draft', 'auto-draft'].indexOf(getEditedPostAttribute('status')) !== -1,
     isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitReadingTimeWriting')
+  };
+}), withDispatch(function (dispatch) {
+  return {
+    autosave: dispatch('core/editor').autosave,
+    savePost: dispatch('core/editor').savePost
   };
 }), ifCondition(function (props) {
   return !props.isDisabled;
