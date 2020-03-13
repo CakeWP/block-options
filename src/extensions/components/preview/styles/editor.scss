@@ -1,0 +1,85 @@
+.wp-full-overlay{
+	&.editorskit-preview{
+		padding-top: 50px;
+		margin-left: 0px;
+
+		.wp-full-overlay-sidebar{
+			position: absolute;
+			width: 100%;
+			height: 50px;
+			max-width: 100%;
+			padding-left: 15px;
+			overflow: hidden;
+			
+			.wp-full-overlay-footer{
+				display: flex;
+				flex-wrap: wrap;
+
+				.close-full-overlay-wrapper{
+					display: flex;
+					flex-grow: 1;
+					width: auto;
+					justify-content: flex-end;
+					align-items: center;
+
+					.close-full-overlay{
+						float: none;
+						border-left: 1px solid #ddd;
+						border-radius: 0px;
+						height: 50px;
+						width: 50px;
+					}
+					
+				}
+			}
+
+			.devices-wrapper{
+				float: none;
+				display: flex;
+				flex-shrink: 0;
+				align-items: center;
+
+				h3{
+					margin-right: 25px;
+				}
+
+				.devices{
+					background: transparent;
+					box-shadow: none;
+					button{
+						margin: 0 1px;
+					}
+				}
+			}
+		}
+
+		.wp-full-overlay-main{
+			top: 50px;
+			max-height: calc( 100% - 100px );
+		}
+
+		&.preview-desktop{
+			button{
+				&.preview-desktop{
+					border-bottom-color: #191e23;
+				}
+			}
+		}
+
+		&.preview-tablet{
+			button{
+				&.preview-tablet{
+					border-bottom-color: #191e23;
+				}
+			}
+		}
+
+		&.preview-mobile{
+			button{
+				&.preview-mobile{
+					border-bottom-color: #191e23;
+				}
+			}
+		}
+	}
+}

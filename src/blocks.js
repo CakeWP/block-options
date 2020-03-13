@@ -38,6 +38,7 @@ import './extensions/components/reading-time';
 import './extensions/components/help-tips';
 import './extensions/components/selected-block';
 import './extensions/components/gradient-controls';
+import './extensions/components/preview';
 
 //Block Transforms
 import './extensions/block-transform';

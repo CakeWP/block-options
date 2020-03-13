@@ -69,6 +69,7 @@ class EditorsKit_Block_Assets {
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
 		add_action( 'init', array( $this, 'editor_assets' ), 9999 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'filter_admin_assets' ) );
+		add_filter( 'show_admin_bar', array( $this, 'hide_admin_bar' ), 10, 3 );
 	}
 
 	/**
@@ -93,6 +94,9 @@ class EditorsKit_Block_Assets {
 	 * @access public
 	 */
 	public function editor_assets() {
+
+		global $wp; 
+    	$wp->add_query_var('editorskitPreview'); 
 
 		if ( ! is_admin() ) {
 
@@ -206,6 +210,19 @@ class EditorsKit_Block_Assets {
 	function is_edit_or_new_admin_page() { // phpcs:ignore
 		global $pagenow;
 		return ( is_admin() && ( $pagenow === 'post.php' || $pagenow === 'post-new.php' ) ); // phpcs:ignore
+	}
+
+	/**
+	 * Hides admin bar on preview mode
+	 *
+	 * @return bool true or false
+	 */
+	function hide_admin_bar( $bool ){
+		if ( get_query_var('editorskitPreview') ) {
+			return false;
+		}
+
+		return $bool;
 	}
 
 }
