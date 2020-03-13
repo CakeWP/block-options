@@ -16717,10 +16717,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _wordpress_wordcount__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/wordcount */ "@wordpress/wordcount");
-/* harmony import */ var _wordpress_wordcount__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_wordcount__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_9__);
 
 
 
@@ -16728,21 +16724,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-/**
- * External dependencies
- */
-
-/**
- * WordPress dependencies
- */
 
 
 /**
  * WordPress dependencies
  */
-
 var __ = wp.i18n.__;
 var _wp$keycodes = wp.keycodes,
     displayShortcut = _wp$keycodes.displayShortcut,
@@ -16751,21 +16737,18 @@ var _wp$keycodes = wp.keycodes,
 var _wp$data = wp.data,
     withSelect = _wp$data.withSelect,
     withDispatch = _wp$data.withDispatch,
-    select = _wp$data.select,
-    subscribe = _wp$data.subscribe;
+    select = _wp$data.select;
 var _wp$compose = wp.compose,
     compose = _wp$compose.compose,
     ifCondition = _wp$compose.ifCondition;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
-var hasBlockSupport = wp.blocks.hasBlockSupport;
 var _wp$components = wp.components,
     withSpokenMessages = _wp$components.withSpokenMessages,
     Button = _wp$components.Button,
     KeyboardShortcuts = _wp$components.KeyboardShortcuts;
 var PluginMoreMenuItem = wp.editPost.PluginMoreMenuItem;
-var mediaBlocks = ['core/image', 'core/gallery', 'core/cover'];
 /**
  * Render plugin
  */
@@ -16859,18 +16842,18 @@ function (_Component) {
           _this3.openPreview();
         })
       }), isOpen ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
-        className: "wp-full-overlay sites-preview editorskit-preview theme-install-overlay " + ' preview-' + this.state.deviceType,
+        className: 'wp-full-overlay sites-preview editorskit-preview theme-install-overlay ' + ' preview-' + this.state.deviceType,
         style: {
           display: 'block'
         }
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
         className: "wp-full-overlay-sidebar"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
-        class: "wp-full-overlay-footer"
+        className: "wp-full-overlay-footer"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
-        class: "devices-wrapper"
+        className: "devices-wrapper"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("h3", null, __('Live Preview', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
-        class: "devices"
+        className: "devices"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(Button, {
         className: "preview-desktop",
         isActive: true,
@@ -16880,7 +16863,7 @@ function (_Component) {
           });
         }
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("span", {
-        class: "screen-reader-text"
+        className: "screen-reader-text"
       }, __('Enter desktop preview mode', 'block-options'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(Button, {
         className: "preview-tablet",
         onClick: function onClick() {
@@ -16889,7 +16872,7 @@ function (_Component) {
           });
         }
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("span", {
-        class: "screen-reader-text"
+        className: "screen-reader-text"
       }, __('Enter tablet preview mode', 'block-options'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(Button, {
         className: "preview-mobile",
         onClick: function onClick() {
@@ -16898,7 +16881,7 @@ function (_Component) {
           });
         }
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("span", {
-        class: "screen-reader-text"
+        className: "screen-reader-text"
       }, __('Enter mobile preview mode', 'block-options'))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
         className: "close-full-overlay-wrapper"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(Button, {
@@ -16909,11 +16892,12 @@ function (_Component) {
           });
         }
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("span", {
-        class: "screen-reader-text"
+        className: "screen-reader-text"
       }, __('Close preview mode', 'block-options')))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
         className: "wp-full-overlay-main"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("iframe", {
         src: previewLink + '&editorskitPreview=true',
+        title: __('Preview', 'block-options'),
         target: "Preview"
       }))) : null);
     }

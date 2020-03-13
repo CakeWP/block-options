@@ -8,7 +8,7 @@ import CustomizerPreview from './components/controls';
  */
 const { registerPlugin } = wp.plugins;
 
-registerPlugin('editorskit-customizer-preview', {
+registerPlugin( 'editorskit-customizer-preview', {
 	icon: false,
 	render: CustomizerPreview,
-});
+} );
