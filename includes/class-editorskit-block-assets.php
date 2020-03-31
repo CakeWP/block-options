@@ -151,9 +151,12 @@ class EditorsKit_Block_Assets {
 			if ( version_compare( $wp_version, '5.0' ) >= 0 && version_compare( $wp_version, '5.2.9' ) <= 0 ) {
 
 				$version = '4.8';
-			} elseif ( version_compare( $wp_version, '5.3' ) >= 0 ) {
+			} elseif ( version_compare( $wp_version, '5.3' ) >= 0 && version_compare( $wp_version, '5.3.4' ) <= 0 ) {
 
 				$version = '6.6';
+			} elseif ( version_compare( $wp_version, '5.4' ) >= 0 || floatval( $wp_version ) >= 5.4 ) {
+
+				$version = '7.7';
 			}
 		}
 

@@ -3,34 +3,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/components/help-tips/components/about.js:12
-msgid "About Gutenberg Block Editor"
+#: src/extensions/components/guidelines/components/menu.js:64
+msgid "Show visible guide lines on title and blocks"
 msgstr ""
 
-#: src/extensions/components/help-tips/components/about.js:15
-msgid "Close"
-msgstr ""
-
-#: src/extensions/components/help-tips/components/about.js:19
-msgid "Editor Version is"
-msgstr ""
-
-#: src/extensions/components/help-tips/components/about.js:20
-msgid "WordPress Version is"
-msgstr ""
-
-#: src/extensions/components/help-tips/components/about.js:22
-msgid "You are using the new block editor bundled on WordPress core %s"
-msgstr ""
-
-#: src/extensions/components/help-tips/components/about.js:23
-msgid "You are using the new block editor powered by the %sGutenberg Plugin%s."
-msgstr ""
-
-#: src/extensions/components/help-tips/components/about.js:25
-msgid " Want to help? %sGet involved or report an issue%s."
-msgstr ""
-
-#: src/extensions/components/help-tips/components/about.js:26
-msgid "EditorsKit %s"
+#: src/extensions/components/guidelines/components/menu.js:67
+msgid "Block Guide Lines"
 msgstr ""
