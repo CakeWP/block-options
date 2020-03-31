@@ -16,7 +16,8 @@ export function AboutGutenbergEditor( { closeModal } ) {
 			icon={ null }
 			className="editorskit-modal-component components-modal--editorskit-overview"
 		>
-			<p>{ __( 'Version', 'block-options' ) } <strong>{ editor.version }</strong></p>
+			<p>{ __( 'Editor Version is', 'block-options' ) } <strong>{ editor.version }</strong></p>
+			<p>{ __( 'WordPress Version is', 'block-options' ) } <strong>{ core.version }</strong></p>
 			<p>{ editor.is_core ?
 				sprintf( __( 'You are using the new block editor bundled on WordPress core %s', 'block-options' ), core.version ) :
 				<RawHTML>{ sprintf( __( 'You are using the new block editor powered by the %sGutenberg Plugin%s.', 'block-options' ), '<a href="https://wordpress.org/plugins/gutenberg/" target="_blank" rel="noreferrer noopener nofollow">', '</a>' ) }</RawHTML>
