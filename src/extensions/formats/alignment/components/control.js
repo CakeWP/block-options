@@ -88,20 +88,23 @@ class AlignmentControl extends Component {
 
 export default compose(
 	withSelect( () => {
+		const isDisabled = select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitCaptionAlignmentFormats' );
 		const selectedBlock = select( 'core/block-editor' ).getSelectedBlock();
-		if ( ! selectedBlock ) {
-			return {};
+		if ( isDisabled || ! selectedBlock ) {
+			return {
+				isDisabled,
+			};
 		}
 		return {
+			isDisabled,
 			blockId: selectedBlock.clientId,
 			blockName: selectedBlock.name,
 			blockClassName: get( selectedBlock, 'attributes.className' ),
 			blockCaptionAlignment: get( selectedBlock, 'attributes.captionAlignment' ),
-			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitCaptionAlignmentFormats' ),
 		};
 	} ),
 	withDispatch( ( dispatch ) => ( {
 		updateBlockAttributes: dispatch( 'core/block-editor' ).updateBlockAttributes,
 	} ) ),
-	ifCondition( ( props ) => ! props.isDisabled ),
+	ifCondition( ( props ) => ( ! props.isDisabled ) && props.blockId ),
 )( AlignmentControl );

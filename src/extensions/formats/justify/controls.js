@@ -17,13 +17,8 @@ class JustifyControl extends Component {
 		const {
 			blockId,
 			isBlockJustified,
-			isDisabled,
 			updateBlockAttributes,
 		} = this.props;
-
-		if ( isDisabled ) {
-			return null;
-		}
 
 		const onToggle = () => {
 			updateBlockAttributes( blockId, { align: isBlockJustified ? null : 'justify' } );
@@ -41,15 +36,18 @@ class JustifyControl extends Component {
 
 export default compose(
 	withSelect( () => {
+		const isDisabled = select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitJustifyFormats' );
 		const selectedBlock = select( 'core/block-editor' ).getSelectedBlock();
-		if ( ! selectedBlock ) {
-			return {};
+		if ( isDisabled || ! selectedBlock ) {
+			return {
+				isDisabled,
+			};
 		}
 		return {
+			isDisabled,
 			blockId: selectedBlock.clientId,
 			blockName: selectedBlock.name,
 			isBlockJustified: 'justify' === get( selectedBlock, 'attributes.align' ),
-			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitJustifyFormats' ),
 			formatTypes: select( 'core/rich-text' ).getFormatTypes(),
 		};
 	} ),
@@ -57,6 +55,9 @@ export default compose(
 		updateBlockAttributes: dispatch( 'core/block-editor' ).updateBlockAttributes,
 	} ) ),
 	ifCondition( ( props ) => {
+		if ( props.isDisabled || ! props.blockId ) {
+			return false;
+		}
 		const checkFormats = props.formatTypes.filter( ( formats ) => formats.name === 'wpcom/justify' );
 		return 'core/paragraph' === props.blockName && checkFormats.length === 0;
 	} )

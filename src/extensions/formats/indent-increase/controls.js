@@ -12,16 +12,11 @@ class IncreaseIndent extends Component {
 		const {
 			selectedBlock,
 			isBlockJustified,
-			isDisabled,
 			updateBlockAttributes,
 		} = this.props;
 
 		const { clientId, attributes } = selectedBlock;
 		const { editorskit } = attributes;
-
-		if ( isDisabled ) {
-			return null;
-		}
 
 		const onToggle = () => {
 			let indent = 0;
@@ -50,17 +45,15 @@ class IncreaseIndent extends Component {
 
 export default compose(
 	withSelect( () => {
+		const isDisabled = select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitIndentFormats' );
 		const selectedBlock = select( 'core/block-editor' ).getSelectedBlock();
-		if ( ! selectedBlock ) {
-			return {};
-		}
 		return {
+			isDisabled,
 			selectedBlock,
-			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitIndentFormats' ),
 		};
 	} ),
 	withDispatch( ( dispatch ) => ( {
 		updateBlockAttributes: dispatch( 'core/block-editor' ).updateBlockAttributes,
 	} ) ),
-	ifCondition( ( props ) => ! props.isDisabled ),
+	ifCondition( ( props ) => ( ! props.isDisabled ) && props.selectedBlock ),
 )( IncreaseIndent );
