@@ -8,7 +8,7 @@ import { map } from 'lodash';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { select, withSelect, dispatch } = wp.data;
+const { withSelect, dispatch } = wp.data;
 const { BlockControls, RichTextToolbarButton, RichTextShortcut } = wp.blockEditor;
 const {
 	getTextContent,
@@ -43,7 +43,7 @@ class Edit extends Component {
 	}
 
 	componentDidMount() {
-		const oldFormat = select( 'core/rich-text' ).getFormatType( 'core/link' );
+		const { oldFormat } = this.props;
 		if ( oldFormat ) {
 			oldFormat.edit = null;
 			dispatch( 'core/rich-text' ).addFormatTypes( oldFormat );
@@ -158,9 +158,10 @@ class Edit extends Component {
 }
 
 export default compose(
-	withSelect( () => {
+	withSelect( ( select ) => {
 		return {
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitLinkFormats' ),
+			oldFormat: select( 'core/rich-text' ).getFormatType( 'core/link' ),
 		};
 	} ),
 	ifCondition( ( props ) => ! props.isDisabled ),

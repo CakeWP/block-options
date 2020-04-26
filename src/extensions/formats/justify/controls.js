@@ -9,7 +9,7 @@ import { get } from 'lodash';
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { compose, ifCondition } = wp.compose;
-const { select, withSelect, withDispatch } = wp.data;
+const { withSelect, withDispatch } = wp.data;
 const { RichTextToolbarButton } = wp.blockEditor;
 
 class JustifyControl extends Component {
@@ -35,7 +35,7 @@ class JustifyControl extends Component {
 }
 
 export default compose(
-	withSelect( () => {
+	withSelect( ( select ) => {
 		const isDisabled = select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitJustifyFormats' );
 		const selectedBlock = select( 'core/block-editor' ).getSelectedBlock();
 		if ( isDisabled || ! selectedBlock ) {

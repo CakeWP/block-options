@@ -9,7 +9,7 @@ import map from 'lodash/map';
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { compose, ifCondition } = wp.compose;
-const { select, withSelect } = wp.data;
+const { withSelect } = wp.data;
 const { RichTextToolbarButton } = wp.blockEditor;
 const { removeFormat } = wp.richText;
 
@@ -19,10 +19,10 @@ class ClearFormatting extends Component {
 			value,
 			isActive,
 			onChange,
+			formatTypes,
 		} = this.props;
 
 		const onToggle = () => {
-			const formatTypes = select( 'core/rich-text' ).getFormatTypes();
 			if ( formatTypes.length > 0 ) {
 				let newValue = value;
 
@@ -45,9 +45,10 @@ class ClearFormatting extends Component {
 }
 
 export default compose(
-	withSelect( () => {
+	withSelect( ( select ) => {
 		return {
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitClearFormattingFormats' ),
+			formatTypes: select( 'core/rich-text' ).getFormatTypes(),
 		};
 	} ),
 	ifCondition( ( props ) => {

@@ -13,7 +13,7 @@ import icon from '../icon';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { select, withSelect } = wp.data;
+const { withSelect } = wp.data;
 const { BlockControls, getColorClassName, getColorObjectByColorValue, getColorObjectByAttributeValues } = wp.blockEditor;
 const { applyFormat, removeFormat, getActiveFormat } = wp.richText;
 const { Toolbar, IconButton, Popover, ColorPalette } = wp.components;
@@ -164,7 +164,7 @@ class Edit extends Component {
 }
 
 export default compose(
-	withSelect( () => {
+	withSelect( ( select ) => {
 		const { colors } = select( 'core/block-editor' ).getSettings();
 
 		return {

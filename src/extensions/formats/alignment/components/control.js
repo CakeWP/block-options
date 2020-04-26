@@ -9,7 +9,7 @@ import { get } from 'lodash';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose, ifCondition } = wp.compose;
-const { select, withSelect, withDispatch } = wp.data;
+const { withSelect, withDispatch } = wp.data;
 const { BlockControls, AlignmentToolbar } = wp.blockEditor;
 const { Toolbar } = wp.components;
 const { hasBlockSupport } = wp.blocks;
@@ -87,7 +87,7 @@ class AlignmentControl extends Component {
 }
 
 export default compose(
-	withSelect( () => {
+	withSelect( ( select ) => {
 		const isDisabled = select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitCaptionAlignmentFormats' );
 		const selectedBlock = select( 'core/block-editor' ).getSelectedBlock();
 		if ( isDisabled || ! selectedBlock ) {
