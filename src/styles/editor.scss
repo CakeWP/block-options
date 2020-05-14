@@ -188,7 +188,8 @@
 /*--------------------------------------------------------------
 # Improve Block with DropZone
 --------------------------------------------------------------*/
-body:not(.is-iceberg){
+body:not(.is-iceberg) {
+
 	.components-placeholder {
 
 		&.editor-media-placeholder,
