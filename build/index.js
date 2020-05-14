@@ -13520,7 +13520,6 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Internal dependencies
  */
- // import './media-text-link';
 
 
 
@@ -18848,27 +18847,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/objectWithoutProperties.js");
 /* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _justify__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./justify */ "./src/extensions/formats/justify/index.js");
-/* harmony import */ var _text_color__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./text-color */ "./src/extensions/formats/text-color/index.js");
-/* harmony import */ var _background_color__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./background-color */ "./src/extensions/formats/background-color/index.js");
-/* harmony import */ var _markdown__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./markdown */ "./src/extensions/formats/markdown/index.js");
-/* harmony import */ var _subscript__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./subscript */ "./src/extensions/formats/subscript/index.js");
-/* harmony import */ var _superscript__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./superscript */ "./src/extensions/formats/superscript/index.js");
-/* harmony import */ var _clear__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./clear */ "./src/extensions/formats/clear/index.js");
-/* harmony import */ var _uppercase__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./uppercase */ "./src/extensions/formats/uppercase/index.js");
-/* harmony import */ var _link__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./link */ "./src/extensions/formats/link/index.js");
-/* harmony import */ var _alignment__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./alignment */ "./src/extensions/formats/alignment/index.js");
-/* harmony import */ var _nbsp__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./nbsp */ "./src/extensions/formats/nbsp/index.js");
-/* harmony import */ var _abbreviation__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./abbreviation */ "./src/extensions/formats/abbreviation/index.js");
-/* harmony import */ var _underline__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./underline */ "./src/extensions/formats/underline/index.js");
-/* harmony import */ var _indent_increase__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./indent-increase */ "./src/extensions/formats/indent-increase/index.js");
-/* harmony import */ var _indent_decrease__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./indent-decrease */ "./src/extensions/formats/indent-decrease/index.js");
-/* harmony import */ var _charmap__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./charmap */ "./src/extensions/formats/charmap/index.js");
+/* harmony import */ var _background_color__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./background-color */ "./src/extensions/formats/background-color/index.js");
+/* harmony import */ var _markdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./markdown */ "./src/extensions/formats/markdown/index.js");
+/* harmony import */ var _subscript__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./subscript */ "./src/extensions/formats/subscript/index.js");
+/* harmony import */ var _superscript__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./superscript */ "./src/extensions/formats/superscript/index.js");
+/* harmony import */ var _clear__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./clear */ "./src/extensions/formats/clear/index.js");
+/* harmony import */ var _uppercase__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./uppercase */ "./src/extensions/formats/uppercase/index.js");
+/* harmony import */ var _link__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./link */ "./src/extensions/formats/link/index.js");
+/* harmony import */ var _alignment__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./alignment */ "./src/extensions/formats/alignment/index.js");
+/* harmony import */ var _nbsp__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./nbsp */ "./src/extensions/formats/nbsp/index.js");
+/* harmony import */ var _abbreviation__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./abbreviation */ "./src/extensions/formats/abbreviation/index.js");
+/* harmony import */ var _underline__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./underline */ "./src/extensions/formats/underline/index.js");
+/* harmony import */ var _indent_increase__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./indent-increase */ "./src/extensions/formats/indent-increase/index.js");
+/* harmony import */ var _indent_decrease__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./indent-decrease */ "./src/extensions/formats/indent-decrease/index.js");
+/* harmony import */ var _charmap__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./charmap */ "./src/extensions/formats/charmap/index.js");
 
 
 /**
  * Internal dependencies
  */
-
 
 
 
@@ -18893,7 +18890,7 @@ var select = wp.data.select;
 var isDisabled = select('core/edit-post').isFeatureActive('disableEditorsKitLinkFormats');
 
 function registerEditorsKitFormats() {
-  [_justify__WEBPACK_IMPORTED_MODULE_1__["justify"], _text_color__WEBPACK_IMPORTED_MODULE_2__["textColor"], _background_color__WEBPACK_IMPORTED_MODULE_3__["backgroundColor"], _markdown__WEBPACK_IMPORTED_MODULE_4__["markdown"], _subscript__WEBPACK_IMPORTED_MODULE_5__["subscript"], _superscript__WEBPACK_IMPORTED_MODULE_6__["superscript"], _clear__WEBPACK_IMPORTED_MODULE_7__["clear"], _uppercase__WEBPACK_IMPORTED_MODULE_8__["uppercase"], _alignment__WEBPACK_IMPORTED_MODULE_10__["alignment"], _nbsp__WEBPACK_IMPORTED_MODULE_11__["nbsp"], _abbreviation__WEBPACK_IMPORTED_MODULE_12__["abbreviation"], _underline__WEBPACK_IMPORTED_MODULE_13__["underline"], _indent_increase__WEBPACK_IMPORTED_MODULE_14__["increaseIndent"], _indent_decrease__WEBPACK_IMPORTED_MODULE_15__["decreaseIndent"], _charmap__WEBPACK_IMPORTED_MODULE_16__["charmap"], !isDisabled ? _link__WEBPACK_IMPORTED_MODULE_9__["link"] : []].forEach(function (_ref) {
+  [_justify__WEBPACK_IMPORTED_MODULE_1__["justify"], _background_color__WEBPACK_IMPORTED_MODULE_2__["backgroundColor"], _markdown__WEBPACK_IMPORTED_MODULE_3__["markdown"], _subscript__WEBPACK_IMPORTED_MODULE_4__["subscript"], _superscript__WEBPACK_IMPORTED_MODULE_5__["superscript"], _clear__WEBPACK_IMPORTED_MODULE_6__["clear"], _uppercase__WEBPACK_IMPORTED_MODULE_7__["uppercase"], _alignment__WEBPACK_IMPORTED_MODULE_9__["alignment"], _nbsp__WEBPACK_IMPORTED_MODULE_10__["nbsp"], _abbreviation__WEBPACK_IMPORTED_MODULE_11__["abbreviation"], _underline__WEBPACK_IMPORTED_MODULE_12__["underline"], _indent_increase__WEBPACK_IMPORTED_MODULE_13__["increaseIndent"], _indent_decrease__WEBPACK_IMPORTED_MODULE_14__["decreaseIndent"], _charmap__WEBPACK_IMPORTED_MODULE_15__["charmap"], !isDisabled ? _link__WEBPACK_IMPORTED_MODULE_8__["link"] : []].forEach(function (_ref) {
     var name = _ref.name,
         settings = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0___default()(_ref, ["name"]);
 
@@ -21553,228 +21550,6 @@ var superscript = {
       activeAttributes: activeAttributes
     }));
   }
-};
-
-/***/ }),
-
-/***/ "./src/extensions/formats/text-color/components/edit.js":
-/*!**************************************************************!*\
-  !*** ./src/extensions/formats/text-color/components/edit.js ***!
-  \**************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
-
-
-
-
-
-
-
-
-/**
- * WordPress dependencies
- */
-var __ = wp.i18n.__;
-var _wp$element = wp.element,
-    Component = _wp$element.Component,
-    Fragment = _wp$element.Fragment;
-var withSelect = wp.data.withSelect;
-var _wp$blockEditor = wp.blockEditor,
-    BlockControls = _wp$blockEditor.BlockControls,
-    getColorClassName = _wp$blockEditor.getColorClassName,
-    getColorObjectByColorValue = _wp$blockEditor.getColorObjectByColorValue,
-    getColorObjectByAttributeValues = _wp$blockEditor.getColorObjectByAttributeValues;
-var _wp$richText = wp.richText,
-    applyFormat = _wp$richText.applyFormat,
-    removeFormat = _wp$richText.removeFormat,
-    getActiveFormat = _wp$richText.getActiveFormat;
-var _wp$components = wp.components,
-    Toolbar = _wp$components.Toolbar,
-    IconButton = _wp$components.IconButton,
-    Popover = _wp$components.Popover,
-    ColorPalette = _wp$components.ColorPalette;
-var _wp$compose = wp.compose,
-    compose = _wp$compose.compose,
-    ifCondition = _wp$compose.ifCondition;
-var name = 'editorskit/color';
-
-var title = __('Text Color', 'block-options');
-
-var Edit =
-/*#__PURE__*/
-function (_Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(Edit, _Component);
-
-  function Edit() {
-    var _this;
-
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, Edit);
-
-    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Edit).apply(this, arguments));
-    _this.toggle = _this.toggle.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
-    _this.state = {
-      isOpen: false
-    };
-    return _this;
-  }
-
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Edit, [{
-    key: "toggle",
-    value: function toggle() {
-      this.setState(function (state) {
-        return {
-          isOpen: !state.isOpen
-        };
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var isOpen = this.state.isOpen;
-      var _this$props = this.props,
-          value = _this$props.value,
-          _onChange = _this$props.onChange,
-          colors = _this$props.colors;
-      var activeColor;
-      var activeColorFormat = getActiveFormat(value, name);
-
-      if (activeColorFormat) {
-        var styleColor = activeColorFormat.attributes.style;
-
-        if (styleColor) {
-          activeColor = styleColor.replace(new RegExp("^color:\\s*"), '');
-        }
-
-        var currentClass = activeColorFormat.attributes.class;
-
-        if (currentClass) {
-          var colorSlug = currentClass.replace(/.*has-(.*?)-color.*/, '$1');
-          activeColor = getColorObjectByAttributeValues(colors, colorSlug).color;
-        }
-      }
-
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Toolbar, {
-        className: "editorskit-components-toolbar"
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(IconButton, {
-        className: "components-button components-icon-button components-editorskit-toolbar__control components-toolbar__control components-editorskit-color-format",
-        icon: "editor-textcolor",
-        "aria-haspopup": "true",
-        tooltip: title,
-        onClick: this.toggle
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("span", {
-        className: "components-editorskit-inline-color__indicator",
-        style: {
-          backgroundColor: activeColor
-        }
-      })), isOpen && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Popover, {
-        position: "bottom center",
-        className: "components-editorskit__inline-color-popover",
-        focusOnMount: "container",
-        onClickOutside: function onClickOutside(_onClickOutside) {
-          if (!_onClickOutside.target.classList.contains('components-editorskit-color-format') && !document.querySelector('.components-editorskit-color-format').contains(_onClickOutside.target) && (!document.querySelector('.components-color-palette__picker') || document.querySelector('.components-color-palette__picker') && !document.querySelector('.components-color-palette__picker').contains(_onClickOutside.target))) {
-            _this2.setState({
-              isOpen: !isOpen
-            });
-          }
-        }
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(ColorPalette, {
-        colors: colors,
-        value: activeColor,
-        onChange: function onChange(color) {
-          if (color) {
-            var colorObject = null;
-
-            if (typeof window.editorskitInfo !== 'undefined' && window.editorskitInfo.supports.color_palette) {
-              colorObject = getColorObjectByColorValue(colors, color);
-            }
-
-            _onChange(applyFormat(value, {
-              type: name,
-              attributes: colorObject ? {
-                class: getColorClassName('color', colorObject.slug)
-              } : {
-                style: "color:".concat(color)
-              }
-            }));
-          } else {
-            _onChange(removeFormat(value, name));
-          }
-        }
-      })))));
-    }
-  }]);
-
-  return Edit;
-}(Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (compose(withSelect(function (select) {
-  var _select$getSettings = select('core/block-editor').getSettings(),
-      colors = _select$getSettings.colors;
-
-  return {
-    colors: colors ? colors : [],
-    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitColorsFormats')
-  };
-}), ifCondition(function (props) {
-  return !props.isDisabled;
-}))(Edit));
-
-/***/ }),
-
-/***/ "./src/extensions/formats/text-color/index.js":
-/*!****************************************************!*\
-  !*** ./src/extensions/formats/text-color/index.js ***!
-  \****************************************************/
-/*! exports provided: textColor */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "textColor", function() { return textColor; });
-/* harmony import */ var _components_edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/edit */ "./src/extensions/formats/text-color/components/edit.js");
-/**
- * Internal dependencies
- */
-
-/**
- * WordPress dependencies
- */
-
-var __ = wp.i18n.__;
-/**
- * Block constants
- */
-
-var name = 'editorskit/color';
-var textColor = {
-  name: name,
-  title: __('Text Color', 'block-options'),
-  tagName: 'span',
-  className: 'has-inline-color',
-  attributes: {
-    style: 'style',
-    class: 'class'
-  },
-  edit: _components_edit__WEBPACK_IMPORTED_MODULE_0__["default"]
 };
 
 /***/ }),
