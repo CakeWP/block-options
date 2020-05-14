@@ -65,6 +65,18 @@
 			"char": "§"
 		},
 		{
+			"entity": "&ndash;",
+			"hex": "&#8211;",
+			"name": "EN DASH NDASH",
+			"char": "–"
+		},
+		{
+			"entity": "&mdash;",
+			"hex": "&#8212;",
+			"name": "EM DASH MDASH",
+			"char": "—"
+		},
+		{
 			"hex": "&#275D;",
 			"name": "HEAVY DOUBLE TURNED COMMA QUOTATION MARK ORNAMENT",
 			"char": "❝"
