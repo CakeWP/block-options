@@ -4,7 +4,7 @@
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { compose, ifCondition } = wp.compose;
-const { select, withSelect, withDispatch } = wp.data;
+const { withSelect, withDispatch } = wp.data;
 const { RichTextToolbarButton } = wp.blockEditor;
 
 class DecreaseIndent extends Component {
@@ -12,16 +12,11 @@ class DecreaseIndent extends Component {
 		const {
 			selectedBlock,
 			isBlockJustified,
-			isDisabled,
 			updateBlockAttributes,
 		} = this.props;
 
 		const { clientId, attributes } = selectedBlock;
 		const { editorskit } = attributes;
-
-		if ( isDisabled ) {
-			return null;
-		}
 
 		const onToggle = () => {
 			let indent = 0;
@@ -49,29 +44,25 @@ class DecreaseIndent extends Component {
 }
 
 export default compose(
-	withSelect( () => {
+	withSelect( ( select ) => {
+		const isDisabled = select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitIndentFormats' );
 		const selectedBlock = select( 'core/block-editor' ).getSelectedBlock();
-		if ( ! selectedBlock ) {
-			return {};
-		}
 		return {
+			isDisabled,
 			selectedBlock,
-			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitIndentFormats' ),
 		};
 	} ),
 	withDispatch( ( dispatch ) => ( {
 		updateBlockAttributes: dispatch( 'core/block-editor' ).updateBlockAttributes,
 	} ) ),
 	ifCondition( ( props ) => {
-		if ( props.isDisabled ) {
+		if ( props.isDisabled || ! props.selectedBlock ) {
 			return false;
 		}
 
-		if ( typeof props.selectedBlock !== 'undefined' ) {
-			const { editorskit } = props.selectedBlock.attributes;
-			if ( typeof editorskit.indent !== 'undefined' && editorskit.indent ) {
-				return true;
-			}
+		const { editorskit } = props.selectedBlock.attributes;
+		if ( typeof editorskit.indent !== 'undefined' && editorskit.indent ) {
+			return true;
 		}
 		return false;
 	} )

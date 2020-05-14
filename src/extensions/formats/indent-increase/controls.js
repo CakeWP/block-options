@@ -4,7 +4,7 @@
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { compose, ifCondition } = wp.compose;
-const { select, withSelect, withDispatch } = wp.data;
+const { withSelect, withDispatch } = wp.data;
 const { RichTextToolbarButton } = wp.blockEditor;
 
 class IncreaseIndent extends Component {
@@ -12,16 +12,11 @@ class IncreaseIndent extends Component {
 		const {
 			selectedBlock,
 			isBlockJustified,
-			isDisabled,
 			updateBlockAttributes,
 		} = this.props;
 
 		const { clientId, attributes } = selectedBlock;
 		const { editorskit } = attributes;
-
-		if ( isDisabled ) {
-			return null;
-		}
 
 		const onToggle = () => {
 			let indent = 0;
@@ -49,18 +44,16 @@ class IncreaseIndent extends Component {
 }
 
 export default compose(
-	withSelect( () => {
+	withSelect( ( select ) => {
+		const isDisabled = select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitIndentFormats' );
 		const selectedBlock = select( 'core/block-editor' ).getSelectedBlock();
-		if ( ! selectedBlock ) {
-			return {};
-		}
 		return {
+			isDisabled,
 			selectedBlock,
-			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitIndentFormats' ),
 		};
 	} ),
 	withDispatch( ( dispatch ) => ( {
 		updateBlockAttributes: dispatch( 'core/block-editor' ).updateBlockAttributes,
 	} ) ),
-	ifCondition( ( props ) => ! props.isDisabled ),
+	ifCondition( ( props ) => ( ! props.isDisabled ) && props.selectedBlock ),
 )( IncreaseIndent );

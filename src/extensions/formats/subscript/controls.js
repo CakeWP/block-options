@@ -9,7 +9,7 @@ import icon from './icons';
 const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
 const { compose, ifCondition } = wp.compose;
-const { select, withSelect } = wp.data;
+const { withSelect } = wp.data;
 const { RichTextToolbarButton, RichTextShortcut } = wp.blockEditor;
 const { toggleFormat, removeFormat } = wp.richText;
 
@@ -52,7 +52,7 @@ class SubscriptControl extends Component {
 }
 
 export default compose(
-	withSelect( () => {
+	withSelect( ( select ) => {
 		return {
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitSubscriptFormats' ),
 		};

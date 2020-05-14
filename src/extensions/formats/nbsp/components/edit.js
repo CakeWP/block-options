@@ -9,7 +9,7 @@ import icon from '../icons';
 const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
 const { compose, ifCondition } = wp.compose;
-const { select, withSelect } = wp.data;
+const { withSelect } = wp.data;
 const { insert, getTextContent } = wp.richText;
 const { RichTextShortcut, RichTextToolbarButton } = wp.blockEditor;
 const { withSpokenMessages } = wp.components;
@@ -62,7 +62,7 @@ class Edit extends Component {
 }
 
 export default compose(
-	withSelect( () => {
+	withSelect( ( select ) => {
 		return {
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitNonbreakingSpaceFormats' ),
 		};

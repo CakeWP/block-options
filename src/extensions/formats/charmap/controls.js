@@ -15,7 +15,7 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { getRectangleFromRange } = wp.dom;
 const { compose, ifCondition } = wp.compose;
-const { select, withSelect } = wp.data;
+const { withSelect } = wp.data;
 const { RichTextToolbarButton } = wp.blockEditor;
 const { toggleFormat, insert } = wp.richText;
 const { Popover, TabPanel, Button, TextControl, Tooltip } = wp.components;
@@ -167,7 +167,7 @@ class CharacterMap extends Component {
 }
 
 export default compose(
-	withSelect( () => {
+	withSelect( ( select ) => {
 		return {
 			isDisabled: select( 'core/edit-post' ).isFeatureActive(
 				'disableEditorsKitCharmapFormats'
