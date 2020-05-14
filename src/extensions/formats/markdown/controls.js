@@ -123,8 +123,10 @@ class MarkdownControl extends Component {
 
 export default compose(
 	withSelect( ( select ) => {
+		const { isFeatureActive } = select('core/edit-post');
 		return {
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitMarkdownWriting' ),
+			isIceberg: isFeatureActive('icebergWritingMode'),
 		};
 	} ),
 	withDispatch( ( dispatch, {
@@ -142,6 +144,6 @@ export default compose(
 			},
 		};
 	} ),
-	ifCondition( ( props ) => ! props.isDisabled ),
+	ifCondition( ( props ) => ! props.isDisabled && ! props.isIceberg ),
 	withSpokenMessages,
 )( MarkdownControl );
