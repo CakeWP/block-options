@@ -3,6 +3,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+<<<<<<< HEAD
 #: src/extensions/components/preview/components/controls.js:103
 msgid "Live Preview"
 msgstr ""
@@ -29,4 +30,8 @@ msgstr ""
 
 #: src/extensions/components/preview/components/controls.js:99
 msgid "Close preview mode"
+=======
+#: src/extensions/formats/indent-increase/controls.js:38
+msgid "Indent Increase"
+>>>>>>> master
 msgstr ""
