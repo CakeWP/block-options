@@ -162,11 +162,6 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Superscript', 'block-options' ),
 							'value' => true,
 						),
-						'colors'           => array(
-							'name'  => 'colors',
-							'label' => __( 'Text Color', 'block-options' ),
-							'value' => true,
-						),
 						'underline'        => array(
 							'name'  => 'underline',
 							'label' => __( 'Underline', 'block-options' ),
@@ -262,11 +257,6 @@ class EditorsKit_Features_Manager {
 						'mediaTextLayout'    => array(
 							'name'  => 'mediaTextLayout',
 							'label' => __( 'Media Text Block Layout', 'block-options' ),
-							'value' => true,
-						),
-						'mediaTextLink'      => array(
-							'name'  => 'mediaTextLink',
-							'label' => __( 'Media Text Block Link', 'block-options' ),
 							'value' => true,
 						),
 						'setAsFeatured'      => array(
