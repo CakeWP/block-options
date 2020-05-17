@@ -89,6 +89,16 @@ class CustomizerPreview extends Component {
 					>
 						<div className="wp-full-overlay-sidebar">
 							<div className="wp-full-overlay-footer">
+								<div className="close-full-overlay-wrapper">
+									<Button
+										className="close-full-overlay"
+										onClick={() => {
+											this.setState({ isOpen: false });
+										}}
+									>
+										<span className="screen-reader-text">{__('Close preview mode', 'block-options')}</span>
+									</Button>
+								</div>
 								<div className="devices-wrapper">
 									<h3>{ __( 'Live Preview', 'block-options' ) }</h3>
 									<div className="devices">
@@ -120,16 +130,6 @@ class CustomizerPreview extends Component {
 											<span className="screen-reader-text">{ __( 'Enter mobile preview mode', 'block-options' ) }</span>
 										</Button>
 									</div>
-								</div>
-								<div className="close-full-overlay-wrapper">
-									<Button
-										className="close-full-overlay"
-										onClick={ () => {
-											this.setState( { isOpen: false } );
-										} }
-									>
-										<span className="screen-reader-text">{ __( 'Close preview mode', 'block-options' ) }</span>
-									</Button>
 								</div>
 							</div>
 						</div>

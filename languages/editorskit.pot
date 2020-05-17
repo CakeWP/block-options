@@ -3,6 +3,35 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+<<<<<<< HEAD
+#: src/extensions/components/preview/components/controls.js:103
+msgid "Live Preview"
+msgstr ""
+
+#: src/extensions/components/preview/components/controls.js:112
+msgid "Enter desktop preview mode"
+msgstr ""
+
+#: src/extensions/components/preview/components/controls.js:121
+msgid "Enter tablet preview mode"
+msgstr ""
+
+#: src/extensions/components/preview/components/controls.js:130
+msgid "Enter mobile preview mode"
+msgstr ""
+
+#: src/extensions/components/preview/components/controls.js:137
+msgid "Preview"
+msgstr ""
+
+#: src/extensions/components/preview/components/controls.js:69
+msgid "Show preview without opening new window."
+msgstr ""
+
+#: src/extensions/components/preview/components/controls.js:99
+msgid "Close preview mode"
+=======
 #: src/extensions/formats/indent-increase/controls.js:38
 msgid "Indent Increase"
+>>>>>>> master
 msgstr ""
