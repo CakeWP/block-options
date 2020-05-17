@@ -15,7 +15,7 @@
 
 body {
 
-	&.editorskit-title-hidden {
+	&.editorskit-title-hidden:not(.is-iceberg) {
 
 		.editor-post-title__block {
 

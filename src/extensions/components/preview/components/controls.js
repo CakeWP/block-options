@@ -149,6 +149,7 @@ export default compose( [
 			getEditedPostPreviewLink,
 			getEditedPostAttribute,
 		} = select( 'core/editor' );
+		const { isFeatureActive } = select('core/edit-post');
 
 		const previewLink = getEditedPostPreviewLink();
 
@@ -160,6 +161,7 @@ export default compose( [
 					getEditedPostAttribute( 'status' )
 				) !== -1,
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitReadingTimeWriting' ),
+			isIceberg: isFeatureActive('icebergWritingMode'),
 		};
 	} ),
 	withDispatch( ( dispatch ) => ( {
@@ -167,7 +169,7 @@ export default compose( [
 		savePost: dispatch( 'core/editor' ).savePost,
 	} ) ),
 	ifCondition( ( props ) => {
-		return ! props.isDisabled;
+		return ! props.isDisabled && ! props.isIceberg;
 	} ),
 	withSpokenMessages,
 ] )( CustomizerPreview );

@@ -1,4 +1,4 @@
-.is-guide-lines-on {
+.is-guide-lines-on:not(.is-iceberg) {
 
 	.editor-post-title__block {
 
@@ -86,7 +86,6 @@
 						content: "";
 						position: absolute;
 						pointer-events: none;
-						content: "";
 						top: 0;
 						bottom: 0;
 						left: 0;

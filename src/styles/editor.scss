@@ -47,7 +47,7 @@
 /*--------------------------------------------------------------
 # Heading Labels
 --------------------------------------------------------------*/
-.is-editorskit-heading-label-on {
+.is-editorskit-heading-label-on:not(.is-iceberg) {
 
 	.editor-styles-wrapper {
 
@@ -188,10 +188,13 @@
 /*--------------------------------------------------------------
 # Improve Block with DropZone
 --------------------------------------------------------------*/
-.components-placeholder {
+body:not(.is-iceberg) {
 
-	&.editor-media-placeholder,
-	&.block-editor-media-placeholder {
-		outline: 1px dashed #8d96a0;
+	.components-placeholder {
+
+		&.editor-media-placeholder,
+		&.block-editor-media-placeholder {
+			outline: 1px dashed #8d96a0;
+		}
 	}
 }
