@@ -2,7 +2,6 @@
  * Internal dependencies
  */
 import { justify } from './justify';
-import { textColor } from './text-color';
 import { backgroundColor } from './background-color';
 import { markdown } from './markdown';
 import { subscript } from './subscript';
@@ -29,7 +28,6 @@ const isDisabled = select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKi
 function registerEditorsKitFormats() {
 	[
 		justify,
-		textColor,
 		backgroundColor,
 		markdown,
 		subscript,
