@@ -16704,10 +16704,16 @@ function (_Component) {
 }(Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (compose([withSelect(function () {
+  var _select = select('core/edit-post'),
+      isFeatureActive = _select.isFeatureActive;
+
+  var _select2 = select('core/editor'),
+      getEditedPostAttribute = _select2.getEditedPostAttribute;
+
   return {
-    content: select('core/editor').getEditedPostAttribute('content'),
-    blocks: select('core/editor').getEditedPostAttribute('blocks'),
-    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitReadingTimeWriting'),
+    content: getEditedPostAttribute('content'),
+    blocks: getEditedPostAttribute('blocks'),
+    isDisabled: isFeatureActive('disableEditorsKitReadingTimeWriting'),
     isIceberg: isFeatureActive('icebergWritingMode')
   };
 }), withDispatch(function (dispatch) {

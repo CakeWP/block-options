@@ -108,12 +108,16 @@ class ReadingTime extends Component {
 }
 
 export default compose( [
-	withSelect( () => ( {
-		content: select( 'core/editor' ).getEditedPostAttribute( 'content' ),
-		blocks: select( 'core/editor' ).getEditedPostAttribute( 'blocks' ),
-		isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitReadingTimeWriting' ),
-		isIceberg: isFeatureActive('icebergWritingMode'),
-	} ) ),
+	withSelect( () => {
+		const { isFeatureActive } = select('core/edit-post');
+		const { getEditedPostAttribute } = select('core/editor');
+		return{
+			content: getEditedPostAttribute('content'),
+			blocks: getEditedPostAttribute('blocks'),
+			isDisabled: isFeatureActive('disableEditorsKitReadingTimeWriting'),
+			isIceberg: isFeatureActive('icebergWritingMode'),
+		};
+	} ),
 	withDispatch( ( dispatch ) => {
 		return {
 			updateReadingTime( estimated ) {
