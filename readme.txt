@@ -6,7 +6,7 @@ Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenberg editor
 Requires at least: 5.0
 Tested up to: 5.3
 Requires PHP: 5.6
-Stable tag: 1.28
+Stable tag: 1.29
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FMKC2SLPTULP8
@@ -191,7 +191,12 @@ e.g.
 
 == Changelog ==
 
-= 1.28 =
+= 1.29.1 =
+* New: Add ndash and mdash
+* Fixes and compatibility with Gutenberg Plugin
+* Fixes and compatibility with thirdy party plugin
+
+= 1.29 =
 * New: Add new preview mode with shortcut using `CMD/CTRL + SHIFT + P`. [#264](https://github.com/phpbits/block-options/pull/271) 🎊
 * Fixes: Compatibility fixes for upcoming WordPress 5.4 🐛
 
