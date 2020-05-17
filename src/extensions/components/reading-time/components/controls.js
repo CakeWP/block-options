@@ -112,6 +112,7 @@ export default compose( [
 		content: select( 'core/editor' ).getEditedPostAttribute( 'content' ),
 		blocks: select( 'core/editor' ).getEditedPostAttribute( 'blocks' ),
 		isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitReadingTimeWriting' ),
+		isIceberg: isFeatureActive('icebergWritingMode'),
 	} ) ),
 	withDispatch( ( dispatch ) => {
 		return {
@@ -125,7 +126,7 @@ export default compose( [
 		};
 	} ),
 	ifCondition( ( props ) => {
-		return ! props.isDisabled;
+		return ! props.isDisabled && ! props.isIceberg;
 	} ),
 	withSpokenMessages,
 ] )( ReadingTime );
