@@ -85,7 +85,7 @@ class BlockSettings extends Component {
 		return (
 			<Fragment>
 				<PluginBlockSettingsMenuItem
-					icon="visibility"
+					icon="none"
 					label={ __( 'Visibility Settings', 'block-options' ) }
 					onClick={ () => {
 						this.setState( { isOpen: true } );

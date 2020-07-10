@@ -152,16 +152,6 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'Special Characters', 'block-options' ),
 							'value' => true,
 						),
-						'subscript'        => array(
-							'name'  => 'subscript',
-							'label' => __( 'Subscript', 'block-options' ),
-							'value' => true,
-						),
-						'superscript'      => array(
-							'name'  => 'superscript',
-							'label' => __( 'Superscript', 'block-options' ),
-							'value' => true,
-						),
 						'underline'        => array(
 							'name'  => 'underline',
 							'label' => __( 'Underline', 'block-options' ),
@@ -217,16 +207,6 @@ class EditorsKit_Features_Manager {
 						'convertReusable'    => array(
 							'name'  => 'convertReusable',
 							'label' => __( 'Convert Reusable Block Toolbar', 'block-options' ),
-							'value' => true,
-						),
-						'copy'               => array(
-							'name'  => 'copy',
-							'label' => __( 'Copy Selected Block(s)', 'block-options' ),
-							'value' => true,
-						),
-						'coverAlignment'     => array(
-							'name'  => 'coverAlignment',
-							'label' => __( 'Cover Block Vertical Alignment', 'block-options' ),
 							'value' => true,
 						),
 						'navigator'          => array(

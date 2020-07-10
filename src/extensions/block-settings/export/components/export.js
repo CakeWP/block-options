@@ -73,7 +73,7 @@ class ExportManager extends Component {
 		return (
 			<Fragment>
 				<PluginBlockSettingsMenuItem
-					icon="share-alt2"
+					icon="none"
 					label={ __( 'Export as JSON', 'block-options' ) }
 					onClick={ this.saveAsJSON }
 				>
