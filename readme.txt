@@ -191,7 +191,7 @@ e.g.
 
 == Changelog ==
 
-= 1.29.1 =
+= 1.29.2 =
 * Update readme "Tested Up to" WordPress version
 
 = 1.29.1 =
