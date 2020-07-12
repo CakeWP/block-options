@@ -4,7 +4,7 @@ Plugin URI: https://editorskit.com
 Contributors: phpbits
 Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenberg editor
 Requires at least: 5.0
-Tested up to: 5.3
+Tested up to: 5.5
 Requires PHP: 5.6
 Stable tag: 1.29
 License: GPL-3.0
@@ -190,6 +190,9 @@ e.g.
 
 
 == Changelog ==
+
+= 1.29.1 =
+* Update readme "Tested Up to" WordPress version
 
 = 1.29.1 =
 * New: Add ndash and mdash
