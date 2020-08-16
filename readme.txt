@@ -191,6 +191,9 @@ e.g.
 
 == Changelog ==
 
+= 1.29.3 =
+* Compatibility fixes for WordPress 5.5
+
 = 1.29.2 =
 * Update readme "Tested Up to" WordPress version
 
