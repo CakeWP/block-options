@@ -69,28 +69,28 @@ class EditorsKit_ACF_Support {
 		add_action(
 			'rest_api_init',
 			function () {
-				if ( is_user_logged_in() ) {
-					if ( class_exists( 'ACF' ) ) {
-						register_rest_route(
-							'editorskit/v1',
-							'/acf',
-							array(
-								'methods'  => 'GET',
-								'callback' => array( $this, 'api' ),
-							)
-						);
-					} else {
-						register_rest_route(
-							'editorskit/v1',
-							'/acf',
-							array(
-								'methods'  => 'GET',
-								'callback' => function () {
-									return (object) [];
-								},
-							)
-						);
-					}
+				if ( class_exists( 'ACF' ) ) {
+					register_rest_route(
+						'editorskit/v1',
+						'/acf',
+						array(
+							'methods'             => 'GET',
+							'permission_callback' => array( $this, 'permissions' ),
+							'callback'            => array( $this, 'api' ),
+						)
+					);
+				} else {
+					register_rest_route(
+						'editorskit/v1',
+						'/acf',
+						array(
+							'methods'             => 'GET',
+							'permission_callback' => array( $this, 'permissions' ),
+							'callback'            => function () {
+								return (object) [];
+							},
+						)
+					);
 				}
 			}
 		);
@@ -136,6 +136,19 @@ class EditorsKit_ACF_Support {
 		}
 
 		return (object) array_reverse( $fields );
+	}
+
+	/**
+	 * Permissions callback for requests
+	 *
+	 * Checks if user is logged in.
+	 *
+	 * @since 0.1.0
+	 *
+	 * @return bool
+	 */
+	public function permissions() {
+		return is_user_logged_in();
 	}
 
 }
