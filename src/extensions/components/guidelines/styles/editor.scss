@@ -78,7 +78,7 @@
 				border: 0;
 			}
 
-			.wp-block {
+			.wp-block[data-type] {
 
 				&:not([data-type="core/columns"]):not([data-type="core/column"]):not([data-type="coblocks/accordion"]):not([data-type="coblocks/accordion-item"]):not([data-type="coblocks/row"]):not([data-type="coblocks/column"]):not([data-type="coblocks/buttons"]):not([data-type="atomic-blocks/ab-container"]):not([data-type="atomic-blocks/ab-pricing-table"]) {
 
