@@ -1,4 +1,4 @@
-=== Gutenberg Page Building Toolkit – EditorsKit ===
+=== Gutenberg Block Editor Toolkit – EditorsKit ===
 Author URI: https://editorskit.com
 Plugin URI: https://editorskit.com
 Contributors: phpbits
