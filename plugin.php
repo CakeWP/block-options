@@ -134,6 +134,7 @@ if ( ! class_exists( 'EditorsKit' ) ) :
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-custom-css-classes.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/helper.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-shortcodes.php';
+			require_once EDITORSKIT_PLUGIN_DIR . 'extendify-sdk/loader.php';
 
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 				require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-welcome.php';
