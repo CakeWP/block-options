@@ -1,5 +1,5 @@
 **/node_modules/**
-**/vendor/**
+vendor/**
 build/*.php
 build/*.asset.php
 build/admin.asset.php
