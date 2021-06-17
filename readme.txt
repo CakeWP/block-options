@@ -4,14 +4,13 @@ Plugin URI: https://editorskit.com
 Contributors: phpbits, editorskit
 Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenberg editor
 Requires at least: 5.0
-Tested up to: 5.5
+Tested up to: 5.7.2
 Requires PHP: 5.6
-Stable tag: 1.29
+Stable tag: 1.30
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FMKC2SLPTULP8
 
-EditorsKit provides set of page building tools to supercharge the new WordPress Gutenberg block editor.
+EditorsKit provides a set of page building tools to supercharge the WordPress Gutenberg block editor.
 
 == Description ==
 
@@ -158,6 +157,27 @@ Add help, tips and tricks button on the bottom right side of the editor to help 
 ## ShareABlock block
 Insert your downloads from [shareablock.com](https://shareablock.com/) easily using this block. Browse through your block patterns and templates then add them to your content in just a click.
 
+## Template and Pattern Library
+
+EditorsKit now includes access to the Extendify template and pattern library that can be accessed by clicking the "Library" button in the menu bar of the editor. We provide a variety of templates and patterns to serve different use cases and are adding more templates every week.
+
+Note: Templates and patterns rely on blocks and styling applied by the Editor Plus plugin. The Editor Plus plugin is required when importing a template or pattern. If you uninstall Editor Plus, the templates and patterns will still display on your site, but the styling may be affected. Additionally, stock images included in the templates are hosted by Extendify. We recommend replacing the images or adding them to your media library directly.
+
+## Privacy
+
+EditorsKit uses a custom API to fetch templates and patterns from the Extendify template and pattern library. To improve the service and stability we store logs which may contain the following:
+
+* browser type
+* referring site
+* date and time of request
+* category selection or search term
+* anonymized IP address
+
+API requests are only made when a user clicks on the Library button.
+
+For more details on our privacy policy: https://extendify.com/privacy-policy
+For more details on our terms of service: https://extendify.com/terms-of-service/
+
 ## Helping you with the new Gutenberg Editor
 EditorsKit is created to help you navigate through the new editor. Each new features will make your page building more convenient and easier. You can help achieving this goal through the community: 
 
@@ -190,6 +210,9 @@ e.g.
 
 
 == Changelog ==
+
+= 1.30 =
+* New: Add access to the Extendify pattern and template library
 
 = 1.29.4 =
 * Update readme
@@ -474,4 +497,4 @@ e.g.
 
 == Contact and Credits ==
 
-EditorsKit is maintained and developed by <a href="https://jeffreycarandang.com/">Jeffrey Carandang</a>.
+EditorsKit is maintained and developed by <a href="https://extendify.com/">Extendify</a>.
