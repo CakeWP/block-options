@@ -3,14 +3,14 @@
  * Plugin Name: EditorsKit
  * Plugin URI: https://editorskit.com/
  * Description: EditorsKit is a suite of <strong>page building block options</strong> for the Gutenberg block editor.
- * Version: 1.29.4
- * Author: Jeffrey Carandang
- * Author URI: https://jeffreycarandang.com/
+ * Version: 1.30
+ * Author: Extendify
+ * Author URI: https://extendify.com/
  * Text Domain: block-options
  * Domain Path: languages
  *
  * @category Gutenberg
- * @author Jeffrey Carandang
+ * @author Extendify
  * @version 1.0
  * @package EditorsKit
  */
@@ -94,7 +94,7 @@ if ( ! class_exists( 'EditorsKit' ) ) :
 		private function setup_constants() {
 
 			$this->define( 'EDITORSKIT_DEBUG', true );
-			$this->define( 'EDITORSKIT_VERSION', '1.29.4' );
+			$this->define( 'EDITORSKIT_VERSION', '1.30' );
 			$this->define( 'EDITORSKIT_HAS_PRO', false );
 			$this->define( 'EDITORSKIT_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 			$this->define( 'EDITORSKIT_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
