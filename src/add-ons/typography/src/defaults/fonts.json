@@ -1,0 +1,687 @@
+{
+	"roboto-cabin": {
+		"name": "Roboto Condensed + Cabin",
+		"type": "default",
+		"category": "modern,minimal,warm",
+		"heading": {
+			"font-weight": 700,
+			"font-family": "'Roboto Condensed', sans-serif"
+		},
+		"content": {
+			"font-family": "'Cabin', sans-serif"
+		},
+		"fonts": [
+			"Roboto+Condensed:300,300i,400,400i,700,700i",
+			"Cabin:400,400i,500,500i,600,600i,700,700i"
+		]
+	},
+	"raleway-open": {
+		"name": "Raleway + Open Sans",
+		"type": "default",
+		"category": "modern,minimal",
+		"heading": {
+			"font-weight": 300,
+			"font-family": "'Raleway', sans-serif"
+		},
+		"content": {
+			"font-family": "'Open Sans', sans-serif"
+		},
+		"fonts": [
+			"Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i",
+			"Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
+		]
+	},	
+	"playfair-sourcesans": {
+		"name": "Playfair Display + Source Sans",
+		"type": "default",
+		"category": "striking,classic,warm",
+		"heading": {
+			"font-weight": 300,
+			"font-family": "'Playfair Display', sans-serif"
+		},
+		"content": {
+			"font-family": "'Source Sans Pro', sans-serif"
+		},
+		"fonts": [
+			"Playfair+Display:400,400i,700,700i,900,900i",
+			"Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i"
+		]
+	},
+	"roboto-lora": {
+		"name": "Roboto + Lora",
+		"type": "default",
+		"category": "modern,neutral",
+		"heading": {
+			"font-weight": 700,
+			"font-family": "'Roboto', sans-serif"
+		},
+		"content": {
+			"font-family": "'Lora', serif"
+		},
+		"fonts": [
+			"Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i",
+			"Lora:400,400i,700,700i"
+		]
+	},
+	"abril-poppins": {
+		"name": "Abril Fatface + Poppins",
+		"type": "default",
+		"category": "eccentric,classic,warm",
+		"heading": {
+			"font-weight": 400,
+			"font-family": "'Abril Fatface', cursive"
+		},
+		"content": {
+			"font-family": "'Poppins', sans-serif"
+		},
+		"fonts": [
+			"Abril+Fatface",
+			"Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+		]
+	},
+	"ruda-roboto": {
+		"name": "Ruda + Roboto Slab",
+		"type": "default",
+		"category": "striking,eccentric,neutral",
+		"heading": {
+			"font-weight": 400,
+			"font-family": "'Ruda', sans-serif"
+		},
+		"content": {
+			"font-family": "'Roboto Slab', serif"
+		},
+		"fonts": [
+			"Ruda:400,700,900",
+			"Roboto+Slab:100,200,300,400,500,600,700,800,900"
+		]
+	},
+	"cormorant-fira": {
+		"name": "Cormorant Garamond + Fira Sans",
+		"type": "default",
+		"category": "eccentric,classic,minimal",
+		"heading": {
+			"font-weight": 700,
+			"font-style": "italic",
+			"font-family": "'Cormorant Garamond', serif"
+		},
+		"content": {
+			"font-family": "'Fira Sans', sans-serif"
+		},
+		"fonts": [
+			"Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i",
+			"Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+		]
+	},
+	"pt-playfair": {
+		"name": "PT Sans + Playfair Display",
+		"type": "default",
+		"category": "modern,neutral",
+		"heading": {
+			"font-weight": 700,
+			"font-family": "'PT Sans', sans-serif"
+		},
+		"content": {
+			"font-family": "'Playfair Display', serif"
+		},
+		"fonts": [
+			"PT+Sans:400,400i,700,700i",
+			"Playfair+Display:400,400i,700,700i,900,900i"
+		]
+	},
+	"oxygen-noto": {
+		"name": "Oxygen + Noto Serif",
+		"type": "default",
+		"category": "modern,minimal,neutral",
+		"heading": {
+			"font-weight": 400,
+			"font-family": "'Oxygen', sans-serif"
+		},
+		"content": {
+			"font-family": "'Noto Serif', serif"
+		},
+		"fonts": [
+			"Oxygen:300,400,700",
+			"Noto+Serif:400,400i,700,700i"
+		]
+	},
+	"arvo-lato": {
+		"name": "Arvo + Lato",
+		"type": "default",
+		"category": "modern,minimal,neutral,warm",
+		"heading": {
+			"font-weight": 400,
+			"font-family": "'Arvo', serif"
+		},
+		"content": {
+			"font-family": "'Lato', sans-serif"
+		},
+		"fonts": [
+			"Arvo:400,400i,700,700i",
+			"Lato:100,100i,300,300i,400,400i,700,700i,900,900i"
+		]
+	},
+	"lato-catamaran": {
+		"name": "Lato + Catamaran",
+		"type": "default",
+		"category": "classic,warm",
+		"heading": {
+			"font-weight": 400,
+			"font-style": "italic",
+			"font-family": "'Lato', sans-serif"
+		},
+		"content": {
+			"font-family": "'Catamaran', sans-serif"
+		},
+		"fonts": [
+			"Lato:100,100i,300,300i,400,400i,700,700i,900,900i",
+			"Catamaran:100,200,300,400,500,600,700,800,900"
+		]
+	},
+	"merriweather-muli": {
+		"name": "Merriweather + Muli",
+		"type": "default",
+		"category": "striking,classic,warm",
+		"heading": {
+			"font-weight": 400,
+			"font-family": "'Merriweather', serif"
+		},
+		"content": {
+			"font-weight": 300,
+			"font-family": "'Muli', sans-serif"
+		},
+		"fonts": [
+			"Merriweather:300,300i,400,400i,700,700i,900,900i",
+			"Muli:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+		]
+	},
+	"pt-bitter": {
+		"name": "PT Sans + Bitter",
+		"type": "default",
+		"category": "modern,striking",
+		"heading": {
+			"font-weight": 400,
+			"font-style": "italic",
+			"font-family": "'PT Sans', sans-serif"
+		},
+		"content": {
+			"font-family": "'Bitter', serif"
+		},
+		"fonts": [
+			"PT+Sans:400,400i,700,700i",
+			"Bitter:400,400i,700"
+		]
+	},
+	"cinzel-fauna": {
+		"name": "Cinzel + Fauna One",
+		"type": "default",
+		"category": "striking,eccentric,warm",
+		"heading": {
+			"font-weight": 700,
+			"text-transform": "uppercase",
+			"font-family": "'Cinzel', serif"
+		},
+		"content": {
+			"font-family": "'Fauna One', serif"
+		},
+		"fonts": [
+			"Cinzel:400,700,90",
+			"Fauna+One"
+		]
+	},
+	"work-open": {
+		"name": "Work Sans + Open Sans",
+		"type": "default",
+		"category": "modern,classic,minimal,neutral",
+		"heading": {
+			"font-weight": 300,
+			"font-family": "'Work Sans', sans-serif"
+		},
+		"content": {
+			"font-family": "'Open Sans', sans-serif"
+		},
+		"fonts": [
+			"Work+Sans:100,200,300,400,500,600,700,800,900",
+			"Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
+		]
+	},
+	"oswald-quattro": {
+		"name": "Oswald + Quattro Cento",
+		"type": "default",
+		"category": "modern,striking,minimal",
+		"heading": {
+			"font-weight": 400,
+			"text-transform": "uppercase",
+			"font-family": "'Oswald', sans-serif"
+		},
+		"content": {
+			"font-family": "'Quattrocento', serif"
+		},
+		"fonts": [
+			"Oswald:200,300,400,500,600,700",
+			"Quattrocento:400,700"
+		]
+	},
+	"nunito-pt": {
+		"name": "Nunito + PT Sans",
+		"type": "default",
+		"category": "eccentric,warm",
+		"heading": {
+			"font-weight": 400,
+			"font-family": "'Nunito', sans-serif"
+		},
+		"content": {
+			"font-family": "'PT Sans', sans-serif"
+		},
+		"fonts": [
+			"Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i",
+			"PT+Sans:400,400i,700,700i"
+		]
+	},
+	"unica-crimson": {
+		"name": "Unica One + Crimson Text",
+		"type": "default",
+		"category": "modern,striking,eccentric,minimal,neutral",
+		"heading": {
+			"font-weight": 400,
+			"text-transform": "uppercase",
+			"font-family": "'Unica One', cursive"
+		},
+		"content": {
+			"font-family": "'Crimson Text', serif"
+		},
+		"fonts": [
+			"Unica+One",
+			"Crimson+Text:400,400i,600,600i,700,700i"
+		]
+	},
+	"julius-monda": {
+		"name": "Julius Sans + Monda",
+		"type": "default",
+		"category": "striking,eccentric,minimal",
+		"heading": {
+			"font-weight": 400,
+			"text-transform": "uppercase",
+			"font-family": "'Julius Sans One', sans-serif"
+		},
+		"content": {
+			"font-family": "'Monda', sans-serif"
+		},
+		"fonts": [
+			"Julius+Sans+One",
+			"Monda:400,700"
+		]
+	},
+	"varela-noto": {
+		"name": "Varela Round + Noto Serif",
+		"type": "default",
+		"category": "neutral,warm",
+		"heading": {
+			"font-weight": 400,
+			"font-family": "'Varela Round', sans-serif"
+		},
+		"content": {
+			"font-family": "'Noto Serif', serif"
+		},
+		"fonts": [
+			"Varela+Round",
+			"Noto+Serif:400,400i,700,700i"
+		]
+	},
+	"vollkorn-raleway": {
+		"name": "Vollkorn + Raleway",
+		"type": "default",
+		"category": "modern,striking,eccentric,classic,warm",
+		"heading": {
+			"font-weight": 400,
+			"font-style": "italic",
+			"font-family": "'Vollkorn', serif"
+		},
+		"content": {
+			"font-family": "'Raleway', sans-serif"
+		},
+		"fonts": [
+			"Vollkorn:400,400i,600,600i,700,700i,900,900i",
+			"Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+		]
+	},
+	"ovo-quattrocento": {
+		"name": "Ovo + Quattrocento Sans",
+		"type": "default",
+		"category": "minimal,warm",
+		"heading": {
+			"font-family": "'Ovo', serif"
+		},
+		"content": {
+			"font-family": "'Quattrocento Sans', sans-serif"
+		},
+		"fonts": [
+			"Ovo",
+			"Quattrocento+Sans:400,400i,700,700i"
+		]
+	},
+	"ubuntu-open": {
+		"name": "Ubuntu + Open Sans",
+		"type": "default",
+		"category": "striking,neutral",
+		"heading": {
+			"font-weight": 700,
+			"text-transform": "uppercase",
+			"font-family": "'Ubuntu', sans-serif"
+		},
+		"content": {
+			"font-family": "'Open Sans', sans-serif"
+		},
+		"fonts": [
+			"Ubuntu:300,300i,400,400i,500,500i,700,700i",
+			"Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
+		]
+	},
+	"source-sintony": {
+		"name": "Source Sans Pro + Sintony",
+		"type": "default",
+		"category": "neutral",
+		"heading": {
+			"font-weight": 900,
+			"font-family": "'Source Sans Pro', sans-serif"
+		},
+		"content": {
+			"font-family": "'Sintony', sans-serif"
+		},
+		"fonts": [
+			"Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i",
+			"Sintony:400,700"
+		]
+	},
+	"slabo-lato": {
+		"name": "Slabo 13px + Lato",
+		"type": "default",
+		"category": "modern,striking,eccentric,neutral,warm",
+		"heading": {
+			"font-weight": 700,
+			"font-family": "'Slabo 13px', serif"
+		},
+		"content": {
+			"font-family": "'Lato', sans-serif"
+		},
+		"fonts": [
+			"Slabo+13px",
+			"Lato:100,100i,300,300i,400,400i,700,700i,900,900i"
+		]
+	},
+	"rufina-pt": {
+		"name": "Rufina + PT Serif",
+		"type": "default",
+		"category": "minimal,warm",
+		"heading": {
+			"font-weight": 700,
+			"font-family": "'Rufina', serif"
+		},
+		"content": {
+			"font-family": "'PT Serif', serif"
+		},
+		"fonts": [
+			"Rufina:400,700",
+			"PT+Serif:400,400i,700,700i"
+		]
+	},
+	"dosis-titillium": {
+		"name": "Dosis + Titillium Web",
+		"type": "default",
+		"category": "modern,eccentric,neutral",
+		"heading": {
+			"font-weight": 400,
+			"font-family": "'Dosis', sans-serif"
+		},
+		"content": {
+			"font-family": "'Titillium Web', sans-serif"
+		},
+		"fonts": [
+			"Dosis:200,300,400,500,600,700,800",
+			"Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i,900"
+		]
+	},
+	"oswald-esteban": {
+		"name": "Oswald + Esteban",
+		"type": "default",
+		"category": "modern,eccentric,warm",
+		"heading": {
+			"font-weight": 300,
+			"font-family": "'Oswald', sans-serif"
+		},
+		"content": {
+			"font-family": "'Esteban', serif"
+		},
+		"fonts": [
+			"Oswald:200,300,400,500,600,700",
+			"Esteban"
+		]
+	},
+	"playfair-source": {
+		"name": "Playfair Display + Source Sans Pro",
+		"type": "default",
+		"category": "striking,eccentric,warm",
+		"heading": {
+			"font-weight": 900,
+			"font-family": "'Playfair Display', serif"
+		},
+		"content": {
+			"font-family": "'Source Sans Pro', sans-serif"
+		},
+		"fonts": [
+			"Playfair+Display:400,400i,700,700i,900,900i",
+			"Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i"
+		]
+	},
+	"libre-nunito": {
+		"name": "Libre Baskerville + Nunito",
+		"type": "default",
+		"category": "minimal,neutral",
+		"heading": {
+			"font-weight": 700,
+			"font-family": "'Libre Baskerville', serif"
+		},
+		"content": {
+			"font-family": "'Nunito', sans-serif"
+		},
+		"fonts": [
+			"Libre+Baskerville:400,400i,700",
+			"Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+		]
+	},
+	"catamaran-merriweather": {
+		"name": "Catamaran + Merriweather Sans",
+		"type": "default",
+		"category": "modern,neutral",
+		"heading": {
+			"font-weight": 600,
+			"font-family": "'Catamaran', sans-serif"
+		},
+		"content": {
+			"font-weight": 300,
+			"font-family": "'Merriweather Sans', sans-serif"
+		},
+		"fonts": [
+			"Catamaran:100,200,300,400,500,600,700,800,900",
+			"Merriweather+Sans:300,300i,400,400i,700,700i,800,800i"
+		]
+	},
+	"bree-alegreya": {
+		"name": "Bree Serif + Alegreya",
+		"type": "default",
+		"category": "striking,eccentric,warm",
+		"heading": {
+			"font-weight": 700,
+			"text-transform": "uppercase",
+			"font-family": "'Bree Serif', serif"
+		},
+		"content": {
+			"font-weight": 300,
+			"font-family": "'Alegreya', serif"
+		},
+		"fonts": [
+			"Bree+Serif",
+			"Alegreya:400,400i,500,500i,700,700i,800,800i,900,900i"
+		]
+	},
+	"cardo-libre": {
+		"name": "Cardo + Libre Franklin",
+		"type": "default",
+		"category": "striking,classic,neutral",
+		"heading": {
+			"font-weight": 700,
+			"font-family": "'Cardo', serif"
+		},
+		"content": {
+			"font-family": "'Libre Franklin', sans-serif"
+		},
+		"fonts": [
+			"Cardo:400,400i,700",
+			"Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+		]
+	},
+	"roboto-libre": {
+		"name": "Roboto + Libre Baskerville",
+		"type": "default",
+		"category": "minimal,neutral",
+		"heading": {
+			"font-weight": 500,
+			"font-family": "'Roboto', sans-serif"
+		},
+		"content": {
+			"font-family": "'Libre Baskerville', serif"
+		},
+		"fonts": [
+			"Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i",
+			"Libre+Baskerville:400,400i,700"
+		]
+	},
+	"goudy-average": {
+		"name": "Goudy Bookletter 1911 + Average Sans",
+		"type": "default",
+		"category": "classic,warm",
+		"heading": {
+			"font-weight": 500,
+			"font-family": "'Goudy Bookletter 1911', serif"
+		},
+		"content": {
+			"font-family": "'Average Sans', sans-serif"
+		},
+		"fonts": [
+			"Goudy+Bookletter+1911",
+			"Average+Sans"
+		]
+	},
+	"raleway-frank": {
+		"name": "Raleway + Frank Ruhl Libre",
+		"type": "default",
+		"category": "minimal,neutral",
+		"heading": {
+			"font-weight": 300,
+			"font-family": "'Raleway', sans-serif"
+		},
+		"content": {
+			"font-family": "'Frank Ruhl Libre', serif"
+		},
+		"fonts": [
+			"Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i",
+			"Frank+Ruhl+Libre:300,400,500,700,900"
+		]
+	},
+	"prata-lato": {
+		"name": "Prata + Lato",
+		"type": "default",
+		"category": "eccentric,warm",
+		"heading": {
+			"font-weight": 400,
+			"font-family": "'Prata', serif"
+		},
+		"content": {
+			"font-family": "'Lato', sans-serif"
+		},
+		"fonts": [
+			"Prata",
+			"Lato:100,100i,300,300i,400,400i,700,700i,900,900i"
+		]
+	},
+	"ezcar-merriweather": {
+		"name": "Eczar + Merriweather",
+		"type": "default",
+		"category": "classic,neutral",
+		"heading": {
+			"font-weight": 600,
+			"font-family": "'Eczar', serif"
+		},
+		"content": {
+			"font-family": "'Merriweather', serif"
+		},
+		"fonts": [
+			"Eczar:400,500,600,700,800",
+			"Merriweather:300,300i,400,400i,700,700i,900,900i"
+		]
+	},
+	"chivo-crimson": {
+		"name": "Chivo + Crimson Text",
+		"type": "default",
+		"category": "minimal,neutral",
+		"heading": {
+			"font-weight": 300,
+			"font-family": "'Chivo', sans-serif"
+		},
+		"content": {
+			"font-family": "'Crimson Text', serif"
+		},
+		"fonts": [
+			"Chivo:300,300i,400,400i,700,700i,900,900i",
+			"Crimson+Text:400,400i,600,600i,700,700i"
+		]
+	},
+	"rubik-karla": {
+		"name": "Rubik + Karla",
+		"type": "default",
+		"category": "modern,minimal",
+		"heading": {
+			"font-weight": 400,
+			"font-family": "'Rubik', sans-serif"
+		},
+		"content": {
+			"font-family": "'Karla', sans-serif"
+		},
+		"fonts": [
+			"Rubik:300,300i,400,400i,500,500i,700,700i,900,900i",
+			"Karla:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i"
+		]
+	},
+	"neuton-work": {
+		"name": "Neuton + Work Sans",
+		"type": "default",
+		"category": "striking,classic,warm",
+		"heading": {
+			"font-weight": 400,
+			"font-family": "'Neuton', serif"
+		},
+		"content": {
+			"font-family": "'Work Sans', sans-serif"
+		},
+		"fonts": [
+			"Neuton:200,300,400,400i,700,800",
+			"Work+Sans:100,200,300,400,500,600,700,800,900"
+		]
+	},
+	"anton-signika": {
+		"name": "Anton + Signika",
+		"type": "default",
+		"category": "striking,eccentric,minimal,neutral",
+		"heading": {
+			"font-weight": 400,
+			"font-family": "'Anton', sans-serif"
+		},
+		"content": {
+			"font-weight": 300,
+			"font-family": "'Signika', sans-serif"
+		},
+		"fonts": [
+			"Anton",
+			"Signika:300,400,600,700"
+		]
+	}
+}

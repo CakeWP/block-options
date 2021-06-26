@@ -1,0 +1,279 @@
+body {
+
+	&.ek-has-typography {
+
+		&.ek-has-content-font-family {
+
+			.entry-content {
+
+				p,
+				ol,
+				ul,
+				dl,
+				dt {
+					font-family: var(--ek-font-family, inherit);
+				}
+			}
+
+			&.ek-has-body-font-family {
+				font-family: var(--ek-font-family, inherit);
+			}
+		}
+
+		&.ek-has-content-font-size {
+
+			.entry-content {
+
+				p,
+				ol,
+				ul,
+				dl,
+				dt {
+
+					&:not([class*="-font-size"]) {
+						font-size: var(--ek-font-size, inherit);
+					}
+				}
+			}
+		}
+
+		&.ek-has-content-line-height {
+
+			.entry-content {
+
+				p,
+				ol,
+				ul,
+				dl,
+				dt {
+					line-height: var(--ek-line-height, inherit);
+				}
+			}
+		}
+
+		&.ek-has-content-letter-spacing {
+
+			.entry-content {
+
+				p,
+				ol,
+				ul,
+				dl,
+				dt {
+					letter-spacing: var(--ek-letter-spacing, inherit);
+				}
+			}
+		}
+
+		&.ek-apply-H1-to-title {
+
+			.entry-title {
+				font-family: var(--ek-heading-font-family, inherit);
+			}
+
+			&.ek-has-H1-font-size {
+
+				.entry-title {
+					font-size: var(--ek-H1-font-size, inherit);
+				}
+			}
+
+			&.ek-has-H1-font-weight {
+
+				.entry-title {
+					font-weight: var(--ek-H1-font-weight, 700);
+				}
+			}
+
+			&.ek-has-H1-lineheight {
+
+				.entry-title {
+					line-height: var(--ek-H1-line-height, inherit);
+				}
+			}
+
+			&.ek-has-H1-letter-spacing {
+
+				.entry-title {
+					letter-spacing: var(--ek-H1-letter-spacing, inherit);
+				}
+			}
+
+			&.ek-has-H1-text-transform {
+
+				.entry-title {
+					text-transform: var(--ek-H1-text-transform, inherit);
+				}
+			}
+		}
+
+		.entry-content {
+
+			> :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
+				font-weight: var(--ek-font-weight, normal);
+			}
+
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				font-weight: var(--ek-heading-font-weight, 700);
+			}
+		}
+
+		&.ek-has-header-font-family {
+
+			.entry-content {
+
+				h1,
+				h2,
+				h3,
+				h4,
+				h5,
+				h6 {
+					font-family: var(--ek-heading-font-family, inherit);
+				}
+			}
+		}
+
+		@for $i from 1 through 6 {
+
+			&.ek-has-H#{$i}-font-size {
+
+				.entry-content {
+
+					h#{$i} {
+						font-size: var(--ek-H#{$i}-font-size, inherit);
+					}
+				}
+			}
+
+			&.ek-has-H#{$i}-font-weight {
+
+				.entry-content {
+
+					h#{$i} {
+						font-weight: var(--ek-H#{$i}-font-weight, 700);
+					}
+				}
+			}
+
+			&.ek-has-H#{$i}-line-height {
+
+				.entry-content {
+
+					h#{$i} {
+						line-height: var(--ek-H#{$i}-line-height, inherit);
+					}
+				}
+			}
+
+			&.ek-has-H#{$i}-letter-spacing {
+
+				.entry-content {
+
+					h#{$i} {
+						letter-spacing: var(--ek-H#{$i}-letter-spacing, inherit);
+					}
+				}
+			}
+
+			&.ek-has-H#{$i}-text-transform {
+
+				.entry-content {
+
+					h#{$i} {
+						text-transform: var(--ek-H#{$i}-text-transform, inherit);
+					}
+				}
+			}
+		}
+
+		&.ek-has-button-font-family {
+
+			.wp-block-button__link {
+				font-family: var(--ek-button-font-family, inherit);
+			}
+		}
+
+		&.ek-has-button-font-weight {
+
+			.wp-block-button__link {
+				font-weight: var(--ek-button-font-weight, inherit);
+			}
+		}
+
+		&.ek-has-button-font-size {
+
+			.wp-block-button__link {
+				font-size: var(--ek-button-font-size, inherit);
+			}
+		}
+
+		&.ek-has-button-line-height {
+
+			.wp-block-button__link {
+				line-height: var(--ek-button-line-height, inherit);
+			}
+		}
+
+		&.ek-has-button-letter-spacing {
+
+			.wp-block-button__link {
+				letter-spacing: var(--ek-button-letter-spacing, inherit);
+			}
+		}
+
+		&.ek-has-button-text-transform {
+
+			.wp-block-button__link {
+				text-transform: var(--ek-button-text-transform, inherit);
+			}
+		}
+
+	}
+
+	// block level
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		&.has-ek-typography {
+			font-family: var(--ek-heading-font-family, inherit);
+			font-weight: var(--ek-heading-font-weight, inherit);
+		}
+	}
+
+	p.has-ek-typography,
+	ul.has-ek-typography,
+	ol.has-ek-typography {
+		font-family: var(--ek-font-family, inherit);
+		font-weight: var(--ek-font-weight, inherit);
+	}
+
+	.has-ek-typography {
+		&,
+		p,
+		ol,
+		ul,
+		dl,
+		dt,
+		blockquote {
+			font-family: var(--ek-font-family, inherit);
+			font-weight: var(--ek-font-weight, inherit);
+		}
+
+		&.wp-block-button {
+			font-family: var(--ek-button-font-family, inherit);
+			.wp-block-button__link {
+				font-family: var(--ek-button-font-family, inherit);
+				font-weight: var(--ek-button-font-weight, inherit);
+			}
+
+		}
+	}
+}
