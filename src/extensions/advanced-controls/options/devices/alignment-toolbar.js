@@ -7,7 +7,7 @@ import { find } from 'lodash';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Toolbar } = wp.components;
+const { Toolbar, ToolbarGroup, ToolbarButton } = wp.components;
 
 const DEFAULT_ALIGNMENT_CONTROLS = [
 	{
@@ -42,28 +42,31 @@ export function AlignmentToolbar( props ) {
 	} = props;
 
 	function applyOrUnset( align ) {
-		return () => onChange( value === align ? undefined : align );
+		onChange( value === align ? undefined : align );
 	}
-
-	const activeAlignment = find( alignmentControls, ( control ) => control.align === value );
 
 	return (
 		<Toolbar
 			isCollapsed={ isCollapsed }
-			icon={ activeAlignment ? activeAlignment.icon : 'editor-alignleft' }
 			label={ label }
-			controls={ alignmentControls.map( ( control ) => {
-				const { align } = control;
-				const isActive = ( value === align );
-
-				return {
-					...control,
-					isActive,
-					role: isCollapsed ? 'menuitemradio' : undefined,
-					onClick: applyOrUnset( align ),
-				};
-			} ) }
-		/>
+		>
+			<ToolbarGroup>
+				{ alignmentControls.map( ( control ) => {
+					const { align, title, icon } = control;
+					const isActive = ( value === align );
+					return(
+						<ToolbarButton
+							isActive={ isActive }
+							icon={ icon }
+							label={ title }
+							onClick={ () => {
+								applyOrUnset( align )
+							} }
+						/>
+					);
+				} ) }
+			</ToolbarGroup>
+		</Toolbar>
 	);
 }
 
