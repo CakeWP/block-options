@@ -58,6 +58,39 @@ class EditorsKit_Post_Meta {
 				},
 			)
 		);
+
+		register_meta(
+			'post',
+			'_editorskit_typography_data',
+			array(
+				'single'        => true,
+				'type'          => 'object',
+				'show_in_rest'  => array(
+					'schema' => array(
+						'type'                 => 'object',
+						'properties'           => array(
+							'version' => array(
+								'type' => 'string',
+							),
+						),
+						'additionalProperties' => array(
+							'type' => 'object',
+						),
+					),
+				),
+				'auth_callback' => array( $this, 'auth_callback' ),
+			)
+		);
+
+		register_meta(
+			'post',
+			'_editorskit_blocks_typography',
+			array(
+				'show_in_rest'  => true,
+				'single'        => true,
+				'auth_callback' => array( $this, 'auth_callback' ),
+			)
+		);
 	}
 
 	/**
@@ -75,6 +108,28 @@ class EditorsKit_Post_Meta {
 				'sanitize_callback' => 'sanitize_text_field',
 				'show_in_rest'      => true,
 				'default'           => '',
+			)
+		);
+
+		register_setting(
+			'editorskit_typography_custom',
+			'editorskit_typography_custom',
+			array(
+				'type'              => 'string',
+				'description'       => __( 'Custom typography', 'editorskit-typography-addon' ),
+				'sanitize_callback' => 'sanitize_text_field',
+				'show_in_rest'      => true,
+			)
+		);
+
+		register_setting(
+			'editorskit_typography_default',
+			'editorskit_typography_default',
+			array(
+				'type'              => 'string',
+				'description'       => __( 'Default typography', 'editorskit-typography-addon' ),
+				'sanitize_callback' => 'sanitize_text_field',
+				'show_in_rest'      => true,
 			)
 		);
 	}
@@ -105,9 +160,27 @@ class EditorsKit_Post_Meta {
 				unset( $attributes['hasAlignmentOption'] );
 				$request['attributes'] = $attributes;
 			}
+
+			if ( isset( $request['attributes'] ) && isset( $request['attributes']['editorskit_typography'] ) ) {
+
+				$attributes = $request['attributes'];
+				unset( $attributes['editorskit_typography'] );
+				$request['attributes'] = $attributes;
+			}
 		}
 
 		return $result;
+	}
+
+	/**
+	 * Determine if the current user can edit posts
+	 *
+	 * @return bool True when can edit posts, else false.
+	 */
+	public function auth_callback() {
+
+		return current_user_can( 'edit_posts' );
+
 	}
 }
 
