@@ -12569,18 +12569,11 @@ function (_Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlignmentToolbar", function() { return AlignmentToolbar; });
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
 
-
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 /**
  * External dependencies
@@ -12591,7 +12584,10 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
  */
 
 var __ = wp.i18n.__;
-var Toolbar = wp.components.Toolbar;
+var _wp$components = wp.components,
+    Toolbar = _wp$components.Toolbar,
+    ToolbarGroup = _wp$components.ToolbarGroup,
+    ToolbarButton = _wp$components.ToolbarButton;
 var DEFAULT_ALIGNMENT_CONTROLS = [{
   icon: 'editor-alignleft',
   title: __('Align text left', 'block-options'),
@@ -12620,28 +12616,26 @@ function AlignmentToolbar(props) {
       isCollapsed = _props$isCollapsed === void 0 ? true : _props$isCollapsed;
 
   function applyOrUnset(align) {
-    return function () {
-      return onChange(value === align ? undefined : align);
-    };
+    onChange(value === align ? undefined : align);
   }
 
-  var activeAlignment = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["find"])(alignmentControls, function (control) {
-    return control.align === value;
-  });
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Toolbar, {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Toolbar, {
     isCollapsed: isCollapsed,
-    icon: activeAlignment ? activeAlignment.icon : 'editor-alignleft',
-    label: label,
-    controls: alignmentControls.map(function (control) {
-      var align = control.align;
-      var isActive = value === align;
-      return _objectSpread({}, control, {
-        isActive: isActive,
-        role: isCollapsed ? 'menuitemradio' : undefined,
-        onClick: applyOrUnset(align)
-      });
-    })
-  });
+    label: label
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ToolbarGroup, null, alignmentControls.map(function (control) {
+    var align = control.align,
+        title = control.title,
+        icon = control.icon;
+    var isActive = value === align;
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ToolbarButton, {
+      isActive: isActive,
+      icon: icon,
+      label: title,
+      onClick: function onClick() {
+        applyOrUnset(align);
+      }
+    });
+  })));
 }
 /* harmony default export */ __webpack_exports__["default"] = (AlignmentToolbar);
 
@@ -12687,6 +12681,8 @@ var DevicesOptions = function DevicesOptions(props) {
       hasAlignmentOption = attributes.hasAlignmentOption;
 
   var onSelectionChange = function onSelectionChange(key, newValue) {
+    console.log(key);
+
     if (typeof newValue === 'undefined') {
       newValue = !editorskit[key];
     }

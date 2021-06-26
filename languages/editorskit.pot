@@ -201,3 +201,65 @@ msgstr ""
 #: src/add-ons/typography/src/components/font-selection/index.js:989
 msgid "Text Transform"
 msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/alignment-toolbar.js:15
+msgid "Align text left"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/alignment-toolbar.js:20
+msgid "Align text center"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/alignment-toolbar.js:25
+msgid "Align text right"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/alignment-toolbar.js:30
+msgid "Align text justify"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/alignment-toolbar.js:40
+msgid "Change text alignment"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/index.js:101
+msgid "Alignment for Tablet Devices"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/index.js:49
+msgid "Responsive Visibility"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/index.js:51
+msgid "Hide on Desktop"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/index.js:56
+msgid "Hide on Tablet"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/index.js:61
+msgid "Hide on Mobile"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/index.js:67
+msgid "Responsive Text Alignment"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/index.js:68
+msgid ""
+"Assign different alignment for tablet and mobile devices aside from the "
+"option you already have for desktop on the block toolbar."
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/index.js:74
+msgid "Mobile"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/index.js:79
+msgid "Tablet"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/index.js:89
+msgid "Alignment for Mobile Devices"
+msgstr ""
