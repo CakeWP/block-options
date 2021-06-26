@@ -388,14 +388,14 @@ class EditorsKit_Typography_Font_Loader {
 					'editorskit-typography-fonts',
 					add_query_arg( array( 'family' => rtrim( $googleFonts, '|' ) ), '//fonts.googleapis.com/css' ),
 					array(),
-					EDITORSKIT_TYPOGRAPHY_VERSION
+					EDITORSKIT_VERSION
 				);
 			} else {
 				wp_enqueue_style(
 					'editorskit-typography-fonts',
 					add_query_arg( array( 'family' => $googleFonts ), '//fonts.googleapis.com/css' ),
 					array(),
-					EDITORSKIT_TYPOGRAPHY_VERSION
+					EDITORSKIT_VERSION
 				);
 			}
 		} ?>

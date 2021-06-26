@@ -7798,7 +7798,7 @@ function (_Component) {
               }
             }
           }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_10__["createElement"])("span", null, font.name), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_10__["createElement"])("img", {
-            src: window.editorskitInfo.plugin.url + 'build/images/combinations/' + font.name + '.png',
+            src: window.editorskitInfo.plugin.url + '/build/images/combinations/' + font.name + '.png',
             alt: font.name
           })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_10__["createElement"])(_components_dropdown_menu__WEBPACK_IMPORTED_MODULE_16__["default"], _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, _this5.props, {
             itemType: "default",

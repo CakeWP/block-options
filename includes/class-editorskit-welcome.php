@@ -119,6 +119,10 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 			$global = array(
 				'url'             => EDITORSKIT_PLUGIN_URL,
 				'dir'             => EDITORSKIT_PLUGIN_DIR,
+				'plugin'          => array(
+					'url'             => EDITORSKIT_PLUGIN_URL,
+					'dir'             => EDITORSKIT_PLUGIN_DIR,
+				),
 				'licenses'        => array(
 					'typography' => get_option( 'editorskit_typography_addon_license_active' ),
 				),
@@ -127,6 +131,7 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 			);
 
 			wp_add_inline_script( $this->slug . '-admin', 'window.editorskitSettings = ' . wp_json_encode( $global ) . ';', 'before' );
+			wp_add_inline_script( $this->slug . '-admin', 'window.editorskitInfo = ' . wp_json_encode( $global ) . ';', 'before' );
 		}
 
 		/**

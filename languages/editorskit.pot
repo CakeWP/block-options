@@ -3,515 +3,201 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:108
-#: src/add-ons/typography/src/settings/index.js:21
-msgid "Typography Settings"
+#: src/add-ons/typography/src/components/font-selection/index.js:406
+msgid "Item successfully deleted."
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:114
-msgid "Font Family"
+#: src/add-ons/typography/src/components/font-selection/index.js:440
+msgid "Default Typography Successfully Set."
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:123
-msgid "Font Weight"
+#: src/add-ons/typography/src/components/font-selection/index.js:456
+msgid "Fetching Typography Data....."
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:139
-msgid "Reset"
-msgstr ""
-
-#: src/add-ons/typography/src/block-panel/typography/index.js:38
+#: src/add-ons/typography/src/components/font-selection/index.js:473
 msgid "Select Google Font"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:39
+#: src/add-ons/typography/src/components/font-selection/index.js:474
 msgid "Arial"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:40
+#: src/add-ons/typography/src/components/font-selection/index.js:475
 msgid "Helvetica"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:41
+#: src/add-ons/typography/src/components/font-selection/index.js:476
 msgid "Times New Roman"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:42
+#: src/add-ons/typography/src/components/font-selection/index.js:477
 msgid "Georgia"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:50
+#: src/add-ons/typography/src/components/font-selection/index.js:488
+msgid "Select Text Transform"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:489
+msgid "None"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:490
+msgid "Capitalize"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:491
+msgid "Uppercase"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:492
+msgid "Lowercase"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:493
+msgid "Initial"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:494
+msgid "Inherit"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:502
 msgid "Select Font Weight"
 msgstr ""
 
-#: src/add-ons/typography/src/components/font-selection/components/dropdown-menu.js:121
-msgid "Duplicate"
+#: src/add-ons/typography/src/components/font-selection/index.js:541
+msgid "Create Custom Combination"
 msgstr ""
 
-#: src/add-ons/typography/src/components/font-selection/components/dropdown-menu.js:132
-msgid " Duplicate"
+#: src/add-ons/typography/src/components/font-selection/index.js:546
+msgid "Search"
 msgstr ""
 
-#: src/add-ons/typography/src/components/font-selection/components/dropdown-menu.js:141
-msgid "Edit"
+#: src/add-ons/typography/src/components/font-selection/index.js:644
+msgid "Delete Confirmation"
 msgstr ""
 
-#: src/add-ons/typography/src/components/font-selection/components/dropdown-menu.js:153
-msgid "Remove as Default"
+#: src/add-ons/typography/src/components/font-selection/index.js:649
+msgid "Are you sure you want to delete this item?"
 msgstr ""
 
-#: src/add-ons/typography/src/components/font-selection/components/dropdown-menu.js:160
-msgid "Set as Default"
+#: src/add-ons/typography/src/components/font-selection/index.js:654
+msgid "Yes, Delete"
 msgstr ""
 
-#: src/add-ons/typography/src/components/font-selection/components/dropdown-menu.js:171
-msgid "Delete"
+#: src/add-ons/typography/src/components/font-selection/index.js:668
+msgid "Set as Default Fonts"
 msgstr ""
 
-#: src/add-ons/typography/src/components/font-selection/components/dropdown-menu.js:184
-msgid "More Options"
-msgstr ""
-
-#: src/admin/docs/index.js:100
-msgid "Media & Text Block Card Layout"
-msgstr ""
-
-#: src/admin/docs/index.js:104
-msgid "Media & Text Block Links"
-msgstr ""
-
-#: src/admin/docs/index.js:108
-msgid "Changing List Block Font Size & Text Color"
-msgstr ""
-
-#: src/admin/docs/index.js:115
-msgid "Easily Hide Title"
-msgstr ""
-
-#: src/admin/docs/index.js:119
-msgid "Drag and Drop Featured Image"
-msgstr ""
-
-#: src/admin/docs/index.js:123
-msgid "Code Editor Syntax Highlighter"
-msgstr ""
-
-#: src/admin/docs/index.js:127
-msgid "Disable Auto Saving"
-msgstr ""
-
-#: src/admin/docs/index.js:131
-msgid "Enable Block Guide Lines"
-msgstr ""
-
-#: src/admin/docs/index.js:135
-msgid "Additional CSS Class(es) Auto Suggestions"
-msgstr ""
-
-#: src/admin/docs/index.js:139
-msgid "Accessible Help, Tips & Tricks"
-msgstr ""
-
-#: src/admin/docs/index.js:143
-msgid "Enable Developer Tools"
-msgstr ""
-
-#: src/admin/docs/index.js:150
-msgid "Block Visibility on Desktop, Mobile or Tablet"
-msgstr ""
-
-#: src/admin/docs/index.js:154
-msgid "Hide Block on Logged-in/out Users"
-msgstr ""
-
-#: src/admin/docs/index.js:158
-msgid "Using Custom Display Logic"
-msgstr ""
-
-#: src/admin/docs/index.js:165
-msgid "Display Cover and Image Blocks in Fullscreen"
-msgstr ""
-
-#: src/admin/docs/index.js:169
-msgid "More Image & Cover Block Styles"
-msgstr ""
-
-#: src/admin/docs/index.js:173
-msgid "Additional List Block Styles"
-msgstr ""
-
-#: src/admin/docs/index.js:184
+#: src/add-ons/typography/src/components/font-selection/index.js:673
 msgid ""
-"Learn more about each EditorsKit features with the tutorials below. Click "
-"on the link to open a modal pop-up with detailed explanation and animated "
-"GIF previewing how the features work."
+"Setting default typography will save you time when creating new posts or "
+"pages."
 msgstr ""
 
-#: src/admin/docs/index.js:187
-msgid "Rich Text Formatting"
-msgstr ""
-
-#: src/admin/docs/index.js:204
-msgid "Writing"
-msgstr ""
-
-#: src/admin/docs/index.js:221
-msgid "Block Options"
-msgstr ""
-
-#: src/admin/docs/index.js:238
-msgid "Tools"
-msgstr ""
-
-#: src/admin/docs/index.js:255
-msgid "Block Visibility"
-msgstr ""
-
-#: src/admin/docs/index.js:272
-msgid "Block Styling"
-msgstr ""
-
-#: src/admin/docs/index.js:291
-msgid "Documentation"
-msgstr ""
-
-#: src/admin/docs/index.js:38
-msgid "Adding Selected Text Color"
-msgstr ""
-
-#: src/admin/docs/index.js:42
-msgid "Adding Highlighted Text Background Color"
-msgstr ""
-
-#: src/admin/docs/index.js:46
-msgid "Adding Link \"rel\" NoFollow or Sponsored Attributes"
-msgstr ""
-
-#: src/admin/docs/index.js:50
-msgid "Subscript and Superscript Text Formatting"
-msgstr ""
-
-#: src/admin/docs/index.js:54
-msgid "Justified Paragraph Alignment"
-msgstr ""
-
-#: src/admin/docs/index.js:58
-msgid "Transform Text to Uppercase"
-msgstr ""
-
-#: src/admin/docs/index.js:62
-msgid "Add Nonbreaking Space"
-msgstr ""
-
-#: src/admin/docs/index.js:66
-msgid "Clear Formatting"
-msgstr ""
-
-#: src/admin/docs/index.js:73
-msgid "Markdown Writing Shortcuts"
-msgstr ""
-
-#: src/admin/docs/index.js:77
-msgid "View or Add Estimated Reading Time"
-msgstr ""
-
-#: src/admin/docs/index.js:81
-msgid "Transform 3 Empty Paragraphs to Spacer Block"
-msgstr ""
-
-#: src/admin/docs/index.js:88
-msgid "Set Image Block as Featured Image"
-msgstr ""
-
-#: src/admin/docs/index.js:92
-msgid "Export and Import Blocks"
-msgstr ""
-
-#: src/admin/docs/index.js:96
-msgid "Copy Selected Block(s)"
-msgstr ""
-
-#: src/blocks/import/index.js:20
-msgid "Import"
-msgstr ""
-
-#: src/blocks/import/index.js:23
-msgid "import"
-msgstr ""
-
-#: src/blocks/import/index.js:24
-msgid "download"
-msgstr ""
-
-#: src/blocks/import/index.js:25
-msgid "migrate"
-msgstr ""
-
-#: src/blocks/import/index.js:38
-msgid "Import blocks exported using EditorsKit plugin."
-msgstr ""
-
-#: src/blocks/shareablock/components/inspector.js:61
-msgid "API Settings"
-msgstr ""
-
-#: src/blocks/shareablock/components/inspector.js:65
+#: src/add-ons/typography/src/components/font-selection/index.js:674
 msgid ""
-"Add API key and Access Token. Updating this API key will set all your "
-"downloads to use the new key."
+"Take note that this option will apply your selected default typography to "
+"old posts, post types and pages on your website without the need for you to "
+"edit them on the Gutenberg editor manually."
 msgstr ""
 
-#: src/blocks/shareablock/components/inspector.js:69
-msgid "Enter API Key…"
+#: src/add-ons/typography/src/components/font-selection/index.js:682
+msgid "Yes, Set as Default"
 msgstr ""
 
-#: src/blocks/shareablock/components/inspector.js:76
-msgid "Enter Access Token…"
+#: src/add-ons/typography/src/components/font-selection/index.js:696
+msgid "Remove Default Fonts"
 msgstr ""
 
-#: src/blocks/shareablock/components/inspector.js:85
-msgid "Saved"
+#: src/add-ons/typography/src/components/font-selection/index.js:701
+msgid "Are you sure you want to remove this item as default typography?"
 msgstr ""
 
-#: src/blocks/shareablock/components/inspector.js:85
-msgid "Save"
+#: src/add-ons/typography/src/components/font-selection/index.js:709
+msgid "Yes, Set Remove Default"
 msgstr ""
 
-#: src/blocks/shareablock/components/inspector.js:94
-msgid "Remove"
+#: src/add-ons/typography/src/components/font-selection/index.js:716
+msgid "No, Cancel"
 msgstr ""
 
-#: src/extensions/advanced-controls/options/state/index.js:43
-msgid "Hide on Loggedin Users"
+#: src/add-ons/typography/src/components/font-selection/index.js:729
+msgid "Back"
 msgstr ""
 
-#: src/extensions/advanced-controls/options/state/index.js:44
-msgid "Hidden when users are logged in."
+#: src/add-ons/typography/src/components/font-selection/index.js:733
+msgid "Name"
 msgstr ""
 
-#: src/extensions/advanced-controls/options/state/index.js:44
-msgid "Toggle to hide this block when users are not logged in."
+#: src/add-ons/typography/src/components/font-selection/index.js:746
+msgid "Content Typography"
 msgstr ""
 
-#: src/extensions/advanced-controls/options/state/index.js:49
-msgid "Hide on Loggedout Users"
+#: src/add-ons/typography/src/components/font-selection/index.js:794
+msgid "Apply Font Family to whole page"
 msgstr ""
 
-#: src/extensions/advanced-controls/options/state/index.js:50
-msgid "Hidden on guests or logged out users."
-msgstr ""
-
-#: src/extensions/advanced-controls/options/state/index.js:50
-msgid "Toggle to hide this block when users are guests or logged out."
-msgstr ""
-
-#: src/extensions/block-panel/list-settings/index.js:40
-msgid "Text Settings"
-msgstr ""
-
-#: src/extensions/block-panel/list-settings/index.js:53
-msgid "Color Settings"
-msgstr ""
-
-#: src/extensions/block-panel/list-settings/index.js:59
-msgid "Text Color"
-msgstr ""
-
-#: src/extensions/block-panel/list-settings/index.js:64
-msgid "Bullet/Icon Color"
-msgstr ""
-
-#: src/extensions/block-settings/clear-formatting/components/controls.js:32
-msgid "Clear Block Formatting"
-msgstr ""
-
-#: src/extensions/block-settings/copy/components/controls.js:108
-msgid "Selected block copied."
-msgstr ""
-
-#: src/extensions/block-settings/copy/components/controls.js:110
-msgid "Selected blocks copied."
-msgstr ""
-
-#: src/extensions/block-settings/copy/components/controls.js:74
-msgid "Copy"
-msgstr ""
-
-#: src/extensions/block-settings/set-as-featured/components/controls.js:28
-msgid "Remove as Featured Image"
-msgstr ""
-
-#: src/extensions/block-settings/set-as-featured/components/controls.js:29
-msgid "Set as Featured Image"
-msgstr ""
-
-#: src/extensions/block-settings/set-as-featured/components/controls.js:77
-msgid "Image Set as Featured."
-msgstr ""
-
-#: src/extensions/block-settings/set-as-featured/components/controls.js:88
-msgid "Featured Image Removed."
-msgstr ""
-
-#: src/extensions/block-settings/visibility-settings/components/modal.js:100
-msgid "Close"
-msgstr ""
-
-#: src/extensions/block-settings/visibility-settings/components/modal.js:116
+#: src/add-ons/typography/src/components/font-selection/index.js:796
 msgid ""
-"Attention: The display settings (show/hide for mobile, tablet, desktop or "
-"users) will only take effect once you are on the live page, and not while "
-"you're editing in Gutenberg."
+"Check this option to apply the selected font family to <body> instead of "
+"just content."
 msgstr ""
 
-#: src/extensions/block-settings/visibility-settings/components/modal.js:62
-msgid "Default"
+#: src/add-ons/typography/src/components/font-selection/index.js:804
+msgid "Heading Typography"
 msgstr ""
 
-#: src/extensions/block-settings/visibility-settings/components/modal.js:70
-msgid "Advanced"
+#: src/add-ons/typography/src/components/font-selection/index.js:866
+msgid "Font Weight (%s)"
 msgstr ""
 
-#: src/extensions/block-settings/visibility-settings/components/modal.js:98
-msgid "Visibility Settings"
+#: src/add-ons/typography/src/components/font-selection/index.js:879
+msgid "Font Size (%s)"
 msgstr ""
 
-#: src/extensions/components/editor-height/components/height.js:52
-msgid "Toggle to change editor min-height similar to browser viewport."
+#: src/add-ons/typography/src/components/font-selection/index.js:891
+msgid "Line Height (%s)"
 msgstr ""
 
-#: src/extensions/components/editor-height/components/height.js:55
-msgid "Editor Height"
+#: src/add-ons/typography/src/components/font-selection/index.js:903
+msgid "Letter Spacing (%s)"
 msgstr ""
 
-#: src/extensions/components/gradient-controls/components/controls.js:115
-msgid "Paste Gradient Value"
+#: src/add-ons/typography/src/components/font-selection/index.js:915
+msgid "Text Transform (%s)"
 msgstr ""
 
-#: src/extensions/components/gradient-controls/components/controls.js:133
-#: src/extensions/formats/link/components/link-editor.js:37
-msgid "Apply"
+#: src/add-ons/typography/src/components/font-selection/index.js:926
+msgid "Apply to Title"
 msgstr ""
 
-#: src/extensions/components/gradient-controls/components/controls.js:155
-msgid "Custom Gradient copied to your clipboard."
+#: src/add-ons/typography/src/components/font-selection/index.js:941
+msgid "Buttons Typography"
 msgstr ""
 
-#: src/extensions/components/gradient-controls/components/controls.js:165
-msgid "Custom Gradient applied to selected block."
+#: src/add-ons/typography/src/components/font-selection/index.js:945
+msgid "Google Fonts"
 msgstr ""
 
-#: src/extensions/components/gradient-controls/components/controls.js:46
-msgid "Copy Gradient Value"
+#: src/add-ons/typography/src/components/font-selection/index.js:955
+msgid "Font Weight"
 msgstr ""
 
-#: src/extensions/components/gradient-controls/components/controls.js:58
-msgid "Paste Gradient"
+#: src/add-ons/typography/src/components/font-selection/index.js:965
+msgid "Font Size"
 msgstr ""
 
-#: src/extensions/components/guidelines/components/menu.js:64
-msgid "Show visible guide lines on title and blocks"
+#: src/add-ons/typography/src/components/font-selection/index.js:973
+msgid "Line Height"
 msgstr ""
 
-#: src/extensions/components/guidelines/components/menu.js:67
-msgid "Block Guide Lines"
+#: src/add-ons/typography/src/components/font-selection/index.js:981
+msgid "Letter Spacing"
 msgstr ""
 
-#: src/extensions/components/preview/components/controls.js:103
-msgid "Live Preview"
-msgstr ""
-
-#: src/extensions/components/preview/components/controls.js:112
-msgid "Enter desktop preview mode"
-msgstr ""
-
-#: src/extensions/components/preview/components/controls.js:121
-msgid "Enter tablet preview mode"
-msgstr ""
-
-#: src/extensions/components/preview/components/controls.js:130
-msgid "Enter mobile preview mode"
-msgstr ""
-
-#: src/extensions/components/preview/components/controls.js:137
-msgid "Preview"
-msgstr ""
-
-#: src/extensions/components/preview/components/controls.js:69
-msgid "Show preview without opening new window."
-msgstr ""
-
-#: src/extensions/components/preview/components/controls.js:99
-msgid "Close preview mode"
-msgstr ""
-
-#: src/extensions/formats/abbreviation/index.js:19
-msgid "Abbreviation"
-msgstr ""
-
-#: src/extensions/formats/background-color/components/edit.js:23
-msgid "Highlight Color"
-msgstr ""
-
-#: src/extensions/formats/background-color/components/edit.js:27
-msgid "Orange Sunrise"
-msgstr ""
-
-#: src/extensions/formats/background-color/components/edit.js:32
-msgid "Pink Flamingo"
-msgstr ""
-
-#: src/extensions/formats/background-color/components/edit.js:37
-msgid "Spring Green"
-msgstr ""
-
-#: src/extensions/formats/background-color/components/edit.js:42
-msgid "Blue Moon"
-msgstr ""
-
-#: src/extensions/formats/background-color/components/edit.js:47
-msgid "Purple Mist"
-msgstr ""
-
-#: src/extensions/formats/indent-decrease/controls.js:38
-#: src/extensions/formats/indent-decrease/index.js:19
-msgid "Indent Decrease"
-msgstr ""
-
-#: src/extensions/formats/link/components/url-input.js:111
-msgid "%d result found, use up and down arrow keys to navigate."
-msgid_plural "%d results found, use up and down arrow keys to navigate."
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/extensions/formats/link/components/url-input.js:117
-msgid "No results."
-msgstr ""
-
-#: src/extensions/formats/link/components/url-input.js:201
-msgid "Link selected."
-msgstr ""
-
-#: src/extensions/formats/link/components/url-input.js:238
-msgid "URL"
-msgstr ""
-
-#: src/extensions/formats/link/components/url-input.js:243
-msgid "Paste URL or type to search"
-msgstr ""
-
-#: src/extensions/formats/link/components/url-input.js:280
-msgid "(no title)"
-msgstr ""
-
-#: src/extensions/formats/link/index.js:21
-msgid "Link"
-msgstr ""
-
-#: src/extensions/formats/markdown/index.js:20
-msgid "Underline"
-msgstr ""
-
-#: src/extensions/formats/nbsp/components/edit.js:56
-msgid "Nonbreaking space"
+#: src/add-ons/typography/src/components/font-selection/index.js:989
+msgid "Text Transform"
 msgstr ""

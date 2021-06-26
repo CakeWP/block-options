@@ -37,7 +37,7 @@
 
 		&.editorskit-typography--item__custom {
 
-			button {
+			button:not(.components-dropdown-menu__menu-item) {
 				background: #fff;
 
 				> span {
@@ -48,7 +48,6 @@
 					font-weight: 500;
 
 					&:first-child {
-						margin-top: 15px;
 						padding-bottom: 0;
 						padding-left: 15px;
 					}
@@ -63,6 +62,12 @@
 
 			> button {
 				min-height: 165px;
+			}
+		}
+
+		.components-dropdown-menu__menu-item {
+			.dashicon {
+				display: none;
 			}
 		}
 
@@ -84,6 +89,7 @@
 
 			.components-button {
 				border: 0;
+				height: 36px;
 				padding: 5px;
 
 				svg {
@@ -92,7 +98,7 @@
 				}
 
 				> span {
-					display: none;
+					font-size: 16px;
 				}
 			}
 		}

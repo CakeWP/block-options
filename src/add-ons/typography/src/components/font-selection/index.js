@@ -629,7 +629,7 @@ class TypographySelection extends Component {
 											}
 										} }>
 											<span>{ font.name }</span>
-											<img src={ window.editorskitInfo.plugin.url + 'build/images/combinations/' + font.name + '.png' } alt={ font.name } />
+											<img src={ window.editorskitInfo.plugin.url + '/build/images/combinations/' + font.name + '.png' } alt={ font.name } />
 										</Button>
 
 										<TypographyDropdownMenu { ...this.props } itemType="default" selectedItem={ i } onToggle={ this.onToggle } Fonts={ Fonts } GoogleFonts={ GoogleFonts } updateState={ this.updateState } setVariables={ this.setVariables } currentMetaId={ currentMetaId } saveMeta={ this.saveMeta } />
