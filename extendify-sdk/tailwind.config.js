@@ -72,7 +72,7 @@ module.exports = {
     },
     variants: {
         extend: {
-            borderWidth: ['group-hover'],
+            borderWidth: ['group-hover', 'hover'],
             backgroundColor: ['active'],
             textColor: ['active'],
         },

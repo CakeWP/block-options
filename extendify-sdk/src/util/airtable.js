@@ -1,33 +1,18 @@
-import { isEmpty, get } from 'lodash'
-
-/**
- * Will create query accepted string airtable formula with given fields
- *
- * @return {string} formula
- */
-
 export function createTemplatesFilterFormula(filters) {
-    const categories = get(filters, 'categories'),
-        search = get(filters, 'search'),
-        type = get(filters, 'type')
+    const { taxonomies, search, type } = filters
+    const formula = []
 
-    const CategoriesFilter =
-        isEmpty(categories)
-            ? 'TRUE()'
-            : categories.map((filter) => `SEARCH("${filter}", {categories}) = 1`).join(',')
+    // Builds the taxonomy list by looping over all supplied taxonomies
+    const taxFormula = Object.entries(taxonomies)
+        .filter((tax) => Boolean(tax[1].length))
+        .map((tax) => `${tax[0]} = "${tax[1]}"`)
+        .join(', ')
 
-    const searchFilter = isEmpty(search)
-        ? 'TRUE()'
-        : `OR(FIND(LOWER("${search}"), LOWER(title)) != 0, FIND(LOWER("${search}"), LOWER({categories})) != 0)`
+    taxFormula.length && formula.push(taxFormula)
+    search.length && formula.push(`OR(FIND(LOWER("${search}"), LOWER(title))!= 0, FIND(LOWER("${search}"), LOWER({tax_categories})) != 0)`)
+    type.length && formula.push(`{type}="${type}"`)
 
-    const typeFilter = isEmpty(type)
-        ? 'TRUE()'
-        : `{type}="${type}"`
-
-    let formula = `IF(AND(${CategoriesFilter}, ${searchFilter}, ${typeFilter}), TRUE())`
-    if (isEmpty(searchFilter) && isEmpty(typeFilter) && isEmpty(CategoriesFilter)) {
-        formula = ''
-    }
-
-    return formula.replace(/\r?\n|\r/g, '')
+    return formula.length
+        ? `AND(${formula.join(', ')})`.replace(/\r?\n|\r/g, '')
+        : ''
 }

@@ -1,8 +1,9 @@
 import { __ } from '@wordpress/i18n'
 import { renderToString } from '@wordpress/element'
 import { registerPlugin } from '@wordpress/plugins'
-import { PluginSidebarMoreMenuItem } from '@wordpress/edit-post'
 import { openModal } from './util/general'
+import { useUserStore } from './state/User'
+import { PluginSidebarMoreMenuItem } from '@wordpress/edit-post'
 
 const openLibrary = (event) => {
     openModal(event.target.closest('[data-extendify-identifier]')?.dataset?.extendifyIdentifier)
@@ -26,6 +27,9 @@ const mainButton = <div id="extendify-templates-inserter">
 // Add the MAIN button when Gutenberg is available and ready
 window._wpLoadBlockEditor && window.wp.data.subscribe(() => {
     setTimeout(() => {
+        if (!useUserStore.getState().enabled) {
+            return
+        }
         if (document.getElementById('extendify-templates-inserter-btn')) {
             return
         }
@@ -40,6 +44,9 @@ window._wpLoadBlockEditor && window.wp.data.subscribe(() => {
 // The CTA button inside patterns
 window._wpLoadBlockEditor && window.wp.data.subscribe(() => {
     setTimeout(() => {
+        if (!useUserStore.getState().enabled) {
+            return
+        }
         if (!document.querySelector('[id$=patterns-view]')) {
             return
         }
@@ -61,7 +68,7 @@ window._wpLoadBlockEditor && window.wp.data.subscribe(() => {
 })
 
 // The right dropdown side menu
-const SideMenuButton = () => (<PluginSidebarMoreMenuItem
+const SideMenuButton = () => useUserStore.getState().enabled && <PluginSidebarMoreMenuItem
     data-extendify-identifier="sidebar-button"
     onClick={openLibrary}
     icon={
@@ -74,7 +81,27 @@ const SideMenuButton = () => (<PluginSidebarMoreMenuItem
     }
 >
     {__('Library', 'extendify-sdk')}
-</PluginSidebarMoreMenuItem>)
+</PluginSidebarMoreMenuItem>
 window._wpLoadBlockEditor && registerPlugin('extendify-temps-more-menu-trigger', {
     render: SideMenuButton,
+})
+
+// Everything above this line will be enabled or disabled based on the
+// users "enabled" state, which is controlled by another button here
+const LibraryEnableDisable = () => <PluginSidebarMoreMenuItem
+    onClick={() => {
+        useUserStore.setState({
+            enabled: !useUserStore.getState().enabled,
+        })
+        requestAnimationFrame(() => location.reload())
+    }}
+    icon={<></>}
+>
+    {useUserStore.getState().enabled
+        ? __('Disable Extendify', 'extendify-sdk')
+        : __('Enable Extendify', 'extendify-sdk')}
+</PluginSidebarMoreMenuItem>
+
+window._wpLoadBlockEditor && registerPlugin('extendify-settings-enable-disable', {
+    render: LibraryEnableDisable,
 })

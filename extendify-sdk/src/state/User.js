@@ -14,6 +14,7 @@ export const useUserStore = create(persist((set, get) => ({
     email: '',
     allowedImports: 0,
     entryPoint: 'not-set',
+    enabled: true,
     incrementImports: () => set({
         imports: get().imports + 1,
     }),

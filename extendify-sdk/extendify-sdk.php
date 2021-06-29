@@ -26,6 +26,10 @@ if (!class_exists('ExtendifySdk')) :
          */
         public function __invoke()
         {
+            if (!apply_filters('extendifysdk_load_library', true)) {
+                return;
+            }
+
             if (version_compare(PHP_VERSION, '5.6', '<') || version_compare($GLOBALS['wp_version'], '5.4', '<')) {
                 return;
             }

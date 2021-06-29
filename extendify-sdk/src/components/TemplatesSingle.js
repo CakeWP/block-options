@@ -3,10 +3,14 @@ import { __ } from '@wordpress/i18n'
 import classNames from 'classnames'
 import { useUserStore } from '../state/User'
 import { ExternalLink } from '@wordpress/components'
+import { useEffect } from '@wordpress/element'
+import { Templates as TemplatesApi } from '../api/Templates'
 
 export default function Templates({ template }) {
-    const { categories } = template.fields
+    const { tax_categories: categories } = template.fields
     const apiKey = useUserStore(state => state.apiKey)
+
+    useEffect(() => { TemplatesApi.single(template) }, [template])
 
     return <div className="flex flex-col min-h-screen bg-white sm:min-h-0 items-start overflow-y-auto h-full sm:pr-8 lg:pl-px lg:-ml-px">
         <div className="flex flex-col lg:flex-row items-start justify-start lg:items-center lg:justify-between w-full max-w-screen-xl">

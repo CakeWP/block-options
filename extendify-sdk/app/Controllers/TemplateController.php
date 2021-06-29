@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * The controller for dealing with categories
+ * The controller for dealing with templates
  */
 class TemplateController
 {
@@ -30,12 +30,12 @@ class TemplateController
     }
 
     /**
-     * Return info about a template
+     * Send data about a specific template
      *
      * @param \WP_REST_Request $request - The request.
      * @return WP_REST_Response|WP_Error
      */
-    public static function single($request)
+    public static function ping($request)
     {
         $response = Http::post('/airtable-data', $request->get_params());
         return new \WP_REST_Response($response);

@@ -6,6 +6,7 @@ import { useWantedTemplateStore } from '../state/Importing'
 import { useUserStore } from '../state/User'
 import { useGlobalStore } from '../state/GlobalState'
 import { __, sprintf } from '@wordpress/i18n'
+import { Templates as TemplatesApi } from '../api/Templates'
 
 const canImportMiddleware = Middleware(['hasRequiredPlugins', 'hasPluginsActivated'])
 export function ImportButton({ template }) {
@@ -29,6 +30,13 @@ export function ImportButton({ template }) {
         canImportMiddleware.check(template).then(() => setMiddlewareChecked(true))
         return () => canImportMiddleware.reset() && setMiddlewareChecked(false)
     }, [template])
+
+    useEffect(() => {
+        if (!importing) {
+            return
+        }
+        TemplatesApi.maybeImport(template)
+    }, [importing, template])
 
     const importTemplate = () => {
         setImporting(true)

@@ -29,12 +29,14 @@ function addDefaults(request) {
     if (request.data) {
         request.data.remaining_imports = useUserStore.getState().remainingImports()
         request.data.entry_point = useUserStore.getState().entryPoint
+        request.data.total_imports = useUserStore.getState().imports
     }
     return request
 }
 
 function checkDevMode(request) {
     request.headers['X-Extendify-Dev-Mode'] = window.location.search.indexOf('DEVMODE') > -1
+    request.headers['X-Extendify-Local-Mode'] = window.location.search.indexOf('LOCALMODE') > -1
     return request
 }
 

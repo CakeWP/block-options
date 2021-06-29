@@ -1,6 +1,6 @@
 <?php
 /**
- * Controls Categories
+ * Controls Taxonomies
  */
 
 namespace Extendify\ExtendifySdk\Controllers;
@@ -12,19 +12,19 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * The controller for dealing with categories
+ * The controller for dealing with taxonomies
  */
-class CategoryController
+class TaxonomyController
 {
 
     /**
-     * Return all categories
+     * Return all taxonomies
      *
      * @return WP_REST_Response|WP_Error
      */
     public static function index()
     {
-        $response = Http::get('/airtable-categories', []);
+        $response = Http::get('/airtable-taxonomies', []);
         return new \WP_REST_Response($response);
     }
 }

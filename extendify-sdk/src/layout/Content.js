@@ -7,6 +7,7 @@ import HasSidebar from './HasSidebar'
 import TypeSelect from '../components/TypeSelect'
 import { __ } from '@wordpress/i18n'
 import SidebarSingle from '../components/SidebarSingle'
+import TaxonomyBreadcrumbs from '../components/TaxonomyBreadcrumbs'
 
 export default function Content({ className, initialFocus }) {
     const templates = useTemplatesStore(state => state.templates)
@@ -28,6 +29,7 @@ export default function Content({ className, initialFocus }) {
                 <Filtering initialFocus={initialFocus}/>
                 <>
                     <TypeSelect/>
+                    <TaxonomyBreadcrumbs/>
                     <div className="relative h-full z-30 bg-white">
                         <div className="absolute z-20 inset-0 lg:static h-screen lg:h-full overflow-y-auto pt-4 sm:pt-0 px-6 sm:pl-0 sm:pr-8">
                             <TemplatesList templates={templates}/>

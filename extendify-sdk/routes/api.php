@@ -11,7 +11,7 @@ use Extendify\ExtendifySdk\ApiRouter;
 use Extendify\ExtendifySdk\Controllers\AuthController;
 use Extendify\ExtendifySdk\Controllers\UserController;
 use Extendify\ExtendifySdk\Controllers\PluginController;
-use Extendify\ExtendifySdk\Controllers\CategoryController;
+use Extendify\ExtendifySdk\Controllers\TaxonomyController;
 use Extendify\ExtendifySdk\Controllers\TemplateController;
 
 \add_action(
@@ -21,9 +21,10 @@ use Extendify\ExtendifySdk\Controllers\TemplateController;
         ApiRouter::get('/plugins', [PluginController::class, 'index']);
         ApiRouter::post('/plugins', [PluginController::class, 'install']);
 
-        ApiRouter::get('/categories', [CategoryController::class, 'index']);
+        ApiRouter::get('/taxonomies', [TaxonomyController::class, 'index']);
+
         ApiRouter::post('/templates', [TemplateController::class, 'index']);
-        ApiRouter::post('/templates/(?P<template_id>[a-zA-Z0-9-]+)', [TemplateController::class, 'single']);
+        ApiRouter::post('/templates/(?P<template_id>[a-zA-Z0-9-]+)', [TemplateController::class, 'ping']);
 
         ApiRouter::get('/user', [UserController::class, 'show']);
         ApiRouter::post('/user', [UserController::class, 'store']);
