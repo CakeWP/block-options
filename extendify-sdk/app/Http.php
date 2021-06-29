@@ -55,7 +55,10 @@ class Http
             return;
         }
 
+        // Some special cases for development.
         $this->baseUrl = $request->get_header('x_extendify_dev_mode') !== 'false' ? App::$config['api']['dev'] : App::$config['api']['live'];
+        $this->baseUrl = $request->get_header('x_extendify_local_mode') !== 'false' ? App::$config['api']['local'] : $this->baseUrl;
+
         $this->data = [
             'mode' => App::$environment,
             'uuid' => User::data('uuid'),

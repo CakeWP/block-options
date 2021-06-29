@@ -22,12 +22,12 @@ export const Templates = {
             'templates', {
                 filterByFormula: createTemplatesFilterFormula(searchParams),
                 pageSize: config.templatesPerRequest,
-                categories: searchParams.categories,
+                categories: searchParams.taxonomies,
                 search: searchParams.search,
                 type: searchParams.type,
                 offset: offset,
                 initial: count === 1,
-                requestNumber: count,
+                request_count: count,
             }, {
                 cancelToken: fetchToken.token,
             },
@@ -37,9 +37,27 @@ export const Templates = {
         })
         return templates
     },
+    // TODO: Refactor this later to combine the following three
+    maybeImport(template) {
+        return api.post(`templates/${template.id}`, {
+            template_id: template.id,
+            maybe_import: true,
+            pageSize: config.templatesPerRequest,
+            template_name: template.fields?.title,
+        })
+    },
+    single(template) {
+        return api.post(`templates/${template.id}`, {
+            template_id: template.id,
+            single: true,
+            pageSize: config.templatesPerRequest,
+            template_name: template.fields?.title,
+        })
+    },
     import(template) {
         return api.post(`templates/${template.id}`, {
             template_id: template.id,
+            imported: true,
             pageSize: config.templatesPerRequest,
             template_name: template.fields?.title,
         })

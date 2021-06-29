@@ -27,13 +27,13 @@ export function search(string, searchString) {
 export const openModal = (source) => setModalVisibility(source, 'open')
 // export const closeModal = () => setModalVisibility('', 'close')
 export function setModalVisibility(source = 'broken-event', state = 'open') {
+    useUserStore.setState({
+        entryPoint: source,
+    })
     window.dispatchEvent(new CustomEvent(`extendify-sdk::${state}-library`, {
         detail: source,
         bubbles: true,
     }))
-    useUserStore.setState({
-        entryPoint: source,
-    })
 }
 
 export function getPluginDescription(plugin) {

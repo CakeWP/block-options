@@ -8,7 +8,7 @@ import { getPluginDescription } from '../util/general'
 export default function SidebarSingle({ template }) {
     const setActiveTemplate = useTemplatesStore(state => state.setActive)
     const goBackRef = useRef(null)
-    const { categories, required_plugins: requiredPlugins } = template.fields
+    const { tax_categories: categories, required_plugins: requiredPlugins } = template.fields
     const apiKey = useUserStore(state => state.apiKey)
 
     useEffect(() => {

@@ -29,11 +29,14 @@ export default function TemplatesList({ templates }) {
         state => state.searchParams), [])
 
     // Fetch the templates then add them to the current state
+    // TODO: This works, but it's not really doing what it's intended to do
+    // as it has a side effect in there, and isn't pure. It should be updated
     const fetchTemplates = useCallback(async () => {
         setServerError('')
         setNothingFound(false)
         const response = await TemplatesApi.get(searchParams.current, nextPage.current)
             .catch((error) => {
+                console.error(error)
                 setServerError(error && error.message
                     ? error.message
                     : __('Unknown error occured. Check browser console or contact support.', 'extendify-sdk'))
@@ -52,6 +55,9 @@ export default function TemplatesList({ templates }) {
 
     // This loads the initial batch of templates
     useEffect(() => {
+        if (!Object.keys(searchParams.current.taxonomies).length) {
+            return
+        }
         setImagesLoaded([])
         fetchTemplates()
     }, [fetchTemplates, searchParams])
@@ -70,7 +76,7 @@ export default function TemplatesList({ templates }) {
             <Button isTertiary onClick={() => {
                 setImagesLoaded([])
                 updateSearchParams({
-                    categories: [],
+                    taxonomies: {},
                     search: '',
                 })
                 fetchTemplates()
@@ -117,7 +123,7 @@ export default function TemplatesList({ templates }) {
                         onClick={() => setActiveTemplate(template)}>
                         <div>
                             <h4 className="m-0 font-bold">{template.fields.title}</h4>
-                            <p className="m-0">{template.fields.categories.filter(c => c.toLowerCase() !== 'default').join(', ')}</p>
+                            <p className="m-0">{template?.fields?.tax_categories?.filter(c => c.toLowerCase() !== 'default').join(', ')}</p>
                         </div>
                         <Button
                             isSecondary
