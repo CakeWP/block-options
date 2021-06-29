@@ -211,6 +211,14 @@ e.g.
 
 == Changelog ==
 
+= 1.31 =
+* New: Add Typography and Google Fonts add-on 🎊
+* New: Toggle to enable/disable Extendify library 🎉
+* Tweaks: Updates to the pattern and template library
+* Fixes: Display Responsive Alignment feature properly
+* Fixes: Make sure Indention format adds proper spacing
+* Fixes: Fix "H4" display
+
 = 1.30 =
 * New: Add access to the Extendify pattern and template library
 
