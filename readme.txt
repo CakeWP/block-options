@@ -212,6 +212,9 @@ e.g.
 == Changelog ==
 
 = 1.31 =
+* Fixes: Use the correct defined constant to prevent PHP log 🐛
+
+= 1.31 =
 * New: Add Typography and Google Fonts add-on 🎊
 * New: Toggle to enable/disable Extendify library 🎉
 * Tweaks: Updates to the pattern and template library
