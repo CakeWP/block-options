@@ -85,3 +85,6 @@ export function registerBlocks() {
 	} );
 }
 registerBlocks();
+
+// Add-ons
+import './add-ons/typography/src';

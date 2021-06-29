@@ -167,6 +167,8 @@ class EditorsKit_Block_Assets {
 		$global = array(
 			'plugin'   => array(
 				'version' => $this->version,
+				'url'     => $this->url,
+				'dir'     => EDITORSKIT_PLUGIN_DIR,
 			),
 			'core'     => array(
 				'version' => $wp_version,

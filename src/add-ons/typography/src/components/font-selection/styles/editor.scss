@@ -1,0 +1,273 @@
+.editorskit-typography-selection {
+
+	button {
+		display: block;
+		width: 100%;
+		margin: 20px 0;
+	}
+
+	.editorskit-typography--items {
+		list-style: none;
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		align-items: stretch;
+		width: 100%;
+	}
+
+	.editorskit-typography--item {
+		position: relative;
+		display: flex;
+		flex-basis: 100%;
+		margin: 10px;
+		overflow: hidden;
+
+		&.editorskit-typography--item__default {
+
+			button {
+
+				> span {
+					top: 5px;
+					left: 5px;
+					color: #c9cad2;
+					border-radius: 3px;
+				}
+			}
+		}
+
+		&.editorskit-typography--item__custom {
+
+			button:not(.components-dropdown-menu__menu-item) {
+				background: #fff;
+
+				> span {
+					position: relative;
+					padding: 10px;
+					text-align: left;
+					width: 100%;
+					font-weight: 500;
+
+					&:first-child {
+						padding-bottom: 0;
+						padding-left: 15px;
+					}
+
+					span {
+						position: relative;
+						font-weight: normal;
+						color: #c9cad2;
+					}
+				}
+			}
+
+			> button {
+				min-height: 165px;
+			}
+		}
+
+		.components-dropdown-menu__menu-item {
+			.dashicon {
+				display: none;
+			}
+		}
+
+		&.editorskit-typography--item__current {
+
+			button {
+				border-color: #0075af;
+				border-width: 2px;
+				box-shadow: none;
+				outline: none;
+			}
+		}
+
+		.components-dropdown-menu {
+			position: absolute;
+			top: 2px;
+			right: 3px;
+			z-index: 9;
+
+			.components-button {
+				border: 0;
+				height: 36px;
+				padding: 5px;
+
+				svg {
+					width: 15px;
+					height: 15px;
+				}
+
+				> span {
+					font-size: 16px;
+				}
+			}
+		}
+
+		.components-button {
+			position: relative;
+			height: auto;
+			padding: 0;
+			margin: 0;
+			line-height: 0;
+			border: 1px solid #e2e4e7;
+			border-radius: 4px;
+			overflow: hidden;
+
+			span {
+				position: absolute;
+				display: block;
+				padding: 5px;
+				font-size: 12px;
+				line-height: 14px;
+			}
+
+			img {
+				width: 100%;
+				// opacity: 0;
+			}
+
+			&:hover {
+				border-color: #555d66;
+			}
+		}
+	}
+
+	@media only screen and (max-width: 760px) {
+		.editorskit-typography--item {
+			flex: unset !important;
+			width: 100%;
+		}
+	}
+}
+
+.ek-fetching-typography {
+	padding: 20px 15px;
+	text-align: center;
+}
+
+.components-button {
+
+	&.editorskit-typography--custom-button {
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		width: calc(100% - 20px);
+		margin: 10px 10px 0 10px;
+	}
+}
+
+.editorskit-typography-search {
+	position: relative;
+	width: calc(100% - 20px);
+	margin: 30px 10px 0 10px;
+
+	&::before {
+		content: "or";
+		position: absolute;
+		top: -24px;
+		left: 47%;
+		opacity: 0.5;
+	}
+}
+
+.components-button {
+
+	&.editorskit-typography-back-btn {
+		margin: 10px;
+	}
+}
+
+.editorskit-typography-custom {
+
+	.editorskit-typography-custom--name {
+		padding: 12px;
+	}
+
+	.components-base-control,
+	.components-editorskit-typography-unit-control {
+		margin-bottom: 20px;
+	}
+}
+
+.components-editorskit-typography-unit-control__label {
+	margin-bottom: 4px;
+	padding-bottom: 0;
+}
+
+.components-editorskit-typography-unit-control__fields {
+	display: flex;
+
+	.components-editorskit-typography-unit-control__number {
+		max-width: 70px;
+		margin-right: 0;
+		margin-top: 0;
+		border-radius: 3px 0 0 3px !important;
+	}
+
+	.components-button.is-button {
+		min-height: 30px;
+	}
+
+	.components-button-group .components-button:first-child {
+		border-radius: 0 !important;
+	}
+}
+
+.editorskit-typography-tab-panel {
+	border: 1px solid #e2e4e7;
+	padding: 10px 20px;
+	margin-left: -10px;
+	margin-right: -10px;
+
+	.components-tab-panel__tabs {
+		margin-bottom: 15px;
+
+		.components-button {
+			margin: 0;
+			padding: 2px;
+			color: #555d66;
+			overflow: hidden;
+			border-radius: 4px;
+
+			svg {
+				height: 30px;
+				width: 30px;
+				padding: 5px;
+				border-radius: 4px;
+				margin: 0;
+				fill: currentColor;
+			}
+
+			&.active-tab {
+
+				svg {
+					outline: none;
+					box-shadow: none;
+					background: #555d66;
+					color: #fff;
+				}
+			}
+		}
+	}
+}
+
+.editorskit-default-typography-modal {
+	.components-button {
+		margin-right: 8px;
+	}
+}
+
+.editorskit-reset-button {
+	text-align: right;
+
+	> .components-button {
+		color: #0075af;
+	}
+}
+
+.editorskit-notice-box {
+	background-color: #d6efee;
+	border-radius: 3px;
+	color: #094264;
+	padding: 1em;
+}
