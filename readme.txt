@@ -214,6 +214,7 @@ e.g.
 = 1.31.2 =
 * Fixes: Fix custom typography meta issue on custom post types  🐛
 * Fixes: Fix PHP debug log for versions 7.4.0 above  🐛
+* Fixes: Add missing shortcode display  🐛
 
 = 1.31.1 =
 * Fixes: Use the correct defined constant to prevent PHP log 🐛
