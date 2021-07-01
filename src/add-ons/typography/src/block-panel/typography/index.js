@@ -13,8 +13,8 @@ import GoogleFonts from '../../defaults/google-fonts';
  */
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
-const { withSelect, withDispatch } = wp.data;
-const { Fragment } = wp.element;
+const { withDispatch, useSelect } = wp.data;
+const { Fragment, useMemo } = wp.element;
 const { InspectorControls } = wp.blockEditor;
 const { PanelBody, SelectControl, Button, withSpokenMessages } = wp.components;
 
@@ -27,7 +27,22 @@ const TypographySettings = ( props ) => {
 		saveBlockTypography,
 	} = props;
 
-	let { editorskit_blocks_typography } = props;
+	const meta = useSelect( ( select ) =>
+		select( 'core/editor' ).getEditedPostAttribute( 'meta' )
+	);
+
+	let editorskit_blocks_typography = useMemo(
+		() => {
+			if ( meta !== null && typeof meta !== 'undefined' ) {
+				return meta[ '_editorskit_blocks_typography' ] || '';
+			}
+		},
+		[ meta ]
+	);
+
+	if ( typeof meta === 'undefined' ) {
+		return null;
+	}
 
 	const {
 		editorskit_typography,
@@ -147,13 +162,6 @@ const TypographySettings = ( props ) => {
 };
 
 export default compose( [
-	withSelect( ( select ) => {
-		const { _editorskit_blocks_typography } = select( 'core/editor' ).getEditedPostAttribute( 'meta' );
-
-		return {
-			editorskit_blocks_typography: _editorskit_blocks_typography,
-		};
-	} ),
 	withDispatch( ( dispatch ) => {
 		const {
 			editPost,
