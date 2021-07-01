@@ -378,8 +378,13 @@ class EditorsKit_Typography_Font_Loader {
 
 			// merge
 			$googleFonts = array_merge( $googleFonts, $blocksTypography );
+			$googleFonts = array_filter( array_unique( $googleFonts ) );
 
-			$googleFonts = implode( array_filter( array_unique( $googleFonts ) ), '|' );
+			if ( defined( 'PHP_VERSION' ) && version_compare( PHP_VERSION, '7.4.0', '>' ) ) {
+				$googleFonts = implode( '|', $googleFonts );
+			} else {
+				$googleFonts = implode( $googleFonts, '|' );
+			}
 		}
 
 		if ( ! empty( $googleFonts ) ) {
