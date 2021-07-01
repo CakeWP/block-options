@@ -133,6 +133,7 @@ if ( ! class_exists( 'EditorsKit' ) ) :
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/function-hide-title.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-custom-css-classes.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/helper.php';
+			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-shortcodes.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-typography-font-loader.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'extendify-sdk/loader.php';
 
