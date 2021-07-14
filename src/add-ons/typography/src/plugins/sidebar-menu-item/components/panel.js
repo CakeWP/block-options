@@ -9,6 +9,7 @@ import TypographySelection from '../../../components/font-selection';
  */
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
+const { withSelect } = wp.data;
 const { Fragment, Component } = wp.element;
 const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editPost;
 const { withSpokenMessages } = wp.components;
@@ -24,9 +25,16 @@ class SidebarPanel extends Component {
 		this.state = {
 			isOpen: false,
 		};
+		
 	}
 
 	render() {
+		const { isDisabled } = this.props;
+		
+		if ( isDisabled ) {
+			return false;
+		}
+
 		return (
 			<Fragment>
 				<PluginSidebarMoreMenuItem
@@ -55,5 +63,11 @@ class SidebarPanel extends Component {
 }
 
 export default compose( [
+	withSelect( ( select ) => {
+		const { isFeatureActive } = select('core/edit-post');
+		return {
+			isDisabled: isFeatureActive('disableEditorsKitTypography'),
+		};
+	} ),
 	withSpokenMessages,
 ] )( SidebarPanel );

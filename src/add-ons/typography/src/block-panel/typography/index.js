@@ -13,7 +13,7 @@ import GoogleFonts from '../../defaults/google-fonts';
  */
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
-const { withDispatch, useSelect } = wp.data;
+const { withDispatch, useSelect, withSelect } = wp.data;
 const { Fragment, useMemo } = wp.element;
 const { InspectorControls } = wp.blockEditor;
 const { PanelBody, SelectControl, Button, withSpokenMessages } = wp.components;
@@ -25,7 +25,12 @@ const TypographySettings = ( props ) => {
 		attributes,
 		setAttributes,
 		saveBlockTypography,
+		isDisabled,
 	} = props;
+
+	if ( isDisabled ) {
+		return false;
+	}
 
 	const meta = useSelect( ( select ) =>
 		select( 'core/editor' ).getEditedPostAttribute( 'meta' )
@@ -162,6 +167,12 @@ const TypographySettings = ( props ) => {
 };
 
 export default compose( [
+	withSelect( ( select ) => {
+		const { isFeatureActive } = select('core/edit-post');
+		return {
+			isDisabled: isFeatureActive('disableEditorsKitTypography'),
+		};
+	} ),
 	withDispatch( ( dispatch ) => {
 		const {
 			editPost,

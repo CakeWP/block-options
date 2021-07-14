@@ -33,11 +33,15 @@ class EditorsKit_Typography_Font_Loader {
 	 * The Constructor.
 	 */
 	public function __construct() {
-		add_filter( 'body_class', array( $this, 'body_class' ) );
-		add_filter( 'admin_body_class', array( $this, 'body_class' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'fonts_loader' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'fonts_loader' ) );
-		add_action( 'wp_resource_hints', array( $this, 'resource_hints' ), 10, 2 );
+		$isEnabled = get_option( 'editorskit_typography_enabled', 1 );
+		
+		if ( $isEnabled ) {
+			add_filter( 'body_class', array( $this, 'body_class' ) );
+			add_filter( 'admin_body_class', array( $this, 'body_class' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'fonts_loader' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'fonts_loader' ) );
+			add_action( 'wp_resource_hints', array( $this, 'resource_hints' ), 10, 2 );
+		}
 	}
 
 	/**
