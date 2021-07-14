@@ -10,8 +10,8 @@ import TypographySelection from '../components/font-selection';
 const { __ } = wp.i18n;
 const { addFilter } = wp.hooks;
 const { useEntityProp } = wp.coreData;
-const { Fragment, useCallback, useMemo } = wp.element;
-const { useSelect, useDispatch } = wp.data;
+const { Fragment, useCallback } = wp.element;
+const { useDispatch } = wp.data;
 const { PanelBody, PanelRow, ToggleControl } = wp.components;
 
 function editorskitTypographySettings( FilteredComponent ) {
