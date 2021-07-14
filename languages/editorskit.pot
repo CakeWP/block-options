@@ -5,10 +5,6 @@ msgstr ""
 
 #: src/add-ons/typography/src/block-panel/typography/index.js:128
 #: src/add-ons/typography/src/plugins/sidebar-menu-item/components/panel.js:53
-#: src/add-ons/typography/src/plugins/sidebar-menu-item/components/panel.js:50
-#: src/add-ons/typography/src/plugins/sidebar-menu-item/components/panel.js:49
-#: src/add-ons/typography/src/plugins/sidebar-menu-item/components/panel.js:52
-#: src/add-ons/typography/src/plugins/sidebar-menu-item/components/panel.js:48
 #: src/add-ons/typography/src/settings/index.js:43
 msgid "Typography Settings"
 msgstr ""
