@@ -14,6 +14,7 @@ export default function LoginButton() {
         </button>
     }
 
+    // This code currently won't run unless in DEVMODE
     return <button
         className="components-button"
         onClick={() => useUserStore.setState({

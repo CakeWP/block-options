@@ -6,6 +6,7 @@
 namespace Extendify\ExtendifySdk;
 
 use Extendify\ExtendifySdk\App;
+use Extendify\ExtendifySdk\User;
 
 /**
  * This class handles any file loading for the admin area.
@@ -62,8 +63,11 @@ class Admin
      */
     public function checkItsGutenbergPost($hook = '')
     {
-        // TODO: Maybe there's a better check here so we can show on other pages too.
-        return $hook && in_array($hook, ['post.php', 'post-new.php'], true);
+        if (isset($GLOBALS['typenow']) && use_block_editor_for_post_type($GLOBALS['typenow'])) {
+            return $hook && in_array($hook, ['post.php', 'post-new.php'], true);
+        }
+
+        return false;
     }
 
     /**
@@ -94,6 +98,7 @@ class Admin
             [
                 'root' => \esc_url_raw(rest_url(APP::$slug . '/' . APP::$apiVersion)),
                 'nonce' => \wp_create_nonce('wp_rest'),
+                'user' => json_decode(User::data('extendifysdk_user_data'), true),
             ]
         );
         \wp_enqueue_script(App::$slug . '-scripts');

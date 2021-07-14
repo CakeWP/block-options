@@ -20,6 +20,7 @@ if (is_readable(EXTENDIFYSDK_PATH . 'vendor/autoload.php')) {
 $extendifysdkAdmin = new Admin();
 
 require EXTENDIFYSDK_PATH . 'routes/api.php';
+require EXTENDIFYSDK_PATH . 'editorplus/EditorPlus.php';
 
 
 \add_action(

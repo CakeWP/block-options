@@ -21,7 +21,14 @@ export default function Filtering() {
     const [searchValue, setSearchValue] = useState(searchParams?.search ?? '')
     const [taxonomies, setTaxonomies] = useState({})
     const fetchTaxonomies = useCallback(async () => {
-        const tax = await TaxonomiesApi.get()
+        let tax = await TaxonomiesApi.get()
+        // Only allow items that have the 'tax_' prefix
+        tax = Object.keys(tax)
+            .filter((t) => t.startsWith('tax_'))
+            .reduce((taxFiltered, key) => {
+                taxFiltered[key] = tax[key]
+                return taxFiltered
+            }, {})
         setupDefaultTaxonomies(tax)
         setTaxonomies(tax)
     }, [setupDefaultTaxonomies])

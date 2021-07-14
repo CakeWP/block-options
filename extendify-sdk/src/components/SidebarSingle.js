@@ -22,7 +22,7 @@ export default function SidebarSingle({ template }) {
                 target="_blank"
                 href="https://extendify.com"
                 rel="noreferrer">
-                {__('Sign up today to get unlimited beta access', 'extendify-sdk')}
+                {__('Sign up today to get unlimited access', 'extendify-sdk')}
             </a>
             <button
                 className="components-button"
@@ -45,24 +45,32 @@ export default function SidebarSingle({ template }) {
             </button>
         </div>
         {/* Hides on mobile and is repeated at the bottom of the single page too */}
-        <div className="text-xs text-left pt-20 divide-y w-full hidden sm:block">
-            <div className="w-full">
+        <div className="text-left pt-14 divide-y w-full hidden sm:block">
+            <div className="w-full py-6">
                 <h3 className="m-0 mb-6">{__('Categories', 'extendify-sdk')}</h3>
-                <ul className="text-sm">
+                <ul className="text-sm m-0">
                     {categories.map((category) =>
                         <li key={category} className="inline-block mr-2 px-4 py-2 bg-gray-100">
                             {category}
                         </li>)}
                 </ul>
             </div>
-            <div className="pt-4 w-full">
+            {requiredPlugins.filter((p) => p !== 'editorplus').length > 0 && <div className="pt-4 w-full">
                 <h3 className="m-0 mb-6">{__('Required Plugins', 'extendify-sdk')}</h3>
                 <ul className="text-sm">
-                    {requiredPlugins.map((plugin) =>
-                        <li key={plugin} className="inline-block mr-2 px-4 py-2 bg-extendify-light">
-                            {getPluginDescription(plugin)}
-                        </li>)}
+                    {
+                        // Hardcoded temporarily to not force EP install
+                        requiredPlugins.filter((p) => p !== 'editorplus').map((plugin) =>
+                            <li key={plugin} className="inline-block mr-2 px-4 py-2 bg-extendify-light">
+                                {getPluginDescription(plugin)}
+                            </li>)
+                    }
                 </ul>
+            </div>}
+            <div className="py-6">
+                <a href="https://extendify.com/what-happens-when-a-template-is-added" rel="noreferrer" target="_blank">
+                    {__('What happens when a template is added?', 'extendify-sdk')}
+                </a>
             </div>
         </div>
     </div>

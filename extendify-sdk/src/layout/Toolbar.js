@@ -33,7 +33,7 @@ export default function Toolbar({ className, hideLibrary, initialFocus }) {
                                 target="_blank"
                                 href="https://extendify.com"
                                 rel="noreferrer">
-                                {__('Sign up today to get unlimited beta access', 'extendify-sdk')}
+                                {__('Sign up today to get unlimited access', 'extendify-sdk')}
                             </a>
                         </div>
                         <div className="m-0 p-0 px-6 text-sm bg-gray-50 border-r border-gray-300 h-full flex items-center">
@@ -45,10 +45,6 @@ export default function Toolbar({ className, hideLibrary, initialFocus }) {
                 </>}
             </div>
             <div className="space-x-2 transform sm:translate-x-8">
-                {/* <button type="button" className="components-button has-icon" onClick={() => toggleFullScreen()}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" size="24" role="img" aria-hidden="true" focusable="false"><path d="M4.2 9h1.5V5.8H9V4.2H4.2V9zm14 9.2H15v1.5h4.8V15h-1.5v3.2zM15 4.2v1.5h3.2V9h1.5V4.2H15zM5.8 15H4.2v4.8H9v-1.5H5.8V15z"></path></svg>
-                    <span className="sr-only">{__('Toggle fullscreen', 'extendify-sdk')}</span>
-                </button> */}
                 <button ref={initialFocus} type="button" className="components-button has-icon" onClick={() => hideLibrary()}>
                     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" size="24" role="img" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg>
                     <span className="sr-only">{__('Close library', 'extendify-sdk')}</span>
