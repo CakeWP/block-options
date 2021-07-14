@@ -4,7 +4,7 @@ Plugin URI: https://editorskit.com
 Contributors: phpbits, editorskit
 Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenberg editor
 Requires at least: 5.0
-Tested up to: 5.7.2
+Tested up to: 5.8
 Requires PHP: 5.6
 Stable tag: 1.30
 License: GPL-3.0
@@ -210,6 +210,10 @@ e.g.
 
 
 == Changelog ==
+
+= 1.31.3 =
+* Tweaks: Add option to easily enable or disable Typography features
+* Fixes: Fix custom post type compatibility issue with Rank Math plugin  🐛
 
 = 1.31.2 =
 * Fixes: Fix custom typography meta issue on custom post types  🐛
