@@ -7,7 +7,7 @@
 		"watch": "npx mix watch",
 		"lint": "eslint src/**/*.js",
 		"lint-fix": "eslint src/**/*.js --fix",
-        "tailwind-config-viewer": "tailwind-config-viewer -o"
+		"tailwind-config-viewer": "tailwind-config-viewer -o"
 	},
 	"devDependencies": {
 		"@babel/preset-react": "^7.13.13",

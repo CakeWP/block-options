@@ -1,15 +1,12 @@
-import {
-    Fragment, useRef, useState,
-} from '@wordpress/element'
+import { Fragment, useRef } from '@wordpress/element'
 import { Dialog, Transition } from '@headlessui/react'
 import Toolbar from './Toolbar'
 import Content from './Content'
 import Login from './Login'
-import classNames from 'classnames'
+import Beacon from '../components/Beacon'
 import { useGlobalStore } from '../state/GlobalState'
 
 export default function MainWindow() {
-    const [fullScreen, setFullScreen] = useState(false)
     const initialFocus = useRef(null)
     const open = useGlobalStore(state => state.open)
     const setOpen = useGlobalStore(state => state.setOpen)
@@ -40,17 +37,10 @@ export default function MainWindow() {
                             enterFrom="opacity-0 translate-y-4 sm:translate-y-5"
                             enterTo="opacity-100 translate-y-0"
                         >
-                            <div className={classNames({
-                                'fixed lg:absolute inset-0 lg:overflow-hidden transform transition-all': true,
-                                'lg:pt-5 lg:p-10': !fullScreen,
-                            })}>
-                                <div className={classNames({
-                                    'bg-white h-full flex flex-col items-center relative shadow-xl': true,
-                                    'max-w-screen-4xl mx-auto': !fullScreen,
-                                })}>
+                            <div className="fixed lg:absolute inset-0 lg:overflow-hidden transform transition-all lg:pt-5 lg:p-10">
+                                <div className="bg-white h-full flex flex-col items-center relative shadow-xl max-w-screen-4xl mx-auto">
                                     <Toolbar
                                         className="w-full h-16 border-solid border-0 border-b border-gray-300 flex-shrink-0"
-                                        toggleFullScreen={() => setFullScreen(!fullScreen)}
                                         initialFocus={initialFocus}
                                         hideLibrary={() => setOpen(false)}/>
                                     {currentPage === 'content' &&
@@ -60,6 +50,7 @@ export default function MainWindow() {
                                         <Login className="w-full flex-grow overflow-hidden bg-extendify-light"/>
                                     }
                                 </div>
+                                <Beacon show={open}/>
                             </div>
                         </Transition.Child>
                     </div>

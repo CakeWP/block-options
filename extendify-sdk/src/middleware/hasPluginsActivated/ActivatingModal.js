@@ -10,15 +10,16 @@ export default function ActivatingModal() {
     const [errorMessage, setErrorMessage] = useState('')
     const wantedTemplate = useWantedTemplateStore(store => store.wantedTemplate)
 
-    Plugins.installAndActivate(wantedTemplate?.fields?.required_plugins)
-        .then(() => {
-            useWantedTemplateStore.setState({
-                importOnLoad: true,
-            })
-        }).then(async () => {
-            await new Promise((resolve) => setTimeout(resolve, 1000))
-            render(<ReloadRequiredModal />, document.getElementById('extendify-root'))
+    Plugins.installAndActivate(wantedTemplate?.fields?.required_plugins
+        // Hardcoded temporarily to not force EP install
+        .filter(p => p !== 'editorplus')).then(() => {
+        useWantedTemplateStore.setState({
+            importOnLoad: true,
         })
+    }).then(async () => {
+        await new Promise((resolve) => setTimeout(resolve, 1000))
+        render(<ReloadRequiredModal />, document.getElementById('extendify-root'))
+    })
         .catch(({ response }) => {
             setErrorMessage(response.data.message)
         })

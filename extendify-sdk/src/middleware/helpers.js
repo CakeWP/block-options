@@ -2,12 +2,14 @@ import { Plugins } from '../api/Plugins'
 import { get } from 'lodash'
 export async function checkIfUserNeedsToInstallPlugins(template) {
     // TODO: for now assume required plugins is valid data (from Airtable)!
-    const required = get(template, 'fields.required_plugins') ?? []
+    let required = get(template, 'fields.required_plugins') ?? []
+    // Hardcoded temporarily to not force EP install
+    required = required.filter((p) => p !== 'editorplus')
     if (!required.length) {
         return false
     }
-    let installed = Object.keys(await Plugins.getInstalled())
 
+    let installed = Object.keys(await Plugins.getInstalled())
     // if no dependencies are required, then this will be false automatically
     const weNeedInstalls = required.length
         ? required.filter((plugin) => {
@@ -23,7 +25,10 @@ export async function checkIfUserNeedsToInstallPlugins(template) {
 
 export async function checkIfUserNeedsToActivatePlugins(template) {
     // TODO: for now assume required plugins is valid data (from Airtable)!
-    const required = get(template, 'fields.required_plugins') ?? []
+    let required = get(template, 'fields.required_plugins') ?? []
+
+    // Hardcoded temporarily to not force EP install
+    required = required.filter((p) => p !== 'editorplus')
     if (!required.length) {
         return false
     }

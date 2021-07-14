@@ -27,10 +27,13 @@ export default function ActivatePluginsModal(props) {
             'extendify-sdk')}
         </p>
         <ul>
-            {requiredPlugins.map((plugin) =>
-                <li key={plugin}>
-                    {getPluginDescription(plugin)}
-                </li>)}
+            {
+                // Hardcoded temporarily to not force EP install
+                requiredPlugins.filter((p) => p !== 'editorplus').map((plugin) =>
+                    <li key={plugin}>
+                        {getPluginDescription(plugin)}
+                    </li>)
+            }
         </ul>
         <ButtonGroup>
             <Button isPrimary onClick={installPlugins}>

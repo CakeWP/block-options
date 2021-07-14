@@ -29,6 +29,7 @@ export default function Content({ className, initialFocus }) {
                 <Filtering initialFocus={initialFocus}/>
                 <>
                     <TypeSelect/>
+                    {/* TODO: we may want to inject this as a portal so it can directly share state with Filtering.js */}
                     <TaxonomyBreadcrumbs/>
                     <div className="relative h-full z-30 bg-white">
                         <div className="absolute z-20 inset-0 lg:static h-screen lg:h-full overflow-y-auto pt-4 sm:pt-0 px-6 sm:pl-0 sm:pr-8">
