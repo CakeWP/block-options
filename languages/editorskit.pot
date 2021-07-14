@@ -3,42 +3,54 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:123
+#: src/add-ons/typography/src/block-panel/typography/index.js:128
+#: src/add-ons/typography/src/plugins/sidebar-menu-item/components/panel.js:53
+#: src/add-ons/typography/src/settings/index.js:43
 msgid "Typography Settings"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:129
+#: src/add-ons/typography/src/block-panel/typography/index.js:134
 msgid "Font Family"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:138
+#: src/add-ons/typography/src/block-panel/typography/index.js:143
 msgid "Font Weight"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:154
+#: src/add-ons/typography/src/block-panel/typography/index.js:159
 msgid "Reset"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:53
+#: src/add-ons/typography/src/block-panel/typography/index.js:58
 msgid "Select Google Font"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:54
+#: src/add-ons/typography/src/block-panel/typography/index.js:59
 msgid "Arial"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:55
+#: src/add-ons/typography/src/block-panel/typography/index.js:60
 msgid "Helvetica"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:56
+#: src/add-ons/typography/src/block-panel/typography/index.js:61
 msgid "Times New Roman"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:57
+#: src/add-ons/typography/src/block-panel/typography/index.js:62
 msgid "Georgia"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:65
+#: src/add-ons/typography/src/block-panel/typography/index.js:70
 msgid "Select Font Weight"
+msgstr ""
+
+#: src/add-ons/typography/src/plugins/sidebar-menu-item/components/panel.js:54
+msgid ""
+"Select from predefined font combinations. You can also create custom combo "
+"or duplicate existing ones."
+msgstr ""
+
+#: src/add-ons/typography/src/settings/index.js:35
+msgid "Typography Add-on Enabled"
 msgstr ""

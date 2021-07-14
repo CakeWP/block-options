@@ -122,7 +122,7 @@ class EditorsKit_Block_Assets {
 		wp_enqueue_script(
 			$this->slug . '-editor',
 			$this->url . '/build/index.js',
-			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api', 'wp-editor', 'wp-hooks', 'lodash' ),
+			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-data', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api', 'wp-editor', 'wp-hooks', 'lodash' ),
 			time(),
 			false
 		);

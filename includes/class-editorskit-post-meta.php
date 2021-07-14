@@ -132,6 +132,18 @@ class EditorsKit_Post_Meta {
 				'show_in_rest'      => true,
 			)
 		);
+
+		register_setting(
+			'editorskit_typography_enabled',
+			'editorskit_typography_enabled',
+			array(
+				'type'              => 'boolean',
+				'description'       => __( 'Default typography', 'editorskit-typography-addon' ),
+				'sanitize_callback' => 'rest_sanitize_boolean',
+				'show_in_rest'      => true,
+				'default'           => true,
+			)
+		);
 	}
 
 	/**
