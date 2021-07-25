@@ -45,6 +45,7 @@ class BlockSettings extends Component {
 			isDisabledUserState,
 			isDisabledLogic,
 			isDisabledACF,
+			hasPermission,
 		} = this.props;
 
 		let selectedBlock = this.props.selectedBlock;
@@ -108,7 +109,7 @@ class BlockSettings extends Component {
 									switch ( tab.name ) {
 										case 'advanced':
 											return [
-												! isDisabledLogic && LogicOptions( selectedBlock ),
+												! isDisabledLogic && hasPermission && LogicOptions( selectedBlock ),
 												! isDisabledACF && <ACFOptions selectedBlock={ selectedBlock } />,
 											];
 										default:
@@ -143,6 +144,7 @@ export default compose(
 			isDisabledUserState: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitUserStateVisibility' ),
 			isDisabledLogic: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitLogicVisibility' ),
 			isDisabledACF: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitAcfVisibility' ),
+			hasPermission: select( 'core' ).canUser( 'update', 'settings' ),
 		};
 	} ),
 	withSpokenMessages,

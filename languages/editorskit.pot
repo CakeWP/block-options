@@ -3,54 +3,44 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:128
-#: src/add-ons/typography/src/plugins/sidebar-menu-item/components/panel.js:53
-#: src/add-ons/typography/src/settings/index.js:43
-msgid "Typography Settings"
+#: src/extensions/advanced-controls/index.js:107
+msgid "Responsive"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:134
-msgid "Font Family"
-msgstr ""
-
-#: src/add-ons/typography/src/block-panel/typography/index.js:143
-msgid "Font Weight"
-msgstr ""
-
-#: src/add-ons/typography/src/block-panel/typography/index.js:159
-msgid "Reset"
-msgstr ""
-
-#: src/add-ons/typography/src/block-panel/typography/index.js:58
-msgid "Select Google Font"
-msgstr ""
-
-#: src/add-ons/typography/src/block-panel/typography/index.js:59
-msgid "Arial"
-msgstr ""
-
-#: src/add-ons/typography/src/block-panel/typography/index.js:60
-msgid "Helvetica"
-msgstr ""
-
-#: src/add-ons/typography/src/block-panel/typography/index.js:61
-msgid "Times New Roman"
-msgstr ""
-
-#: src/add-ons/typography/src/block-panel/typography/index.js:62
-msgid "Georgia"
-msgstr ""
-
-#: src/add-ons/typography/src/block-panel/typography/index.js:70
-msgid "Select Font Weight"
-msgstr ""
-
-#: src/add-ons/typography/src/plugins/sidebar-menu-item/components/panel.js:54
+#: src/extensions/advanced-controls/index.js:111
 msgid ""
-"Select from predefined font combinations. You can also create custom combo "
-"or duplicate existing ones."
+"Attention: The display settings (show/hide for mobile, tablet or desktop) "
+"will only take effect once you are on the live page, and not while you're "
+"editing in Gutenberg."
 msgstr ""
 
-#: src/add-ons/typography/src/settings/index.js:35
-msgid "Typography Add-on Enabled"
+#: src/extensions/advanced-controls/options/logic/index.js:40
+msgid "Conditional Logic"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/logic/index.js:41
+msgid "Add valid PHP conditional tags for custom & advanced visibility options."
+msgstr ""
+
+#: src/extensions/block-settings/visibility-settings/components/modal.js:101
+msgid "Close"
+msgstr ""
+
+#: src/extensions/block-settings/visibility-settings/components/modal.js:117
+msgid ""
+"Attention: The display settings (show/hide for mobile, tablet, desktop or "
+"users) will only take effect once you are on the live page, and not while "
+"you're editing in Gutenberg."
+msgstr ""
+
+#: src/extensions/block-settings/visibility-settings/components/modal.js:63
+msgid "Default"
+msgstr ""
+
+#: src/extensions/block-settings/visibility-settings/components/modal.js:71
+msgid "Advanced"
+msgstr ""
+
+#: src/extensions/block-settings/visibility-settings/components/modal.js:99
+msgid "Visibility Settings"
 msgstr ""
