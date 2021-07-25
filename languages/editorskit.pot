@@ -3,25 +3,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/advanced-controls/index.js:107
-msgid "Responsive"
-msgstr ""
-
-#: src/extensions/advanced-controls/index.js:111
-msgid ""
-"Attention: The display settings (show/hide for mobile, tablet or desktop) "
-"will only take effect once you are on the live page, and not while you're "
-"editing in Gutenberg."
-msgstr ""
-
-#: src/extensions/advanced-controls/options/logic/index.js:40
-msgid "Conditional Logic"
-msgstr ""
-
-#: src/extensions/advanced-controls/options/logic/index.js:41
-msgid "Add valid PHP conditional tags for custom & advanced visibility options."
-msgstr ""
-
 #: src/extensions/block-settings/visibility-settings/components/modal.js:101
 msgid "Close"
 msgstr ""
