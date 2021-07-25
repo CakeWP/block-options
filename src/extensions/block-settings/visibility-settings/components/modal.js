@@ -109,6 +109,8 @@ class BlockSettings extends Component {
 									switch ( tab.name ) {
 										case 'advanced':
 											return [
+												<small>{ __( 'Manage advanced block settings and visibility.', 'block-options' ) }</small>, /* eslint-disable-line react/jsx-key */
+												! isDisabledUserState && UserStateOptions( selectedBlock ),
 												! isDisabledLogic && hasPermission && LogicOptions( selectedBlock ),
 												! isDisabledACF && <ACFOptions selectedBlock={ selectedBlock } />,
 											];
@@ -116,7 +118,6 @@ class BlockSettings extends Component {
 											return [
 												<small>{ __( 'Attention: The display settings (show/hide for mobile, tablet, desktop or users) will only take effect once you are on the live page, and not while you\'re editing in Gutenberg.', 'block-options' ) }</small>, /* eslint-disable-line react/jsx-key */
 												! isDisabledDevices && DevicesOptions( selectedBlock ),
-												! isDisabledUserState && UserStateOptions( selectedBlock ),
 											];
 									}
 								}

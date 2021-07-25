@@ -26,7 +26,11 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: src/extensions/block-settings/visibility-settings/components/modal.js:117
+#: src/extensions/block-settings/visibility-settings/components/modal.js:112
+msgid "Manage advanced block settings and visibility."
+msgstr ""
+
+#: src/extensions/block-settings/visibility-settings/components/modal.js:119
 msgid ""
 "Attention: The display settings (show/hide for mobile, tablet, desktop or "
 "users) will only take effect once you are on the live page, and not while "

@@ -66,7 +66,7 @@ class EditorsKit_Custom_CSS_Classes {
 		$this->slug    = 'editorskit';
 		$this->url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
-		add_filter( 'block_editor_settings', array( $this, 'block_editor_settings' ), 10, 2 );
+		add_filter( 'block_editor_settings_all', array( $this, 'block_editor_settings' ), 10, 2 );
 	}
 
 	/**

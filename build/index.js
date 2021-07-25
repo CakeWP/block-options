@@ -14890,14 +14890,16 @@ function (_Component) {
       }, function (tab) {
         switch (tab.name) {
           case 'advanced':
-            return [!isDisabledLogic && hasPermission && Object(_advanced_controls_options_logic___WEBPACK_IMPORTED_MODULE_9__["default"])(selectedBlock), !isDisabledACF && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_advanced_controls_options_acf___WEBPACK_IMPORTED_MODULE_10__["default"], {
+            return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("small", null, __('Manage advanced block settings and visibility.', 'block-options')),
+            /* eslint-disable-line react/jsx-key */
+            !isDisabledUserState && Object(_advanced_controls_options_state___WEBPACK_IMPORTED_MODULE_8__["default"])(selectedBlock), !isDisabledLogic && hasPermission && Object(_advanced_controls_options_logic___WEBPACK_IMPORTED_MODULE_9__["default"])(selectedBlock), !isDisabledACF && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_advanced_controls_options_acf___WEBPACK_IMPORTED_MODULE_10__["default"], {
               selectedBlock: selectedBlock
             })];
 
           default:
             return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("small", null, __('Attention: The display settings (show/hide for mobile, tablet, desktop or users) will only take effect once you are on the live page, and not while you\'re editing in Gutenberg.', 'block-options')),
             /* eslint-disable-line react/jsx-key */
-            !isDisabledDevices && Object(_advanced_controls_options_devices___WEBPACK_IMPORTED_MODULE_7__["default"])(selectedBlock), !isDisabledUserState && Object(_advanced_controls_options_state___WEBPACK_IMPORTED_MODULE_8__["default"])(selectedBlock)];
+            !isDisabledDevices && Object(_advanced_controls_options_devices___WEBPACK_IMPORTED_MODULE_7__["default"])(selectedBlock)];
         }
       })) : null);
     }
