@@ -63,7 +63,6 @@ class EditorsKit_Features_Manager {
 	 * The Constructor.
 	 */
 	private function __construct() {
-
 		$this->version = EDITORSKIT_VERSION;
 		$this->slug    = 'editorskit';
 		$this->url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
