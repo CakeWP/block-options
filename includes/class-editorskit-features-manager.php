@@ -63,11 +63,17 @@ class EditorsKit_Features_Manager {
 	 * The Constructor.
 	 */
 	private function __construct() {
+		global $wp_version;
+
 		$this->version = EDITORSKIT_VERSION;
 		$this->slug    = 'editorskit';
 		$this->url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
-		add_filter( 'block_editor_settings', array( $this, 'block_editor_settings' ), 10, 2 );
+		if ( $wp_version >= '5.8' ) {
+			add_filter( 'block_editor_settings_all', array( $this, 'block_editor_settings' ), 10, 2 );
+		} else {
+			add_filter( 'block_editor_settings', array( $this, 'block_editor_settings' ), 10, 2 );
+		}
 	}
 
 	/**
