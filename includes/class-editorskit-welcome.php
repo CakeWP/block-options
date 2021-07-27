@@ -69,8 +69,6 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 		 * @return void
 		 */
 		public function enqueue() {
-			global $wp_version;
-
 			// phpcs:ignore
 			if ( ! isset( $_GET['page'] ) || 'editorskit-getting-started' !== $_GET['page'] ) {
 				return;
@@ -118,7 +116,7 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 				false
 			);
 
-			if ( $wp_version >= '5.8' ) {
+			if ( function_exists( 'get_block_editor_settings' ) ) {
 				$block_editor_settings = 'block_editor_settings_all';
 			} else {
 				$block_editor_settings = 'block_editor_settings';
