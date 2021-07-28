@@ -52,7 +52,7 @@ export default function Filtering() {
                 className="sm:ml-px sm:mr-1 sm:mb-6 px-6 sm:p-0 sm:px-0"
                 autoComplete="off" />
         </div>
-        <div className="flex-grow hidden overflow-y-auto pb-32 pr-2 sm:block">
+        <div className="flex-grow hidden overflow-y-auto pb-32 pr-2 pt-px sm:block">
             <Panel>
                 {Object.entries(taxonomies).map((taxonomy, index) => {
                     return <TaxonomySection

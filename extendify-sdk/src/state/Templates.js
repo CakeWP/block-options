@@ -33,7 +33,9 @@ export const useTemplatesStore = create((set, get) => ({
         const defaultState = (tax) => defaultCategoryForType(get().searchParams.type, tax)
         const taxonomyDefaultState = Object.keys(taxonomies).reduce((theObject, current) => (theObject[current] = defaultState(current), theObject), {})
         const tax = {}
-        tax.taxonomies = taxonomyDefaultState
+        tax.taxonomies = Object.assign(
+            {}, taxonomyDefaultState, get().searchParams.taxonomies,
+        )
 
         set({
             taxonomyDefaultState: taxonomyDefaultState,
@@ -58,7 +60,7 @@ export const useTemplatesStore = create((set, get) => ({
     resetTaxonomies: () => {
         // Special default state for tax_categories
         const taxCatException = {
-            tax_categories: get().searchParams.type === 'pattern'
+            ['tax_categories']: get().searchParams.type === 'pattern'
                 ? 'Default'
                 : '',
         }

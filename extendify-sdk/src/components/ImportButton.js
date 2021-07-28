@@ -1,4 +1,6 @@
-import { useEffect, useState } from '@wordpress/element'
+import {
+    useEffect, useState, useRef,
+} from '@wordpress/element'
 import { useTemplatesStore } from '../state/Templates'
 import { AuthorizationCheck, Middleware } from '../middleware'
 import { injectTemplateBlocks } from '../util/templateInjection'
@@ -10,6 +12,7 @@ import { Templates as TemplatesApi } from '../api/Templates'
 
 const canImportMiddleware = Middleware(['hasRequiredPlugins', 'hasPluginsActivated'])
 export function ImportButton({ template }) {
+    const importButtonRef = useRef(null)
     const activeTemplateBlocks = useTemplatesStore(state => state.activeTemplateBlocks)
     const canImport = useUserStore(state => state.canImport)
     const apiKey = useUserStore(state => state.apiKey)
@@ -32,13 +35,15 @@ export function ImportButton({ template }) {
     }, [template])
 
     useEffect(() => {
-        if (!importing) {
-            return
+        if (!importing && importButtonRef.current) {
+            importButtonRef.current.focus()
         }
-        TemplatesApi.maybeImport(template)
-    }, [importing, template])
+    }, [importButtonRef, importing, middlewareChecked])
 
     const importTemplate = () => {
+        // This was added here to make the call fire before rendering is finished.
+        // This is because some users would drop this call otherwise.
+        TemplatesApi.maybeImport(template)
         setImporting(true)
         setWanted(template)
         importTemplates()
@@ -50,9 +55,10 @@ export function ImportButton({ template }) {
 
     if (!apiKey && !canImport()) {
         return <a
+            ref={importButtonRef}
             className="button-extendify-main text-lg sm:text-2xl py-1.5 px-3 sm:py-2.5 sm:px-5"
             target="_blank"
-            href="https://extendify.com"
+            href={`https://extendify.com/pricing?utm_source=${window.extendifySdkData.source}&utm_medium=library&utm_campaign=sign_up&utm_content=single_page`}
             rel="noreferrer">
             {__('Sign up now', 'extendify-sdk')}
         </a>
@@ -69,6 +75,7 @@ export function ImportButton({ template }) {
     }
 
     return <button
+        ref={importButtonRef}
         type="button"
         className="components-button is-primary text-lg sm:text-2xl h-auto py-1.5 px-3 sm:py-2.5 sm:px-5"
         onClick={() => importTemplate()}>

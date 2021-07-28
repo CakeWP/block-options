@@ -7,12 +7,18 @@ import ActivatingModal from './ActivatingModal'
 import ExtendifyLibrary from '../../layout/ExtendifyLibrary'
 import { useWantedTemplateStore } from '../../state/Importing'
 import { getPluginDescription } from '../../util/general'
+import { useUserStore } from '../../state/User'
+import NeedsPermissionModal from '../NeedsPermissionModal'
 
 export default function ActivatePluginsModal(props) {
     const wantedTemplate = useWantedTemplateStore(store => store.wantedTemplate)
     const closeModal = () => render(<ExtendifyLibrary show={true}/>, document.getElementById('extendify-root'))
     const installPlugins = () => render(<ActivatingModal />, document.getElementById('extendify-root'))
     const requiredPlugins = wantedTemplate?.fields?.required_plugins || []
+
+    if (!useUserStore.getState()?.canActivatePlugins) {
+        return <NeedsPermissionModal/>
+    }
 
     return <Modal
         title={__('Activate required plugins', 'extendify-sdk')}
@@ -29,6 +35,7 @@ export default function ActivatePluginsModal(props) {
         <ul>
             {
                 // Hardcoded temporarily to not force EP install
+                // requiredPlugins.map((plugin) =>
                 requiredPlugins.filter((p) => p !== 'editorplus').map((plugin) =>
                     <li key={plugin}>
                         {getPluginDescription(plugin)}

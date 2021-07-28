@@ -42,6 +42,7 @@ export const Templates = {
         return api.post(`templates/${template.id}`, {
             template_id: template.id,
             maybe_import: true,
+            type: template.fields.type,
             pageSize: config.templatesPerRequest,
             template_name: template.fields?.title,
         })
@@ -50,6 +51,7 @@ export const Templates = {
         return api.post(`templates/${template.id}`, {
             template_id: template.id,
             single: true,
+            type: template.fields.type,
             pageSize: config.templatesPerRequest,
             template_name: template.fields?.title,
         })
@@ -58,6 +60,7 @@ export const Templates = {
         return api.post(`templates/${template.id}`, {
             template_id: template.id,
             imported: true,
+            type: template.fields.type,
             pageSize: config.templatesPerRequest,
             template_name: template.fields?.title,
         })

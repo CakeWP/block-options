@@ -19,4 +19,5 @@
 .extendify-sdk .components-panel__body > .components-panel__body-title {
     /* Override WP aggressive boder:none and border:0 */
     border-bottom: 1px solid #e0e0e0 !important;
+    @apply bg-transparent;
 }

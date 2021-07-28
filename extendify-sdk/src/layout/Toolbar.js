@@ -1,7 +1,7 @@
 import { __, sprintf } from '@wordpress/i18n'
 import { useUserStore } from '../state/User'
 
-export default function Toolbar({ className, hideLibrary, initialFocus }) {
+export default function Toolbar({ className, hideLibrary }) {
     const remainingImports = useUserStore(state => state.remainingImports)
     const apiKey = useUserStore(state => state.apiKey)
     const allowedImports = useUserStore(state => state.allowedImports)
@@ -24,14 +24,14 @@ export default function Toolbar({ className, hideLibrary, initialFocus }) {
                             <a
                                 className="button-extendify-main inline lg:hidden"
                                 target="_blank"
-                                href="https://extendify.com"
+                                href={`https://extendify.com/pricing?utm_source=${window.extendifySdkData.source}&utm_medium=library&utm_campaign=sign_up&utm_content=main`}
                                 rel="noreferrer">
                                 {__('Sign up', 'extendify-sdk')}
                             </a>
                             <a
                                 className="button-extendify-main hidden lg:block"
                                 target="_blank"
-                                href="https://extendify.com"
+                                href={`https://extendify.com/pricing?utm_source=${window.extendifySdkData.source}&utm_medium=library&utm_campaign=sign_up&utm_content=main`}
                                 rel="noreferrer">
                                 {__('Sign up today to get unlimited access', 'extendify-sdk')}
                             </a>
@@ -45,7 +45,7 @@ export default function Toolbar({ className, hideLibrary, initialFocus }) {
                 </>}
             </div>
             <div className="space-x-2 transform sm:translate-x-8">
-                <button ref={initialFocus} type="button" className="components-button has-icon" onClick={() => hideLibrary()}>
+                <button type="button" className="components-button has-icon" onClick={() => hideLibrary()}>
                     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" size="24" role="img" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg>
                     <span className="sr-only">{__('Close library', 'extendify-sdk')}</span>
                 </button>

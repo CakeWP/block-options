@@ -4,7 +4,7 @@ import { User } from '../api/User'
 
 const storage = {
     getItem: async () => await User.getData(),
-    setItem: async (_name, value) => User.setData(value),
+    setItem: async (_name, value) => await User.setData(value),
 }
 
 export const useUserStore = create(persist((set, get) => ({
@@ -15,6 +15,9 @@ export const useUserStore = create(persist((set, get) => ({
     allowedImports: 0,
     entryPoint: 'not-set',
     enabled: true,
+    hasClickedThroughWelcomePage: false,
+    canInstallPlugins: false,
+    canActivatePlugins: false,
     incrementImports: () => set({
         imports: get().imports + 1,
     }),
