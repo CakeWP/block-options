@@ -67,7 +67,11 @@ class EditorsKit_Features_Manager {
 		$this->slug    = 'editorskit';
 		$this->url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
-		add_filter( 'block_editor_settings_all', array( $this, 'block_editor_settings' ), 10, 2 );
+		if ( function_exists( 'get_block_editor_settings' ) ) {
+			add_filter( 'block_editor_settings_all', array( $this, 'block_editor_settings' ), 10, 2 );
+		} else {
+			add_filter( 'block_editor_settings', array( $this, 'block_editor_settings' ), 10, 2 );
+		}
 	}
 
 	/**

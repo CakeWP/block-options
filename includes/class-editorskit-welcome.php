@@ -116,6 +116,12 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 				false
 			);
 
+			if ( function_exists( 'get_block_editor_settings' ) ) {
+				$block_editor_settings = 'block_editor_settings_all';
+			} else {
+				$block_editor_settings = 'block_editor_settings';
+			}
+
 			$global = array(
 				'url'             => EDITORSKIT_PLUGIN_URL,
 				'dir'             => EDITORSKIT_PLUGIN_DIR,
@@ -127,7 +133,7 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 					'typography' => get_option( 'editorskit_typography_addon_license_active' ),
 				),
 				'version'         => $this->version,
-				'editor_settings' => apply_filters( 'block_editor_settings', array(), '' ),
+				'editor_settings' => apply_filters( $block_editor_settings, array(), '' ),
 			);
 
 			wp_add_inline_script( $this->slug . '-admin', 'window.editorskitSettings = ' . wp_json_encode( $global ) . ';', 'before' );
