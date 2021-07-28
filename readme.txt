@@ -211,6 +211,10 @@ e.g.
 
 == Changelog ==
 
+= 1.31.4 =
+* Fixes: WordPress 5.8 compatibility fixes 🐛
+* Fixes: Solve potential security vulnerabilities 🔒
+
 = 1.31.3 =
 * Tweaks: Add option to easily enable or disable Typography features
 * Fixes: Fix custom post type compatibility issue with Rank Math plugin  🐛
