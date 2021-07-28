@@ -110,6 +110,8 @@ class User
         }
 
         $userData['state']['uuid'] = self::data('uuid');
+        $userData['state']['canInstallPlugins'] = \current_user_can('install_plugins');
+        $userData['state']['canActivatePlugins'] = \current_user_can('activate_plugins');
 
         return \wp_json_encode($userData);
     }

@@ -122,7 +122,7 @@ export default function TemplatesList({ templates }) {
                         role="button"
                         onClick={() => setActiveTemplate(template)}>
                         <div>
-                            <h4 className="m-0 font-bold">{template.fields.title}</h4>
+                            <h4 className="m-0 font-bold">{template.fields.display_title}</h4>
                             <p className="m-0">{template?.fields?.tax_categories?.filter(c => c.toLowerCase() !== 'default').join(', ')}</p>
                         </div>
                         <Button

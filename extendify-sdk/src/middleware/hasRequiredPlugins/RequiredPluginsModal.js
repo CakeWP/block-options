@@ -7,6 +7,8 @@ import { render } from '@wordpress/element'
 import InstallingModal from './InstallingModal'
 import { useWantedTemplateStore } from '../../state/Importing'
 import { getPluginDescription } from '../../util/general'
+import { useUserStore } from '../../state/User'
+import NeedsPermissionModal from '../NeedsPermissionModal'
 
 export default function RequiredPluginsModal(props) {
     const wantedTemplate = useWantedTemplateStore(store => store.wantedTemplate)
@@ -18,6 +20,10 @@ export default function RequiredPluginsModal(props) {
     }
     const installPlugins = () => render(<InstallingModal />, document.getElementById('extendify-root'))
     const requiredPlugins = wantedTemplate?.fields?.required_plugins || []
+
+    if (!useUserStore.getState()?.canInstallPlugins) {
+        return <NeedsPermissionModal/>
+    }
 
     return <Modal
         title={props.title ?? __('Install required plugins', 'extendify-sdk')}
@@ -34,6 +40,7 @@ export default function RequiredPluginsModal(props) {
         {props.message?.length > 0 || <ul>
             {
                 // Hardcoded temporarily to not force EP install
+                // requiredPlugins.map((plugin) =>
                 requiredPlugins.filter((p) => p !== 'editorplus').map((plugin) =>
                     <li key={plugin}>
                         {getPluginDescription(plugin)}

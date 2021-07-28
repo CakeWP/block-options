@@ -37,6 +37,8 @@ module.exports = {
                     lightest: '#f8fffe',
                     light: '#e7f8f5',
                     main: '#008160',
+                    link: '#299875',
+                    bright: '#30a850',
                 },
                 'wp-theme': {
                     // It's a Tailwind convention for the base color to use 500 then build off that

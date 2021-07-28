@@ -34,7 +34,7 @@ class ApiRouter extends \WP_REST_Controller
      */
     public function __construct()
     {
-        $this->capability = 'install_plugins';
+        $this->capability = App::$requiredCapability;
         add_filter(
             'rest_request_before_callbacks',
             // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundInExtendedClassBeforeLastUsed
@@ -49,19 +49,6 @@ class ApiRouter extends \WP_REST_Controller
             10,
             3
         );
-    }
-
-    /**
-     * Check the capability
-     *
-     * @param string $capability - The capability.
-     *
-     * @return boolean
-     */
-    public function permission($capability)
-    {
-        $this->capability = $capability;
-        return $this;
     }
 
     /**
