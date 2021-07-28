@@ -17,6 +17,7 @@ module.exports = {
         indent: ['error', 4, {
             SwitchCase: 1,
         }],
+        'require-await': 'error',
         quotes: ['error', 'single'],
         'comma-dangle': ['error', 'always-multiline'],
         'multiline-ternary': ['error', 'always'],

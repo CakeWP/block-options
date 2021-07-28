@@ -56,6 +56,20 @@ class App
     public static $environment = '';
 
     /**
+     * Host plugin
+     *
+     * @var string
+     */
+    public static $sourcePlugin = 'Not set';
+
+    /**
+     * Host plugin
+     *
+     * @var string
+     */
+    public static $requiredCapability = 'upload_files';
+
+    /**
      * Plugin config
      *
      * @var array
@@ -69,6 +83,10 @@ class App
      */
     public function __construct()
     {
+        if (isset($GLOBALS['extendifySdkSourcePlugin'])) {
+            self::$sourcePlugin = $GLOBALS['extendifySdkSourcePlugin'];
+        }
+
         // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
         $readme = file_get_contents(dirname(__DIR__) . '/readme.txt');
 

@@ -8,7 +8,7 @@ export const Middleware = (middleware = []) => {
         stack: [],
         async check(template) {
             for (const m of middleware) {
-                let cb = await this[`${m}`](template)
+                const cb = await this[`${m}`](template)
                 setTimeout(() => {
                     this.stack.push(cb.pass
                         ? cb.allow

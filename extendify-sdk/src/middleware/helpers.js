@@ -1,5 +1,6 @@
 import { Plugins } from '../api/Plugins'
 import { get } from 'lodash'
+
 export async function checkIfUserNeedsToInstallPlugins(template) {
     // TODO: for now assume required plugins is valid data (from Airtable)!
     let required = get(template, 'fields.required_plugins') ?? []
@@ -9,7 +10,7 @@ export async function checkIfUserNeedsToInstallPlugins(template) {
         return false
     }
 
-    let installed = Object.keys(await Plugins.getInstalled())
+    const installed = Object.keys(await Plugins.getInstalled())
     // if no dependencies are required, then this will be false automatically
     const weNeedInstalls = required.length
         ? required.filter((plugin) => {
@@ -32,7 +33,7 @@ export async function checkIfUserNeedsToActivatePlugins(template) {
     if (!required.length) {
         return false
     }
-    let activated = Object.values(await Plugins.getActivated())
+    const activated = Object.values(await Plugins.getActivated())
     // if no dependencies are required, then this will be false automatically
     const weNeedActivations = required.length
         ? required.filter((plugin) => {

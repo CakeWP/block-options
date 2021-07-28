@@ -9,6 +9,7 @@ if (!defined('ABSPATH')) {
 
 use Extendify\ExtendifySdk\ApiRouter;
 use Extendify\ExtendifySdk\Controllers\AuthController;
+use Extendify\ExtendifySdk\Controllers\PingController;
 use Extendify\ExtendifySdk\Controllers\UserController;
 use Extendify\ExtendifySdk\Controllers\PluginController;
 use Extendify\ExtendifySdk\Controllers\TaxonomyController;
@@ -32,5 +33,7 @@ use Extendify\ExtendifySdk\Controllers\TemplateController;
 
         ApiRouter::post('/register', [AuthController::class, 'register']);
         ApiRouter::post('/login', [AuthController::class, 'login']);
+
+        ApiRouter::post('/simple-ping', [PingController::class, 'ping']);
     }
 );

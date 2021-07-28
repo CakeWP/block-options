@@ -9,6 +9,10 @@ export default function TaxonomyBreadcrumbs() {
             if (searchParams.type === 'template' && tax[0] === 'tax_pattern_types') {
                 return ''
             }
+            // Special exception for plugins (like metaslider) that won't have full page templates
+            if (searchParams.type === 'template' && tax[0] === 'tax_features') {
+                return ''
+            }
             // Special exception for page types
             if (searchParams.type === 'pattern' && tax[0] === 'tax_page_types') {
                 return ''

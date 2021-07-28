@@ -46,6 +46,10 @@ class Admin
         \add_action(
             'admin_enqueue_scripts',
             function ($hook) {
+                if (!current_user_can(App::$requiredCapability)) {
+                    return;
+                }
+
                 if (!$this->checkItsGutenbergPost($hook)) {
                     return;
                 }
@@ -99,6 +103,7 @@ class Admin
                 'root' => \esc_url_raw(rest_url(APP::$slug . '/' . APP::$apiVersion)),
                 'nonce' => \wp_create_nonce('wp_rest'),
                 'user' => json_decode(User::data('extendifysdk_user_data'), true),
+                'source' => \esc_attr(APP::$sourcePlugin),
             ]
         );
         \wp_enqueue_script(App::$slug . '-scripts');
