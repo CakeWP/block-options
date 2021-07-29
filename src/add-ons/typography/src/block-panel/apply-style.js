@@ -19,7 +19,7 @@ function applyFontStyle( attributes, blockName, wrapperProps ) {
 		style = wrapperProps.style;
 	}
 
-	if ( typeof editorskit_typography.family !== 'undefined' ) {
+	if ( typeof editorskit_typography !== 'undefined' && typeof editorskit_typography.family !== 'undefined' ) {
 		const googleFontData = find( GoogleFonts.fonts, [ 'name', editorskit_typography.family ] );
 		if ( googleFontData ) {
 			if ( [ 'core/heading' ].includes( blockName ) ) {

@@ -100,7 +100,7 @@ const withTypographySettings = createHigherOrderComponent( ( BlockListBlock ) =>
 		if ( ! hasBlockSupport( props.name, 'disableEditorsKitTypography' ) ) {
 			const { editorskit_typography } = props.attributes;
 
-			if ( typeof editorskit_typography.family !== 'undefined' && '' !== editorskit_typography.family ) {
+			if ( typeof editorskit_typography !== 'undefined' && typeof editorskit_typography.family !== 'undefined' && '' !== editorskit_typography.family ) {
 				customData = Object.assign( customData, { 'data-ek-typography': 1 } );
 			}
 

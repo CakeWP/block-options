@@ -53,6 +53,10 @@ const TypographySettings = ( props ) => {
 		editorskit_typography,
 	} = attributes;
 
+	if ( typeof editorskit_typography === 'undefined' ) {
+		return null;
+	}
+
 	const selectOptions = () => {
 		return [
 			{ label: __( 'Select Google Font', 'editorskit-typography-addon' ), value: '' },

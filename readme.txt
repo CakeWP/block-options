@@ -211,6 +211,9 @@ e.g.
 
 == Changelog ==
 
+= 1.31.5 =
+* Fixes: Prevent editor error when using Page Break block 🐛
+
 = 1.31.4 =
 * Fixes: WordPress 5.8 compatibility fixes 🐛
 * Fixes: Solve potential security vulnerabilities 🔒
