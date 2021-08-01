@@ -156,6 +156,11 @@ class EditorsKit_Render_Block {
 			// do display logic.
 			$logic = stripslashes( trim( $this->attributes['logic'] ) );
 
+			// return if logic has file_put_contents
+			if  ( strpos( $logic, 'file_put_contents' ) !== false ) {
+				return $block_content;
+			}
+
 			// allow override filters.
 			$logic = apply_filters( 'editorskit_logic_override', $logic );
 			$logic = apply_filters( 'block_options_logic_override', $logic );
