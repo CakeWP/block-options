@@ -8460,7 +8460,7 @@ var withTypographySettings = createHigherOrderComponent(function (BlockListBlock
         });
       }
 
-      wrapperProps = _objectSpread({}, wrapperProps, {
+      wrapperProps = _objectSpread({
         style: Object(_apply_style__WEBPACK_IMPORTED_MODULE_6__["default"])(props.attributes, props.name, wrapperProps)
       }, customData);
     }
