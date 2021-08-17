@@ -85,32 +85,37 @@ class EditorsKit_Features_Manager {
 	public function block_editor_settings( $editor_settings, $post ) {
 		if ( ! isset( $editor_settings['editorskit'] ) ) {
 
+			$items = array(
+				'acf'       => array(
+					'name'  => 'acf',
+					'label' => __( 'ACF Support', 'block-options' ),
+					'value' => true,
+				),
+				'devices'   => array(
+					'name'  => 'devices',
+					'label' => __( 'Devices', 'block-options' ),
+					'value' => true,
+				),
+				'userState' => array(
+					'name'  => 'userState',
+					'label' => __( 'User Login State', 'block-options' ),
+					'value' => true,
+				),
+			);
+
+			if ( defined( 'EDITORSKIT_ALLOW_EVAL' ) && true === EDITORSKIT_ALLOW_EVAL ) {
+				$items['logic'] = array(
+					'name'  => 'logic',
+					'label' => __( 'Display Logic', 'block-options' ),
+					'value' => true,
+				);
+			}
+
 			$editor_settings['editorskit'] = array(
 				'visibility' => array(
 					'name'  => 'visibility',
 					'label' => __( 'Visibility', 'block-options' ),
-					'items' => array(
-						'acf'       => array(
-							'name'  => 'acf',
-							'label' => __( 'ACF Support', 'block-options' ),
-							'value' => true,
-						),
-						'devices'   => array(
-							'name'  => 'devices',
-							'label' => __( 'Devices', 'block-options' ),
-							'value' => true,
-						),
-						'logic'     => array(
-							'name'  => 'logic',
-							'label' => __( 'Display Logic', 'block-options' ),
-							'value' => true,
-						),
-						'userState' => array(
-							'name'  => 'userState',
-							'label' => __( 'User Login State', 'block-options' ),
-							'value' => true,
-						),
-					),
+					'items' => $items,
 				),
 				'formats'    => array(
 					'name'  => 'formats',
@@ -329,6 +334,8 @@ class EditorsKit_Features_Manager {
 				),
 			);
 		}
+		//$editor_settings['editorskit'] = array(
+		//	'visibility' => array(
 
 		return $editor_settings;
 	}

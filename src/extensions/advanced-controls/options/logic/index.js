@@ -23,7 +23,7 @@ const LogicOptions = ( props ) => {
 				<TextareaControl
 					rows="2"
 					label={ __( 'Conditional Logic', 'block-options' ) }
-					help={ __( 'Add valid PHP conditional tags for custom & advanced visibility options.', 'block-options' ) }
+					help={ __( 'Add valid PHP conditional tags for custom & advanced visibility options.  The "editorskit_allow_unsafe_eval" filter must be set to true for tags to be evaluated.', 'block-options' ) }
 					value={ editorskit.logic ? editorskit.logic : null }
 					onChange={ ( newValue ) => {
 						delete editorskit.logic;

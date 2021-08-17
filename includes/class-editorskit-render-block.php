@@ -152,29 +152,32 @@ class EditorsKit_Render_Block {
 	 * @return mixed Returns the new block content.
 	 */
 	private function display_logic( $block_content ) {
-		if ( isset( $this->attributes['logic'] ) && ! empty( $this->attributes['logic'] ) ) {
-			// do display logic.
-			$logic = stripslashes( trim( $this->attributes['logic'] ) );
+		if ( defined( 'EDITORSKIT_ALLOW_EVAL' ) && true === EDITORSKIT_ALLOW_EVAL ) {
+			if ( isset( $this->attributes['logic'] ) && ! empty( $this->attributes['logic'] ) ) {
+				// do display logic.
+				$logic = stripslashes( trim( $this->attributes['logic'] ) );
 
-			// allow override filters.
-			$logic = apply_filters( 'editorskit_logic_override', $logic );
-			$logic = apply_filters( 'block_options_logic_override', $logic );
-			if ( false === $logic ) {
-				return '';
+				// allow override filters.
+				$logic = apply_filters( 'editorskit_logic_override', $logic );
+				$logic = apply_filters( 'block_options_logic_override', $logic );
+				if ( false === $logic ) {
+					return '';
+				}
+
+				if ( true === $logic ) {
+					return $block_content;
+				}
+
+				if ( stristr( $logic, 'return' ) === false ) {
+					$logic = 'return (' . html_entity_decode( $logic, ENT_COMPAT | ENT_HTML401 | ENT_QUOTES ) . ');';
+				}
+
+				// Ignore phpcs since warning is available as description on this feature.
+				if ( ! eval( $logic ) ) { // phpcs:ignore
+					return '';
+				}
 			}
 
-			if ( true === $logic ) {
-				return $block_content;
-			}
-
-			if ( stristr( $logic, 'return' ) === false ) {
-				$logic = 'return (' . html_entity_decode( $logic, ENT_COMPAT | ENT_HTML401 | ENT_QUOTES ) . ');';
-			}
-
-			// Ignore phpcs since warning is available as description on this feature.
-			if ( ! eval( $logic ) ) { // phpcs:ignore
-				return '';
-			}
 		}
 
 		return $block_content;
@@ -302,7 +305,7 @@ class EditorsKit_Render_Block {
 		if ( isset( $block['blockName'] ) && 'core/media-text' === $block['blockName'] ) {
 			$attributes = $block['attrs'];
 			if ( isset( $attributes['href'] ) && ! empty( $attributes['href'] ) ) {
-				$linked = '<a href="' . esc_attr( $attributes['href'] ) . '" class="editorskit-media-text-link"';
+				$linked = '<a href="' . esc_url( $attributes['href'] ) . '" class="editorskit-media-text-link"';
 				$rel    = 'rel="';
 
 				if ( isset( $attributes['linkTarget'] ) && '_blank' === $attributes['linkTarget'] ) {
