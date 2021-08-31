@@ -3,42 +3,246 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:132
-msgid "Typography Settings"
+#: src/admin/addon-settings.js:11
+msgid "This area provide settings for all activated EditorsKit add ons."
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:138
-msgid "Font Family"
+#: src/admin/block-manager/index.js:42
+msgid "Search for a block"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:147
-msgid "Font Weight"
+#: src/admin/block-manager/index.js:53
+msgid "%1$d block is disabled."
+msgid_plural "%1$d blocks are disabled."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/admin/block-manager/index.js:66
+msgid "Available block types"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:163
-msgid "Reset"
+#: src/admin/block-manager/index.js:71
+msgid "No blocks found."
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:62
-msgid "Select Google Font"
+#: src/blocks/import/components/edit.js:108
+msgid "Import from JSON"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:63
-msgid "Arial"
+#: src/blocks/import/components/edit.js:119
+msgid "Upload"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:64
-msgid "Helvetica"
+#: src/blocks/import/components/edit.js:76
+msgid "Invalid JSON file"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:65
-msgid "Times New Roman"
+#: src/blocks/import/components/edit.js:79
+msgid "Invalid Reusable Block JSON file"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:66
-msgid "Georgia"
+#: src/blocks/import/components/edit.js:82
+msgid "Unknown error"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:74
-msgid "Select Font Weight"
+#: src/blocks/import/components/edit.js:96
+msgid "Drag a file or upload a new one from your device."
+msgstr ""
+
+#: src/extensions/advanced-controls/options/state/index.js:43
+msgid "Hide on Loggedin Users"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/state/index.js:44
+msgid "Hidden when users are logged in."
+msgstr ""
+
+#: src/extensions/advanced-controls/options/state/index.js:44
+msgid "Toggle to hide this block when users are not logged in."
+msgstr ""
+
+#: src/extensions/advanced-controls/options/state/index.js:49
+msgid "Hide on Loggedout Users"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/state/index.js:50
+msgid "Hidden on guests or logged out users."
+msgstr ""
+
+#: src/extensions/advanced-controls/options/state/index.js:50
+msgid "Toggle to hide this block when users are guests or logged out."
+msgstr ""
+
+#: src/extensions/block-settings/set-as-featured/components/controls.js:28
+msgid "Remove as Featured Image"
+msgstr ""
+
+#: src/extensions/block-settings/set-as-featured/components/controls.js:29
+msgid "Set as Featured Image"
+msgstr ""
+
+#: src/extensions/block-settings/set-as-featured/components/controls.js:77
+msgid "Image Set as Featured."
+msgstr ""
+
+#: src/extensions/block-settings/set-as-featured/components/controls.js:88
+msgid "Featured Image Removed."
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-card/components/toolbar.js:65
+msgid "Show media on top"
+msgstr ""
+
+#: src/extensions/block-toolbar/media-text-card/components/toolbar.js:73
+msgid "Show media on bottom"
+msgstr ""
+
+#: src/extensions/components/featured-image/components/controls.js:23
+msgid "Featured Image"
+msgstr ""
+
+#: src/extensions/components/featured-image/components/controls.js:24
+msgid "Set Featured Image"
+msgstr ""
+
+#: src/extensions/components/featured-image/components/controls.js:25
+msgid "Remove Image"
+msgstr ""
+
+#: src/extensions/components/featured-image/components/controls.js:29
+msgid "To edit the featured image, you need permission to upload media."
+msgstr ""
+
+#: src/extensions/components/featured-image/components/controls.js:47
+msgid "Upload Featured Image"
+msgstr ""
+
+#: src/extensions/components/featured-image/components/controls.js:68
+msgid "Edit or update the image"
+msgstr ""
+
+#: src/extensions/components/featured-image/components/controls.js:93
+msgid "Replace Image"
+msgstr ""
+
+#: src/extensions/components/manager/components/index.js:41
+msgid "EditorsKit Settings"
+msgstr ""
+
+#: src/extensions/components/manager/components/index.js:45
+msgid "EditorsKit Features Manager"
+msgstr ""
+
+#: src/extensions/components/manager/components/index.js:47
+msgid "Close"
+msgstr ""
+
+#: src/extensions/components/markdown/components/config.js:11
+msgid "Large header (h2)"
+msgstr ""
+
+#: src/extensions/components/markdown/components/config.js:15
+msgid "Medium header (h3)"
+msgstr ""
+
+#: src/extensions/components/markdown/components/config.js:19
+msgid "Small header (h4)"
+msgstr ""
+
+#: src/extensions/components/markdown/components/config.js:23
+msgid "Numbered list"
+msgstr ""
+
+#: src/extensions/components/markdown/components/config.js:27
+msgid "Bulleted list"
+msgstr ""
+
+#: src/extensions/components/markdown/components/config.js:31
+msgid "Blockquote"
+msgstr ""
+
+#: src/extensions/components/markdown/components/config.js:35
+msgid "Italic"
+msgstr ""
+
+#: src/extensions/components/markdown/components/config.js:39
+msgid "Bold"
+msgstr ""
+
+#: src/extensions/components/markdown/components/config.js:43
+msgid "Strikethrough"
+msgstr ""
+
+#: src/extensions/components/markdown/components/config.js:47
+msgid "Code"
+msgstr ""
+
+#: src/extensions/components/markdown/components/config.js:7
+msgid "Markdown Formatting"
+msgstr ""
+
+#: src/extensions/components/reading-time/components/controls.js:53
+msgid "Reading Time"
+msgstr ""
+
+#: src/extensions/components/scroll-down/components/scrolldown.js:36
+msgid "View Custom Fields"
+msgstr ""
+
+#: src/extensions/disable-title/controls.js:66
+msgid "Hide  Title"
+msgstr ""
+
+#: src/extensions/disable-title/controls.js:69
+msgid "Title is hidden on your website."
+msgstr ""
+
+#: src/extensions/formats/justify/controls.js:29
+msgid "Justify"
+msgstr ""
+
+#: src/extensions/formats/link/components/edit.js:128
+msgid "Unlink"
+msgstr ""
+
+#: src/extensions/formats/link/components/edit.js:29
+msgid "Add Link"
+msgstr ""
+
+#: src/extensions/formats/link/components/edit.js:84
+msgid "Link removed."
+msgstr ""
+
+#: src/extensions/formats/link/components/url-input.js:111
+msgid "%d result found, use up and down arrow keys to navigate."
+msgid_plural "%d results found, use up and down arrow keys to navigate."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/extensions/formats/link/components/url-input.js:117
+msgid "No results."
+msgstr ""
+
+#: src/extensions/formats/link/components/url-input.js:201
+msgid "Link selected."
+msgstr ""
+
+#: src/extensions/formats/link/components/url-input.js:238
+msgid "URL"
+msgstr ""
+
+#: src/extensions/formats/link/components/url-input.js:243
+msgid "Paste URL or type to search"
+msgstr ""
+
+#: src/extensions/formats/link/components/url-input.js:280
+msgid "(no title)"
+msgstr ""
+
+#: src/extensions/formats/markdown/index.js:20
+msgid "Underline"
+msgstr ""
+
+#: src/extensions/formats/uppercase/index.js:19
+msgid "Uppercase"
 msgstr ""
