@@ -40,7 +40,7 @@ class EditorsKit_Post_Meta {
 				'show_in_rest'  => true,
 				'single'        => true,
 				'type'          => 'boolean',
-				'auth_callback' => function () {
+				'auth_callback' => function() {
 					return current_user_can( 'edit_posts' );
 				},
 			)
@@ -53,7 +53,7 @@ class EditorsKit_Post_Meta {
 				'show_in_rest'  => true,
 				'single'        => true,
 				'type'          => 'number',
-				'auth_callback' => function () {
+				'auth_callback' => function() {
 					return current_user_can( 'edit_posts' );
 				},
 			)

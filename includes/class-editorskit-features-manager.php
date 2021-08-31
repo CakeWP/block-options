@@ -78,7 +78,7 @@ class EditorsKit_Features_Manager {
 	 * Filters the settings to pass to the block editor.
 	 *
 	 * @param array  $editor_settings The editor settings.
-	 * @param object $post            The post being edited.
+	 * @param object $post The post being edited.
 	 *
 	 * @return array Returns updated editors settings.
 	 */
@@ -334,8 +334,8 @@ class EditorsKit_Features_Manager {
 				),
 			);
 		}
-		// $editor_settings['editorskit'] = array(
-		// 'visibility' => array(
+		//$editor_settings['editorskit'] = array(
+		//	'visibility' => array(
 
 		return $editor_settings;
 	}

@@ -93,7 +93,7 @@ class EditorsKit_Render_Block {
 			return $block['attrs']['editorskit'];
 		}
 
-		return array();
+		return [];
 	}
 
 	/**
@@ -106,7 +106,6 @@ class EditorsKit_Render_Block {
 	private function version_compatibility( $block ) {
 		if ( isset( $block['attrs'] ) && isset( $block['attrs']['blockOpts'] ) && is_array( $block['attrs'] ) ) {
 			$block_opts = $block['attrs']['blockOpts'];
-
 			return array(
 				'devices'        => false,
 				// phpcs:ignore WordPress.PHP.YodaConditions
@@ -189,6 +188,7 @@ class EditorsKit_Render_Block {
 					return '';
 				}
 			}
+
 		}
 
 		return $block_content;
@@ -308,7 +308,7 @@ class EditorsKit_Render_Block {
 	 * Set Media and Text Block link.
 	 *
 	 * @param mixed $block_content The block content.
-	 * @param array $block         The block data.
+	 * @param array $block The block data.
 	 *
 	 * @return mixed Returns the new block content.
 	 */
@@ -356,12 +356,12 @@ class EditorsKit_Render_Block {
 	 * Block link.
 	 *
 	 * @param mixed $block_content The block content.
-	 * @param array $block         The block data.
+	 * @param array $block The block data.
 	 *
 	 * @return mixed Returns the new block content.
 	 */
 	private function render_link_toolbar( $block_content, $block ) {
-		if ( isset( $block['blockName'] ) && ( in_array( $block['blockName'], array( 'core/group', 'core/column', 'core/cover' ), true ) ) ) {
+		if ( isset( $block['blockName'] ) && ( in_array( $block['blockName'], array( 'core/group', 'core/column', 'core/cover' ) ) ) ) {
 			$attributes = $block['attrs'];
 
 			if ( isset( $attributes['href'] ) && ! empty( $attributes['href'] ) ) {
@@ -400,7 +400,7 @@ class EditorsKit_Render_Block {
 	 * Render block.
 	 *
 	 * @param mixed $block_content The block content.
-	 * @param array $block         The block data.
+	 * @param array $block The block data.
 	 *
 	 * @return mixed Returns the new block content.
 	 */
@@ -423,7 +423,9 @@ class EditorsKit_Render_Block {
 		$block_content = $this->media_text_link( $block_content, $block );
 
 		// Add Block Link.
-		return $this->render_link_toolbar( $block_content, $block );
+		$block_content = $this->render_link_toolbar( $block_content, $block );
+
+		return $block_content;
 	}
 
 	/**

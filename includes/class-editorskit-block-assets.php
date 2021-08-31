@@ -122,19 +122,7 @@ class EditorsKit_Block_Assets {
 		wp_enqueue_script(
 			$this->slug . '-editor',
 			$this->url . '/build/index.js',
-			array(
-				'wp-blocks',
-				'wp-i18n',
-				'wp-element',
-				'wp-data',
-				'wp-plugins',
-				'wp-components',
-				'wp-edit-post',
-				'wp-api',
-				'wp-editor',
-				'wp-hooks',
-				'lodash',
-			),
+			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-data', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api', 'wp-editor', 'wp-hooks', 'lodash' ),
 			time(),
 			false
 		);
@@ -226,18 +214,15 @@ class EditorsKit_Block_Assets {
 	 */
 	function is_edit_or_new_admin_page() { // phpcs:ignore
 		global $pagenow;
-
 		return ( is_admin() && ( $pagenow === 'post.php' || $pagenow === 'post-new.php' ) ); // phpcs:ignore
 	}
 
 	/**
 	 * Hides admin bar on preview mode
 	 *
-	 * @param bool $bool A bool val.
-	 *
 	 * @return bool true or false
 	 */
-	public function hide_admin_bar( $bool ) {
+	function hide_admin_bar( $bool ) {
 		if ( get_query_var( 'editorskitPreview' ) ) {
 			return false;
 		}

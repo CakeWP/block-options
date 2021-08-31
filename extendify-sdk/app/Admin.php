@@ -11,7 +11,8 @@ use Extendify\ExtendifySdk\User;
 /**
  * This class handles any file loading for the admin area.
  */
-class Admin {
+class Admin
+{
 
     /**
      * The instance
@@ -25,8 +26,9 @@ class Admin {
      *
      * @return self|void
      */
-    public function __construct() {
-        if ( self::$instance ) {
+    public function __construct()
+    {
+        if (self::$instance) {
             return self::$instance;
         }
 
@@ -39,15 +41,16 @@ class Admin {
      *
      * @return void
      */
-    public function loadScripts() {
+    public function loadScripts()
+    {
         \add_action(
             'admin_enqueue_scripts',
-            function ( $hook ) {
-                if ( ! current_user_can( App::$requiredCapability ) ) {
+            function ($hook) {
+                if (!current_user_can(App::$requiredCapability)) {
                     return;
                 }
 
-                if ( ! $this->checkItsGutenbergPost( $hook ) ) {
+                if (!$this->checkItsGutenbergPost($hook)) {
                     return;
                 }
 
@@ -60,12 +63,12 @@ class Admin {
      * Makes sure we are on the correct page
      *
      * @param string $hook - An optional hook provided by WP to identify the page.
-     *
      * @return boolean
      */
-    public function checkItsGutenbergPost( $hook = '' ) {
-        if ( isset( $GLOBALS['typenow'] ) && use_block_editor_for_post_type( $GLOBALS['typenow'] ) ) {
-            return $hook && in_array( $hook, [ 'post.php', 'post-new.php' ], true );
+    public function checkItsGutenbergPost($hook = '')
+    {
+        if (isset($GLOBALS['typenow']) && use_block_editor_for_post_type($GLOBALS['typenow'])) {
+            return $hook && in_array($hook, ['post.php', 'post-new.php'], true);
         }
 
         return false;
@@ -76,7 +79,8 @@ class Admin {
      *
      * @return void
      */
-    public function addScopedScriptsAndStyles() {
+    public function addScopedScriptsAndStyles()
+    {
         $version = App::$environment === 'PRODUCTION' ? App::$version : uniqid();
 
         \wp_register_script(
@@ -96,15 +100,15 @@ class Admin {
             App::$slug . '-scripts',
             'extendifySdkData',
             [
-                'root'   => \esc_url_raw( rest_url( APP::$slug . '/' . APP::$apiVersion ) ),
-                'nonce'  => \wp_create_nonce( 'wp_rest' ),
-                'user'   => json_decode( User::data( 'extendifysdk_user_data' ), true ),
-                'source' => \esc_attr( APP::$sourcePlugin ),
+                'root' => \esc_url_raw(rest_url(APP::$slug . '/' . APP::$apiVersion)),
+                'nonce' => \wp_create_nonce('wp_rest'),
+                'user' => json_decode(User::data('extendifysdk_user_data'), true),
+                'source' => \esc_attr(APP::$sourcePlugin),
             ]
         );
-        \wp_enqueue_script( App::$slug . '-scripts' );
+        \wp_enqueue_script(App::$slug . '-scripts');
 
-        \wp_set_script_translations( App::$slug . '-scripts', App::$textDomain );
+        \wp_set_script_translations(App::$slug . '-scripts', App::$textDomain);
 
         \wp_enqueue_style(
             App::$slug . '-theme',
