@@ -30,7 +30,7 @@ class EditorsKit_Shortcodes {
 	/**
 	 * Register EditorsKit shortcode.
 	 *
-	 * @param array $atts The shortcode attributes.
+	 * @param array $atts    The shortcode attributes.
 	 * @param mixed $content The shortcode content.
 	 *
 	 * @return mixed Returns shortcode display.
@@ -72,10 +72,10 @@ class EditorsKit_Shortcodes {
 	/**
 	 * Calculate word count.
 	 *
-	 * @param array $atts The shortcode attributes.
+	 * @param array $atts    The shortcode attributes.
 	 * @param mixed $content The shortcode content.
 	 *
-	 * @return mixed Returns wordcount with content.
+	 * @return false|string Returns wordcount with content.
 	 */
 	public function wordcount( $atts, $content ) {
 		global $post;
@@ -105,7 +105,7 @@ class EditorsKit_Shortcodes {
 					if ( in_array( $block['blockName'], $media_blocks ) ) { // phpcs:ignore
 						$word_per_seconds = $word_per_seconds + $i;
 						if ( $i > 3 ) {
-							$i--;
+							$i --;
 						}
 					}
 				}

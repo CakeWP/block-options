@@ -140,12 +140,10 @@ class EditorsKit_ACF_Support {
 
 	/**
 	 * Permissions callback for requests
-	 *
 	 * Checks if user is logged in.
 	 *
-	 * @since 0.1.0
-	 *
 	 * @return bool
+	 * @since 0.1.0
 	 */
 	public function permissions() {
 		return is_user_logged_in();

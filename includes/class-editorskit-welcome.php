@@ -14,10 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 	/**
 	 * EditorsKit_Welcome Class
-	 *
 	 * A general class for About and Credits page.
 	 *
-	 * @since 1.0
+	 * @since   1.0
 	 * @package EditorsKit
 	 */
 	class EditorsKit_Welcome {
@@ -63,7 +62,6 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 
 		/**
 		 * Load Scripts
-		 *
 		 * Enqueues the required scripts.
 		 *
 		 * @return void
@@ -77,9 +75,9 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 			// Make sure all blocks plugin were registered.
 			$block_categories = array();
 			if ( function_exists( 'gutenberg_get_block_categories' ) ) {
-					$block_categories = gutenberg_get_block_categories( get_post() );
+				$block_categories = gutenberg_get_block_categories( get_post() );
 			} elseif ( function_exists( 'get_block_categories' ) ) {
-					$block_categories = get_block_categories( get_post() );
+				$block_categories = get_block_categories( get_post() );
 			}
 			wp_add_inline_script(
 				'wp-blocks',
@@ -111,7 +109,20 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 			wp_enqueue_script(
 				$this->slug . '-admin',
 				$this->url . '/build/settings.js',
-				array( 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-api', 'wp-data', 'wp-hooks', 'wp-edit-post', 'lodash', 'wp-block-library', 'wp-block-editor', 'wp-editor' ),
+				array(
+					'wp-i18n',
+					'wp-element',
+					'wp-plugins',
+					'wp-components',
+					'wp-api',
+					'wp-data',
+					'wp-hooks',
+					'wp-edit-post',
+					'lodash',
+					'wp-block-library',
+					'wp-block-editor',
+					'wp-editor',
+				),
 				time(),
 				false
 			);
@@ -126,8 +137,8 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 				'url'             => EDITORSKIT_PLUGIN_URL,
 				'dir'             => EDITORSKIT_PLUGIN_DIR,
 				'plugin'          => array(
-					'url'             => EDITORSKIT_PLUGIN_URL,
-					'dir'             => EDITORSKIT_PLUGIN_DIR,
+					'url' => EDITORSKIT_PLUGIN_URL,
+					'dir' => EDITORSKIT_PLUGIN_DIR,
 				),
 				'licenses'        => array(
 					'typography' => get_option( 'editorskit_typography_addon_license_active' ),
@@ -157,7 +168,7 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 		/**
 		 * Render page content.
 		 */
-		public function welcome_content(){ ?>
+		public function welcome_content() { ?>
 			<div class="editorskit-settings-wrap"></div>
 			<?php
 		}
@@ -180,18 +191,19 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 
 				<div class="notice notice-success is-dismissible">
 					<p>
-					<?php
+						<?php
 						echo sprintf(
-							/* translators: %s: EditorsKit settings page link */
+						/* translators: %s: EditorsKit settings page link */
 							esc_html__( 'Thank you for installing and activating EditorsKit Plugin. Please go to %1$sSettings > EditorsKit%2$s to get started.', 'block-options' ),
 							'<a href="' . esc_url( admin_url( 'options-general.php?page=editorskit-getting-started' ) ) . '" style="font-weight:700; text-decoration:none;">',
 							'</a>'
 						);
-					?>
+						?>
 					</p>
 				</div>
 
-		<?php }
+				<?php
+			}
 		}
 
 		/**
@@ -207,10 +219,9 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 			}
 		}
 	}
+
 	new EditorsKit_Welcome();
 }
 
 // Redirect to the welcome screen.
 register_activation_hook( EDITORSKIT_PLUGIN_FILE, array( 'EditorsKit_Welcome', 'add_activation_marker' ) );
-
-?>

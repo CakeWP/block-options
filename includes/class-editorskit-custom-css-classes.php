@@ -77,7 +77,7 @@ class EditorsKit_Custom_CSS_Classes {
 	 * Add new block editor settings for custom classes.
 	 *
 	 * @param array  $editor_settings The editor settings.
-	 * @param object $post The post being edited.
+	 * @param object $post            The post being edited.
 	 *
 	 * @return array Returns updated editors settings.
 	 */

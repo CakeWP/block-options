@@ -9,6 +9,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
 /**
  * Load google fonts and custom CSS
  *
@@ -21,6 +22,7 @@ class EditorsKit_Typography_Font_Loader {
 	 * @var EditorsKit_Typography_Font_Loader
 	 */
 	private static $instance;
+
 	/**
 	 * Registers the plugin.
 	 */
@@ -29,13 +31,14 @@ class EditorsKit_Typography_Font_Loader {
 			self::$instance = new EditorsKit_Typography_Font_Loader();
 		}
 	}
+
 	/**
 	 * The Constructor.
 	 */
 	public function __construct() {
-		$isEnabled = get_option( 'editorskit_typography_enabled', 1 );
-		
-		if ( $isEnabled ) {
+		$is_enabled = get_option( 'editorskit_typography_enabled', 1 );
+
+		if ( $is_enabled ) {
 			add_filter( 'body_class', array( $this, 'body_class' ) );
 			add_filter( 'admin_body_class', array( $this, 'body_class' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'fonts_loader' ) );
@@ -80,11 +83,11 @@ class EditorsKit_Typography_Font_Loader {
 			}
 
 			if ( $meta && ! isset( $meta['type'] ) ) {
-				$customFonts = json_decode( get_option( 'editorskit_typography_custom' ), true );
-				$isCustom    = true;
+				$custom_fonts = json_decode( get_option( 'editorskit_typography_custom' ), true );
+				$is_custom    = true;
 
-				if ( isset( $customFonts[ $id ] ) ) {
-					$meta = $customFonts[ $id ];
+				if ( isset( $custom_fonts[ $id ] ) ) {
+					$meta = $custom_fonts[ $id ];
 				}
 			}
 
@@ -121,31 +124,31 @@ class EditorsKit_Typography_Font_Loader {
 						$classes[] = 'ek-has-header-font-family';
 					}
 
-					for ( $i = 1; $i < 7; $i++ ) {
+					for ( $i = 1; $i < 7; $i ++ ) {
 						if ( isset( $heading[ 'H' . $i ] ) ) {
-							$innerHeading = $heading[ 'H' . $i ];
+							$inner_heading = $heading[ 'H' . $i ];
 
-							if ( isset( $innerHeading['font-size'] ) ) {
+							if ( isset( $inner_heading['font-size'] ) ) {
 								$classes[] = 'ek-has-H' . $i . '-font-size';
 							}
 
-							if ( isset( $innerHeading['font-weight'] ) ) {
+							if ( isset( $inner_heading['font-weight'] ) ) {
 								$classes[] = 'ek-has-H' . $i . '-font-weight';
 							}
 
-							if ( isset( $innerHeading['line-height'] ) ) {
+							if ( isset( $inner_heading['line-height'] ) ) {
 								$classes[] = 'ek-has-H' . $i . '-line-height';
 							}
 
-							if ( isset( $innerHeading['letter-spacing'] ) ) {
+							if ( isset( $inner_heading['letter-spacing'] ) ) {
 								$classes[] = 'ek-has-H' . $i . '-letter-spacing';
 							}
 
-							if ( isset( $innerHeading['text-transform'] ) ) {
+							if ( isset( $inner_heading['text-transform'] ) ) {
 								$classes[] = 'ek-has-H' . $i . '-text-transform';
 							}
 
-							if ( isset( $innerHeading['title'] ) && $innerHeading['title'] ) {
+							if ( isset( $inner_heading['title'] ) && $inner_heading['title'] ) {
 								$classes[] = 'ek-apply-H' . $i . '-to-title';
 							}
 						}
@@ -198,14 +201,15 @@ class EditorsKit_Typography_Font_Loader {
 		global $post;
 
 		if ( $post && isset( $post->ID ) ) {
-			$meta     = get_post_meta( $post->ID, '_editorskit_typography_data', true );
-			$options  = get_option( 'editorskit_typography_default' );
-			$isCustom = false;
-			$id       = null;
-			$style    = '<style id="editorskit-typography-inline-css"></style>';
+			$meta      = get_post_meta( $post->ID, '_editorskit_typography_data', true );
+			$options   = get_option( 'editorskit_typography_default' );
+			$is_custom = false;
+			$id        = null;
+			$style     = '<style id="editorskit-typography-inline-css"></style>';
 
 			if ( $meta && isset( $meta['meta'] ) && isset( $meta['meta']['disabled'] ) ) {
 				echo wp_kses( $style, array( 'style' ) );
+
 				return false;
 			}
 
@@ -225,17 +229,17 @@ class EditorsKit_Typography_Font_Loader {
 			}
 
 			if ( $meta && ! isset( $meta['type'] ) ) {
-				$customFonts = json_decode( get_option( 'editorskit_typography_custom' ), true );
-				$isCustom    = true;
+				$custom_fonts = json_decode( get_option( 'editorskit_typography_custom' ), true );
+				$is_custom    = true;
 
-				if ( isset( $customFonts[ $id ] ) ) {
+				if ( isset( $custom_fonts[ $id ] ) ) {
 					// print_r($meta );
-					$meta = $customFonts[ $id ];
+					$meta = $custom_fonts[ $id ];
 				}
 			}
 
 			if ( $meta ) {
-				$this->fonts_loader_default( $meta, $isCustom );
+				$this->fonts_loader_default( $meta, $is_custom );
 			} else {
 				$this->block_level_fonts();
 				echo $style;
@@ -248,8 +252,8 @@ class EditorsKit_Typography_Font_Loader {
 	 *
 	 * @access private
 	 */
-	private function wrap_font_family( $family, $isCustom ) {
-		if ( $isCustom ) {
+	private function wrap_font_family( $family, $is_custom ) {
+		if ( $is_custom ) {
 			return "'" . $family . "'";
 		}
 
@@ -259,80 +263,83 @@ class EditorsKit_Typography_Font_Loader {
 	/**
 	 * Default fonts loader.
 	 *
+	 * @param array $font_data Font data.
+	 * @param bool  $is_custom Custom flag.
+	 *
 	 * @access public
 	 */
-	public function fonts_loader_default( $fontData, $isCustom = false ) {
+	public function fonts_loader_default( $font_data, $is_custom = false ) {
 
-		$variables   = '';
-		$googleFonts = '';
+		$variables    = '';
+		$google_fonts = '';
 
-		if ( isset( $fontData['content'] ) ) {
-			$content = $fontData['content'];
+		if ( isset( $font_data['content'] ) ) {
+			$content = $font_data['content'];
 
 			if ( isset( $content['font-family'] ) ) {
-				$variables .= '--ek-font-family: ' . $this->wrap_font_family( $fontData['content']['font-family'], $isCustom ) . ';';
+				$variables .= '--ek-font-family: ' . $this->wrap_font_family( $font_data['content']['font-family'], $is_custom ) . ';';
 			}
 
 			if ( isset( $content['font-weight'] ) ) {
-				$variables .= '--ek-font-weight: ' . $fontData['content']['font-weight'] . ';';
+				$variables .= '--ek-font-weight: ' . $font_data['content']['font-weight'] . ';';
 			}
 
 			if ( isset( $content['font-size'] ) ) {
-				$variables .= '--ek-font-size: ' . $fontData['content']['font-size'] . $fontData['content']['font-size-unit'] . ';';
+				$variables .= '--ek-font-size: ' . $font_data['content']['font-size'] . $font_data['content']['font-size-unit'] . ';';
 			}
 
 			if ( isset( $content['line-height'] ) ) {
-				$variables .= '--ek-line-height: ' . $fontData['content']['line-height'] . $fontData['content']['line-height-unit'] . ';';
+				$variables .= '--ek-line-height: ' . $font_data['content']['line-height'] . $font_data['content']['line-height-unit'] . ';';
 			}
 
 			if ( isset( $content['letter-spacing'] ) ) {
-				$variables .= '--ek-letter-spacing: ' . $fontData['content']['letter-spacing'] . $fontData['content']['letter-spacing-unit'] . ';';
+				$variables .= '--ek-letter-spacing: ' . $font_data['content']['letter-spacing'] . $font_data['content']['letter-spacing-unit'] . ';';
 			}
 		}
 
-		if ( isset( $fontData['heading'] ) ) {
-			$heading = $fontData['heading'];
+		if ( isset( $font_data['heading'] ) ) {
+			$heading = $font_data['heading'];
 
 			if ( isset( $heading['font-family'] ) ) {
-				$variables .= '--ek-heading-font-family: ' . $this->wrap_font_family( $heading['font-family'], $isCustom ) . ';';
+				$variables .= '--ek-heading-font-family: ' . $this->wrap_font_family( $heading['font-family'], $is_custom ) . ';';
 			}
 
 			if ( isset( $heading['font-weight'] ) ) {
 				$variables .= '--ek-heading-font-weight: ' . $heading['font-weight'] . ';';
 			}
 
-			for ( $i = 1; $i < 7; $i++ ) {
+			for ( $i = 1; $i < 7; $i ++ ) {
 				if ( isset( $heading[ 'H' . $i ] ) ) {
-					$innerHeading = $heading[ 'H' . $i ];
+					$inner_heading = $heading[ 'H' . $i ];
 
-					if ( isset( $innerHeading['font-weight'] ) ) {
-						$variables .= '--ek-H' . $i . '-font-weight: ' . $innerHeading['font-weight'] . ';';
+					if ( isset( $inner_heading['font-weight'] ) ) {
+						$variables .= '--ek-H' . $i . '-font-weight: ' . $inner_heading['font-weight'] . ';';
 					}
 
-					if ( isset( $innerHeading['font-size'] ) ) {
-						$variables .= '--ek-H' . $i . '-font-size: ' . $innerHeading['font-size'] . $innerHeading['font-size-unit'] . ';';
+					if ( isset( $inner_heading['font-size'] ) ) {
+						$variables .= '--ek-H' . $i . '-font-size: ' . $inner_heading['font-size'] . $inner_heading['font-size-unit'] . ';';
 					}
 
-					if ( isset( $innerHeading['line-height'] ) ) {
-						$variables .= '--ek-H' . $i . '-line-height: ' . $innerHeading['line-height'] . $innerHeading['line-height-unit'] . ';';
+					if ( isset( $inner_heading['line-height'] ) ) {
+						$variables .= '--ek-H' . $i . '-line-height: ' . $inner_heading['line-height'] . $inner_heading['line-height-unit'] . ';';
 					}
 
-					if ( isset( $innerHeading['letter-spacing'] ) ) {
-						$variables .= '--ek-H' . $i . '-letter-spacing: ' . $innerHeading['letter-spacing'] . $innerHeading['letter-spacing-unit'] . ';';
+					if ( isset( $inner_heading['letter-spacing'] ) ) {
+						$variables .= '--ek-H' . $i . '-letter-spacing: ' . $inner_heading['letter-spacing'] . $inner_heading['letter-spacing-unit'] . ';';
 					}
 
-					if ( isset( $innerHeading['text-transform'] ) ) {
-						$variables .= '--ek-H' . $i . '-text-transform: ' . $innerHeading['text-transform'] . ';';
+					if ( isset( $inner_heading['text-transform'] ) ) {
+						$variables .= '--ek-H' . $i . '-text-transform: ' . $inner_heading['text-transform'] . ';';
 					}
 				}
 			}
 		}
 
-		if ( isset( $fontData['button'] ) ) {
-			$button = $fontData['button'];
+		if ( isset( $font_data['button'] ) ) {
+			$button = $font_data['button'];
 
 			if ( isset( $button['font-family'] ) ) {
-				$variables .= '--ek-button-font-family: ' . $this->wrap_font_family( $button['font-family'], $isCustom ) . ';';
+				$variables .= '--ek-button-font-family: ' . $this->wrap_font_family( $button['font-family'], $is_custom ) . ';';
 			}
 
 			if ( isset( $button['font-weight'] ) ) {
@@ -356,53 +363,53 @@ class EditorsKit_Typography_Font_Loader {
 			}
 		}
 
-		if ( isset( $fontData['fonts'] ) ) {
-			if ( $isCustom ) {
-				foreach ( $fontData['fonts'] as $fontKey => $fontValue ) {
-					$googleFonts .= str_replace( ' ', '+', $fontValue['name'] );
+		if ( isset( $font_data['fonts'] ) ) {
+			if ( $is_custom ) {
+				foreach ( $font_data['fonts'] as $font_key => $font_value ) {
+					$google_fonts .= str_replace( ' ', '+', $font_value['name'] );
 
-					if ( isset( $fontValue['weights'] ) && ! empty( $fontValue['weights'] ) ) {
-						$googleFonts .= ':' . $fontValue['weights'];
+					if ( isset( $font_value['weights'] ) && ! empty( $font_value['weights'] ) ) {
+						$google_fonts .= ':' . $font_value['weights'];
 					}
 
-					$googleFonts .= '|';
+					$google_fonts .= '|';
 				}
 			} else {
-				$googleFonts = implode( '|', $fontData['fonts'] );
+				$google_fonts = implode( '|', $font_data['fonts'] );
 			}
 		}
 
-		// Block level typography
-		$blocksTypography = get_post_meta( get_the_ID(), '_editorskit_blocks_typography', true );
-		if ( $blocksTypography ) {
-			$blocksTypography = explode( '|', $blocksTypography );
-			$blocksTypography = array_filter( array_unique( $blocksTypography ) );
+		// Block level typography.
+		$blocks_typography = get_post_meta( get_the_ID(), '_editorskit_blocks_typography', true );
+		if ( $blocks_typography ) {
+			$blocks_typography = explode( '|', $blocks_typography );
+			$blocks_typography = array_filter( array_unique( $blocks_typography ) );
 
-			$googleFonts = explode( '|', $googleFonts );
+			$google_fonts = explode( '|', $google_fonts );
 
-			// merge
-			$googleFonts = array_merge( $googleFonts, $blocksTypography );
-			$googleFonts = array_filter( array_unique( $googleFonts ) );
+			// merge.
+			$google_fonts = array_merge( $google_fonts, $blocks_typography );
+			$google_fonts = array_filter( array_unique( $google_fonts ) );
 
 			if ( defined( 'PHP_VERSION' ) && version_compare( PHP_VERSION, '7.4.0', '>' ) ) {
-				$googleFonts = implode( '|', $googleFonts );
+				$google_fonts = implode( '|', $google_fonts );
 			} else {
-				$googleFonts = implode( $googleFonts, '|' );
+				$google_fonts = implode( $google_fonts, '|' );
 			}
 		}
 
-		if ( ! empty( $googleFonts ) ) {
-			if ( $isCustom ) {
+		if ( ! empty( $google_fonts ) ) {
+			if ( $is_custom ) {
 				wp_enqueue_style(
 					'editorskit-typography-fonts',
-					add_query_arg( array( 'family' => rtrim( $googleFonts, '|' ) ), '//fonts.googleapis.com/css' ),
+					add_query_arg( array( 'family' => rtrim( $google_fonts, '|' ) ), '//fonts.googleapis.com/css' ),
 					array(),
 					EDITORSKIT_VERSION
 				);
 			} else {
 				wp_enqueue_style(
 					'editorskit-typography-fonts',
-					add_query_arg( array( 'family' => $googleFonts ), '//fonts.googleapis.com/css' ),
+					add_query_arg( array( 'family' => $google_fonts ), '//fonts.googleapis.com/css' ),
 					array(),
 					EDITORSKIT_VERSION
 				);
@@ -428,13 +435,13 @@ class EditorsKit_Typography_Font_Loader {
 		if ( isset( $post->ID ) ) {
 			$meta = get_post_meta( $post->ID, '_editorskit_blocks_typography', true );
 			if ( $meta ) {
-				$meta        = explode( '|', $meta );
-				$meta        = array_filter( array_unique( $meta ) );
-				$googleFonts = implode( $meta, '|' );
+				$meta         = explode( '|', $meta );
+				$meta         = array_filter( array_unique( $meta ) );
+				$google_fonts = implode( $meta, '|' );
 
 				wp_enqueue_style(
 					'editorskit-typography-fonts',
-					add_query_arg( array( 'family' => $googleFonts ), '//fonts.googleapis.com/css' ),
+					add_query_arg( array( 'family' => $google_fonts ), '//fonts.googleapis.com/css' ),
 					array(),
 					EDITORSKIT_VERSION
 				);
@@ -446,6 +453,9 @@ class EditorsKit_Typography_Font_Loader {
 	/**
 	 * Preconnect Google Fonts for faster loading.
 	 *
+	 * @param array  $urls URL array.
+	 * @param string $relation_type Relation type.
+	 *
 	 * @access public
 	 */
 	public function resource_hints( $urls, $relation_type ) {
@@ -455,7 +465,9 @@ class EditorsKit_Typography_Font_Loader {
 				'crossorigin',
 			);
 		}
+
 		return $urls;
 	}
 }
+
 EditorsKit_Typography_Font_Loader::register();

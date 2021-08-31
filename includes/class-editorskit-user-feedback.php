@@ -2,7 +2,6 @@
 /**
  * Plugin review class.
  * Prompts users to give a review of the plugin on WordPress.org after a period of usage.
- *
  * Heavily based on code by CoBlocks
  * https://github.com/coblocks/coblocks/blob/master/includes/admin/class-coblocks-feedback.php
  *
@@ -174,119 +173,135 @@ class EditorsKit_User_Feedback {
 			$time       = $this->seconds_to_words( time() - get_site_option( $this->date_option ) );
 			?>
 
-		<style>
-		.notice.editorskit-notice {
-			border-left-color: #272c51 !important;
-			padding: 20px;
-		}
-		.rtl .notice.editorskit-notice {
-			border-right-color: #272c51 !important;
-		}
-		.notice.notice.editorskit-notice .editorskit-notice-inner {
-			display: table;
-			width: 100%;
-		}
-		.notice.editorskit-notice .editorskit-notice-inner .editorskit-notice-icon,
-		.notice.editorskit-notice .editorskit-notice-inner .editorskit-notice-content,
-		.notice.editorskit-notice .editorskit-notice-inner .editorskit-install-now {
-			display: table-cell;
-			vertical-align: middle;
-		}
-		.notice.editorskit-notice .editorskit-notice-icon {
-			color: #509ed2;
-			font-size: 13px;
-			width: 60px;
-		}
-		.notice.editorskit-notice .editorskit-notice-icon img {
-			width: 64px;
-		}
-		.notice.editorskit-notice .editorskit-notice-content {
-			padding: 0 40px 0 20px;
-		}
-		.notice.editorskit-notice p {
-			padding: 0;
-			margin: 0;
-		}
-		.notice.editorskit-notice h3 {
-			margin: 0 0 5px;
-		}
-		.notice.editorskit-notice .editorskit-install-now {
-			text-align: center;
-		}
-		.notice.editorskit-notice .editorskit-install-now .editorskit-install-button {
-			padding: 6px 50px;
-			height: auto;
-			line-height: 20px;
-			background: #32396a;
-			border-color: #272c51 #0f153e #040823;
-			box-shadow: 0 1px 0 #0d1f82;
-			text-shadow: 0 -1px 1px #272c51, 1px 0 1px #171b3e, 0 1px 1px #0a1035, -1px 0 1px #040721;
-		}
-		.notice.editorskit-notice .editorskit-install-now .editorskit-install-button:hover {
-			background: #272c51;
-		}
-		.notice.editorskit-notice a.no-thanks {
-			display: block;
-			margin-top: 10px;
-			color: #72777c;
-			text-decoration: none;
-		}
+			<style>
+				.notice.editorskit-notice {
+					border-left-color: #272c51 !important;
+					padding: 20px;
+				}
 
-		.notice.editorskit-notice a.no-thanks:hover {
-			color: #444;
-		}
+				.rtl .notice.editorskit-notice {
+					border-right-color: #272c51 !important;
+				}
 
-		@media (max-width: 767px) {
+				.notice.notice.editorskit-notice .editorskit-notice-inner {
+					display: table;
+					width: 100%;
+				}
 
-			.notice.notice.editorskit-notice .editorskit-notice-inner {
-				display: block;
-			}
-			.notice.editorskit-notice {
-				padding: 20px !important;
-			}
-			.notice.editorskit-noticee .editorskit-notice-inner {
-				display: block;
-			}
-			.notice.editorskit-notice .editorskit-notice-inner .editorskit-notice-content {
-				display: block;
-				padding: 0;
-			}
-			.notice.editorskit-notice .editorskit-notice-inner .editorskit-notice-icon {
-				display: none;
-			}
+				.notice.editorskit-notice .editorskit-notice-inner .editorskit-notice-icon,
+				.notice.editorskit-notice .editorskit-notice-inner .editorskit-notice-content,
+				.notice.editorskit-notice .editorskit-notice-inner .editorskit-install-now {
+					display: table-cell;
+					vertical-align: middle;
+				}
 
-			.notice.editorskit-notice .editorskit-notice-inner .editorskit-install-now {
-				margin-top: 20px;
-				display: block;
-				text-align: left;
-			}
+				.notice.editorskit-notice .editorskit-notice-icon {
+					color: #509ed2;
+					font-size: 13px;
+					width: 60px;
+				}
 
-			.notice.editorskit-notice .editorskit-notice-inner .no-thanks {
-				display: inline-block;
-				margin-left: 15px;
-			}
-		}
-		</style>
-		<div class="notice updated editorskit-notice">
-			<div class="editorskit-notice-inner">
-				<div class="editorskit-notice-icon">
-					<?php /* translators: 1. Name */ ?>
-					<img src="<?php echo esc_url( EDITORSKIT_PLUGIN_URL . '/build/images/icon-256x256.jpg' ); ?>" alt="<?php printf( esc_attr__( '%s WordPress Plugin', 'block-options' ), esc_attr( $this->name ) ); ?>" />
-				</div>
-				<div class="editorskit-notice-content">
-					<?php /* translators: 1. Name */ ?>
-					<h3><?php printf( esc_html__( 'Are you enjoying %s Plugin?', 'block-options' ), esc_html( $this->name ) ); ?></h3>
-					<p>
-						<?php /* translators: 1. Name, 2. Time */ ?>
-						<?php printf( esc_html__( 'You have been using %1$s for %2$s now. Mind leaving a review to let us know know what you think? We\'d really appreciate it!', 'block-options' ), esc_html( $this->name ), esc_html( $time ) ); ?>
-					</p>
-				</div>
-				<div class="editorskit-install-now">
-					<?php printf( '<a href="%1$s" class="button button-primary editorskit-install-button" target="_blank">%2$s</a>', esc_url( 'https://wordpress.org/support/view/plugin-reviews/block-options#new-post' ), esc_html__( 'Leave a Review', 'block-options' ) ); ?>
-					<a href="<?php echo esc_url( $no_bug_url ); ?>" class="no-thanks"><?php echo esc_html__( 'No thanks / I already have', 'block-options' ); ?></a>
+				.notice.editorskit-notice .editorskit-notice-icon img {
+					width: 64px;
+				}
+
+				.notice.editorskit-notice .editorskit-notice-content {
+					padding: 0 40px 0 20px;
+				}
+
+				.notice.editorskit-notice p {
+					padding: 0;
+					margin: 0;
+				}
+
+				.notice.editorskit-notice h3 {
+					margin: 0 0 5px;
+				}
+
+				.notice.editorskit-notice .editorskit-install-now {
+					text-align: center;
+				}
+
+				.notice.editorskit-notice .editorskit-install-now .editorskit-install-button {
+					padding: 6px 50px;
+					height: auto;
+					line-height: 20px;
+					background: #32396a;
+					border-color: #272c51 #0f153e #040823;
+					box-shadow: 0 1px 0 #0d1f82;
+					text-shadow: 0 -1px 1px #272c51, 1px 0 1px #171b3e, 0 1px 1px #0a1035, -1px 0 1px #040721;
+				}
+
+				.notice.editorskit-notice .editorskit-install-now .editorskit-install-button:hover {
+					background: #272c51;
+				}
+
+				.notice.editorskit-notice a.no-thanks {
+					display: block;
+					margin-top: 10px;
+					color: #72777c;
+					text-decoration: none;
+				}
+
+				.notice.editorskit-notice a.no-thanks:hover {
+					color: #444;
+				}
+
+				@media (max-width: 767px) {
+
+					.notice.notice.editorskit-notice .editorskit-notice-inner {
+						display: block;
+					}
+
+					.notice.editorskit-notice {
+						padding: 20px !important;
+					}
+
+					.notice.editorskit-noticee .editorskit-notice-inner {
+						display: block;
+					}
+
+					.notice.editorskit-notice .editorskit-notice-inner .editorskit-notice-content {
+						display: block;
+						padding: 0;
+					}
+
+					.notice.editorskit-notice .editorskit-notice-inner .editorskit-notice-icon {
+						display: none;
+					}
+
+					.notice.editorskit-notice .editorskit-notice-inner .editorskit-install-now {
+						margin-top: 20px;
+						display: block;
+						text-align: left;
+					}
+
+					.notice.editorskit-notice .editorskit-notice-inner .no-thanks {
+						display: inline-block;
+						margin-left: 15px;
+					}
+				}
+			</style>
+			<div class="notice updated editorskit-notice">
+				<div class="editorskit-notice-inner">
+					<div class="editorskit-notice-icon">
+						<?php /* translators: 1. Name */ ?>
+						<img src="<?php echo esc_url( EDITORSKIT_PLUGIN_URL . '/build/images/icon-256x256.jpg' ); ?>" alt="<?php printf( esc_attr__( '%s WordPress Plugin', 'block-options' ), esc_attr( $this->name ) ); ?>"/>
+					</div>
+					<div class="editorskit-notice-content">
+						<?php /* translators: 1. Name */ ?>
+						<h3><?php printf( esc_html__( 'Are you enjoying %s Plugin?', 'block-options' ), esc_html( $this->name ) ); ?></h3>
+						<p>
+							<?php /* translators: 1. Name, 2. Time */ ?>
+							<?php printf( esc_html__( 'You have been using %1$s for %2$s now. Mind leaving a review to let us know know what you think? We\'d really appreciate it!', 'block-options' ), esc_html( $this->name ), esc_html( $time ) ); ?>
+						</p>
+					</div>
+					<div class="editorskit-install-now">
+						<?php printf( '<a href="%1$s" class="button button-primary editorskit-install-button" target="_blank">%2$s</a>', esc_url( 'https://wordpress.org/support/view/plugin-reviews/block-options#new-post' ), esc_html__( 'Leave a Review', 'block-options' ) ); ?>
+						<a href="<?php echo esc_url( $no_bug_url ); ?>" class="no-thanks"><?php echo esc_html__( 'No thanks / I already have', 'block-options' ); ?></a>
+					</div>
 				</div>
 			</div>
-		</div>
 			<?php
 		}
 	}
