@@ -31,13 +31,13 @@ class ManageAutoSave extends Component {
 	}
 
 	sync() {
-		const { isAvailable, isActive, isDisabled, editorSettings } = this.props;
+		const { isActive, isDisabled, editorSettings } = this.props;
 
 		let autosaveInterval = 60;
 		const prompt = document.querySelector( '.editorskit-auto-save-disabled--label' );
 
 		//update autosave interval
-		if ( ! isActive && ! isDisabled && typeof isAvailable !== 'undefined' ) {
+		if ( ! isActive && ! isDisabled ) {
 			autosaveInterval = 259200; // 3days in seconds
 		}
 
@@ -86,7 +86,6 @@ class ManageAutoSave extends Component {
 
 export default compose( [
 	withSelect( () => ( {
-		isAvailable: select( 'core/edit-post' ).getPreference( 'features' ).editorskitAutoSave,
 		isActive: select( 'core/edit-post' ).isFeatureActive( 'editorskitAutoSave' ),
 		isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitAutosaveTools' ),
 		editorSettings: select( 'core/editor' ).getEditorSettings(),
