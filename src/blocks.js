@@ -26,7 +26,6 @@ import './extensions/disable-title';
 
 //Components on Dropdown Menu
 import './extensions/components/preview';
-import './extensions/components/autosave';
 import './extensions/components/guidelines';
 import './extensions/components/editor-height';
 import './extensions/components/markdown';

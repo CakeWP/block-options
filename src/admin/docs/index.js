@@ -124,10 +124,6 @@ class EditorsKitDocs extends Component {
 				name: 'syntax-highlighter-tools.md',
 			},
 			{
-				title: __( 'Disable Auto Saving', 'block-options' ),
-				name: 'disable-autosave-tools.md',
-			},
-			{
 				title: __( 'Enable Block Guide Lines', 'block-options' ),
 				name: 'block-guidelines-tools.md',
 			},

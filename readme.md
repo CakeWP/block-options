@@ -36,10 +36,6 @@ Toggle visible guide lines on title and each editor blocks in order to check the
 ### Toggle Title Visibility
 Easily hide title on your website but visible when you are writing.
 
-### Toggle Auto Save
-Toggle Autosave on/off to prevent issues from multiple API calls.
-
-
 ## Installation ##
 
 1. Download EditorsKit from the [WordPress plugin directory](https://wordpress.org/plugins/block-options/).

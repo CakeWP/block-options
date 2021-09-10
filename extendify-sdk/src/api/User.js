@@ -45,4 +45,15 @@ export const User = {
             },
         )
     },
+    registerMailingList(email) {
+        const formData = new FormData()
+        formData.append('email', email)
+        return api.post(
+            'register-mailing-list', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            },
+        )
+    },
 }

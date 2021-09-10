@@ -50,7 +50,7 @@ export default function LoginInterface() {
             apiKey: token,
         })
         useGlobalStore.setState({
-            currentPage: 'content',
+            currentPage: 'main',
         })
     }
 

@@ -30,6 +30,18 @@ class TemplateController
     }
 
     /**
+     * Get related templates
+     *
+     * @param \WP_REST_Request $request - The request.
+     * @return WP_REST_Response|WP_Error
+     */
+    public static function related($request)
+    {
+        $response = Http::post('/templates/related', $request->get_params());
+        return new \WP_REST_Response($response);
+    }
+
+    /**
      * Send data about a specific template
      *
      * @param \WP_REST_Request $request - The request.

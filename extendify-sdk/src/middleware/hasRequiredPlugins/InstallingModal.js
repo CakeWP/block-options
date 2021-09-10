@@ -28,7 +28,9 @@ export default function InstallingModal() {
         return <ErrorInstalling msg={errorMessage}/>
     }
 
-    return <Modal title={__('Installing plugins', 'extendify-sdk')} isDismissible={false}>
+    return <Modal
+        title={__('Installing plugins', 'extendify-sdk')}
+        isDismissible={false}>
         <Button style={{
             width: '100%',
         }} disabled isPrimary isBusy onClick={() => {}}>

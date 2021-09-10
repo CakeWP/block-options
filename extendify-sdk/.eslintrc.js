@@ -7,24 +7,18 @@ module.exports = {
     },
     extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:react-hooks/recommended'],
     parserOptions: {
-        ecmaFeatures: {
-            jsx: true,
-        },
+        ecmaFeatures: { jsx: true },
         sourceType: 'module',
     },
     plugins: ['react'],
     rules: {
-        indent: ['error', 4, {
-            SwitchCase: 1,
-        }],
+        indent: ['error', 4, { SwitchCase: 1 }],
         'require-await': 'error',
         quotes: ['error', 'single'],
         'comma-dangle': ['error', 'always-multiline'],
-        'multiline-ternary': ['error', 'always'],
+        'multiline-ternary': ['error', 'always-multiline'],
         'array-element-newline': ['error', 'consistent'],
-        'no-constant-condition': ['error', {
-            checkLoops: false,
-        }],
+        'no-constant-condition': ['error', { checkLoops: false }],
         'no-multi-spaces': ['error'],
         semi: ['error', 'never'],
         'space-in-parens': ['error', 'never'],
@@ -45,17 +39,13 @@ module.exports = {
         'react/react-in-jsx-scope': 'off',
         'function-paren-newline': [
             'error',
-            {
-                minItems: 3,
-            },
+            { minItems: 3 },
         ],
         'quote-props': ['error', 'as-needed'],
-        'object-curly-spacing': ['error', 'always'],
+        'object-curly-spacing': ['error', 'always', { objectsInObjects: false }],
         'no-multiple-empty-lines': [
             'error',
-            {
-                max: 1,
-            },
+            { max: 1 },
         ],
         'react/prop-types': 0, // TODO: Do we want this required?
         'lines-around-comment': [
@@ -69,15 +59,10 @@ module.exports = {
             'error',
             {
                 ObjectExpression: {
-                    minProperties: 1,
+                    consistent: true, multiline: true, minProperties: 3,
                 },
-                ObjectPattern: {
-                    multiline: true,
-                },
-                ImportDeclaration: {
-                    multiline: true,
-                    minProperties: 3,
-                },
+                ObjectPattern: { consistent: true, multiline: true },
+                ImportDeclaration: { multiline: true, minProperties: 3 },
                 ExportDeclaration: {
                     multiline: true,
                     minProperties: 3,
@@ -85,9 +70,5 @@ module.exports = {
             },
         ],
     },
-    settings: {
-        react: {
-            version: 'detect',
-        },
-    },
+    settings: { react: { version: 'detect' }},
 }
