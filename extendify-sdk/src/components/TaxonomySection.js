@@ -3,14 +3,16 @@ import classNames from 'classnames'
 import { useTemplatesStore } from '../state/Templates'
 import { __ } from '@wordpress/i18n'
 import {
-    useState, useEffect, useRef,
+    useState, useEffect, useRef, useCallback,
 } from '@wordpress/element'
+import { useTaxonomyStore } from '../state/Taxonomies'
 
-// import { useState } from '@wordpress/element'
-export default function TaxonomySection({ taxonomy: [title, data], open }) {
+export default function TaxonomySection({ taxonomy: [title, data] }) {
     const updateTaxonomies = useTemplatesStore(state => state.updateTaxonomies)
-    const resetTaxonomies = useTemplatesStore(state => state.resetTaxonomies)
+    const resetTaxonomy = useTemplatesStore(state => state.resetTaxonomy)
     const searchParams = useTemplatesStore(state => state.searchParams)
+    const openedTaxonomies = useTaxonomyStore(state => state.openedTaxonomies)
+    const toggleOpenedTaxonomy = useTaxonomyStore(state => state.toggleOpenedTaxonomy)
     const [pageTwoTerms, setPageTwoTerms] = useState({})
     const [taxListHeight, setTaxListHeight] = useState({})
     const pageTwo = useRef()
@@ -26,12 +28,12 @@ export default function TaxonomySection({ taxonomy: [title, data], open }) {
         }).length > 0
 
     // Todo: memo this
-    const isAvailableOnCurrentType = (tax) => {
+    const isAvailableOnCurrentType = useCallback((tax) => {
         if (Object.prototype.hasOwnProperty.call(tax, 'children')) {
             return tax.children.filter((t) => t?.type.includes(searchParams.type)).length
         }
         return tax?.type?.includes(searchParams.type)
-    }
+    }, [searchParams.type])
 
     useEffect(() => {
         if (firstUpdate.current) {
@@ -39,8 +41,7 @@ export default function TaxonomySection({ taxonomy: [title, data], open }) {
             return
         }
         setPageTwoTerms({})
-        resetTaxonomies()
-    }, [searchParams.type, resetTaxonomies])
+    }, [searchParams.type])
 
     useEffect(() => {
         if (Object.keys(pageTwoTerms).length) {
@@ -55,13 +56,22 @@ export default function TaxonomySection({ taxonomy: [title, data], open }) {
         setTaxListHeight('auto')
     }, [pageTwoTerms])
 
+    useEffect(() => {
+        const notSupported = !Object.values(data).filter((tax) => isAvailableOnCurrentType(tax)).length
+        // Reset taxonomies that aren't supported on a type
+        notSupported && resetTaxonomy(title)
+    }, [resetTaxonomy, title, isAvailableOnCurrentType, data])
+
     // Return early if 1. No data or 2. Children don't match this type
     if (!Object.keys(data).length || !Object.values(data).filter((tax) => isAvailableOnCurrentType(tax)).length) {
         return ''
     }
 
-    const theTitle = title.replace('tax_', '').replace('_' , ' ').replace(/\b\w/g, l => l.toUpperCase())
-    return <PanelBody title={theTitle} initialOpen={open}>
+    const theTitle = title.replace('tax_', '').replace(/_/g , ' ').replace(/\b\w/g, l => l.toUpperCase())
+    return <PanelBody
+        title={theTitle}
+        initialOpen={openedTaxonomies.includes(title)}
+        onToggle={(value) => toggleOpenedTaxonomy(title, value)}>
         <PanelRow>
             <div className="overflow-hidden w-full relative" style={{
                 height: taxListHeight,
@@ -82,7 +92,7 @@ export default function TaxonomySection({ taxonomy: [title, data], open }) {
                                 })
                             }}>
                             <span className={classNames({
-                                'text-wp-theme-500': (!searchParams.taxonomies[title].length || searchParams?.taxonomies[title] === 'Default'),
+                                'text-wp-theme-500': (!searchParams.taxonomies[title]?.length || searchParams?.taxonomies[title] === 'Default'),
                             })}>
                                 {searchParams.type === 'pattern' && title === 'tax_categories'
                                     ? __('Default', 'extendify-sdk')

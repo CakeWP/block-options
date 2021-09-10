@@ -9,7 +9,7 @@ export function createTemplatesFilterFormula(filters) {
         .join(', ')
 
     taxFormula.length && formula.push(taxFormula)
-    search.length && formula.push(`OR(FIND(LOWER("${search}"), LOWER(title))!= 0, FIND(LOWER("${search}"), LOWER({tax_categories})) != 0)`)
+    search?.length && formula.push(`OR(FIND(LOWER("${search}"), LOWER(title))!= 0, FIND(LOWER("${search}"), LOWER({tax_categories})) != 0)`)
     type.length && formula.push(`{type}="${type}"`)
 
     return formula.length

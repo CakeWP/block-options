@@ -1,6 +1,7 @@
 import create from 'zustand'
 import { templates as config } from '../config'
 import { createBlocksFromInnerBlocksTemplate } from '../util/blocks'
+import { useGlobalStore } from './GlobalState'
 
 const defaultCategoryForType = (type, tax) => type === 'pattern' && tax === 'tax_categories'
     ? 'Default'
@@ -8,6 +9,7 @@ const defaultCategoryForType = (type, tax) => type === 'pattern' && tax === 'tax
 
 export const useTemplatesStore = create((set, get) => ({
     templates: [],
+    skipNextFetch: false,
     fetchToken: null,
     activeTemplate: {},
     activeTemplateBlocks: {},
@@ -45,50 +47,44 @@ export const useTemplatesStore = create((set, get) => ({
         })
     },
     setActive: (template) => {
-        set({
-            activeTemplate: template,
-        })
+        set({ activeTemplate: template })
+
+        // If we havea  template, we should move that that page
+        if (Object.keys(template).length > 0) {
+            useGlobalStore.setState({ currentPage: 'single' })
+        }
 
         // This will convert the template to blocks for quick(er) injection
         if (template?.fields?.code) {
             const { parse } = window.wp.blocks
-            set({
-                activeTemplateBlocks: createBlocksFromInnerBlocksTemplate(parse(template.fields.code)),
-            })
+            set({ activeTemplateBlocks: createBlocksFromInnerBlocksTemplate(parse(template.fields.code)) })
         }
     },
-    resetTaxonomies: () => {
-        // Special default state for tax_categories
-        const taxCatException = {
-            ['tax_categories']: get().searchParams.type === 'pattern'
-                ? 'Default'
-                : '',
-        }
-        get().updateSearchParams({
-            taxonomies: Object.assign(get().taxonomyDefaultState, taxCatException),
+    resetTaxonomy: (tax) => {
+        get().updateTaxonomies({
+            [tax]: get().taxonomyDefaultState[tax] ?? '',
         })
     },
     updateTaxonomies: (params) => {
-        // Special case for when the user isn't searching defaults. This way it mimics "all"
-        // if (!Object.values(params).includes('Default') && !Object.keys(params).includes('tax_categories')) {
-        //     console.log(get().searchParams.type,get().searchParams.taxonomies.tax_categories === 'Default')
-        //     if (get().searchParams.type === 'pattern' && get().searchParams.taxonomies.tax_categories === 'Default') {
-        //         params.tax_categories = ''
-        //     }
-        // }
-
         const tax = {}
         tax.taxonomies = Object.assign(
             {}, get().searchParams.taxonomies, params,
         )
         get().updateSearchParams(tax)
     },
-    // TODO: Something is calling this too often
     updateSearchParams: (params) => {
         // If taxonomies are set to {}, lets use the default
         if (params?.taxonomies && !Object.keys(params.taxonomies).length) {
             params.taxonomies = get().taxonomyDefaultState
         }
+
+        // If changing the type, change the hard coded tax cat label
+        if (params?.type && ['', 'Default'].includes(get().searchParams?.taxonomies?.tax_categories)) {
+            get().updateTaxonomies({
+                tax_categories: defaultCategoryForType(params.type, 'tax_categories'),
+            })
+        }
+
         set({
             templates: [],
             nextPage: '',

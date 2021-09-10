@@ -21,7 +21,9 @@ export default function ReloadRequiredModal() {
         reload()
         return null
     }
-    return <Modal title={__('Reload required', 'extendify-sdk')} isDismissible={false}>
+    return <Modal
+        title={__('Reload required', 'extendify-sdk')}
+        isDismissible={false}>
         <p style={{
             maxWidth: '400px',
         }}>

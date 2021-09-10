@@ -1,19 +1,22 @@
 import {
     useEffect, useState, useCallback, useRef,
 } from '@wordpress/element'
-import { useTemplatesStore } from '../state/Templates'
-import { Templates as TemplatesApi } from '../api/Templates'
+import { useTemplatesStore } from '../../state/Templates'
+import { Templates as TemplatesApi } from '../../api/Templates'
 import { useInView } from 'react-intersection-observer'
 import { Spinner, Button } from '@wordpress/components'
 import { __, sprintf } from '@wordpress/i18n'
+import { useIsMounted } from '../../hooks/helpers'
+import TemplateButton from '../../components/TemplateButton'
 
-export default function TemplatesList({ templates }) {
+export default function TemplatesList() {
+    const isMounted = useIsMounted()
+    const templates = useTemplatesStore(state => state.templates)
     const setActiveTemplate = useTemplatesStore(state => state.setActive)
-    const activeTemplate = useTemplatesStore(state => state.activeTemplate)
     const appendTemplates = useTemplatesStore(state => state.appendTemplates)
     const [serverError, setServerError] = useState('')
     const [nothingFound, setNothingFound] = useState(false)
-    const [imagesLoaded, setImagesLoaded] = useState([])
+    // const [imagesLoaded, setImagesLoaded] = useState([])
     const [loadMoreRef, inView] = useInView()
 
     const updateSearchParams = useTemplatesStore(state => state.updateSearchParams)
@@ -30,17 +33,21 @@ export default function TemplatesList({ templates }) {
 
     // Fetch the templates then add them to the current state
     // TODO: This works, but it's not really doing what it's intended to do
-    // as it has a side effect in there, and isn't pure. It should be updated
+    // as it has a side effect in there, and isn't pure.
+    // It could be extracted to a hook
     const fetchTemplates = useCallback(async () => {
         setServerError('')
         setNothingFound(false)
-        const response = await TemplatesApi.get(searchParams.current, nextPage.current)
+        const response = await TemplatesApi.get(searchParams.current, { offset: nextPage.current })
             .catch((error) => {
                 console.error(error)
                 setServerError(error && error.message
                     ? error.message
                     : __('Unknown error occured. Check browser console or contact support.', 'extendify-sdk'))
             })
+        if (!isMounted.current) {
+            return
+        }
         if (response?.error?.length) {
             setServerError(response?.error)
         }
@@ -51,14 +58,26 @@ export default function TemplatesList({ templates }) {
                 nextPage: response.offset,
             })
         }
-    }, [searchParamsRaw, appendTemplates])
+    }, [searchParamsRaw, appendTemplates, isMounted])
 
-    // This loads the initial batch of templates
+    // This is the main driver for loading templates
+    // This loads the initial batch of templates. But if we don't yet have taxonomies.
+    // There's also an option to skip loading on first mount
     useEffect(() => {
         if (!Object.keys(searchParams.current.taxonomies).length) {
             return
         }
-        setImagesLoaded([])
+
+        if (useTemplatesStore.getState().skipNextFetch) {
+            // This is useful if the templates are fetched already and
+            // the library moves to/from another state that re-renders
+            // The point is to keep the logic close to the list. That may change someday
+            useTemplatesStore.setState({
+                skipNextFetch: false,
+            })
+            return
+        }
+        // setImagesLoaded([])
         fetchTemplates()
     }, [fetchTemplates, searchParams])
 
@@ -74,7 +93,7 @@ export default function TemplatesList({ templates }) {
                 minHeight: '10rem',
             }}>{serverError}</code>
             <Button isTertiary onClick={() => {
-                setImagesLoaded([])
+                // setImagesLoaded([])
                 updateSearchParams({
                     taxonomies: {},
                     search: '',
@@ -101,47 +120,19 @@ export default function TemplatesList({ templates }) {
 
     return <>
         <ul className="flex-grow gap-6 grid xl:grid-cols-2 2xl:grid-cols-3 pb-32 m-0">
-            {templates.map((template, id) => {
-                return <li key={template.id} className="flex flex-col justify-between group overflow-hidden max-w-lg">
-                    {/* Note: This li doesn't have tabindex nor keyboard event on purpose. a11y tabs to the button only */}
-                    <div
-                        className="flex justify-items-center flex-grow h-80 border-gray-200 bg-white border border-b-0 group-hover:border-wp-theme-500 transition duration-150 cursor-pointer"
-                        onClick={() => setActiveTemplate(template)}>
-                        <img
-                            role="button"
-                            className="max-w-full block m-auto object-cover"
-                            onLoad={() => setImagesLoaded([...imagesLoaded, id])}
-                            src={template?.fields?.screenshot[0]?.thumbnails?.large?.url ?? template?.fields?.screenshot[0]?.url}/>
-                    </div>
-                    <span
-                        role="img"
-                        aria-hidden="true"
-                        className="h-px w-full bg-gray-200 border group-hover:bg-transparent border-t-0 border-b-0 border-gray-200 group-hover:border-wp-theme-500 transition duration-150"></span>
-                    <div
-                        className="bg-transparent text-left bg-white flex items-center justify-between p-4 border border-t-0 border-transparent group-hover:border-wp-theme-500 transition duration-150 cursor-pointer"
-                        role="button"
-                        onClick={() => setActiveTemplate(template)}>
-                        <div>
-                            <h4 className="m-0 font-bold">{template.fields.display_title}</h4>
-                            <p className="m-0">{template?.fields?.tax_categories?.filter(c => c.toLowerCase() !== 'default').join(', ')}</p>
-                        </div>
-                        <Button
-                            isSecondary
-                            tabIndex={Object.keys(activeTemplate).length
-                                ? '-1'
-                                : '0'}
-                            className="sm:opacity-0 group-hover:opacity-100 transition duration-150 focus:opacity-100"
-                            onClick={(e) => {e.stopPropagation();setActiveTemplate(template)}}>
-                            {__('View', 'extendify-sdk')}
-                        </Button>
-                    </div>
+            {templates.map((template) => {
+                return <li key={template.id}>
+                    <TemplateButton
+                        template={template}
+                        setActiveTemplate={() => setActiveTemplate(template)}
+                        imageLoaded={() => {}}
+                    />
                 </li>
             })}
         </ul>
         {
-            (useTemplatesStore.getState().nextPage &&
-            !!imagesLoaded.length &&
-            (imagesLoaded.length === templates.length)) &&
+            useTemplatesStore.getState().nextPage &&
+
             <>
                 <div
                     className="-translate-y-full flex flex-col h-80 items-end justify-end my-2 relative transform z-0 text"

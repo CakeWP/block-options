@@ -2,26 +2,40 @@ import {
     Fragment, useRef, useEffect,
 } from '@wordpress/element'
 import { Dialog, Transition } from '@headlessui/react'
-import Toolbar from './Toolbar'
-import Content from '../pages/Content'
-import Login from '../pages/Login'
-import Welcome from '../pages/Welcome'
-import Beacon from '../components/Beacon'
-import { useGlobalStore } from '../state/GlobalState'
-import { useUserStore } from '../state/User'
+import useBeacon from '../../hooks/useBeacon'
+import { useGlobalStore } from '../../state/GlobalState'
+import Router from '../Router'
+import useTaxonomies from '../../hooks/useTaxonomies'
+import { General as GeneralApi } from '../../api/General'
+import { useUserStore } from '../../state/User'
 
 export default function MainWindow() {
     const containerRef = useRef(null)
     const open = useGlobalStore(state => state.open)
-    const setOpen = useGlobalStore(state => state.setOpen)
+    const metaData = useGlobalStore(state => state.metaData)
     const currentPage = useGlobalStore(state => state.currentPage)
-    const hasClickedThroughWelcomePage = useUserStore(state => state.hasClickedThroughWelcomePage)
+    useBeacon(open)
+    useTaxonomies(open)
 
     useEffect(() => {
-        hasClickedThroughWelcomePage && useGlobalStore.setState({
-            currentPage: 'content',
-        })
-    }, [hasClickedThroughWelcomePage])
+        if (!open) return
+        if (!useUserStore.getState().hasClickedThroughWelcomePage) {
+            useGlobalStore.setState({ currentPage: 'welcome' })
+            return
+        }
+        // if (!window.sessionStorage.getItem('esxtendify-show-guide')) {
+        //     window.sessionStorage.setItem('esxtendify-show-guide', '1')
+        //     useGlobalStore.setState({ currentPage: 'guide-start' })
+        //     return
+        // }
+    }, [open])
+
+    useEffect(() => {
+        if (!open || Object.keys(metaData).length) {
+            return
+        }
+        GeneralApi.metaData().then((data) => useGlobalStore.setState({ metaData: data }))
+    }, [open, metaData])
 
     return (
         <Transition.Root show={open} as={Fragment}>
@@ -52,22 +66,7 @@ export default function MainWindow() {
                                 ref={containerRef}
                                 tabIndex="0"
                                 className="fixed lg:absolute inset-0 lg:overflow-hidden transform transition-all lg:p-5">
-                                {/* TODO: With all the new pages, it's probably a good time to refactor this and organize things better here */}
-                                {currentPage === 'welcome'
-                                    ? <Welcome
-                                        className="w-full h-full flex flex-col items-center relative shadow-xl max-w-screen-4xl mx-auto bg-extendify-light"/>
-                                    : <div className="bg-white h-full flex flex-col items-center relative shadow-xl max-w-screen-4xl mx-auto">
-                                        <Toolbar
-                                            className="w-full h-16 border-solid border-0 border-b border-gray-300 flex-shrink-0"
-                                            hideLibrary={() => setOpen(false)}/>
-                                        {currentPage === 'content' &&
-                                        <Content className="w-full flex-grow overflow-hidden"/>
-                                        }
-                                        {currentPage === 'login' &&
-                                        <Login className="w-full flex-grow overflow-hidden bg-extendify-light"/>
-                                        }
-                                    </div>}
-                                <Beacon show={open}/>
+                                <Router page={currentPage} />
                             </div>
                         </Transition.Child>
                     </div>

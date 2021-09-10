@@ -6,7 +6,8 @@ export default function LoginButton() {
     const apiKey = useUserStore(state => state.apiKey)
     if (apiKey.length === 0) {
         return <button
-            className="components-button"
+            type="button"
+            className="components-button inline-block flex-1 text-center hover:bg-gray-100"
             onClick={() => useGlobalStore.setState({
                 currentPage: 'login',
             })}>
@@ -14,9 +15,10 @@ export default function LoginButton() {
         </button>
     }
 
-    // This code currently won't run unless in DEVMODE
+    // This code currently won't render unless in DEVMODE
     return <button
-        className="components-button"
+        type="button"
+        className="components-button inline-block flex-1 text-center hover:bg-gray-100"
         onClick={() => useUserStore.setState({
             apiKey: '',
         })}>{__('Log out', 'extendify-sdk')}</button>

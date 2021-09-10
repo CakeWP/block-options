@@ -6,8 +6,8 @@ export const hasPluginsActivated = async (template) => {
     return {
         id: 'hasPluginsActivated',
         pass: !(await checkIfUserNeedsToActivatePlugins(template)),
-        async allow() {},
-        async deny() {
+        allow() {},
+        deny() {
             return new Promise(() => {
                 render(<ActivatePluginsModal showClose={true}/>, document.getElementById('extendify-root'))
             })

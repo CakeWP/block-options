@@ -5,6 +5,7 @@
 
 namespace Extendify\ExtendifySdk\Controllers;
 
+use Extendify\ExtendifySdk\Http;
 use Extendify\ExtendifySdk\User;
 
 if (!defined('ABSPATH')) {
@@ -51,5 +52,17 @@ class UserController
         \update_user_meta(\get_current_user_id(), 'extendifysdk_user_data', $userData);
 
         return new \WP_REST_Response(User::state());
+    }
+
+    /**
+     * Sign up the user to the mailing list.
+     *
+     * @param \WP_REST_Request $request - The request.
+     * @return WP_REST_Response|WP_Error
+     */
+    public static function mailingList($request)
+    {
+        $response = Http::post('/register-mailing-list', $request->get_params());
+        return new \WP_REST_Response($response);
     }
 }

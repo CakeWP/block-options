@@ -1,5 +1,5 @@
 import { __, sprintf } from '@wordpress/i18n'
-import ExtendifyLibrary from '../../layout/ExtendifyLibrary'
+import ExtendifyLibrary from '../../ExtendifyLibrary'
 import {
     Modal, Button, ButtonGroup,
 } from '@wordpress/components'
@@ -27,8 +27,7 @@ export default function RequiredPluginsModal(props) {
 
     return <Modal
         title={props.title ?? __('Install required plugins', 'extendify-sdk')}
-        closeButtonLabel={__('No thanks, take me back', 'extendify-sdk')}
-        onRequestClose={closeModal}
+        isDismissible={false}
     >
         <p style={{
             maxWidth: '400px',

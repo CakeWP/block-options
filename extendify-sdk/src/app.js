@@ -1,4 +1,4 @@
-import ExtendifyLibrary from './layout/ExtendifyLibrary'
+import ExtendifyLibrary from './ExtendifyLibrary'
 import { render } from '@wordpress/element'
 import { useWantedTemplateStore } from './state/Importing'
 import { injectTemplate } from './util/templateInjection'
@@ -7,10 +7,13 @@ import './listeners'
 
 window._wpLoadBlockEditor && window.wp.domReady(() => {
     // Insert into the editor (note: Modal opens in a portal)
-    const extendify = document.createElement('div')
-    extendify.id = 'extendify-root'
+    const extendify = Object.assign(document.createElement('div'), { id: 'extendify-root' })
     document.body.append(extendify)
     render(<ExtendifyLibrary/>, extendify)
+
+    // Add an extra div to use for utility modals, etc
+    extendify.parentNode.insertBefore(Object.assign(document.createElement('div'), { id: 'extendify-util' }),
+        extendify.nextSibling)
 
     // Insert a template on page load if it exists in localstorage
     // Note 6/28/21 - this was moved to after the render to possibly

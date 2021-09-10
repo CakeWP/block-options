@@ -9,8 +9,10 @@ import { useUserStore } from '../state/User'
 import { useGlobalStore } from '../state/GlobalState'
 import { __, sprintf } from '@wordpress/i18n'
 import { Templates as TemplatesApi } from '../api/Templates'
+import { render } from '@wordpress/element'
+import ExtendifyLibrary from '../ExtendifyLibrary'
 
-const canImportMiddleware = Middleware(['hasRequiredPlugins', 'hasPluginsActivated'])
+const canImportMiddleware = Middleware(['NeedsRegistrationModal', 'hasRequiredPlugins', 'hasPluginsActivated'])
 export function ImportButton({ template }) {
     const importButtonRef = useRef(null)
     const activeTemplateBlocks = useTemplatesStore(state => state.activeTemplateBlocks)
@@ -24,7 +26,9 @@ export function ImportButton({ template }) {
         AuthorizationCheck(canImportMiddleware.stack).then(() => {
             // Give it a bit of time for the importing state to render
             setTimeout(() => {
-                injectTemplateBlocks(activeTemplateBlocks, template).then(() => setOpen(false))
+                injectTemplateBlocks(activeTemplateBlocks, template)
+                    .then(() => setOpen(false))
+                    .then(() => render(<ExtendifyLibrary/>, document.getElementById('extendify-root')))
             }, 100)
         })
     }
