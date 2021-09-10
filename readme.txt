@@ -6,7 +6,7 @@ Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenberg editor
 Requires at least: 5.0
 Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 1.30
+Stable tag: 1.31.6
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -65,7 +65,7 @@ Powered by shortcode you can display the Estimated Reading Time on your content 
 
 * `before` : Text or element you want to display before reading time.
 * `after` : Text or element you want to display after reading time.
-* `tag` : default `div` : Html tag container 
+* `tag` : default `div` : Html tag container
 * `fallback` : set value to 'true' to display PHP based wordcount on old posts that are not edited or created through Gutenberg
 
 ## Block Guide Lines
@@ -137,7 +137,7 @@ EditorsKit adds the missing keyboard shortcuts from Classic Editor. When activat
 * `CMD + SHIFT + .` : Select Parent Block
 
 ## Block Navigator
-Display "Block Navigator" on block that can contain multiple child blocks. Available on Columns Block and Group Block. 
+Display "Block Navigator" on block that can contain multiple child blocks. Available on Columns Block and Group Block.
 
 ## UI and User Experience Improvements
 Improve interface and provide better writing experience.
@@ -179,7 +179,7 @@ For more details on our privacy policy: https://extendify.com/privacy-policy
 For more details on our terms of service: https://extendify.com/terms-of-service/
 
 ## Helping you with the new Gutenberg Editor
-EditorsKit is created to help you navigate through the new editor. Each new features will make your page building more convenient and easier. You can help achieving this goal through the community: 
+EditorsKit is created to help you navigate through the new editor. Each new features will make your page building more convenient and easier. You can help achieving this goal through the community:
 
 * [Join Facebook Community](https://www.facebook.com/groups/1306393256173179/)
 * [Follow Us on Twitter](https://twitter.com/editorskit/)
@@ -210,6 +210,11 @@ e.g.
 
 
 == Changelog ==
+
+= 1.31.6 =
+* Security: Fixes an issue where authenticated users with medium level privledges could add arbitrary PHP code.
+* Fixes: Updates deprecated WP filters
+* Fixes: Fixes a bug in the Gutenberg plugin.
 
 = 1.31.5 =
 * Fixes: Prevent editor error when using Page Break block 🐛
@@ -351,7 +356,7 @@ e.g.
 * New: Create [keyboard shortcut to easily select parent block](https://github.com/phpbits/block-options/issues/151) 🎉
 * New : Add [nonbreaking space format](https://github.com/phpbits/block-options/pull/160) with `CTRL/CMD + SHIFT + SPACE` keyboard shortcut
 * New: Add "[About](https://github.com/phpbits/block-options/pull/154)" button to check the running Gutenberg block editor version
-* Tweaks: Move [Hide Title Toggle](https://github.com/phpbits/block-options/pull/158) on Status and Post Visibility Panel 
+* Tweaks: Move [Hide Title Toggle](https://github.com/phpbits/block-options/pull/158) on Status and Post Visibility Panel
 * Tweaks: Remove [unwanted block supports](https://github.com/phpbits/block-options/pull/149) on Import Block
 * Tweaks: Set [Highlights Color](https://github.com/phpbits/block-options/issues/137) to Default Theme Colors
 * Fixes: Fix [issue with old links](https://github.com/phpbits/block-options/pull/148) added before EditorsKit
@@ -474,7 +479,7 @@ e.g.
 * Fix issue with Classic Block Conversion to Blocks
 
 = 1.4.2 =
-* Fix button CSS issue on modal popup for older Gutenberg version 
+* Fix button CSS issue on modal popup for older Gutenberg version
 
 = 1.4.1 =
 * Block Guide Lines Compatibility for old version
