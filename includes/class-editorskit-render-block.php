@@ -108,16 +108,27 @@ class EditorsKit_Render_Block {
 			$block_opts = $block['attrs']['blockOpts'];
 			return array(
 				'devices'        => false,
-				'desktop'        => isset( $block_opts['devices'] ) && isset( $block_opts['desktop'] ) && ( ( $block_opts['devices'] === 'show' && $block_opts['desktop'] !== 'on' ) || ( $block_opts['devices'] === 'hide' && $block_opts['desktop'] === 'on' ) ) ? false : true, // phpcs:ignore WordPress.PHP.YodaConditions
-				'tablet'         => isset( $block_opts['devices'] ) && isset( $block_opts['tablet'] ) && ( ( $block_opts['devices'] === 'show' && $block_opts['tablet'] !== 'on' ) || ( $block_opts['devices'] === 'hide' && $block_opts['tablet'] === 'on' ) ) ? false : true, // phpcs:ignore WordPress.PHP.YodaConditions
-				'mobile'         => isset( $block_opts['devices'] ) && isset( $block_opts['mobile'] ) && ( ( $block_opts['devices'] === 'show' && $block_opts['mobile'] !== 'on' ) || ( $block_opts['devices'] === 'hide' && $block_opts['mobile'] === 'on' ) ) ? false : true, // phpcs:ignore WordPress.PHP.YodaConditions
-				'loggedin'       => isset( $block_opts['state'] ) && ( $block_opts['state'] === 'out' && $block_opts['state'] !== 'in' ) ? false : true, // phpcs:ignore WordPress.PHP.YodaConditions
-				'loggedout'      => isset( $block_opts['state'] ) && ( $block_opts['state'] === 'in' && $block_opts['state'] !== 'out' ) ? false : true, // phpcs:ignore WordPress.PHP.YodaConditions
-				'acf_visibility' => isset( $block_opts['acf_visibility'] ) ? $block_opts['acf_visibility'] : '', // phpcs:ignore WordPress.PHP.YodaConditions
-				'acf_field'      => isset( $block_opts['acf_field'] ) ? $block_opts['acf_field'] : '', // phpcs:ignore WordPress.PHP.YodaConditions
-				'acf_condition'  => isset( $block_opts['acf_condition'] ) ? $block_opts['acf_condition'] : '', // phpcs:ignore WordPress.PHP.YodaConditions
-				'acf_value'      => isset( $block_opts['acf_value'] ) ? $block_opts['acf_value'] : '', // phpcs:ignore WordPress.PHP.YodaConditions
-				'logic'          => isset( $block_opts['logic'] ) ? $block_opts['logic'] : '', // phpcs:ignore WordPress.PHP.YodaConditions
+				// phpcs:ignore WordPress.PHP.YodaConditions
+				'desktop'        => isset( $block_opts['devices'] ) && isset( $block_opts['desktop'] ) && ( ( $block_opts['devices'] === 'show' && $block_opts['desktop'] !== 'on' ) || ( $block_opts['devices'] === 'hide' && $block_opts['desktop'] === 'on' ) ) ? false : true,
+				// phpcs:ignore WordPress.PHP.YodaConditions
+				'tablet'         => isset( $block_opts['devices'] ) && isset( $block_opts['tablet'] ) && ( ( $block_opts['devices'] === 'show' && $block_opts['tablet'] !== 'on' ) || ( $block_opts['devices'] === 'hide' && $block_opts['tablet'] === 'on' ) ) ? false : true,
+				// phpcs:ignore WordPress.PHP.YodaConditions
+				'mobile'         => isset( $block_opts['devices'] ) && isset( $block_opts['mobile'] ) && ( ( $block_opts['devices'] === 'show' && $block_opts['mobile'] !== 'on' ) || ( $block_opts['devices'] === 'hide' && $block_opts['mobile'] === 'on' ) ) ? false : true,
+				// phpcs:ignore WordPress.PHP.YodaConditions
+				'loggedin'       => isset( $block_opts['state'] ) && ( $block_opts['state'] === 'out' && $block_opts['state'] !== 'in' ) ? false : true,
+				// phpcs:ignore WordPress.PHP.YodaConditions
+				'loggedout'      => isset( $block_opts['state'] ) && ( $block_opts['state'] === 'in' && $block_opts['state'] !== 'out' ) ? false : true,
+				// phpcs:ignore WordPress.PHP.YodaConditions
+				'acf_visibility' => isset( $block_opts['acf_visibility'] ) ? $block_opts['acf_visibility'] : '',
+				// phpcs:ignore WordPress.PHP.YodaConditions
+				'acf_field'      => isset( $block_opts['acf_field'] ) ? $block_opts['acf_field'] : '',
+				// phpcs:ignore WordPress.PHP.YodaConditions
+				'acf_condition'  => isset( $block_opts['acf_condition'] ) ? $block_opts['acf_condition'] : '',
+				// phpcs:ignore WordPress.PHP.YodaConditions
+				'acf_value'      => isset( $block_opts['acf_value'] ) ? $block_opts['acf_value'] : '',
+				// phpcs:ignore WordPress.PHP.YodaConditions
+				'logic'          => isset( $block_opts['logic'] ) ? $block_opts['logic'] : '',
+				// phpcs:ignore WordPress.PHP.YodaConditions
 			);
 		}
 
@@ -152,29 +163,32 @@ class EditorsKit_Render_Block {
 	 * @return mixed Returns the new block content.
 	 */
 	private function display_logic( $block_content ) {
-		if ( isset( $this->attributes['logic'] ) && ! empty( $this->attributes['logic'] ) ) {
-			// do display logic.
-			$logic = stripslashes( trim( $this->attributes['logic'] ) );
+		if ( defined( 'EDITORSKIT_ALLOW_EVAL' ) && true === EDITORSKIT_ALLOW_EVAL ) {
+			if ( isset( $this->attributes['logic'] ) && ! empty( $this->attributes['logic'] ) ) {
+				// do display logic.
+				$logic = stripslashes( trim( $this->attributes['logic'] ) );
 
-			// allow override filters.
-			$logic = apply_filters( 'editorskit_logic_override', $logic );
-			$logic = apply_filters( 'block_options_logic_override', $logic );
-			if ( false === $logic ) {
-				return '';
+				// allow override filters.
+				$logic = apply_filters( 'editorskit_logic_override', $logic );
+				$logic = apply_filters( 'block_options_logic_override', $logic );
+				if ( false === $logic ) {
+					return '';
+				}
+
+				if ( true === $logic ) {
+					return $block_content;
+				}
+
+				if ( stristr( $logic, 'return' ) === false ) {
+					$logic = 'return (' . html_entity_decode( $logic, ENT_COMPAT | ENT_HTML401 | ENT_QUOTES ) . ');';
+				}
+
+				// Ignore phpcs since warning is available as description on this feature.
+				if ( ! eval( $logic ) ) { // phpcs:ignore
+					return '';
+				}
 			}
 
-			if ( true === $logic ) {
-				return $block_content;
-			}
-
-			if ( stristr( $logic, 'return' ) === false ) {
-				$logic = 'return (' . html_entity_decode( $logic, ENT_COMPAT | ENT_HTML401 | ENT_QUOTES ) . ');';
-			}
-
-			// Ignore phpcs since warning is available as description on this feature.
-			if ( ! eval( $logic ) ) { // phpcs:ignore
-				return '';
-			}
 		}
 
 		return $block_content;
@@ -302,7 +316,7 @@ class EditorsKit_Render_Block {
 		if ( isset( $block['blockName'] ) && 'core/media-text' === $block['blockName'] ) {
 			$attributes = $block['attrs'];
 			if ( isset( $attributes['href'] ) && ! empty( $attributes['href'] ) ) {
-				$linked = '<a href="' . esc_attr( $attributes['href'] ) . '" class="editorskit-media-text-link"';
+				$linked = '<a href="' . esc_url( $attributes['href'] ) . '" class="editorskit-media-text-link"';
 				$rel    = 'rel="';
 
 				if ( isset( $attributes['linkTarget'] ) && '_blank' === $attributes['linkTarget'] ) {

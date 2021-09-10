@@ -149,16 +149,24 @@ if (! class_exists('EditorsKit')) :
             }
         }
 
-        /**
-         * Load actions
-         *
-         * @return void
-         */
-        private function init()
-        {
-            add_action('plugins_loaded', array( $this, 'load_textdomain' ), 99);
-            add_action('enqueue_block_editor_assets', array( $this, 'block_localization' ));
-        }
+		/**
+		 * Load actions
+		 *
+		 * @return void
+		 */
+		private function init()
+		{
+			add_action( 'plugins_loaded', array( $this, 'load_textdomain' ), 99 );
+			add_action( 'enqueue_block_editor_assets', array( $this, 'block_localization' ) );
+			add_action( 'after_setup_theme', array( $this, 'set_eval' ) );
+		}
+
+		/**
+		 * Set eval feature through filter.
+		 */
+		public function set_eval() {
+			$this->define( 'EDITORSKIT_ALLOW_EVAL', (bool) apply_filters( 'editorskit_allow_unsafe_eval', false ) );
+		}
 
         /**
          * Change the plugin's minified or src file name, based on debug mode.
