@@ -302,11 +302,6 @@ class EditorsKit_Features_Manager
                             'label' => __('Gradient Controls', 'block-options'),
                             'value' => true,
                         ),
-                        'autosave'            => array(
-                            'name'  => 'autosave',
-                            'label' => __('Toggle Auto Save', 'block-options'),
-                            'value' => false,
-                        ),
                         'help'                => array(
                             'name'  => 'help',
                             'label' => __('Help, tips and tricks', 'block-options'),

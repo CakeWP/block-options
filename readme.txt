@@ -94,9 +94,6 @@ Easily change text alignment per devices. This will help you provide different a
 ## Full Height Screen Option
 Easily display selected blocks as full screen layout by toggling "Full Screen Height" option under the advanced panel. You'll instantly have beautiful hero section by just using core blocks.
 
-## Enable or Disable Auto Save
-Easily toggle Auto Saving to fix several lagging issues or prevent your website from being blacklisted on your webhost provider.
-
 ## Toggle Title Visibility
 Easily hide post, page or any post type's title on your website in just a click. This will enable you to create full Gutenberg editor's driven posts and pages without getting "(No Title)" on your admin dashboard.
 
@@ -212,6 +209,7 @@ e.g.
 == Changelog ==
 
 = 1.31.6 =
+* Remove: Auto save toggle feature was removed due to a conflict with Gutenberg
 * Security: Fixes an issue where authenticated users with medium level privledges could add arbitrary PHP code.
 * Fixes: Updates deprecated WP filters
 * Fixes: Fixes a bug in the Gutenberg plugin.
