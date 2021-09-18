@@ -1,42 +1,39 @@
 import { createTemplatesFilterFormula } from '../util/airtable'
 import { Axios as api } from './axios'
-import { CancelToken } from 'axios'
 import { templates as config } from '../config'
-import { useTemplatesStore as templateState } from '../state/Templates'
 
 let count = 0
 
 export const Templates = {
-    async get(searchParams, offset) {
+    async get(searchParams, options = {}) {
         count++
-
-        // Cancel the previous request if another was make
-        const fetchToken = CancelToken.source()
-        if (templateState.getState().fetchToken?.cancel) {
-            templateState.getState().fetchToken.cancel()
-        }
-        templateState.setState({
-            fetchToken: fetchToken,
-        })
-        const templates = await api.post(
-            'templates', {
-                filterByFormula: createTemplatesFilterFormula(searchParams),
-                pageSize: config.templatesPerRequest,
-                categories: searchParams.taxonomies,
-                search: searchParams.search,
-                type: searchParams.type,
-                offset: offset,
-                initial: count === 1,
-                request_count: count,
-            }, {
-                cancelToken: fetchToken.token,
-            },
-        )
-        templateState.setState({
-            fetchToken: null,
+        const templates = await api.post('templates', {
+            filterByFormula: createTemplatesFilterFormula(searchParams),
+            pageSize: options?.pageSize ?? config.templatesPerRequest,
+            categories: searchParams.taxonomies,
+            search: searchParams.search,
+            type: searchParams.type,
+            offset: options.offset ?? '',
+            initial: count === 1,
+            request_count: count,
         })
         return templates
     },
+    related(
+        template, queryType, wantedType,
+    ) {
+        return api.post('related', {
+            pageSize: 4,
+            query_type: queryType,
+            wanted_type: wantedType,
+            categories: template?.fields?.tax_categories,
+            pattern_types: template?.fields?.tax_pattern_types,
+            style: template?.fields?.tax_style,
+            type: template?.fields?.type,
+            template_id: template?.id,
+        })
+    },
+
     // TODO: Refactor this later to combine the following three
     maybeImport(template) {
         return api.post(`templates/${template.id}`, {

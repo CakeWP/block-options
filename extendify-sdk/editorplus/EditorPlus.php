@@ -172,7 +172,7 @@ if (!class_exists('edpl__EditorPlus')) {
         public function registerProjectTemplates($attributes)
         {
             // Create the key used for the themes cache.
-            $cacheKey = 'page_templates-' . md5(get_theme_root() . '/' . get_stylesheet());
+            $cacheKey = 'page_templates-' . \wp_hash(get_theme_root() . '/' . get_stylesheet());
             // Retrieve the cache list.
             // If it doesn't exist, or it's empty prepare an array.
             $templates = wp_get_theme()->get_page_templates();
@@ -206,7 +206,7 @@ if (!class_exists('edpl__EditorPlus')) {
             $currentTemplate = get_post_meta($post->ID, '_wp_page_template', true);
 
             // Check that the set template is one we have defined.
-            if (!array_key_exists($currentTemplate, $this->templates)) {
+            if (!is_string($currentTemplate) || !array_key_exists($currentTemplate, $this->templates)) {
                 return $template;
             }
 

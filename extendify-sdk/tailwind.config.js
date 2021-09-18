@@ -8,6 +8,7 @@
  **/
 
 module.exports = {
+    // mode: 'jit',
     purge: ['src/**/*'],
     important: '.extendify-sdk',
     darkMode: false,
@@ -28,6 +29,9 @@ module.exports = {
         extend: {
             minWidth: {
                 md2: '960px',
+            },
+            minHeight: {
+                60: '15rem',
             },
             fontSize: {
                 '3xl': ['2rem', '2.5rem'],
@@ -67,19 +71,21 @@ module.exports = {
                 },
             },
             zIndex: {
-                high: '1000000',
+                high: '99999',
                 max: '2147483647', // Highest the browser allows - don't block WP re-auth modal though
             },
         },
     },
     variants: {
         extend: {
-            borderWidth: ['group-hover', 'hover'],
+            borderWidth: ['group-hover', 'hover', 'focus'],
             backgroundColor: ['active'],
             textColor: ['active'],
         },
     },
-    plugins: [],
+    plugins: [
+        require('@tailwindcss/aspect-ratio'),
+    ],
     corePlugins: {
         preflight: false,
         container: false,

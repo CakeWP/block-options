@@ -8,19 +8,25 @@ const storage = {
 }
 
 export const useUserStore = create(persist((set, get) => ({
+    email: '',
     apiKey: '',
     imports: 0,
     uuid: '',
-    email: '',
+    registration: {
+        email: '',
+    },
     allowedImports: 0,
     entryPoint: 'not-set',
     enabled: true,
     hasClickedThroughWelcomePage: false,
     canInstallPlugins: false,
     canActivatePlugins: false,
-    incrementImports: () => set({
-        imports: get().imports + 1,
-    }),
+    preferredOptions: {
+        taxonomies: {},
+        type: '',
+        search: '',
+    },
+    incrementImports: () => set({ imports: get().imports + 1 }),
     canImport: () => get().apiKey
         ? true
         : (Number(get().imports) < Number(get().allowedImports)),
@@ -29,9 +35,30 @@ export const useUserStore = create(persist((set, get) => ({
             return 'unlimited'
         }
         const remaining = Number(get().allowedImports) - Number(get().imports)
-        return remaining > 0
-            ? remaining
-            : 0
+        return remaining > 0 ? remaining : 0
+    },
+    updatePreferredOption: (option, value) => {
+        // If the option doesn't exist, assume it's a taxonomy
+        if (!Object.prototype.hasOwnProperty.call(get().preferredOptions, option)) {
+            value = Object.assign(
+                {},
+                get().preferredOptions?.taxonomies ?? {},
+                { [option]: value },
+            )
+            option = 'taxonomies'
+        }
+        // Reset if the type changes from template/pattern/etc
+        const resetTaxonomies = (option == 'type' && value !== get().preferredOptions?.type)
+        set({
+            preferredOptions: {
+                ...Object.assign(
+                    {},
+                    get().preferredOptions,
+                    { [option]: value },
+                    resetTaxonomies ? { taxonomies: {}} : {},
+                ),
+            },
+        })
     },
 }), {
     name: 'extendify-user',

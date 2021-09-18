@@ -30,7 +30,9 @@ export default function ActivatingModal() {
         return <ErrorActivating msg={errorMessage}/>
     }
 
-    return <Modal title={__('Activating plugins', 'extendify-sdk')} isDismissible={false}>
+    return <Modal
+        title={__('Activating plugins', 'extendify-sdk')}
+        isDismissible={false}>
         <Button
             style={{
                 width: '100%',

@@ -1,7 +1,7 @@
 import { useEffect, useCallback } from '@wordpress/element'
-import { useGlobalStore } from '../state/GlobalState'
-import { useUserStore } from '../state/User'
-import MainWindow from './MainWindow'
+import { useGlobalStore } from './state/GlobalState'
+import { useUserStore } from './state/User'
+import MainWindow from './pages/parts/MainWindow'
 
 export default function ExtendifyLibrary({ show = false }) {
     const setOpen = useGlobalStore(state => state.setOpen)

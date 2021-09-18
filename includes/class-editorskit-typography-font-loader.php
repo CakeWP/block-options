@@ -34,7 +34,7 @@ class EditorsKit_Typography_Font_Loader {
 	 */
 	public function __construct() {
 		$isEnabled = get_option( 'editorskit_typography_enabled', 1 );
-		
+
 		if ( $isEnabled ) {
 			add_filter( 'body_class', array( $this, 'body_class' ) );
 			add_filter( 'admin_body_class', array( $this, 'body_class' ) );

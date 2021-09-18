@@ -67,7 +67,7 @@ class Admin
      */
     public function checkItsGutenbergPost($hook = '')
     {
-        if (isset($GLOBALS['typenow']) && use_block_editor_for_post_type($GLOBALS['typenow'])) {
+        if (isset($GLOBALS['typenow']) && \use_block_editor_for_post_type($GLOBALS['typenow'])) {
             return $hook && in_array($hook, ['post.php', 'post-new.php'], true);
         }
 

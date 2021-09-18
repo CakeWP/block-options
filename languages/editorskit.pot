@@ -3,42 +3,168 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:132
-msgid "Typography Settings"
+#: src/admin/docs/index.js:100
+msgid "Media & Text Block Card Layout"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:138
-msgid "Font Family"
+#: src/admin/docs/index.js:104
+msgid "Media & Text Block Links"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:147
-msgid "Font Weight"
+#: src/admin/docs/index.js:108
+msgid "Changing List Block Font Size & Text Color"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:163
-msgid "Reset"
+#: src/admin/docs/index.js:115
+msgid "Easily Hide Title"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:62
-msgid "Select Google Font"
+#: src/admin/docs/index.js:119
+msgid "Drag and Drop Featured Image"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:63
-msgid "Arial"
+#: src/admin/docs/index.js:123
+msgid "Code Editor Syntax Highlighter"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:64
-msgid "Helvetica"
+#: src/admin/docs/index.js:127
+msgid "Enable Block Guide Lines"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:65
-msgid "Times New Roman"
+#: src/admin/docs/index.js:131
+msgid "Additional CSS Class(es) Auto Suggestions"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:66
-msgid "Georgia"
+#: src/admin/docs/index.js:135
+msgid "Accessible Help, Tips & Tricks"
 msgstr ""
 
-#: src/add-ons/typography/src/block-panel/typography/index.js:74
-msgid "Select Font Weight"
+#: src/admin/docs/index.js:139
+msgid "Enable Developer Tools"
+msgstr ""
+
+#: src/admin/docs/index.js:146
+msgid "Block Visibility on Desktop, Mobile or Tablet"
+msgstr ""
+
+#: src/admin/docs/index.js:150
+msgid "Hide Block on Logged-in/out Users"
+msgstr ""
+
+#: src/admin/docs/index.js:154
+msgid "Using Custom Display Logic"
+msgstr ""
+
+#: src/admin/docs/index.js:161
+msgid "Display Cover and Image Blocks in Fullscreen"
+msgstr ""
+
+#: src/admin/docs/index.js:165
+msgid "More Image & Cover Block Styles"
+msgstr ""
+
+#: src/admin/docs/index.js:169
+msgid "Additional List Block Styles"
+msgstr ""
+
+#: src/admin/docs/index.js:180
+msgid ""
+"Learn more about each EditorsKit features with the tutorials below. Click "
+"on the link to open a modal pop-up with detailed explanation and animated "
+"GIF previewing how the features work."
+msgstr ""
+
+#: src/admin/docs/index.js:183
+msgid "Rich Text Formatting"
+msgstr ""
+
+#: src/admin/docs/index.js:200
+msgid "Writing"
+msgstr ""
+
+#: src/admin/docs/index.js:217
+msgid "Block Options"
+msgstr ""
+
+#: src/admin/docs/index.js:234
+msgid "Tools"
+msgstr ""
+
+#: src/admin/docs/index.js:251
+msgid "Block Visibility"
+msgstr ""
+
+#: src/admin/docs/index.js:268
+msgid "Block Styling"
+msgstr ""
+
+#: src/admin/docs/index.js:287
+msgid "Documentation"
+msgstr ""
+
+#: src/admin/docs/index.js:38
+msgid "Adding Selected Text Color"
+msgstr ""
+
+#: src/admin/docs/index.js:42
+msgid "Adding Highlighted Text Background Color"
+msgstr ""
+
+#: src/admin/docs/index.js:46
+msgid "Adding Link \"rel\" NoFollow or Sponsored Attributes"
+msgstr ""
+
+#: src/admin/docs/index.js:50
+msgid "Subscript and Superscript Text Formatting"
+msgstr ""
+
+#: src/admin/docs/index.js:54
+msgid "Justified Paragraph Alignment"
+msgstr ""
+
+#: src/admin/docs/index.js:58
+msgid "Transform Text to Uppercase"
+msgstr ""
+
+#: src/admin/docs/index.js:62
+msgid "Add Nonbreaking Space"
+msgstr ""
+
+#: src/admin/docs/index.js:66
+msgid "Clear Formatting"
+msgstr ""
+
+#: src/admin/docs/index.js:73
+msgid "Markdown Writing Shortcuts"
+msgstr ""
+
+#: src/admin/docs/index.js:77
+msgid "View or Add Estimated Reading Time"
+msgstr ""
+
+#: src/admin/docs/index.js:81
+msgid "Transform 3 Empty Paragraphs to Spacer Block"
+msgstr ""
+
+#: src/admin/docs/index.js:88
+msgid "Set Image Block as Featured Image"
+msgstr ""
+
+#: src/admin/docs/index.js:92
+msgid "Export and Import Blocks"
+msgstr ""
+
+#: src/admin/docs/index.js:96
+msgid "Copy Selected Block(s)"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/logic/index.js:25
+msgid "Conditional Logic"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/logic/index.js:26
+msgid ""
+"Add valid PHP conditional tags for custom & advanced visibility options.  "
+"The \"editorskit_allow_unsafe_eval\" filter must be set to true for tags to "
+"be evaluated."
 msgstr ""
