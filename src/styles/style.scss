@@ -40,14 +40,26 @@ body:not(.wp-admin) {
 
 		.has-tablet-text-align-center {
 			text-align: center;
+
+			&.wp-block-buttons {
+				justify-content: center;
+			}
 		}
 
 		.has-tablet-text-align-right {
 			text-align: right;
+
+			&.wp-block-buttons {
+				justify-content: right;
+			}
 		}
 
 		.has-tablet-text-align-left {
 			text-align: left;
+
+			&.wp-block-buttons {
+				justify-content: left;
+			}
 		}
 
 		.has-tablet-text-align-justify {
@@ -68,14 +80,26 @@ body:not(.wp-admin) {
 
 		.has-mobile-text-align-center {
 			text-align: center;
+
+			&.wp-block-buttons {
+				justify-content: center;
+			}
 		}
 
 		.has-mobile-text-align-right {
 			text-align: right;
+
+			&.wp-block-buttons {
+				justify-content: right;
+			}
 		}
 
 		.has-mobile-text-align-left {
 			text-align: left;
+
+			&.wp-block-buttons {
+				justify-content: left;
+			}
 		}
 
 		.has-mobile-text-align-justify {
