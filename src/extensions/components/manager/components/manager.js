@@ -24,6 +24,7 @@ class FeaturesManager extends Component {
 
 		this.state = {
 			isOpen: false,
+			isUpdated: false,
 		};
 	}
 
@@ -47,6 +48,7 @@ class FeaturesManager extends Component {
 							<h2 className="edit-post-options-modal__section-title">{ category.label }</h2>
 							<ul className="edit-post-editorskit-manager-modal__checklist">
 								{ map( category.items, ( item ) => {
+									const featureName = 'disableEditorsKit' + capitalize( item.name ) + capitalize( category.name );
 									return (
 										<li
 											className="edit-post-editorskit-manager-modal__checklist-item"
@@ -54,8 +56,11 @@ class FeaturesManager extends Component {
 											<CheckboxControl
 												className="edit-post-options-modal__option"
 												label={ item.label }
-												checked={ ! select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKit' + capitalize( item.name ) + capitalize( category.name ) ) }
-												onChange={ () => onToggle( category.name, item.name ) }
+												checked={ ! wp.data.select( 'core/edit-post' ).isFeatureActive( featureName ) }
+												onChange={ () => {
+													onToggle( category.name, item.name );
+													this.setState({ isUpdated: ! this.state.isUpdated });
+												} }
 											/>
 										</li>
 									);

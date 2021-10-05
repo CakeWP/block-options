@@ -7,8 +7,8 @@
 			> .block-editor-block-list__layout {
 
 				> .wp-block[data-type="core/column"] {
-					margin-left: 0;
-					margin-right: 0;
+					margin-left: 0 !important;
+					margin-right: 0 !important;
 					flex-basis: 50%;
 
 					> .editor-block-list__block-edit {

@@ -317,7 +317,7 @@ class EditorsKit_Render_Block {
 			$attributes = $block['attrs'];
 			if ( isset( $attributes['href'] ) && ! empty( $attributes['href'] ) ) {
 				$linked = '<a href="' . esc_url( $attributes['href'] ) . '" class="editorskit-media-text-link"';
-				$rel    = 'rel="';
+				$rel    = ' rel="';
 
 				if ( isset( $attributes['linkTarget'] ) && '_blank' === $attributes['linkTarget'] ) {
 					$linked .= ' target="_blank"';
@@ -366,7 +366,7 @@ class EditorsKit_Render_Block {
 
 			if ( isset( $attributes['href'] ) && ! empty( $attributes['href'] ) ) {
 				$linked = '<a href="' . esc_attr( $attributes['href'] ) . '" class="editorskit-block-link"';
-				$rel    = 'rel="';
+				$rel    = ' rel="';
 
 				if ( isset( $attributes['opensInNewTab'] ) && $attributes['opensInNewTab'] ) {
 					$linked .= ' target="_blank"';

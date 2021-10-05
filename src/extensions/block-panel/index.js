@@ -2,7 +2,6 @@
  * Internal dependencies
  */
 import ListTextSettings from './list-settings';
-import ColumnColorSettings from './column-background';
 import applyStyle from './apply-style';
 
 /**
@@ -106,9 +105,6 @@ const withBlockPanel = createHigherOrderComponent( ( BlockEdit ) => {
 				<BlockEdit { ...props } />
 				{ isSelected && ! isDisabledListTextSettings && blocksWithFontSize.includes( name ) &&
 					<ListTextSettings { ...props } />
-				}
-				{ isSelected && ! isDisabledListTextSettings && blocksWithBackgroundColor.includes( name ) &&
-					<ColumnColorSettings { ...props } />
 				}
 			</Fragment>
 		);
