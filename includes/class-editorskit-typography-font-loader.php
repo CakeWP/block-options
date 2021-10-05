@@ -430,7 +430,7 @@ class EditorsKit_Typography_Font_Loader {
 			if ( $meta ) {
 				$meta        = explode( '|', $meta );
 				$meta        = array_filter( array_unique( $meta ) );
-				$googleFonts = implode( $meta, '|' );
+				$googleFonts = implode( '|', $meta );
 
 				wp_enqueue_style(
 					'editorskit-typography-fonts',

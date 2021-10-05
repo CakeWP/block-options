@@ -105,7 +105,6 @@ const withTypographySettings = createHigherOrderComponent( ( BlockListBlock ) =>
 			}
 
 			wrapperProps = {
-				...wrapperProps,
 				style: applyFontStyle( props.attributes, props.name, wrapperProps ),
 				...customData,
 			};
