@@ -106,7 +106,7 @@ export default function GuideStart() {
                         onClick={() => setTypeAndProgress('template')}
                         className="button-focus-big-green cursor-pointer bg-white border border-black flex xl:w-1/2 flex-col h-full hover:bg-gray-50 min-h-60 p-8 lg:px-20 space-y-4">
                         <h3 className="text-2xl m-0 text-extendify-main">{__('Add a page', 'extendify-sdk')}</h3>
-                        <p className="text-left mb-8 text-lg">{__('Use a full page template that you can customize to make your own.', 'extendify-sdk')}</p>
+                        <p className="text-left mb-8 text-lg">{__('Use a full page layout that you can customize to make your own.', 'extendify-sdk')}</p>
                         <span className="pt-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="156" height="128" viewBox="0 0 156 128" fill="none">
                                 <path d="M155.006 38.4395H0.833984V81.8471H155.006V38.4395Z" fill="#DFDFDF"/>
