@@ -64,6 +64,7 @@ class Http
             'uuid' => User::data('uuid'),
             'sdk_version' => App::$version,
             'wp_plugins' => $request->get_method() === 'POST' ? array_keys(\get_plugins()) : [],
+            'source_plugin' => isset($GLOBALS['extendifySdkSourcePlugin']) ? $GLOBALS['extendifySdkSourcePlugin'] : 'Not set',
         ];
 
         $this->headers = [

@@ -80,7 +80,7 @@ export default function GuideSteps() {
         render(<WaitingCrunching
             action={action}
             callback={callback}
-            text={__('Finding templates...', 'extendify-sdk')}
+            text={__('Finding page layouts...', 'extendify-sdk')}
         />, document.getElementById('extendify-util'))
     }
 
@@ -131,7 +131,7 @@ export default function GuideSteps() {
                     <div className="text-left flex-shrink-0 lg:w-1/2">
                         <h2 className="text-2xl m-0 mb-8">
                             {preferred?.type === 'template' ?
-                                __('Help me find a template', 'extendify-sdk') :
+                                __('Help me find a page layout', 'extendify-sdk') :
                                 __('Help me find a pattern', 'extendify-sdk')}
                         </h2>
                         <div className="flex flex-col space-y-8">

@@ -32,7 +32,7 @@ export default function TaxonomyList({ categories, styles, types, requiredPlugin
                 href={`https://extendify.com/what-happens-when-a-template-is-added?utm_source=${window.extendifySdkData.source}&utm_medium=library&utm_campaign=sidebar`}
                 rel="noreferrer"
                 target="_blank">
-                {__('What happens when a template is added?', 'extendify-sdk')}
+                {__('What happens when a page layout is added?', 'extendify-sdk')}
             </a>
         </div>
     </>

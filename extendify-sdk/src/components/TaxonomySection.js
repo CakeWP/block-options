@@ -6,6 +6,7 @@ import {
     useState, useEffect, useRef, useCallback,
 } from '@wordpress/element'
 import { useTaxonomyStore } from '../state/Taxonomies'
+import { getTaxonomyName } from '../util/general'
 
 export default function TaxonomySection({ taxonomy: [title, data] }) {
     const updateTaxonomies = useTemplatesStore(state => state.updateTaxonomies)
@@ -67,9 +68,8 @@ export default function TaxonomySection({ taxonomy: [title, data] }) {
         return ''
     }
 
-    const theTitle = title.replace('tax_', '').replace(/_/g , ' ').replace(/\b\w/g, l => l.toUpperCase())
     return <PanelBody
-        title={theTitle}
+        title={getTaxonomyName(title)}
         initialOpen={openedTaxonomies.includes(title)}
         onToggle={(value) => toggleOpenedTaxonomy(title, value)}>
         <PanelRow>
