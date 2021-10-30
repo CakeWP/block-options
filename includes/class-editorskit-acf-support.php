@@ -87,7 +87,7 @@ class EditorsKit_ACF_Support {
 							'methods'             => 'GET',
 							'permission_callback' => array( $this, 'permissions' ),
 							'callback'            => function () {
-								return (object) [];
+								return (object) array();
 							},
 						)
 					);

@@ -126,8 +126,8 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 				'url'             => EDITORSKIT_PLUGIN_URL,
 				'dir'             => EDITORSKIT_PLUGIN_DIR,
 				'plugin'          => array(
-					'url'             => EDITORSKIT_PLUGIN_URL,
-					'dir'             => EDITORSKIT_PLUGIN_DIR,
+					'url' => EDITORSKIT_PLUGIN_URL,
+					'dir' => EDITORSKIT_PLUGIN_DIR,
 				),
 				'licenses'        => array(
 					'typography' => get_option( 'editorskit_typography_addon_license_active' ),

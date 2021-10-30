@@ -7,24 +7,23 @@ namespace Extendify\ExtendifySdk\Controllers;
 
 use Extendify\ExtendifySdk\Http;
 
-if (!defined('ABSPATH')) {
-    die('No direct access.');
+if ( ! defined( 'ABSPATH' ) ) {
+	die( 'No direct access.' );
 }
 
 /**
  * The controller for dealing with taxonomies
  */
-class TaxonomyController
-{
+class TaxonomyController {
 
-    /**
-     * Return all taxonomies
-     *
-     * @return WP_REST_Response|WP_Error
-     */
-    public static function index()
-    {
-        $response = Http::get('/airtable-taxonomies', []);
-        return new \WP_REST_Response($response);
-    }
+
+	/**
+	 * Return all taxonomies
+	 *
+	 * @return WP_REST_Response|WP_Error
+	 */
+	public static function index() {
+		$response = Http::get( '/airtable-taxonomies', array() );
+		return new \WP_REST_Response( $response );
+	}
 }

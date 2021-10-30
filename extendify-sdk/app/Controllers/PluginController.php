@@ -7,62 +7,59 @@ namespace Extendify\ExtendifySdk\Controllers;
 
 use Extendify\ExtendifySdk\Plugin;
 
-if (!defined('ABSPATH')) {
-    die('No direct access.');
+if ( ! defined( 'ABSPATH' ) ) {
+	die( 'No direct access.' );
 }
 
 /**
  * The controller for plugin dependency checking, etc
  */
-class PluginController
-{
+class PluginController {
 
-    /**
-     * Return all plugins
-     *
-     * @return array
-     */
-    public static function index()
-    {
-        if (! function_exists('get_plugins')) {
-            require_once ABSPATH . 'wp-admin/includes/plugin.php';
-        }
 
-        return \get_plugins();
-    }
+	/**
+	 * Return all plugins
+	 *
+	 * @return array
+	 */
+	public static function index() {
+		if ( ! function_exists( 'get_plugins' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
 
-    /**
-     * List active plugins
-     *
-     * @return array
-     */
-    public static function active()
-    {
-        return \get_option('active_plugins');
-    }
+		return \get_plugins();
+	}
 
-    /**
-     * Install plugins
-     *
-     * @param \WP_REST_Request $request - The request.
-     * @return bool
-     */
-    public static function install($request)
-    {
-        if (!\current_user_can('activate_plugins')) {
-            return new \WP_Error('not_allowed', \__('You are not allowed to activate plugins on this site.', 'extendify-sdk'));
-        }
+	/**
+	 * List active plugins
+	 *
+	 * @return array
+	 */
+	public static function active() {
+		return \get_option( 'active_plugins' );
+	}
 
-        $requiredPlugins = json_decode($request->get_param('plugins'), true);
+	/**
+	 * Install plugins
+	 *
+	 * @param \WP_REST_Request $request - The request.
+	 * @return bool
+	 */
+	public static function install( $request ) {
+		if ( ! \current_user_can( 'activate_plugins' ) ) {
+			return new \WP_Error( 'not_allowed', \__( 'You are not allowed to activate plugins on this site.', 'extendify-sdk' ) );
+		}
 
-        foreach ($requiredPlugins as $plugin) {
-            $status = Plugin::install_and_activate_plugin($plugin);
-            if (\is_wp_error($status)) {
-                // Return first error encountered.
-                return $status;
-            }
-        }
+		$requiredPlugins = json_decode( $request->get_param( 'plugins' ), true );
 
-        return true;
-    }
+		foreach ( $requiredPlugins as $plugin ) {
+			$status = Plugin::install_and_activate_plugin( $plugin );
+			if ( \is_wp_error( $status ) ) {
+				// Return first error encountered.
+				return $status;
+			}
+		}
+
+		return true;
+	}
 }

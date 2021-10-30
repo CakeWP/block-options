@@ -93,7 +93,7 @@ class EditorsKit_Render_Block {
 			return $block['attrs']['editorskit'];
 		}
 
-		return [];
+		return array();
 	}
 
 	/**
@@ -188,7 +188,6 @@ class EditorsKit_Render_Block {
 					return '';
 				}
 			}
-
 		}
 
 		return $block_content;

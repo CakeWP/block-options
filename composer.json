@@ -1,27 +1,20 @@
 {
 	"name": "phpbits/block-options",
 	"type": "wordpress-plugin",
-	"require": {
-		"php": ">=5.6"
-	},
-	"config": {
-		"platform": {
-			"php": "5.6"
-		}
-	},
 	"require-dev": {
 		"squizlabs/php_codesniffer": "^3.5",
-		"dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
 		"phpcompatibility/phpcompatibility-wp": "^2.1",
 		"wp-coding-standards/wpcs": "^2.1",
-		"phpunit/phpunit": "^5"
+		"wp-phpunit/wp-phpunit": "^5.4",
+		"phpunit/phpunit": "^8.5"
 	},
 	"scripts": {
 		"post-install-cmd": "./vendor/bin/phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs",
 		"post-update-cmd": "./vendor/bin/phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs",
 		"test": [
-			"phpcs --report=full --colors -p --standard=phpcs.xml --ignore=*/vendor/*,*/node_modules/*,*/build/* * --extensions=php"
+			"./vendor/bin/phpcs --report=full --colors -p --standard=phpcs.xml --ignore=*/vendor/*,*/node_modules/*,*/build/* * --extensions=php"
 		],
-		"format": "phpcbf --standard=phpcs.xml --report-summary --report-source --ignore=*/vendor/*,*/node_modules/*,*/build/* * --extensions=php"
+		"lint": "@php ./vendor/bin/phpcs --ignore=*/*.js -s --standard=./ruleset.xml .",
+		"format": "@php ./vendor/bin/phpcbf --ignore=*/*.js --standard=WordPress ."
 	}
 }

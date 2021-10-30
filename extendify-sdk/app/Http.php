@@ -11,139 +11,135 @@ use Extendify\ExtendifySdk\User;
 /**
  * Controller for http communication
  */
-class Http
-{
+class Http {
 
-    /**
-     * The api endpoint
-     *
-     * @var string
-     */
-    public $baseUrl = '';
 
-    /**
-     * Request data sent to the server
-     *
-     * @var array
-     */
-    public $data = [];
+	/**
+	 * The api endpoint
+	 *
+	 * @var string
+	 */
+	public $baseUrl = '';
 
-    /**
-     * Any headers required
-     *
-     * @var array
-     */
-    public $headers = [];
+	/**
+	 * Request data sent to the server
+	 *
+	 * @var array
+	 */
+	public $data = array();
 
-    /**
-     * The class instance.
-     *
-     * @var $instance
-     */
-    protected static $instance = null;
+	/**
+	 * Any headers required
+	 *
+	 * @var array
+	 */
+	public $headers = array();
 
-    /**
-     * Set up the base object to send with every request
-     *
-     * @param \WP_REST_Request $request - The request.
-     * @return void
-     */
-    public function __construct($request)
-    {
-        // Redundant, but extra prodection!
-        if (!\wp_verify_nonce(sanitize_text_field(wp_unslash($request->get_header('x_wp_nonce'))), 'wp_rest')) {
-            return;
-        }
+	/**
+	 * The class instance.
+	 *
+	 * @var $instance
+	 */
+	protected static $instance = null;
 
-        // Some special cases for development.
-        $this->baseUrl = $request->get_header('x_extendify_dev_mode') !== 'false' ? App::$config['api']['dev'] : App::$config['api']['live'];
-        $this->baseUrl = $request->get_header('x_extendify_local_mode') !== 'false' ? App::$config['api']['local'] : $this->baseUrl;
+	/**
+	 * Set up the base object to send with every request
+	 *
+	 * @param \WP_REST_Request $request - The request.
+	 * @return void
+	 */
+	public function __construct( $request ) {
+		// Redundant, but extra prodection!
+		if ( ! \wp_verify_nonce( sanitize_text_field( wp_unslash( $request->get_header( 'x_wp_nonce' ) ) ), 'wp_rest' ) ) {
+			return;
+		}
 
-        $this->data = [
-            'mode' => App::$environment,
-            'uuid' => User::data('uuid'),
-            'sdk_version' => App::$version,
-            'wp_plugins' => $request->get_method() === 'POST' ? array_keys(\get_plugins()) : [],
-            'source_plugin' => isset($GLOBALS['extendifySdkSourcePlugin']) ? $GLOBALS['extendifySdkSourcePlugin'] : 'Not set',
-        ];
+		// Some special cases for development.
+		$this->baseUrl = $request->get_header( 'x_extendify_dev_mode' ) !== 'false' ? App::$config['api']['dev'] : App::$config['api']['live'];
+		$this->baseUrl = $request->get_header( 'x_extendify_local_mode' ) !== 'false' ? App::$config['api']['local'] : $this->baseUrl;
 
-        $this->headers = [
-            'Accept' => 'application/json',
-            'referer' => $request->get_header('referer'),
-            'user_agent' => $request->get_header('user_agent'),
-        ];
-    }
+		$this->data = array(
+			'mode'          => App::$environment,
+			'uuid'          => User::data( 'uuid' ),
+			'sdk_version'   => App::$version,
+			'wp_plugins'    => $request->get_method() === 'POST' ? array_keys( \get_plugins() ) : array(),
+			'source_plugin' => isset( $GLOBALS['extendifySdkSourcePlugin'] ) ? $GLOBALS['extendifySdkSourcePlugin'] : 'Not set',
+		);
 
-    /**
-     * Register dynamic routes
-     *
-     * @param string $endpoint - The endpoint.
-     * @param array  $data     - The data to include.
-     * @param array  $headers  - The headers to include.
-     *
-     * @return array
-     */
-    public function getHandler($endpoint, $data = [], $headers = [])
-    {
-        $url = \esc_url_raw(
-            \add_query_arg(
-                \urlencode_deep(\urldecode_deep(array_merge($this->data, $data))),
-                $this->baseUrl . $endpoint
-            )
-        );
+		$this->headers = array(
+			'Accept'     => 'application/json',
+			'referer'    => $request->get_header( 'referer' ),
+			'user_agent' => $request->get_header( 'user_agent' ),
+		);
+	}
 
-        $response = \wp_remote_get(
-            $url,
-            [
-                'headers' => array_merge($this->headers, $headers),
-            ]
-        );
+	/**
+	 * Register dynamic routes
+	 *
+	 * @param string $endpoint - The endpoint.
+	 * @param array  $data     - The data to include.
+	 * @param array  $headers  - The headers to include.
+	 *
+	 * @return array
+	 */
+	public function getHandler( $endpoint, $data = array(), $headers = array() ) {
+		$url = \esc_url_raw(
+			\add_query_arg(
+				\urlencode_deep( \urldecode_deep( array_merge( $this->data, $data ) ) ),
+				$this->baseUrl . $endpoint
+			)
+		);
 
-        $responseBody = \wp_remote_retrieve_body($response);
-        return json_decode($responseBody, true);
-    }
+		$response = \wp_remote_get(
+			$url,
+			array(
+				'headers' => array_merge( $this->headers, $headers ),
+			)
+		);
 
-    /**
-     * Register dynamic routes
-     *
-     * @param string $endpoint - The endpoint.
-     * @param array  $data     - The arguments to include.
-     * @param array  $headers  - The headers to include.
-     *
-     * @return array
-     */
-    public function postHandler($endpoint, $data = [], $headers = [])
-    {
-        $response = \wp_remote_post(
-            $this->baseUrl . $endpoint,
-            [
-                'headers' => array_merge($this->headers, $headers),
-                'body' => array_merge($this->data, $data),
-            ]
-        );
+		$responseBody = \wp_remote_retrieve_body( $response );
+		return json_decode( $responseBody, true );
+	}
 
-        $responseBody = \wp_remote_retrieve_body($response);
-        return json_decode($responseBody, true);
-    }
+	/**
+	 * Register dynamic routes
+	 *
+	 * @param string $endpoint - The endpoint.
+	 * @param array  $data     - The arguments to include.
+	 * @param array  $headers  - The headers to include.
+	 *
+	 * @return array
+	 */
+	public function postHandler( $endpoint, $data = array(), $headers = array() ) {
+		$response = \wp_remote_post(
+			$this->baseUrl . $endpoint,
+			array(
+				'headers' => array_merge( $this->headers, $headers ),
+				'body'    => array_merge( $this->data, $data ),
+			)
+		);
 
-    /**
-     * The caller
-     *
-     * @param string $name      - The name of the method to call.
-     * @param array  $arguments - The arguments to pass in.
-     *
-     * @return mixed
-     */
-    public static function __callStatic($name, array $arguments)
-    {
-        if ($name === 'init') {
-            self::$instance = new static($arguments[0]);
-            return;
-        }
+		$responseBody = \wp_remote_retrieve_body( $response );
+		return json_decode( $responseBody, true );
+	}
 
-        $name = "{$name}Handler";
-        $r = self::$instance;
+	/**
+	 * The caller
+	 *
+	 * @param string $name      - The name of the method to call.
+	 * @param array  $arguments - The arguments to pass in.
+	 *
+	 * @return mixed
+	 */
+	public static function __callStatic( $name, array $arguments ) {
+		if ( $name === 'init' ) {
+			self::$instance = new static( $arguments[0] );
+			return;
+		}
 
-        return $r->$name(...$arguments);
-    }
+		$name = "{$name}Handler";
+		$r    = self::$instance;
+
+		return $r->$name( ...$arguments );
+	}
 }
