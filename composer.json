@@ -9,8 +9,8 @@
 		"phpunit/phpunit": "^8.5"
 	},
 	"scripts": {
-		"post-install-cmd": "./vendor/bin/phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs",
-		"post-update-cmd": "./vendor/bin/phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs",
+		"post-install-cmd": "chmod +x ./.dev/scripts/set-installed-paths.sh && ./.dev/scripts/set-installed-paths.sh",
+		"post-update-cmd": "chmod +x ./.dev/scripts/set-installed-paths.sh && ./.dev/scripts/set-installed-paths.sh",
 		"test": [
 			"./vendor/bin/phpcs --report=full --colors -p --standard=phpcs.xml --ignore=*/vendor/*,*/node_modules/*,*/build/* * --extensions=php"
 		],
