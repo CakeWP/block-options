@@ -33,7 +33,7 @@ jobs:
                       ${{ runner.os }}-composer-
 
             - name: Build autoloader
-              run: composer install --prefer-dist --no-progress --no-suggest --no-dev
+              run: composer install
 
             - name: Using Node version ${{ matrix.node-version }}
               uses: actions/setup-node@v1
