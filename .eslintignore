@@ -7,3 +7,6 @@ coverage
 cypress
 node_modules
 vendor
+
+
+extendify-sdk/*.js
