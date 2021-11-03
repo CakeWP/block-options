@@ -7,6 +7,7 @@ namespace Extendify\ExtendifySdk;
 
 use Extendify\ExtendifySdk\App;
 use Extendify\ExtendifySdk\User;
+use Extendify\ExtendifySdk\SiteSettings;
 
 /**
  * This class handles any file loading for the admin area.
@@ -51,6 +52,10 @@ class Admin
                 }
 
                 if (!$this->checkItsGutenbergPost($hook)) {
+                    return;
+                }
+
+                if (!$this->isLibraryEnabled()) {
                     return;
                 }
 
@@ -103,6 +108,7 @@ class Admin
                 'root' => \esc_url_raw(rest_url(APP::$slug . '/' . APP::$apiVersion)),
                 'nonce' => \wp_create_nonce('wp_rest'),
                 'user' => json_decode(User::data('extendifysdk_user_data'), true),
+                'sitesettings' => json_decode(SiteSettings::data()),
                 'source' => \esc_attr(APP::$sourcePlugin),
             ]
         );
@@ -117,5 +123,40 @@ class Admin
             $version,
             'all'
         );
+
+        \wp_enqueue_style(
+            App::$slug . '-utility-classes',
+            EXTENDIFYSDK_BASE_URL . 'public/build/extendify-utilities.css',
+            [],
+            $version,
+            'all'
+        );
+    }
+
+    /**
+     * Check if current user is Admin
+     *
+     * @return Boolean
+     */
+    private function isAdmin()
+    {
+        return in_array('administrator', \wp_get_current_user()->roles, true);
+    }
+
+    /**
+     * Check if scripts should add
+     *
+     * @return Boolean
+     */
+    public function isLibraryEnabled()
+    {
+        $settings = json_decode(SiteSettings::data());
+
+        // If it's disabled, only show it for admins.
+        if (isset($settings->state) && (isset($settings->state->enabled)) && !$settings->state->enabled) {
+            return $this->isAdmin();
+        }
+
+        return true;
     }
 }

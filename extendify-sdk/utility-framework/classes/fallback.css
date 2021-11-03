@@ -1,0 +1,10 @@
+/* Ensure image block display is standardized */
+.ext .wp-block-image {
+    /* no suggestion */
+    @apply relative text-center;
+}
+
+.ext .wp-block-image img {
+    /* no suggestion */
+    @apply inline-block align-middle;
+}

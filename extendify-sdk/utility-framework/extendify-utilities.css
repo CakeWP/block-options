@@ -1,0 +1,65 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import './classes/clip-path';
+@import './classes/columns';
+@import './classes/direction';
+@import './classes/inline-list';
+@import './classes/misc';
+@import './classes/text-stroke';
+
+@import './classes/editor/no-caption';
+@import './classes/editor/no-inserter';
+@import './classes/editor/no-resize';
+@import './classes/editor/pointer-events';
+
+@import './block-styles/cover-angled';
+
+@import './fallback/align';
+@import './fallback/colors';
+@import './fallback/font-sizes';
+@import './fallback/grid';
+@import './fallback/group';
+@import './fallback/image';
+
+
+body {
+    /* no suggestion */
+    /* We need to abstract this out of tailwind.config because clamp doesnt translate with negative margins */
+    --extendify--style--block-gap--lg: var(--wp--custom--spacing--lg, clamp(2em, 8vw, 8em));
+    
+    /* Fallback for < 5.9 (These are added by Gutenberg and WP Core in 5.9+) */
+    /* --wp--preset--font-size--small: 13px;
+    --wp--preset--font-size--normal: 16px;
+    --wp--preset--font-size--medium: 20px;
+    --wp--preset--font-size--large: 36px;
+    --wp--preset--font-size--extra-large: 38px;
+    --wp--preset--font-size--huge: 42px; */
+}
+
+/* Astra */
+.ast-separate-container .ext .block-editor-block-list__layout {
+    /* no suggestion */  
+    @apply p-0 !important;
+}
+
+/* Twenty Twenty One */
+.ext [data-block].wp-block-buttons .wp-block-button {
+        @apply my-0;
+}
+
+.ext [data-block].wp-block-buttons .wp-block-button:first-child {
+    @apply mt-0 mb-base !important;
+}
+
+/* Twenty Twenty adds a lot of margin automatically to blocks. We only want our own margin added to our patterns. */
+.ext .wp-block-group__inner-container figure.wp-block-gallery.alignfull  {
+     margin-top: unset;
+     margin-bottom: unset;
+}
+
+/* Ensure no funky business is assigned to alignwide */
+.ext .alignwide {
+    @apply mx-auto !important;
+}

@@ -29,6 +29,7 @@ export function ImportButton({ template }) {
                 injectTemplateBlocks(activeTemplateBlocks, template)
                     .then(() => setOpen(false))
                     .then(() => render(<ExtendifyLibrary/>, document.getElementById('extendify-root')))
+                    .then(() => setTimeout(() => useGlobalStore.setState({ currentPage: 'main' }), 500))
             }, 100)
         })
     }
