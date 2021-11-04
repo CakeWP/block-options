@@ -14,7 +14,6 @@ mix.options({ manifest: false })
 
 // If you add additional WP imports, include them here (could we generate these?)
 const externals = [
-    'api-fetch',
     'block-editor',
     'blocks',
     'components',

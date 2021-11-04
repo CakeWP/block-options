@@ -111,7 +111,7 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 			wp_enqueue_script(
 				$this->slug . '-admin',
 				$this->url . '/build/settings.js',
-				array( 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-api', 'wp-data', 'wp-hooks', 'wp-edit-post', 'lodash', 'wp-block-library', 'wp-block-editor', 'wp-editor' ),
+				array( 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-api-fetch', 'wp-data', 'wp-hooks', 'wp-edit-post', 'lodash', 'wp-block-library', 'wp-block-editor', 'wp-editor' ),
 				time(),
 				false
 			);

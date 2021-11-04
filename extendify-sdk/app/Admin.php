@@ -92,7 +92,6 @@ class Admin
             App::$slug . '-scripts',
             EXTENDIFYSDK_BASE_URL . 'public/build/extendify-sdk.js',
             [
-                'wp-api',
                 'wp-i18n',
                 'wp-components',
                 'wp-element',
