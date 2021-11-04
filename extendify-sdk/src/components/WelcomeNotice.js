@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n'
-import { closeSmall } from '@wordpress/icons'
+import { Icon, closeSmall } from '@wordpress/icons'
 import { Button } from '@wordpress/components'
 import { useUserStore } from '../state/User'
 import { useState } from '@wordpress/element'
@@ -35,7 +35,7 @@ export default function WelcomeNotice() {
         <div className='flex space-x-2 justify-center items-center'>
             <Button
                 variant="link"
-                className="text-black underline hover:no-underline"
+                className="text-black underline hover:no-underline p-0 h-auto"
                 href={`https://extendify.com/welcome/?utm_source=${window.extendifySdkData.source}&utm_medium=library&utm_campaign=welcome-notice&utm_content=tell-me-more`}
                 target="_blank"
             >
@@ -44,24 +44,16 @@ export default function WelcomeNotice() {
             <span className="font-bold" aria-hidden="true">&bull;</span>
             <Button
                 variant="link"
-                className="text-black underline hover:no-underline"
-                onClick={ dismiss }
-            >
-                { __('I’ll figure it out', 'extendify-sdk') }
-            </Button>
-            <span className="font-bold" aria-hidden="true">&bull;</span>
-            <Button
-                variant="link"
-                className="text-black underline hover:no-underline"
+                className="text-black underline hover:no-underline p-0 h-auto"
                 onClick={ disableLibrary }
             >
-                { __('Disable the library', 'extendify-sdk') }
+                { __('Turn off the library', 'extendify-sdk') }
             </Button>
         </div>
         <div className="absolute right-1">
             <Button
-                className="opacity-50 hover:opacity-100 focus:opacity-100 text-black"
-                icon={ closeSmall }
+                className="opacity-50 hover:opacity-100 focus:opacity-100 text-extendify-black"
+                icon={ <Icon icon={ closeSmall } /> }
                 label={ __('Dismiss this notice', 'extendify-sdk') }
                 onClick={ dismiss }
                 showTooltip={ false }

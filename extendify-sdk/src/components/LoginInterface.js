@@ -100,7 +100,7 @@ export default function LoginInterface({ actionCallback, initialFocus }) {
             <div className='flex justify-between items-center'>
                 <div className='flex items-center space-x-2 -ml-2'>
                     <Icon icon={ user } size={ 48 } />
-                    <p className='text-extendify-black'>{email}</p>
+                    <p className='text-extendify-black'>{email?.length ? email : __('Logged In', 'extendify-sdk')}</p>
                 </div>
                 { window.location.search.indexOf('DEVMODE') > -1 && <Button
                     className="px-4 py-3 cursor-pointer text-center rounded bg-extendify-main text-white"
