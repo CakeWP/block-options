@@ -18,7 +18,7 @@ module.exports = {
         spacing: {
             0: '0',
             base: 'var(--wp--style--block-gap, 2rem)',
-            lg: 'var(--extendify--style--block-gap--lg)',
+            lg: 'var(--extendify--spacing--large)',
         },
     },
     variants: {

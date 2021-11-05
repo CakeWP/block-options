@@ -27,7 +27,7 @@
 body {
     /* no suggestion */
     /* We need to abstract this out of tailwind.config because clamp doesnt translate with negative margins */
-    --extendify--style--block-gap--lg: var(--wp--custom--spacing--lg, clamp(2em, 8vw, 8em));
+    --extendify--spacing--large: var(--wp--custom--spacing--large, clamp(2em, 8vw, 8em));
 }
 
 /* Astra */

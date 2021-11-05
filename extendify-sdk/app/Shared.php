@@ -110,7 +110,7 @@ class Shared
                 --wp--preset--color--primary: var(--global-palette1);
                 --wp--preset--color--secondary: var(--global-palette2);
                 --wp--preset--color--tertiary: var(--global-palette7);
-                --wp--custom--spacing--lg: clamp(var(--global-sm-spacing), 5vw, var(--global-xxl-spacing));
+                --wp--custom--spacing--large: clamp(var(--global-sm-spacing), 5vw, var(--global-xxl-spacing));
                 --wp--preset--font-size--large: var(--h2FontSize);
                 --wp--preset--font-size--huge: var(--h1FontSize); 
             }';
@@ -123,7 +123,7 @@ class Shared
                 --wp--preset--color--primary: var(--nv-primary-accent);
                 --wp--preset--color--secondary: var(--nv-secondary-accent);
                 --wp--preset--color--tertiary: var(--nv-light-bg);
-                --wp--custom--spacing--lg: clamp(15px, 5vw, 80px);
+                --wp--custom--spacing--large: clamp(15px, 5vw, 80px);
                 --wp--preset--font-size--large: var(--h2FontSize);
                 --wp--preset--font-size--huge: var(--h1FontSize); 
             }';
@@ -166,7 +166,7 @@ class Shared
                 --wp--preset--color--primary: ' . $primary . ';
                 --wp--preset--color--secondary: ' . $secondary . ';
                 --wp--style--block-gap: ' . $gap . ';
-                --wp--custom--spacing--lg: clamp(2rem, 7vw, 8rem);
+                --wp--custom--spacing--large: clamp(2rem, 7vw, 8rem);
             }';
         }
 
@@ -203,7 +203,7 @@ class Shared
                 --wp--preset--color--primary: ' . $primary . ';
                 --wp--preset--color--secondary: #636363;
                 --wp--style--block-gap: 3rem;
-                --wp--custom--spacing--lg: clamp(2rem, 7vw, 8rem);
+                --wp--custom--spacing--large: clamp(2rem, 7vw, 8rem);
                 --responsive--alignwide-width: 1120px;
             }';
         }//end if
@@ -242,7 +242,7 @@ class Shared
                 --wp--preset--color--primary: ' . $primary . ';
                 --wp--preset--color--secondary: #69603e;
                 --wp--style--block-gap: 3rem;
-                --wp--custom--spacing--lg: clamp(2rem, 7vw, 8rem);
+                --wp--custom--spacing--large: clamp(2rem, 7vw, 8rem);
                 --responsive--alignwide-width: 120rem;
             }';
         }//end if
