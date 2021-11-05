@@ -108,7 +108,7 @@ class Admin
                 'nonce' => \wp_create_nonce('wp_rest'),
                 'user' => json_decode(User::data('extendifysdk_user_data'), true),
                 'sitesettings' => json_decode(SiteSettings::data()),
-                'source' => \esc_attr(APP::$sourcePlugin),
+                'sdk_partner' => \esc_attr(APP::$sdkPartner),
             ]
         );
         \wp_enqueue_script(App::$slug . '-scripts');

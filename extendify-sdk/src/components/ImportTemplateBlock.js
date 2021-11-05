@@ -111,7 +111,7 @@ export function ImportTemplateBlock({ template }) {
                         tagName="a"
                         target="_blank"
                         className="m-auto mt-10"
-                        href={`https://extendify.com/pricing/?utm_source=${window.extendifySdkData.source}&utm_medium=library&utm_campaign=no-imports-modal&utm_content=get-unlimited-imports`}
+                        href={`https://extendify.com/pricing/?utm_source=${window.extendifySdkData.sdk_partner}&utm_medium=library&utm_campaign=no-imports-modal&utm_content=get-unlimited-imports`}
                         rel="noreferrer">
                         {__('Get Unlimited Imports','extendify-sdk')}
                         <svg fill="none" height="24" viewBox="0 0 25 24" width="25" xmlns="http://www.w3.org/2000/svg"><path d="m10.3949 8.7864 5.5476-.02507m0 0-.0476 5.52507m.0476-5.52507c-2.357 2.35707-5.4183 5.41827-7.68101 7.68097" stroke="currentColor" strokeWidth="1.5"/></svg>

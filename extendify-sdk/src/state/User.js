@@ -14,6 +14,7 @@ export const useUserStore = create(persist((set, get) => ({
     apiKey: '',
     imports: 0,
     uuid: '',
+    sdkPartner: '',
     registration: {
         email: '',
     },

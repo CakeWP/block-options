@@ -27,7 +27,7 @@ function ImportCounter() {
         target="_blank"
         rel="noreferrer"
         className={ classnames(backgroundColor, 'flex w-full no-underline button-focus -mt-10 text-sm justify-between py-3 px-4 text-white rounded')}
-        href={`https://www.extendify.com/pricing/?utm_source=${encodeURIComponent(window.extendifySdkData.source)}&utm_medium=library&utm_campaign=import-counter&utm_content=upgrade&utm_term=${status}`}>
+        href={`https://www.extendify.com/pricing/?utm_source=${encodeURIComponent(window.extendifySdkData.sdk_partner)}&utm_medium=library&utm_campaign=import-counter&utm_content=upgrade&utm_term=${status}`}>
         <div className='flex items-center space-x-2 no-underline'>
             <Icon icon={ icon } size={ 14 } />
             <span>

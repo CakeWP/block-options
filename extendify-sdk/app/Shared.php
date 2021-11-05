@@ -204,6 +204,7 @@ class Shared
                 --wp--preset--color--secondary: #636363;
                 --wp--style--block-gap: 3rem;
                 --wp--custom--spacing--lg: clamp(2rem, 7vw, 8rem);
+                --responsive--alignwide-width: 1120px;
             }';
         }//end if
 
@@ -242,6 +243,7 @@ class Shared
                 --wp--preset--color--secondary: #69603e;
                 --wp--style--block-gap: 3rem;
                 --wp--custom--spacing--lg: clamp(2rem, 7vw, 8rem);
+                --responsive--alignwide-width: 120rem;
             }';
         }//end if
 

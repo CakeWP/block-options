@@ -59,12 +59,6 @@ class Http
         $this->baseUrl = $request->get_header('x_extendify_dev_mode') !== 'false' ? App::$config['api']['dev'] : App::$config['api']['live'];
         $this->baseUrl = $request->get_header('x_extendify_local_mode') !== 'false' ? App::$config['api']['local'] : $this->baseUrl;
 
-        // Set the "partner" plugin/theme here with a fallback to support the previous plugin implementation.
-        $partner = isset($GLOBALS['extendify_sdk_partner']) ? $GLOBALS['extendify_sdk_partner'] : '';
-        if (!$partner && isset($GLOBALS['extendifySdkSourcePlugin'])) {
-            $partner = $GLOBALS['extendifySdkSourcePlugin'];
-        }
-
         $this->data = [
             'wp_language' => \get_locale(),
             'wp_theme' => \get_option('template'),
@@ -72,8 +66,7 @@ class Http
             'uuid' => User::data('uuid'),
             'sdk_version' => App::$version,
             'wp_active_plugins' => $request->get_method() === 'POST' ? \get_option('active_plugins') : [],
-            'source_plugin' => isset($GLOBALS['extendifySdkSourcePlugin']) ? $GLOBALS['extendifySdkSourcePlugin'] : '',
-            'sdk_partner' => $partner,
+            'sdk_partner' => App::$sdkPartner,
         ];
 
         $this->headers = [

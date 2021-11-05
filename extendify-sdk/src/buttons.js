@@ -4,7 +4,7 @@ import { registerPlugin } from '@wordpress/plugins'
 import { openModal } from './util/general'
 import { PluginSidebarMoreMenuItem } from '@wordpress/edit-post'
 import { Icon } from '@wordpress/icons'
-import { brandMark } from './components/icons'
+import { brandMark } from './components/icons/'
 import LibraryAccessModal from './components/LibraryAccessModal'
 
 const openLibrary = (event) => {
@@ -23,9 +23,9 @@ const mainButton = <div id="extendify-templates-inserter" className="extendify-s
         data-extendify-identifier="main-button"
         id="extendify-templates-inserter-btn"
         className="components-button">
-        <Icon
-            icon={ brandMark }
-            size={ 24 }
+        <Icon 
+            icon={ brandMark } 
+            size={ 24 } 
             className="-ml-1 mr-1" />
         {__('Library', 'extendify-sdk')}
     </button>

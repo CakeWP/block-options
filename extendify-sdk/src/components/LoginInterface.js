@@ -117,7 +117,7 @@ export default function LoginInterface({ actionCallback, initialFocus }) {
             <p className='text-sm text-extendify-gray text-center space-x-1 leading-extra-tight'>
                 <span>{__('Don\'t have an account?', 'extendify-sdk')}</span>
                 <a
-                    href={`https://extendify.com/pricing?utm_source=${window.extendifySdkData.source}&utm_medium=library&utm_campaign=sign-in-form&utm_content=sign-up`}
+                    href={`https://extendify.com/pricing?utm_source=${window.extendifySdkData.sdk_partner}&utm_medium=library&utm_campaign=sign-in-form&utm_content=sign-up`}
                     target="_blank"
                     className="underline hover:no-underline text-extendify-gray"
                     rel="noreferrer">
@@ -176,7 +176,7 @@ export default function LoginInterface({ actionCallback, initialFocus }) {
             </div>
             }
             <div className='text-center pt-4'>
-                <a target='_blank' rel="noreferrer" href={`https://extendify.com/guides/sign-in?utm_source=${window.extendifySdkData.source}&utm_medium=library&utm_campaign=sign-in-form&utm_content=need-help`} className="underline hover:no-underline text-sm text-extendify-gray">
+                <a target='_blank' rel="noreferrer" href={`https://extendify.com/guides/sign-in?utm_source=${window.extendifySdkData.sdk_partner}&utm_medium=library&utm_campaign=sign-in-form&utm_content=need-help`} className="underline hover:no-underline text-sm text-extendify-gray">
                     {__('Need Help?', 'extendify-sdk')}
                 </a>
             </div>

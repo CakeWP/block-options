@@ -36,7 +36,7 @@ export default function WelcomeNotice() {
             <Button
                 variant="link"
                 className="text-black underline hover:no-underline p-0 h-auto"
-                href={`https://extendify.com/welcome/?utm_source=${window.extendifySdkData.source}&utm_medium=library&utm_campaign=welcome-notice&utm_content=tell-me-more`}
+                href={`https://extendify.com/welcome/?utm_source=${window.extendifySdkData.sdk_partner}&utm_medium=library&utm_campaign=welcome-notice&utm_content=tell-me-more`}
                 target="_blank"
             >
                 { __('Tell me more', 'extendify-sdk') }

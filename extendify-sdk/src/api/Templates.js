@@ -1,6 +1,7 @@
 import { Axios as api } from './axios'
 import { templates as config } from '../config'
 import { useTaxonomyStore } from '../state/Taxonomies'
+import { useUserStore } from '../state/User'
 
 let count = 0
 
@@ -16,6 +17,7 @@ export const Templates = {
             offset: options.offset ?? '',
             initial: count === 1,
             request_count: count,
+            sdk_partner: useUserStore.getState().sdkPartner ?? '',
         })
         return templates
     },

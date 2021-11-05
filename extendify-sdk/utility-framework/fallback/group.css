@@ -8,3 +8,24 @@
         /* no suggestion */
     @apply p-0 !important;
 }
+
+/* Fallback for classic theme group blocks */ 
+.ext *[class*=inner-container] > .alignwide *[class*=inner-container] {
+    /* no suggestion */ 
+    max-width: var(--responsive--alignwide-width, 120rem);
+}
+
+.ext *[class*=inner-container] > .alignwide *[class*=inner-container] > * {
+    /* no suggestion */ 
+    @apply max-w-full !important;
+}
+
+.ext *[class*=inner-container] > .alignfull *[class*=inner-container] {
+    /* no suggestion */ 
+    @apply max-w-full;
+}
+
+.ext *[class*=inner-container] > .alignfull *[class*=inner-container] > * {
+    /* no suggestion */ 
+    @apply max-w-full !important;
+}

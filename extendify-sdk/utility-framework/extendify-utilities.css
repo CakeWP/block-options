@@ -28,14 +28,6 @@ body {
     /* no suggestion */
     /* We need to abstract this out of tailwind.config because clamp doesnt translate with negative margins */
     --extendify--style--block-gap--lg: var(--wp--custom--spacing--lg, clamp(2em, 8vw, 8em));
-    
-    /* Fallback for < 5.9 (These are added by Gutenberg and WP Core in 5.9+) */
-    /* --wp--preset--font-size--small: 13px;
-    --wp--preset--font-size--normal: 16px;
-    --wp--preset--font-size--medium: 20px;
-    --wp--preset--font-size--large: 36px;
-    --wp--preset--font-size--extra-large: 38px;
-    --wp--preset--font-size--huge: 42px; */
 }
 
 /* Astra */
@@ -46,20 +38,23 @@ body {
 
 /* Twenty Twenty One */
 .ext [data-block].wp-block-buttons .wp-block-button {
-        @apply my-0;
+    @apply my-0;
 }
 
 .ext [data-block].wp-block-buttons .wp-block-button:first-child {
+    /* no suggestion */ 
     @apply mt-0 mb-base !important;
 }
 
 /* Twenty Twenty adds a lot of margin automatically to blocks. We only want our own margin added to our patterns. */
 .ext .wp-block-group__inner-container figure.wp-block-gallery.alignfull  {
+     /* no suggestion */
      margin-top: unset;
      margin-bottom: unset;
 }
 
 /* Ensure no funky business is assigned to alignwide */
 .ext .alignwide {
+    /* no suggestion */ 
     @apply mx-auto !important;
 }

@@ -5,6 +5,8 @@
 
 namespace Extendify\ExtendifySdk;
 
+use Extendify\ExtendifySdk\App;
+
 /**
  * Helper class for interacting with the user
  */
@@ -108,6 +110,10 @@ class User
             set_transient('extendifySdk_import_max_check_' . $this->user->ID, time(), strtotime('1 week', 0));
             $currentImports = Http::get('/max-free-imports');
             $userData['state']['allowedImports'] = is_numeric($currentImports) && $currentImports > 0 ? $currentImports : 25;
+        }
+
+        if (!$userData['state']['sdkPartner']) {
+            $userData['state']['sdkPartner'] = App::$sdkPartner;
         }
 
         $userData['state']['uuid'] = self::data('uuid');
