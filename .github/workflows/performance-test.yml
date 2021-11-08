@@ -2,7 +2,7 @@ name: Performance test
 on: workflow_dispatch
 jobs:
     build:
-        name: Build, test and zip
+        name: Performance Test
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
@@ -10,10 +10,12 @@ jobs:
                 php: [8.0]
                 node-version: [16.x]
         steps:
-            - name: Checkout to gutenberg
-              uses: actions/checkout@master
-              with: 
-                  repository: WordPress/gutenberg
+            - name: Checkout gutenberg
+              run: | 
+                  git clone https://github.com/WordPress/gutenberg.git
+                  rm -rf gutenberg/.git
+                  cd gutenberg
+                  ls -lia
 
             - name: Using Node version ${{ matrix.node-version }}
               uses: actions/setup-node@v1
@@ -25,6 +27,7 @@ jobs:
 
             - name: npm install, build
               run: |
+                  ls -la
                   npm install
                   npm run build
 
