@@ -1,5 +1,5 @@
 name: Performance test
-on: push
+on: workflow_dispatch
 jobs:
     build:
         name: Build, test and zip
