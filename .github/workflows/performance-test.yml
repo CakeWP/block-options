@@ -1,0 +1,34 @@
+name: Performance test
+on: workflow_dispatch
+jobs:
+    build:
+        name: Build, test and zip
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                php: [8.0]
+                node-version: [16.x]
+        steps:
+            - name: Checkout to gutenberg
+              uses: actions/checkout@master
+              with: 
+                  repository: WordPress/gutenberg
+
+            - name: Using Node version ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+
+            - name: Installing wordpress environment
+              run: npm install -g @wordpress/env
+
+            - name: npm install, build
+              run: |
+                  npm install
+                  npm run build
+
+            - name: run performance test
+              run: |
+                  npm run test-performance packages/e2e-tests/specs/performance/post-editor.test.js
+
