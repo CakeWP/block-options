@@ -8,20 +8,22 @@ jobs:
             fail-fast: false
             matrix:
                 php: [8.0]
-                node-version: [10.x]
+                node-version: [14.x]
         steps:
             - name: Checkout to gutenberg
               uses: actions/checkout@master
               with: 
                   repository: WordPress/gutenberg
 
+            - name: get current branch name
+              env:
+                ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+              uses: nelonoel/branch-name@v1
+
             - name: Using Node version ${{ matrix.node-version }}
               uses: actions/setup-node@v1
               with:
                   node-version: ${{ matrix.node-version }}
-
-            - name: Installing wordpress environment
-              run: npm install -g @wordpress/env
 
             - name: npm install, build
               run: |
@@ -29,7 +31,40 @@ jobs:
                   npm ci
                   npm run build
 
-            - name: run performance test
+            - name: starting the wp enviroment
+              run: |
+                npm run wp-env start
+
+            - name: run performance test without editorskit
               run: |
                   npm run test-performance packages/e2e-tests/specs/performance/post-editor.test.js
 
+            - name: stop the wp environment
+              run:
+                npm run wp-env stop
+
+            - name: setup, install and build editorskit
+              env:
+                ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+              run: |
+                git clone https://${{ secrets.ACCESS_TOKEN }}:x-oauth-basic@github.com/CakeWP/block-options.git
+                cd block-options
+                git checkout ${BRANCH_NAME}
+
+                npm ci
+                npm run build
+                cd ..
+
+            - name: include editorskit in the environment config
+              run: |
+                ls -la
+                sed -I -e 's/"\."/".", ".\/block-options"/g' .wp-env.json
+                cat .wp-env.json
+
+            - name: start worpdress environment
+              run: |
+                npm run wp-env start --update
+
+            - name: run performance test with editorskit
+              run: |
+                npm run test-performance packages/e2e-tests/specs/performance/post-editor.test.js
