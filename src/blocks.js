@@ -70,10 +70,7 @@ import * as importBlock from './blocks/import';
 import * as shareABlock from './blocks/shareablock';
 
 export function registerBlocks() {
-	[
-		importBlock,
-		shareABlock,
-	].forEach( ( block ) => {
+	[ importBlock, shareABlock ].forEach( ( block ) => {
 		if ( ! block ) {
 			return;
 		}
