@@ -17,8 +17,9 @@ jobs:
 
             - name: get current branch name
               env:
-                ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-              uses: nelonoel/branch-name@v1
+                ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+              uses: tj-actions/branch-names@v5
+              id: branch-name
 
             - name: Using Node version ${{ matrix.node-version }}
               uses: actions/setup-node@v1
@@ -49,7 +50,7 @@ jobs:
               run: |
                 git clone https://${{ secrets.ACCESS_TOKEN }}:x-oauth-basic@github.com/CakeWP/block-options.git
                 cd block-options
-                git checkout ${BRANCH_NAME}
+                git checkout ${{ steps.branch-name.outputs.current_branch }}
 
                 npm ci
                 npm run build
