@@ -98,6 +98,9 @@ const checkTermIsAvailableOnType = (
     tax, term, type,
 ) => {
     const key = `${tax}-${term}-${type}`
+    if (key === 'tax_categories-Default-pattern') {
+        return true
+    }
     if (!termTypeMap.has(key)) {
         termTypeMap.set(key, useTaxonomyStore.getState()?.taxonomies[tax]?.find((item) => item?.term === term)?.type?.includes(type))
     }

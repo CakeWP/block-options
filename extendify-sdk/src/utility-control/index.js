@@ -7,7 +7,6 @@ import { FormTokenField } from '@wordpress/components'
 import suggestions from '../../utility-framework/suggestions.json'
 
 function addAttributes(settings) {
-
     // Add new extUtilities attribute to block settings.
     return {
         ...settings,
@@ -15,11 +14,10 @@ function addAttributes(settings) {
             ...settings.attributes,
             extUtilities: {
                 type: 'array',
-                default:[],
+                default: [],
             },
         },
     }
-
 }
 
 function addEditProps(settings) {
@@ -39,69 +37,69 @@ function addEditProps(settings) {
     return settings
 }
 
-/**
- * Create HOC to add Extendify Utility to Advanced Panel of block.
- */
+// Create HOC to add Extendify Utility to Advanced Panel of block.
 const utilityClassEdit = createHigherOrderComponent((BlockEdit) => {
     return function editPanel(props) {
-
-        const { extUtilities } = props.attributes
-        let classes = extUtilities
-
-        if(!Array.isArray(classes)){
-            classes = classes.split(' ')
-        }
-
-        /**
-         * Remove all extra // and . from classnames
-         */
-        const suggestionList = suggestions.suggestions.map((s)=> {
-            return s.replace('.','').replace(new RegExp('\\\\', 'g'), '')
+        const { extUtilities: classes } = props.attributes
+        const suggestionList = suggestions.suggestions.map((s) => {
+            // Remove all extra // and . from classnames
+            return s.replace('.', '').replace(new RegExp('\\\\', 'g'), '')
         })
 
-        return (
-            <>
-                <BlockEdit { ...props } />
+        return <>
+            <BlockEdit {...props} />
+            {classes && (
                 <InspectorAdvancedControls>
                     <FormTokenField
-                        label={__('Extendify Utilities','extendify-sdk')}
+                        label={__('Extendify Utilities', 'extendify-sdk')}
                         tokenizeOnSpace={true}
                         value={ classes }
-                        suggestions={ suggestionList }
-                        onChange={ (value) => {
+                        suggestions={suggestionList}
+                        onChange={(value) => {
                             props.setAttributes({
                                 extUtilities: value,
                             })
-                        } }
+                        }}
                     />
                 </InspectorAdvancedControls>
-            </>
-        )
+            )}
+        </>
+
     }
-},'utilityClassEdit')
+}, 'utilityClassEdit')
 
 function addSaveProps(
     saveElementProps, blockType, attributes,
 ) {
+    let { className: generatedClasses } = saveElementProps
+    let {
+        extUtilities: classes,
+        className: additionalClasses,
+    } = attributes
 
-    // these are generated classes which does not show in attributes
-    let { className:generatedClasses } = saveElementProps
-
-    let { extUtilities, className: additinalClasses } = attributes
-
-    // // // Return if no utilities present.
-    if (!extUtilities) {
+    if (!classes || !Object.keys(classes).length) {
         return saveElementProps
     }
 
-    additinalClasses = additinalClasses ? additinalClasses.split(' ') : []
-    generatedClasses = generatedClasses ? generatedClasses.split(' ') : []
+    // EK seems to be converting string values to objects in some situations
+    const normalizeAsArray = (item) => {
+        switch (Object.prototype.toString.call(item)) {
+            case '[object String]': return item.split(' ')
+            case '[object Array]': return item
+            default: return []
+        }
+    }
+    const classesCombined = new Set([
+        ...normalizeAsArray(additionalClasses),
+        ...normalizeAsArray(generatedClasses),
+        ...normalizeAsArray(classes),
+    ])
 
-    const classes = new Set([...additinalClasses, ...generatedClasses, ...extUtilities])
-
-    Object.assign(saveElementProps, { className: [...classes].join(' ') })
-
-    return saveElementProps
+    return Object.assign(
+        {},
+        saveElementProps,
+        { className: [...classesCombined].join(' ') },
+    )
 }
 
 addFilter(

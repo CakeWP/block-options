@@ -64,6 +64,7 @@ class Shared
             'oceanwp',
             'generatepress',
             'twentytwentyone',
+            'twentytwentytwo',
             'twentytwenty',
             'twentynineteen',
         ];
@@ -207,6 +208,12 @@ class Shared
                 --responsive--alignwide-width: 1120px;
             }';
         }//end if
+
+        if ($this->theme === 'twentytwentytwo') {
+            $css = 'body, .editor-styles-wrapper {
+                --extendify--spacing--large: clamp(2rem,8vw,8rem); 
+            }';
+        }
 
         if ($this->theme === 'twentytwentyone') {
             $css = 'body, .editor-styles-wrapper {

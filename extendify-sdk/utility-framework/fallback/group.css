@@ -5,8 +5,13 @@
 
  /* For <5.9 */
 .ext .wp-block-group__inner-container {
-        /* no suggestion */
+    /* no suggestion */
     @apply p-0 !important;
+}
+
+.ext.has-background {
+    /* no suggestion */        
+    @apply px-base;
 }
 
 /* Fallback for classic theme group blocks */ 
