@@ -65,6 +65,9 @@ import './extensions/shortcuts/alignment';
 // Disable Block Control
 import './extensions/advanced-controls/disable-block';
 
+// History Revision
+import './extensions/history-revision';
+
 // Register Blocks
 import * as importBlock from './blocks/import';
 import * as shareABlock from './blocks/shareablock';
