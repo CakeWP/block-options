@@ -18,9 +18,7 @@ jobs:
             - name: switch to a stable gutenberg branch
               working-directory: ./gutenberg
               run: |
-                RAW_STABLE_TAG=$(curl -v --silent https://api.github.com/repos/WordPress/gutenberg/releases/latest 2>&1 | grep tag_name)
-                STABLE_TAG=$(echo $RAW_STABLE_TAG | tr -dc '0-9.v')
-                git checkout tags/${STABLE_TAG} -b 'stable-tag'
+                git checkout tags/v11.8.0 -b 'stable-tag'
             
             - name: install wp cli
               run: |
