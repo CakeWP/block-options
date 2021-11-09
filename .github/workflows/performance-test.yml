@@ -10,62 +10,78 @@ jobs:
                 php: [8.0]
                 node-version: [14.x]
         steps:
-            - name: Checkout to gutenberg
-              uses: actions/checkout@master
-              with: 
-                  repository: WordPress/gutenberg
+            - name: clone repositories
+              run: |
+                git clone https://github.com/WordPress/gutenberg.git
+                git clone https://${{ secrets.ACCESS_TOKEN }}:x-oauth-basic@github.com/CakeWP/block-options.git
+
+            - name: switch to a stable gutenberg branch
+              working-directory: ./gutenberg
+              run: |
+                RAW_STABLE_TAG=$(curl -v --silent https://api.github.com/repos/WordPress/gutenberg/releases/latest 2>&1 | grep tag_name)
+                STABLE_TAG=$(echo $RAW_STABLE_TAG | tr -dc '0-9.v')
+                git checkout tags/${STABLE_TAG} -b 'stable-tag'
+            
+            - name: install wp cli
+              run: |
+                curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && chmod +x wp-cli.phar && sudo mv wp-cli.phar /usr/local/bin/wp
 
             - name: get current branch name
+              id: branch-name
               env:
                 ACTIONS_ALLOW_UNSECURE_COMMANDS: true
               uses: tj-actions/branch-names@v5
-              id: branch-name
 
-            - name: Using Node version ${{ matrix.node-version }}
+            - name: using Node version ${{ matrix.node-version }}
               uses: actions/setup-node@v1
               with:
                   node-version: ${{ matrix.node-version }}
 
             - name: npm install, build
+              working-directory: ./gutenberg 
               run: |
                   ls -la
                   npm ci
                   npm run build
 
             - name: starting the wp enviroment
+              working-directory: ./gutenberg
               run: |
                 npm run wp-env start
 
             - name: run performance test without editorskit
+              working-directory: ./gutenberg
               run: |
-                  npm run test-performance packages/e2e-tests/specs/performance/post-editor.test.js
+                npm run test-performance packages/e2e-tests/specs/performance/post-editor.test.js
 
             - name: stop the wp environment
+              working-directory: ./gutenberg
               run:
                 npm run wp-env stop
 
             - name: setup, install and build editorskit
+              working-directory: ./block-options
               env:
                 ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
               run: |
-                git clone https://${{ secrets.ACCESS_TOKEN }}:x-oauth-basic@github.com/CakeWP/block-options.git
-                cd block-options
-                git checkout ${{ steps.branch-name.outputs.current_branch }}
+                git checkout ${BRANCH_NAME}
 
                 npm ci
                 npm run build
-                cd ..
 
             - name: include editorskit in the environment config
+              working-directory: ./gutenberg
               run: |
                 ls -la
-                sed -I -e 's/"\."/".", ".\/block-options"/g' .wp-env.json
+                sed -I -e 's/"\."/".", "..\/block-options"/g' .wp-env.json
                 cat .wp-env.json
 
-            - name: start worpdress environment
+            - name: start wordpress environment
+              working-directory: ./gutenberg
               run: |
                 npm run wp-env start --update
 
             - name: run performance test with editorskit
+              working-directory: ./gutenberg
               run: |
                 npm run test-performance packages/e2e-tests/specs/performance/post-editor.test.js
