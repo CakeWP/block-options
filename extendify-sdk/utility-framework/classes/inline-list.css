@@ -1,0 +1,20 @@
+
+/* Use "is-style-" prefix to support adding this style to the core/list block */
+.is-style-inline-list {
+    @apply pl-0 !important;
+}
+
+.is-style-inline-list li {
+    /* no suggestion */
+    @apply list-none tablet:inline tablet:mr-base !important;
+}
+
+.is-style-inline-list li:first-child {
+    /* no suggestion */
+    @apply tablet:ml-0 !important;
+}
+
+.is-style-inline-list li:last-child {
+    /* no suggestion */
+    @apply tablet:mr-0 !important;
+}
