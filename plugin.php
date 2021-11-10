@@ -237,9 +237,9 @@ function editorskit() {
 }
 
 // Add Extendify global
-if (!isset($GLOBALS['extendify_sdk_partner'])) {
+if ( ! isset( $GLOBALS['extendify_sdk_partner'] ) ) {
     // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-    $GLOBALS['extendify_sdk_partner'] = 'EditorsKit';
+	$GLOBALS['extendify_sdk_partner'] = 'EditorsKit';
 }
 
 // Get Plugin Running.
