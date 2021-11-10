@@ -134,6 +134,7 @@ if ( ! class_exists( 'EditorsKit' ) ) :
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/helper.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-shortcodes.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-typography-font-loader.php';
+			require_once EDITORSKIT_PLUGIN_DIR . 'extendify-sdk/loader.php';
 
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 				require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-welcome.php';
@@ -233,11 +234,14 @@ endif; // End if class_exists check.
  * @return object|EditorsKit The one true EditorsKit Instance.
  */
 function editorskit() {
-	 return EditorsKit::instance();
+	return EditorsKit::instance();
 }
 
-// Add Extendify global
-$GLOBALS['extendifySdkSourcePlugin'] = 'EditorsKit';
+// Add Extendify global.
+if ( ! isset( $GLOBALS['extendify_sdk_partner'] ) ) {
+    // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+	$GLOBALS['extendify_sdk_partner'] = 'EditorsKit';
+}
 
 // Get Plugin Running.
 if ( function_exists( 'is_multisite' ) && is_multisite() ) {
