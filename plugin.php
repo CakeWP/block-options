@@ -233,10 +233,10 @@ endif; // End if class_exists check.
  * @return object|EditorsKit The one true EditorsKit Instance.
  */
 function editorskit() {
-	 return EditorsKit::instance();
+	return EditorsKit::instance();
 }
 
-// Add Extendify global
+// Add Extendify global.
 if ( ! isset( $GLOBALS['extendify_sdk_partner'] ) ) {
     // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 	$GLOBALS['extendify_sdk_partner'] = 'EditorsKit';
