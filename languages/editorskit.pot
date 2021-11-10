@@ -3,6 +3,50 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/history-revision/components/history-revision/index.js:19
+#: src/extensions/history-revision/components/history-header-button/index.js:33
+msgid "Toggle history view"
+msgstr ""
+
+#: src/extensions/history-revision/components/history-revision/index.js:24
 msgid "History"
+msgstr ""
+
+#: src/extensions/history-revision/components/history-revision/index.js:27
+msgid "Close history view sidebar"
+msgstr ""
+
+#: src/extensions/history-revision/get-computed-name.js:16
+msgid "Edit Page Template"
+msgstr ""
+
+#: src/extensions/history-revision/get-computed-name.js:20
+msgid "Edit Featured Image"
+msgstr ""
+
+#: src/extensions/history-revision/get-computed-name.js:24
+msgid "Changed Comment Status"
+msgstr ""
+
+#: src/extensions/history-revision/get-computed-name.js:28
+msgid "Metadata Updated"
+msgstr ""
+
+#: src/extensions/history-revision/get-computed-name.js:32
+msgid "Change post status"
+msgstr ""
+
+#: src/extensions/history-revision/get-computed-name.js:40
+msgid "Change post title: "
+msgstr ""
+
+#: src/extensions/history-revision/get-computed-name.js:46
+msgid "Unknown"
+msgstr ""
+
+#: src/extensions/history-revision/get-computed-name.js:48
+msgid "Block modified: "
+msgstr ""
+
+#: src/extensions/history-revision/get-computed-name.js:51
+msgid "Unknown history action"
 msgstr ""

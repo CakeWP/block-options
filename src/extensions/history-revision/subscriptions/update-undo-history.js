@@ -1,5 +1,5 @@
 import { subscribe, select, dispatch } from '@wordpress/data';
-import { isEqual } from 'lodash';
+import { isEqual, get } from 'lodash';
 
 let initialUndoEdit;
 
@@ -8,6 +8,13 @@ subscribe( () => {
 
 	if ( ! isEqual( newUndoEdit, initialUndoEdit ) ) {
 		initialUndoEdit = newUndoEdit;
-		dispatch( 'editorskit/history' ).addHistory( newUndoEdit );
+
+		const isEditorskitAction = get( newUndoEdit, 'edits.meta.isEditorskitAction', false );
+
+		console.log( newUndoEdit );
+
+		if ( ! isEditorskitAction ) {
+			dispatch( 'editorskit/history' ).addHistory( newUndoEdit );
+		}
 	}
 } );

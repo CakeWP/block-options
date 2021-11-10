@@ -1,38 +1,45 @@
 import { render } from '@wordpress/element';
+import domReady from '@wordpress/dom-ready';
+
 import HistoryRevisionProvider from './components/history-revision-provider';
 import HistorySwitchButton from './components/history-header-button';
 
 import './store';
 import './subscriptions/update-undo-history';
+import './subscriptions/close-history-view';
 
 // Rendering the history sidebar
-window.addEventListener( 'load', () => {
-	const skeletenBody = document.querySelector( '#editor .interface-interface-skeleton__body' );
+domReady( () => {
+	setTimeout( () => {
+		const skeletenBody = document.querySelector( '#editor .interface-interface-skeleton__body' );
 
-	if ( skeletenBody ) {
-		const rootElement = document.createElement( 'div' );
+		if ( skeletenBody ) {
+			const rootElement = document.createElement( 'div' );
 
-		rootElement.className = 'interface-interface-skeleton__secondary-sidebar';
-		rootElement.id = 'editorskit-history-revision-root';
+			rootElement.className = 'interface-interface-skeleton__secondary-sidebar';
+			rootElement.id = 'editorskit-history-revision-root';
 
-		skeletenBody.prepend( rootElement );
+			skeletenBody.prepend( rootElement );
 
-		const historyRevisionRoot = document.querySelector( '#editorskit-history-revision-root' );
+			const historyRevisionRoot = document.querySelector( '#editorskit-history-revision-root' );
 
-		if ( historyRevisionRoot ) {
-			render( <HistoryRevisionProvider />, historyRevisionRoot );
+			if ( historyRevisionRoot ) {
+				render( <HistoryRevisionProvider />, historyRevisionRoot );
+			}
 		}
-	}
+	}, 0 );
 } );
 
 // Rendering the history switcher
-window.addEventListener( 'load', () => {
-	const headerElement = document.querySelector( '.edit-post-header__toolbar' );
+domReady( () => {
+	setTimeout( () => {
+		const headerElement = document.querySelector( '.edit-post-header-toolbar__left' );
 
-	const rootElement = document.createElement( 'div' );
+		const rootElement = document.createElement( 'div' );
 
-	rootElement.className = 'editorskit-history-button';
-	render( <HistorySwitchButton />, rootElement );
+		rootElement.className = 'editorskit-history-button';
+		render( <HistorySwitchButton />, rootElement );
 
-	headerElement.append( rootElement );
+		headerElement.append( rootElement );
+	}, 0 );
 } );

@@ -11,7 +11,7 @@ function HistoryRevisionProvider() {
 	const shouldPreview = useSelect( ( select ) => select( 'editorskit/history' ).isHistoryViewOpened() );
 
 	return shouldPreview && (
-		<div style={ { width: 300 } }>
+		<div style={ { width: 350 } }>
 			<HistoryRevision />
 		</div>
 	);

@@ -16,8 +16,8 @@ export default function( state = initialState, action ) {
 			return {
 				...state,
 				history: [
-					...state.history,
 					action.undoEdit,
+					...state.history,
 				],
 			};
 
