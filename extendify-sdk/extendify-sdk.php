@@ -1,11 +1,4 @@
 <?php
-/**
- * Plugin Name:       Extendify SDK
- * Description:       SDK for viewing and accessing the Extendify template library.
- * Version:           11.4
- * Author:            Extendify
- * Text Domain:       extendify-sdk
- */
 
 if (!defined('ABSPATH')) {
     exit;

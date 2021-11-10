@@ -3,7 +3,7 @@
  * Plugin Name: EditorsKit
  * Plugin URI: https://editorskit.com/
  * Description: EditorsKit is a suite of <strong>page building block options</strong> for the Gutenberg block editor.
- * Version: 1.31.7
+ * Version: 1.31.8
  * Author: Extendify
  * Author URI: https://extendify.com/
  * Text Domain: block-options
