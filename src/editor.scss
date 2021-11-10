@@ -1,3 +1,15 @@
+/** WordPress Base Styles **/
+
+@import '~@wordpress/base-styles/colors';
+@import '~@wordpress/base-styles/variables';
+@import '~@wordpress/base-styles/mixins';
+@import '~@wordpress/base-styles/breakpoints';
+@import '~@wordpress/base-styles/animations';
+@import '~@wordpress/base-styles/z-index';
+@import '~@wordpress/base-styles/default-custom-properties';
+
+/** WordPress Base Styles **/
+
 @import "./src/styles/editor.scss";
 @import "./src/blocks/shareablock/styles/editor.scss";
 @import "./src/extensions/advanced-controls/styles/editor.scss";
@@ -30,4 +42,5 @@
 @import "./src/extensions/transform/empty-paragraphs/styles/editor.scss";
 @import "./src/extensions/block-styles/list/styles/editor.scss";
 @import "./src/extensions/block-styles/columns/styles/editor.scss";
+@import "./src/extensions/history-revision/styles/editor.scss";
 @import "./add-ons/typography/src/editor.scss";

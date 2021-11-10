@@ -1,22 +1,24 @@
-import { Card, CardHeader, CardBody, MenuItem } from '@wordpress/components';
-import { dispatch, useSelect } from '@wordpress/data';
+import { MenuItem } from '@wordpress/components';
+import { useDispatch, useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
 function HistoryRevision() {
 	const history = useSelect( ( select ) => select( 'editorskit/history' ).getHistory() );
+	const { editEntityRecord } = useDispatch( 'core' );
 
 	const undoAt = ( undoEdit ) => {
-		dispatch( 'core' ).editEntityRecord( undoEdit.kind, undoEdit.name, undoEdit.recordId, {
+		editEntityRecord( undoEdit.kind, undoEdit.name, undoEdit.recordId, {
 			...undoEdit.edits,
 			meta: { isUndo: true },
 		} );
 	};
 
 	return (
-		<Card className="editorskit-history-revision-root__panel">
-			<CardHeader>
-				History
-			</CardHeader>
-			<CardBody>
+		<div className="editorskit-history-revision-root__panel">
+			<div className="editorskit-history-revision__panel_header">
+				<h3>{ __( 'History', 'block-options' ) }</h3>
+			</div>
+			<div className="editorskit-history-revision__panel_content">
 				{
 					history.map( ( historyItem, index ) => {
 						return (
@@ -26,8 +28,8 @@ function HistoryRevision() {
 						);
 					} )
 				}
-			</CardBody>
-		</Card>
+			</div>
+		</div>
 	);
 }
 
