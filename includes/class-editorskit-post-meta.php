@@ -91,6 +91,34 @@ class EditorsKit_Post_Meta {
 				'auth_callback' => array( $this, 'auth_callback' ),
 			)
 		);
+
+		register_meta(
+			'post',
+			'_editorskit_is_block_options_detached',
+			array(
+				'show_in_rest'  => true,
+				'single'        => true,
+				'default'       => false,
+				'type'          => 'boolean',
+				'auth_callback' => function() {
+					return current_user_can( 'edit_posts' );
+				},
+			)
+		);
+
+		register_meta(
+			'post',
+			'_editorskit_block_options_position',
+			array(
+				'show_in_rest'  => true,
+				'single'        => true,
+				'type'          => 'string',
+				'default'       => '{}',
+				'auth_callback' => function() {
+					return current_user_can( 'edit_posts' );
+				},
+			)
+		);
 	}
 
 	/**
