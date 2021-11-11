@@ -127,6 +127,9 @@ mix.postCss(
             new RegExp('[:]?[^a-z]-?p[a-z]?-.+').test(rule) && (rule.selector += ':not([style*="padding"])') ||
             new RegExp('[:]?[^a-z]-?m[a-z]?-.+').test(rule) && (rule.selector += ':not([style*="margin"])')
         }),
+        css => css.walkDecls(declaration => {
+            declaration.prop === 'display' && (declaration.important = false)
+        }),
         extractSuggestions,
     ],
 )
