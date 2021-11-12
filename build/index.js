@@ -23080,14 +23080,17 @@ var uppercase = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/edit-post */ "@wordpress/edit-post");
+/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__);
+
 
 
 
@@ -23098,7 +23101,7 @@ function DetachSwitchButton() {
   var currentPostMetadata = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__["useSelect"])(function (select) {
     return select('core/editor').getEditedPostAttribute('meta');
   });
-  var isDetached = Object(lodash__WEBPACK_IMPORTED_MODULE_3__["get"])(currentPostMetadata, '_editorskit_is_block_options_detached');
+  var isDetached = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(currentPostMetadata, '_editorskit_is_block_options_detached');
 
   var _useDispatch = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__["useDispatch"])('core/editor'),
       editPost = _useDispatch.editPost;
@@ -23111,9 +23114,12 @@ function DetachSwitchButton() {
     });
   };
 
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-    onClick: toggleDetach
-  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Detach', 'block-options'));
+  var info = !isDetached ? Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Use block settings panel as moveable modal.', 'block-options') : Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Use block settings panel sticky as default.', 'block-options');
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__["PluginSidebarMoreMenuItem"], {
+    info: info,
+    onClick: toggleDetach,
+    icon: isDetached ? 'sticky' : 'move'
+  }, !isDetached ? Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Make Settings Panel Modal', 'block-options') : Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Make Settings Panel Sticky', 'block-options'));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (DetachSwitchButton);
@@ -23142,7 +23148,11 @@ function dragElement(elmnt, handle) {
 
   if (removeDragging) {
     var handleElement = elmnt.querySelector(handle);
-    handleElement.removeEventListener('mousedown', dragMouseDown);
+
+    if (handleElement) {
+      handleElement.removeEventListener('mousedown', dragMouseDown);
+    }
+
     document.removeEventListener('mouseup', closeDragElement);
     document.removeEventListener('mousemove', elementDrag);
     return;
@@ -23220,26 +23230,21 @@ function dragElement(elmnt, handle) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/dom-ready */ "@wordpress/dom-ready");
-/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/dom-ready */ "@wordpress/dom-ready");
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/plugins */ "@wordpress/plugins");
+/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_detach_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/detach-button */ "./src/extensions/movable-block-options/components/detach-button/index.js");
 /* harmony import */ var _subscriptions_toggle_detach_sidebar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./subscriptions/toggle-detach-sidebar */ "./src/extensions/movable-block-options/subscriptions/toggle-detach-sidebar.js");
 
 
 
-
  // Rendering the history switcher
 
-_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(function () {
-  setTimeout(function () {
-    var headerElement = document.querySelector('.edit-post-header-toolbar__left');
-    var rootElement = document.createElement('div');
-    rootElement.className = 'editorskit-history-button';
-    Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["render"])(Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_components_detach_button__WEBPACK_IMPORTED_MODULE_2__["default"], null), rootElement);
-    headerElement.append(rootElement);
-  }, 0);
+_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0___default()(function () {
+  Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_1__["registerPlugin"])('editorskit-detach-block-options', {
+    render: _components_detach_button__WEBPACK_IMPORTED_MODULE_2__["default"]
+  });
 });
 
 /***/ }),
@@ -24186,6 +24191,17 @@ registerPlugin('editorskit-empty-to-spacer', {
 
 /***/ }),
 
+/***/ "@wordpress/edit-post":
+/*!*******************************************!*\
+  !*** external {"this":["wp","editPost"]} ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["editPost"]; }());
+
+/***/ }),
+
 /***/ "@wordpress/element":
 /*!******************************************!*\
   !*** external {"this":["wp","element"]} ***!
@@ -24205,6 +24221,17 @@ registerPlugin('editorskit-empty-to-spacer', {
 /***/ (function(module, exports) {
 
 (function() { module.exports = this["wp"]["i18n"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/plugins":
+/*!******************************************!*\
+  !*** external {"this":["wp","plugins"]} ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["plugins"]; }());
 
 /***/ }),
 

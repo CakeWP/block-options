@@ -3,6 +3,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/movable-block-options/components/detach-button/index.js:23
-msgid "Detach"
+#: src/extensions/movable-block-options/components/detach-button/index.js:22
+msgid "Use block settings panel as moveable modal."
+msgstr ""
+
+#: src/extensions/movable-block-options/components/detach-button/index.js:22
+msgid "Use block settings panel sticky as default."
+msgstr ""
+
+#: src/extensions/movable-block-options/components/detach-button/index.js:32
+msgid "Make Settings Panel Modal"
+msgstr ""
+
+#: src/extensions/movable-block-options/components/detach-button/index.js:32
+msgid "Make Settings Panel Sticky"
 msgstr ""

@@ -1,8 +1,10 @@
-import { Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { get } from 'lodash';
 
+import { PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
+
 import { useDispatch, useSelect } from '@wordpress/data';
+import { MenuItem, MenuGroup } from '@wordpress/components';
 
 function DetachSwitchButton() {
 	const currentPostMetadata = useSelect( ( select ) => select( 'core/editor' ).getEditedPostAttribute( 'meta' ) );
@@ -17,12 +19,19 @@ function DetachSwitchButton() {
 		} );
 	};
 
+	const info = ! isDetached ? __( 'Use block settings panel as moveable modal.', 'block-options' ) : __( 'Use block settings panel sticky as default.', 'block-options' );
+
 	return (
-		<Button onClick={ toggleDetach }>
+		<PluginSidebarMoreMenuItem
+			info={ info }
+			onClick={ toggleDetach }
+			icon={ isDetached ? 'sticky' : 'move' }
+		>
+
 			{
-				__( 'Detach', 'block-options' )
+				! isDetached ? __( 'Make Settings Panel Modal', 'block-options' ) : __( 'Make Settings Panel Sticky', 'block-options' )
 			}
-		</Button>
+		</PluginSidebarMoreMenuItem>
 	);
 }
 

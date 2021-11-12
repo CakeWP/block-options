@@ -8,7 +8,11 @@ export function dragElement( elmnt, handle, removeDragging = false ) {
 
 	if ( removeDragging ) {
 		const handleElement = elmnt.querySelector( handle );
-		handleElement.removeEventListener( 'mousedown', dragMouseDown );
+
+		if ( handleElement ) {
+			handleElement.removeEventListener( 'mousedown', dragMouseDown );
+		}
+
 		document.removeEventListener( 'mouseup', closeDragElement );
 		document.removeEventListener( 'mousemove', elementDrag );
 
