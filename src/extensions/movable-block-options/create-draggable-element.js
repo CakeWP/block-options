@@ -1,10 +1,19 @@
 import { dispatch } from '@wordpress/data';
 
-export function dragElement( elmnt, handle ) {
+export function dragElement( elmnt, handle, removeDragging = false ) {
 	let pos1 = 0,
 		pos2 = 0,
 		pos3 = 0,
 		pos4 = 0;
+
+	if ( removeDragging ) {
+		const handleElement = elmnt.querySelector( handle );
+		handleElement.removeEventListener( 'mousedown', dragMouseDown );
+		document.removeEventListener( 'mouseup', closeDragElement );
+		document.removeEventListener( 'mousemove', elementDrag );
+
+		return;
+	}
 
 	if ( elmnt.querySelector( handle ) ) {
 		// if present, the header is where you move the DIV from:
@@ -17,6 +26,7 @@ export function dragElement( elmnt, handle ) {
 	function dragMouseDown( e ) {
 		e = e || window.event;
 		e.preventDefault();
+
 		// get the mouse cursor position at startup:
 		pos3 = e.clientX;
 		pos4 = e.clientY;
@@ -43,9 +53,13 @@ export function dragElement( elmnt, handle ) {
 	function elementDrag( e ) {
 		const pos = getCalculatedPosition( e );
 
-		// set the element's new position:
-		elmnt.style.top = pos.top;
-		elmnt.style.left = pos.left;
+		const shouldDrag = elmnt.classList.contains( 'editorskit-is-detached' );
+
+		if ( shouldDrag ) {
+			// set the element's new position:
+			elmnt.style.top = pos.top;
+			elmnt.style.left = pos.left;
+		}
 	}
 
 	function closeDragElement( event ) {
@@ -65,3 +79,4 @@ export function dragElement( elmnt, handle ) {
 		} );
 	}
 }
+

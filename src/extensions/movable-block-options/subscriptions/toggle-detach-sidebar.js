@@ -17,7 +17,7 @@ const makeSidebarDraggable = ( sidebarElement ) => {
 		sidebarElement.style.top = initialPosition.top;
 	}
 
-	dragElement( sidebarElement, '.components-panel__header.edit-post-sidebar__panel-tabs' );
+	dragElement( sidebarElement, '.edit-post-sidebar__panel-tabs' );
 };
 
 const removeSidebarDragging = ( sidebarElement ) => {
@@ -26,6 +26,7 @@ const removeSidebarDragging = ( sidebarElement ) => {
 	}
 	sidebarElement.classList.remove( 'editorskit-is-detached' );
 	sidebarElement.setAttribute( 'style', '' );
+	dragElement( sidebarElement, '.edit-post-sidebar__panel-tabs', true );
 };
 
 let initialDetachStatus;
@@ -66,7 +67,19 @@ subscribe( () => {
 		}
 
 		if ( newEditorSidebarStatus && newDetachStatus ) {
-			makeSidebarDraggable( sidebarElement );
+			// waiting for the sidebar handle to appear.
+			const observer = new MutationObserver( ( mutation, me ) => {
+				const handle = sidebarElement.querySelector( '.edit-post-sidebar__panel-tabs' );
+
+				if ( handle ) {
+					makeSidebarDraggable( sidebarElement );
+					me.disconnect();
+				}
+			} );
+
+			observer.observe( sidebarElement, {
+				childList: true,
+			} );
 		}
 	}
 } );

@@ -23134,10 +23134,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__);
 
 function dragElement(elmnt, handle) {
+  var removeDragging = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
   var pos1 = 0,
       pos2 = 0,
       pos3 = 0,
       pos4 = 0;
+
+  if (removeDragging) {
+    var handleElement = elmnt.querySelector(handle);
+    handleElement.removeEventListener('mousedown', dragMouseDown);
+    document.removeEventListener('mouseup', closeDragElement);
+    document.removeEventListener('mousemove', elementDrag);
+    return;
+  }
 
   if (elmnt.querySelector(handle)) {
     // if present, the header is where you move the DIV from:
@@ -23173,10 +23182,14 @@ function dragElement(elmnt, handle) {
   }
 
   function elementDrag(e) {
-    var pos = getCalculatedPosition(e); // set the element's new position:
+    var pos = getCalculatedPosition(e);
+    var shouldDrag = elmnt.classList.contains('editorskit-is-detached');
 
-    elmnt.style.top = pos.top;
-    elmnt.style.left = pos.left;
+    if (shouldDrag) {
+      // set the element's new position:
+      elmnt.style.top = pos.top;
+      elmnt.style.left = pos.left;
+    }
   }
 
   function closeDragElement(event) {
@@ -23262,7 +23275,7 @@ var makeSidebarDraggable = function makeSidebarDraggable(sidebarElement) {
     sidebarElement.style.top = initialPosition.top;
   }
 
-  Object(_create_draggable_element__WEBPACK_IMPORTED_MODULE_2__["dragElement"])(sidebarElement, '.components-panel__header.edit-post-sidebar__panel-tabs');
+  Object(_create_draggable_element__WEBPACK_IMPORTED_MODULE_2__["dragElement"])(sidebarElement, '.edit-post-sidebar__panel-tabs');
 };
 
 var removeSidebarDragging = function removeSidebarDragging(sidebarElement) {
@@ -23272,6 +23285,7 @@ var removeSidebarDragging = function removeSidebarDragging(sidebarElement) {
 
   sidebarElement.classList.remove('editorskit-is-detached');
   sidebarElement.setAttribute('style', '');
+  Object(_create_draggable_element__WEBPACK_IMPORTED_MODULE_2__["dragElement"])(sidebarElement, '.edit-post-sidebar__panel-tabs', true);
 };
 
 var initialDetachStatus;
@@ -23306,7 +23320,18 @@ Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__["subscribe"])(function () {
     }
 
     if (newEditorSidebarStatus && newDetachStatus) {
-      makeSidebarDraggable(sidebarElement);
+      // waiting for the sidebar handle to appear.
+      var observer = new MutationObserver(function (mutation, me) {
+        var handle = sidebarElement.querySelector('.edit-post-sidebar__panel-tabs');
+
+        if (handle) {
+          makeSidebarDraggable(sidebarElement);
+          me.disconnect();
+        }
+      });
+      observer.observe(sidebarElement, {
+        childList: true
+      });
     }
   }
 });
