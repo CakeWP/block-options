@@ -8,6 +8,7 @@ module.exports = {
             greedy: suggestions?.map(s => new RegExp(`^${s}$`)) ?? [],
         },
     },
+    prefix: 'ext-',
     important: true,
     darkMode: false,
     theme: {

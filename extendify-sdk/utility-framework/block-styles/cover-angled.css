@@ -1,6 +1,6 @@
 .is-style-angled {
     /* no suggestion */
-    @apply items-center justify-end;
+    @apply ext-items-center ext-justify-end;
 }
 
 .is-style-angled .wp-block-cover__image-background,
