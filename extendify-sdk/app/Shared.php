@@ -223,7 +223,7 @@ class Shared
                 --wp--preset--color--secondary: #464b56;
                 --wp--preset--color--tertiary: var(--global--color-light-gray);
                 --wp--style--block-gap: var(--global--spacing-unit);
-                --wp--preset--font-size--large: var(--global--font-size-lg);
+                --wp--preset--font-size--large: 2.5rem;
                 --wp--preset--font-size--huge: var(--global--font-size-xxl); 
             }
             .has-foreground-background-color,

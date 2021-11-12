@@ -6,7 +6,7 @@
 
 /* Unhinge grid for container blocks in classic themes, and < 5.9 */
 .ext > [class*="_inner-container"] > .ext-grid:not([class*="columns"]),
-.ext > [class*="_inner-container"] > .ext-wp-block > .ext-grid:not([class*="columns"]) {
+.ext > [class*="_inner-container"] > .wp-block > .ext-grid:not([class*="columns"]) {
     /* no suggestion */
     display: initial !important;
 }
@@ -70,6 +70,11 @@
 .ext .ext-grid-cols-12 > [class*="_inner-container"] {
     /* no suggestion */
     grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+}
+
+.ext .ext-grid-cols-13 > [class*="_inner-container"] {
+    /* no suggestion */
+    grid-template-columns: repeat(13, minmax(0, 1fr)) !important;
 }
 
 .ext .ext-grid-cols-none > [class*="_inner-container"] {
