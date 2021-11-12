@@ -4,7 +4,6 @@ import { get } from 'lodash';
 import { PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
 
 import { useDispatch, useSelect } from '@wordpress/data';
-import { MenuItem, MenuGroup } from '@wordpress/components';
 
 function DetachSwitchButton() {
 	const currentPostMetadata = useSelect( ( select ) => select( 'core/editor' ).getEditedPostAttribute( 'meta' ) );
