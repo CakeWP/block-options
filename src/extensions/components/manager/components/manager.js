@@ -59,7 +59,7 @@ class FeaturesManager extends Component {
 												checked={ ! wp.data.select( 'core/edit-post' ).isFeatureActive( featureName ) }
 												onChange={ () => {
 													onToggle( category.name, item.name );
-													this.setState({ isUpdated: ! this.state.isUpdated });
+													this.setState( { isUpdated: ! this.state.isUpdated } );
 												} }
 											/>
 										</li>

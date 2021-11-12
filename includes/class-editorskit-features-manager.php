@@ -84,6 +84,7 @@ class EditorsKit_Features_Manager {
 	 * @return array Returns updated editors settings.
 	 */
 	public function block_editor_settings( $editor_settings, $post ) {
+
 		if ( ! isset( $editor_settings['editorskit'] ) ) {
 			$items = array(
 				'acf'       => array(
@@ -329,8 +330,6 @@ class EditorsKit_Features_Manager {
 				),
 			);
 		}
-		// $editor_settings['editorskit'] = array(
-		// 'visibility' => array(
 
 		return $editor_settings;
 	}
