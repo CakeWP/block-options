@@ -9,7 +9,7 @@ const { __ } = wp.i18n;
 const { withSelect, withDispatch } = wp.data;
 const { compose } = wp.compose;
 const { Fragment, Component } = wp.element;
-const { PluginMoreMenuItem } = wp.editPost;
+const { PluginSidebarMoreMenuItem } = wp.editPost;
 const { withSpokenMessages } = wp.components;
 
 /**
@@ -46,14 +46,14 @@ class EditorMinHeight extends Component {
 
 		return (
 			<Fragment>
-				<PluginMoreMenuItem
+				<PluginSidebarMoreMenuItem
 					icon={ isActive && 'yes' }
 					role="menuitemcheckbox"
 					info={ __( 'Toggle to change editor min-height similar to browser viewport.', 'block-options' ) }
 					onClick={ onToggle }
 				>
 					{ __( 'Editor Height', 'block-options' ) }
-				</PluginMoreMenuItem>
+				</PluginSidebarMoreMenuItem>
 
 			</Fragment>
 		);

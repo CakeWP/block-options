@@ -15954,7 +15954,7 @@ var compose = wp.compose.compose;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component;
-var PluginMoreMenuItem = wp.editPost.PluginMoreMenuItem;
+var PluginSidebarMoreMenuItem = wp.editPost.PluginSidebarMoreMenuItem;
 var withSpokenMessages = wp.components.withSpokenMessages;
 /**
  * Render plugin
@@ -16006,7 +16006,7 @@ function (_Component) {
         return null;
       }
 
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PluginMoreMenuItem, {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PluginSidebarMoreMenuItem, {
         icon: isActive && 'yes',
         role: "menuitemcheckbox",
         info: __('Toggle to change editor min-height similar to browser viewport.', 'block-options'),
@@ -16742,7 +16742,7 @@ var compose = wp.compose.compose;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component;
-var PluginMoreMenuItem = wp.editPost.PluginMoreMenuItem;
+var PluginSidebarMoreMenuItem = wp.editPost.PluginSidebarMoreMenuItem;
 var withSpokenMessages = wp.components.withSpokenMessages;
 /**
  * Render plugin
@@ -16806,7 +16806,7 @@ function (_Component) {
         return null;
       }
 
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PluginMoreMenuItem, {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PluginSidebarMoreMenuItem, {
         icon: isActive && 'yes',
         role: "menuitemcheckbox",
         info: __('Show visible guide lines on title and blocks', 'block-options'),
@@ -17350,7 +17350,7 @@ var compose = wp.compose.compose;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component;
-var PluginMoreMenuItem = wp.editPost.PluginMoreMenuItem;
+var PluginSidebarMoreMenuItem = wp.editPost.PluginSidebarMoreMenuItem;
 var _wp$components = wp.components,
     withSpokenMessages = _wp$components.withSpokenMessages,
     Modal = _wp$components.Modal;
@@ -17386,7 +17386,7 @@ function (_Component) {
         });
       };
 
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PluginMoreMenuItem, {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PluginSidebarMoreMenuItem, {
         icon: null,
         role: "menuitemcheckbox",
         onClick: function onClick() {
@@ -17677,7 +17677,7 @@ var __ = wp.i18n.__;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component;
-var PluginMoreMenuItem = wp.editPost.PluginMoreMenuItem;
+var PluginSidebarMoreMenuItem = wp.editPost.PluginSidebarMoreMenuItem;
 var _wp$compose = wp.compose,
     compose = _wp$compose.compose,
     ifCondition = _wp$compose.ifCondition;
@@ -17768,7 +17768,7 @@ function (_Component) {
         }));
       };
 
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(PluginMoreMenuItem, {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(PluginSidebarMoreMenuItem, {
         icon: null,
         role: "menuitemcheckbox",
         onClick: function onClick() {
@@ -17887,7 +17887,7 @@ var _wp$components = wp.components,
     withSpokenMessages = _wp$components.withSpokenMessages,
     Button = _wp$components.Button,
     KeyboardShortcuts = _wp$components.KeyboardShortcuts;
-var PluginMoreMenuItem = wp.editPost.PluginMoreMenuItem;
+var PluginSidebarMoreMenuItem = wp.editPost.PluginSidebarMoreMenuItem;
 /**
  * Render plugin
  */
@@ -17967,7 +17967,7 @@ function (_Component) {
 
       var previewLink = this.props.previewLink;
       var isOpen = this.state.isOpen;
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(PluginMoreMenuItem, {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(PluginSidebarMoreMenuItem, {
         icon: isOpen && 'yes',
         role: "menuitemcheckbox",
         info: __('Show preview without opening new window.', 'block-options'),
@@ -23088,9 +23088,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__);
-
 
 
 
@@ -24155,17 +24152,6 @@ registerPlugin('editorskit-empty-to-spacer', {
 /***/ (function(module, exports) {
 
 (function() { module.exports = this["regeneratorRuntime"]; }());
-
-/***/ }),
-
-/***/ "@wordpress/components":
-/*!*********************************************!*\
-  !*** external {"this":["wp","components"]} ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-(function() { module.exports = this["wp"]["components"]; }());
 
 /***/ }),
 

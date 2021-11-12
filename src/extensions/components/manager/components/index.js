@@ -9,7 +9,7 @@ import FeaturesManager from './manager';
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
 const { Fragment, Component } = wp.element;
-const { PluginMoreMenuItem } = wp.editPost;
+const { PluginSidebarMoreMenuItem } = wp.editPost;
 const { withSpokenMessages, Modal } = wp.components;
 
 /**
@@ -31,7 +31,7 @@ class FeaturesManagerModal extends Component {
 
 		return (
 			<Fragment>
-				<PluginMoreMenuItem
+				<PluginSidebarMoreMenuItem
 					icon={ null }
 					role="menuitemcheckbox"
 					onClick={ () => {
@@ -39,7 +39,7 @@ class FeaturesManagerModal extends Component {
 					} }
 				>
 					{ __( 'EditorsKit Settings', 'block-options' ) }
-				</PluginMoreMenuItem>
+				</PluginSidebarMoreMenuItem>
 				{ this.state.isOpen ?
 					<Modal
 						title={ __( 'EditorsKit Features Manager', 'block-options' ) }

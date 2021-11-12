@@ -13,7 +13,7 @@ import shortcutConfig from './config';
  */
 const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
-const { PluginMoreMenuItem } = wp.editPost;
+const { PluginSidebarMoreMenuItem } = wp.editPost;
 const { compose, ifCondition } = wp.compose;
 const { select, withSelect } = wp.data;
 const { withSpokenMessages, Modal } = wp.components;
@@ -85,7 +85,7 @@ class MarkdownFormatting extends Component {
 
 		return (
 			<Fragment>
-				<PluginMoreMenuItem
+				<PluginSidebarMoreMenuItem
 					icon={ null }
 					role="menuitemcheckbox"
 					onClick={ () => {
@@ -93,7 +93,7 @@ class MarkdownFormatting extends Component {
 					} }
 				>
 					{ __( 'Markdown Formatting', 'block-options' ) }
-				</PluginMoreMenuItem>
+				</PluginSidebarMoreMenuItem>
 				{ this.state.isOpen ?
 					<Modal
 						title={ __( 'Keyboard Shortcuts', 'block-options' ) }

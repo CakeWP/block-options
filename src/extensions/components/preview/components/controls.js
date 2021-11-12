@@ -8,7 +8,7 @@ const { withSelect, withDispatch, select } = wp.data;
 const { compose, ifCondition } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { withSpokenMessages, Button, KeyboardShortcuts } = wp.components;
-const { PluginMoreMenuItem } = wp.editPost;
+const { PluginSidebarMoreMenuItem } = wp.editPost;
 
 /**
  * Render plugin
@@ -63,7 +63,7 @@ class CustomizerPreview extends Component {
 
 		return (
 			<Fragment>
-				<PluginMoreMenuItem
+				<PluginSidebarMoreMenuItem
 					icon={ isOpen && 'yes' }
 					role="menuitemcheckbox"
 					info={ __( 'Show preview without opening new window.', 'block-options' ) }
@@ -73,7 +73,7 @@ class CustomizerPreview extends Component {
 					shortcut={ displayShortcut.primaryShift( 'p' ) }
 				>
 					{ __( 'Preview', 'block-options' ) }
-				</PluginMoreMenuItem>
+				</PluginSidebarMoreMenuItem>
 				<KeyboardShortcuts
 					bindGlobal
 					shortcuts={ {
@@ -92,11 +92,11 @@ class CustomizerPreview extends Component {
 								<div className="close-full-overlay-wrapper">
 									<Button
 										className="close-full-overlay"
-										onClick={() => {
-											this.setState({ isOpen: false });
-										}}
+										onClick={ () => {
+											this.setState( { isOpen: false } );
+										} }
 									>
-										<span className="screen-reader-text">{__('Close preview mode', 'block-options')}</span>
+										<span className="screen-reader-text">{ __( 'Close preview mode', 'block-options' ) }</span>
 									</Button>
 								</div>
 								<div className="devices-wrapper">
@@ -149,7 +149,7 @@ export default compose( [
 			getEditedPostPreviewLink,
 			getEditedPostAttribute,
 		} = select( 'core/editor' );
-		const { isFeatureActive } = select('core/edit-post');
+		const { isFeatureActive } = select( 'core/edit-post' );
 
 		const previewLink = getEditedPostPreviewLink();
 
@@ -161,7 +161,7 @@ export default compose( [
 					getEditedPostAttribute( 'status' )
 				) !== -1,
 			isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitReadingTimeWriting' ),
-			isIceberg: isFeatureActive('icebergWritingMode'),
+			isIceberg: isFeatureActive( 'icebergWritingMode' ),
 		};
 	} ),
 	withDispatch( ( dispatch ) => ( {

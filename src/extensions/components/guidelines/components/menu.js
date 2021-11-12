@@ -9,7 +9,7 @@ const { __ } = wp.i18n;
 const { withSelect, withDispatch } = wp.data;
 const { compose } = wp.compose;
 const { Fragment, Component } = wp.element;
-const { PluginMoreMenuItem } = wp.editPost;
+const { PluginSidebarMoreMenuItem } = wp.editPost;
 const { withSpokenMessages } = wp.components;
 
 /**
@@ -58,14 +58,14 @@ class BlockGuideLines extends Component {
 
 		return (
 			<Fragment>
-				<PluginMoreMenuItem
+				<PluginSidebarMoreMenuItem
 					icon={ isActive && 'yes' }
 					role="menuitemcheckbox"
 					info={ __( 'Show visible guide lines on title and blocks', 'block-options' ) }
 					onClick={ onToggle }
 				>
 					{ __( 'Block Guide Lines', 'block-options' ) }
-				</PluginMoreMenuItem>
+				</PluginSidebarMoreMenuItem>
 
 			</Fragment>
 		);
