@@ -6,7 +6,7 @@ Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenberg editor
 Requires at least: 5.0
 Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 1.31.8
+Stable tag: 1.31.9
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -72,7 +72,8 @@ Powered by shortcode you can display the Estimated Reading Time on your content 
 [EditorsKit](https://editorskit.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit) features other tool aside from visibility management. With the new Block Guide Lines, you can easily toggle visible guide lines on title and each editor blocks in order to check the element boundaries. This feature will also help your workflow on handling nested blocks.
 
 ## Copy and Paste Selected Blocks
-Easily copy single or multiple selected blocks then paste across the website or separate website using `CMD + V`, `CTRL + V` or paste right click option.
+
+**Note:** This feature is no longer available in the latest versions of EditorsKit because this has been added to Gutenberg.
 
 ## Image and Cover Block Styles
 Comes with selection of styles on Cover and Image Block for custom shapes and layouts such as diagonal, circular and rounder corners; and even add drop shadows.
@@ -206,6 +207,12 @@ e.g.
 10. Link rel attributes nofollow and sponsored option
 
 == Changelog ==
+
+= 1.31.9 =
+* Fixes: Bugs.
+* Tweaks: Sidebar Options menu item
+* Tweaks: Template library utility CSS.
+* Deprecate: Copy Selected Block(s) extension as it has been added to the core.
 
 = 1.31.8 =
 * Fixes: Bugs
