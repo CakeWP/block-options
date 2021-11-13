@@ -1,6 +1,9 @@
 name: Plugin asset/readme update
 on:
   push:
+    paths:
+    - readme.txt
+    - .wordpress-orgs/*
     branches:
     - master
 jobs:
