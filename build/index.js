@@ -10573,10 +10573,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _extensions_shortcuts_heading_level__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./extensions/shortcuts/heading-level */ "./src/extensions/shortcuts/heading-level/index.js");
 /* harmony import */ var _extensions_shortcuts_alignment__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./extensions/shortcuts/alignment */ "./src/extensions/shortcuts/alignment/index.js");
 /* harmony import */ var _extensions_advanced_controls_disable_block__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./extensions/advanced-controls/disable-block */ "./src/extensions/advanced-controls/disable-block/index.js");
-/* harmony import */ var _extensions_movable_block_options__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./extensions/movable-block-options */ "./src/extensions/movable-block-options/index.js");
-/* harmony import */ var _blocks_import__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./blocks/import */ "./src/blocks/import/index.js");
-/* harmony import */ var _blocks_shareablock__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./blocks/shareablock */ "./src/blocks/shareablock/index.js");
-/* harmony import */ var _add_ons_typography_src__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./add-ons/typography/src */ "./src/add-ons/typography/src/index.js");
+/* harmony import */ var _blocks_import__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./blocks/import */ "./src/blocks/import/index.js");
+/* harmony import */ var _blocks_shareablock__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./blocks/shareablock */ "./src/blocks/shareablock/index.js");
+/* harmony import */ var _add_ons_typography_src__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./add-ons/typography/src */ "./src/add-ons/typography/src/index.js");
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -10639,14 +10638,12 @@ var registerBlockType = wp.blocks.registerBlockType; // Extensions
 
  // Disable Block Control
 
- // Movable Block options
-
  // Register Blocks
 
 
 
 function registerBlocks() {
-  [_blocks_import__WEBPACK_IMPORTED_MODULE_30__, _blocks_shareablock__WEBPACK_IMPORTED_MODULE_31__].forEach(function (block) {
+  [_blocks_import__WEBPACK_IMPORTED_MODULE_29__, _blocks_shareablock__WEBPACK_IMPORTED_MODULE_30__].forEach(function (block) {
     if (!block) {
       return;
     }
@@ -23069,277 +23066,6 @@ var uppercase = {
 
 /***/ }),
 
-/***/ "./src/extensions/movable-block-options/components/detach-button/index.js":
-/*!********************************************************************************!*\
-  !*** ./src/extensions/movable-block-options/components/detach-button/index.js ***!
-  \********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/edit-post */ "@wordpress/edit-post");
-/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
-
-
-
-
-
-
-function DetachSwitchButton() {
-  var currentPostMetadata = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__["useSelect"])(function (select) {
-    return select('core/editor').getEditedPostAttribute('meta');
-  });
-  var isDetached = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(currentPostMetadata, '_editorskit_is_block_options_detached');
-
-  var _useDispatch = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__["useDispatch"])('core/editor'),
-      editPost = _useDispatch.editPost;
-
-  var toggleDetach = function toggleDetach() {
-    editPost({
-      meta: {
-        _editorskit_is_block_options_detached: !isDetached
-      }
-    });
-  };
-
-  var info = !isDetached ? Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Use block settings panel as moveable modal.', 'block-options') : Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Use block settings panel sticky as default.', 'block-options');
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__["PluginSidebarMoreMenuItem"], {
-    info: info,
-    onClick: toggleDetach,
-    icon: isDetached ? 'sticky' : 'move'
-  }, !isDetached ? Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Make Settings Panel Modal', 'block-options') : Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Make Settings Panel Sticky', 'block-options'));
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (DetachSwitchButton);
-
-/***/ }),
-
-/***/ "./src/extensions/movable-block-options/create-draggable-element.js":
-/*!**************************************************************************!*\
-  !*** ./src/extensions/movable-block-options/create-draggable-element.js ***!
-  \**************************************************************************/
-/*! exports provided: dragElement */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dragElement", function() { return dragElement; });
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__);
-
-function dragElement(elmnt, handle) {
-  var removeDragging = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-  var pos1 = 0,
-      pos2 = 0,
-      pos3 = 0,
-      pos4 = 0;
-
-  if (removeDragging) {
-    var handleElement = elmnt.querySelector(handle);
-
-    if (handleElement) {
-      handleElement.removeEventListener('mousedown', dragMouseDown);
-    }
-
-    document.removeEventListener('mouseup', closeDragElement);
-    document.removeEventListener('mousemove', elementDrag);
-    return;
-  }
-
-  if (elmnt.querySelector(handle)) {
-    // if present, the header is where you move the DIV from:
-    elmnt.querySelector(handle).onmousedown = dragMouseDown;
-  } else {
-    // otherwise, move the DIV from anywhere inside the DIV:
-    elmnt.onmousedown = dragMouseDown;
-  }
-
-  function dragMouseDown(e) {
-    e = e || window.event;
-    e.preventDefault(); // get the mouse cursor position at startup:
-
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement; // call a function whenever the cursor moves:
-
-    document.onmousemove = elementDrag;
-  }
-
-  function getCalculatedPosition(e) {
-    e = e || window.event;
-    e.preventDefault(); // calculate the new cursor position:
-
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    return {
-      top: elmnt.offsetTop - pos2 + 'px',
-      left: elmnt.offsetLeft - pos1 + 'px'
-    };
-  }
-
-  function elementDrag(e) {
-    var pos = getCalculatedPosition(e);
-    var shouldDrag = elmnt.classList.contains('editorskit-is-detached');
-
-    if (shouldDrag) {
-      // set the element's new position:
-      elmnt.style.top = pos.top;
-      elmnt.style.left = pos.left;
-    }
-  }
-
-  function closeDragElement(event) {
-    // stop moving when mouse button is released:
-    document.onmouseup = null;
-    document.onmousemove = null;
-    var pos = getCalculatedPosition(event); // updating the position.
-
-    Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__["dispatch"])('core/editor').editPost({
-      meta: {
-        _editorskit_block_options_position: JSON.stringify({
-          top: pos.top,
-          left: pos.left
-        })
-      }
-    });
-  }
-}
-
-/***/ }),
-
-/***/ "./src/extensions/movable-block-options/index.js":
-/*!*******************************************************!*\
-  !*** ./src/extensions/movable-block-options/index.js ***!
-  \*******************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/dom-ready */ "@wordpress/dom-ready");
-/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/plugins */ "@wordpress/plugins");
-/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_detach_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/detach-button */ "./src/extensions/movable-block-options/components/detach-button/index.js");
-/* harmony import */ var _subscriptions_toggle_detach_sidebar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./subscriptions/toggle-detach-sidebar */ "./src/extensions/movable-block-options/subscriptions/toggle-detach-sidebar.js");
-
-
-
- // Rendering the history switcher
-
-_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0___default()(function () {
-  Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_1__["registerPlugin"])('editorskit-detach-block-options', {
-    render: _components_detach_button__WEBPACK_IMPORTED_MODULE_2__["default"]
-  });
-});
-
-/***/ }),
-
-/***/ "./src/extensions/movable-block-options/subscriptions/toggle-detach-sidebar.js":
-/*!*************************************************************************************!*\
-  !*** ./src/extensions/movable-block-options/subscriptions/toggle-detach-sidebar.js ***!
-  \*************************************************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _create_draggable_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../create-draggable-element */ "./src/extensions/movable-block-options/create-draggable-element.js");
-
-
-
-
-var makeSidebarDraggable = function makeSidebarDraggable(sidebarElement) {
-  var postMetadata = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__["select"])('core/editor').getEditedPostAttribute('meta');
-  var initialPosition = JSON.parse(Object(lodash__WEBPACK_IMPORTED_MODULE_1__["get"])(postMetadata, '_editorskit_block_options_position', '{}'));
-  sidebarElement.classList.add('editorskit-is-detached');
-
-  if (Object(lodash__WEBPACK_IMPORTED_MODULE_1__["get"])(initialPosition, 'left', false)) {
-    sidebarElement.style.left = initialPosition.left;
-  }
-
-  if (Object(lodash__WEBPACK_IMPORTED_MODULE_1__["get"])(initialPosition, 'top', false)) {
-    sidebarElement.style.top = initialPosition.top;
-  }
-
-  Object(_create_draggable_element__WEBPACK_IMPORTED_MODULE_2__["dragElement"])(sidebarElement, '.edit-post-sidebar__panel-tabs');
-};
-
-var removeSidebarDragging = function removeSidebarDragging(sidebarElement) {
-  if (!sidebarElement) {
-    return;
-  }
-
-  sidebarElement.classList.remove('editorskit-is-detached');
-  sidebarElement.setAttribute('style', '');
-  Object(_create_draggable_element__WEBPACK_IMPORTED_MODULE_2__["dragElement"])(sidebarElement, '.edit-post-sidebar__panel-tabs', true);
-};
-
-var initialDetachStatus;
-Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__["subscribe"])(function () {
-  var newPostMetadata = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__["select"])('core/editor').getEditedPostAttribute('meta');
-  var newDetachStatus = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["get"])(newPostMetadata, '_editorskit_is_block_options_detached'); // toggling the detached sidebar.
-
-  var sidebarElement = document.querySelector('.interface-interface-skeleton__sidebar');
-
-  if (!Object(lodash__WEBPACK_IMPORTED_MODULE_1__["isEqual"])(initialDetachStatus, newDetachStatus) && sidebarElement && sidebarElement.querySelector('.components-panel__header.edit-post-sidebar__panel-tabs')) {
-    initialDetachStatus = newDetachStatus;
-
-    if (newDetachStatus) {
-      makeSidebarDraggable(sidebarElement);
-    } else {
-      removeSidebarDragging(sidebarElement);
-    }
-  }
-});
-var initialEditorSidebarStatus;
-Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__["subscribe"])(function () {
-  var newEditorSidebarStatus = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__["select"])('core/edit-post').isEditorSidebarOpened();
-  var newPostMetadata = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__["select"])('core/editor').getEditedPostAttribute('meta');
-  var newDetachStatus = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["get"])(newPostMetadata, '_editorskit_is_block_options_detached');
-  var sidebarElement = document.querySelector('.interface-interface-skeleton__sidebar');
-
-  if (!Object(lodash__WEBPACK_IMPORTED_MODULE_1__["isEqual"])(initialEditorSidebarStatus, newEditorSidebarStatus) && sidebarElement) {
-    initialEditorSidebarStatus = newEditorSidebarStatus;
-
-    if (newEditorSidebarStatus === false) {
-      removeSidebarDragging(sidebarElement);
-    }
-
-    if (newEditorSidebarStatus && newDetachStatus) {
-      // waiting for the sidebar handle to appear.
-      var observer = new MutationObserver(function (mutation, me) {
-        var handle = sidebarElement.querySelector('.edit-post-sidebar__panel-tabs');
-
-        if (handle) {
-          makeSidebarDraggable(sidebarElement);
-          me.disconnect();
-        }
-      });
-      observer.observe(sidebarElement, {
-        childList: true
-      });
-    }
-  }
-});
-
-/***/ }),
-
 /***/ "./src/extensions/page-template/index.js":
 /*!***********************************************!*\
   !*** ./src/extensions/page-template/index.js ***!
@@ -24155,39 +23881,6 @@ registerPlugin('editorskit-empty-to-spacer', {
 
 /***/ }),
 
-/***/ "@wordpress/data":
-/*!***************************************!*\
-  !*** external {"this":["wp","data"]} ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-(function() { module.exports = this["wp"]["data"]; }());
-
-/***/ }),
-
-/***/ "@wordpress/dom-ready":
-/*!*******************************************!*\
-  !*** external {"this":["wp","domReady"]} ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-(function() { module.exports = this["wp"]["domReady"]; }());
-
-/***/ }),
-
-/***/ "@wordpress/edit-post":
-/*!*******************************************!*\
-  !*** external {"this":["wp","editPost"]} ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-(function() { module.exports = this["wp"]["editPost"]; }());
-
-/***/ }),
-
 /***/ "@wordpress/element":
 /*!******************************************!*\
   !*** external {"this":["wp","element"]} ***!
@@ -24196,28 +23889,6 @@ registerPlugin('editorskit-empty-to-spacer', {
 /***/ (function(module, exports) {
 
 (function() { module.exports = this["wp"]["element"]; }());
-
-/***/ }),
-
-/***/ "@wordpress/i18n":
-/*!***************************************!*\
-  !*** external {"this":["wp","i18n"]} ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-(function() { module.exports = this["wp"]["i18n"]; }());
-
-/***/ }),
-
-/***/ "@wordpress/plugins":
-/*!******************************************!*\
-  !*** external {"this":["wp","plugins"]} ***!
-  \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-(function() { module.exports = this["wp"]["plugins"]; }());
 
 /***/ }),
 
