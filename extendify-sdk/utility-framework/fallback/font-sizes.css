@@ -5,10 +5,3 @@
     --fallback-size: clamp(var(--wp--preset--font-size--huge, 22px), calc(1rem + var(--wp--custom--typography--gigantic--preferred, 5vw)), var(--wp--preset--font-size--huge, 42px) * 2 );
     font-size: var( --wp--preset--font-size--gigantic, var(--fallback-size ) );
 }
-
-.has-extra-large-font-size,
-.editor-styles-wrapper .has-extra-large-font-size.wp-block {
-    /* no suggestion */
-    --fallback-size: clamp(var(--wp--preset--font-size--large, 20px), calc(1rem + var(--wp--custom--typography--large--preferred, 4vw)), var(--wp--preset--font-size--extra-large, 36px) * 2 );
-    font-size: var( --wp--preset--font-size--extra-large, var(--fallback-size ) );
-}

@@ -32,18 +32,18 @@ body {
 
 /* Astra */
 .ast-separate-container .ext .block-editor-block-list__layout {
-    /* no suggestion */  
-    @apply p-0 !important;
+    /* no suggestion */
+    @apply ext-p-0 !important;
 }
 
 /* Twenty Twenty One */
 .ext [data-block].wp-block-buttons .wp-block-button {
-    @apply my-0;
+    @apply ext-my-0;
 }
 
 .ext [data-block].wp-block-buttons .wp-block-button:first-child {
-    /* no suggestion */ 
-    @apply mt-0 mb-base !important;
+    /* no suggestion */
+    @apply ext-mt-0 ext-mb-base !important;
 }
 
 /* Twenty Twenty adds a lot of margin automatically to blocks. We only want our own margin added to our patterns. */
@@ -55,6 +55,6 @@ body {
 
 /* Ensure no funky business is assigned to alignwide */
 .ext .alignwide {
-    /* no suggestion */ 
-    @apply mx-auto !important;
+    /* no suggestion */
+    @apply ext-mx-auto !important;
 }
