@@ -3,67 +3,34 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/components/editor-height/components/height.js:52
-msgid "Toggle to change editor min-height similar to browser viewport."
+#: src/extensions/components/preview/components/controls.js:100
+msgid "Reload Preview"
 msgstr ""
 
-#: src/extensions/components/editor-height/components/height.js:55
-msgid "Editor Height"
+#: src/extensions/components/preview/components/controls.js:124
+msgid "Close preview mode"
 msgstr ""
 
-#: src/extensions/components/guidelines/components/menu.js:65
-msgid "Show visible guide lines on title and blocks"
-msgstr ""
-
-#: src/extensions/components/guidelines/components/menu.js:68
-msgid "Block Guide Lines Yes"
-msgstr ""
-
-#: src/extensions/components/manager/components/index.js:41
-msgid "EditorsKit Settings"
-msgstr ""
-
-#: src/extensions/components/manager/components/index.js:45
-msgid "EditorsKit Features Manager"
-msgstr ""
-
-#: src/extensions/components/manager/components/index.js:47
-#: src/extensions/components/markdown/components/menu.js:101
-msgid "Close"
-msgstr ""
-
-#: src/extensions/components/markdown/components/menu.js:95
-msgid "Markdown Formatting"
-msgstr ""
-
-#: src/extensions/components/markdown/components/menu.js:99
-msgid "Keyboard Shortcuts"
-msgstr ""
-
-#: src/extensions/components/preview/components/controls.js:103
+#: src/extensions/components/preview/components/controls.js:128
 msgid "Live Preview"
 msgstr ""
 
-#: src/extensions/components/preview/components/controls.js:112
+#: src/extensions/components/preview/components/controls.js:137
 msgid "Enter desktop preview mode"
 msgstr ""
 
-#: src/extensions/components/preview/components/controls.js:121
+#: src/extensions/components/preview/components/controls.js:146
 msgid "Enter tablet preview mode"
 msgstr ""
 
-#: src/extensions/components/preview/components/controls.js:130
+#: src/extensions/components/preview/components/controls.js:155
 msgid "Enter mobile preview mode"
 msgstr ""
 
-#: src/extensions/components/preview/components/controls.js:137
+#: src/extensions/components/preview/components/controls.js:162
 msgid "Preview"
 msgstr ""
 
-#: src/extensions/components/preview/components/controls.js:69
+#: src/extensions/components/preview/components/controls.js:87
 msgid "Show preview without opening new window."
-msgstr ""
-
-#: src/extensions/components/preview/components/controls.js:99
-msgid "Close preview mode"
 msgstr ""

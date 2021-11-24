@@ -17621,6 +17621,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @wordpress/keycodes */ "@wordpress/keycodes");
+/* harmony import */ var _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_wordpress_keycodes__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @wordpress/edit-post */ "@wordpress/edit-post");
+/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_14__);
 
 
 
@@ -17633,26 +17647,14 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * WordPress dependencies
  */
-var __ = wp.i18n.__;
-var _wp$keycodes = wp.keycodes,
-    displayShortcut = _wp$keycodes.displayShortcut,
-    rawShortcut = _wp$keycodes.rawShortcut,
-    ESCAPE = _wp$keycodes.ESCAPE;
-var _wp$data = wp.data,
-    withSelect = _wp$data.withSelect,
-    withDispatch = _wp$data.withDispatch,
-    select = _wp$data.select;
-var _wp$compose = wp.compose,
-    compose = _wp$compose.compose,
-    ifCondition = _wp$compose.ifCondition;
-var _wp$element = wp.element,
-    Component = _wp$element.Component,
-    Fragment = _wp$element.Fragment;
-var _wp$components = wp.components,
-    withSpokenMessages = _wp$components.withSpokenMessages,
-    Button = _wp$components.Button,
-    KeyboardShortcuts = _wp$components.KeyboardShortcuts;
-var PluginSidebarMoreMenuItem = wp.editPost.PluginSidebarMoreMenuItem;
+
+
+
+
+
+
+
+
 /**
  * Render plugin
  */
@@ -17672,7 +17674,8 @@ function (_Component) {
     _this.openPreview = _this.openPreview.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this));
     _this.state = {
       isOpen: false,
-      deviceType: 'desktop'
+      deviceType: 'desktop',
+      previewTab: {}
     };
     return _this;
   }
@@ -17691,7 +17694,7 @@ function (_Component) {
     key: "handleEscape",
     value: function handleEscape(event) {
       if (this.state.isOpen) {
-        if (event.keyCode === ESCAPE) {
+        if (event.keyCode === _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_9__["ESCAPE"]) {
           this.setState({
             isOpen: false
           });
@@ -17701,29 +17704,44 @@ function (_Component) {
   }, {
     key: "openPreview",
     value: function openPreview() {
+      var previewLink = new URL(this.props.previewLink); // Adding editorskit preview identifier
+
+      previewLink.searchParams.set('editorskitlivepreview', true);
+      var livePreviewTab = window.open(previewLink.toString());
+      this.setState({
+        previewTab: livePreviewTab
+      });
+    }
+  }, {
+    key: "updatePreview",
+    value: function updatePreview() {
+      if (!Object(lodash__WEBPACK_IMPORTED_MODULE_14__["isEmpty"])(this.state.previewTab)) {
+        this.state.previewTab.window.location.reload();
+      }
+    }
+  }, {
+    key: "reload",
+    value: function reload() {
       var _this2 = this;
 
-      var _this$props = this.props,
-          isDraft = _this$props.isDraft,
-          savePost = _this$props.savePost,
-          autosave = _this$props.autosave; // Request an autosave. This happens asynchronously and causes the component
-      // to update when finished.
+      if (!Object(lodash__WEBPACK_IMPORTED_MODULE_14__["isEmpty"])(this.state.previewTab)) {
+        this.state.previewTab.document.body.classList.add('editorskit-live-preview-loading'); // Request an autosave. This happens asynchronously and causes the component
+        // to update when finished.
 
-      if (isDraft) {
-        savePost({
-          isPreview: true
-        });
-      } else {
-        autosave({
-          isPreview: true
-        });
+        if (this.props.isDraft) {
+          this.props.savePost({
+            isPreview: true
+          }).then(function () {
+            return _this2.updatePreview();
+          });
+        } else {
+          this.props.autosave({
+            isPreview: true
+          }).then(function () {
+            return _this2.updatePreview();
+          });
+        }
       }
-
-      setTimeout(function () {
-        _this2.setState({
-          isOpen: true
-        });
-      }, 100);
     }
   }, {
     key: "render",
@@ -17732,17 +17750,25 @@ function (_Component) {
 
       var previewLink = this.props.previewLink;
       var isOpen = this.state.isOpen;
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(PluginSidebarMoreMenuItem, {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_13__["PluginSidebarMoreMenuItem"], {
         icon: isOpen && 'yes',
         role: "menuitemcheckbox",
-        info: __('Show preview without opening new window.', 'block-options'),
+        info: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__["__"])('Show preview without opening new window.', 'block-options'),
+        target: "__blank",
         onClick: function onClick() {
-          _this3.openPreview();
+          return _this3.openPreview();
         },
-        shortcut: displayShortcut.primaryShift('p')
-      }, __('Preview', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(KeyboardShortcuts, {
+        shortcut: _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_9__["displayShortcut"].primaryShift('p')
+      }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__["__"])('Live Preview', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_13__["PluginSidebarMoreMenuItem"], {
+        icon: isOpen && 'yes',
+        role: "menuitemcheckbox",
+        target: "__blank",
+        onClick: function onClick() {
+          return _this3.reload();
+        }
+      }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__["__"])('Reload Preview', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_12__["KeyboardShortcuts"], {
         bindGlobal: true,
-        shortcuts: _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, rawShortcut.primaryShift('p'), function () {
+        shortcuts: _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_9__["rawShortcut"].primaryShift('p'), function () {
           _this3.openPreview();
         })
       }), isOpen ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
@@ -17756,7 +17782,7 @@ function (_Component) {
         className: "wp-full-overlay-footer"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
         className: "close-full-overlay-wrapper"
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(Button, {
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_12__["Button"], {
         className: "close-full-overlay",
         onClick: function onClick() {
           _this3.setState({
@@ -17765,11 +17791,11 @@ function (_Component) {
         }
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("span", {
         className: "screen-reader-text"
-      }, __('Close preview mode', 'block-options')))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
+      }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__["__"])('Close preview mode', 'block-options')))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
         className: "devices-wrapper"
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("h3", null, __('Live Preview', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("h3", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__["__"])('Live Preview', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
         className: "devices"
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(Button, {
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_12__["Button"], {
         className: "preview-desktop",
         isActive: true,
         onClick: function onClick() {
@@ -17779,7 +17805,7 @@ function (_Component) {
         }
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("span", {
         className: "screen-reader-text"
-      }, __('Enter desktop preview mode', 'block-options'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(Button, {
+      }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__["__"])('Enter desktop preview mode', 'block-options'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_12__["Button"], {
         className: "preview-tablet",
         onClick: function onClick() {
           _this3.setState({
@@ -17788,7 +17814,7 @@ function (_Component) {
         }
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("span", {
         className: "screen-reader-text"
-      }, __('Enter tablet preview mode', 'block-options'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(Button, {
+      }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__["__"])('Enter tablet preview mode', 'block-options'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_12__["Button"], {
         className: "preview-mobile",
         onClick: function onClick() {
           _this3.setState({
@@ -17797,44 +17823,44 @@ function (_Component) {
         }
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("span", {
         className: "screen-reader-text"
-      }, __('Enter mobile preview mode', 'block-options'))))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
+      }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__["__"])('Enter mobile preview mode', 'block-options'))))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
         className: "wp-full-overlay-main"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("iframe", {
         src: previewLink + '&editorskitPreview=true',
-        title: __('Preview', 'block-options'),
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__["__"])('Preview', 'block-options'),
         target: "Preview"
       }))) : null);
     }
   }]);
 
   return CustomizerPreview;
-}(Component);
+}(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (compose([withSelect(function (_ref2) {
+/* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_11__["compose"])([Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_10__["withSelect"])(function (_ref2) {
   var forcePreviewLink = _ref2.forcePreviewLink;
 
-  var _select = select('core/editor'),
+  var _select = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_10__["select"])('core/editor'),
       getEditedPostPreviewLink = _select.getEditedPostPreviewLink,
       getEditedPostAttribute = _select.getEditedPostAttribute;
 
-  var _select2 = select('core/edit-post'),
+  var _select2 = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_10__["select"])('core/edit-post'),
       isFeatureActive = _select2.isFeatureActive;
 
   var previewLink = getEditedPostPreviewLink();
   return {
     previewLink: forcePreviewLink !== undefined ? forcePreviewLink : previewLink,
     isDraft: ['draft', 'auto-draft'].indexOf(getEditedPostAttribute('status')) !== -1,
-    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitReadingTimeWriting'),
+    isDisabled: Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_10__["select"])('core/edit-post').isFeatureActive('disableEditorsKitReadingTimeWriting'),
     isIceberg: isFeatureActive('icebergWritingMode')
   };
-}), withDispatch(function (dispatch) {
+}), Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_10__["withDispatch"])(function (dispatch) {
   return {
     autosave: dispatch('core/editor').autosave,
     savePost: dispatch('core/editor').savePost
   };
-}), ifCondition(function (props) {
+}), Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_11__["ifCondition"])(function (props) {
   return !props.isDisabled && !props.isIceberg;
-}), withSpokenMessages])(CustomizerPreview));
+}), _wordpress_components__WEBPACK_IMPORTED_MODULE_12__["withSpokenMessages"]])(CustomizerPreview));
 
 /***/ }),
 
@@ -23649,6 +23675,50 @@ registerPlugin('editorskit-empty-to-spacer', {
 
 /***/ }),
 
+/***/ "@wordpress/components":
+/*!*********************************************!*\
+  !*** external {"this":["wp","components"]} ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["components"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/compose":
+/*!******************************************!*\
+  !*** external {"this":["wp","compose"]} ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["compose"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/data":
+/*!***************************************!*\
+  !*** external {"this":["wp","data"]} ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["data"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/edit-post":
+/*!*******************************************!*\
+  !*** external {"this":["wp","editPost"]} ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["editPost"]; }());
+
+/***/ }),
+
 /***/ "@wordpress/element":
 /*!******************************************!*\
   !*** external {"this":["wp","element"]} ***!
@@ -23657,6 +23727,28 @@ registerPlugin('editorskit-empty-to-spacer', {
 /***/ (function(module, exports) {
 
 (function() { module.exports = this["wp"]["element"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/i18n":
+/*!***************************************!*\
+  !*** external {"this":["wp","i18n"]} ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["i18n"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/keycodes":
+/*!*******************************************!*\
+  !*** external {"this":["wp","keycodes"]} ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["keycodes"]; }());
 
 /***/ }),
 

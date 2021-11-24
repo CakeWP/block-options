@@ -2,13 +2,14 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { displayShortcut, rawShortcut, ESCAPE } = wp.keycodes;
-const { withSelect, withDispatch, select } = wp.data;
-const { compose, ifCondition } = wp.compose;
-const { Component, Fragment } = wp.element;
-const { withSpokenMessages, Button, KeyboardShortcuts } = wp.components;
-const { PluginSidebarMoreMenuItem } = wp.editPost;
+import { __ } from '@wordpress/i18n';
+import { displayShortcut, rawShortcut, ESCAPE } from '@wordpress/keycodes';
+import { withSelect, withDispatch, select } from '@wordpress/data';
+import { compose, ifCondition } from '@wordpress/compose';
+import { Component, Fragment } from '@wordpress/element';
+import { withSpokenMessages, Button, KeyboardShortcuts } from '@wordpress/components';
+import { PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
+import { isEmpty } from 'lodash';
 
 /**
  * Render plugin
@@ -23,6 +24,7 @@ class CustomizerPreview extends Component {
 		this.state = {
 			isOpen: false,
 			deviceType: 'desktop',
+			previewTab: {},
 		};
 	}
 
@@ -43,18 +45,34 @@ class CustomizerPreview extends Component {
 	}
 
 	openPreview() {
-		const { isDraft, savePost, autosave } = this.props;
-		// Request an autosave. This happens asynchronously and causes the component
-		// to update when finished.
-		if ( isDraft ) {
-			savePost( { isPreview: true } );
-		} else {
-			autosave( { isPreview: true } );
-		}
+		const previewLink = new URL( this.props.previewLink );
 
-		setTimeout( () => {
-			this.setState( { isOpen: true } );
-		}, 100 );
+		// Adding editorskit preview identifier
+		previewLink.searchParams.set( 'editorskitlivepreview', true );
+
+		const livePreviewTab = window.open( previewLink.toString() );
+
+		this.setState( { previewTab: livePreviewTab } );
+	}
+
+	updatePreview() {
+		if ( ! isEmpty( this.state.previewTab ) ) {
+			this.state.previewTab.window.location.reload();
+		}
+	}
+
+	reload() {
+		if ( ! isEmpty( this.state.previewTab ) ) {
+			this.state.previewTab.document.body.classList.add( 'editorskit-live-preview-loading' );
+
+			// Request an autosave. This happens asynchronously and causes the component
+			// to update when finished.
+			if ( this.props.isDraft ) {
+				this.props.savePost( { isPreview: true } ).then( () => this.updatePreview() );
+			} else {
+				this.props.autosave( { isPreview: true } ).then( () => this.updatePreview() );
+			}
+		}
 	}
 
 	render() {
@@ -67,12 +85,19 @@ class CustomizerPreview extends Component {
 					icon={ isOpen && 'yes' }
 					role="menuitemcheckbox"
 					info={ __( 'Show preview without opening new window.', 'block-options' ) }
-					onClick={ () => {
-						this.openPreview();
-					} }
+					target="__blank"
+					onClick={ () => this.openPreview() }
 					shortcut={ displayShortcut.primaryShift( 'p' ) }
 				>
-					{ __( 'Preview', 'block-options' ) }
+					{ __( 'Live Preview', 'block-options' ) }
+				</PluginSidebarMoreMenuItem>
+				<PluginSidebarMoreMenuItem
+					icon={ isOpen && 'yes' }
+					role="menuitemcheckbox"
+					target="__blank"
+					onClick={ () => this.reload() }
+				>
+					{ __( 'Reload Preview', 'block-options' ) }
 				</PluginSidebarMoreMenuItem>
 				<KeyboardShortcuts
 					bindGlobal
