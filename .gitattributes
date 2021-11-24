@@ -1,0 +1,15 @@
+/.wordpress-org export-ignore
+/.github export-ignore
+/.gitattributes export-ignore
+/.gitignore export-ignore
+/composer.json export-ignore
+/composer.lock export-ignore
+/package.json export-ignore
+/package-lock.json export-ignore
+/readme.md export-ignore
+/webpack.config.js export-ignore
+/yarn.lock export-ignore
+/.eslintrc export-ignore
+/.eslintignore export-ignore
+/.editorconfig export-ignore
+/.wp-env.json export-ignore
