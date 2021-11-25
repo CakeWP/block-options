@@ -96,7 +96,7 @@ class EditorsKit_Block_Assets {
 	public function editor_assets() {
 
 		global $wp;
-		$wp->add_query_var( 'editorskitPreview' );
+		$wp->add_query_var( 'editorskitsandbox' );
 
 		if ( ! is_admin() ) {
 
@@ -223,7 +223,7 @@ class EditorsKit_Block_Assets {
 	 * @return bool true or false
 	 */
 	function hide_admin_bar( $bool ) {
-		if ( get_query_var( 'editorskitPreview' ) ) {
+		if ( get_query_var( 'editorskitsandbox' ) ) {
 			return false;
 		}
 

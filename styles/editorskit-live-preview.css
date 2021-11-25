@@ -1,0 +1,44 @@
+iframe#editorskit-frame {
+    transition: width .5s ease;
+    margin: auto;
+    display: flex;
+    border:1px solid;
+}
+
+iframe.editorskit-responsive-mobile {
+    width:360px;   
+}
+
+iframe.editorskit-responsive-tablet {
+    width:780px;   
+}
+
+body.editorskit-live-previewer {
+    background-color: #000000 !important;
+}
+
+
+#wp-admin-bar-editorskit-responsive-desktop.editorskit-active-responsive a,
+#wp-admin-bar-editorskit-responsive-tablet.editorskit-active-responsive a, 
+#wp-admin-bar-editorskit-responsive-mobile.editorskit-active-responsive a {
+    background: #2c3338;
+    color: #72aee6 !important;
+}
+
+#wp-admin-bar-editorskit-responsive-desktop a:before {
+    content: "\f472";
+    color:inherit !important;
+    top: 2px;
+}
+
+#wp-admin-bar-editorskit-responsive-tablet a:before {
+    content: "\f471";
+    color:inherit !important;
+    top: 2px;
+}
+
+#wp-admin-bar-editorskit-responsive-mobile a:before {
+    content: "\f470";
+    color:inherit !important;
+    top: 2px;
+}
