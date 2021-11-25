@@ -3,34 +3,15 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/components/preview/components/controls.js:100
-msgid "Reload Preview"
+#: src/extensions/components/preview/components/controls.js:65
+msgid "Show preview without opening new window."
 msgstr ""
 
-#: src/extensions/components/preview/components/controls.js:124
-msgid "Close preview mode"
-msgstr ""
-
-#: src/extensions/components/preview/components/controls.js:128
+#: src/extensions/components/preview/components/controls.js:70
+#: src/extensions/live-preview/index.js:10
 msgid "Live Preview"
 msgstr ""
 
-#: src/extensions/components/preview/components/controls.js:137
-msgid "Enter desktop preview mode"
-msgstr ""
-
-#: src/extensions/components/preview/components/controls.js:146
-msgid "Enter tablet preview mode"
-msgstr ""
-
-#: src/extensions/components/preview/components/controls.js:155
-msgid "Enter mobile preview mode"
-msgstr ""
-
-#: src/extensions/components/preview/components/controls.js:162
-msgid "Preview"
-msgstr ""
-
-#: src/extensions/components/preview/components/controls.js:87
-msgid "Show preview without opening new window."
+#: src/extensions/components/preview/components/controls.js:77
+msgid "Reload Preview"
 msgstr ""

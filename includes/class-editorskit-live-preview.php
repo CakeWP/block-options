@@ -33,7 +33,7 @@ class Editorskit_Live_Preview {
 	 */
 	public function insert_previewer_class( $classes ) {
 
-		if ( $this->is_editorskit_live_preview() ) {
+		if ( ! $this->is_editorskit_live_preview_sandbox() ) {
 			$classes[] = 'editorskit-live-previewer';
 		}
 
@@ -45,9 +45,9 @@ class Editorskit_Live_Preview {
 	 *
 	 * @return bool - True if live preview, otherwise false.
 	 */
-	public function is_editorskit_live_preview() {
+	public function is_editorskit_live_preview_sandbox() {
 
-		$is_live_preview = get_query_var( 'editorskitlivepreview', false );
+		$is_live_preview = get_query_var( 'editorskitsandbox', false );
 
 		return 'true' === $is_live_preview;
 	}
@@ -90,7 +90,7 @@ class Editorskit_Live_Preview {
 	 */
 	public function load_assets() {
 
-		if ( $this->is_editorskit_live_preview() ) {
+		if ( ! is_admin() && is_preview() ) {
 			wp_enqueue_script( 'editorskit-live-preview' );
 			wp_enqueue_style( 'editorskit-live-preview' );
 		}
@@ -107,42 +107,42 @@ class Editorskit_Live_Preview {
 	 */
 	public function load_responsive_options( \WP_Admin_Bar $admin_bar ) {
 
-		if ( $this->is_editorskit_live_preview() ) {
-
-			$active_class = array(
-				'class' => 'editorskit-active-responsive',
-			);
-
-			$current_preview_device = get_query_var( 'editorskitpreviewdevice' );
-
-			$desktop_button = array(
-				'id'    => 'editorskit-responsive-desktop',
-				'title' => __( 'Desktop', 'block-options' ),
-				'href'  => '#',
-				'meta'  => 'desktop' === $current_preview_device ? $active_class : array(),
-			);
-
-			$admin_bar->add_node( $desktop_button );
-
-			$tablet_button = array(
-				'id'    => 'editorskit-responsive-tablet',
-				'title' => __( 'Tablet', 'block-options' ),
-				'href'  => '#',
-				'meta'  => 'tablet' === $current_preview_device ? $active_class : array(),
-			);
-
-			$admin_bar->add_node( $tablet_button );
-
-			$mobile_button = array(
-				'id'    => 'editorskit-responsive-mobile',
-				'title' => __( 'Mobile', 'block-options' ),
-				'href'  => '#',
-				'meta'  => 'mobile' === $current_preview_device ? $active_class : array(),
-			);
-
-			$admin_bar->add_node( $mobile_button );
-
+		if ( ! is_preview() || is_admin() ) {
+			return;
 		}
+
+		$active_class = array(
+			'class' => 'editorskit-active-responsive',
+		);
+
+		$current_preview_device = get_query_var( 'editorskitpreviewdevice' );
+
+		$desktop_button = array(
+			'id'    => 'editorskit-responsive-desktop',
+			'title' => __( 'Desktop', 'block-options' ),
+			'href'  => '#',
+			'meta'  => 'desktop' === $current_preview_device ? $active_class : array(),
+		);
+
+		$admin_bar->add_node( $desktop_button );
+
+		$tablet_button = array(
+			'id'    => 'editorskit-responsive-tablet',
+			'title' => __( 'Tablet', 'block-options' ),
+			'href'  => '#',
+			'meta'  => 'tablet' === $current_preview_device ? $active_class : array(),
+		);
+
+		$admin_bar->add_node( $tablet_button );
+
+		$mobile_button = array(
+			'id'    => 'editorskit-responsive-mobile',
+			'title' => __( 'Mobile', 'block-options' ),
+			'href'  => '#',
+			'meta'  => 'mobile' === $current_preview_device ? $active_class : array(),
+		);
+
+		$admin_bar->add_node( $mobile_button );
 
 	}
 }

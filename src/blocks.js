@@ -25,7 +25,6 @@ import './extensions/page-template';
 import './extensions/disable-title';
 
 //Components on Dropdown Menu
-import './extensions/components/preview';
 import './extensions/components/guidelines';
 import './extensions/components/editor-height';
 import './extensions/components/markdown';
@@ -64,6 +63,9 @@ import './extensions/shortcuts/alignment';
 
 // Disable Block Control
 import './extensions/advanced-controls/disable-block';
+
+// Live Preview
+import './extensions/live-preview';
 
 // Register Blocks
 import * as importBlock from './blocks/import';

@@ -46,7 +46,19 @@ class EditorskitLivePreview {
 		frame.width = '100%';
 		frame.style.height = '100vh';
 
-		document.querySelector( '#page' ).innerHTML = '';
+		const mainRoot = document.querySelector( '#page' );
+
+		if ( mainRoot ) {
+			mainRoot.innerHTML = '';
+		}
+
+		// For TT1
+		const tt1Root = document.querySelector( '.wp-site-blocks' );
+
+		if ( tt1Root ) {
+			tt1Root.innerHTML = '';
+		}
+
 		document.body.append( frame );
 
 		this.frame = frame;
