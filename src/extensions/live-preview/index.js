@@ -1,11 +1,40 @@
 import domReady from '@wordpress/dom-ready';
 import { render } from '@wordpress/element';
-import { Button } from '@wordpress/components';
+import { MenuItem, ExternalLink } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import { select, dispatch } from '@wordpress/data';
 
-import { sparkles } from '@wordpress/icons';
+import './store';
+import { reloadPreview, updatePreview } from './helper';
+
+import './subscriptions/hot-reload';
 
 domReady( () => {
+	function openPreview() {
+		const storedPreviewTabReference = select( 'editorskit/preview' ).getCurrentPreviewRef();
+
+		// Closing if the preview tab is already refered.
+		if ( typeof storedPreviewTabReference.window !== 'undefined' ) {
+			storedPreviewTabReference.window.focus();
+			reloadPreview();
+			return;
+		}
+
+		// Updating the dirty post.
+		updatePreview().then( () => {
+			const {
+				getEditedPostPreviewLink,
+			} = select( 'core/editor' );
+
+			const currentPreviewLink = getEditedPostPreviewLink();
+
+			const _previewTabReference = window.open( currentPreviewLink );
+
+			// Updating the preview reference.
+			dispatch( 'editorskit/preview' ).setCurrentPreviewRef( _previewTabReference );
+		} );
+	}
+
 	// As the preview tab is not visible until the dropdown
 	// Therefore using event delegation, replacing the displayed preview button
 	// when displayed on screen i.e until the dropdown is opened.
@@ -19,7 +48,15 @@ domReady( () => {
 		const previewInNewTabButton = document.querySelector( '.edit-post-header-preview__grouping-external' );
 
 		if ( previewInNewTabButton.parentNode ) {
-			render( <Button icon={ sparkles }>{ __( 'Preview in the new tab', 'block-options' ) }</Button>, previewInNewTabButton.parentNode );
+			render( <MenuItem
+				icon={ <ExternalLink style={ { color: '#000' } } /> }
+				info={ __( 'Will automatically reload the preview to reflect changes in the editor.' ) }
+				onClick={ openPreview }
+			>
+				{ __( 'Live Preview in the new tab', 'block-options' ) }
+			</MenuItem>,
+			previewInNewTabButton.parentNode
+			);
 		}
 	} );
 } );
