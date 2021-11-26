@@ -1,4 +1,5 @@
 import { select, dispatch } from '@wordpress/data';
+import { invoke } from 'lodash';
 
 export async function updatePreview() {
 	const {
@@ -31,5 +32,5 @@ export function reloadPreview() {
 		return;
 	}
 
-	currentPreviewReference.window.location.reload();
+	invoke( currentPreviewReference, 'window.location.reload' );
 }

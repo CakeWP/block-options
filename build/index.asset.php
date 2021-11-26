@@ -1,1 +1,1 @@
-<?php return array('dependencies' => array('lodash', 'react', 'wp-components', 'wp-data', 'wp-dom-ready', 'wp-element', 'wp-i18n', 'wp-polyfill', 'wp-wordcount'), 'version' => '7851101e297c0fc85aca97814c756345');
+<?php return array('dependencies' => array('lodash', 'react', 'wp-components', 'wp-data', 'wp-dom-ready', 'wp-element', 'wp-i18n', 'wp-polyfill', 'wp-wordcount'), 'version' => 'b1c8d3fcdc95aaad8ddfb65d30ce522c');

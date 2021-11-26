@@ -10,7 +10,7 @@ import { debounce, isEqual, omit } from 'lodash';
 function updateAndReloadPreview() {
 	updatePreview().then( () => reloadPreview() );
 }
-const updateAndReloadPreviewDebounced = debounce( updateAndReloadPreview, 500 );
+const updateAndReloadPreviewDebounced = debounce( updateAndReloadPreview, 1500 );
 
 // Hot reload happens automatically when any entity changes.
 let lastEntityEdit = {};
@@ -23,9 +23,9 @@ subscribe( () => {
 	let newEntityEdit = select( 'core' ).getEditedEntityRecord( 'postType', entityType, currentPostID );
 
 	// Excluding metadata updates.
-	newEntityEdit = omit( newEntityEdit, [ 'meta', 'date', 'date_gmt', 'modified', 'modified_gmt' ] );
+	newEntityEdit = omit( newEntityEdit, [ 'meta', 'date', 'date_gmt', 'modified', 'modified_gmt', 'status', 'generated_slug', '_links', 'slug', 'content' ] );
 
-	if ( typeof storedPreviewTabReference.window !== 'undefined' && ! isEqual( newEntityEdit, lastEntityEdit ) ) {
+	if ( typeof storedPreviewTabReference.name !== 'undefined' && ! isEqual( newEntityEdit, lastEntityEdit ) ) {
 		lastEntityEdit = newEntityEdit;
 		updateAndReloadPreviewDebounced();
 	}

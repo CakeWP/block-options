@@ -14,7 +14,7 @@ domReady( () => {
 		const storedPreviewTabReference = select( 'editorskit/preview' ).getCurrentPreviewRef();
 
 		// Closing if the preview tab is already refered.
-		if ( typeof storedPreviewTabReference.window !== 'undefined' ) {
+		if ( typeof storedPreviewTabReference.name !== 'undefined' && storedPreviewTabReference.name !== '' ) {
 			storedPreviewTabReference.window.focus();
 			reloadPreview();
 			return;

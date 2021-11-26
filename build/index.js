@@ -22706,6 +22706,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -22766,7 +22769,7 @@ function reloadPreview() {
     return;
   }
 
-  currentPreviewReference.window.location.reload();
+  Object(lodash__WEBPACK_IMPORTED_MODULE_3__["invoke"])(currentPreviewReference, 'window.location.reload');
 }
 
 /***/ }),
@@ -22806,7 +22809,7 @@ _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(function () {
   function openPreview() {
     var storedPreviewTabReference = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__["select"])('editorskit/preview').getCurrentPreviewRef(); // Closing if the preview tab is already refered.
 
-    if (typeof storedPreviewTabReference.window !== 'undefined') {
+    if (typeof storedPreviewTabReference.name !== 'undefined' && storedPreviewTabReference.name !== '') {
       storedPreviewTabReference.window.focus();
       Object(_helper__WEBPACK_IMPORTED_MODULE_6__["reloadPreview"])();
       return;
@@ -23021,7 +23024,7 @@ function updateAndReloadPreview() {
   });
 }
 
-var updateAndReloadPreviewDebounced = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["debounce"])(updateAndReloadPreview, 500); // Hot reload happens automatically when any entity changes.
+var updateAndReloadPreviewDebounced = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["debounce"])(updateAndReloadPreview, 1500); // Hot reload happens automatically when any entity changes.
 
 var lastEntityEdit = {};
 Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__["subscribe"])(function () {
@@ -23030,9 +23033,9 @@ Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__["subscribe"])(function () {
   var currentPostID = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__["select"])('core/editor').getEditedPostAttribute('id');
   var newEntityEdit = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__["select"])('core').getEditedEntityRecord('postType', entityType, currentPostID); // Excluding metadata updates.
 
-  newEntityEdit = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["omit"])(newEntityEdit, ['meta', 'date', 'date_gmt', 'modified', 'modified_gmt']);
+  newEntityEdit = Object(lodash__WEBPACK_IMPORTED_MODULE_2__["omit"])(newEntityEdit, ['meta', 'date', 'date_gmt', 'modified', 'modified_gmt', 'status', 'generated_slug', '_links', 'slug', 'content']);
 
-  if (typeof storedPreviewTabReference.window !== 'undefined' && !Object(lodash__WEBPACK_IMPORTED_MODULE_2__["isEqual"])(newEntityEdit, lastEntityEdit)) {
+  if (typeof storedPreviewTabReference.name !== 'undefined' && !Object(lodash__WEBPACK_IMPORTED_MODULE_2__["isEqual"])(newEntityEdit, lastEntityEdit)) {
     lastEntityEdit = newEntityEdit;
     updateAndReloadPreviewDebounced();
   }
