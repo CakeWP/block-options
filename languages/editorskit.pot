@@ -3,15 +3,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/components/preview/components/controls.js:65
-msgid "Show preview without opening new window."
-msgstr ""
-
-#: src/extensions/components/preview/components/controls.js:70
-#: src/extensions/live-preview/index.js:10
-msgid "Live Preview"
-msgstr ""
-
-#: src/extensions/components/preview/components/controls.js:77
-msgid "Reload Preview"
+#: src/extensions/live-preview/index.js:22
+msgid "Preview in the new tab"
 msgstr ""

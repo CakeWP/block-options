@@ -10573,7 +10573,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _extensions_shortcuts_alignment__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./extensions/shortcuts/alignment */ "./src/extensions/shortcuts/alignment/index.js");
 /* harmony import */ var _extensions_advanced_controls_disable_block__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./extensions/advanced-controls/disable-block */ "./src/extensions/advanced-controls/disable-block/index.js");
 /* harmony import */ var _extensions_live_preview__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./extensions/live-preview */ "./src/extensions/live-preview/index.js");
-/* harmony import */ var _extensions_live_preview__WEBPACK_IMPORTED_MODULE_28___default = /*#__PURE__*/__webpack_require__.n(_extensions_live_preview__WEBPACK_IMPORTED_MODULE_28__);
 /* harmony import */ var _blocks_import__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./blocks/import */ "./src/blocks/import/index.js");
 /* harmony import */ var _blocks_shareablock__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./blocks/shareablock */ "./src/blocks/shareablock/index.js");
 /* harmony import */ var _add_ons_typography_src__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./add-ons/typography/src */ "./src/add-ons/typography/src/index.js");
@@ -22572,10 +22571,47 @@ var uppercase = {
 /*!**********************************************!*\
   !*** ./src/extensions/live-preview/index.js ***!
   \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/dom-ready */ "@wordpress/dom-ready");
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/icons */ "@wordpress/icons");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_icons__WEBPACK_IMPORTED_MODULE_4__);
 
 
+
+
+
+
+_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(function () {
+  // As the preview tab is not visible until the dropdown
+  // Therefore using event delegation, replacing the displayed preview button
+  // when displayed on screen i.e until the dropdown is opened.
+  document.addEventListener('click', function (event) {
+    var isPreviewButtonClicked = event.target && event.target.classList.contains('block-editor-post-preview__button-toggle');
+
+    if (!isPreviewButtonClicked) {
+      return;
+    }
+
+    var previewInNewTabButton = document.querySelector('.edit-post-header-preview__grouping-external');
+
+    if (previewInNewTabButton.parentNode) {
+      Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["render"])(Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["sparkles"]
+      }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Preview in the new tab', 'block-options')), previewInNewTabButton.parentNode);
+    }
+  });
+});
 
 /***/ }),
 
@@ -23394,6 +23430,28 @@ registerPlugin('editorskit-empty-to-spacer', {
 
 /***/ }),
 
+/***/ "@wordpress/components":
+/*!*********************************************!*\
+  !*** external {"this":["wp","components"]} ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["components"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/dom-ready":
+/*!*******************************************!*\
+  !*** external {"this":["wp","domReady"]} ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["domReady"]; }());
+
+/***/ }),
+
 /***/ "@wordpress/element":
 /*!******************************************!*\
   !*** external {"this":["wp","element"]} ***!
@@ -23402,6 +23460,28 @@ registerPlugin('editorskit-empty-to-spacer', {
 /***/ (function(module, exports) {
 
 (function() { module.exports = this["wp"]["element"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/i18n":
+/*!***************************************!*\
+  !*** external {"this":["wp","i18n"]} ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["i18n"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/icons":
+/*!****************************************!*\
+  !*** external {"this":["wp","icons"]} ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["icons"]; }());
 
 /***/ }),
 
