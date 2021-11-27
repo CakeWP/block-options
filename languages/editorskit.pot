@@ -3,10 +3,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/live-preview/index.js:53
+#: src/extensions/live-preview/index.js:74
 msgid "Will automatically reload the preview to reflect changes in the editor."
 msgstr ""
 
-#: src/extensions/live-preview/index.js:56
+#: src/extensions/live-preview/index.js:77
 msgid "Live Preview in the new tab"
 msgstr ""

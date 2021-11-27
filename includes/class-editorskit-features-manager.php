@@ -310,6 +310,11 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'View Custom Fields', 'block-options' ),
 							'value' => true,
 						),
+						'livePreview'         => array(
+							'name'  => 'livePreview',
+							'label' => __( 'Create Live Preview', 'block-options' ),
+							'value' => true,
+						),
 					),
 				),
 				'shortcuts'  => array(

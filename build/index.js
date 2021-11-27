@@ -22806,7 +22806,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_2___default()(function () {
+  var _select = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["select"])('core/edit-post'),
+      isFeatureActive = _select.isFeatureActive;
+
   function openPreview() {
+    var isDisabled = isFeatureActive('disableEditorsKitLivePreviewTools');
+
+    if (isDisabled) {
+      return;
+    }
+
     var storedPreviewTabReference = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["select"])('editorskit/preview').getCurrentPreviewRef(); // Closing if the preview tab is already refered.
 
     if (typeof storedPreviewTabReference.name !== 'undefined' && storedPreviewTabReference.name !== '') {
@@ -22817,8 +22826,8 @@ _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_2___default()(function () {
 
 
     Object(_helper__WEBPACK_IMPORTED_MODULE_6__["updatePreview"])().then(function () {
-      var _select = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["select"])('core/editor'),
-          getEditedPostPreviewLink = _select.getEditedPostPreviewLink;
+      var _select2 = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["select"])('core/editor'),
+          getEditedPostPreviewLink = _select2.getEditedPostPreviewLink;
 
       var currentPreviewLink = getEditedPostPreviewLink();
 
@@ -22833,6 +22842,12 @@ _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_2___default()(function () {
 
 
   document.addEventListener('click', function (event) {
+    var isFeatureDisabled = isFeatureActive('disableEditorsKitLivePreviewTools');
+
+    if (isFeatureDisabled) {
+      return;
+    }
+
     var isPreviewButtonClicked = event.target && event.target.classList.contains('block-editor-post-preview__button-toggle');
 
     if (!isPreviewButtonClicked) {

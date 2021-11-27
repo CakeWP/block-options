@@ -10,7 +10,20 @@ import { reloadPreview, updatePreview } from './helper';
 import './subscriptions/hot-reload';
 
 domReady( () => {
+
+	const {
+		isFeatureActive
+	} = select('core/edit-post');
+
 	function openPreview() {
+
+		const isDisabled = isFeatureActive('disableEditorsKitLivePreviewTools');
+
+		if (isDisabled) {
+			return;
+		}
+
+
 		const storedPreviewTabReference = select( 'editorskit/preview' ).getCurrentPreviewRef();
 
 		// Closing if the preview tab is already refered.
@@ -39,6 +52,14 @@ domReady( () => {
 	// Therefore using event delegation, replacing the displayed preview button
 	// when displayed on screen i.e until the dropdown is opened.
 	document.addEventListener( 'click', ( event ) => {
+
+
+		const isFeatureDisabled = isFeatureActive('disableEditorsKitLivePreviewTools')
+		
+		if (isFeatureDisabled) {
+			return;
+		}
+		
 		const isPreviewButtonClicked = event.target && event.target.classList.contains( 'block-editor-post-preview__button-toggle' );
 
 		if ( ! isPreviewButtonClicked ) {
