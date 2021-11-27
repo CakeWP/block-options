@@ -139,6 +139,10 @@ class EditorsKitDocs extends Component {
 				title: __( 'Enable Developer Tools', 'block-options' ),
 				name: 'developer-tools.md',
 			},
+			{
+				title: __('Using Live preview', 'block-options'),
+				name: 'live-preview-tool.md'
+			}
 		];
 
 		const visibilityDocs = [

@@ -67,7 +67,7 @@ class Editorskit_Responsive_Preview {
 		// Script that handles responsive previews.
 		wp_register_script(
 			'editorskit-responsive-preview',
-			EDITORSKIT_PLUGIN_URL . 'scripts/editorskit-live-preview.js',
+			EDITORSKIT_PLUGIN_URL . 'scripts/editorskit-responsive-preview.js',
 			array(),
 			'initial',
 			true
@@ -75,7 +75,7 @@ class Editorskit_Responsive_Preview {
 
 		wp_register_style(
 			'editorskit-responsive-preview',
-			EDITORSKIT_PLUGIN_URL . 'styles/editorskit-live-preview.css',
+			EDITORSKIT_PLUGIN_URL . 'styles/editorskit-responsive-preview.css',
 			array(),
 			'initial',
 		);

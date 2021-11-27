@@ -70,18 +70,22 @@ domReady( () => {
 			return;
 		}
 
-		const previewInNewTabButton = document.querySelector( '.edit-post-header-preview__grouping-external' );
+		setTimeout(() => {
+			const previewInNewTabButton = document.querySelector( '.edit-post-header-preview__grouping-external' );
 
-		if ( previewInNewTabButton.parentNode ) {
-			render( <MenuItem
-				icon={ <ExternalLink style={ { color: '#000' } } /> }
-				info={ __( 'Will automatically reload the preview to reflect changes in the editor.' ) }
-				onClick={ openPreview }
-			>
-				{ __( 'Live Preview in the new tab', 'block-options' ) }
-			</MenuItem>,
-			previewInNewTabButton.parentNode
-			);
-		}
+			if ( previewInNewTabButton.parentNode ) {
+				render( <MenuItem
+					icon={ <ExternalLink style={ { color: '#000' } } /> }
+					info={ __( 'Will automatically reload the preview to reflect changes in the editor.' ) }
+					onClick={ openPreview }
+				>
+					{ __( 'Live Preview in the new tab', 'block-options' ) }
+				</MenuItem>,
+				previewInNewTabButton.parentNode
+				);
+			}
+		}, 0)
+
+		
 	} );
 } );
