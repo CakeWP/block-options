@@ -1,8 +1,8 @@
+import { __ } from '@wordpress/i18n';
 import domReady from '@wordpress/dom-ready';
 import { render } from '@wordpress/element';
-import { MenuItem, ExternalLink } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
 import { select, dispatch } from '@wordpress/data';
+import { MenuItem, ExternalLink } from '@wordpress/components';
 
 import './store';
 import { reloadPreview, updatePreview } from './helper';

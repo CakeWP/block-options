@@ -61,7 +61,7 @@
     "@wordpress/babel-plugin-makepot": "^3.2.1",
     "@wordpress/babel-preset-default": "^4.6.2",
     "@wordpress/i18n": "^3.6.1",
-    "@wordpress/scripts": "19.1.0",
+    "@wordpress/scripts": "^5.1.0",
     "@wordpress/wordcount": "^2.6.2",
     "babel-eslint": "^10.0.3",
     "classnames": "^2.2.6",
