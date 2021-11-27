@@ -17,7 +17,7 @@ domReady( () => {
 
 	function openPreview() {
 
-		const isDisabled = isFeatureActive('disableEditorsKitLivePreviewTools');
+		const isDisabled = isFeatureActive('disableEditorsKitLivePreviewWithResponsiveControlsTools');
 
 		if (isDisabled) {
 			return;
@@ -39,7 +39,11 @@ domReady( () => {
 				getEditedPostPreviewLink,
 			} = select( 'core/editor' );
 
-			const currentPreviewLink = getEditedPostPreviewLink();
+			let currentPreviewLink = getEditedPostPreviewLink();
+			const currentPreviewURL = new URL(currentPreviewLink);
+
+			currentPreviewURL.searchParams.set('editorskitresponsivepreview', true);
+			currentPreviewLink = currentPreviewURL.toString();
 
 			const _previewTabReference = window.open( currentPreviewLink );
 
@@ -54,7 +58,7 @@ domReady( () => {
 	document.addEventListener( 'click', ( event ) => {
 
 
-		const isFeatureDisabled = isFeatureActive('disableEditorsKitLivePreviewTools')
+		const isFeatureDisabled = isFeatureActive('disableEditorsKitLivePreviewWithResponsiveControlsTools')
 		
 		if (isFeatureDisabled) {
 			return;

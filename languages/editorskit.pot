@@ -3,10 +3,105 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/live-preview/index.js:74
-msgid "Will automatically reload the preview to reflect changes in the editor."
+#: src/admin/addon-settings.js:11
+msgid "This area provide settings for all activated EditorsKit add ons."
 msgstr ""
 
-#: src/extensions/live-preview/index.js:77
-msgid "Live Preview in the new tab"
+#: src/blocks/import/components/edit.js:108
+msgid "Import from JSON"
+msgstr ""
+
+#: src/blocks/import/components/edit.js:119
+msgid "Upload"
+msgstr ""
+
+#: src/blocks/import/components/edit.js:76
+msgid "Invalid JSON file"
+msgstr ""
+
+#: src/blocks/import/components/edit.js:79
+msgid "Invalid Reusable Block JSON file"
+msgstr ""
+
+#: src/blocks/import/components/edit.js:82
+msgid "Unknown error"
+msgstr ""
+
+#: src/blocks/import/components/edit.js:96
+msgid "Drag a file or upload a new one from your device."
+msgstr ""
+
+#: src/blocks/import/index.js:20
+msgid "Import"
+msgstr ""
+
+#: src/blocks/import/index.js:23
+msgid "import"
+msgstr ""
+
+#: src/blocks/import/index.js:24
+msgid "download"
+msgstr ""
+
+#: src/blocks/import/index.js:25
+msgid "migrate"
+msgstr ""
+
+#: src/blocks/import/index.js:38
+msgid "Import blocks exported using EditorsKit plugin."
+msgstr ""
+
+#: src/extensions/advanced-controls/options/logic/index.js:25
+msgid "Conditional Logic"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/logic/index.js:26
+msgid ""
+"Add valid PHP conditional tags for custom & advanced visibility options.  "
+"The \"editorskit_allow_unsafe_eval\" filter must be set to true for tags to "
+"be evaluated."
+msgstr ""
+
+#: src/extensions/components/editor-height/components/height.js:52
+msgid "Toggle to change editor min-height similar to browser viewport."
+msgstr ""
+
+#: src/extensions/components/editor-height/components/height.js:55
+msgid "Editor Height"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:108
+msgid "Open in New Tab"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:113
+msgid "No Follow"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:118
+msgid "Sponsored"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:123
+msgid "Hover Animation"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:139
+msgid "Edit link"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:140
+msgid "Insert link"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:172
+msgid "Remove link"
+msgstr ""
+
+#: src/extensions/disable-title/controls.js:66
+msgid "Hide  Title"
+msgstr ""
+
+#: src/extensions/disable-title/controls.js:69
+msgid "Title is hidden on your website."
 msgstr ""

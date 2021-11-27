@@ -9,9 +9,9 @@
  */
 
 /**
- * Handles all the live previewer assets loading
+ * Handles all the responsive previewer assets loading
  */
-class Editorskit_Live_Preview {
+class Editorskit_Responsive_Preview {
 
 	/**
 	 * Constructor.
@@ -62,12 +62,11 @@ class Editorskit_Live_Preview {
 		global $wp;
 
 		// Registering query variables.
-		$wp->add_query_var( 'editorskitlivepreview' );
-		$wp->add_query_var( 'editorskitpreviewdevice' );
+		$wp->add_query_var( 'editorskitresponsivepreview' );
 
 		// Script that handles responsive previews.
 		wp_register_script(
-			'editorskit-live-preview',
+			'editorskit-responsive-preview',
 			EDITORSKIT_PLUGIN_URL . 'scripts/editorskit-live-preview.js',
 			array(),
 			'initial',
@@ -75,12 +74,25 @@ class Editorskit_Live_Preview {
 		);
 
 		wp_register_style(
-			'editorskit-live-preview',
+			'editorskit-responsive-preview',
 			EDITORSKIT_PLUGIN_URL . 'styles/editorskit-live-preview.css',
 			array(),
 			'initial',
 		);
 
+	}
+
+	/**
+	 * Checks if the responsive preview is enabled on the current preview.
+	 *
+	 * @return bool - True if enabled, otherwise false.
+	 */
+	public function is_responsive_preview_enabled() {
+		if ( 'true' !== get_query_var( 'editorskitresponsivepreview', false ) ) {
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
@@ -90,9 +102,9 @@ class Editorskit_Live_Preview {
 	 */
 	public function load_assets() {
 
-		if ( ! is_admin() && is_preview() ) {
-			wp_enqueue_script( 'editorskit-live-preview' );
-			wp_enqueue_style( 'editorskit-live-preview' );
+		if ( ! is_admin() && is_preview() && $this->is_responsive_preview_enabled() ) {
+			wp_enqueue_script( 'editorskit-responsive-preview' );
+			wp_enqueue_style( 'editorskit-responsive-preview' );
 		}
 
 	}
@@ -107,7 +119,7 @@ class Editorskit_Live_Preview {
 	 */
 	public function load_responsive_options( \WP_Admin_Bar $admin_bar ) {
 
-		if ( ! is_preview() || is_admin() ) {
+		if ( ! is_preview() || is_admin() || ! $this->is_responsive_preview_enabled() ) {
 			return;
 		}
 
@@ -147,4 +159,4 @@ class Editorskit_Live_Preview {
 	}
 }
 
-new Editorskit_Live_Preview();
+new Editorskit_Responsive_Preview();
