@@ -6,11 +6,11 @@ iframe#editorskit-frame {
 }
 
 iframe.editorskit-responsive-mobile {
-    width:360px;   
+    width:360px !important;   
 }
 
 iframe.editorskit-responsive-tablet {
-    width:780px;   
+    width:780px !important;   
 }
 
 body.editorskit-live-previewer {
@@ -41,4 +41,8 @@ body.editorskit-live-previewer {
     content: "\f470";
     color:inherit !important;
     top: 2px;
+}
+
+body:not(.editorskit-live-sandbox) *:not(#editorskit-frame):not(#wpadminbar):not(#wpadminbar *) {
+    display: none;
 }

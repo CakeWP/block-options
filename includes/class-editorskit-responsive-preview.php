@@ -35,6 +35,8 @@ class Editorskit_Responsive_Preview {
 
 		if ( ! $this->is_editorskit_live_preview_sandbox() ) {
 			$classes[] = 'editorskit-live-previewer';
+		} else {
+			$classes[] = 'editorskit-live-sandbox';
 		}
 
 		return $classes;
@@ -47,7 +49,7 @@ class Editorskit_Responsive_Preview {
 	 */
 	public function is_editorskit_live_preview_sandbox() {
 
-		$is_live_preview = get_query_var( 'editorskitsandbox', false );
+		$is_live_preview = isset( $_GET['editorskitsandbox'] ) ? $_GET['editorskitsandbox'] : false;
 
 		return 'true' === $is_live_preview;
 	}
@@ -69,7 +71,7 @@ class Editorskit_Responsive_Preview {
 			'editorskit-responsive-preview',
 			EDITORSKIT_PLUGIN_URL . 'scripts/editorskit-responsive-preview.js',
 			array(),
-			'initial',
+			'latest',
 			true
 		);
 
@@ -77,7 +79,7 @@ class Editorskit_Responsive_Preview {
 			'editorskit-responsive-preview',
 			EDITORSKIT_PLUGIN_URL . 'styles/editorskit-responsive-preview.css',
 			array(),
-			'initial',
+			'latest',
 		);
 
 	}

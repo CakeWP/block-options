@@ -1,3 +1,3 @@
 # Editorskit Live Preview
 
-Use this handy **Live Preview** tool to automatically hot reload changes in the post preview.
+Improve WordPress Preview by hot reloading it automatically while you are working in Gutenberg Editor.
