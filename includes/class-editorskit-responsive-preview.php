@@ -79,7 +79,7 @@ class Editorskit_Responsive_Preview {
 			'editorskit-responsive-preview',
 			EDITORSKIT_PLUGIN_URL . 'styles/editorskit-responsive-preview.css',
 			array(),
-			'latest',
+			'latest'
 		);
 
 	}
