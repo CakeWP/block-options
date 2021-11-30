@@ -46,7 +46,7 @@ class FeaturesManagerModal extends Component {
 						onRequestClose={ () => closeModal() }
 						closeLabel={ __( 'Close', 'block-options' ) }
 						icon={ null }
-						className="editorskit-modal-component components-modal--editorskit-features-manager"
+						className="editorskit-modal-component components-modal--editorskit-features-manager edit-post-preferences-modal"
 					>
 						{ <FeaturesManager /> }
 					</Modal> :

@@ -1,77 +1,116 @@
 /**
- * External dependencies
- */
-import map from 'lodash/map';
-
-/**
  * WordPress dependencies
  */
-const { withSelect, withDispatch, select } = wp.data;
-const { compose } = wp.compose;
-const { Fragment, Component } = wp.element;
-const { withSpokenMessages, CheckboxControl } = wp.components;
+import { withSelect, withDispatch, select } from '@wordpress/data';
+import { compose, useViewportMatch } from '@wordpress/compose';
+import { useCallback, useState, useMemo } from '@wordpress/element';
+import { 
+	withSpokenMessages, 
+	TabPanel, 
+	ToggleControl, 	
+	__experimentalNavigation as Navigation,
+	__experimentalNavigationMenu as NavigationMenu,
+	__experimentalNavigationItem as NavigationItem 
+} from '@wordpress/components';
+import { map, get } from 'lodash';
 
 const capitalize = ( str ) => {
 	return str.charAt( 0 ).toUpperCase() + str.slice( 1 );
 };
 
+const PREFERENCES_MENU = 'preferences-menu';
+
 /**
  * Render plugin
+ *
+ * @param props
  */
-class FeaturesManager extends Component {
-	constructor() {
-		super( ...arguments );
+function FeaturesManager( props ) {
 
-		this.state = {
-			isOpen: false,
-			isUpdated: false,
-		};
+	const isLargeViewport = useViewportMatch( 'medium' );
+	const [ activeMenu, setActiveMenu ] = useState( PREFERENCES_MENU );
+
+	const {
+		editorSettings,
+		onToggle,
+	} = props;
+
+	let getSettings = editorSettings.editorskit;
+
+	if ( typeof getSettings === 'undefined' && typeof window.editorskitSettings !== 'undefined' ) {
+		getSettings = window.editorskitSettings.editor_settings.editorskit;
 	}
 
-	render() {
-		const {
-			editorSettings,
-			onToggle,
-		} = this.props;
+	const tabs = map( getSettings, ( cat, catName ) => {
+		return ( {
+			title: cat.label,
+			name: catName,
+			tabLabel: cat.label,
+			content: () => {
 
-		let getSettings = editorSettings.editorskit;
+				const items = get( getSettings[ catName ], 'items', {} );
 
-		if ( typeof getSettings === 'undefined' && typeof window.editorskitSettings !== 'undefined' ) {
-			getSettings = window.editorskitSettings.editor_settings.editorskit;
-		}
-
-		return (
-			<Fragment>
-				{ map( getSettings, ( category ) => {
+				return map( items, ( item ) => {
+					const featureName = 'disableEditorsKit' + capitalize( item.name ) + capitalize( catName );
 					return (
-						<section className="edit-post-options-modal__section">
-							<h2 className="edit-post-options-modal__section-title">{ category.label }</h2>
-							<ul className="edit-post-editorskit-manager-modal__checklist">
-								{ map( category.items, ( item ) => {
-									const featureName = 'disableEditorsKit' + capitalize( item.name ) + capitalize( category.name );
-									return (
-										<li
-											className="edit-post-editorskit-manager-modal__checklist-item"
-										>
-											<CheckboxControl
-												className="edit-post-options-modal__option"
-												label={ item.label }
-												checked={ ! wp.data.select( 'core/edit-post' ).isFeatureActive( featureName ) }
-												onChange={ () => {
-													onToggle( category.name, item.name );
-													this.setState( { isUpdated: ! this.state.isUpdated } );
-												} }
-											/>
-										</li>
-									);
-								} ) }
-							</ul>
-						</section>
+						<ToggleControl
+							className="edit-post-preferences-modal__option"
+							label={ item.label }
+							checked={ ! wp.data.select( 'core/edit-post' ).isFeatureActive( featureName ) }
+							onChange={ () => {
+								onToggle( catName, item.name );
+							} }
+						/>
 					);
-				} ) }
-			</Fragment>
-		);
+				} );
+			}
+		} )
+	} );
+
+
+	const getCurrentTab = useCallback( ( tab ) => <tab.content /> );
+
+
+	let modalContent =  (
+		<TabPanel tabs={ tabs } orientation="vertical" className="edit-post-preferences__tabs">
+			{ getCurrentTab }
+		</TabPanel>	
+	);
+
+	if ( ! isLargeViewport ) {
+		modalContent = (
+			<Navigation
+				activeMenu={ activeMenu }
+				onActivateMenu={ setActiveMenu }
+	>
+				<NavigationMenu menu={ PREFERENCES_MENU }>
+					{ tabs.map( ( tab ) => {
+				return (
+					<NavigationItem
+						key={ tab.name }
+						title={ tab.title }
+						navigateToMenu={ tab.name }
+					/>
+				);
+			} ) }
+				</NavigationMenu>
+				{ tabs.map( ( tab ) => {
+			return (
+				<NavigationMenu
+					key={ `${ tab.name }-menu` }
+					menu={ tab.name }
+					title={ tab.tabLabel }
+					parentMenu={ PREFERENCES_MENU }
+				>
+					<NavigationItem><tab.content /></NavigationItem>
+				</NavigationMenu>
+			);
+		} ) }
+			</Navigation>
+		)
 	}
+
+	return modalContent;
 }
 
 export default compose( [

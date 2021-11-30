@@ -21,7 +21,7 @@ class EditorsKitSettings extends Component {
 		const tabs = [
 			{
 				name: 'ek-getting-started',
-				title: __( 'Getting Started', 'block-options' ),
+				title: __('Getting Started', 'block-options' ),
 				className: 'ek-settings-getting-started',
 			},
 			{
