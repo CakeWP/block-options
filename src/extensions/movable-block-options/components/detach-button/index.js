@@ -6,7 +6,10 @@ import { PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
 import { useDispatch, useSelect } from '@wordpress/data';
 
 function DetachSwitchButton() {
+
+	const isExtensionDisabled = useSelect(select => select('core/edit-post').isFeatureActive('disableEditorsKitMoveableSidebarTools'));
 	const currentPostMetadata = useSelect( ( select ) => select( 'core/editor' ).getEditedPostAttribute( 'meta' ) );
+	
 	const isDetached = get( currentPostMetadata, '_editorskit_is_block_options_detached' );
 	const { editPost } = useDispatch( 'core/editor' );
 
@@ -18,9 +21,9 @@ function DetachSwitchButton() {
 		} );
 	};
 
-	const info = ! isDetached ? __( 'Use block settings panel as moveable modal.', 'block-options' ) : __( 'Use block settings panel sticky as default.', 'block-options' );
+	const info = ! isDetached ? __( 'Use settings sidebar as a moveable modal.', 'block-options' ) : __( 'Make the settings sidebar sticky to the right.', 'block-options' );
 
-	return (
+	return isExtensionDisabled ? null : (
 		<PluginSidebarMoreMenuItem
 			info={ info }
 			onClick={ toggleDetach }
@@ -28,7 +31,7 @@ function DetachSwitchButton() {
 		>
 
 			{
-				! isDetached ? __( 'Make Settings Panel Modal', 'block-options' ) : __( 'Make Settings Panel Sticky', 'block-options' )
+				! isDetached ? __( 'Settings Sidebar - Make Modal', 'block-options' ) : __( 'Settings Sidebar - Snap to Right', 'block-options' )
 			}
 		</PluginSidebarMoreMenuItem>
 	);
