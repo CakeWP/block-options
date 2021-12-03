@@ -67,6 +67,9 @@ import './extensions/advanced-controls/disable-block';
 // Live Preview
 import './extensions/live-preview';
 
+// Moveable Block options
+import './extensions/movable-block-options';
+
 // Register Blocks
 import * as importBlock from './blocks/import';
 import * as shareABlock from './blocks/shareablock';
