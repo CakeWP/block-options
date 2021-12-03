@@ -36,7 +36,7 @@ class EditorsKitSettings extends Component {
 			},
 			{
 				name: 'ek-blocks-manager',
-				title: __( 'Blocks Manager', 'block-options' ),
+				title: __( 'Blocks Manager', 'block-options'),
 				className: 'ek-settings-blocks-manager',
 			},
 		];

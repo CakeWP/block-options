@@ -49,6 +49,7 @@
     "lint:css": "wp-scripts lint-style '**/*.scss'",
     "lint:css-fix": "wp-scripts lint-style '**/*.scss' --fix",
     "lint:js": "wp-scripts lint-js '**/*.js'",
+    "packages-update": "wp-scripts packages-update",
     "lint:js-fix": "wp-scripts lint-js '**/*.js' --fix",
     "lint:pkg-json": "wp-scripts lint-pkg-json",
     "start": "wp-scripts start",

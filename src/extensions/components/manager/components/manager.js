@@ -3,7 +3,7 @@
  */
 import { withSelect, withDispatch, select } from '@wordpress/data';
 import { compose, useViewportMatch } from '@wordpress/compose';
-import { useCallback, useState, useMemo } from '@wordpress/element';
+import { useCallback, useState } from '@wordpress/element';
 import { 
 	withSpokenMessages, 
 	TabPanel, 
