@@ -11,6 +11,6 @@ jobs:
         uses: CakeWP/integrate-github-with-wordpress@v1.1
         with:
           plugin-slug: block-options
-          github-token: ${{ secrets.SUPPORT_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           random-assignees: farhan-shafi, muneebahmed0346
           repo-name: block-options
