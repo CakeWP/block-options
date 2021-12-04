@@ -1,8 +1,7 @@
 name: WordPress Support Check
-# on:
-#   schedule:
-#     - cron: "*/30 * * * *" # every 30mins
-on: workflow_dispatch
+on:
+  schedule:
+    - cron: "*/30 * * * *" # every 30mins
 
 jobs:
   check-support:
