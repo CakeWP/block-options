@@ -14,7 +14,3 @@ msgstr ""
 #: src/extensions/components/manager/components/index.js:47
 msgid "Close"
 msgstr ""
-
-#: src/extensions/components/manager/components/manager.js:51
-msgid "I am a short description"
-msgstr ""
