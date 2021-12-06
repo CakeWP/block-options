@@ -45,7 +45,7 @@ link.rel = 'stylesheet';
  * Block edit function
  */
 class TypographySelection extends Component {
-	constructor() {
+	constructor () {
 		super( ...arguments );
 
 		this.onToggle = this.onToggle.bind( this );
@@ -102,7 +102,7 @@ class TypographySelection extends Component {
 		} );
 	}
 
-	onToggle( selectedItem ) {
+	onToggle ( selectedItem ) {
 		const { optionsData } = this.state;
 		if ( typeof optionsData[ selectedItem ] !== 'undefined' ) {
 			this.setVariables( selectedItem );
@@ -111,7 +111,7 @@ class TypographySelection extends Component {
 		}
 	}
 
-	setVariables( id ) {
+	setVariables ( id ) {
 		const { settingsPanel } = this.props;
 		const { optionsData, customKey, contentCSS } = this.state;
 		let fontData = {};
@@ -280,7 +280,7 @@ class TypographySelection extends Component {
 		stylesElement.innerHTML = 'body{' + variables + '}';
 	}
 
-	createCSS( savedOption ) {
+	createCSS ( savedOption ) {
 		const { settingsPanel } = this.props;
 		let { contentCSS } = this.state;
 
@@ -308,7 +308,7 @@ class TypographySelection extends Component {
 		document.head.appendChild( link );
 	}
 
-	createMeta( syntax, value, category, level ) {
+	createMeta ( syntax, value, category, level ) {
 		let { contentCSS } = this.state;
 
 		if ( level ) {
@@ -334,11 +334,11 @@ class TypographySelection extends Component {
 		this.saveMeta( contentCSS );
 	}
 
-	updateState( key, value ) {
+	updateState ( key, value ) {
 		this.setState( { [ key ]: value } );
 	}
 
-	saveMeta( contentCSS ) {
+	saveMeta ( contentCSS ) {
 		const { onFontSelection } = this.props;
 		let { optionsData, customKey } = this.state;
 
@@ -372,7 +372,7 @@ class TypographySelection extends Component {
 		} );
 	}
 
-	getValue( category, key, level ) {
+	getValue ( category, key, level ) {
 		const { contentCSS } = this.state;
 		if ( level ) {
 			if ( typeof contentCSS[ category ] !== 'undefined' && typeof contentCSS[ category ][ level ] !== 'undefined' && typeof contentCSS[ category ][ level ][ key ] !== 'undefined' ) {
@@ -385,7 +385,7 @@ class TypographySelection extends Component {
 		return '';
 	}
 
-	onDelete() {
+	onDelete () {
 		const { noticeMessage } = this.props;
 		const { itemSelected, optionsData } = this.state;
 
@@ -406,7 +406,7 @@ class TypographySelection extends Component {
 		noticeMessage( __( 'Item successfully deleted.', 'editorskit-typography-addon' ) );
 	}
 
-	onSetDefault( isRemoving = false ) {
+	onSetDefault ( isRemoving = false ) {
 		const { noticeMessage } = this.props;
 		const { optionsData, itemSelected, applyToAll } = this.state;
 
@@ -440,7 +440,7 @@ class TypographySelection extends Component {
 		noticeMessage( __( 'Default Typography Successfully Set.', 'editorskit-typography-addon' ) );
 	}
 
-	render() {
+	render () {
 		const {
 			onFontSelection,
 			removeFontSelection,
@@ -1011,14 +1011,14 @@ export default compose( [
 		const { createNotice } = dispatch( 'core/notices' );
 
 		return {
-			onFontSelection( fontData, key ) {
+			onFontSelection ( fontData, key ) {
 				dispatch( 'core/editor' ).editPost( {
 					meta: {
 						_editorskit_typography_data: key ? { meta: { id: key, data: fontData } } : { meta: fontData },
 					},
 				} );
 			},
-			removeFontSelection() {
+			removeFontSelection () {
 				dispatch( 'core/editor' ).editPost( {
 					meta: {
 						_editorskit_typography_data: { meta: { disabled: true } },
@@ -1027,7 +1027,7 @@ export default compose( [
 
 				document.body.classList.remove( 'ek-has-typography' );
 			},
-			noticeMessage( message ) {
+			noticeMessage ( message ) {
 				createNotice(
 					'info',
 					message,

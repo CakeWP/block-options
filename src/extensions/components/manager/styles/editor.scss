@@ -1,12 +1,17 @@
-.edit-post-editorskit-manager-modal__checklist-item {
-	margin-bottom: 0;
-	border-top: 1px solid #e2e4e7;
-
-	&:last-child {
-		border-bottom: 1px solid #e2e4e7;
+.editorskit-editor-settings {
+	& .components-base-control__help {
+		margin-left: 0 !important;
 	}
 
-	.edit-post-options-modal__option {
-		border: 0 !important;
+	.editorskit-option:not(:last-child) {
+		margin-bottom: 20px;
 	}
+
+	.editorskit-editor-settings-search-control {
+		margin-bottom: 20px;
+	}
+
+	// .editorskit-no-settings-found {
+		// padding: 40px 20px;
+	// }
 }

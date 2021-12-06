@@ -3,14 +3,414 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/components/manager/components/index.js:41
-msgid "EditorsKit Settings"
+#: src/add-ons/typography/src/components/font-selection/index.js:406
+msgid "Item successfully deleted."
 msgstr ""
 
-#: src/extensions/components/manager/components/index.js:45
-msgid "EditorsKit Features Manager"
+#: src/add-ons/typography/src/components/font-selection/index.js:440
+msgid "Default Typography Successfully Set."
 msgstr ""
 
-#: src/extensions/components/manager/components/index.js:47
-msgid "Close"
+#: src/add-ons/typography/src/components/font-selection/index.js:456
+msgid "Fetching Typography Data....."
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:473
+msgid "Select Google Font"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:474
+msgid "Arial"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:475
+msgid "Helvetica"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:476
+msgid "Times New Roman"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:477
+msgid "Georgia"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:488
+msgid "Select Text Transform"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:489
+msgid "None"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:490
+msgid "Capitalize"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:491
+msgid "Uppercase"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:492
+msgid "Lowercase"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:493
+msgid "Initial"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:494
+msgid "Inherit"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:502
+msgid "Select Font Weight"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:541
+msgid "Create Custom Combination"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:546
+msgid "Search"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:644
+msgid "Delete Confirmation"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:649
+msgid "Are you sure you want to delete this item?"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:654
+msgid "Yes, Delete"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:668
+msgid "Set as Default Fonts"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:673
+msgid ""
+"Setting default typography will save you time when creating new posts or "
+"pages."
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:674
+msgid ""
+"Take note that this option will apply your selected default typography to "
+"old posts, post types and pages on your website without the need for you to "
+"edit them on the Gutenberg editor manually."
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:682
+msgid "Yes, Set as Default"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:696
+msgid "Remove Default Fonts"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:701
+msgid "Are you sure you want to remove this item as default typography?"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:709
+msgid "Yes, Set Remove Default"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:716
+msgid "No, Cancel"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:729
+msgid "Back"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:733
+msgid "Name"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:746
+msgid "Content Typography"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:794
+msgid "Apply Font Family to whole page"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:796
+msgid ""
+"Check this option to apply the selected font family to <body> instead of "
+"just content."
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:804
+msgid "Heading Typography"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:866
+msgid "Font Weight (%s)"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:879
+msgid "Font Size (%s)"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:891
+msgid "Line Height (%s)"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:903
+msgid "Letter Spacing (%s)"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:915
+msgid "Text Transform (%s)"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:926
+msgid "Apply to Title"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:941
+msgid "Buttons Typography"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:945
+msgid "Google Fonts"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:955
+msgid "Font Weight"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:965
+msgid "Font Size"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:973
+msgid "Line Height"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:981
+msgid "Letter Spacing"
+msgstr ""
+
+#: src/add-ons/typography/src/components/font-selection/index.js:989
+msgid "Text Transform"
+msgstr ""
+
+#: src/admin/index.js:100
+msgid ""
+"Manage each individual blocks! You can enable or disable any blocks you "
+"want and it will be reflected on Gutenberg block manager settings. Just "
+"uncheck the box and it will automatically be saved."
+msgstr ""
+
+#: src/admin/index.js:111
+msgid "Typography and Google Fonts"
+msgstr ""
+
+#: src/admin/index.js:112
+msgid ""
+"Easily define typography on your WordPress posts and pages directly on the "
+"Gutenberg editor. With sets of predefined Google Fonts combination you can "
+"choose from or create your own to best match your website's branding."
+msgstr ""
+
+#: src/admin/index.js:119
+msgid "Get this Extension"
+msgstr ""
+
+#: src/admin/index.js:141
+msgid "Settings → EditorsKit"
+msgstr ""
+
+#: src/admin/index.js:142
+msgid "Getting Started with"
+msgstr ""
+
+#: src/admin/index.js:143
+msgid ""
+"Congratulations! You've just unlocked more Gutenberg block editor tools for "
+"easier editing and better workflow. Check more information about the plugin "
+"below and please make sure to navigate through \"Tutorials and Docs\" tab "
+"to learn more on how to use each available features."
+msgstr ""
+
+#: src/admin/index.js:24
+msgid "Getting Started"
+msgstr ""
+
+#: src/admin/index.js:29
+msgid "Tutorial and Docs"
+msgstr ""
+
+#: src/admin/index.js:34
+msgid "Features Manager"
+msgstr ""
+
+#: src/admin/index.js:39
+msgid "Blocks Manager"
+msgstr ""
+
+#: src/admin/index.js:46
+msgid "Extensions"
+msgstr ""
+
+#: src/admin/index.js:62
+msgid ""
+"EditorsKit provides set of tools to extend the way you are building content "
+"on WordPress Gutenberg block editor. Designed and integrated to help users "
+"easily navigate; and control each block the way it should be."
+msgstr ""
+
+#: src/admin/index.js:65
+msgid "EditorsKit video preview"
+msgstr ""
+
+#: src/admin/index.js:70
+msgid ""
+"If you have any questions or suggestion, let us know through "
+"%1$sTwitter%4$s or our %2$sFacebook community %4$s. Also, %3$ssubscribe to "
+"our newsletter%4$s if you want to stay up to date with what's new and "
+"upcoming at EditorsKit."
+msgstr ""
+
+#: src/admin/index.js:90
+msgid ""
+"All features are active by default but you have complete control over each "
+"one of them. Disable any features do not want to use and re-enable them "
+"anytime on this page or under the \"EditorsKit Settings\" on Gutenberg "
+"editor. Just uncheck the box and it will automatically be saved."
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:112
+msgid "Custom Units"
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:113
+msgid "Enter custom units..."
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:130
+msgid "Focus Mode"
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:131
+msgid "Toggle focus mode in the editor."
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:143
+msgid "Fixed Toolbar"
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:144
+msgid "Change the toolbar position in the editor."
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:156
+msgid "Reduced UI"
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:157
+msgid "Toggle reduce UI in the editor."
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:169
+msgid "Image Editing"
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:170
+msgid "Control image editing ability in the editor."
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:182
+msgid "Disable Custom Colors"
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:183
+msgid "Disables custom color picker in the editor."
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:195
+msgid "Disable Custom Font Sizes"
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:196
+msgid "Disables custom font sizes in the editor."
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:208
+msgid "Disable Custom Gradients"
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:209
+msgid "Disables custom gradients in the editor."
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:221
+msgid "Enable custom line height"
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:222
+msgid "Enable custom line height in the editor."
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:234
+msgid "Enable custom spacing"
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:235
+msgid "Enable custom spacing in the editor."
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:257
+msgid "Search Editor Settings..."
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:42
+msgid "Title Placeholder"
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:43
+msgid "Enter a placeholder..."
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:44
+msgid "Change the default gutenberg title placeholder."
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:56
+msgid "Body Placeholder"
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:57
+msgid "Enter a body placeholder..."
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:58
+msgid "Change the default gutenberg body placeholder."
+msgstr ""
+
+#: src/extensions/components/manager/components/editor-settings.js:69
+msgid "Default Image Size"
+msgstr ""
+
+#: src/extensions/components/manager/components/empty.js:10
+msgid "Nothing to see here!"
+msgstr ""
+
+#: src/extensions/components/manager/components/empty.js:13
+msgid "Looking for something specific? "
+msgstr ""
+
+#: src/extensions/components/manager/components/empty.js:15
+msgid "Let us know"
+msgstr ""
+
+#: src/extensions/components/manager/components/manager.js:55
+msgid "Editor (New)"
 msgstr ""
