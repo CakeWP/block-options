@@ -21,7 +21,7 @@
   "rules": {
     "object-curly-spacing": ["error", "always"],
     "space-before-function-paren": ["error", "always"],
-    "semi": ["error", "always"]
+    "semi": ["error", "always"],
   },
   "extends": [
     "eslint:recommended",
