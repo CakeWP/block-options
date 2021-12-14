@@ -146,7 +146,7 @@ class EditorsKit_Post_Meta {
 				'type'              => 'string',
 				'description'       => __( 'Custom typography', 'editorskit-typography-addon' ),
 				'sanitize_callback' => 'sanitize_text_field',
-				'show_in_rest'      => true,
+				'show_in_rest'      => false,
 			)
 		);
 
@@ -157,7 +157,7 @@ class EditorsKit_Post_Meta {
 				'type'              => 'string',
 				'description'       => __( 'Default typography', 'editorskit-typography-addon' ),
 				'sanitize_callback' => 'sanitize_text_field',
-				'show_in_rest'      => true,
+				'show_in_rest'      => false,
 			)
 		);
 
@@ -168,8 +168,8 @@ class EditorsKit_Post_Meta {
 				'type'              => 'boolean',
 				'description'       => __( 'Default typography', 'editorskit-typography-addon' ),
 				'sanitize_callback' => 'rest_sanitize_boolean',
-				'show_in_rest'      => true,
-				'default'           => true,
+				'show_in_rest'      => false,
+				'default'           => false,
 			)
 		);
 	}

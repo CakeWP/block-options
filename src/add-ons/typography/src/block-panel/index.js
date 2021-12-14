@@ -141,27 +141,36 @@ function applyTypographySettings( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-addFilter(
-	'blocks.registerBlockType',
-	'editorskit/typography/attributes',
-	addAttributes
-);
 
-addFilter(
-	'editor.BlockEdit',
-	'editorskit/typography/block-panel',
-	withBlockPanel
-);
+const isDisabled = wp.data.select('core/edit-post').isFeatureActive('disableEditorsKitTypography');
 
-addFilter(
-	'editor.BlockListBlock',
-	'editorskit/typography/withTypographySettings',
-	withTypographySettings,
-	10
-);
+if ( !isDisabled ) {
+	
+	addFilter(
+		'blocks.registerBlockType',
+		'editorskit/typography/attributes',
+		addAttributes
+	);
 
-addFilter(
-	'blocks.getSaveContent.extraProps',
-	'editorskit/typography/applyTypographySettings',
-	applyTypographySettings
-);
+
+	addFilter(
+		'editor.BlockEdit',
+		'editorskit/typography/block-panel',
+		withBlockPanel
+	);
+
+	addFilter(
+		'editor.BlockListBlock',
+		'editorskit/typography/withTypographySettings',
+		withTypographySettings,
+		10
+	);
+
+	addFilter(
+		'blocks.getSaveContent.extraProps',
+		'editorskit/typography/applyTypographySettings',
+		applyTypographySettings
+	);
+
+
+}
