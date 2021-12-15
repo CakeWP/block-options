@@ -10,7 +10,7 @@ import TypographySelection from '../components/font-selection';
 const { __ } = wp.i18n;
 const { addFilter } = wp.hooks;
 const { useEntityProp } = wp.coreData;
-const { Fragment, useCallback } = wp.element;
+const { Fragment, useCallback, useEffect } = wp.element;
 const { useDispatch } = wp.data;
 const { PanelBody, PanelRow, ToggleControl } = wp.components;
 
@@ -22,10 +22,22 @@ function editorskitTypographySettings( FilteredComponent ) {
 
 		const { toggleFeature } = useDispatch( 'core/edit-post' );
 
-		const onToggle = useCallback( () => {
-			toggleFeature( 'disableEditorsKitTypography' );
+		const onToggle = useCallback( () => {	
 			saveEditedEntityRecord( 'root', 'site' );
 		}, [] );
+
+		useEffect(() => {
+
+			const currentFeatureStatus = wp.data.select('core/edit-post').isFeatureActive('disableEditorsKitTypography');
+
+			if (currentFeatureStatus === !editorskitTypographyEnabled) {
+				toggleFeature('disableEditorsKitTypography');
+				toggleFeature('disableEditorsKitTypography');
+			} else {
+				toggleFeature('disableEditorsKitTypography');
+			}
+
+		}, [editorskitTypographyEnabled])
 
 		return(
 			<Fragment>
@@ -36,7 +48,7 @@ function editorskitTypographySettings( FilteredComponent ) {
 						checked={ editorskitTypographyEnabled }
 						onChange={ ( newValue ) => {
 							setEditorskitTypographyEnabled(newValue);
-							onToggle();
+							onToggle( newValue );
 						} }
 					/><br />
 					<PanelBody
