@@ -3,10 +3,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/add-ons/typography/src/settings/index.js:47
+#: src/add-ons/typography/src/settings/index.js:48
 msgid "Typography Add-on Enabled"
 msgstr ""
 
-#: src/add-ons/typography/src/settings/index.js:55
+#: src/add-ons/typography/src/settings/index.js:56
 msgid "Typography Settings"
 msgstr ""

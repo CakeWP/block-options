@@ -30,6 +30,7 @@ function editorskitTypographySettings( FilteredComponent ) {
 
 			const currentFeatureStatus = wp.data.select('core/edit-post').isFeatureActive('disableEditorsKitTypography');
 
+			// TODO: fix this hacky approach which is used to sync unsynchronized data.
 			if (currentFeatureStatus === !editorskitTypographyEnabled) {
 				toggleFeature('disableEditorsKitTypography');
 				toggleFeature('disableEditorsKitTypography');
