@@ -1,13 +1,7 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-
-/**
  * Internal dependencies
  */
 import TypographySettings from './typography';
-import applyFontStyle from './apply-style';
 
 /**
  * WordPress Dependencies
