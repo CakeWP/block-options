@@ -1,0 +1,24 @@
+name: WordPress Support Check
+on:
+  schedule:
+    - cron: "*/30 * * * *" # every 30mins
+
+jobs:
+  check-support:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Set up git user
+        run: git config --global user.name cakewp-support
+
+      - name: Set up git email
+        run: git config --global user.name support@cakewp.com
+
+      - name: Check WordPress Support For EditorsKit
+        uses: CakeWP/integrate-github-with-wordpress@v1.1
+        with:
+          plugin-slug: block-options
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          random-assignees: farhan-shafi, muneebahmed0346
+          repo-name: block-options
