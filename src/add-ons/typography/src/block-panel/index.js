@@ -114,36 +114,6 @@ const withTypographySettings = createHigherOrderComponent( ( BlockListBlock ) =>
 	} );
 }, 'withTypographySettings' );
 
-/**
- * Override props assigned to save component to inject atttributes
- *
- * @param {Object} extraProps Additional props applied to save element.
- * @param {Object} blockType  Block type.
- * @param {Object} attributes Current block attributes.
- *
- * @return {Object} Filtered props applied to save element.
- */
-function applyTypographySettings( extraProps, blockType, attributes ) {
-
-	if ( ! hasBlockSupport( blockType.name, 'disableEditorsKitTypography' ) ) {
-		
-		if ( typeof extraProps.style !== 'undefined' ) {
-			extraProps.style = Object.assign( extraProps.style, applyFontStyle( attributes, blockType.name, extraProps ) );
-		} else {
-			extraProps.style = applyFontStyle( attributes, blockType.name, extraProps );
-		}
-		
-		const { editorskit_typography } = attributes;
-		
-		if ( typeof editorskit_typography.family !== 'undefined' && editorskit_typography.family ) {
-			extraProps.className = classnames( extraProps.className, 'has-ek-typography' );
-		}
-	}
-	
-	return extraProps;
-}
-
-
 const isDisabled = wp.data.select('core/edit-post').isFeatureActive('disableEditorsKitTypography');
 
 if ( !isDisabled ) {
