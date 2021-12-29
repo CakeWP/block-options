@@ -1,7 +1,13 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * Internal dependencies
  */
 import TypographySettings from './typography';
+import applyFontStyle from './apply-style';
 
 /**
  * WordPress Dependencies
@@ -107,6 +113,7 @@ const withTypographySettings = createHigherOrderComponent( ( BlockListBlock ) =>
 		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
 	} );
 }, 'withTypographySettings' );
+
 
 const isDisabled = wp.data.select('core/edit-post').isFeatureActive('disableEditorsKitTypography');
 
