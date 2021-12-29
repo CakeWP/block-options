@@ -6,7 +6,7 @@ import { map, find } from 'lodash';
 /**
  * Internal Dependencies
  */
-import GoogleFonts from '../../defaults/google-fonts';
+import GoogleFonts from '../../defaults/google-fonts.json';
 
 /**
  * WordPress Dependencies
@@ -33,7 +33,8 @@ const TypographySettings = ( props ) => {
 	}
 
 	const meta = useSelect( ( select ) =>
-		select( 'core/editor' ).getEditedPostAttribute( 'meta' )
+		select( 'core/editor' ).getEditedPostAttribute( 'meta' ),
+		[]
 	);
 
 	let editorskit_blocks_typography = useMemo(

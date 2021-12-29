@@ -124,20 +124,22 @@ const withTypographySettings = createHigherOrderComponent( ( BlockListBlock ) =>
  * @return {Object} Filtered props applied to save element.
  */
 function applyTypographySettings( extraProps, blockType, attributes ) {
+
 	if ( ! hasBlockSupport( blockType.name, 'disableEditorsKitTypography' ) ) {
+		
 		if ( typeof extraProps.style !== 'undefined' ) {
 			extraProps.style = Object.assign( extraProps.style, applyFontStyle( attributes, blockType.name, extraProps ) );
 		} else {
 			extraProps.style = applyFontStyle( attributes, blockType.name, extraProps );
 		}
-
+		
 		const { editorskit_typography } = attributes;
-
+		
 		if ( typeof editorskit_typography.family !== 'undefined' && editorskit_typography.family ) {
 			extraProps.className = classnames( extraProps.className, 'has-ek-typography' );
 		}
 	}
-
+	
 	return extraProps;
 }
 
@@ -165,12 +167,5 @@ if ( !isDisabled ) {
 		withTypographySettings,
 		10
 	);
-
-	addFilter(
-		'blocks.getSaveContent.extraProps',
-		'editorskit/typography/applyTypographySettings',
-		applyTypographySettings
-	);
-
 
 }

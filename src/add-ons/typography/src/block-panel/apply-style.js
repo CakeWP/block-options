@@ -6,7 +6,7 @@ import { find } from 'lodash';
 /**
  * Internal Dependencies
  */
-import GoogleFonts from '../defaults/google-fonts';
+import GoogleFonts from '../defaults/google-fonts.json';
 
 function applyFontStyle( attributes, blockName, wrapperProps ) {
 	const {
