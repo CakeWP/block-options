@@ -4,13 +4,13 @@
  * Plugin URI: https://editorskit.com/
  * Description: EditorsKit is a suite of <strong>page building block options</strong> for the Gutenberg block editor.
  * Version: 1.33.3
- * Author: Extendify
- * Author URI: https://extendify.com/
+ * Author: Munir Kamal
+ * Author URI: https://www.munirkamal.com/
  * Text Domain: block-options
  * Domain Path: languages
  *
  * @category Gutenberg
- * @author Extendify
+ * @author Munir Kamal
  * @version 1.0
  * @package EditorsKit
  */
