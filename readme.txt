@@ -1,7 +1,7 @@
 === Gutenberg Block Editor Toolkit – EditorsKit ===
 Author URI: https://editorskit.com
 Plugin URI: https://editorskit.com
-Contributors: phpbits, editorskit
+Contributors: phpbits, munirkamal
 Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenberg editor
 Requires at least: 5.0
 Tested up to: 5.8
@@ -173,15 +173,15 @@ EditorsKit uses a custom API to fetch templates and patterns from the Extendify 
 
 API requests are only made when a user clicks on the Library button.
 
-For more details on our privacy policy: https://extendify.com/privacy-policy
-For more details on our terms of service: https://extendify.com/terms-of-service/
+For more details on their privacy policy: https://extendify.com/privacy-policy
+For more details on their terms of service: https://extendify.com/terms-of-service/
 
 ## Helping you with the new Gutenberg Editor
 EditorsKit is created to help you navigate through the new editor. Each new features will make your page building more convenient and easier. You can help achieving this goal through the community:
 
 * [Join Facebook Community](https://www.facebook.com/groups/1306393256173179/)
 * [Follow Us on Twitter](https://twitter.com/editorskit/)
-* [Contribute on Github](https://github.com/phpbits/block-options)
+* [Contribute on Github](https://github.com/CakeWP/block-options)
 
 == Installation ==
 
@@ -570,4 +570,4 @@ e.g.
 
 == Contact and Credits ==
 
-EditorsKit is maintained and developed by <a href="https://extendify.com/">Extendify</a>.
+EditorsKit is maintained and developed by <a href="https://twitter.com/m_munirkamal">Munir Kamal</a>.
