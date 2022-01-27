@@ -6,12 +6,14 @@
  * Manage plugin dependencies
  */
 
-namespace Extendify\ExtendifySdk;
+namespace Extendify\Library;
 
 class Plugin
 {
     /**
      * Install and activate a plugin.
+     *
+     * @since 5.8.0
      *
      * @param string $slug Plugin slug.
      *
@@ -31,11 +33,10 @@ class Plugin
         }
 
         if (! current_user_can('activate_plugins')) {
-            return new \WP_Error('not_allowed', __('You are not allowed to activate plugins on this site.', 'templates_sdk'));
+            return new \WP_Error('not_allowed', __('You are not allowed to activate plugins on this site.', 'jetpack'));
         }
-
-        $activated = \activate_plugin($plugin_id);
-        if (\is_wp_error($activated)) {
+        $activated = activate_plugin($plugin_id);
+        if (is_wp_error($activated)) {
             return $activated;
         }
 
@@ -45,24 +46,23 @@ class Plugin
     /**
      * Install a plugin.
      *
+     * @since 5.8.0
+     *
      * @param string $slug Plugin slug.
      *
      * @return bool|WP_Error True if installation succeeded, error object otherwise.
      */
     public static function install_plugin($slug)
     {
-        if (\is_multisite() && !\current_user_can('manage_network')) {
-            return new \WP_Error('not_allowed', __('You are not allowed to install plugins on this site.', 'templates_sdk'));
+        if (is_multisite() && ! current_user_can('manage_network')) {
+            return new \WP_Error('not_allowed', __('You are not allowed to install plugins on this site.', 'jetpack'));
         }
-        require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
-        require_once ABSPATH . 'wp-admin/includes/plugin.php';
-        require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
-        require_once ABSPATH . 'wp-admin/includes/file.php';
-        require_once ABSPATH . 'wp-admin/includes/misc.php';
-        $installer = new \Plugin_Upgrader(new Skin());
+
+        $skin     = new PluginUpgraderSkin();
+        $upgrader = new \Plugin_Upgrader($skin);
         $zip_url  = self::generate_wordpress_org_plugin_download_link($slug);
 
-        $result = $installer->install($zip_url);
+        $result = $upgrader->install($zip_url);
 
         if (is_wp_error($result)) {
             return $result;
@@ -71,20 +71,25 @@ class Plugin
         $plugin     = self::get_plugin_id_by_slug($slug);
         $error_code = 'install_error';
         if (! $plugin) {
-            $error = __('There was an error installing your plugin', 'templates_sdk');
+            $error = __('There was an error installing your plugin', 'jetpack');
         }
 
         if (! $result) {
-            $error_code = $installer->skin->get_main_error_code();
-            $message    = $installer->skin->get_main_error_message();
-            $error      = $message ? $message : __('An unknown error occurred during installation', 'templates_sdk');
+            $error_code = $upgrader->skin->get_main_error_code();
+            $message    = $upgrader->skin->get_main_error_message();
+            $error      = $message ? $message : __('An unknown error occurred during installation', 'jetpack');
         }
 
         if (! empty($error)) {
+            if ('download_failed' === $error_code) {
+                // For backwards compatibility: versions prior to 3.9 would return no_package instead of download_failed.
+                $error_code = 'no_package';
+            }
+
             return new \WP_Error($error_code, $error, 400);
         }
 
-        return (array) $installer->skin->get_upgrade_messages();
+        return (array) $upgrader->skin->get_upgrade_messages();
     }
 
     /**
@@ -191,38 +196,16 @@ class Plugin
 
         return array();
     }
-
-    /**
-     * Will return info about a plugin
-     *
-     * @param string $identifier The key of the plugin info.
-     * @param string $plugin_id The plugin identifier string 'editorplus-sdk.
-     * @return string
-     */
-    public static function getPluginInfo($identifier, $plugin_id)
-    {
-        if (!function_exists('get_plugins')) {
-            include_once ABSPATH . 'wp-admin/includes/plugin.php';
-        }
-
-        foreach (get_plugins() as $plugin => $data) {
-            if ($data[$identifier] === $plugin_id) {
-                return $plugin;
-            }
-        }
-
-        return false;
-    }
 }
 
-require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
-require_once ABSPATH . 'wp-admin/includes/file.php';
+include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+include_once ABSPATH . 'wp-admin/includes/file.php';
 
 /**
  * Allows us to capture that the site doesn't have proper file system access.
  * In order to update the plugin.
  */
-class Skin extends \Automatic_Upgrader_Skin
+class PluginUpgraderSkin extends \Automatic_Upgrader_Skin
 {
     /**
      * Stores the last error key;

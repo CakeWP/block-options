@@ -3,9 +3,9 @@
  * The App details file
  */
 
-namespace Extendify\ExtendifySdk;
+namespace Extendify\Library;
 
-use Extendify\ExtendifySdk\Plugin;
+use Extendify\Library\Plugin;
 
 /**
  * Controller for handling various app data
@@ -42,11 +42,11 @@ class App
     public static $apiVersion = 'v1';
 
     /**
-     * Plugin text domain
+     * Whether this is the standalone plugin
      *
-     * @var string
+     * @var boolean
      */
-    public static $textDomain = '';
+    public static $standalone;
 
     /**
      * Plugin environment
@@ -60,7 +60,7 @@ class App
      *
      * @var string
      */
-    public static $sdkPartner = '';
+    public static $sdkPartner = 'standalone';
 
     /**
      * Host plugin
@@ -83,10 +83,8 @@ class App
      */
     public function __construct()
     {
-        // Set the "partner" plugin/theme here with a fallback to support the previous plugin implementation.
-        self::$sdkPartner = isset($GLOBALS['extendify_sdk_partner']) ? $GLOBALS['extendify_sdk_partner'] : '';
-        if (!self::$sdkPartner && isset($GLOBALS['extendifySdkSourcePlugin'])) {
-            self::$sdkPartner = $GLOBALS['extendifySdkSourcePlugin'];
+        if (isset($GLOBALS['extendify_sdk_partner'])) {
+            self::$sdkPartner = $GLOBALS['extendify_sdk_partner'];
         }
 
         // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
@@ -100,10 +98,10 @@ class App
         self::$version = $matches[1];
 
         // An easy way to check if we are in dev mode is to look for a dev specific file.
-        $isDev = is_readable(EXTENDIFYSDK_PATH . 'node_modules') || is_readable(EXTENDIFYSDK_PATH . '.devbuild');
+        $isDev = is_readable(EXTENDIFY_PATH . 'node_modules') || is_readable(EXTENDIFY_PATH . '.devbuild');
         self::$environment = $isDev ? 'DEVELOPMENT' : 'PRODUCTION';
 
-        self::$textDomain = Plugin::getPluginInfo('TextDomain', self::$slug);
+        self::$standalone = self::$sdkPartner === 'standalone';
 
         // Add the config.
         // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents

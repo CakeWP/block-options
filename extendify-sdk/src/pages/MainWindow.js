@@ -1,20 +1,22 @@
 import { Fragment, useRef } from '@wordpress/element'
 import { Dialog, Transition } from '@headlessui/react'
 import { useGlobalStore } from '../state/GlobalState'
-import Layout from './layout/Layout'
-import FooterNotice from '../components/FooterNotice'
+import { Layout } from './layout/Layout'
+import FooterNotice from '../components/notices/FooterNotice'
+import { useModal } from '../hooks/useModal'
 
 export default function MainWindow() {
     const containerRef = useRef(null)
     const open = useGlobalStore((state) => state.open)
     const setOpen = useGlobalStore((state) => state.setOpen)
+    const modal = useModal(open)
 
     return (
-        <Transition.Root show={open} as={Fragment}>
+        <Transition appear show={open} as={Fragment}>
             <Dialog
                 as="div"
                 static
-                className="extendify-sdk"
+                className="extendify"
                 initialFocus={containerRef}
                 onClose={() => setOpen(false)}>
                 <div className="h-screen w-screen sm:h-auto m-auto sm:w-auto fixed z-high inset-0 overflow-y-auto">
@@ -41,11 +43,12 @@ export default function MainWindow() {
                                 className="fixed lg:absolute inset-0 lg:overflow-hidden transform transition-all p-2 lg:p-16">
                                 <Layout />
                                 <FooterNotice />
+                                {modal}
                             </div>
                         </Transition.Child>
                     </div>
                 </div>
             </Dialog>
-        </Transition.Root>
+        </Transition>
     )
 }
