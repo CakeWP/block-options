@@ -3,9 +3,9 @@
  * Controls Plugins
  */
 
-namespace Extendify\ExtendifySdk\Controllers;
+namespace Extendify\Library\Controllers;
 
-use Extendify\ExtendifySdk\Plugin;
+use Extendify\Library\Plugin;
 
 if (!defined('ABSPATH')) {
     die('No direct access.');
@@ -45,16 +45,15 @@ class PluginController
      * Install plugins
      *
      * @param \WP_REST_Request $request - The request.
-     * @return bool
+     * @return bool|WP_Error
      */
     public static function install($request)
     {
         if (!\current_user_can('activate_plugins')) {
-            return new \WP_Error('not_allowed', \__('You are not allowed to activate plugins on this site.', 'extendify-sdk'));
+            return new \WP_Error('not_allowed', \__('You are not allowed to activate plugins on this site.', 'extendify'));
         }
 
         $requiredPlugins = json_decode($request->get_param('plugins'), true);
-
         foreach ($requiredPlugins as $plugin) {
             $status = Plugin::install_and_activate_plugin($plugin);
             if (\is_wp_error($status)) {
