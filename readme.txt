@@ -209,7 +209,8 @@ e.g.
 == Changelog ==
 
 = 1.33.5 =
-* Deprecate: Live Preview feature
+* Deprecate: Live Preview with Responsive Controls feature.
+
 
 = 1.33.4 =
 * Updated: Template library update
