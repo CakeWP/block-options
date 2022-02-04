@@ -138,10 +138,6 @@ class EditorsKitDocs extends Component {
 			{
 				title: __( 'Enable Developer Tools', 'block-options' ),
 				name: 'developer-tools.md',
-			},
-			{
-				title: __('Using Live Preview & Responsive Toggles', 'block-options'),
-				name: 'live-preview-tool.md'
 			}
 		];
 

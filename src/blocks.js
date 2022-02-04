@@ -64,8 +64,6 @@ import './extensions/shortcuts/alignment';
 // Disable Block Control
 import './extensions/advanced-controls/disable-block';
 
-// Live Preview
-import './extensions/live-preview';
 
 // Moveable Block options
 import './extensions/movable-block-options';

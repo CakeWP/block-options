@@ -310,11 +310,6 @@ class EditorsKit_Features_Manager {
 							'label' => __( 'View Custom Fields', 'block-options' ),
 							'value' => true,
 						),
-						'livePreviewWithResponsiveControls' => array(
-							'name'  => 'livePreviewWithResponsiveControls',
-							'label' => __( 'Live Preview with Responsive Controls', 'block-options' ),
-							'value' => true,
-						),
 						'moveableSidebar'     => array(
 							'name'  => 'moveableSidebar',
 							'label' => __( 'Use Sidebar as Moveable Modal' ),
