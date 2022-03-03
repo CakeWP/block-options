@@ -84,7 +84,7 @@ class EditorsKit_Block_Assets {
 			$this->slug . '-frontend',
 			$this->url . '/build/style.build.css',
 			array(),
-			'latest'
+			'new'
 		);
 	}
 

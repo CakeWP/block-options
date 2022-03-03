@@ -102,7 +102,7 @@ ol {
 
 			&::before {
 				content: "";
-				background-color: currentColor;
+				background-color: var(--ek-bullet-color, currentColor);
 			}
 		}
 	}
@@ -167,7 +167,7 @@ ol {
 
 		li::before {
 			border-radius: 9999px;
-			background: currentColor;
+			background: var(--ek-bullet-color, currentColor);
 			height: 12px;
 			width: 12px;
 			top: 0.5em;
@@ -179,7 +179,7 @@ ol {
 			content: "";
 			position: absolute;
 			height: 125%;
-			border-left: 2px solid currentColor;
+			border-left: 2px solid var(--ek-bullet-color, currentColor);
 			left: -13px;
 			top: 0;
 		}

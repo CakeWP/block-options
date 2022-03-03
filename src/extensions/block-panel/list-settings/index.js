@@ -20,17 +20,21 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 } );
 
 const ListTextSettings = ( props ) => {
+	
 	const {
 		fallbackFontSize,
 		fontSize,
-		setFontSize,
 		textColor,
 		setTextColor,
-		bulletColor,
+		setFontSize,
 		isFontSizeDisabled,
-		isTextColorDisabled,
 		setAttributes,
+		isTextColorDisabled,
 	} = props;
+	
+	const {	
+		bulletColor,
+	} = props.attributes;
 
 	return (
 		<Fragment>
