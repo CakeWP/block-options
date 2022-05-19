@@ -53,6 +53,9 @@ import './extensions/block-toolbar';
 // Block Transformation
 import './extensions/transform/empty-paragraphs';
 
+// Block Locking
+import './extensions/lock-block-edit';
+
 // Styles
 import './extensions/block-styles/';
 
@@ -64,7 +67,6 @@ import './extensions/shortcuts/alignment';
 // Disable Block Control
 import './extensions/advanced-controls/disable-block';
 
-
 // Moveable Block options
 import './extensions/movable-block-options';
 
@@ -73,15 +75,15 @@ import * as importBlock from './blocks/import';
 import * as shareABlock from './blocks/shareablock';
 
 export function registerBlocks() {
-	[ importBlock, shareABlock ].forEach( ( block ) => {
-		if ( ! block ) {
+	[importBlock, shareABlock].forEach((block) => {
+		if (!block) {
 			return;
 		}
 
 		const { name, settings, category } = block;
 
-		registerBlockType( `editorskit/${ name }`, { category, ...settings } );
-	} );
+		registerBlockType(`editorskit/${name}`, { category, ...settings });
+	});
 }
 registerBlocks();
 

@@ -3,50 +3,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/block-panel/list-settings/index.js:44
-msgid "Text Settings"
+#: src/extensions/formats/link/components/edit.js:139
+msgid "Unlink"
 msgstr ""
 
-#: src/extensions/block-panel/list-settings/index.js:57
-msgid "Color Settings"
+#: src/extensions/formats/link/components/edit.js:26
+msgid "Add Link"
 msgstr ""
 
-#: src/extensions/block-panel/list-settings/index.js:63
-msgid "Text Color"
-msgstr ""
-
-#: src/extensions/block-panel/list-settings/index.js:68
-msgid "Bullet/Icon Color"
-msgstr ""
-
-#: src/extensions/formats/charmap/controls.js:110
-msgid "Misc"
-msgstr ""
-
-#: src/extensions/formats/charmap/controls.js:115
-msgid "Math"
-msgstr ""
-
-#: src/extensions/formats/charmap/controls.js:120
-msgid "Latin"
-msgstr ""
-
-#: src/extensions/formats/charmap/controls.js:125
-msgid "Arrows"
-msgstr ""
-
-#: src/extensions/formats/charmap/controls.js:153
-msgid "No characters found."
-msgstr ""
-
-#: src/extensions/formats/charmap/controls.js:166
-msgid "Special Characters"
-msgstr ""
-
-#: src/extensions/formats/charmap/controls.js:91
-msgid "Insert Special Character"
-msgstr ""
-
-#: src/extensions/formats/charmap/controls.js:98
-msgid "Search"
+#: src/extensions/formats/link/components/edit.js:89
+msgid "Link removed."
 msgstr ""
