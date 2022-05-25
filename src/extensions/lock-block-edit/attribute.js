@@ -6,7 +6,11 @@ addFilter(
 	(settings) => {
 		if (settings) {
 			settings.attributes = Object.assign(settings.attributes, {
-				editorskitEditingLock: {
+				editorskitEditingLockSettings: {
+					type: 'boolean',
+					default: false,
+				},
+				editorskitEditingLockToolbar: {
 					type: 'boolean',
 					default: false,
 				},

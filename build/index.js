@@ -30986,7 +30986,11 @@ __webpack_require__.r(__webpack_exports__);
 Object(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_0__["addFilter"])('blocks.registerBlockType', 'editorskit/block-locking-attributes', function (settings) {
   if (settings) {
     settings.attributes = Object.assign(settings.attributes, {
-      editorskitEditingLock: {
+      editorskitEditingLockSettings: {
+        type: 'boolean',
+        default: false
+      },
+      editorskitEditingLockToolbar: {
         type: 'boolean',
         default: false
       }
@@ -31091,6 +31095,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils */ "./src/extensions/lock-block-edit/utils.js");
+
 
 
 
@@ -31102,21 +31108,39 @@ function LockOption() {
   var selectedBlock = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_5__["useSelect"])(function (select) {
     return select('core/block-editor').getSelectedBlock();
   }, []);
+  var canBeLocked = Object(_utils__WEBPACK_IMPORTED_MODULE_6__["isBlockSupportsLocking"])(selectedBlock === null || selectedBlock === void 0 ? void 0 : selectedBlock.name);
+
+  if (!canBeLocked) {
+    return null;
+  }
 
   var _useDispatch = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_5__["useDispatch"])('core/block-editor'),
       updateBlockAttributes = _useDispatch.updateBlockAttributes;
 
-  var currentLockStatus = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["get"])(selectedBlock, 'attributes.editorskitEditingLock', false);
+  var currentSettingsLockStatus = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["get"])(selectedBlock, 'attributes.editorskitEditingLockSettings', false);
+  var currentToolbarLockStatus = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["get"])(selectedBlock, 'attributes.editorskitEditingLockToolbar', false);
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("ul", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("strong", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Editorskit', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("li", {
     className: "block-editor-block-lock-modal__checklist-item"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["CheckboxControl"], {
-    label: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Restrict editing'), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["Icon"], {
-      icon: currentLockStatus ? _wordpress_icons__WEBPACK_IMPORTED_MODULE_3__["lock"] : _wordpress_icons__WEBPACK_IMPORTED_MODULE_3__["unlock"]
+    label: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Restrict Settings', 'block-options'), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["Icon"], {
+      icon: currentSettingsLockStatus ? _wordpress_icons__WEBPACK_IMPORTED_MODULE_3__["lock"] : _wordpress_icons__WEBPACK_IMPORTED_MODULE_3__["unlock"]
     })),
-    checked: currentLockStatus,
+    checked: currentSettingsLockStatus,
     onChange: function onChange() {
       return updateBlockAttributes(selectedBlock.clientId, {
-        editorskitEditingLock: !currentLockStatus
+        editorskitEditingLockSettings: !currentSettingsLockStatus
+      });
+    }
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("li", {
+    className: "block-editor-block-lock-modal__checklist-item"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["CheckboxControl"], {
+    label: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Restrict Toolbar', 'block-options'), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["Icon"], {
+      icon: currentToolbarLockStatus ? _wordpress_icons__WEBPACK_IMPORTED_MODULE_3__["lock"] : _wordpress_icons__WEBPACK_IMPORTED_MODULE_3__["unlock"]
+    })),
+    checked: currentToolbarLockStatus,
+    onChange: function onChange() {
+      return updateBlockAttributes(selectedBlock.clientId, {
+        editorskitEditingLockToolbar: !currentToolbarLockStatus
       });
     }
   })));
@@ -31143,17 +31167,58 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
 /* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils */ "./src/extensions/lock-block-edit/utils.js");
+
 
 
 
 
 var withInspectorControls = Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__["createHigherOrderComponent"])(function (BlockEdit) {
   return function (props) {
-    var isLocked = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["get"])(props, 'attributes.editorskitEditingLock', false);
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, isLocked && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("style", null, ".block-editor-block-inspector { pointer-events:none; opacity: .5; user-select: none; }"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BlockEdit, props));
+    var canBeLocked = Object(_utils__WEBPACK_IMPORTED_MODULE_4__["isBlockSupportsLocking"])(props.name);
+
+    if (!canBeLocked) {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BlockEdit, props);
+    }
+
+    var currentSettingsLockStatus = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["get"])(props, 'attributes.editorskitEditingLockSettings', false);
+    var currentToolbarLockStatus = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["get"])(props, 'attributes.editorskitEditingLockToolbar', false);
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, props.isSelected && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("style", null, currentSettingsLockStatus ? ".block-editor-block-inspector { pointer-events:none; opacity: .5; user-select: none; }" : '', currentToolbarLockStatus ? ".block-editor-block-toolbar > div:not(:first-child) { display: none; width: 0px; border: none !important; }" : ''), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BlockEdit, props));
   };
 }, 'withInspectorControl');
 Object(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_2__["addFilter"])('editor.BlockEdit', 'editorskit/with-restrictive-block-controls', withInspectorControls);
+
+/***/ }),
+
+/***/ "./src/extensions/lock-block-edit/utils.js":
+/*!*************************************************!*\
+  !*** ./src/extensions/lock-block-edit/utils.js ***!
+  \*************************************************/
+/*! exports provided: isBlockSupportsLocking */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isBlockSupportsLocking", function() { return isBlockSupportsLocking; });
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+
+/**
+ * Checks if the given block type supports block locking.
+ * 
+ * @param {string} name - block name to check.
+ * @return {boolean} true if locking is supported, otherwise false.
+ */
+
+function isBlockSupportsLocking(name) {
+  var blockType = wp.blocks.getBlockType(name);
+
+  if (Object(lodash__WEBPACK_IMPORTED_MODULE_0__["isEmpty"])(blockType)) {
+    return false;
+  }
+
+  return !Object(lodash__WEBPACK_IMPORTED_MODULE_0__["isEmpty"])(Object(lodash__WEBPACK_IMPORTED_MODULE_0__["get"])(blockType, 'attributes.lock'));
+}
 
 /***/ }),
 

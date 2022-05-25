@@ -3,14 +3,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/formats/link/components/edit.js:139
-msgid "Unlink"
+#: src/extensions/lock-block-edit/lock-option.js:37
+msgid "Editorskit"
 msgstr ""
 
-#: src/extensions/formats/link/components/edit.js:26
-msgid "Add Link"
+#: src/extensions/lock-block-edit/lock-option.js:42
+msgid "Restrict Settings"
 msgstr ""
 
-#: src/extensions/formats/link/components/edit.js:89
-msgid "Link removed."
+#: src/extensions/lock-block-edit/lock-option.js:59
+msgid "Restrict Toolbar"
 msgstr ""

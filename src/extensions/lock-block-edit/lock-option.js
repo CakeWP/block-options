@@ -4,17 +4,31 @@ import { lock, unlock } from '@wordpress/icons';
 import { CheckboxControl, Icon } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
 
+import { isBlockSupportsLocking } from './utils';
+
 function LockOption() {
 	const selectedBlock = useSelect(
 		(select) => select('core/block-editor').getSelectedBlock(),
 		[]
 	);
 
+	const canBeLocked = isBlockSupportsLocking( selectedBlock?.name );
+
+	if (!canBeLocked) {
+		return null;
+	}
+
 	const { updateBlockAttributes } = useDispatch('core/block-editor');
 
-	const currentLockStatus = get(
+	const currentSettingsLockStatus = get(
 		selectedBlock,
-		'attributes.editorskitEditingLock',
+		'attributes.editorskitEditingLockSettings',
+		false
+	);
+
+	const currentToolbarLockStatus = get(
+		selectedBlock,
+		'attributes.editorskitEditingLockToolbar',
 		false
 	);
 
@@ -25,14 +39,31 @@ function LockOption() {
 				<CheckboxControl
 					label={
 						<>
-							{__('Restrict editing')}
-							<Icon icon={currentLockStatus ? lock : unlock} />
+							{__('Restrict Settings', 'block-options')}
+							<Icon icon={currentSettingsLockStatus ? lock : unlock} />
 						</>
 					}
-					checked={currentLockStatus}
+					checked={currentSettingsLockStatus}
 					onChange={() =>
 						updateBlockAttributes(selectedBlock.clientId, {
-							editorskitEditingLock: !currentLockStatus,
+							editorskitEditingLockSettings: !currentSettingsLockStatus,
+						})
+					}
+				/>
+				
+			</li>
+			<li className="block-editor-block-lock-modal__checklist-item">
+				<CheckboxControl
+					label={
+						<>
+							{__('Restrict Toolbar', 'block-options')}
+							<Icon icon={currentToolbarLockStatus ? lock : unlock} />
+						</>
+					}
+					checked={currentToolbarLockStatus}
+					onChange={() =>
+						updateBlockAttributes(selectedBlock.clientId, {
+							editorskitEditingLockToolbar: !currentToolbarLockStatus,
 						})
 					}
 				/>
