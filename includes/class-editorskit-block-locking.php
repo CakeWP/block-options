@@ -2,8 +2,9 @@
 /**
  * Editorskit Block Locking
  *
- * @since  1.33.7
- * @author zafarKamal
+ * @since   1.33.7
+ * @author  zafarKamal
+ * @package Editorskit
  */
 
 /**

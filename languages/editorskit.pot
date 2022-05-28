@@ -3,14 +3,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/lock-block-edit/lock-option.js:37
-msgid "Editorskit"
-msgstr ""
-
-#: src/extensions/lock-block-edit/lock-option.js:42
-msgid "Restrict Settings"
-msgstr ""
-
-#: src/extensions/lock-block-edit/lock-option.js:59
-msgid "Restrict Toolbar"
+#: src/extensions/lock-block-edit/restriction.js:58
+msgid "Unlock toolbar"
 msgstr ""
