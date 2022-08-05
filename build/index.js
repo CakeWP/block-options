@@ -16611,10 +16611,10 @@ function applyFontStyle(attributes, blockName, wrapperProps) {
 
     if (googleFontData) {
       if (['core/heading'].includes(blockName)) {
-        style['--ek-font-family'] = googleFontData['font-family'];
+        style['--ek-heading-font-family'] = googleFontData['font-family'];
 
         if (typeof editorskit_typography.weight !== 'undefined' && '' !== editorskit_typography.weight) {
-          style['--ek-font-weight'] = editorskit_typography.weight;
+          style['--ek-heading-font-weight'] = editorskit_typography.weight;
         }
       } else if (['core/buttons', 'core/button'].includes(blockName)) {
         style['--ek-button-font-family'] = googleFontData['font-family'];
@@ -16631,7 +16631,7 @@ function applyFontStyle(attributes, blockName, wrapperProps) {
       }
     } else if (editorskit_typography.family !== '') {
       if (['core/heading'].includes(blockName)) {
-        style['--ek-font-family'] = editorskit_typography.family;
+        style['--ek-heading-font-family'] = editorskit_typography.family;
       } else if (['core/buttons'].includes(blockName)) {
         style['--ek-button-font-family'] = editorskit_typography.family;
       } else {
@@ -16785,7 +16785,8 @@ var withTypographySettings = createHigherOrderComponent(function (BlockListBlock
     }
 
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(BlockListBlock, _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_2___default()({}, props, {
-      wrapperProps: wrapperProps
+      wrapperProps: wrapperProps,
+      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()("has-ek-typography")
     }));
   });
 }, 'withTypographySettings');

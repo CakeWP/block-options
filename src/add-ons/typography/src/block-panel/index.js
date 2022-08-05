@@ -26,8 +26,8 @@ const { hasBlockSupport, getBlockType } = wp.blocks;
  *
  * @return {Object} Filtered block settings.
  */
-function addAttributes( settings ) {
-	if ( typeof settings.attributes !== 'undefined' && ! hasBlockSupport( settings, 'disableEditorsKitTypography' ) ) {
+function addAttributes ( settings ) {
+	if ( typeof settings.attributes !== 'undefined' && !hasBlockSupport( settings, 'disableEditorsKitTypography' ) ) {
 		settings.attributes = Object.assign( settings.attributes, {
 			editorskit_typography: {
 				type: 'object',
@@ -76,7 +76,7 @@ const withBlockPanel = createHigherOrderComponent( ( BlockEdit ) => {
 		return (
 			<Fragment>
 				<BlockEdit { ...props } />
-				{ isSelected && ! hasBlockSupport( name, 'disableEditorsKitTypography' ) &&
+				{ isSelected && !hasBlockSupport( name, 'disableEditorsKitTypography' ) &&
 					<TypographySettings { ...props } />
 				}
 			</Fragment>
@@ -97,7 +97,7 @@ const withTypographySettings = createHigherOrderComponent( ( BlockListBlock ) =>
 			};
 		}
 
-		if ( ! hasBlockSupport( props.name, 'disableEditorsKitTypography' ) ) {
+		if ( !hasBlockSupport( props.name, 'disableEditorsKitTypography' ) ) {
 			const { editorskit_typography } = props.attributes;
 
 			if ( typeof editorskit_typography !== 'undefined' && typeof editorskit_typography.family !== 'undefined' && '' !== editorskit_typography.family ) {
@@ -110,15 +110,15 @@ const withTypographySettings = createHigherOrderComponent( ( BlockListBlock ) =>
 			};
 		}
 
-		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
+		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } className={ classnames( "has-ek-typography" ) } />;
 	} );
 }, 'withTypographySettings' );
 
 
-const isDisabled = wp.data.select('core/edit-post').isFeatureActive('disableEditorsKitTypography');
+const isDisabled = wp.data.select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitTypography' );
 
 if ( !isDisabled ) {
-	
+
 	addFilter(
 		'blocks.registerBlockType',
 		'editorskit/typography/attributes',

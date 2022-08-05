@@ -68,7 +68,7 @@ body {
 		&.ek-apply-H1-to-title {
 
 			.entry-title {
-				font-family: var(--ek-font-family, inherit);
+				font-family: var(--ek-heading-font-family, inherit);
 			}
 
 			&.ek-has-H1-font-size {
@@ -119,7 +119,7 @@ body {
 			h4,
 			h5,
 			h6 {
-				font-weight: var(--ek-font-weight, 700);
+				font-weight: var(--ek-heading-font-weight, 700);
 			}
 		}
 
@@ -133,7 +133,7 @@ body {
 				h4,
 				h5,
 				h6 {
-					font-family: var(--ek-font-family, inherit);
+					font-family: var(--ek-heading-font-family, inherit);
 				}
 			}
 		}
@@ -243,8 +243,10 @@ body {
 	h5,
 	h6 {
 		&.has-ek-typography {
-			font-family: var(--ek-font-family, inherit);
-			font-weight: var(--ek-font-weight, inherit);
+			&[data-type="core/heading"]{
+					font-family: var(--ek-heading-font-family, inherit);
+					font-weight: var(--ek-heading-font-weight, inherit);
+			}
 		}
 	}
 
