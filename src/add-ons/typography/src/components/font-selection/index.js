@@ -45,7 +45,7 @@ link.rel = 'stylesheet';
  * Block edit function
  */
 class TypographySelection extends Component {
-	constructor() {
+	constructor () {
 		super( ...arguments );
 
 		this.onToggle = this.onToggle.bind( this );
@@ -102,7 +102,7 @@ class TypographySelection extends Component {
 		} );
 	}
 
-	onToggle( selectedItem ) {
+	onToggle ( selectedItem ) {
 		const { optionsData } = this.state;
 		if ( typeof optionsData[ selectedItem ] !== 'undefined' ) {
 			this.setVariables( selectedItem );
@@ -111,7 +111,7 @@ class TypographySelection extends Component {
 		}
 	}
 
-	setVariables( id ) {
+	setVariables ( id ) {
 		const { settingsPanel } = this.props;
 		const { optionsData, customKey, contentCSS } = this.state;
 		let fontData = {};
@@ -194,12 +194,12 @@ class TypographySelection extends Component {
 			const heading = fontData.heading;
 
 			if ( heading[ 'font-family' ] ) {
-				variables += '--ek-heading-font-family:' + wrapFontFamily( heading[ 'font-family' ] ) + ';';
+				variables += '--ek-font-family:' + wrapFontFamily( heading[ 'font-family' ] ) + ';';
 				document.body.classList.add( 'ek-has-header-font-family' );
 			}
 
 			if ( heading[ 'font-weight' ] ) {
-				variables += '--ek-heading-font-weight:' + heading[ 'font-weight' ] + ';';
+				variables += '--ek-font-weight:' + heading[ 'font-weight' ] + ';';
 			}
 		}
 
@@ -280,7 +280,7 @@ class TypographySelection extends Component {
 		stylesElement.innerHTML = 'body{' + variables + '}';
 	}
 
-	createCSS( savedOption ) {
+	createCSS ( savedOption ) {
 		const { settingsPanel } = this.props;
 		let { contentCSS } = this.state;
 
@@ -308,14 +308,14 @@ class TypographySelection extends Component {
 		document.head.appendChild( link );
 	}
 
-	createMeta( syntax, value, category, level ) {
+	createMeta ( syntax, value, category, level ) {
 		let { contentCSS } = this.state;
 
 		if ( level ) {
 			let headingLevel = Object.assign( {}, contentCSS[ category ][ level ] );
 			headingLevel = Object.assign( headingLevel, { [ syntax ]: value } );
 			contentCSS[ category ][ level ] = headingLevel;
-		} else if ( ! category ) {
+		} else if ( !category ) {
 			contentCSS = Object.assign( contentCSS, { [ syntax ]: value } );
 		} else {
 			let categoryLevel = Object.assign( {}, contentCSS[ category ] );
@@ -334,15 +334,15 @@ class TypographySelection extends Component {
 		this.saveMeta( contentCSS );
 	}
 
-	updateState( key, value ) {
+	updateState ( key, value ) {
 		this.setState( { [ key ]: value } );
 	}
 
-	saveMeta( contentCSS ) {
+	saveMeta ( contentCSS ) {
 		const { onFontSelection } = this.props;
 		let { optionsData, customKey } = this.state;
 
-		if ( ! customKey || customKey === '' ) {
+		if ( !customKey || customKey === '' ) {
 			customKey = new Date().valueOf();
 			this.setState( {
 				customKey,
@@ -372,7 +372,7 @@ class TypographySelection extends Component {
 		} );
 	}
 
-	getValue( category, key, level ) {
+	getValue ( category, key, level ) {
 		const { contentCSS } = this.state;
 		if ( level ) {
 			if ( typeof contentCSS[ category ] !== 'undefined' && typeof contentCSS[ category ][ level ] !== 'undefined' && typeof contentCSS[ category ][ level ][ key ] !== 'undefined' ) {
@@ -385,7 +385,7 @@ class TypographySelection extends Component {
 		return '';
 	}
 
-	onDelete() {
+	onDelete () {
 		const { noticeMessage } = this.props;
 		const { itemSelected, optionsData } = this.state;
 
@@ -406,7 +406,7 @@ class TypographySelection extends Component {
 		noticeMessage( __( 'Item successfully deleted.', 'editorskit-typography-addon' ) );
 	}
 
-	onSetDefault( isRemoving = false ) {
+	onSetDefault ( isRemoving = false ) {
 		const { noticeMessage } = this.props;
 		const { optionsData, itemSelected, applyToAll } = this.state;
 
@@ -440,7 +440,7 @@ class TypographySelection extends Component {
 		noticeMessage( __( 'Default Typography Successfully Set.', 'editorskit-typography-addon' ) );
 	}
 
-	render() {
+	render () {
 		const {
 			onFontSelection,
 			removeFontSelection,
@@ -450,7 +450,7 @@ class TypographySelection extends Component {
 
 		let currentMetaId = '';
 
-		if ( ! this.state.optionsFetched ) {
+		if ( !this.state.optionsFetched ) {
 			return (
 				<Fragment>
 					<p className="ek-fetching-typography">{ __( 'Fetching Typography Data.....', 'editorskit-typography-addon' ) }</p>
@@ -479,7 +479,7 @@ class TypographySelection extends Component {
 			];
 		};
 
-		if ( ! currentMetaId && ! customKey && typeof defaultTypography !== 'undefined' && defaultTypography && typeof defaultTypography.itemSelected !== 'undefined' ) {
+		if ( !currentMetaId && !customKey && typeof defaultTypography !== 'undefined' && defaultTypography && typeof defaultTypography.itemSelected !== 'undefined' ) {
 			currentMetaId = defaultTypography.itemSelected;
 		}
 
@@ -504,7 +504,7 @@ class TypographySelection extends Component {
 
 			if ( typeof googleFontWeights !== 'undefined' && typeof googleFontWeights.weights !== 'undefined' ) {
 				map( googleFontWeights.weights.split( ',' ), ( weight ) => {
-					if ( weight && ! weight.includes( 'i' ) ) {
+					if ( weight && !weight.includes( 'i' ) ) {
 						fontWeights.push( { label: weight, value: parseInt( weight ) } );
 					}
 				} );
@@ -512,10 +512,10 @@ class TypographySelection extends Component {
 			return fontWeights;
 		};
 
-		if ( ! isAddingCustom ) {
+		if ( !isAddingCustom ) {
 			return (
 				<Fragment>
-					{ ! settingsPanel ?
+					{ !settingsPanel ?
 						<Button
 							isPrimary
 							isLarge
@@ -567,10 +567,10 @@ class TypographySelection extends Component {
 										<li className={ classnames(
 											'editorskit-typography--item',
 											'editorskit-typography--item__custom',
-											( parseInt( id ) === parseInt( currentMetaId ) || ( ! currentMetaId && customKey === id ) ) ? 'editorskit-typography--item__current' : null,
+											( parseInt( id ) === parseInt( currentMetaId ) || ( !currentMetaId && customKey === id ) ) ? 'editorskit-typography--item__current' : null,
 										) }>
 											<Button onClick={ () => {
-												if ( id === currentMetaId || ( ! currentMetaId && customKey === id ) ) {
+												if ( id === currentMetaId || ( !currentMetaId && customKey === id ) ) {
 													removeFontSelection();
 													this.updateState( 'customKey', '' );
 												} else {
@@ -598,7 +598,7 @@ class TypographySelection extends Component {
 								} ) :
 								'' }
 							{ map( Fonts, ( font, i ) => {
-								if ( searchKeyword && ! font.name.toLowerCase().includes( searchKeyword ) ) {
+								if ( searchKeyword && !font.name.toLowerCase().includes( searchKeyword ) ) {
 									return false;
 								}
 								return (
@@ -739,7 +739,7 @@ class TypographySelection extends Component {
 					<TextControl
 						className="editorskit-typography-custom--key"
 						type="hidden"
-						// value={typeof contentCSS['key'] !== 'undefined' ? contentCSS['font-selected'] : ''}
+					// value={typeof contentCSS['key'] !== 'undefined' ? contentCSS['font-selected'] : ''}
 					/>
 
 					<PanelBody
@@ -1011,14 +1011,14 @@ export default compose( [
 		const { createNotice } = dispatch( 'core/notices' );
 
 		return {
-			onFontSelection( fontData, key ) {
+			onFontSelection ( fontData, key ) {
 				dispatch( 'core/editor' ).editPost( {
 					meta: {
 						_editorskit_typography_data: key ? { meta: { id: key, data: fontData } } : { meta: fontData },
 					},
 				} );
 			},
-			removeFontSelection() {
+			removeFontSelection () {
 				dispatch( 'core/editor' ).editPost( {
 					meta: {
 						_editorskit_typography_data: { meta: { disabled: true } },
@@ -1027,7 +1027,7 @@ export default compose( [
 
 				document.body.classList.remove( 'ek-has-typography' );
 			},
-			noticeMessage( message ) {
+			noticeMessage ( message ) {
 				createNotice(
 					'info',
 					message,
