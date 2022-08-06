@@ -33,7 +33,6 @@ function applyFontStyle ( attributes, blockName, wrapperProps ) {
                     style[ '--ek-button-font-weight' ] = editorskit_typography.weight;
                 }
             } else {
-
                 style[ '--ek-font-family' ] = googleFontData[ 'font-family' ];
                 if ( typeof editorskit_typography.weight !== 'undefined' && '' !== editorskit_typography.weight ) {
                     style[ '--ek-font-weight' ] = editorskit_typography.weight;

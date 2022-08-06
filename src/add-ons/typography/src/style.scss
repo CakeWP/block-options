@@ -243,10 +243,8 @@ body {
 	h5,
 	h6 {
 		&.has-ek-typography {
-			&[data-type="core/heading"]{
 					font-family: var(--ek-heading-font-family, inherit);
 					font-weight: var(--ek-heading-font-weight, inherit);
-			}
 		}
 	}
 

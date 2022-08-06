@@ -278,7 +278,7 @@ body {
 	}
 
 	// Block Level Typography
-	.block-editor-block-list__block[data-ek-typography="1"] {
+	[data-ek-typography="1"]{ 
 
 		&,
 		p,
@@ -290,17 +290,20 @@ body {
 			font-weight: var(--ek-font-weight, inherit);
 		}
 
-		&[data-type="core/heading"] {
+			&,
 			h1,
 			h2,
 			h3,
 			h4,
 			h5,
 			h6 {
-				font-family: var(--ek-heading-font-family, inherit);
-				font-weight: var(--ek-heading-font-weight, inherit);
+				&.has-ek-typography{
+						&[data-type="core/heading"]{
+							font-family: var(--ek-heading-font-family, inherit);
+							font-weight: var(--ek-heading-font-weight, inherit);
+						}
+				}
 			}
-		}
 
 		&[data-type="core/button"] {
 			font-family: var(--ek-button-font-family, inherit);
