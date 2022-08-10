@@ -17602,12 +17602,12 @@ var TypographySelection = /*#__PURE__*/function (_Component) {
         var heading = fontData.heading;
 
         if (heading['font-family']) {
-          variables += '--ek-font-family:' + wrapFontFamily(heading['font-family']) + ';';
+          variables += '--ek-heading-font-family:' + wrapFontFamily(heading['font-family']) + ';';
           document.body.classList.add('ek-has-header-font-family');
         }
 
         if (heading['font-weight']) {
-          variables += '--ek-font-weight:' + heading['font-weight'] + ';';
+          variables += '--ek-heading-font-weight:' + heading['font-weight'] + ';';
         }
       }
 
