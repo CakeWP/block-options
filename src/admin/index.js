@@ -4,7 +4,6 @@
 import EditorsKitDocs from './docs';
 import FeaturesManager from '../extensions/components/manager/components/manager';
 import BlockManager from './block-manager/';
-import AddonSettings from './addon-settings';
 import Notices from './notices';
 
 /**
@@ -40,12 +39,6 @@ class EditorsKitSettings extends Component {
 				className: 'ek-settings-blocks-manager',
 			},
 		];
-
-		tabs.push( {
-			name: 'ek-addons',
-			title: __( 'Extensions', 'block-options' ),
-			className: 'ek-settings-addons',
-		} );
 
 		const EditorsKitSettingsPanel = () => (
 			<TabPanel className="editorskit-settings-tab-panel"
@@ -102,36 +95,11 @@ class EditorsKitSettings extends Component {
 									</Fragment>
 
 								);
-							case 'ek-addons':
-								if ( ! hasFilter( 'editorskit.addOn.extraPanel' ) ) {
-									return (
-										<Fragment>
-											<div className="ek-addons-list">
-												<div className="ek-extension">
-													<h3 className="edd-extension-title">{ __( 'Typography and Google Fonts', 'block-options' ) }</h3>
-													<p>{ __( 'Easily define typography on your WordPress posts and pages directly on the Gutenberg editor. With sets of predefined Google Fonts combination you can choose from or create your own to best match your website\'s branding.', 'block-options' ) }</p>
-													<Button
-														isDefault
-														isSecondary
-														href="https://editorskit.com/wordpress-gutenberg-editor-typography-and-google-fonts-add-on/"
-														target="_blank"
-													>
-														{ __( 'Get this Extension', 'block-options' ) }
-													</Button>
-												</div>
-											</div>
-										</Fragment>
-									);
-								}
-								return (
-									<AddonSettings />
-								);
-						}
+						
 					}
-				}
+				}}
 			</TabPanel>
 		);
-
 		const MainPanel = () => (
 			<Panel>
 				<PanelBody
@@ -139,7 +107,7 @@ class EditorsKitSettings extends Component {
 				>
 					<div className="components-panel__header">
 						<p className="editorskit-panel__header-hint">{ __( 'Settings → EditorsKit', 'block-options' ) }</p>
-						<h2>{ __( 'Getting Started with', 'block-options' ) } <strong>EditorsKit</strong><code>{ window.editorskitSettings.version }</code></h2>
+						<h2>{ __( 'Getting Started with', 'block-options' ) } <strong>EditorsKit</strong><code>{ window.editorskitSettings?.version }</code></h2>
 						<p>{ __( 'Congratulations! You\'ve just unlocked more Gutenberg block editor tools for easier editing and better workflow. Check more information about the plugin below and please make sure to navigate through "Tutorials and Docs" tab to learn more on how to use each available features.', 'block-options' ) }</p>
 					</div>
 					<PanelRow>

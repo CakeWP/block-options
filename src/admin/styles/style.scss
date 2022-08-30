@@ -313,40 +313,9 @@ $mobile : 736px;
 	}
 }
 
-.components-tab-panel__tab-content {
-
-	> .editorskit-typography-admin-settings {
-
-		> .components-panel__body {
-			padding: 0;
-
-			> .components-panel__body-title {
-
-				.components-button {
-					margin-bottom: 0;
-				}
-			}
-
-			.components-button {
-				color: #191e23 !important;
-
-				&:hover {
-					text-decoration: none !important;
-				}
-			}
-		}
-	}
-}
-
-
 .ek-admin-licenses {
 	display: flex;
 	flex-wrap: wrap;
-
-	> p,
-	.editorskit-typography-admin-settings--items {
-		width: 100%;
-	}
 
 	> div {
 		width: 33%;

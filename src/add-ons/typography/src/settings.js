@@ -1,4 +1,0 @@
-/**
- * Admin Settings
- */
-import './settings/';
