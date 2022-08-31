@@ -143,7 +143,9 @@ if (!class_exists('EditorsKit')) :
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-shortcodes.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'extendify-sdk/loader.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-block-locking.php';
-
+			if (is_admin()) {
+				require_once EDITORSKIT_PLUGIN_DIR . 'includes/notices.php';
+			}
 			if (is_admin() || (defined('WP_CLI') && WP_CLI)) {
 				require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-welcome.php';
 				require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-page-template-support.php';

@@ -112,8 +112,6 @@ class EditorsKit_Post_Meta
 				'default'           => '',
 			)
 		);
-
-		z
 	}
 
 	/**
