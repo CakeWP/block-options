@@ -16,19 +16,19 @@
  * @package EditorsKit
  */
 
-if (!defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if (!class_exists('EditorsKit')) :
+if ( ! class_exists( 'EditorsKit' ) ) :
 
 	/**
 	 * Main EditorsKit Class.
 	 *
 	 * @since  1.0
 	 */
-	final class EditorsKit
-	{
+	final class EditorsKit {
+
 
 		/**
 		 * The plugin's instance
@@ -49,9 +49,8 @@ if (!class_exists('EditorsKit')) :
 		 * @static
 		 * @return object|EditorsKit The one true EditorsKit
 		 */
-		public static function instance()
-		{
-			if (!isset(self::$instance) && !(self::$instance instanceof EditorsKit)) {
+		public static function instance() {
+			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof EditorsKit ) ) {
 				self::$instance = new EditorsKit();
 				self::$instance->init();
 				self::$instance->setup_constants();
@@ -71,10 +70,9 @@ if (!class_exists('EditorsKit')) :
 		 * @access protected
 		 * @return void
 		 */
-		public function __clone()
-		{
-			// Cloning instances of the class is forbidden.
-			_doing_it_wrong(__FUNCTION__, esc_html__('Cheating huh?', 'block-options'), '1.0');
+		public function __clone() {
+			 // Cloning instances of the class is forbidden.
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', 'block-options' ), '1.0' );
 		}
 
 		/**
@@ -84,10 +82,9 @@ if (!class_exists('EditorsKit')) :
 		 * @access protected
 		 * @return void
 		 */
-		public function __wakeup()
-		{
+		public function __wakeup() {
 			// Unserializing instances of the class is forbidden.
-			_doing_it_wrong(__FUNCTION__, esc_html__('Cheating huh?', 'block-options'), '1.0');
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', 'block-options' ), '1.0' );
 		}
 
 		/**
@@ -97,17 +94,16 @@ if (!class_exists('EditorsKit')) :
 		 * @since 1.0.0
 		 * @return void
 		 */
-		private function setup_constants()
-		{
-			$this->define('EDITORSKIT_DEBUG', true);
-			$this->define('EDITORSKIT_VERSION', '1.33.7');
-			$this->define('EDITORSKIT_HAS_PRO', false);
-			$this->define('EDITORSKIT_PLUGIN_DIR', plugin_dir_path(__FILE__));
-			$this->define('EDITORSKIT_PLUGIN_URL', plugin_dir_url(__FILE__));
-			$this->define('EDITORSKIT_PLUGIN_FILE', __FILE__);
-			$this->define('EDITORSKIT_PLUGIN_BASE', plugin_basename(__FILE__));
-			$this->define('EDITORSKIT_SHOP_URL', 'https://editorskit.com/');
-			$this->define('EDITORSKIT_REVIEW_URL', 'https://wordpress.org/support/plugin/block-options/reviews/?filter=5');
+		private function setup_constants() {
+			$this->define( 'EDITORSKIT_DEBUG', true );
+			$this->define( 'EDITORSKIT_VERSION', '1.33.7' );
+			$this->define( 'EDITORSKIT_HAS_PRO', false );
+			$this->define( 'EDITORSKIT_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+			$this->define( 'EDITORSKIT_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+			$this->define( 'EDITORSKIT_PLUGIN_FILE', __FILE__ );
+			$this->define( 'EDITORSKIT_PLUGIN_BASE', plugin_basename( __FILE__ ) );
+			$this->define( 'EDITORSKIT_SHOP_URL', 'https://editorskit.com/' );
+			$this->define( 'EDITORSKIT_REVIEW_URL', 'https://wordpress.org/support/plugin/block-options/reviews/?filter=5' );
 		}
 
 		/**
@@ -116,10 +112,9 @@ if (!class_exists('EditorsKit')) :
 		 * @param  string|string $name Name of the definition.
 		 * @param  string|bool   $value Default value.
 		 */
-		private function define($name, $value)
-		{
-			if (!defined($name)) {
-				define($name, $value);
+		private function define( $name, $value ) {
+			if ( ! defined( $name ) ) {
+				define( $name, $value );
 			}
 		}
 
@@ -130,8 +125,7 @@ if (!class_exists('EditorsKit')) :
 		 * @since 4.1
 		 * @return void
 		 */
-		private function includes()
-		{
+		private function includes() {
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-block-assets.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-render-block.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-acf-support.php';
@@ -143,10 +137,9 @@ if (!class_exists('EditorsKit')) :
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-shortcodes.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'extendify-sdk/loader.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-block-locking.php';
-			if (is_admin()) {
-				require_once EDITORSKIT_PLUGIN_DIR . 'includes/notices.php';
-			}
-			if (is_admin() || (defined('WP_CLI') && WP_CLI)) {
+			require_once EDITORSKIT_PLUGIN_DIR . 'includes/notices/notices.php';
+
+			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 				require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-welcome.php';
 				require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-page-template-support.php';
 				require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-user-feedback.php';
@@ -158,19 +151,17 @@ if (!class_exists('EditorsKit')) :
 		 *
 		 * @return void
 		 */
-		private function init()
-		{
-			add_action('plugins_loaded', array($this, 'load_textdomain'), 99);
-			add_action('enqueue_block_editor_assets', array($this, 'block_localization'));
-			add_action('after_setup_theme', array($this, 'set_eval'));
+		private function init() {
+			add_action( 'plugins_loaded', array( $this, 'load_textdomain' ), 99 );
+			add_action( 'enqueue_block_editor_assets', array( $this, 'block_localization' ) );
+			add_action( 'after_setup_theme', array( $this, 'set_eval' ) );
 		}
 
 		/**
 		 * Set eval feature through filter.
 		 */
-		public function set_eval()
-		{
-			$this->define('EDITORSKIT_ALLOW_EVAL', (bool) apply_filters('editorskit_allow_unsafe_eval', false));
+		public function set_eval() {
+			$this->define( 'EDITORSKIT_ALLOW_EVAL', (bool) apply_filters( 'editorskit_allow_unsafe_eval', false ) );
 		}
 
 		/**
@@ -178,12 +169,11 @@ if (!class_exists('EditorsKit')) :
 		 *
 		 * @since 1.0.0
 		 */
-		public function asset_suffix()
-		{
-			if (true === EDITORSKIT_DEBUG) {
-				define('EDITORSKIT_ASSET_SUFFIX', null);
+		public function asset_suffix() {
+			if ( true === EDITORSKIT_DEBUG ) {
+				define( 'EDITORSKIT_ASSET_SUFFIX', null );
 			} else {
-				define('EDITORSKIT_ASSET_SUFFIX', '.min');
+				define( 'EDITORSKIT_ASSET_SUFFIX', '.min' );
 			}
 		}
 
@@ -194,13 +184,12 @@ if (!class_exists('EditorsKit')) :
 		 * @param string|string $type The type of resource.
 		 * @param string|string $directory Any extra directories needed.
 		 */
-		public function asset_source($type = 'js', $directory = null)
-		{
-			if ('js' !== $type) {
+		public function asset_source( $type = 'js', $directory = null ) {
+			if ( 'js' !== $type ) {
 				return EDITORSKIT_PLUGIN_URL . 'build/css/' . $directory;
 			}
 
-			if (true === EDITORSKIT_DEBUG) {
+			if ( true === EDITORSKIT_DEBUG ) {
 				return EDITORSKIT_PLUGIN_URL . 'src/' . $type . '/' . $directory;
 			}
 
@@ -214,9 +203,8 @@ if (!class_exists('EditorsKit')) :
 		 * @since 1.0.0
 		 * @return void
 		 */
-		public function load_textdomain()
-		{
-			load_plugin_textdomain('block-options', false, dirname(plugin_basename(EDITORSKIT_PLUGIN_DIR)) . '/languages/');
+		public function load_textdomain() {
+			 load_plugin_textdomain( 'block-options', false, dirname( plugin_basename( EDITORSKIT_PLUGIN_DIR ) ) . '/languages/' );
 		}
 
 		/**
@@ -224,10 +212,9 @@ if (!class_exists('EditorsKit')) :
 		 *
 		 * @access public
 		 */
-		public function block_localization()
-		{
-			if (function_exists('wp_set_script_translations')) {
-				wp_set_script_translations('editorskit-editor', 'editorskit');
+		public function block_localization() {
+			if ( function_exists( 'wp_set_script_translations' ) ) {
+				wp_set_script_translations( 'editorskit-editor', 'editorskit' );
 			}
 		}
 	}
@@ -249,21 +236,20 @@ endif; // End if class_exists check.
  * @since 1.0
  * @return object|EditorsKit The one true EditorsKit Instance.
  */
-function editorskit()
-{
-	return EditorsKit::instance();
+function editorskit() {
+	 return EditorsKit::instance();
 }
 
 // Add Extendify global.
-if (!isset($GLOBALS['extendify_sdk_partner'])) {
+if ( ! isset( $GLOBALS['extendify_sdk_partner'] ) ) {
 	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 	$GLOBALS['extendify_sdk_partner'] = 'EditorsKit';
 }
 
 // Get Plugin Running.
-if (function_exists('is_multisite') && is_multisite()) {
+if ( function_exists( 'is_multisite' ) && is_multisite() ) {
 	// Get Plugin Running. Load on plugins_loaded action to avoid issue on multisite.
-	add_action('plugins_loaded', 'editorskit');
+	add_action( 'plugins_loaded', 'editorskit' );
 } else {
 	editorskit();
 }
