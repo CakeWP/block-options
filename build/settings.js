@@ -6806,8 +6806,9 @@ function BlockManagerCategory(_ref) {
   var _select = select('core/edit-post'),
       getPreference = _select.getPreference;
 
+  var hiddenBlockTypes = getPreference('hiddenBlockTypes');
   return {
-    hiddenBlockTypes: getPreference('hiddenBlockTypes')
+    hiddenBlockTypes: !Array.isArray(hiddenBlockTypes) ? [] : hiddenBlockTypes
   };
 }), withDispatch(function (dispatch, ownProps) {
   var _dispatch = dispatch('core/edit-post'),
@@ -6900,7 +6901,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "lodash");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _category__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./category */ "./src/admin/block-manager/category.js");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _category__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./category */ "./src/admin/block-manager/category.js");
 
 
 /**
@@ -6911,16 +6922,11 @@ __webpack_require__.r(__webpack_exports__);
  * WordPress dependencies
  */
 
-var _wp$i18n = wp.i18n,
-    __ = _wp$i18n.__,
-    _n = _wp$i18n._n,
-    sprintf = _wp$i18n.sprintf;
-var withSelect = wp.data.withSelect;
-var _wp$compose = wp.compose,
-    compose = _wp$compose.compose,
-    withState = _wp$compose.withState;
-var TextControl = wp.components.TextControl;
-var getBlockTypes = wp.blocks.getBlockTypes;
+
+
+
+
+
 /**
  * Internal dependencies
  */
@@ -6935,17 +6941,14 @@ function BlockManager(_ref) {
       hasBlockSupport = _ref.hasBlockSupport,
       isMatchingSearchTerm = _ref.isMatchingSearchTerm,
       numberOfHiddenBlocks = _ref.numberOfHiddenBlocks;
-  // Filtering occurs here (as opposed to `withSelect`) to avoid wasted
-  // wasted renders by consequence of `Array#filter` producing a new
-  // value reference on each call.
-  blockTypes = blockTypes.filter(function (blockType) {
+  var filteredBlockTypes = blockTypes.filter(function (blockType) {
     return hasBlockSupport(blockType, 'inserter', true) && (!search || isMatchingSearchTerm(blockType, search)) && !blockType.parent;
   });
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: "edit-post-manage-blocks-modal__content"
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["TextControl"], {
     type: "search",
-    label: __('Search for a block', 'block-options'),
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Search for a block', 'block-options'),
     value: search,
     onChange: function onChange(nextSearch) {
       return setState({
@@ -6955,27 +6958,27 @@ function BlockManager(_ref) {
     className: "edit-post-manage-blocks-modal__search"
   }), !!numberOfHiddenBlocks && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: "edit-post-manage-blocks-modal__disabled-blocks-count"
-  }, sprintf(_n('%1$d block is disabled.', '%1$d blocks are disabled.', numberOfHiddenBlocks), numberOfHiddenBlocks)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["sprintf"])(Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["_n"])('%1$d block is disabled.', '%1$d blocks are disabled.', numberOfHiddenBlocks), numberOfHiddenBlocks)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     tabIndex: "0",
     role: "region",
-    "aria-label": __('Available block types', 'block-options'),
+    "aria-label": Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Available block types', 'block-options'),
     className: "edit-post-manage-blocks-modal__results"
-  }, blockTypes.length === 0 && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+  }, filteredBlockTypes.length === 0 && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
     className: "edit-post-manage-blocks-modal__no-results"
-  }, __('No blocks found.', 'block-options')), categories.map(function (category) {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_category__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('No blocks found.', 'block-options')), categories.map(function (category) {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_category__WEBPACK_IMPORTED_MODULE_7__["default"], {
       key: category.slug,
       category: category,
-      blockTypes: Object(lodash__WEBPACK_IMPORTED_MODULE_1__["filter"])(blockTypes, {
+      blockTypes: Object(lodash__WEBPACK_IMPORTED_MODULE_1__["filter"])(filteredBlockTypes, {
         category: category.slug
       })
     });
   })));
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (compose([withState({
+/* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__["compose"])([Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__["withState"])({
   search: ''
-}), withSelect(function (select) {
+}), Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withSelect"])(function (select) {
   var _select = select('core/blocks'),
       getCategories = _select.getCategories,
       hasBlockSupport = _select.hasBlockSupport,
@@ -6987,7 +6990,7 @@ function BlockManager(_ref) {
   var hiddenBlockTypes = getPreference('hiddenBlockTypes');
   var numberOfHiddenBlocks = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["isArray"])(hiddenBlockTypes) && hiddenBlockTypes.length;
   return {
-    blockTypes: getBlockTypes(),
+    blockTypes: Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_6__["getBlockTypes"])(),
     categories: getCategories(),
     hasBlockSupport: hasBlockSupport,
     isMatchingSearchTerm: isMatchingSearchTerm,
@@ -7387,7 +7390,6 @@ var _wp$i18n = wp.i18n,
     __ = _wp$i18n.__,
     sprintf = _wp$i18n.sprintf;
 var registerCoreBlocks = wp.blockLibrary.registerCoreBlocks;
-var hasFilter = wp.hooks.hasFilter;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component,
@@ -7397,8 +7399,7 @@ var _wp$components = wp.components,
     TabPanel = _wp$components.TabPanel,
     Panel = _wp$components.Panel,
     PanelBody = _wp$components.PanelBody,
-    PanelRow = _wp$components.PanelRow,
-    Button = _wp$components.Button;
+    PanelRow = _wp$components.PanelRow;
 
 var EditorsKitSettings = /*#__PURE__*/function (_Component) {
   _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_2___default()(EditorsKitSettings, _Component);
@@ -7677,6 +7678,50 @@ var FeaturesManager = /*#__PURE__*/function (_Component) {
 
 /***/ }),
 
+/***/ "@wordpress/blocks":
+/*!********************************!*\
+  !*** external ["wp","blocks"] ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["blocks"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["components"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/compose":
+/*!*********************************!*\
+  !*** external ["wp","compose"] ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["compose"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/data":
+/*!******************************!*\
+  !*** external ["wp","data"] ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["data"]; }());
+
+/***/ }),
+
 /***/ "@wordpress/element":
 /*!*********************************!*\
   !*** external ["wp","element"] ***!
@@ -7685,6 +7730,17 @@ var FeaturesManager = /*#__PURE__*/function (_Component) {
 /***/ (function(module, exports) {
 
 (function() { module.exports = window["wp"]["element"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/i18n":
+/*!******************************!*\
+  !*** external ["wp","i18n"] ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["i18n"]; }());
 
 /***/ }),
 

@@ -15,20 +15,20 @@ const { CheckboxControl } = wp.components;
  */
 import BlockTypesChecklist from './checklist';
 
-function BlockManagerCategory( {
+function BlockManagerCategory({
 	instanceId,
 	category,
 	blockTypes,
 	hiddenBlockTypes,
 	toggleVisible,
 	toggleAllVisible,
-} ) {
-	if ( ! blockTypes.length ) {
+}) {
+	if (!blockTypes.length) {
 		return null;
 	}
 
 	const checkedBlockNames = without(
-		map( blockTypes, 'name' ),
+		map(blockTypes, 'name'),
 		...hiddenBlockTypes
 	);
 
@@ -37,9 +37,9 @@ function BlockManagerCategory( {
 	const isAllChecked = checkedBlockNames.length === blockTypes.length;
 
 	let ariaChecked;
-	if ( isAllChecked ) {
+	if (isAllChecked) {
 		ariaChecked = 'true';
-	} else if ( checkedBlockNames.length > 0 ) {
+	} else if (checkedBlockNames.length > 0) {
 		ariaChecked = 'mixed';
 	} else {
 		ariaChecked = 'false';
@@ -48,56 +48,57 @@ function BlockManagerCategory( {
 	return (
 		<div
 			role="group"
-			aria-labelledby={ titleId }
+			aria-labelledby={titleId}
 			className="edit-post-manage-blocks-modal__category"
 		>
 			<CheckboxControl
-				checked={ isAllChecked }
-				onChange={ toggleAllVisible }
+				checked={isAllChecked}
+				onChange={toggleAllVisible}
 				className="edit-post-manage-blocks-modal__category-title"
-				aria-checked={ ariaChecked }
-				label={ <span id={ titleId }>{ category.title }</span> }
+				aria-checked={ariaChecked}
+				label={<span id={titleId}>{category.title}</span>}
 			/>
 			<BlockTypesChecklist
-				blockTypes={ blockTypes }
-				value={ checkedBlockNames }
-				onItemChange={ toggleVisible }
+				blockTypes={blockTypes}
+				value={checkedBlockNames}
+				onItemChange={toggleVisible}
 			/>
 		</div>
 	);
 }
 
-export default compose( [
+export default compose([
 	withInstanceId,
-	withSelect( ( select ) => {
-		const { getPreference } = select( 'core/edit-post' );
+	withSelect((select) => {
+		const { getPreference } = select('core/edit-post');
+		const hiddenBlockTypes = getPreference('hiddenBlockTypes');
 
 		return {
-			hiddenBlockTypes: getPreference( 'hiddenBlockTypes' ),
+			hiddenBlockTypes: !Array.isArray(hiddenBlockTypes) ? [] : hiddenBlockTypes,
 		};
-	} ),
-	withDispatch( ( dispatch, ownProps ) => {
+	}),
+	withDispatch((dispatch, ownProps) => {
 		const {
 			showBlockTypes,
 			hideBlockTypes,
-		} = dispatch( 'core/edit-post' );
+		} = dispatch('core/edit-post');
 
 		return {
-			toggleVisible( blockName, nextIsChecked ) {
-				if ( nextIsChecked ) {
-					showBlockTypes( blockName );
+			toggleVisible(blockName, nextIsChecked) {
+				if (nextIsChecked) {
+					showBlockTypes(blockName);
 				} else {
-					hideBlockTypes( blockName );
+					hideBlockTypes(blockName);
 				}
 			},
-			toggleAllVisible( nextIsChecked ) {
-				const blockNames = map( ownProps.blockTypes, 'name' );
-				if ( nextIsChecked ) {
-					showBlockTypes( blockNames );
+			toggleAllVisible(nextIsChecked) {
+				const blockNames = map(ownProps.blockTypes, 'name');
+				if (nextIsChecked) {
+					showBlockTypes(blockNames);
 				} else {
-					hideBlockTypes( blockNames );
+					hideBlockTypes(blockNames);
 				}
 			},
 		};
-	} ),
-] )( BlockManagerCategory );
+	}),
+])(BlockManagerCategory);
