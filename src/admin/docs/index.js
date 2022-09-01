@@ -182,9 +182,9 @@ class EditorsKitDocs extends Component {
 					<div className="editorskit-docs-items-formatting">
 						<h3 className="editorskit-docs-items-title">{ __( 'Rich Text Formatting', 'block-options' ) }</h3>
 						<ul className="editorskit-docs-items-list">
-							{ map( formatDocs, ( formats ) => {
+							{ map( formatDocs, ( formats,index ) => {
 								return (
-									<li>
+									<li key={index}>
 										<Button
 											onClick={ () => {
 												this.openModal( formats.name );
@@ -199,9 +199,9 @@ class EditorsKitDocs extends Component {
 					<div className="editorskit-docs-items-writing">
 						<h3 className="editorskit-docs-items-title">{ __( 'Writing', 'block-options' ) }</h3>
 						<ul className="editorskit-docs-items-list">
-							{ map( writingDocs, ( formats ) => {
+							{ map( writingDocs, ( formats,index ) => {
 								return (
-									<li>
+									<li key={index}>
 										<Button
 											onClick={ () => {
 												this.openModal( formats.name );
@@ -216,9 +216,9 @@ class EditorsKitDocs extends Component {
 					<div className="editorskit-docs-items-blockoptions">
 						<h3 className="editorskit-docs-items-title">{ __( 'Block Options', 'block-options' ) }</h3>
 						<ul className="editorskit-docs-items-list">
-							{ map( optionsDocs, ( formats ) => {
+							{ map( optionsDocs, ( formats,index ) => {
 								return (
-									<li>
+									<li key={index}>
 										<Button
 											onClick={ () => {
 												this.openModal( formats.name );
@@ -233,9 +233,9 @@ class EditorsKitDocs extends Component {
 					<div className="editorskit-docs-items-tools">
 						<h3 className="editorskit-docs-items-title">{ __( 'Tools', 'block-options' ) }</h3>
 						<ul className="editorskit-docs-items-list">
-							{ map( toolsDocs, ( formats ) => {
+							{ map( toolsDocs, ( formats,index ) => {
 								return (
-									<li>
+									<li key={index}>
 										<Button
 											onClick={ () => {
 												this.openModal( formats.name );
@@ -250,9 +250,9 @@ class EditorsKitDocs extends Component {
 					<div className="editorskit-docs-items-visibility">
 						<h3 className="editorskit-docs-items-title">{ __( 'Block Visibility', 'block-options' ) }</h3>
 						<ul className="editorskit-docs-items-list">
-							{ map( visibilityDocs, ( formats ) => {
+							{ map( visibilityDocs, ( formats,index ) => {
 								return (
-									<li>
+									<li key={index}>
 										<Button
 											onClick={ () => {
 												this.openModal( formats.name );
@@ -267,9 +267,9 @@ class EditorsKitDocs extends Component {
 					<div className="editorskit-docs-items-styling">
 						<h3 className="editorskit-docs-items-title">{ __( 'Block Styling', 'block-options' ) }</h3>
 						<ul className="editorskit-docs-items-list">
-							{ map( stylingDocs, ( formats ) => {
+							{ map( stylingDocs, ( formats,index ) => {
 								return (
-									<li>
+									<li key={index}>
 										<Button
 											onClick={ () => {
 												this.openModal( formats.name );

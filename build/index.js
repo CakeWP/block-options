@@ -23379,16 +23379,18 @@ var FeaturesManager = /*#__PURE__*/function (_Component) {
         getSettings = window.editorskitSettings.editor_settings.editorskit;
       }
 
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, lodash_map__WEBPACK_IMPORTED_MODULE_6___default()(getSettings, function (category) {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, lodash_map__WEBPACK_IMPORTED_MODULE_6___default()(getSettings, function (category, index) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("section", {
+          key: index,
           className: "edit-post-options-modal__section"
         }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h2", {
           className: "edit-post-options-modal__section-title"
         }, category.label), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("ul", {
           className: "edit-post-editorskit-manager-modal__checklist"
-        }, lodash_map__WEBPACK_IMPORTED_MODULE_6___default()(category.items, function (item) {
+        }, lodash_map__WEBPACK_IMPORTED_MODULE_6___default()(category.items, function (item, itemIndex) {
           var featureName = 'disableEditorsKit' + capitalize(item.name) + capitalize(category.name);
           return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("li", {
+            key: itemIndex,
             className: "edit-post-editorskit-manager-modal__checklist-item"
           }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(CheckboxControl, {
             className: "edit-post-options-modal__option",
