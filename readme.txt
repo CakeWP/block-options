@@ -6,7 +6,7 @@ Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenberg editor
 Requires at least: 5.0
 Tested up to: 6.0
 Requires PHP: 5.6
-Stable tag: 1.33.7
+Stable tag: 1.33.8
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -74,6 +74,10 @@ Powered by shortcode you can display the Estimated Reading Time on your content 
 ## Copy and Paste Selected Blocks
 
 **Note:** This feature is no longer available in the latest versions of EditorsKit because this has been added to Gutenberg.
+
+## Editorskit Typography
+
+**Note:** This feature is deprecated and no longer available in the latest version. If you want to continue using Editorskit typography, You can download and install the [editorskit deprecated typography addon](https://github.com/CakeWP/deprecated-editorskit-typography-addon/releases) manually from github.
 
 ## Image and Cover Block Styles
 Comes with selection of styles on Cover and Image Block for custom shapes and layouts such as diagonal, circular and rounder corners; and even add drop shadows.
@@ -207,6 +211,9 @@ e.g.
 10. Link rel attributes nofollow and sponsored option
 
 == Changelog ==
+
+= 1.33.8 =
+* Deprecate: Editorskit Typography Addon.
 
 = 1.33.7 =
 * Fix: Dynamic blocks breaking in gutenberg editor.

@@ -3,24 +3,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-<<<<<<< HEAD
-#: src/admin/block-manager/index.js:40
-msgid "Search for a block"
-msgstr ""
-
-#: src/admin/block-manager/index.js:51
-msgid "%1$d block is disabled."
-msgid_plural "%1$d blocks are disabled."
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/admin/block-manager/index.js:64
-msgid "Available block types"
-msgstr ""
-
-#: src/admin/block-manager/index.js:69
-msgid "No blocks found."
-=======
 #: src/admin/docs/index.js:100
 msgid "Media & Text Block Card Layout"
 msgstr ""
@@ -174,5 +156,4 @@ msgstr ""
 
 #: src/admin/docs/index.js:96
 msgid "Copy Selected Block(s)"
->>>>>>> c6ad543a3b8b18f076409aa656ae8b233bee1666
 msgstr ""
