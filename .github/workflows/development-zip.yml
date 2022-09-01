@@ -42,7 +42,7 @@ jobs:
 
             - name: bootstrap, npm install, build, and test
               run: |
-                  npm ci
+                  npm install
                   npm run build-assets
                   touch .devbuild
               env:
