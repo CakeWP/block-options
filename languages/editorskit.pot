@@ -3,68 +3,157 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/admin/index.js:109
-msgid "Settings → EditorsKit"
+#: src/admin/docs/index.js:100
+msgid "Media & Text Block Card Layout"
 msgstr ""
 
-#: src/admin/index.js:110
-msgid "Getting Started with"
+#: src/admin/docs/index.js:104
+msgid "Media & Text Block Links"
 msgstr ""
 
-#: src/admin/index.js:111
+#: src/admin/docs/index.js:108
+msgid "Changing List Block Font Size & Text Color"
+msgstr ""
+
+#: src/admin/docs/index.js:115
+msgid "Easily Hide Title"
+msgstr ""
+
+#: src/admin/docs/index.js:119
+msgid "Drag and Drop Featured Image"
+msgstr ""
+
+#: src/admin/docs/index.js:123
+msgid "Code Editor Syntax Highlighter"
+msgstr ""
+
+#: src/admin/docs/index.js:127
+msgid "Enable Block Guide Lines"
+msgstr ""
+
+#: src/admin/docs/index.js:131
+msgid "Additional CSS Class(es) Auto Suggestions"
+msgstr ""
+
+#: src/admin/docs/index.js:135
+msgid "Accessible Help, Tips & Tricks"
+msgstr ""
+
+#: src/admin/docs/index.js:139
+msgid "Enable Developer Tools"
+msgstr ""
+
+#: src/admin/docs/index.js:146
+msgid "Block Visibility on Desktop, Mobile or Tablet"
+msgstr ""
+
+#: src/admin/docs/index.js:150
+msgid "Hide Block on Logged-in/out Users"
+msgstr ""
+
+#: src/admin/docs/index.js:154
+msgid "Using Custom Display Logic"
+msgstr ""
+
+#: src/admin/docs/index.js:161
+msgid "Display Cover and Image Blocks in Fullscreen"
+msgstr ""
+
+#: src/admin/docs/index.js:165
+msgid "More Image & Cover Block Styles"
+msgstr ""
+
+#: src/admin/docs/index.js:169
+msgid "Additional List Block Styles"
+msgstr ""
+
+#: src/admin/docs/index.js:180
 msgid ""
-"Congratulations! You've just unlocked more Gutenberg block editor tools for "
-"easier editing and better workflow. Check more information about the plugin "
-"below and please make sure to navigate through \"Tutorials and Docs\" tab "
-"to learn more on how to use each available features."
+"Learn more about each EditorsKit features with the tutorials below. Click "
+"on the link to open a modal pop-up with detailed explanation and animated "
+"GIF previewing how the features work."
 msgstr ""
 
-#: src/admin/index.js:23
-msgid "Getting Started"
+#: src/admin/docs/index.js:183
+msgid "Rich Text Formatting"
 msgstr ""
 
-#: src/admin/index.js:28
-msgid "Tutorial and Docs"
+#: src/admin/docs/index.js:200
+msgid "Writing"
 msgstr ""
 
-#: src/admin/index.js:33
-msgid "Features Manager"
+#: src/admin/docs/index.js:217
+msgid "Block Options"
 msgstr ""
 
-#: src/admin/index.js:38
-msgid "Blocks Manager"
+#: src/admin/docs/index.js:234
+msgid "Tools"
 msgstr ""
 
-#: src/admin/index.js:55
-msgid ""
-"EditorsKit provides set of tools to extend the way you are building content "
-"on WordPress Gutenberg block editor. Designed and integrated to help users "
-"easily navigate; and control each block the way it should be."
+#: src/admin/docs/index.js:251
+msgid "Block Visibility"
 msgstr ""
 
-#: src/admin/index.js:58
-msgid "EditorsKit video preview"
+#: src/admin/docs/index.js:268
+msgid "Block Styling"
 msgstr ""
 
-#: src/admin/index.js:63
-msgid ""
-"If you have any questions or suggestion, let us know through "
-"%1$sTwitter%4$s or our %2$sFacebook community %4$s. Also, %3$ssubscribe to "
-"our newsletter%4$s if you want to stay up to date with what's new and "
-"upcoming at EditorsKit."
+#: src/admin/docs/index.js:287
+msgid "Documentation"
 msgstr ""
 
-#: src/admin/index.js:83
-msgid ""
-"All features are active by default but you have complete control over each "
-"one of them. Disable any features do not want to use and re-enable them "
-"anytime on this page or under the \"EditorsKit Settings\" on Gutenberg "
-"editor. Just uncheck the box and it will automatically be saved."
+#: src/admin/docs/index.js:38
+msgid "Adding Selected Text Color"
 msgstr ""
 
-#: src/admin/index.js:93
-msgid ""
-"Manage each individual blocks! You can enable or disable any blocks you "
-"want and it will be reflected on Gutenberg block manager settings. Just "
-"uncheck the box and it will automatically be saved."
+#: src/admin/docs/index.js:42
+msgid "Adding Highlighted Text Background Color"
+msgstr ""
+
+#: src/admin/docs/index.js:46
+msgid "Adding Link \"rel\" NoFollow or Sponsored Attributes"
+msgstr ""
+
+#: src/admin/docs/index.js:50
+msgid "Subscript and Superscript Text Formatting"
+msgstr ""
+
+#: src/admin/docs/index.js:54
+msgid "Justified Paragraph Alignment"
+msgstr ""
+
+#: src/admin/docs/index.js:58
+msgid "Transform Text to Uppercase"
+msgstr ""
+
+#: src/admin/docs/index.js:62
+msgid "Add Nonbreaking Space"
+msgstr ""
+
+#: src/admin/docs/index.js:66
+msgid "Clear Formatting"
+msgstr ""
+
+#: src/admin/docs/index.js:73
+msgid "Markdown Writing Shortcuts"
+msgstr ""
+
+#: src/admin/docs/index.js:77
+msgid "View or Add Estimated Reading Time"
+msgstr ""
+
+#: src/admin/docs/index.js:81
+msgid "Transform 3 Empty Paragraphs to Spacer Block"
+msgstr ""
+
+#: src/admin/docs/index.js:88
+msgid "Set Image Block as Featured Image"
+msgstr ""
+
+#: src/admin/docs/index.js:92
+msgid "Export and Import Blocks"
+msgstr ""
+
+#: src/admin/docs/index.js:96
+msgid "Copy Selected Block(s)"
 msgstr ""

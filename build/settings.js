@@ -7247,8 +7247,10 @@ var EditorsKitDocs = /*#__PURE__*/function (_Component) {
         className: "editorskit-docs-items-title"
       }, __('Rich Text Formatting', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("ul", {
         className: "editorskit-docs-items-list"
-      }, Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(formatDocs, function (formats) {
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("li", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
+      }, Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(formatDocs, function (formats, index) {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("li", {
+          key: index
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
           onClick: function onClick() {
             _this3.openModal(formats.name);
           }
@@ -7259,8 +7261,10 @@ var EditorsKitDocs = /*#__PURE__*/function (_Component) {
         className: "editorskit-docs-items-title"
       }, __('Writing', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("ul", {
         className: "editorskit-docs-items-list"
-      }, Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(writingDocs, function (formats) {
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("li", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
+      }, Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(writingDocs, function (formats, index) {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("li", {
+          key: index
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
           onClick: function onClick() {
             _this3.openModal(formats.name);
           }
@@ -7271,8 +7275,10 @@ var EditorsKitDocs = /*#__PURE__*/function (_Component) {
         className: "editorskit-docs-items-title"
       }, __('Block Options', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("ul", {
         className: "editorskit-docs-items-list"
-      }, Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(optionsDocs, function (formats) {
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("li", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
+      }, Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(optionsDocs, function (formats, index) {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("li", {
+          key: index
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
           onClick: function onClick() {
             _this3.openModal(formats.name);
           }
@@ -7283,8 +7289,10 @@ var EditorsKitDocs = /*#__PURE__*/function (_Component) {
         className: "editorskit-docs-items-title"
       }, __('Tools', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("ul", {
         className: "editorskit-docs-items-list"
-      }, Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(toolsDocs, function (formats) {
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("li", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
+      }, Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(toolsDocs, function (formats, index) {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("li", {
+          key: index
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
           onClick: function onClick() {
             _this3.openModal(formats.name);
           }
@@ -7295,8 +7303,10 @@ var EditorsKitDocs = /*#__PURE__*/function (_Component) {
         className: "editorskit-docs-items-title"
       }, __('Block Visibility', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("ul", {
         className: "editorskit-docs-items-list"
-      }, Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(visibilityDocs, function (formats) {
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("li", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
+      }, Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(visibilityDocs, function (formats, index) {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("li", {
+          key: index
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
           onClick: function onClick() {
             _this3.openModal(formats.name);
           }
@@ -7307,8 +7317,10 @@ var EditorsKitDocs = /*#__PURE__*/function (_Component) {
         className: "editorskit-docs-items-title"
       }, __('Block Styling', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("ul", {
         className: "editorskit-docs-items-list"
-      }, Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(stylingDocs, function (formats) {
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("li", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
+      }, Object(lodash__WEBPACK_IMPORTED_MODULE_8__["map"])(stylingDocs, function (formats, index) {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("li", {
+          key: index
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
           onClick: function onClick() {
             _this3.openModal(formats.name);
           }
@@ -7631,16 +7643,18 @@ var FeaturesManager = /*#__PURE__*/function (_Component) {
         getSettings = window.editorskitSettings.editor_settings.editorskit;
       }
 
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, lodash_map__WEBPACK_IMPORTED_MODULE_6___default()(getSettings, function (category) {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, lodash_map__WEBPACK_IMPORTED_MODULE_6___default()(getSettings, function (category, index) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("section", {
+          key: index,
           className: "edit-post-options-modal__section"
         }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("h2", {
           className: "edit-post-options-modal__section-title"
         }, category.label), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("ul", {
           className: "edit-post-editorskit-manager-modal__checklist"
-        }, lodash_map__WEBPACK_IMPORTED_MODULE_6___default()(category.items, function (item) {
+        }, lodash_map__WEBPACK_IMPORTED_MODULE_6___default()(category.items, function (item, itemIndex) {
           var featureName = 'disableEditorsKit' + capitalize(item.name) + capitalize(category.name);
           return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("li", {
+            key: itemIndex,
             className: "edit-post-editorskit-manager-modal__checklist-item"
           }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(CheckboxControl, {
             className: "edit-post-options-modal__option",

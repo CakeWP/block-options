@@ -42,15 +42,16 @@ class FeaturesManager extends Component {
 
 		return (
 			<Fragment>
-				{ map( getSettings, ( category ) => {
+				{ map( getSettings, ( category,index ) => {
 					return (
-						<section className="edit-post-options-modal__section">
+						<section key={index} className="edit-post-options-modal__section">
 							<h2 className="edit-post-options-modal__section-title">{ category.label }</h2>
 							<ul className="edit-post-editorskit-manager-modal__checklist">
-								{ map( category.items, ( item ) => {
+								{ map( category.items, ( item,itemIndex ) => {
 									const featureName = 'disableEditorsKit' + capitalize( item.name ) + capitalize( category.name );
 									return (
 										<li
+											key={itemIndex}
 											className="edit-post-editorskit-manager-modal__checklist-item"
 										>
 											<CheckboxControl
