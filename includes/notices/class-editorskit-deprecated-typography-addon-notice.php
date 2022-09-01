@@ -46,7 +46,7 @@ class Editorskit_Deprecated_Typography_Addon_Notice
 				'sanitize_callback' => 'sanitize_text_field',
 				'show_in_rest'      => true,
 				'default'           => 'initial', // Can either be 'hidden', or 'initial'.
-			),
+			)
 		);
 	}
 
