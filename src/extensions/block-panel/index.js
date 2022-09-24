@@ -12,14 +12,14 @@ import classnames from 'classnames';
 /**
  * WordPress Dependencies
  */
-const { addFilter } = wp.hooks;
-const { Fragment } = wp.element;
-const { withSelect } = wp.data;
-const { compose, createHigherOrderComponent } = wp.compose;
+import { addFilter } from "@wordpress/hooks";
+import { Fragment } from "@wordpress/element";
+import { withSelect } from "@wordpress/data";
+import { compose, createHigherOrderComponent } from "@wordpress/compose";
 
 const blocksWithFontSize = [ 'core/list' ];
 const blocksWithBackgroundColor = [ 'core/columns', 'core/column' ];
-
+import { isEmpty } from 'lodash';
 /**
  * Override the default block element to add	wrapper props.
  *
@@ -53,10 +53,12 @@ const withTextSettings = createHigherOrderComponent( ( BlockListBlock ) => {
 	return enhance( ( { select, ...props } ) => {
 		let wrapperProps = props.wrapperProps;
 		let customData = {};
-		const attributes = select( 'core/block-editor' ).getBlock( props.clientId ).attributes;
+
+		const attributes = !isEmpty( select( 'core/block-editor' ).getBlock( props.clientId ) ) && select( 'core/block-editor' ).getBlock( props.clientId )?.attributes;
+
 		const blockName = select( 'core/block-editor' ).getBlockName( props.clientId );
 
-		if ( blocksWithFontSize.includes( blockName ) || blocksWithBackgroundColor.includes( blockName ) || ( typeof attributes.editorskit !== 'undefined' && typeof attributes.editorskit.indent !== 'undefined' && attributes.editorskit.indent ) ) {
+		if ( blocksWithFontSize.includes( blockName ) || blocksWithBackgroundColor.includes( blockName ) || ( typeof attributes.editorskit !== 'undefined' && typeof attributes?.editorskit?.indent !== 'undefined' && attributes?.editorskit?.indent ) ) {
 			const { customFontSize, fontSize, bulletColor, editorskit } = attributes;
 
 			if ( customFontSize || fontSize ) {
@@ -103,7 +105,7 @@ const withBlockPanel = createHigherOrderComponent( ( BlockEdit ) => {
 		return (
 			<Fragment>
 				<BlockEdit { ...props } />
-				{ isSelected && ! isDisabledListTextSettings && blocksWithFontSize.includes( name ) &&
+				{ isSelected && !isDisabledListTextSettings && blocksWithFontSize.includes( name ) &&
 					<ListTextSettings { ...props } />
 				}
 			</Fragment>
@@ -120,7 +122,7 @@ const withBlockPanel = createHigherOrderComponent( ( BlockEdit ) => {
  *
  * @return {Object} Filtered props applied to save element.
  */
-function applyTextSettings( extraProps, blockType, attributes ) {
+function applyTextSettings ( extraProps, blockType, attributes ) {
 	if ( blocksWithFontSize.includes( blockType.name ) || blocksWithBackgroundColor.includes( blockType.name ) || ( typeof attributes.editorskit !== 'undefined' && typeof attributes.editorskit.indent !== 'undefined' && attributes.editorskit.indent ) ) {
 		if ( typeof extraProps.style !== 'undefined' ) {
 			extraProps.style = Object.assign( extraProps.style, applyStyle( attributes, blockType.name ) );
