@@ -4,7 +4,7 @@
  * Plugin Name: EditorsKit
  * Plugin URI: https://editorskit.com/
  * Description: EditorsKit is a suite of <strong>page building block options</strong> for the Gutenberg block editor.
- * Version: 1.34.0
+ * Version: 1.34.1
  * Author: Munir Kamal
  * Author URI: https://www.munirkamal.com/
  * Text Domain: block-options
@@ -135,7 +135,6 @@ if ( ! class_exists( 'EditorsKit' ) ) :
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-custom-css-classes.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/helper.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-shortcodes.php';
-			require_once EDITORSKIT_PLUGIN_DIR . 'extendify-sdk/loader.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-block-locking.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/notices/notices.php';
 
@@ -238,12 +237,6 @@ endif; // End if class_exists check.
  */
 function editorskit() {
 	 return EditorsKit::instance();
-}
-
-// Add Extendify global.
-if ( ! isset( $GLOBALS['extendify_sdk_partner'] ) ) {
-	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-	$GLOBALS['extendify_sdk_partner'] = 'EditorsKit';
 }
 
 // Get Plugin Running.
