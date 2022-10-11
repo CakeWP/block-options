@@ -96,7 +96,7 @@ if ( ! class_exists( 'EditorsKit' ) ) :
 		 */
 		private function setup_constants() {
 			$this->define( 'EDITORSKIT_DEBUG', true );
-			$this->define( 'EDITORSKIT_VERSION', '1.34.0' );
+			$this->define( 'EDITORSKIT_VERSION', '1.34.1' );
 			$this->define( 'EDITORSKIT_HAS_PRO', false );
 			$this->define( 'EDITORSKIT_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 			$this->define( 'EDITORSKIT_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
