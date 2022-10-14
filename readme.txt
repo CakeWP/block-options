@@ -138,6 +138,7 @@ EditorsKit adds the missing keyboard shortcuts from Classic Editor. When activat
 * `CTRL + ALT + j` : Justify
 * `CMD + SHIFT + .` : Select Parent Block
 
+
 ## Block Navigator
 Display "Block Navigator" on block that can contain multiple child blocks. Available on Columns Block and Group Block.
 
