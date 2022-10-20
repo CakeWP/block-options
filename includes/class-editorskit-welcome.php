@@ -21,8 +21,7 @@ if (!class_exists('EditorsKit_Welcome')) {
 	 * @since 1.0
 	 * @package EditorsKit
 	 */
-	class EditorsKit_Welcome
-	{
+	class EditorsKit_Welcome {
 
 		/**
 		 * The base URL path (without trailing slash).
@@ -46,8 +45,7 @@ if (!class_exists('EditorsKit_Welcome')) {
 		/**
 		 * Constructor
 		 */
-		public function __construct()
-		{
+		public function __construct() {
 			$this->version = EDITORSKIT_VERSION;
 			$this->slug    = 'editorskit';
 			$this->url     = untrailingslashit(plugins_url('/', dirname(__FILE__)));
@@ -71,8 +69,7 @@ if (!class_exists('EditorsKit_Welcome')) {
 		 *
 		 * @return void
 		 */
-		public function enqueue()
-		{
+		public function enqueue() {
 			// phpcs:ignore
 			if (!isset($_GET['page']) || 'editorskit-getting-started' !== $_GET['page']) {
 				return;
@@ -146,8 +143,7 @@ if (!class_exists('EditorsKit_Welcome')) {
 		/**
 		 * Setup the admin menu.
 		 */
-		public function screen_page()
-		{
+		public function screen_page() {
 			add_submenu_page(
 				'options-general.php',
 				__('Getting started with EditorsKit', 'block-options'),
@@ -161,8 +157,7 @@ if (!class_exists('EditorsKit_Welcome')) {
 		/**
 		 * Render page content.
 		 */
-		public function welcome_content()
-		{ ?>
+		public function welcome_content() { ?>
 			<div class="editorskit-settings-wrap"></div>
 			<?php
 		}
@@ -170,16 +165,14 @@ if (!class_exists('EditorsKit_Welcome')) {
 		/**
 		 * Adds a marker to remember to activation.
 		 */
-		public static function add_activation_marker()
-		{
+		public static function add_activation_marker() {
 			update_option('editorskit_activation_marker', '1');
 		}
 
 		/**
 		 * Activation notice on plugins.php only
 		 */
-		public function admin_notices()
-		{
+		public function admin_notices() {
 			global $pagenow;
 			if (get_option('editorskit_activation_marker') && 'plugins.php' === $pagenow) {
 				delete_option('editorskit_activation_marker');
@@ -206,8 +199,7 @@ if (!class_exists('EditorsKit_Welcome')) {
 		 *
 		 * @param string $plugin The plugin main file.
 		 */
-		public function redirect($plugin)
-		{
+		public function redirect($plugin) {
 			// phpcs:ignore
 			if (($plugin === 'block-options/plugin.php' || $plugin === 'editorskit/plugin.php') && !isset($_GET['activate-multi'])) {
 				wp_safe_redirect(admin_url('options-general.php?page=editorskit-getting-started'));

@@ -24,7 +24,7 @@ const DevicesOptions = ( props ) => {
 	} = attributes;
 
 	const onSelectionChange = ( key, newValue ) => {
-		console.log(key);
+	
 		if ( typeof newValue === 'undefined' ) {
 			newValue = ! editorskit[ key ];
 		}
