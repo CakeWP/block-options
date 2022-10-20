@@ -9,7 +9,7 @@ const { __ } = wp.i18n;
 const { withSelect, withDispatch, select } = wp.data;
 const { compose, ifCondition } = wp.compose;
 const { Component, Fragment } = wp.element;
-const { withSpokenMessages, Button, IconButton, Tooltip, ClipboardButton, Popover, TextControl } = wp.components;
+const { withSpokenMessages, Button, Tooltip, ClipboardButton, Popover, TextControl } = wp.components;
 
 /**
  * Render plugin
@@ -56,7 +56,7 @@ class GradientControls extends Component {
 					</Tooltip>
 
 					<Tooltip text={ __( 'Paste Gradient', 'block-options' ) }>
-						<IconButton
+						<Button
 							className="ek-paste"
 							isSecondary
 							isSmall
@@ -65,7 +65,7 @@ class GradientControls extends Component {
 								this.setState( { isOpen: ! this.state.isOpen, anchorRect: evt.target.getBoundingClientRect(), count } );
 							} }
 						>
-						</IconButton>
+						</Button>
 					</Tooltip>
 
 				</Fragment>

@@ -3,24 +3,132 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/admin/block-manager/index.js:40
-msgid "Search for a block"
-msgstr ""
-
-#: src/admin/block-manager/index.js:51
-msgid "%1$d block is disabled."
-msgid_plural "%1$d blocks are disabled."
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/admin/block-manager/index.js:64
-msgid "Available block types"
-msgstr ""
-
-#: src/admin/block-manager/index.js:69
-msgid "No blocks found."
-msgstr ""
-
-#: src/extensions/advanced-controls/custom-class-name/index.js:72
+#: src/extensions/advanced-controls/custom-class-name/index.js:71
 msgid "Additional CSS Class(es)"
+msgstr ""
+
+#: src/extensions/block-toolbar/block-navigator/components/controls.js:35
+msgid "Open block navigator"
+msgstr ""
+
+#: src/extensions/block-toolbar/block-navigator/components/controls.js:43
+msgid "Block Navigator"
+msgstr ""
+
+#: src/extensions/block-toolbar/block-navigator/components/controls.js:44
+#: src/extensions/components/help-tips/components/controls.js:160
+msgid "Close"
+msgstr ""
+
+#: src/extensions/components/gradient-controls/components/controls.js:115
+msgid "Paste Gradient Value"
+msgstr ""
+
+#: src/extensions/components/gradient-controls/components/controls.js:133
+#: src/extensions/formats/link/components/link-editor.js:37
+msgid "Apply"
+msgstr ""
+
+#: src/extensions/components/gradient-controls/components/controls.js:155
+msgid "Custom Gradient copied to your clipboard."
+msgstr ""
+
+#: src/extensions/components/gradient-controls/components/controls.js:165
+msgid "Custom Gradient applied to selected block."
+msgstr ""
+
+#: src/extensions/components/gradient-controls/components/controls.js:46
+msgid "Copy Gradient Value"
+msgstr ""
+
+#: src/extensions/components/gradient-controls/components/controls.js:58
+msgid "Paste Gradient"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/controls.js:106
+msgid "Help, tips and tricks"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/controls.js:125
+msgid "About"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/controls.js:142
+msgid "EditorsKit Community Help"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/controls.js:149
+msgid "Remove/Disable Help Button"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/controls.js:157
+msgid "Tips and Tricks"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/controls.js:185
+msgid "View All Tips and Tricks"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/controls.js:193
+msgid "Next"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/controls.js:196
+msgid "Fetching..."
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:108
+msgid "Open in New Tab"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:113
+msgid "No Follow"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:118
+msgid "Sponsored"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:123
+msgid "Hover Animation"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:139
+msgid "Edit link"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:140
+msgid "Insert link"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:172
+msgid "Remove link"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:28
+msgid "Highlight Color"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:31
+msgid "Orange Sunrise"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:36
+msgid "Pink Flamingo"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:41
+msgid "Spring Green"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:46
+msgid "Blue Moon"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:51
+msgid "Purple Mist"
+msgstr ""
+
+#: src/extensions/formats/link/components/link-viewer.js:53
+msgid "Edit"
 msgstr ""

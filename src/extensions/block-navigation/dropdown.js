@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { IconButton, Dropdown, SVG, Path, KeyboardShortcuts } = wp.components;
+const { Button, Dropdown, SVG, Path, KeyboardShortcuts } = wp.components;
 const { __ } = wp.i18n;
 const { rawShortcut, displayShortcut } = wp.keycodes;
 const { withSelect } = wp.data;
@@ -31,7 +31,7 @@ function BlockNavigationDropdown( { hasBlocks, isDisabled } ) {
 						} }
 					/>
 					}
-					<IconButton
+					<Button
 						icon={ MenuIcon }
 						aria-expanded={ isOpen }
 						onClick={ isEnabled ? onToggle : undefined }

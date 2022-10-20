@@ -4,7 +4,7 @@
 const { __ } = wp.i18n;
 const { useRef, useState, useCallback, Fragment } = wp.element;
 const {
-	IconButton,
+	Button,
 	ToggleControl,
 } = wp.components;
 const { URLPopover } = wp.blockEditor;
@@ -131,7 +131,7 @@ const URLInputUI = ( {
 
 	return (
 		<Fragment>
-			<IconButton
+			<Button
 				icon="admin-links"
 				className="components-toolbar__control"
 				label={
@@ -167,7 +167,7 @@ const URLInputUI = ( {
 								url={ url }
 								onEditLinkClick={ startEditLink }
 							/>
-							<IconButton
+							<Button
 								icon="no"
 								label={ __( 'Remove link', 'block-options' ) }
 								onClick={ onLinkRemove }

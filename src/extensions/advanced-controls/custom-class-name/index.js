@@ -28,7 +28,6 @@ const enhance = compose(
 			getClasses = replace( getClasses, ',', ' ' );
 		}
 		useEffect(()=>{
-			console.log(customClassNames)
 				if ( selectedBlock && getClasses && join( block.customClassNames, ' ' ) !== getClasses ) {
 					//apply to selected block only
 					if ( block.clientId === selectedBlock.clientId ) {

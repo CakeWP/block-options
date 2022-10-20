@@ -21,7 +21,7 @@ const {
 	getColorObjectByAttributeValues,
 } = wp.blockEditor;
 const { applyFormat, removeFormat, getActiveFormat } = wp.richText;
-const { Toolbar, IconButton, Popover, ColorPalette } = wp.components;
+const { Toolbar, Button, Popover, ColorPalette } = wp.components;
 const { compose, ifCondition } = wp.compose;
 
 const name = 'editorskit/background';
@@ -106,7 +106,7 @@ class Edit extends Component {
 			<Fragment>
 				<BlockControls>
 					<Toolbar className="editorskit-components-toolbar">
-						<IconButton
+						<Button
 							className={classnames(
 								'components-button components-icon-button components-editorskit-toolbar__control components-toolbar__control components-editorskit-background-format',
 								{

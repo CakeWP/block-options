@@ -18091,8 +18091,6 @@ var enhance = compose(withSelect(function (selectFn, block) {
   }
 
   useEffect(function () {
-    console.log(customClassNames);
-
     if (selectedBlock && getClasses && Object(lodash__WEBPACK_IMPORTED_MODULE_3__["join"])(block.customClassNames, ' ') !== getClasses) {
       //apply to selected block only
       if (block.clientId === selectedBlock.clientId) {
@@ -21158,7 +21156,7 @@ var BlockControls = wp.blockEditor.BlockControls;
 var _wp$components = wp.components,
     Toolbar = _wp$components.Toolbar,
     withSpokenMessages = _wp$components.withSpokenMessages,
-    IconButton = _wp$components.IconButton,
+    Button = _wp$components.Button,
     SVG = _wp$components.SVG,
     Path = _wp$components.Path,
     Modal = _wp$components.Modal;
@@ -21208,7 +21206,7 @@ var NavigatorToolbar = /*#__PURE__*/function (_Component) {
           block = _this$props.block,
           selectBlock = _this$props.selectBlock,
           selectedBlockClientId = _this$props.selectedBlockClientId;
-      var navigatorToolbarButton = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(IconButton, {
+      var navigatorToolbarButton = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
         className: "components-toolbar__control",
         label: __('Open block navigator', 'block-options'),
         onClick: function onClick() {
@@ -22326,7 +22324,6 @@ var _wp$element = wp.element,
 var _wp$components = wp.components,
     withSpokenMessages = _wp$components.withSpokenMessages,
     Button = _wp$components.Button,
-    IconButton = _wp$components.IconButton,
     Tooltip = _wp$components.Tooltip,
     ClipboardButton = _wp$components.ClipboardButton,
     Popover = _wp$components.Popover,
@@ -22388,7 +22385,7 @@ var GradientControls = /*#__PURE__*/function (_Component) {
           onCopy: onCopy
         })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Tooltip, {
           text: __('Paste Gradient', 'block-options')
-        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(IconButton, {
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Button, {
           className: "ek-paste",
           isSecondary: true,
           isSmall: true,
@@ -22967,7 +22964,6 @@ var _wp$components = wp.components,
     withSpokenMessages = _wp$components.withSpokenMessages,
     Modal = _wp$components.Modal,
     Button = _wp$components.Button,
-    IconButton = _wp$components.IconButton,
     Dropdown = _wp$components.Dropdown,
     NavigableMenu = _wp$components.NavigableMenu;
 var tweets = ['1178226931277287425', '1177555440638382080', '1179365591553118227', '1177920047546650624', '1177461678004293637', '1178693225923497984', '1179727978353135616', '1180455552079425537', '1178929974247448576', '1176395801888604161', '1181217763844509696', '1177202169310658560'];
@@ -23065,7 +23061,7 @@ var HelpControl = /*#__PURE__*/function (_Component) {
             }
           };
 
-          return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(IconButton, {
+          return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
             className: "components-dropdown-menu__toggle",
             icon: "editor-help",
             onClick: onToggle,
@@ -23081,7 +23077,7 @@ var HelpControl = /*#__PURE__*/function (_Component) {
           return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(NavigableMenu, {
             className: "editorskit-menu-help-tips",
             role: "menu"
-          }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(IconButton, {
+          }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
             icon: "info",
             onClick: function onClick() {
               onClose();
@@ -23090,7 +23086,7 @@ var HelpControl = /*#__PURE__*/function (_Component) {
                 isAboutOpen: true
               });
             }
-          }, __('About')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(IconButton, {
+          }, __('About')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
             icon: "sos",
             onClick: function onClick() {
               onClose();
@@ -23099,14 +23095,14 @@ var HelpControl = /*#__PURE__*/function (_Component) {
                 isOpen: true
               });
             }
-          }, __('Tips and Tricks')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(IconButton, {
+          }, __('Tips and Tricks')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
             icon: "admin-site-alt3",
             onClick: function onClick() {
               _this2.routeChange("https://www.facebook.com/groups/editorskit/");
             }
           }, __('EditorsKit Community Help')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
             className: "editor-block-settings-menu__separator block-editor-block-settings-menu__separator"
-          }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(IconButton, {
+          }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
             icon: "dismiss",
             onClick: onDisable
           }, __('Remove/Disable Help Button')));
@@ -23133,7 +23129,7 @@ var HelpControl = /*#__PURE__*/function (_Component) {
         }
       }), this.state.isLoaded ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
         className: "components-modal--editorskit-help-tips-buttons"
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(IconButton, {
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
         isPrimary: true,
         isLarge: true,
         icon: "twitter",
@@ -24236,7 +24232,7 @@ var _wp$element = wp.element,
     useCallback = _wp$element.useCallback,
     Fragment = _wp$element.Fragment;
 var _wp$components = wp.components,
-    IconButton = _wp$components.IconButton,
+    Button = _wp$components.Button,
     ToggleControl = _wp$components.ToggleControl;
 var URLPopover = wp.blockEditor.URLPopover;
 var _wp$keycodes = wp.keycodes,
@@ -24376,7 +24372,7 @@ var URLInputUI = function URLInputUI(_ref) {
     checked: hasAnimation
   }));
   var linkEditorValue = urlInput !== null ? urlInput : url;
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(IconButton, {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Button, {
     icon: "admin-links",
     className: "components-toolbar__control",
     label: url ? __('Edit link', 'block-options') : __('Insert link', 'block-options'),
@@ -24401,7 +24397,7 @@ var URLInputUI = function URLInputUI(_ref) {
     onKeyPress: stopPropagation,
     url: url,
     onEditLinkClick: startEditLink
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(IconButton, {
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Button, {
     icon: "no",
     label: __('Remove link', 'block-options'),
     onClick: onLinkRemove
@@ -25128,7 +25124,7 @@ var _wp$richText = wp.richText,
     getActiveFormat = _wp$richText.getActiveFormat;
 var _wp$components = wp.components,
     Toolbar = _wp$components.Toolbar,
-    IconButton = _wp$components.IconButton,
+    Button = _wp$components.Button,
     Popover = _wp$components.Popover,
     ColorPalette = _wp$components.ColorPalette;
 var _wp$compose = wp.compose,
@@ -25218,7 +25214,7 @@ var Edit = /*#__PURE__*/function (_Component) {
 
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Toolbar, {
         className: "editorskit-components-toolbar"
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(IconButton, {
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Button, {
         className: classnames__WEBPACK_IMPORTED_MODULE_7___default()('components-button components-icon-button components-editorskit-toolbar__control components-toolbar__control components-editorskit-background-format', {
           'is-active': isActive
         }),
@@ -27154,7 +27150,7 @@ var _excluded = ["autocompleteRef", "className", "onChangeInputValue", "value"];
  */
 
 var __ = wp.i18n.__;
-var IconButton = wp.components.IconButton;
+var Button = wp.components.Button;
 /**
  * Internal dependencies
  */
@@ -27173,7 +27169,7 @@ function LinkEditor(_ref) {
     value: value,
     onChange: onChangeInputValue,
     autocompleteRef: autocompleteRef
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(IconButton, {
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(Button, {
     icon: "editor-break",
     label: __('Apply', 'block-options'),
     type: "submit"
@@ -27216,7 +27212,7 @@ var _excluded = ["className", "linkClassName", "onEditLinkClick", "url", "urlLab
 var __ = wp.i18n.__;
 var _wp$components = wp.components,
     ExternalLink = _wp$components.ExternalLink,
-    IconButton = _wp$components.IconButton;
+    Button = _wp$components.Button;
 var _wp$url = wp.url,
     safeDecodeURI = _wp$url.safeDecodeURI,
     filterURLForDisplay = _wp$url.filterURLForDisplay;
@@ -27253,7 +27249,7 @@ function LinkViewer(_ref2) {
     url: url,
     urlLabel: urlLabel,
     className: linkClassName
-  }), onEditLinkClick && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(IconButton, {
+  }), onEditLinkClick && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(Button, {
     icon: "edit",
     label: __('Edit', 'block-options'),
     onClick: onEditLinkClick
