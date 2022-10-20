@@ -20995,7 +20995,7 @@ var _wp$element = wp.element,
     Fragment = _wp$element.Fragment;
 var BlockControls = wp.blockEditor.BlockControls;
 var _wp$components = wp.components,
-    Toolbar = _wp$components.Toolbar,
+    ToolbarGroup = _wp$components.ToolbarGroup,
     withSpokenMessages = _wp$components.withSpokenMessages;
 var withSelect = wp.data.withSelect;
 var _wp$compose = wp.compose,
@@ -21036,7 +21036,7 @@ var withLinkToolbar = /*#__PURE__*/function (_Component) {
           linkNoFollow = attributes.linkNoFollow,
           linkSponsored = attributes.linkSponsored,
           hasAnimation = attributes.hasAnimation;
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Toolbar, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_components_url_popover_url_input_ui__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(ToolbarGroup, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_components_url_popover_url_input_ui__WEBPACK_IMPORTED_MODULE_7__["default"], {
         url: href || '',
         opensInNewTab: opensInNewTab || false,
         linkNoFollow: linkNoFollow || false,
@@ -21154,7 +21154,7 @@ var _wp$element = wp.element,
     Fragment = _wp$element.Fragment;
 var BlockControls = wp.blockEditor.BlockControls;
 var _wp$components = wp.components,
-    Toolbar = _wp$components.Toolbar,
+    ToolbarGroup = _wp$components.ToolbarGroup,
     withSpokenMessages = _wp$components.withSpokenMessages,
     Button = _wp$components.Button,
     SVG = _wp$components.SVG,
@@ -21230,7 +21230,7 @@ var NavigatorToolbar = /*#__PURE__*/function (_Component) {
         selectBlock: selectBlock,
         showNestedBlocks: true
       }));
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Toolbar, null, navigatorToolbarButton)), navigatorModal);
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(ToolbarGroup, null, navigatorToolbarGroupButton)), navigatorModal);
     }
   }]);
 
@@ -21378,7 +21378,7 @@ var _wp$element = wp.element,
     Fragment = _wp$element.Fragment;
 var BlockControls = wp.blockEditor.BlockControls;
 var _wp$components = wp.components,
-    Toolbar = _wp$components.Toolbar,
+    ToolbarGroup = _wp$components.ToolbarGroup,
     withSpokenMessages = _wp$components.withSpokenMessages;
 
 var ToolbarControls = /*#__PURE__*/function (_Component) {
@@ -21461,7 +21461,7 @@ var ToolbarControls = /*#__PURE__*/function (_Component) {
           });
         }
       }];
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Toolbar, {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(ToolbarGroup, {
         className: "editorskit-media-text-card-controls",
         controls: toolbarControls
       })));
@@ -23432,7 +23432,7 @@ var FeaturesManager = /*#__PURE__*/function (_Component) {
 /* harmony default export */ __webpack_exports__["default"] = (compose([withSelect(function () {
   return {
     editorSettings: select('core/editor').getEditorSettings(),
-    preferences: select('core/edit-post').getPreferences()
+    preferences: select('core/preferences')
   };
 }), withDispatch(function (dispatch) {
   return {
@@ -24891,7 +24891,7 @@ var _wp$data = wp.data,
 var _wp$blockEditor = wp.blockEditor,
     BlockControls = _wp$blockEditor.BlockControls,
     AlignmentToolbar = _wp$blockEditor.AlignmentToolbar;
-var Toolbar = wp.components.Toolbar;
+var ToolbarGroup = wp.components.ToolbarGroup;
 var hasBlockSupport = wp.blocks.hasBlockSupport;
 var ALLOWED_BLOCKS = ['core/image', 'core/gallery', 'core/video', 'core/audio', 'core-embed', 'core-embed/youtube', 'core-embed/twitter', 'core-embed/facebook', 'core-embed/instagram', 'core-embed/wordpress', 'core-embed/soundcloud', 'core-embed/spotify', 'core-embed/flickr', 'core-embed/vimeo', 'core-embed/animoto', 'core-embed/cloudup', 'core-embed/collegehumor', 'core-embed/crowdsignal', 'core-embed/dailymotion', 'core-embed/hulu', 'core-embed/imgur', 'core-embed/issuu', 'core-embed/kickstarter', 'core-embed/meetup-com', 'core-embed/mixcloud', 'core-embed/reddit', 'core-embed/reverbnation', 'core-embed/screencast', 'core-embed/scribd', 'core-embed/slideshare', 'core-embed/smugmug', 'core-embed/speaker-deck', 'core-embed/ted', 'core-embed/tumblr', 'core-embed/videopress', 'core-embed/wordpress-tv', 'core-embed/amazon-kindle', 'core/table'];
 var ALIGNMENT_CONTROLS = [{
@@ -24954,7 +24954,7 @@ var AlignmentControl = /*#__PURE__*/function (_Component) {
         return null;
       }
 
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Toolbar, {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(ToolbarGroup, {
         className: "editorskit-components-alignment-toolbar"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(AlignmentToolbar, {
         value: blockCaptionAlignment,
@@ -25123,7 +25123,7 @@ var _wp$richText = wp.richText,
     removeFormat = _wp$richText.removeFormat,
     getActiveFormat = _wp$richText.getActiveFormat;
 var _wp$components = wp.components,
-    Toolbar = _wp$components.Toolbar,
+    ToolbarGroup = _wp$components.ToolbarGroup,
     Button = _wp$components.Button,
     Popover = _wp$components.Popover,
     ColorPalette = _wp$components.ColorPalette;
@@ -25212,7 +25212,7 @@ var Edit = /*#__PURE__*/function (_Component) {
         }
       }
 
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Toolbar, {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(ToolbarGroup, {
         className: "editorskit-components-toolbar"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Button, {
         className: classnames__WEBPACK_IMPORTED_MODULE_7___default()('components-button components-icon-button components-editorskit-toolbar__control components-toolbar__control components-editorskit-background-format', {

@@ -6,7 +6,7 @@ const { withSelect } = wp.data;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { BlockControls } = wp.blockEditor;
-const { Toolbar, withSpokenMessages } = wp.components;
+const { ToolbarGroup, withSpokenMessages } = wp.components;
 
 class ToolbarControls extends Component {
 	componentDidUpdate() {
@@ -80,7 +80,7 @@ class ToolbarControls extends Component {
 		return (
 			<Fragment>
 				<BlockControls>
-					<Toolbar
+					<ToolbarGroup
 						className="editorskit-media-text-card-controls"
 						controls={ toolbarControls }
 					/>

@@ -6,7 +6,7 @@ const { withSelect, withDispatch } = wp.data;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { BlockControls } = wp.blockEditor;
-const { Toolbar, withSpokenMessages, Button } = wp.components;
+const { ToolbarGroup, withSpokenMessages, Button } = wp.components;
 
 class ToolbarControls extends Component {
 	render() {
@@ -22,14 +22,14 @@ class ToolbarControls extends Component {
 		return (
 			<Fragment>
 				<BlockControls>
-					<Toolbar>
+					<ToolbarGroup>
 						<Button
 							onClick={ onConvertToStatic }
 							className="editorskit-reusable-convert-controls"
 						>
 							{ __( 'Convert to Regular Blocks', 'block-options' ) }
 						</Button>
-					</Toolbar>
+					</ToolbarGroup>
 				</BlockControls>
 			</Fragment>
 		);

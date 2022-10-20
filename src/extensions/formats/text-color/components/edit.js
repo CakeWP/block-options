@@ -6,7 +6,7 @@ const { Component, Fragment } = wp.element;
 const { withSelect } = wp.data;
 const { BlockControls, getColorClassName, getColorObjectByColorValue, getColorObjectByAttributeValues } = wp.blockEditor;
 const { applyFormat, removeFormat, getActiveFormat } = wp.richText;
-const { Toolbar, Button, Popover, ColorPalette } = wp.components;
+const { ToolbarGroup, Button, Popover, ColorPalette } = wp.components;
 const { compose, ifCondition } = wp.compose;
 
 const name = 'editorskit/color';
@@ -59,7 +59,7 @@ class Edit extends Component {
 		return (
 			<Fragment>
 				<BlockControls>
-					<Toolbar className="editorskit-components-toolbar">
+					<ToolbarGroup className="editorskit-components-toolbar">
 						<Button
 							className="components-button components-icon-button components-editorskit-toolbar__control components-toolbar__control components-editorskit-color-format"
 							icon="editor-textcolor"
@@ -123,7 +123,7 @@ class Edit extends Component {
 							</Popover>
 						) }
 
-					</Toolbar>
+					</ToolbarGroup>
 				</BlockControls>
 			</Fragment>
 		);

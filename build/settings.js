@@ -7782,7 +7782,7 @@ var FeaturesManager = /*#__PURE__*/function (_Component) {
 /* harmony default export */ __webpack_exports__["default"] = (compose([withSelect(function () {
   return {
     editorSettings: select('core/editor').getEditorSettings(),
-    preferences: select('core/edit-post').getPreferences()
+    preferences: select('core/preferences')
   };
 }), withDispatch(function (dispatch) {
   return {
