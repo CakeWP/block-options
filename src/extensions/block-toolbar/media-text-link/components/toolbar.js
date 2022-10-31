@@ -15,9 +15,9 @@ class LinkToolbar extends Component {
 		return (
 			<Fragment>
 				<BlockControls>
-					<Toolbar>
+					<ToolbarGroup>
 						<Controls { ...this.props } />
-					</Toolbar>
+					</ToolbarGroup>
 				</BlockControls>
 			</Fragment>
 		);

@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { IconButton } = wp.components;
+const { Button } = wp.components;
 
 /**
  * Internal dependencies
@@ -34,7 +34,7 @@ export default function LinkEditor( {
 				onChange={ onChangeInputValue }
 				autocompleteRef={ autocompleteRef }
 			/>
-			<IconButton icon="editor-break" label={ __( 'Apply', 'block-options' ) } type="submit" />
+			<Button icon="editor-break" label={ __( 'Apply', 'block-options' ) } type="submit" />
 		</form>
 	);
 }

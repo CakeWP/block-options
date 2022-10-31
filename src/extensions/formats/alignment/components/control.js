@@ -11,7 +11,7 @@ const { Component, Fragment } = wp.element;
 const { compose, ifCondition } = wp.compose;
 const { withSelect, withDispatch } = wp.data;
 const { BlockControls, AlignmentToolbar } = wp.blockEditor;
-const { Toolbar } = wp.components;
+const { ToolbarGroup } = wp.components;
 const { hasBlockSupport } = wp.blocks;
 
 const ALLOWED_BLOCKS = [ 'core/image', 'core/gallery', 'core/video', 'core/audio', 'core-embed', 'core-embed/youtube', 'core-embed/twitter', 'core-embed/facebook', 'core-embed/instagram', 'core-embed/wordpress', 'core-embed/soundcloud', 'core-embed/spotify', 'core-embed/flickr', 'core-embed/vimeo', 'core-embed/animoto', 'core-embed/cloudup', 'core-embed/collegehumor', 'core-embed/crowdsignal', 'core-embed/dailymotion', 'core-embed/hulu', 'core-embed/imgur', 'core-embed/issuu', 'core-embed/kickstarter', 'core-embed/meetup-com', 'core-embed/mixcloud', 'core-embed/reddit', 'core-embed/reverbnation', 'core-embed/screencast', 'core-embed/scribd', 'core-embed/slideshare', 'core-embed/smugmug', 'core-embed/speaker-deck', 'core-embed/ted', 'core-embed/tumblr', 'core-embed/videopress', 'core-embed/wordpress-tv', 'core-embed/amazon-kindle', 'core/table' ];
@@ -71,7 +71,7 @@ class AlignmentControl extends Component {
 		return (
 			<Fragment>
 				<BlockControls>
-					<Toolbar className="editorskit-components-alignment-toolbar">
+					<ToolbarGroup className="editorskit-components-alignment-toolbar">
 						<AlignmentToolbar
 							value={ blockCaptionAlignment }
 							onChange={ ( nextAlign ) => {
@@ -79,7 +79,7 @@ class AlignmentControl extends Component {
 							} }
 							alignmentControls={ ALIGNMENT_CONTROLS }
 						/>
-					</Toolbar>
+					</ToolbarGroup>
 				</BlockControls>
 			</Fragment>
 		);

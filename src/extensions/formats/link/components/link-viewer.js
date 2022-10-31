@@ -9,7 +9,7 @@ import classnames from 'classnames';
 const { __ } = wp.i18n;
 const {
 	ExternalLink,
-	IconButton,
+	Button,
 } = wp.components;
 const { safeDecodeURI, filterURLForDisplay } = wp.url;
 
@@ -50,7 +50,7 @@ export default function LinkViewer( {
 			{ ...props }
 		>
 			<LinkViewerUrl url={ url } urlLabel={ urlLabel } className={ linkClassName } />
-			{ onEditLinkClick && <IconButton icon="edit" label={ __( 'Edit', 'block-options' ) } onClick={ onEditLinkClick } /> }
+			{ onEditLinkClick && <Button icon="edit" label={ __( 'Edit', 'block-options' ) } onClick={ onEditLinkClick } /> }
 		</div>
 	);
 }

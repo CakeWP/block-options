@@ -8,33 +8,37 @@ import { split, replace, get, join } from 'lodash';
  */
 const { __ } = wp.i18n;
 const { addFilter, removeFilter } = wp.hooks;
-const { Fragment }	= wp.element;
-const { withSelect, select }	= wp.data;
-const { compose, createHigherOrderComponent, withState }	= wp.compose;
-const { hasBlockSupport }	= wp.blocks;
-const { InspectorAdvancedControls }	= wp.blockEditor;
-const { FormTokenField }	= wp.components;
+const { Fragment, useState, useEffect } = wp.element;
+const { withSelect, select } = wp.data;
+const { compose, createHigherOrderComponent } = wp.compose;
+const { hasBlockSupport } = wp.blocks;
+const { InspectorAdvancedControls } = wp.blockEditor;
+const { FormTokenField } = wp.components;
+
 
 const enhance = compose(
-	withState( {
-		customClassNames: [],
-	} ),
+
 	withSelect( ( selectFn, block ) => {
+		const [ customClassNames, setState ] = useState( [] );
+
 		const selectedBlock = selectFn( 'core/block-editor' ).getSelectedBlock();
-		let getClasses 	= get( selectedBlock, 'attributes.className' );
+		let getClasses = get( selectedBlock, 'attributes.className' );
 
 		if ( getClasses ) {
 			getClasses = replace( getClasses, ',', ' ' );
 		}
-
-		if ( selectedBlock && getClasses && join( block.customClassNames, ' ' ) !== getClasses ) {
-			//apply to selected block only
-			if ( block.clientId === selectedBlock.clientId ) {
-				// props.attributes.className || ''
-				block.setState( { customClassNames: split( getClasses, ' ' ) } );
-			}
-		}
+		useEffect(()=>{
+				if ( selectedBlock && getClasses && join( block.customClassNames, ' ' ) !== getClasses ) {
+					//apply to selected block only
+					if ( block.clientId === selectedBlock.clientId ) {
+						// props.attributes.className || ''
+						setState( split( getClasses, ' ' ) );
+					}
+				}
+		},[getClasses])
 		return {
+			customClassNames,
+			setState,
 			suggestions: selectFn( 'core/editor' ).getEditorSettings().editorskitCustomClassNames,
 		};
 	} ),
@@ -72,7 +76,9 @@ const withInspectorControl = createHigherOrderComponent( ( BlockEdit ) => {
 								props.setAttributes( {
 									className: nextValue !== '' ? join( nextValue, ' ' ) : undefined,
 								} );
-								setState( { customClassNames: nextValue !== '' ? nextValue : undefined } );
+								if ( nextValue !== '' ) {
+									setState( nextValue );
+								};
 							} }
 						/>
 					</InspectorAdvancedControls>
@@ -84,8 +90,8 @@ const withInspectorControl = createHigherOrderComponent( ( BlockEdit ) => {
 	} );
 }, 'withInspectorControl' );
 
-function applyFilters() {
-	if ( ! select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitCustomClassNamesTools' ) ) {
+function applyFilters () {
+	if ( !select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitCustomClassNamesTools' ) ) {
 		removeFilter( 'editor.BlockEdit', 'core/editor/custom-class-name/with-inspector-control' );
 		addFilter( 'editor.BlockEdit', 'editorskit/custom-class-name/with-inspector-control', withInspectorControl );
 	}

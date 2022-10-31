@@ -8,24 +8,24 @@ import { filter, isArray } from 'lodash';
  */
 import { __, _n, sprintf } from '@wordpress/i18n';
 import { withSelect } from '@wordpress/data';
-import { compose, withState } from '@wordpress/compose';
+import { compose } from '@wordpress/compose';
 import { TextControl } from '@wordpress/components';
 import { getBlockTypes } from '@wordpress/blocks';
-
+import {useState} from "@wordpress/element"
 /**
  * Internal dependencies
  */
 import BlockManagerCategory from './category';
 
 function BlockManager({
-	search,
-	setState,
 	blockTypes,
 	categories,
 	hasBlockSupport,
 	isMatchingSearchTerm,
 	numberOfHiddenBlocks,
 }) {
+	const [ search, setState ]= useState( '' );
+
 	let filteredBlockTypes = blockTypes.filter((blockType) => (
 		hasBlockSupport(blockType, 'inserter', true) &&
 		(!search || isMatchingSearchTerm(blockType, search)) &&
@@ -38,9 +38,9 @@ function BlockManager({
 				type="search"
 				label={__('Search for a block', 'block-options')}
 				value={search}
-				onChange={(nextSearch) => setState({
-					search: nextSearch,
-				})}
+				onChange={(nextSearch) => setState(
+					 nextSearch,
+				)}
 				className="edit-post-manage-blocks-modal__search"
 			/>
 			{!!numberOfHiddenBlocks && (
@@ -83,7 +83,6 @@ function BlockManager({
 }
 
 export default compose([
-	withState({ search: '' }),
 	withSelect((select) => {
 		const {
 			getCategories,

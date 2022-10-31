@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Add theme support for template body class
  *
@@ -107,7 +108,7 @@ class EditorsKit_Page_Template_Support {
 				if ( is_array( $theme_support ) && ! empty( $theme_support ) ) {
 					global $pagenow;
 
-					if ( ! empty( $pagenow ) && in_array( $pagenow, array( 'post-new.php', 'post.php', 'edit.php' ) ) ) { // phpcs:ignore
+					if (!empty($pagenow) && in_array($pagenow, array('post-new.php', 'post.php', 'edit.php'))) { // phpcs:ignore
 						add_action( 'admin_head', array( $this, 'template_width_css' ), 100 );
 					}
 				}
@@ -122,7 +123,7 @@ class EditorsKit_Page_Template_Support {
 				if ( is_array( $theme_support ) && ! empty( $theme_support ) ) {
 					global $pagenow;
 
-					if ( ! empty( $pagenow ) && in_array( $pagenow, array( 'post-new.php', 'post.php', 'edit.php' ) ) ) { // phpcs:ignore
+					if (!empty($pagenow) && in_array($pagenow, array('post-new.php', 'post.php', 'edit.php'))) { // phpcs:ignore
 						add_action( 'admin_head', array( $this, 'layout_width_css' ), 100 );
 					}
 				}
@@ -276,7 +277,6 @@ class EditorsKit_Page_Template_Support {
 
 		wp_add_inline_style( 'editorskit-genesis-body-class', $style );
 	}
-
 }
 
 EditorsKit_Page_Template_Support::register();

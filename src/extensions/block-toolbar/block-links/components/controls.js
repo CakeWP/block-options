@@ -3,7 +3,7 @@
  */
 const { Component, Fragment } = wp.element;
 const { BlockControls } = wp.blockEditor;
-const { Toolbar, withSpokenMessages } = wp.components;
+const { ToolbarGroup, withSpokenMessages } = wp.components;
 const { withSelect } = wp.data;
 const { compose, ifCondition } = wp.compose;
 
@@ -39,7 +39,7 @@ class withLinkToolbar extends Component {
 		return (
 			<Fragment>
 				<BlockControls>
-					<Toolbar>
+					<ToolbarGroup>
 						<URLInputUI
 							url={ href || '' }
 							opensInNewTab={ opensInNewTab || false }
@@ -48,7 +48,7 @@ class withLinkToolbar extends Component {
 							hasAnimation={ hasAnimation || false }
 							onChangeUrl={ this.onSetHref }
 						/>
-					</Toolbar>
+					</ToolbarGroup>
 				</BlockControls>
 			</Fragment>
 		);

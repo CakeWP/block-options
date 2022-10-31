@@ -12,7 +12,7 @@ const { withSelect } = wp.data;
 const { compose, ifCondition } = wp.compose;
 const { LEFT, RIGHT, UP, DOWN, BACKSPACE, ENTER } = wp.keycodes;
 const { URLPopover } = wp.blockEditor;
-const { ToggleControl, IconButton, Path, SVG, NavigableMenu, MenuItem, withSpokenMessages } = wp.components;
+const { ToggleControl, Button, Path, SVG, NavigableMenu, MenuItem, withSpokenMessages } = wp.components;
 
 /**
  * Module constants
@@ -105,7 +105,7 @@ const ImageURLInputUI = ( {
 	).title;
 	return (
 		<Fragment>
-			<IconButton
+			<Button
 				icon="admin-links"
 				className="components-toolbar__control"
 				label={ url ? __( 'Edit Media Link', 'block-options' ) : __( 'Media Link', 'block-options' ) }
@@ -157,7 +157,7 @@ const ImageURLInputUI = ( {
 								onEditLinkClick={ startEditLink }
 								urlLabel={ urlLabel }
 							/>
-							<IconButton
+							<Button
 								icon="no"
 								label={ __( 'Remove Link', 'block-options' ) }
 								onClick={ onLinkRemove }

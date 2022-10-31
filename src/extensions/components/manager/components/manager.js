@@ -78,7 +78,7 @@ class FeaturesManager extends Component {
 export default compose( [
 	withSelect( () => ( {
 		editorSettings: select( 'core/editor' ).getEditorSettings(),
-		preferences: select( 'core/edit-post' ).getPreferences(),
+		preferences: select( 'core/preferences' ),
 	} ) ),
 	withDispatch( ( dispatch ) => ( {
 		onToggle( category, item ) {

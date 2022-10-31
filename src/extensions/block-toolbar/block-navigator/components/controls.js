@@ -4,7 +4,7 @@
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { BlockControls } = wp.blockEditor;
-const { Toolbar, withSpokenMessages, IconButton, SVG, Path, Modal } = wp.components;
+const { ToolbarGroup, withSpokenMessages, Button, SVG, Path, Modal } = wp.components;
 const { withSelect, withDispatch } = wp.data;
 const { compose, ifCondition } = wp.compose;
 
@@ -30,7 +30,7 @@ class NavigatorToolbar extends Component {
 		const { block, selectBlock, selectedBlockClientId } = this.props;
 
 		const navigatorToolbarButton = (
-			<IconButton
+			<Button
 				className="components-toolbar__control"
 				label={ __( 'Open block navigator', 'block-options' ) }
 				onClick={ () => this.setState( { isNavigationListOpen: true } ) }
@@ -58,9 +58,9 @@ class NavigatorToolbar extends Component {
 		return (
 			<Fragment>
 				<BlockControls>
-					<Toolbar>
-						{ navigatorToolbarButton }
-					</Toolbar>
+					<ToolbarGroup>
+						{ navigatorToolbarGroupButton }
+					</ToolbarGroup>
 				</BlockControls>
 				{ navigatorModal }
 			</Fragment>
