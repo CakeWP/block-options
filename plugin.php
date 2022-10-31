@@ -4,7 +4,7 @@
  * Plugin Name: EditorsKit
  * Plugin URI: https://editorskit.com/
  * Description: EditorsKit is a suite of <strong>page building block options</strong> for the Gutenberg block editor.
- * Version: 1.34.1
+ * Version: 1.34.2
  * Author: Munir Kamal
  * Author URI: https://www.munirkamal.com/
  * Text Domain: block-options
@@ -96,7 +96,7 @@ if ( ! class_exists( 'EditorsKit' ) ) :
 		 */
 		private function setup_constants() {
 			$this->define( 'EDITORSKIT_DEBUG', true );
-			$this->define( 'EDITORSKIT_VERSION', '1.34.1' );
+			$this->define( 'EDITORSKIT_VERSION', '1.34.2' );
 			$this->define( 'EDITORSKIT_HAS_PRO', false );
 			$this->define( 'EDITORSKIT_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 			$this->define( 'EDITORSKIT_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -136,7 +136,6 @@ if ( ! class_exists( 'EditorsKit' ) ) :
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/helper.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-shortcodes.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-block-locking.php';
-			require_once EDITORSKIT_PLUGIN_DIR . 'includes/notices/notices.php';
 
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 				require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-welcome.php';
