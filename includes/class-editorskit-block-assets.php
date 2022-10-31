@@ -10,7 +10,7 @@
  */
 
 // Exit if accessed directly.
-if (!defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
@@ -33,7 +33,7 @@ class EditorsKit_Block_Assets {
 	 * Registers the plugin.
 	 */
 	public static function register() {
-		if (null === self::$instance) {
+		if ( null === self::$instance ) {
 			self::$instance = new EditorsKit_Block_Assets();
 		}
 	}
@@ -65,12 +65,12 @@ class EditorsKit_Block_Assets {
 	private function __construct() {
 		$this->version = EDITORSKIT_VERSION;
 		$this->slug    = 'editorskit';
-		$this->url     = untrailingslashit(plugins_url('/', dirname(__FILE__)));
+		$this->url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
-		add_action('enqueue_block_assets', array($this, 'block_assets'));
-		add_action('init', array($this, 'editor_assets'), 9999);
-		add_action('admin_enqueue_scripts', array($this, 'filter_admin_assets'));
-		add_filter('show_admin_bar', array($this, 'hide_admin_bar'), 10, 3);
+		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
+		add_action( 'init', array( $this, 'editor_assets' ), 9999 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'filter_admin_assets' ) );
+		add_filter( 'show_admin_bar', array( $this, 'hide_admin_bar' ), 10, 3 );
 	}
 
 	/**
@@ -97,14 +97,14 @@ class EditorsKit_Block_Assets {
 	public function editor_assets() {
 
 		global $wp;
-		$wp->add_query_var('editorskitsandbox');
+		$wp->add_query_var( 'editorskitsandbox' );
 
-		if (!is_admin()) {
+		if ( ! is_admin() ) {
 
 			return;
 		}
 
-		if (!$this->is_edit_or_new_admin_page()) { // load on allowed pages only.
+		if ( ! $this->is_edit_or_new_admin_page() ) { // load on allowed pages only.
 
 			return;
 		}
@@ -123,21 +123,21 @@ class EditorsKit_Block_Assets {
 		wp_enqueue_script(
 			$this->slug . '-editor',
 			$this->url . '/build/index.js',
-			array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-data', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api', 'wp-editor', 'wp-hooks', 'lodash'),
+			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-data', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api', 'wp-editor', 'wp-hooks', 'lodash' ),
 			time(),
 			false
 		);
 
-		if (current_theme_supports('editorskit-devtools')) {
+		if ( current_theme_supports( 'editorskit-devtools' ) ) {
 
-			$theme_support = get_theme_support('editorskit-devtools');
+			$theme_support = get_theme_support( 'editorskit-devtools' );
 
-			if ($theme_support) {
+			if ( $theme_support ) {
 
 				wp_enqueue_script(
 					$this->slug . '-devtools',
 					$this->url . '/build/devtools.js',
-					array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api', 'wp-editor', 'wp-hooks', 'lodash'),
+					array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api', 'wp-editor', 'wp-hooks', 'lodash' ),
 					time(),
 					false
 				);
@@ -147,19 +147,19 @@ class EditorsKit_Block_Assets {
 		$version = '';
 		$is_core = true;
 
-		if (defined('GUTENBERG_VERSION')) {
+		if ( defined( 'GUTENBERG_VERSION' ) ) {
 
 			$version = GUTENBERG_VERSION;
 			$is_core = false;
 		} else {
 
-			if (version_compare($wp_version, '5.0') >= 0 && version_compare($wp_version, '5.2.9') <= 0) {
+			if ( version_compare( $wp_version, '5.0' ) >= 0 && version_compare( $wp_version, '5.2.9' ) <= 0 ) {
 
 				$version = '4.8';
-			} elseif (version_compare($wp_version, '5.3') >= 0 && version_compare($wp_version, '5.3.4') <= 0) {
+			} elseif ( version_compare( $wp_version, '5.3' ) >= 0 && version_compare( $wp_version, '5.3.4' ) <= 0 ) {
 
 				$version = '6.6';
-			} elseif (version_compare($wp_version, '5.4') >= 0 || floatval($wp_version) >= 5.4) {
+			} elseif ( version_compare( $wp_version, '5.4' ) >= 0 || floatval( $wp_version ) >= 5.4 ) {
 
 				$version = '7.7';
 			}
@@ -179,15 +179,15 @@ class EditorsKit_Block_Assets {
 				'is_core' => $is_core,
 			),
 			'supports' => array(
-				'color_palette' => get_theme_support('editorskit-color-palette-classnames'),
+				'color_palette' => get_theme_support( 'editorskit-color-palette-classnames' ),
 			),
 		);
 
-		wp_add_inline_script($this->slug . '-editor', 'window.editorskitInfo = ' . wp_json_encode($global) . ';', 'before');
+		wp_add_inline_script( $this->slug . '-editor', 'window.editorskitInfo = ' . wp_json_encode( $global ) . ';', 'before' );
 
 		// CodeMirror assets.
-		wp_enqueue_script('code-editor');
-		wp_enqueue_style('code-editor');
+		wp_enqueue_script( 'code-editor' );
+		wp_enqueue_style( 'code-editor' );
 	}
 
 	/**
@@ -199,13 +199,13 @@ class EditorsKit_Block_Assets {
 		global $current_screen;
 
 		// Check if Gutenberg editor is loaded on the screen.
-		if ((method_exists($current_screen, 'is_block_editor') && $current_screen->is_block_editor())) {
+		if ( ( method_exists( $current_screen, 'is_block_editor' ) && $current_screen->is_block_editor() ) ) {
 			return;
 		}
 
 		// Remove EditorsKit JS file when post is not using Gutenberg.
-		wp_dequeue_script($this->slug . '-editor');
-		wp_dequeue_script($this->slug . '-devtools');
+		wp_dequeue_script( $this->slug . '-editor' );
+		wp_dequeue_script( $this->slug . '-devtools' );
 	}
 
 	/**
@@ -223,8 +223,8 @@ class EditorsKit_Block_Assets {
 	 *
 	 * @return bool true or false
 	 */
-	function hide_admin_bar($bool) {
-		if (get_query_var('editorskitsandbox')) {
+	function hide_admin_bar( $bool ) {
+		if ( get_query_var( 'editorskitsandbox' ) ) {
 			return false;
 		}
 
