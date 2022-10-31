@@ -59,7 +59,7 @@ class NavigatorToolbar extends Component {
 			<Fragment>
 				<BlockControls>
 					<ToolbarGroup>
-						{ navigatorToolbarGroupButton }
+						{ navigatorToolbarButton }
 					</ToolbarGroup>
 				</BlockControls>
 				{ navigatorModal }
