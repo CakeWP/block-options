@@ -44,12 +44,10 @@ class ReadingTime extends Component {
 
 	handleButtonClick( event ) {
 		const button = document.querySelector( '.table-of-contents button' )?.getAttribute( 'aria-expanded' );
-		console.log("first")
 		if ( document.querySelector( '.table-of-contents' )?.contains( event.target ) && button === 'false' ) {
 			const estimated = this.calculateReadingTime();
 
 			const checkExist = setInterval( function() {
-				console.log("helo")
 				if ( document.querySelector( '.table-of-contents__popover' ) ) {
 					document.querySelector( '.table-of-contents__counts' ).insertAdjacentHTML( 'beforeend',
 						`<li class="table-of-contents__count table-of-contents__wordcount">${ __( 'Reading Time', 'block-options' ) }<span class="table-of-contents__number">${ estimated } min</span></li>`

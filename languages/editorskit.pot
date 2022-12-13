@@ -3,6 +3,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/components/reading-time/components/controls.js:55
+#: src/extensions/components/reading-time/components/controls.js:53
 msgid "Reading Time"
 msgstr ""

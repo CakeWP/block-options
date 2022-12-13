@@ -23830,16 +23830,11 @@ var ReadingTime = /*#__PURE__*/function (_Component) {
   }, {
     key: "handleButtonClick",
     value: function handleButtonClick(event) {
-      var _document$querySelect, _document$querySelect2;
+      var button = document.querySelector('.table-of-contents button').getAttribute('aria-expanded');
 
-      var button = (_document$querySelect = document.querySelector('.table-of-contents button')) === null || _document$querySelect === void 0 ? void 0 : _document$querySelect.getAttribute('aria-expanded');
-      console.log("first");
-
-      if ((_document$querySelect2 = document.querySelector('.table-of-contents')) !== null && _document$querySelect2 !== void 0 && _document$querySelect2.contains(event.target) && button === 'false') {
+      if (document.querySelector('.table-of-contents').contains(event.target) && button === 'false') {
         var estimated = this.calculateReadingTime();
         var checkExist = setInterval(function () {
-          console.log("helo");
-
           if (document.querySelector('.table-of-contents__popover')) {
             document.querySelector('.table-of-contents__counts').insertAdjacentHTML('beforeend', "<li class=\"table-of-contents__count table-of-contents__wordcount\">".concat(__('Reading Time', 'block-options'), "<span class=\"table-of-contents__number\">").concat(estimated, " min</span></li>"));
             clearInterval(checkExist);
