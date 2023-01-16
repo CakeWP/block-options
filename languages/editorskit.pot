@@ -3,6 +3,30 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/components/reading-time/components/controls.js:53
-msgid "Reading Time"
+#: src/extensions/components/url-popover/url-input-ui.js:108
+msgid "Open in New Tab"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:113
+msgid "No Follow"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:118
+msgid "Sponsored"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:123
+msgid "Hover Animation"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:139
+msgid "Edit link"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:140
+msgid "Insert link"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:173
+msgid "Remove link"
 msgstr ""

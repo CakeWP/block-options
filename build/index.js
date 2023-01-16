@@ -23830,9 +23830,11 @@ var ReadingTime = /*#__PURE__*/function (_Component) {
   }, {
     key: "handleButtonClick",
     value: function handleButtonClick(event) {
-      var button = document.querySelector('.table-of-contents button').getAttribute('aria-expanded');
+      var _document$querySelect, _document$querySelect2;
 
-      if (document.querySelector('.table-of-contents').contains(event.target) && button === 'false') {
+      var button = (_document$querySelect = document.querySelector('.table-of-contents button')) === null || _document$querySelect === void 0 ? void 0 : _document$querySelect.getAttribute('aria-expanded');
+
+      if ((_document$querySelect2 = document.querySelector('.table-of-contents')) !== null && _document$querySelect2 !== void 0 && _document$querySelect2.contains(event.target) && button === 'false') {
         var estimated = this.calculateReadingTime();
         var checkExist = setInterval(function () {
           if (document.querySelector('.table-of-contents__popover')) {
