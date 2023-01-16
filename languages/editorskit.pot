@@ -3,30 +3,42 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/components/url-popover/url-input-ui.js:108
+#: src/extensions/formats/link/components/edit.js:26
+msgid "Add Link"
+msgstr ""
+
+#: src/extensions/formats/link/components/edit.js:89
+msgid "Link removed."
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:179
+msgid "Warning: the link has been inserted but may have errors. Please test it."
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:181
+msgid "Link edited."
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:183
+msgid "Link inserted."
+msgstr ""
+
+#: src/extensions/formats/link/components/inline.js:239
 msgid "Open in New Tab"
 msgstr ""
 
-#: src/extensions/components/url-popover/url-input-ui.js:113
+#: src/extensions/formats/link/components/inline.js:243
 msgid "No Follow"
 msgstr ""
 
-#: src/extensions/components/url-popover/url-input-ui.js:118
+#: src/extensions/formats/link/components/inline.js:247
 msgid "Sponsored"
 msgstr ""
 
-#: src/extensions/components/url-popover/url-input-ui.js:123
-msgid "Hover Animation"
+#: src/extensions/formats/link/components/inline.js:262
+msgid "New:"
 msgstr ""
 
-#: src/extensions/components/url-popover/url-input-ui.js:139
-msgid "Edit link"
-msgstr ""
-
-#: src/extensions/components/url-popover/url-input-ui.js:140
-msgid "Insert link"
-msgstr ""
-
-#: src/extensions/components/url-popover/url-input-ui.js:173
-msgid "Remove link"
+#: src/extensions/formats/link/index.js:21
+msgid "Link"
 msgstr ""

@@ -1,24 +1,26 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, createRef, useMemo, Fragment } = wp.element;
-const {
+import { __ } from "@wordpress/i18n";
+import { Component, createRef, useMemo, Fragment, useState } from "@wordpress/element";
+import {
 	ToggleControl,
 	withSpokenMessages,
-} = wp.components;
-const { LEFT, RIGHT, UP, DOWN, BACKSPACE, ENTER, ESCAPE } = wp.keycodes;
-const { getRectangleFromRange } = wp.dom;
-const { prependHTTP } = wp.url;
-const {
+	Popover
+} from "@wordpress/components";
+import { LEFT, RIGHT, UP, DOWN, BACKSPACE, ENTER, ESCAPE } from "@wordpress/keycodes";
+import { getRectangleFromRange } from "@wordpress/dom";
+import { prependHTTP } from "@wordpress/url";
+import {
+	slice,
 	create,
 	insert,
 	isCollapsed,
 	applyFormat,
 	getTextContent,
-	slice,
-} = wp.richText;
-const { URLPopover } = wp.blockEditor;
+	useAnchor,
+} from "@wordpress/richText";
+import { URLPopover, useCachedTruthy, __experimentalLinkControl as LinkControl } from "@wordpress/block-editor";
 
 /**
  * Internal dependencies
@@ -27,72 +29,25 @@ import { createLinkFormat, isValidHref } from './utils';
 import PositionedAtSelection from './positioned-at-selection';
 import LinkEditor from './link-editor';
 import LinkViewer from './link-viewer';
-
+import { link } from "..";
 const stopKeyPropagation = ( event ) => event.stopPropagation();
 
 function isShowingInput( props, state ) {
 	return props.addingLink || state.editLink;
 }
 
-const URLPopoverAtLink = ( { isActive, addingLink, value, ...props } ) => {
-	const anchorRect = useMemo( () => {
-		const selection = window.getSelection();
-		const range = selection.rangeCount > 0 ? selection.getRangeAt( 0 ) : null;
-		if ( ! range ) {
-			return;
-		}
 
-		if ( addingLink ) {
-			return getRectangleFromRange( range );
-		}
+function InlineLinkUI(props)  {
+	const [ state, setState ] = useState({
+		opensInNewWindow: false,
+		noFollow: false,
+		sponsored: false,
+		inputValue: '',
+	})
 
-		let element = range.startContainer;
 
-		// If the caret is right before the element, select the next element.
-		element = element.nextElementSibling || element;
-
-		while ( element.nodeType !== window.Node.ELEMENT_NODE ) {
-			element = element.parentNode;
-		}
-
-		const closest = element.closest( 'a' );
-		if ( closest ) {
-			return closest.getBoundingClientRect();
-		}
-	}, [ isActive, addingLink, value.start, value.end ] );
-
-	if ( ! anchorRect ) {
-		return null;
-	}
-
-	return <URLPopover anchorRect={ anchorRect } { ...props } />;
-};
-
-class InlineLinkUI extends Component {
-	constructor() {
-		super( ...arguments );
-
-		this.editLink = this.editLink.bind( this );
-		this.submitLink = this.submitLink.bind( this );
-		this.onKeyDown = this.onKeyDown.bind( this );
-		this.onChangeInputValue = this.onChangeInputValue.bind( this );
-		this.setLinkTarget = this.setLinkTarget.bind( this );
-		this.setNoFollow = this.setNoFollow.bind( this );
-		this.setSponsored = this.setSponsored.bind( this );
-		this.onFocusOutside = this.onFocusOutside.bind( this );
-		this.resetState = this.resetState.bind( this );
-		this.autocompleteRef = createRef();
-
-		this.state = {
-			opensInNewWindow: false,
-			noFollow: false,
-			sponsored: false,
-			inputValue: '',
-		};
-	}
-
-	static getDerivedStateFromProps( props, state ) {
-		const { activeAttributes: { url, target, rel } } = props;
+	const  getDerivedStateFromProps = (   state )=> {
+		const { activeAttributes:{ url, target, rel }} = props;
 		const opensInNewWindow = target === '_blank';
 
 		if ( ! isShowingInput( props, state ) ) {
@@ -121,86 +76,86 @@ class InlineLinkUI extends Component {
 		return null;
 	}
 
-	onKeyDown( event ) {
+	const onKeyDown = ( event ) => {
 		if ( [ LEFT, DOWN, RIGHT, UP, BACKSPACE, ENTER ].indexOf( event.keyCode ) > -1 ) {
 			// Stop the key event from propagating up to ObserveTyping.startTypingInTextField.
 			event.stopPropagation();
 		}
 
 		if ( [ ESCAPE ].indexOf( event.keyCode ) > -1 ) {
-			this.resetState();
+			resetState();
 		}
 	}
 
-	onChangeInputValue( inputValue ) {
-		this.setState( { inputValue } );
+	const onChangeInputValue = ( inputValue ) => {
+		setState( { inputValue } );
 	}
 
-	setLinkTarget( opensInNewWindow ) {
-		const { activeAttributes: { url = '' }, value, onChange } = this.props;
+	const setLinkTarget = ( opensInNewWindow ) => {
+		const { activeAttributes: { url = '' }, value, onChange } = props;
 
-		this.setState( { opensInNewWindow } );
+		setState( { opensInNewWindow } );
 
 		// Apply now if URL is not being edited.
-		if ( ! isShowingInput( this.props, this.state ) ) {
+		if ( ! isShowingInput( props, state ) ) {
 			const selectedText = getTextContent( slice( value ) );
 
 			onChange( applyFormat( value, createLinkFormat( {
 				url,
 				opensInNewWindow,
-				noFollow: this.state.noFollow,
-				sponsored: this.state.sponsored,
+				noFollow: state.noFollow,
+				sponsored: state.sponsored,
 				text: selectedText,
 			} ) ) );
 		}
 	}
 
-	setNoFollow( noFollow ) {
-		const { activeAttributes: { url = '' }, value, onChange } = this.props;
+	const setNoFollow = ( noFollow ) => {
+		const { activeAttributes: { url = '' }, value, onChange } = props;
 
-		this.setState( { noFollow } );
+		setState( { noFollow } );
 
 		// Apply now if URL is not being edited.
-		if ( ! isShowingInput( this.props, this.state ) ) {
+		if ( ! isShowingInput( props, state ) ) {
 			const selectedText = getTextContent( slice( value ) );
 
 			onChange( applyFormat( value, createLinkFormat( {
 				url,
-				opensInNewWindow: this.state.opensInNewWindow,
+				opensInNewWindow: state.opensInNewWindow,
 				noFollow,
-				sponsored: this.state.sponsored,
+				sponsored: state.sponsored,
 				text: selectedText,
 			} ) ) );
 		}
 	}
 
-	setSponsored( sponsored ) {
-		const { activeAttributes: { url = '' }, value, onChange } = this.props;
+	const setSponsored = ( sponsored ) =>{
+		const { activeAttributes: { url = '' }, value, onChange } = props;
 
-		this.setState( { sponsored } );
+		setState( { sponsored } );
 
 		// Apply now if URL is not being edited.
-		if ( ! isShowingInput( this.props, this.state ) ) {
+		if ( ! isShowingInput( props, state ) ) {
 			const selectedText = getTextContent( slice( value ) );
 
 			onChange( applyFormat( value, createLinkFormat( {
 				url,
-				opensInNewWindow: this.state.opensInNewWindow,
-				noFollow: this.state.noFollow,
+				opensInNewWindow: state.opensInNewWindow,
+				noFollow: state.noFollow,
 				sponsored,
 				text: selectedText,
 			} ) ) );
 		}
 	}
 
-	editLink( event ) {
-		this.setState( { editLink: true } );
+	const editLink = ( event ) => {
+		setState( { editLink: true } );
 		event.preventDefault();
 	}
 
-	submitLink( event ) {
-		const { isActive, value, onChange, speak } = this.props;
-		const { inputValue, opensInNewWindow } = this.state;
+	const submitLink = ( event ) => {
+		const { isActive, value, onChange, speak } = props;
+		const { inputValue, opensInNewWindow } = state;
 		const url = prependHTTP( inputValue );
 		const selectedText = getTextContent( slice( value ) );
 		const format = createLinkFormat( {
@@ -218,7 +173,7 @@ class InlineLinkUI extends Component {
 			onChange( applyFormat( value, format ) );
 		}
 
-		this.resetState();
+		resetState();
 
 		if ( ! isValidHref( url ) ) {
 			speak( __( 'Warning: the link has been inserted but may have errors. Please test it.', 'block-options' ), 'assertive' );
@@ -229,36 +184,35 @@ class InlineLinkUI extends Component {
 		}
 	}
 
-	onFocusOutside() {
+	const onFocusOutside = () => {
 		// The autocomplete suggestions list renders in a separate popover (in a portal),
 		// so onClickOutside fails to detect that a click on a suggestion occured in the
 		// LinkContainer. Detect clicks on autocomplete suggestions using a ref here, and
 		// return to avoid the popover being closed.
-		const autocompleteElement = this.autocompleteRef.current;
+		const autocompleteElement = autocompleteRef.current;
 		if ( autocompleteElement && autocompleteElement.contains( event.target ) ) {
 			return;
 		}
 
-		this.resetState();
+		resetState();
 	}
 
-	resetState() {
-		this.props.stopAddingLink();
-		this.setState( { editLink: false } );
+	const resetState = () => {
+		props.stopAddingLink();
+		setState( { editLink: false } );
 	}
 
-	render() {
-		const { isActive, activeAttributes: { url, target, rel }, addingLink, value } = this.props;
+		const { isActive, activeAttributes: { url, target, rel }, addingLink, value } = props;
 
 		if ( ! isActive && ! addingLink ) {
 			return null;
 		}
 
-		const { inputValue, opensInNewWindow, noFollow, sponsored } = this.state;
-		const showInput = isShowingInput( this.props, this.state );
+		const { inputValue, opensInNewWindow, noFollow, sponsored } = state;
+		const showInput = isShowingInput( props, state );
 
 		if ( ! opensInNewWindow && target === '_blank' ) {
-			this.setState( { opensInNewWindow: true } );
+			setState( { opensInNewWindow: true } );
 		}
 
 		if ( typeof rel === 'string' ) {
@@ -266,74 +220,108 @@ class InlineLinkUI extends Component {
 			const relSponsored = rel.split( ' ' ).includes( 'sponsored' );
 
 			if ( relNoFollow !== noFollow ) {
-				this.setState( { noFollow: relNoFollow } );
+				setState( { noFollow: relNoFollow } );
 			}
 
 			if ( relSponsored !== sponsored ) {
-				this.setState( { sponsored: relSponsored } );
+				setState( { sponsored: relSponsored } );
 			}
 		}
 
 		return (
-			<PositionedAtSelection
-				key={ `${ value.start }${ value.end }` /* Used to force rerender on selection change */ }
-			>
-				<URLPopoverAtLink
-					value={ value }
-					isActive={ isActive }
-					addingLink={ addingLink }
-					onFocusOutside={ this.onFocusOutside }
-					onClose={ () => {
-						if ( ! inputValue ) {
-							this.resetState();
-						}
-					} }
-					focusOnMount={ showInput ? 'firstElement' : false }
-					className="editorskit-url-popover"
-					renderSettings={ () => (
-						<Fragment>
-							<ToggleControl
-								label={ __( 'Open in New Tab', 'block-options' ) }
-								checked={ opensInNewWindow }
-								onChange={ this.setLinkTarget }
-							/>
-							<ToggleControl
-								label={ __( 'No Follow', 'block-options' ) }
-								checked={ noFollow }
-								onChange={ this.setNoFollow }
-							/>
-							<ToggleControl
-								label={ __( 'Sponsored', 'block-options' ) }
-								checked={ sponsored }
-								onChange={ this.setSponsored }
-							/>
-						</Fragment>
-					) }
-				>
-					{ showInput ? (
-						<LinkEditor
-							className="editor-format-toolbar__link-container-content block-editor-format-toolbar__link-container-content"
-							value={ inputValue }
-							onChangeInputValue={ this.onChangeInputValue }
-							onKeyDown={ this.onKeyDown }
-							onKeyPress={ stopKeyPropagation }
-							onSubmit={ this.submitLink }
-							autocompleteRef={ this.autocompleteRef }
-						/>
-					) : (
-						<LinkViewer
-							className="editor-format-toolbar__link-container-content block-editor-format-toolbar__link-container-content"
-							onKeyPress={ stopKeyPropagation }
-							url={ url }
-							onEditLinkClick={ this.editLink }
-							linkClassName={ url && isValidHref( prependHTTP( url ) ) ? undefined : 'has-invalid-link' }
-						/>
-					) }
+			<Popover>
+				<LinkControl
+						searchInputPlaceholder="Search here..."
+						value={ props.value }
+						settings={[
+							{
+								id: 'opensInNewWindow',
+								title: __( 'Open in New Tab', 'block-options' ),
+							},
+							{
+								id: 'noFollow',
+								title: __( 'No Follow', 'block-options' )
+							},
+							{
+								id: 'sponsored',
+								title: __( 'Sponsored', 'block-options' )
+							}
+						]}
+						onChange={ newSettings => {
 
-				</URLPopoverAtLink>
-			</PositionedAtSelection>
+							const isSponsored = newSettings?.sponsored ?? false;
+							const isNoFollow = newSettings?.noFollow ?? false;
+							const isOpenInNewWindow = newSettings?.opensInNewWindow ?? false;
+
+							setSponsored(isSponsored);
+							setNoFollow(isNoFollow);
+							setLinkTarget(isOpenInNewWindow)
+
+						} }
+						withCreateSuggestion={true}
+						createSuggestionButtonText={ (newValue) => `${__("New:")} ${newValue}` }
+					>
+					</LinkControl>
+				</Popover>
 		);
-	}
 }
 
 export default withSpokenMessages( InlineLinkUI );
+	// <PositionedAtSelection
+	// 			key={ `${ value.start }${ value.end }` /* Used to force rerender on selection change */ }
+	// 			>
+	// 			<URLPopover
+	// 				expandOnMobile
+	// 				value={ value }
+	// 				isActive={ isActive }
+	// 				addingLink={ addingLink }
+	// 				onFocusOutside={ onFocusOutside }
+	// 				onClose={ () => {
+	// 					if ( ! inputValue ) {
+	// 						resetState();
+	// 					}
+	// 				} }
+	// 				focusOnMount={ showInput ? 'firstElement' : false }
+	// 				className="editorskit-url-popover"
+	// 				renderSettings={ () => (
+	// 					<Fragment>
+	// 						<ToggleControl
+	// 							label={ __( 'Open in New Tab', 'block-options' ) }
+	// 							checked={ opensInNewWindow }
+	// 							onChange={ setLinkTarget }
+	// 						/>
+	// 						<ToggleControl
+	// 							label={ __( 'No Follow', 'block-options' ) }
+	// 							checked={ noFollow }
+	// 							onChange={ setNoFollow }
+	// 						/>
+	// 						<ToggleControl
+	// 							label={ __( 'Sponsored', 'block-options' ) }
+	// 							checked={ sponsored }
+	// 							onChange={ setSponsored }
+	// 						/>
+	// 					</Fragment>
+	// 				) }
+	// 			>
+	// 				{ showInput ? (
+	// 					<LinkEditor
+	// 						className="editor-format-toolbar__link-container-content block-editor-format-toolbar__link-container-content"
+	// 						value={ inputValue }
+	// 						onChangeInputValue={ onChangeInputValue }
+	// 						onKeyDown={ onKeyDown }
+	// 						onKeyPress={ stopKeyPropagation }
+	// 						onSubmit={ submitLink }
+	// 						autocompleteRef={ autocompleteRef }
+	// 					/>
+	// 				) : (
+	// 					<LinkViewer
+	// 						className="editor-format-toolbar__link-container-content block-editor-format-toolbar__link-container-content"
+	// 						onKeyPress={ stopKeyPropagation }
+	// 						url={ url }
+	// 						onEditLinkClick={ editLink }
+	// 						linkClassName={ url && isValidHref( prependHTTP( url ) ) ? undefined : 'has-invalid-link' }
+	// 					/>
+	// 				) }
+
+	// 			</URLPopover>
+	// 		</PositionedAtSelection>

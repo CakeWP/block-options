@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import Edit from './components/edit';
+import edit from './components/edit';
 
 /**
  * WordPress dependencies
@@ -48,5 +48,5 @@ export const link = {
 			},
 		} );
 	},
-	edit: Edit,
+	edit,
 };
