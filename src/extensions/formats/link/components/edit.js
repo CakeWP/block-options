@@ -162,7 +162,6 @@ class Edit extends Component {
 						activeAttributes={activeAttributes}
 						value={value}
 						onChange={onChange}
-						{...this.props}
 					/>
 				</BlockControls>
 			</Fragment>
