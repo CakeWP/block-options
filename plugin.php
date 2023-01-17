@@ -71,7 +71,7 @@ if ( ! class_exists( 'EditorsKit' ) ) :
 		 * @return void
 		 */
 		public function __clone() {
-			 // Cloning instances of the class is forbidden.
+			// Cloning instances of the class is forbidden.
 			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', 'block-options' ), '1.0' );
 		}
 
@@ -136,6 +136,8 @@ if ( ! class_exists( 'EditorsKit' ) ) :
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/helper.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-shortcodes.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-block-locking.php';
+			require_once EDITORSKIT_PLUGIN_DIR . 'includes/notices/class-editorskit-support-notice.php';
+			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-plugin-shortcuts.php';
 
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 				require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-welcome.php';

@@ -9,10 +9,11 @@ import Notices from './notices';
 /**
  * WordPress dependencies
  */
+import { starFilled } from '@wordpress/icons';
 const { __, sprintf } = wp.i18n;
 const { registerCoreBlocks } = wp.blockLibrary;
 const { Fragment, Component, RawHTML, render } = wp.element;
-const { TabPanel, Panel, PanelBody, PanelRow } = wp.components;
+const { TabPanel, Panel, PanelBody, PanelRow, Button, Icon } = wp.components;
 
 class EditorsKitSettings extends Component {
 	render() {
@@ -108,6 +109,26 @@ class EditorsKitSettings extends Component {
 						<p className="editorskit-panel__header-hint">{__('Settings → EditorsKit', 'block-options')}</p>
 						<h2>{__('Getting Started with', 'block-options')} <strong>EditorsKit</strong><code>{window.editorskitSettings?.version}</code></h2>
 						<p>{__('Congratulations! You\'ve just unlocked more Gutenberg block editor tools for easier editing and better workflow. Check more information about the plugin below and please make sure to navigate through "Tutorials and Docs" tab to learn more on how to use each available features.', 'block-options')}</p>
+						
+						<div style={{ display: 'flex', gap: 5 }}>
+							<Button 
+								target="__blank" 
+								variant="primary" 
+								href="https://www.buymeacoffee.com/munirkamal" 
+								style={{ backgroundColor: '#FEDD03', color: '#000000', fontWeight: 600, display: 'flex', gap: 5 }}
+							>
+								<svg xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 256 256"><path fill="currentColor" d="M212 76H32a12 12 0 0 0-12 12v48a100.4 100.4 0 0 0 26.7 68H32a12 12 0 0 0 0 24h176a12 12 0 0 0 0-24h-14.7a101.5 101.5 0 0 0 20-32a44.1 44.1 0 0 0 42.7-44v-8a44 44 0 0 0-44-44ZM86 204a76.2 76.2 0 0 1-42-68v-36h152v36a75.9 75.9 0 0 1-2.8 20.3c-.1.2-.1.5-.2.7a76.3 76.3 0 0 1-39 47Zm146-76a20.1 20.1 0 0 1-12.6 18.6a94.2 94.2 0 0 0 .6-10.6v-34.3a19.9 19.9 0 0 1 12 18.3ZM68 48V24a12 12 0 0 1 24 0v24a12 12 0 0 1-24 0Zm40 0V24a12 12 0 0 1 24 0v24a12 12 0 0 1-24 0Zm40 0V24a12 12 0 0 1 24 0v24a12 12 0 0 1-24 0Z"/></svg>
+								{ __('Buy me a Coffee', 'block-options') }
+							</Button>
+							<Button 
+								variant="secondary" 
+								href="https://wordpress.org/support/plugin/block-options/reviews/#new-post" 
+								target="__blank"
+							>
+								<Icon icon={starFilled} />
+								{ __('Leave a Review', 'block-options') }
+							</Button>
+						</div>
 					</div>
 					<PanelRow>
 						<EditorsKitSettingsPanel />
