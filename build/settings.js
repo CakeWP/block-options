@@ -15737,6 +15737,7 @@ var EditorsKitDocs = /*#__PURE__*/function (_Component) {
           }
         }, formats.title));
       })))), this.state.isOpen && this.state.isLoaded ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Modal, {
+        isFullScreen: true,
         title: __('Documentation', 'block-options'),
         icon: _icon__WEBPACK_IMPORTED_MODULE_6__["default"].book,
         onRequestClose: function onRequestClose() {

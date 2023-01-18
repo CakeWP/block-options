@@ -284,6 +284,7 @@ class EditorsKitDocs extends Component {
 				</div>
 				{ this.state.isOpen && this.state.isLoaded ?
 					<Modal
+						isFullScreen
 						title={ __( 'Documentation', 'block-options' ) }
 						icon={ icon.book }
 						onRequestClose={ () => closeModal() }
