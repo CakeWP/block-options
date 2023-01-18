@@ -117,7 +117,6 @@ class Edit extends Component {
 
 			isActive = true;
 		}
-
 		return (
 			<Fragment>
 				<BlockControls>
@@ -156,12 +155,13 @@ class Edit extends Component {
 					)}
 
 					<InlineLinkUI
+						value={value}
+						isActive={isActive}
+						onChange={onChange}
+						contentRef={this.props.contentRef}
 						addingLink={this.state.addingLink}
 						stopAddingLink={this.stopAddingLink}
-						isActive={isActive}
 						activeAttributes={activeAttributes}
-						value={value}
-						onChange={onChange}
 					/>
 				</BlockControls>
 			</Fragment>
