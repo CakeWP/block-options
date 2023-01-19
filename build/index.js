@@ -18569,7 +18569,7 @@ function addAttributes(settings) {
           type: 'string'
         },
         customFontSize: {
-          type: 'number'
+          type: 'string'
         }
       });
     } // Add Bullet Color
@@ -18889,10 +18889,10 @@ function applyStyle(attributes, blockName) {
     });
 
     if (typeof fontSizeObject !== 'undefined' && typeof fontSizeObject.size !== 'undefined') {
-      style.fontSize = fontSizeObject.size + 'px';
+      style.fontSize = fontSizeObject.size;
     }
   } else if (typeof customFontSize !== 'undefined') {
-    style.fontSize = customFontSize + 'px';
+    style.fontSize = customFontSize;
   }
 
   if (typeof textColor !== 'undefined') {

@@ -3,38 +3,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/components/help-tips/components/controls.js:106
-msgid "Help, tips and tricks"
+#: src/extensions/block-panel/list-settings/index.js:44
+msgid "Text Settings"
 msgstr ""
 
-#: src/extensions/components/help-tips/components/controls.js:124
-msgid "About"
+#: src/extensions/block-panel/list-settings/index.js:57
+msgid "Color Settings"
 msgstr ""
 
-#: src/extensions/components/help-tips/components/controls.js:141
-msgid "EditorsKit Community Help"
+#: src/extensions/block-panel/list-settings/index.js:63
+msgid "Text Color"
 msgstr ""
 
-#: src/extensions/components/help-tips/components/controls.js:148
-msgid "Remove/Disable Help Button"
-msgstr ""
-
-#: src/extensions/components/help-tips/components/controls.js:156
-msgid "Tips and Tricks"
-msgstr ""
-
-#: src/extensions/components/help-tips/components/controls.js:159
-msgid "Close"
-msgstr ""
-
-#: src/extensions/components/help-tips/components/controls.js:184
-msgid "View All Tips and Tricks"
-msgstr ""
-
-#: src/extensions/components/help-tips/components/controls.js:192
-msgid "Next"
-msgstr ""
-
-#: src/extensions/components/help-tips/components/controls.js:195
-msgid "Fetching..."
+#: src/extensions/block-panel/list-settings/index.js:68
+msgid "Bullet/Icon Color"
 msgstr ""

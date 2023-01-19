@@ -26,10 +26,10 @@ function applyStyle( attributes, blockName, props = {} ) {
 	if ( typeof fontSize !== 'undefined' ) {
 		const fontSizeObject = find( fontSizes, { slug: fontSize } );
 		if ( typeof fontSizeObject !== 'undefined' && typeof fontSizeObject.size !== 'undefined' ) {
-			style.fontSize = fontSizeObject.size + 'px';
+			style.fontSize = fontSizeObject.size;
 		}
 	} else if ( typeof customFontSize !== 'undefined' ) {
-		style.fontSize = customFontSize + 'px';
+		style.fontSize = customFontSize;
 	}
 
 	if ( typeof textColor !== 'undefined' ) {
