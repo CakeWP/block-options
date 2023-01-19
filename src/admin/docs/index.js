@@ -93,16 +93,8 @@ class EditorsKitDocs extends Component {
 				name: 'export-import-block-options.md',
 			},
 			{
-				title: __( 'Copy Selected Block(s)', 'block-options' ),
-				name: 'copy-selected-blocks-options.md',
-			},
-			{
 				title: __( 'Media & Text Block Card Layout', 'block-options' ),
 				name: 'media-text-block-layout-options.md',
-			},
-			{
-				title: __( 'Media & Text Block Links', 'block-options' ),
-				name: 'media-text-block-link-options.md',
 			},
 			{
 				title: __( 'Changing List Block Font Size & Text Color', 'block-options' ),

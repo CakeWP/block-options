@@ -3,18 +3,149 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/block-panel/list-settings/index.js:44
-msgid "Text Settings"
+#: src/admin/docs/index.js:100
+msgid "Changing List Block Font Size & Text Color"
 msgstr ""
 
-#: src/extensions/block-panel/list-settings/index.js:57
-msgid "Color Settings"
+#: src/admin/docs/index.js:107
+msgid "Easily Hide Title"
 msgstr ""
 
-#: src/extensions/block-panel/list-settings/index.js:63
-msgid "Text Color"
+#: src/admin/docs/index.js:111
+msgid "Drag and Drop Featured Image"
 msgstr ""
 
-#: src/extensions/block-panel/list-settings/index.js:68
-msgid "Bullet/Icon Color"
+#: src/admin/docs/index.js:115
+msgid "Code Editor Syntax Highlighter"
+msgstr ""
+
+#: src/admin/docs/index.js:119
+msgid "Enable Block Guide Lines"
+msgstr ""
+
+#: src/admin/docs/index.js:123
+msgid "Additional CSS Class(es) Auto Suggestions"
+msgstr ""
+
+#: src/admin/docs/index.js:127
+msgid "Accessible Help, Tips & Tricks"
+msgstr ""
+
+#: src/admin/docs/index.js:131
+msgid "Enable Developer Tools"
+msgstr ""
+
+#: src/admin/docs/index.js:138
+msgid "Block Visibility on Desktop, Mobile or Tablet"
+msgstr ""
+
+#: src/admin/docs/index.js:142
+msgid "Hide Block on Logged-in/out Users"
+msgstr ""
+
+#: src/admin/docs/index.js:146
+msgid "Using Custom Display Logic"
+msgstr ""
+
+#: src/admin/docs/index.js:153
+msgid "Display Cover and Image Blocks in Fullscreen"
+msgstr ""
+
+#: src/admin/docs/index.js:157
+msgid "More Image & Cover Block Styles"
+msgstr ""
+
+#: src/admin/docs/index.js:161
+msgid "Additional List Block Styles"
+msgstr ""
+
+#: src/admin/docs/index.js:172
+msgid ""
+"Learn more about each EditorsKit features with the tutorials below. Click "
+"on the link to open a modal pop-up with detailed explanation and animated "
+"GIF previewing how the features work."
+msgstr ""
+
+#: src/admin/docs/index.js:175
+msgid "Rich Text Formatting"
+msgstr ""
+
+#: src/admin/docs/index.js:192
+msgid "Writing"
+msgstr ""
+
+#: src/admin/docs/index.js:209
+msgid "Block Options"
+msgstr ""
+
+#: src/admin/docs/index.js:226
+msgid "Tools"
+msgstr ""
+
+#: src/admin/docs/index.js:243
+msgid "Block Visibility"
+msgstr ""
+
+#: src/admin/docs/index.js:260
+msgid "Block Styling"
+msgstr ""
+
+#: src/admin/docs/index.js:280
+msgid "Documentation"
+msgstr ""
+
+#: src/admin/docs/index.js:38
+msgid "Adding Selected Text Color"
+msgstr ""
+
+#: src/admin/docs/index.js:42
+msgid "Adding Highlighted Text Background Color"
+msgstr ""
+
+#: src/admin/docs/index.js:46
+msgid "Adding Link \"rel\" NoFollow or Sponsored Attributes"
+msgstr ""
+
+#: src/admin/docs/index.js:50
+msgid "Subscript and Superscript Text Formatting"
+msgstr ""
+
+#: src/admin/docs/index.js:54
+msgid "Justified Paragraph Alignment"
+msgstr ""
+
+#: src/admin/docs/index.js:58
+msgid "Transform Text to Uppercase"
+msgstr ""
+
+#: src/admin/docs/index.js:62
+msgid "Add Nonbreaking Space"
+msgstr ""
+
+#: src/admin/docs/index.js:66
+msgid "Clear Formatting"
+msgstr ""
+
+#: src/admin/docs/index.js:73
+msgid "Markdown Writing Shortcuts"
+msgstr ""
+
+#: src/admin/docs/index.js:77
+msgid "View or Add Estimated Reading Time"
+msgstr ""
+
+#: src/admin/docs/index.js:81
+msgid "Transform 3 Empty Paragraphs to Spacer Block"
+msgstr ""
+
+#: src/admin/docs/index.js:88
+msgid "Set Image Block as Featured Image"
+msgstr ""
+
+#: src/admin/docs/index.js:92
+msgid "Export and Import Blocks"
+msgstr ""
+
+#: src/admin/docs/index.js:96
+msgid "Media & Text Block Card Layout"
 msgstr ""
