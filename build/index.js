@@ -18218,7 +18218,7 @@ var DevicesOptions = function DevicesOptions(props) {
     }
   }), typeof hasAlignmentOption !== 'undefined' && hasAlignmentOption && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("h3", null, __('Responsive Text Alignment', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("small", null, __('Assign different alignment for tablet and mobile devices aside from the option you already have for desktop on the block toolbar.', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TabPanel, {
     className: "ek-responsive-tabpanel",
-    activeClass: "is-primary",
+    activeClass: "is-pressed",
     tabs: [{
       name: 'mobile',
       title: __('Mobile', 'block-options'),
@@ -23840,7 +23840,6 @@ var DisableTitle = /*#__PURE__*/function (_Component) {
           isDisabled = _this$props.isDisabled,
           postmeta = _this$props.postmeta;
       var titleBlock = document.querySelector('.wp-block-post-title');
-      console.log(titleBlock);
 
       if (titleBlock) {
         var isHidden = typeof postmeta !== 'undefined' && typeof postmeta._editorskit_title_hidden !== 'undefined' ? postmeta._editorskit_title_hidden : false;

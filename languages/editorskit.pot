@@ -3,10 +3,44 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/disable-title/controls.js:66
-msgid "Hide  Title"
+#: src/extensions/advanced-controls/options/devices/index.js:101
+msgid "Alignment for Tablet Devices"
 msgstr ""
 
-#: src/extensions/disable-title/controls.js:69
-msgid "Title is hidden on your website."
+#: src/extensions/advanced-controls/options/devices/index.js:49
+msgid "Responsive Visibility"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/index.js:51
+msgid "Hide on Desktop"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/index.js:56
+msgid "Hide on Tablet"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/index.js:61
+msgid "Hide on Mobile"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/index.js:67
+msgid "Responsive Text Alignment"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/index.js:68
+msgid ""
+"Assign different alignment for tablet and mobile devices aside from the "
+"option you already have for desktop on the block toolbar."
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/index.js:74
+msgid "Mobile"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/index.js:79
+msgid "Tablet"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/devices/index.js:89
+msgid "Alignment for Mobile Devices"
 msgstr ""
