@@ -26,7 +26,7 @@ class DisableTitle extends Component {
 	initialize() {
 		const { isDisabled, postmeta } = this.props;
 
-		const titleBlock = document.querySelector( '.editor-post-title__block' );
+		const titleBlock = document.querySelector( '.wp-block-post-title' );
 
 		if ( titleBlock ) {
 			const isHidden = typeof postmeta !== 'undefined' && typeof postmeta._editorskit_title_hidden !== 'undefined' ? postmeta._editorskit_title_hidden : false;

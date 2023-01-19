@@ -23839,7 +23839,8 @@ var DisableTitle = /*#__PURE__*/function (_Component) {
       var _this$props = this.props,
           isDisabled = _this$props.isDisabled,
           postmeta = _this$props.postmeta;
-      var titleBlock = document.querySelector('.editor-post-title__block');
+      var titleBlock = document.querySelector('.wp-block-post-title');
+      console.log(titleBlock);
 
       if (titleBlock) {
         var isHidden = typeof postmeta !== 'undefined' && typeof postmeta._editorskit_title_hidden !== 'undefined' ? postmeta._editorskit_title_hidden : false;
