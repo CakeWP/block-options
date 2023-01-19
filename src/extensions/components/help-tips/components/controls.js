@@ -104,9 +104,7 @@ class HelpControl extends Component {
 								aria-expanded={ isOpen }
 								label={ __( 'Help, tips and tricks' ) }
 								tooltip={ __( 'Help, tips and tricks' ) }
-							>
-
-							</Button>
+							/>
 						);
 					} }
 					renderContent={ ( { onClose } ) => {
@@ -114,6 +112,7 @@ class HelpControl extends Component {
 							<NavigableMenu
 								className="editorskit-menu-help-tips"
 								role="menu"
+								style={{ width:"200px" }}
 							>
 								<Button
 									icon="info"

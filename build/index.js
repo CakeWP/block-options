@@ -22419,7 +22419,10 @@ var HelpControl = /*#__PURE__*/function (_Component) {
           var onClose = _ref2.onClose;
           return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(NavigableMenu, {
             className: "editorskit-menu-help-tips",
-            role: "menu"
+            role: "menu",
+            style: {
+              width: "200px"
+            }
           }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Button, {
             icon: "info",
             onClick: function onClick() {
