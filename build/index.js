@@ -24574,12 +24574,10 @@ var Edit = /*#__PURE__*/function (_Component) {
         position: "bottom center",
         className: "components-editorskit__inline-color-popover",
         focusOnMount: "container",
-        onClickOutside: function onClickOutside(_onClickOutside) {
-          if (!_onClickOutside.target.classList.contains('components-editorskit-background-format') && !document.querySelector('.components-editorskit-background-format').contains(_onClickOutside.target) && (!document.querySelector('.components-color-palette__picker') || document.querySelector('.components-color-palette__picker') && !document.querySelector('.components-color-palette__picker').contains(_onClickOutside.target))) {
-            _this2.setState({
-              isOpen: !isOpen
-            });
-          }
+        onFocusOutside: function onFocusOutside() {
+          _this2.setState({
+            isOpen: false
+          });
         }
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(ColorPalette, {
         colors: colors,

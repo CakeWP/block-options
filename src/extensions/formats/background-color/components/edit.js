@@ -124,32 +124,8 @@ class Edit extends Component {
 								position="bottom center"
 								className="components-editorskit__inline-color-popover"
 								focusOnMount="container"
-								onClickOutside={(onClickOutside) => {
-									if (
-										!onClickOutside.target.classList.contains(
-											'components-editorskit-background-format'
-										) &&
-										!document
-											.querySelector(
-												'.components-editorskit-background-format'
-											)
-											.contains(onClickOutside.target) &&
-										(!document.querySelector(
-											'.components-color-palette__picker'
-										) ||
-											(document.querySelector(
-												'.components-color-palette__picker'
-											) &&
-												!document
-													.querySelector(
-														'.components-color-palette__picker'
-													)
-													.contains(
-														onClickOutside.target
-													)))
-									) {
-										this.setState({ isOpen: !isOpen });
-									}
+								onFocusOutside={() => {
+									this.setState({ isOpen: false });
 								}}
 							>
 								<ColorPalette
