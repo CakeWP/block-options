@@ -3,26 +3,38 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/formats/background-color/components/edit.js:28
-msgid "Highlight Color"
+#: src/extensions/components/help-tips/components/controls.js:106
+msgid "Help, tips and tricks"
 msgstr ""
 
-#: src/extensions/formats/background-color/components/edit.js:31
-msgid "Orange Sunrise"
+#: src/extensions/components/help-tips/components/controls.js:124
+msgid "About"
 msgstr ""
 
-#: src/extensions/formats/background-color/components/edit.js:36
-msgid "Pink Flamingo"
+#: src/extensions/components/help-tips/components/controls.js:141
+msgid "EditorsKit Community Help"
 msgstr ""
 
-#: src/extensions/formats/background-color/components/edit.js:41
-msgid "Spring Green"
+#: src/extensions/components/help-tips/components/controls.js:148
+msgid "Remove/Disable Help Button"
 msgstr ""
 
-#: src/extensions/formats/background-color/components/edit.js:46
-msgid "Blue Moon"
+#: src/extensions/components/help-tips/components/controls.js:156
+msgid "Tips and Tricks"
 msgstr ""
 
-#: src/extensions/formats/background-color/components/edit.js:51
-msgid "Purple Mist"
+#: src/extensions/components/help-tips/components/controls.js:159
+msgid "Close"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/controls.js:184
+msgid "View All Tips and Tricks"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/controls.js:192
+msgid "Next"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/controls.js:195
+msgid "Fetching..."
 msgstr ""

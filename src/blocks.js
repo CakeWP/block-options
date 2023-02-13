@@ -24,7 +24,7 @@ import './extensions/advanced-controls';
 import './extensions/page-template';
 import './extensions/disable-title';
 
-//Components on Dropdown Menu
+// //Components on Dropdown Menu
 import './extensions/components/guidelines';
 import './extensions/components/editor-height';
 import './extensions/components/markdown';
@@ -38,36 +38,36 @@ import './extensions/components/help-tips';
 import './extensions/components/selected-block';
 import './extensions/components/gradient-controls';
 
-//Block Transforms
+// //Block Transforms
 import './extensions/block-transform';
 
-//Block Settings
+// //Block Settings
 import './extensions/block-settings';
 
-// Formats
+// // Formats
 import './extensions/formats/';
 
-//Block Toolbar
+// //Block Toolbar
 import './extensions/block-toolbar';
 
-// Block Transformation
+// // Block Transformation
 import './extensions/transform/empty-paragraphs';
 
-// Block Locking
+// // Block Locking
 import './extensions/lock-block-edit';
 
-// Styles
+// // Styles
 import './extensions/block-styles/';
 
-// Shortcuts
+// // Shortcuts
 import './extensions/shortcuts/select-parent-block';
 import './extensions/shortcuts/heading-level';
 import './extensions/shortcuts/alignment';
 
-// Disable Block Control
+// // Disable Block Control
 import './extensions/advanced-controls/disable-block';
 
-// Moveable Block options
+// // Moveable Block options
 import './extensions/movable-block-options';
 
 // Register Blocks
