@@ -23,7 +23,7 @@ if ( ! function_exists( 'editorskit_hide_title' ) ) {
 	 */
 	function editorskit_hide_title( $title, $id = null ) {
 		// phpcs:ignore
-		if ( ! is_admin() && ! is_search() && in_the_loop() && ( strpos( esc_url( $_SERVER[ 'REQUEST_URI' ] ), '/wp-json/' ) === false ) ) {
+		if ( ! is_admin() && ! is_search() && ( strpos( esc_url( $_SERVER[ 'REQUEST_URI' ] ), '/wp-json/' ) === false ) ) {
 
 			$hidden = get_post_meta( $id, '_editorskit_title_hidden', true );
 			if ( $hidden ) {
@@ -34,7 +34,7 @@ if ( ! function_exists( 'editorskit_hide_title' ) ) {
 
 		return $title;
 	}
-	add_filter( 'the_title', 'editorskit_hide_title', 90, 2 );
+	add_filter( 'the_title', 'editorskit_hide_title', 999, 2 );
 }
 
 if ( ! function_exists( 'editorskit_hidden_title_body_class' ) ) {

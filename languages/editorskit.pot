@@ -3,6 +3,26 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/extensions/components/reading-time/components/controls.js:53
-msgid "Reading Time"
+#: src/extensions/formats/background-color/components/edit.js:28
+msgid "Highlight Color"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:31
+msgid "Orange Sunrise"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:36
+msgid "Pink Flamingo"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:41
+msgid "Spring Green"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:46
+msgid "Blue Moon"
+msgstr ""
+
+#: src/extensions/formats/background-color/components/edit.js:51
+msgid "Purple Mist"
 msgstr ""

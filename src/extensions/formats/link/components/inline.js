@@ -17,16 +17,17 @@ const {
 	applyFormat,
 	getTextContent,
 	slice,
+	useAnchor
 } = wp.richText;
-const { URLPopover } = wp.blockEditor;
+const { URLPopover, useCachedTruthy } = wp.blockEditor;
 
 /**
  * Internal dependencies
  */
 import { createLinkFormat, isValidHref } from './utils';
 import PositionedAtSelection from './positioned-at-selection';
-import LinkEditor from './link-editor';
-import LinkViewer from './link-viewer';
+import {link as settings} from "../index"
+
 
 const stopKeyPropagation = ( event ) => event.stopPropagation();
 
@@ -34,38 +35,19 @@ function isShowingInput( props, state ) {
 	return props.addingLink || state.editLink;
 }
 
-const URLPopoverAtLink = ( { isActive, addingLink, value, ...props } ) => {
-	const anchorRect = useMemo( () => {
-		const selection = window.getSelection();
-		const range = selection.rangeCount > 0 ? selection.getRangeAt( 0 ) : null;
-		if ( ! range ) {
-			return;
-		}
+const URLPopoverAtLink = ( { isActive, addingLink, value, contentRef, ...props } ) => {
+	const popoverAnchor = useCachedTruthy(
+		useAnchor( {
+			value,
+			editableContentElement: contentRef.current,
+			settings,
+		} )
+	);
 
-		if ( addingLink ) {
-			return getRectangleFromRange( range );
-		}
-
-		let element = range.startContainer;
-
-		// If the caret is right before the element, select the next element.
-		element = element.nextElementSibling || element;
-
-		while ( element.nodeType !== window.Node.ELEMENT_NODE ) {
-			element = element.parentNode;
-		}
-
-		const closest = element.closest( 'a' );
-		if ( closest ) {
-			return closest.getBoundingClientRect();
-		}
-	}, [ isActive, addingLink, value.start, value.end ] );
-
-	if ( ! anchorRect ) {
+	if( !popoverAnchor ){
 		return null;
 	}
-
-	return <URLPopover anchorRect={ anchorRect } { ...props } />;
+	return <URLPopover anchor={ popoverAnchor } { ...props } />;
 };
 
 class InlineLinkUI extends Component {
@@ -275,63 +257,60 @@ class InlineLinkUI extends Component {
 		}
 
 		return (
-			<PositionedAtSelection
-				key={ `${ value.start }${ value.end }` /* Used to force rerender on selection change */ }
-			>
-				<URLPopoverAtLink
-					value={ value }
-					isActive={ isActive }
-					addingLink={ addingLink }
-					onFocusOutside={ this.onFocusOutside }
-					onClose={ () => {
-						if ( ! inputValue ) {
-							this.resetState();
-						}
-					} }
-					focusOnMount={ showInput ? 'firstElement' : false }
-					className="editorskit-url-popover"
-					renderSettings={ () => (
-						<Fragment>
-							<ToggleControl
-								label={ __( 'Open in New Tab', 'block-options' ) }
-								checked={ opensInNewWindow }
-								onChange={ this.setLinkTarget }
+					<URLPopoverAtLink
+						value={ value }
+						contentRef={this.props.contentRef}
+						isActive={ isActive }
+						addingLink={ addingLink }
+						onFocusOutside={ this.onFocusOutside }
+						onClose={ () => {
+							if ( ! inputValue ) {
+								this.resetState();
+							}
+						} }
+						focusOnMount={ showInput ? 'firstElement' : false }
+						className="editorskit-url-popover"
+						renderSettings={ () => (
+							<Fragment>
+								<ToggleControl
+									label={ __( 'Open in New Tab', 'block-options' ) }
+									checked={ opensInNewWindow }
+									onChange={ this.setLinkTarget }
+								/>
+								<ToggleControl
+									label={ __( 'No Follow', 'block-options' ) }
+									checked={ noFollow }
+									onChange={ this.setNoFollow }
+								/>
+								<ToggleControl
+									label={ __( 'Sponsored', 'block-options' ) }
+									checked={ sponsored }
+									onChange={ this.setSponsored }
+								/>
+							</Fragment>
+						) }
+					>
+						{showInput ? (
+							<URLPopover.LinkEditor
+								className="editor-format-toolbar__link-container-content block-editor-format-toolbar__link-container-content"
+								value={ inputValue }
+								onChangeInputValue={ this.onChangeInputValue }
+								onKeyDown={ this.onKeyDown }
+								onKeyPress={ stopKeyPropagation }
+								onSubmit={ this.submitLink }
+								autocompleteRef={ this.autocompleteRef }
 							/>
-							<ToggleControl
-								label={ __( 'No Follow', 'block-options' ) }
-								checked={ noFollow }
-								onChange={ this.setNoFollow }
+						) : (
+							<URLPopover.LinkViewer
+								className="editor-format-toolbar__link-container-content block-editor-format-toolbar__link-container-content"
+								onKeyPress={ stopKeyPropagation }
+								url={ url }
+								onEditLinkClick={ this.editLink }
+								linkClassName={ url && isValidHref( prependHTTP( url ) ) ? undefined : 'has-invalid-link' }
 							/>
-							<ToggleControl
-								label={ __( 'Sponsored', 'block-options' ) }
-								checked={ sponsored }
-								onChange={ this.setSponsored }
-							/>
-						</Fragment>
-					) }
-				>
-					{ showInput ? (
-						<LinkEditor
-							className="editor-format-toolbar__link-container-content block-editor-format-toolbar__link-container-content"
-							value={ inputValue }
-							onChangeInputValue={ this.onChangeInputValue }
-							onKeyDown={ this.onKeyDown }
-							onKeyPress={ stopKeyPropagation }
-							onSubmit={ this.submitLink }
-							autocompleteRef={ this.autocompleteRef }
-						/>
-					) : (
-						<LinkViewer
-							className="editor-format-toolbar__link-container-content block-editor-format-toolbar__link-container-content"
-							onKeyPress={ stopKeyPropagation }
-							url={ url }
-							onEditLinkClick={ this.editLink }
-							linkClassName={ url && isValidHref( prependHTTP( url ) ) ? undefined : 'has-invalid-link' }
-						/>
-					) }
+						) }
 
-				</URLPopoverAtLink>
-			</PositionedAtSelection>
+					</URLPopoverAtLink>
 		);
 	}
 }

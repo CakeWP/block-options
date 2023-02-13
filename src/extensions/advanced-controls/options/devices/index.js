@@ -67,7 +67,7 @@ const DevicesOptions = ( props ) => {
 					<h3>{ __( 'Responsive Text Alignment', 'block-options' ) }</h3>
 					<small>{ __( 'Assign different alignment for tablet and mobile devices aside from the option you already have for desktop on the block toolbar.', 'block-options' ) }</small>
 					<TabPanel className="ek-responsive-tabpanel"
-						activeClass="is-primary"
+						activeClass="is-pressed"
 						tabs={ [
 							{
 								name: 'mobile',

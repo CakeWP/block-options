@@ -562,7 +562,7 @@ body:not(.wp-admin) {
 
 	&,
 	> .wp-block-button__link {
-		width: 100%;
+		max-width: 100% $m;
 	}
 }
 
@@ -572,7 +572,7 @@ body:not(.wp-admin) {
 
 		&,
 		> .wp-block-button__link {
-			width: 100%;
+			max-width: 100% $m;
 		}
 	}
 }
@@ -583,7 +583,7 @@ body:not(.wp-admin) {
 
 		&,
 		> .wp-block-button__link {
-			width: 100%;
+			max-width: 100% $m;
 		}
 	}
 }

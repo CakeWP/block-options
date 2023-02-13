@@ -2,9 +2,6 @@
 
 	&[data-type="core/list"] {
 
-		div[data-block]:not([data-block=""]),
-		> {
-
 			ol:not(.is-style-connected),
 			ul:not(.is-style-connected) {
 
@@ -99,6 +96,6 @@
 					}
 				}
 			}
-		}
+		
 	}
 }

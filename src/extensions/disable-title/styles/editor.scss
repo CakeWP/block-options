@@ -17,12 +17,10 @@ body {
 
 	&.editorskit-title-hidden:not(.is-iceberg) {
 
-		.editor-post-title__block {
 
 			.editor-post-title__input {
 				opacity: 0.5;
 			}
-		}
 
 		.editorskit-hidden-title-label {
 			display: block;
@@ -36,11 +34,9 @@ body {
 			display: none;
 		}
 
-		.editor-post-title__block {
 
 			.editor-post-title__input {
 				opacity: 1;
 			}
-		}
 	}
 }

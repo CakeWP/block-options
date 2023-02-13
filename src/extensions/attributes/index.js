@@ -118,7 +118,7 @@ function addAttributes( settings ) {
 					type: 'string',
 				},
 				customFontSize: {
-					type: 'number',
+					type: 'string',
 				},
 			} );
 		}
