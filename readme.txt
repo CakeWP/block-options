@@ -1,7 +1,7 @@
 === Gutenberg Block Editor Toolkit – EditorsKit ===
 Author URI: https://editorskit.com
 Plugin URI: https://editorskit.com
-Contributors: phpbits, munirkamal
+Contributors: munirkamal
 Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenberg editor
 Requires at least: 5.0
 Tested up to: 6.1
@@ -195,6 +195,7 @@ e.g.
 * Fix: Highlighting jump issue.
 * Fix: Warnings in console.
 * Fix: Conflict with other plugins.
+* Fix: Hide title metadata not updating.
 * Fix: Bugs.
 
 = 1.34.2 =
