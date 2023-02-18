@@ -6,7 +6,7 @@ Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenberg editor
 Requires at least: 5.0
 Tested up to: 6.1
 Requires PHP: 5.6
-Stable tag: 1.34.3
+Stable tag: 1.34.4
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -190,6 +190,9 @@ e.g.
 10. Link rel attributes nofollow and sponsored option
 
 == Changelog ==
+
+= 1.34.4 =
+* Fix: Hide title extension conflict with themes.
 
 = 1.34.3 =
 * Fix: Highlighting jump issue.

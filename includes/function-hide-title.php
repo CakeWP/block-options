@@ -73,42 +73,6 @@ if ( ! function_exists( 'editorskit_hidden_title_body_class' ) ) {
 	add_filter( 'body_class', 'editorskit_hidden_title_body_class' );
 }
 
-// if ( ! function_exists( 'editorskit_remove_title_filter_nav_menu' ) ) {
-
-// **
-// * Replace title with blank
-// *
-// * @param string $nav_menu The nav menu output.
-// * @param object $args The wp_nav_menu() arguments.
-// *
-// * @return array Returns the new $nav_menu.
-// */
-// function editorskit_remove_title_filter_nav_menu( $nav_menu, $args ) {
-// remove_filter( 'the_title', 'editorskit_hide_title', 999999, 2 );
-// return $nav_menu;
-// }
-// add_filter( 'pre_wp_nav_menu', 'editorskit_remove_title_filter_nav_menu', 10, 2 );
-// }
-
-// if ( ! function_exists( 'editorskit_add_title_filter_non_menu' ) ) {
-
-// **
-// * Replace title with blank
-// *
-// * @param string $items The HTML list content for the menu items.
-// * @param object $args The wp_nav_menu() arguments.
-// *
-// * @return array Returns the new $items.
-// */
-// function editorskit_add_title_filter_non_menu( $items, $args ) {
-// we are done working with menu, so add the title filter back.
-// add_filter( 'the_title', 'editorskit_hide_title', 999999, 2 );
-// return $items;
-// }
-// add_filter( 'wp_nav_menu_items', 'editorskit_add_title_filter_non_menu', 10, 2 );
-// }
-
-
 if ( ! function_exists( 'editorskit_admin_body_class' ) ) {
 
 	/**
