@@ -123,7 +123,8 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 				$block_editor_settings = 'block_editor_settings';
 			}
 
-			$default_editor_settings = function_exists( 'gutenberg_get_default_block_editor_settings' ) ? gutenberg_get_default_block_editor_settings() : array();
+			$context = new WP_Block_Editor_Context();
+			$settings = get_block_editor_settings(array(), $context);
 
 			$global = array(
 				'url'             => EDITORSKIT_PLUGIN_URL,
@@ -133,7 +134,7 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 					'dir' => EDITORSKIT_PLUGIN_DIR,
 				),
 				'version'         => $this->version,
-				'editor_settings' => apply_filters( $block_editor_settings, $default_editor_settings, '' ),
+				'editor_settings' => $settings,
 			);
 
 			wp_add_inline_script( $this->slug . '-admin', 'window.editorskitSettings = ' . wp_json_encode( $global ) . ';', 'before' );
