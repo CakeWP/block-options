@@ -28,7 +28,7 @@ class Editorskit_Plugin_Shortcuts {
 	 * @return string[] - Modified links.
 	 */
 	public function merge_plugin_link( $links, $plugin_filename ) {
-		if ( strpos( $plugin_filename, basename( EDITORSKIT_PLUGIN_FILE ) ) ) {
+		if ( $plugin_filename === plugin_basename( EDITORSKIT_PLUGIN_FILE ) ) {
 			$settings_link = sprintf(
 				'<a href="%1$s">%2$s</a>',
 				admin_url( 'options-general.php?page=editorskit-getting-started' ),

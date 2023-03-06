@@ -108,7 +108,7 @@ add_filter(
 	 * @param array $parsed_block - Parsed block.
 	 * @param WP_Block $instance - Block instance.
 	 */
-	function( $block_content, $parsed_block, $instance ) {
+	function( $block_content, $parsed_block ) {
 
 		if ( 'core/query' !== $parsed_block['blockName'] || isset( $parsed_block['ek_rendered'] ) ) {
 			return $block_content;
