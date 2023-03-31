@@ -33,7 +33,6 @@ import './extensions/components/manager';
 import './extensions/components/code-editor';
 import './extensions/components/heading-label';
 import './extensions/components/featured-image';
-import './extensions/components/reading-time';
 import './extensions/components/help-tips';
 import './extensions/components/selected-block';
 import './extensions/components/gradient-controls';

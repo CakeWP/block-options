@@ -4,9 +4,9 @@ Plugin URI: https://editorskit.com
 Contributors: munirkamal
 Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenberg editor
 Requires at least: 5.0
-Tested up to: 6.1
+Tested up to: 6.2
 Requires PHP: 5.6
-Stable tag: 1.34.6
+Stable tag: 1.34.7
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -190,6 +190,9 @@ e.g.
 10. Link rel attributes nofollow and sponsored option
 
 == Changelog ==
+
+= 1.34.7 =
+* Fix: Critical bug that prevents the page from updating.
 
 = 1.34.6 =
 * Fix: Show Support link on other plugins.
