@@ -10,4 +10,4 @@ Follow the steps below to easily add attributes to your links.
 
 1. Select the text and make sure to add the link.
 2. Click the caret icon to open the advanced link options.
-3. Toggle the attributes you want to be added on the link. Whether _Open to New Tab_, _No Follow_ and/or _Sponsored_.
+3. Toggle the attributes you want to be added on the link. Whether _Open to New Tab_, _No Follow_ and/or _Sponsored_. Override or set aria-label by attribute __AriaLabel__.

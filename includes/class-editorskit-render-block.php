@@ -330,6 +330,11 @@ class EditorsKit_Render_Block {
 				if ( isset( $attributes['linkSponsored'] ) && $attributes['linkSponsored'] ) {
 					$rel .= ' sponsored';
 				}
+				
+				if ( isset( $attributes['linkAriaLabel'] && $attributes['linkAriaLabel'] !== '' ) {
+					$ariaLabel = ' aria-label="' . $attributes['linkAriaLabel'] . '"';
+					$linked .= $ariaLabel;
+				}
 
 				$rel    .= '"';
 				$linked .= $rel;
@@ -378,6 +383,11 @@ class EditorsKit_Render_Block {
 
 				if ( isset( $attributes['linkSponsored'] ) && $attributes['linkSponsored'] ) {
 					$rel .= ' sponsored';
+				}
+				
+				if ( isset( $attributes['linkAriaLabel'] && $attributes['linkAriaLabel'] !== '' ) {
+					$ariaLabel = ' aria-label="' . $attributes['linkAriaLabel'] . '"';
+					$linked .= $ariaLabel;
 				}
 
 				$rel    .= '"';

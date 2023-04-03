@@ -6,6 +6,7 @@ const { Component, createRef, useMemo, Fragment } = wp.element;
 const {
 	ToggleControl,
 	withSpokenMessages,
+	TextControl,
 } = wp.components;
 const { LEFT, RIGHT, UP, DOWN, BACKSPACE, ENTER, ESCAPE } = wp.keycodes;
 const { getRectangleFromRange } = wp.dom;
@@ -61,6 +62,7 @@ class InlineLinkUI extends Component {
 		this.setLinkTarget = this.setLinkTarget.bind( this );
 		this.setNoFollow = this.setNoFollow.bind( this );
 		this.setSponsored = this.setSponsored.bind( this );
+		this.setLinkAriaLabel = this.setLinkAriaLabel.bind( this );
 		this.onFocusOutside = this.onFocusOutside.bind( this );
 		this.resetState = this.resetState.bind( this );
 		this.autocompleteRef = createRef();
@@ -70,6 +72,7 @@ class InlineLinkUI extends Component {
 			noFollow: false,
 			sponsored: false,
 			inputValue: '',
+			linkAriaLabel: '',
 		};
 	}
 
@@ -133,6 +136,7 @@ class InlineLinkUI extends Component {
 				noFollow: this.state.noFollow,
 				sponsored: this.state.sponsored,
 				text: selectedText,
+				linkAriaLabel: this.state.linkAriaLabel,
 			} ) ) );
 		}
 	}
@@ -152,6 +156,7 @@ class InlineLinkUI extends Component {
 				noFollow,
 				sponsored: this.state.sponsored,
 				text: selectedText,
+				linkAriaLabel: this.state.linkAriaLabel,
 			} ) ) );
 		}
 	}
@@ -171,6 +176,27 @@ class InlineLinkUI extends Component {
 				noFollow: this.state.noFollow,
 				sponsored,
 				text: selectedText,
+				linkAriaLabel: this.state.linkAriaLabel,
+			} ) ) );
+		}
+	}
+	
+	setLinkAriaLabel( linkAriaLabel ) {
+		const { activeAttributes: { url = '' }, value, onChange } = this.props;
+
+		this.setState( { linkAriaLabel } );
+
+		// Apply now if URL is not being edited.
+		if ( ! isShowingInput( this.props, this.state ) ) {
+			const selectedText = getTextContent( slice( value ) );
+
+			onChange( applyFormat( value, createLinkFormat( {
+				url,
+				opensInNewWindow: this.state.opensInNewWindow,
+				noFollow: this.state.noFollow,
+				sponsored: this.state.sponsored,
+				text: selectedText,
+				linkAriaLabel
 			} ) ) );
 		}
 	}
@@ -236,7 +262,7 @@ class InlineLinkUI extends Component {
 			return null;
 		}
 
-		const { inputValue, opensInNewWindow, noFollow, sponsored } = this.state;
+		const { inputValue, opensInNewWindow, noFollow, sponsored, linkAriaLabel } = this.state;
 		const showInput = isShowingInput( this.props, this.state );
 
 		if ( ! opensInNewWindow && target === '_blank' ) {
@@ -286,6 +312,11 @@ class InlineLinkUI extends Component {
 									label={ __( 'Sponsored', 'block-options' ) }
 									checked={ sponsored }
 									onChange={ this.setSponsored }
+								/>
+								<TextControl
+									label={ __( 'AriaLabel', 'block-options' ) }
+									value={ linkAriaLabel }
+									onChange={ this.setLinkAriaLabel }
 								/>
 							</Fragment>
 						) }

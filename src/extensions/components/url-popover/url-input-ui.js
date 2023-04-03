@@ -6,6 +6,7 @@ const { useRef, useState, useCallback, Fragment } = wp.element;
 const {
 	Button,
 	ToggleControl,
+	TextControl,
 } = wp.components;
 const { URLPopover } = wp.blockEditor;
 const { LEFT, RIGHT, UP, DOWN, BACKSPACE, ENTER } = wp.keycodes;
@@ -17,6 +18,7 @@ const URLInputUI = ( {
 	linkNoFollow,
 	linkSponsored,
 	hasAnimation,
+	linkAriaLabel,
 } ) => {
 	const [ isOpen, setIsOpen ] = useState( false );
 	const openLinkUI = useCallback( () => {
@@ -101,6 +103,9 @@ const URLInputUI = ( {
 	const onSetLinkAnimation = ( value ) => {
 		onChangeUrl( { hasAnimation: value } );
 	};
+	
+	const onSetLinkAriaLabel = ( value ) => {
+		onChangeUrl( { linkAriaLabel: value } );
 
 	const advancedOptions = (
 		<>
@@ -123,6 +128,11 @@ const URLInputUI = ( {
 				label={ __( 'Hover Animation', 'block-options' ) }
 				onChange={ onSetLinkAnimation }
 				checked={ hasAnimation }
+			/>
+			<TextControl
+				label={ __( 'AriaLabel', 'block-options') }
+				onChange={ onSetLinkAriaLabel }
+				value={ linkAriaLabel }
 			/>
 		</>
 	);
