@@ -110,7 +110,7 @@ add_filter(
 	 */
 	function( $block_content, $parsed_block ) {
 
-		if ( 'core/query' !== $parsed_block['blockName'] || isset( $parsed_block['ek_rendered'] ) || is_search() ) {
+		if ( 'core/query' !== $parsed_block['blockName'] || isset( $parsed_block['ek_rendered'] ) || is_search() || is_archive() ) {
 			return $block_content;
 		}
 
