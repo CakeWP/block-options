@@ -4,7 +4,7 @@
 #
 * text eol=LF
 
-# Denote all files that are truly binary and should not be modified.
+# Specify images as binary
 *.png binary
 *.jpg binary
 *.gif binary
