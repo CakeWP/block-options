@@ -1,0 +1,10 @@
+#
+# Auto detect text files and perform LF normalization
+# https://pablorsk.medium.com/be-a-git-ninja-the-gitattributes-file-e58c07c9e915
+#
+* text eol=LF
+
+# Specify images as binary
+*.png binary
+*.jpg binary
+*.gif binary
