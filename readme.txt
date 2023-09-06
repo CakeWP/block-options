@@ -191,6 +191,9 @@ e.g.
 
 == Changelog ==
 
+= 1.34.10 =
+* Fix: Fix Critical bugs, npm versions.
+
 = 1.34.9 =
 * Fix: Query loop issue with the archive pages
 
