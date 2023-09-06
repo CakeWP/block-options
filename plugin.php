@@ -203,7 +203,7 @@ if ( ! class_exists( 'EditorsKit' ) ) :
 		 * @return void
 		 */
 		public function load_textdomain() {
-			 load_plugin_textdomain( 'block-options', false, dirname( plugin_basename( EDITORSKIT_PLUGIN_DIR ) ) . '/languages/' );
+			load_plugin_textdomain( 'block-options', false, dirname( plugin_basename( EDITORSKIT_PLUGIN_DIR ) ) . '/languages/' );
 		}
 
 		/**
@@ -236,7 +236,7 @@ endif; // End if class_exists check.
  * @return object|EditorsKit The one true EditorsKit Instance.
  */
 function editorskit() {
-	 return EditorsKit::instance();
+	return EditorsKit::instance();
 }
 
 // Get Plugin Running.

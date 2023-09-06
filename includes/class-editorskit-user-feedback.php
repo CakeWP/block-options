@@ -14,15 +14,15 @@
  */
 
 // Exit if accessed directly.
-if (!defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 /**
  * Main Feedback Notice Class
  */
-class EditorsKit_User_Feedback
-{
+class EditorsKit_User_Feedback {
+
 
 	/**
 	 * Slug.
@@ -64,24 +64,22 @@ class EditorsKit_User_Feedback
 	 *
 	 * @param string $args Arguments.
 	 */
-	public function __construct($args)
-	{
-
+	public function __construct( $args ) {
 		$this->slug = $args['slug'];
 		$this->name = $args['name'];
 
 		$this->date_option  = $this->slug . '_activation_date';
 		$this->nobug_option = $this->slug . '_no_bug';
 
-		if (isset($args['time_limit'])) {
+		if ( isset( $args['time_limit'] ) ) {
 			$this->time_limit = $args['time_limit'];
 		} else {
 			$this->time_limit = WEEK_IN_SECONDS;
 		}
 
 		// Add actions.
-		add_action('admin_init', array($this, 'check_installation_date'));
-		add_action('admin_init', array($this, 'set_no_bug'), 5);
+		add_action( 'admin_init', array( $this, 'check_installation_date' ) );
+		add_action( 'admin_init', array( $this, 'set_no_bug' ), 5 );
 	}
 
 	/**
@@ -89,80 +87,76 @@ class EditorsKit_User_Feedback
 	 *
 	 * @param string $seconds Seconds in time.
 	 */
-	public function seconds_to_words($seconds)
-	{
-
+	public function seconds_to_words( $seconds ) {
 		// Get the years.
-		$years = (intval($seconds) / YEAR_IN_SECONDS) % 100;
-		if ($years > 1) {
+		$years = ( intval( $seconds ) / YEAR_IN_SECONDS ) % 100;
+		if ( $years > 1 ) {
 			/* translators: Number of years */
-			return sprintf(__('%s years', 'block-options'), $years);
-		} elseif ($years > 0) {
-			return __('a year', 'block-options');
+			return sprintf( __( '%s years', 'block-options' ), $years );
+		} elseif ( $years > 0 ) {
+			return __( 'a year', 'block-options' );
 		}
 
 		// Get the weeks.
-		$weeks = (intval($seconds) / WEEK_IN_SECONDS) % 52;
-		if ($weeks > 1) {
+		$weeks = ( intval( $seconds ) / WEEK_IN_SECONDS ) % 52;
+		if ( $weeks > 1 ) {
 			/* translators: Number of weeks */
-			return sprintf(__('%s weeks', 'block-options'), $weeks);
-		} elseif ($weeks > 0) {
-			return __('a week', 'block-options');
+			return sprintf( __( '%s weeks', 'block-options' ), $weeks );
+		} elseif ( $weeks > 0 ) {
+			return __( 'a week', 'block-options' );
 		}
 
 		// Get the days.
-		$days = (intval($seconds) / DAY_IN_SECONDS) % 7;
-		if ($days > 1) {
+		$days = ( intval( $seconds ) / DAY_IN_SECONDS ) % 7;
+		if ( $days > 1 ) {
 			/* translators: Number of days */
-			return sprintf(__('%s days', 'block-options'), $days);
-		} elseif ($days > 0) {
-			return __('a day', 'block-options');
+			return sprintf( __( '%s days', 'block-options' ), $days );
+		} elseif ( $days > 0 ) {
+			return __( 'a day', 'block-options' );
 		}
 
 		// Get the hours.
-		$hours = (intval($seconds) / HOUR_IN_SECONDS) % 24;
-		if ($hours > 1) {
+		$hours = ( intval( $seconds ) / HOUR_IN_SECONDS ) % 24;
+		if ( $hours > 1 ) {
 			/* translators: Number of hours */
-			return sprintf(__('%s hours', 'block-options'), $hours);
-		} elseif ($hours > 0) {
-			return __('an hour', 'block-options');
+			return sprintf( __( '%s hours', 'block-options' ), $hours );
+		} elseif ( $hours > 0 ) {
+			return __( 'an hour', 'block-options' );
 		}
 
 		// Get the minutes.
-		$minutes = (intval($seconds) / MINUTE_IN_SECONDS) % 60;
-		if ($minutes > 1) {
+		$minutes = ( intval( $seconds ) / MINUTE_IN_SECONDS ) % 60;
+		if ( $minutes > 1 ) {
 			/* translators: Number of minutes */
-			return sprintf(__('%s minutes', 'block-options'), $minutes);
-		} elseif ($minutes > 0) {
-			return __('a minute', 'block-options');
+			return sprintf( __( '%s minutes', 'block-options' ), $minutes );
+		} elseif ( $minutes > 0 ) {
+			return __( 'a minute', 'block-options' );
 		}
 
 		// Get the seconds.
-		$seconds = intval($seconds) % 60;
-		if ($seconds > 1) {
+		$seconds = intval( $seconds ) % 60;
+		if ( $seconds > 1 ) {
 			/* translators: Number of seconds */
-			return sprintf(__('%s seconds', 'block-options'), $seconds);
-		} elseif ($seconds > 0) {
-			return __('a second', 'block-options');
+			return sprintf( __( '%s seconds', 'block-options' ), $seconds );
+		} elseif ( $seconds > 0 ) {
+			return __( 'a second', 'block-options' );
 		}
 	}
 
 	/**
 	 * Check date on admin initiation and add to admin notice if it was more than the time limit.
 	 */
-	public function check_installation_date()
-	{
+	public function check_installation_date() {
+		if ( ! get_site_option( $this->nobug_option ) || false === get_site_option( $this->nobug_option ) ) {
 
-		if (!get_site_option($this->nobug_option) || false === get_site_option($this->nobug_option)) {
-
-			add_site_option($this->date_option, time());
+			add_site_option( $this->date_option, time() );
 
 			// Retrieve the activation date.
-			$install_date = get_site_option($this->date_option);
+			$install_date = get_site_option( $this->date_option );
 
 			// If difference between install date and now is greater than time limit, then display notice.
-			if ((time() - $install_date) > $this->time_limit) {
-				add_action('admin_notices', array($this, 'display_admin_notice'));
+			if ( ( time() - $install_date ) > $this->time_limit ) {
+				add_action( 'admin_notices', array( $this, 'display_admin_notice' ) );
 			}
 		}
 	}
@@ -170,15 +164,13 @@ class EditorsKit_User_Feedback
 	/**
 	 * Display the admin notice.
 	 */
-	public function display_admin_notice()
-	{
-
+	public function display_admin_notice() {
 		$screen = get_current_screen();
 
-		if (isset($screen->base) && 'plugins' === $screen->base) {
-			$no_bug_url = wp_nonce_url(admin_url('plugins.php?' . $this->nobug_option . '=true'), 'editorskit-feedback-nounce');
-			$time       = $this->seconds_to_words(time() - get_site_option($this->date_option));
-?>
+		if ( isset( $screen->base ) && 'plugins' === $screen->base ) {
+			$no_bug_url = wp_nonce_url( admin_url( 'plugins.php?' . $this->nobug_option . '=true' ), 'editorskit-feedback-nounce' );
+			$time       = $this->seconds_to_words( time() - get_site_option( $this->date_option ) );
+			?>
 
 			<style>
 				.notice.editorskit-notice {
@@ -293,39 +285,37 @@ class EditorsKit_User_Feedback
 				<div class="editorskit-notice-inner">
 					<div class="editorskit-notice-icon">
 						<?php /* translators: 1. Name */ ?>
-						<img src="<?php echo esc_url(EDITORSKIT_PLUGIN_URL . '/build/images/icon-256x256.jpg'); ?>" alt="<?php printf(esc_attr__('%s WordPress Plugin', 'block-options'), esc_attr($this->name)); ?>" />
+						<img src="<?php echo esc_url( EDITORSKIT_PLUGIN_URL . '/build/images/icon-256x256.jpg' ); ?>" alt="<?php printf( esc_attr__( '%s WordPress Plugin', 'block-options' ), esc_attr( $this->name ) ); ?>" />
 					</div>
 					<div class="editorskit-notice-content">
 						<?php /* translators: 1. Name */ ?>
-						<h3><?php printf(esc_html__('Are you enjoying %s Plugin?', 'block-options'), esc_html($this->name)); ?></h3>
+						<h3><?php printf( esc_html__( 'Are you enjoying %s Plugin?', 'block-options' ), esc_html( $this->name ) ); ?></h3>
 						<p>
 							<?php /* translators: 1. Name, 2. Time */ ?>
-							<?php printf(esc_html__('You have been using %1$s for %2$s now. Mind leaving a review to let us know know what you think? We\'d really appreciate it!', 'block-options'), esc_html($this->name), esc_html($time)); ?>
+							<?php printf( esc_html__( 'You have been using %1$s for %2$s now. Mind leaving a review to let us know know what you think? We\'d really appreciate it!', 'block-options' ), esc_html( $this->name ), esc_html( $time ) ); ?>
 						</p>
 					</div>
 					<div class="editorskit-install-now">
-						<?php printf('<a href="%1$s" class="button button-primary editorskit-install-button" target="_blank">%2$s</a>', esc_url('https://wordpress.org/support/view/plugin-reviews/block-options#new-post'), esc_html__('Leave a Review', 'block-options')); ?>
-						<a href="<?php echo esc_url($no_bug_url); ?>" class="no-thanks"><?php echo esc_html__('No thanks / I already have', 'block-options'); ?></a>
+						<?php printf( '<a href="%1$s" class="button button-primary editorskit-install-button" target="_blank">%2$s</a>', esc_url( 'https://wordpress.org/support/view/plugin-reviews/block-options#new-post' ), esc_html__( 'Leave a Review', 'block-options' ) ); ?>
+						<a href="<?php echo esc_url( $no_bug_url ); ?>" class="no-thanks"><?php echo esc_html__( 'No thanks / I already have', 'block-options' ); ?></a>
 					</div>
 				</div>
 			</div>
-<?php
+			<?php
 		}
 	}
 
 	/**
 	 * Set the plugin to no longer bug users if user asks not to be.
 	 */
-	public function set_no_bug()
-	{
-
+	public function set_no_bug() {
 		// Bail out if not on correct page.
 		// phpcs:ignore
 		if (!isset($_GET['_wpnonce']) || (!wp_verify_nonce($_GET['_wpnonce'], 'editorskit-feedback-nounce') || !is_admin() || !isset($_GET[$this->nobug_option]) || !current_user_can('manage_options'))) {
 			return;
 		}
 
-		add_site_option($this->nobug_option, true);
+		add_site_option( $this->nobug_option, true );
 	}
 }
 
@@ -335,7 +325,7 @@ class EditorsKit_User_Feedback
 new EditorsKit_User_Feedback(
 	array(
 		'slug'       => 'editorskit_plugin_feedback',
-		'name'       => __('EditorsKit', 'block-options'),
+		'name'       => __( 'EditorsKit', 'block-options' ),
 		'time_limit' => WEEK_IN_SECONDS,
 	)
 );

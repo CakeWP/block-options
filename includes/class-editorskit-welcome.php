@@ -123,8 +123,8 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 				$block_editor_settings = 'block_editor_settings';
 			}
 
-			$context = new WP_Block_Editor_Context();
-			$settings = get_block_editor_settings(array(), $context);
+			$context  = new WP_Block_Editor_Context();
+			$settings = get_block_editor_settings( array(), $context );
 
 			$global = array(
 				'url'             => EDITORSKIT_PLUGIN_URL,

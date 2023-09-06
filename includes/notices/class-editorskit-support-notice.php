@@ -37,9 +37,9 @@ class Editorskit_Support_Notice {
 	 */
 	public function display() {
 		$current_screen = get_current_screen();
-		$is_dismissed = get_option( 'editorskit_support_notice_dismissed' );
+		$is_dismissed   = get_option( 'editorskit_support_notice_dismissed' );
 
-		if ( $is_dismissed || "post" === $current_screen->base ) {
+		if ( $is_dismissed || 'post' === $current_screen->base ) {
 			return;
 		}
 

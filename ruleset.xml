@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<ruleset name="Ruleset">
+    <description>Ruleset overwrites some of the existing wordpress rules.</description>
+    <rule ref="WordPress">
+        <exclude name="WordPress.DB.DirectDatabaseQuery.DirectQuery"/>
+        <exclude name="WordPress.Files.FileName.InvalidClassFileName" />
+        <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
+    </rule>
+    <ini name="error_reporting" value="E_ALL &#38; ~E_DEPRECATED" />
+</ruleset>

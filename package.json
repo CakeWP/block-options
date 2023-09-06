@@ -52,6 +52,7 @@
     "lint:js-fix": "wp-scripts lint-js '**/*.js' --fix",
     "lint:pkg-json": "wp-scripts lint-pkg-json",
     "start": "wp-scripts start",
+    "packages-update": "wp-scripts packages-update",
     "test:e2e": "wp-scripts test-e2e",
     "test:unit": "wp-scripts test-unit-js",
     "makepot": "wp i18n make-pot . languages/editorskit.pot --exclude=node_modules,vendor,build"

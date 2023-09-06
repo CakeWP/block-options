@@ -87,7 +87,7 @@ class EditorsKit_Shortcodes {
 		$returned_content = '';
 
 		$blocks = '';
-		
+
 		if ( function_exists( 'has_blocks' ) && has_blocks( $post->post_content ) ) {
 			$blocks = parse_blocks( $post->post_content );
 		}
