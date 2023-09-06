@@ -364,7 +364,7 @@ class EditorsKit_Render_Block {
 			$attributes = $block['attrs'];
 
 			if ( isset( $attributes['href'] ) && ! empty( $attributes['href'] ) ) {
-				$linked = '<a href="' . esc_attr( $attributes['href'] ) . '" class="editorskit-block-link"';
+				$linked = '<a href="' . esc_url( $attributes['href'] ) . '" class="editorskit-block-link"';
 				$rel    = ' rel="';
 
 				if ( isset( $attributes['opensInNewTab'] ) && $attributes['opensInNewTab'] ) {
