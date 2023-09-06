@@ -12,7 +12,7 @@ const { withSelect } = wp.data;
 const { compose, ifCondition } = wp.compose;
 const { LEFT, RIGHT, UP, DOWN, BACKSPACE, ENTER } = wp.keycodes;
 const { URLPopover } = wp.blockEditor;
-const { ToggleControl, Button, Path, SVG, NavigableMenu, MenuItem, withSpokenMessages } = wp.components;
+const { ToggleControl, TextControl, Button, Path, SVG, NavigableMenu, MenuItem, withSpokenMessages } = wp.components;
 
 /**
  * Module constants
@@ -251,6 +251,7 @@ class Controls extends Component {
 			linkNoFollow,
 			linkSponsored,
 			linkFullBlock,
+			linkAriaLabel,
 		} = attributes;
 
 		return (
@@ -287,6 +288,12 @@ class Controls extends Component {
 									setAttributes( { linkFullBlock: ! linkFullBlock } );
 								} }
 								checked={ !! linkFullBlock } />
+							<TextControl
+								label={ __( 'AriaLabel', 'block-options' ) }
+								onChange={ () => {
+									setAttributes( { linkAriaLabel: !linkAriaLabel } );
+								} }
+								checked={ !! linkAriaLabel } />
 						</Fragment>
 					}
 				/>

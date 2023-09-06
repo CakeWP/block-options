@@ -88,10 +88,11 @@ export function isValidHref( href ) {
  * @param {string}  options.url              The href of the link.
  * @param {boolean} options.opensInNewWindow Whether this link will open in a new window.
  * @param {Object}  options.text             The text that is being hyperlinked.
+ * @param {string}  options.linkAriaLabel    The aria label of the link.
  *
  * @return {Object} The final format object.
  */
-export function createLinkFormat( { url, opensInNewWindow, noFollow, sponsored, text } ) {
+export function createLinkFormat( { url, opensInNewWindow, noFollow, sponsored, text, linkAriaLabel } ) {
 	const format = {
 		type: 'editorskit/link',
 		attributes: {
@@ -121,6 +122,10 @@ export function createLinkFormat( { url, opensInNewWindow, noFollow, sponsored, 
 
 	if ( relAttributes.length > 0 ) {
 		format.attributes.rel = relAttributes.join( ' ' );
+	}
+	
+	if ( linkAriaLabel && linkAriaLabel !== '') {
+		format.attributes[ 'aria-label' ] = linkAriaLabel;
 	}
 
 	return format;

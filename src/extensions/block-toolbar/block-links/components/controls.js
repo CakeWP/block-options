@@ -34,6 +34,7 @@ class withLinkToolbar extends Component {
 			linkNoFollow,
 			linkSponsored,
 			hasAnimation,
+			linkAriaLabel,
 		} = attributes;
 
 		return (
@@ -46,6 +47,7 @@ class withLinkToolbar extends Component {
 							linkNoFollow={ linkNoFollow || false }
 							linkSponsored={ linkSponsored || false }
 							hasAnimation={ hasAnimation || false }
+							linkAriaLabel={ linkAriaLabel || '' }
 							onChangeUrl={ this.onSetHref }
 						/>
 					</ToolbarGroup>

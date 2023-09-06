@@ -45,6 +45,10 @@ function addAttributes( settings ) {
 				type: 'boolean',
 				default: false,
 			},
+			linkAriaLabel: {
+				type: 'string',
+				default: '',
+			},
 		} );
 	}
 
