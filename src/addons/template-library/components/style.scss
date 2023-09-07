@@ -1,0 +1,174 @@
+.gutenberghub-template-library-root {
+
+	.components-modal__header {
+		display: none;
+	}
+
+	.components-modal__content {
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+	}
+
+	.gutenberghub-template-library-header {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		padding: $grid-unit-30;
+		border-bottom: 1px solid #edf2f7;
+
+		h3 {
+			margin: 0;
+		}
+	}
+
+	.gutenberghub-template-library-content {
+		padding: $grid-unit-30;
+
+		&.gutenberghub-template-library-connections{
+			overflow: auto;
+			max-height: calc(90vh - 85px);
+		}
+
+		.gutenberghub-template-library-grid {
+
+			max-height: calc(85vh - 85px);
+			overflow: auto;
+			padding: 0 30px 10px 15px;
+
+			& .gutenberghub-template-library-item {
+				padding-top: 10px;
+
+
+				& button {
+					height: auto !important;
+					position: relative;
+
+					& .gutenberghub-template-library-featured-logo-image {
+						position: absolute;
+						width: 30px;
+						bottom: 20px;
+						left: 20px;
+						border-radius: 100px;
+					}
+				}
+
+				&:hover {
+
+					& img {
+						border: 1px solid #000;
+					}
+				}
+
+				& img {
+					border: 1px solid rgba(0, 0, 0, 0.2);
+					transition: all 0.3 ease-in-out;
+				}
+
+				& .gutenberghub-template-library-title-wrap {
+					text-align: center;
+				}
+			}
+		}
+		.gutenberghub-template-library-cloud-grid {
+			padding: 0 30px 10px 15px;
+
+			& .gutenberghub-template-library-cloud-item {
+				padding: 10px;
+				border: 1px solid #eee;
+				transition: all 0.3 ease-in-out;
+				&:hover{
+					border: 1px solid #000;
+				}
+			}
+		}
+	}
+
+	.gutenberghub-template-library-no-connections {
+		text-align: center;
+
+		h2 {
+			font-size: 30px;
+		}
+	}
+
+	.gutenberghub-template-library-wrap {
+		max-width: 50%;
+		margin: auto;
+	}
+
+	.gutenberghub-template-library-connections {
+
+		margin-bottom: $grid-unit-30;
+
+		.gutenberghub-template-library-connection > div {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			padding: $grid-unit-30;
+		}
+	}
+
+	.gutenberghub-template-library-content-root {
+		display: grid;
+		grid-template-columns: 20% 80%;
+		grid-gap: 20px;
+
+	}
+
+	& .gutenberghub-template-library-sidebar {
+
+		& .gutenberghub-template-library-menu-wrap {
+			max-height: calc(85vh - 140px);
+			overflow: auto;
+			padding: 3px;
+		}
+
+		& .gutenberghub-template-library-menu-select-control {
+			display: none;
+		}
+	}
+}
+
+.gutenberghub-template-library-loading {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: center;
+	padding: $grid-unit-50;
+}
+
+.gutenberghub-template-library-error {
+	padding: $grid-unit-50;
+	display: flex;
+	align-items: center;
+	gap: $grid-unit-10;
+}
+
+/********* Media Query Start ***********/
+
+
+@media (max-width: 768px ) {
+
+	.gutenberghub-template-library-content-root {
+		grid-template-columns: repeat(1, 1fr) !important;
+	}
+
+	.gutenberghub-template-library-menu-wrap {
+		display: none !important;
+	}
+
+	.gutenberghub-template-library-menu-select-control {
+		display: block !important;
+	}
+
+	.gutenberghub-template-library-content .gutenberghub-template-library-grid {
+		max-height: calc(95vh - 200px) !important;
+	}
+
+	.gutenberghub-template-library-root .gutenberghub-template-library-create-new {
+		max-width: 90% !important;
+	}
+}

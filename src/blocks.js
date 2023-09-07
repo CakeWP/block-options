@@ -73,6 +73,8 @@ import './extensions/movable-block-options';
 import * as importBlock from './blocks/import';
 import * as shareABlock from './blocks/shareablock';
 
+import './addons/template-library'
+
 export function registerBlocks() {
 	[importBlock, shareABlock].forEach((block) => {
 		if (!block) {

@@ -5,6 +5,40 @@ const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const IgnoreEmitPlugin = require( 'ignore-emit-webpack-plugin' );
 const OptimizeCSSAssetsPlugin = require( 'optimize-css-assets-webpack-plugin' );
 
+const camelCaseDash = ( string ) =>
+	string.replace( /-([a-z])/g, ( _match, letter ) => letter.toUpperCase() );
+
+const externals = [
+	'api-fetch',
+	'block-editor',
+	'blocks',
+	'components',
+	'compose',
+	'data',
+	'date',
+	'htmlEntities',
+	'hooks',
+	'edit-post',
+	'element',
+	'editor',
+	'i18n',
+	'plugins',
+	'viewport',
+	'ajax',
+	'codeEditor',
+	'rich-text',
+	'primitives',
+];
+
+const globals = externals.reduce(
+	( external, name ) => ( {
+		...external,
+		[ `@wordpress/${ name }` ]: `wp.${ camelCaseDash( name ) }`,
+	} ),
+	{}
+);
+
+
 module.exports = {
 	...defaultConfig,
 	entry: {
@@ -14,6 +48,8 @@ module.exports = {
 		style: path.resolve( process.cwd(), 'src', 'style.scss' ),
 		editor: path.resolve( process.cwd(), 'src', 'editor.scss' ),
 		admin: path.resolve( process.cwd(), 'src', 'admin.scss' ),
+		'template-library-addon': path.resolve( process.cwd(), 'src', 'addons', 'template-library', 'index.js' ), 
+		'template-library-addon-style': path.resolve( process.cwd(), 'src', 'addons', 'template-library', 'template-library-addon.scss' ), 
 	},
 	optimization: {
 		...defaultConfig.optimization,
@@ -34,6 +70,12 @@ module.exports = {
 				admin: {
 					name: 'admin',
 					test: /admin\.(sc|sa|c)ss$/,
+					chunks: 'all',
+					enforce: true,
+				},
+				'template-library-addon':{
+					name:'template-library-addon',
+					test: /template-library-addon\.(sc|sa|c)ss/,
 					chunks: 'all',
 					enforce: true,
 				},
@@ -108,4 +150,7 @@ module.exports = {
 			'admin.build.css.map',
 		] ),
 	],
+	externals: {
+		...globals
+	}	
 };

@@ -98,6 +98,7 @@ if ( ! class_exists( 'EditorsKit' ) ) :
 			$this->define( 'EDITORSKIT_VERSION', '1.34.9' );
 			$this->define( 'EDITORSKIT_HAS_PRO', false );
 			$this->define( 'EDITORSKIT_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+			$this->define( 'EDITORSKIT_PLUGIN_ADDON_PATH', plugin_dir_path( __FILE__ ) . 'includes/addons/' );
 			$this->define( 'EDITORSKIT_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 			$this->define( 'EDITORSKIT_PLUGIN_FILE', __FILE__ );
 			$this->define( 'EDITORSKIT_PLUGIN_BASE', plugin_basename( __FILE__ ) );
@@ -137,6 +138,8 @@ if ( ! class_exists( 'EditorsKit' ) ) :
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-block-locking.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/notices/class-editorskit-support-notice.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-plugin-shortcuts.php';
+			
+			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-addon-manager.php';
 
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 				require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-welcome.php';
