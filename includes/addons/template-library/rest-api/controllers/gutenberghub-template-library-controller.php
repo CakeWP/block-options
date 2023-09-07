@@ -89,7 +89,7 @@ class Gutenberghub_Template_Library_Controller extends WP_REST_Controller {
 		$categories_uri = add_query_arg(
 			array(
 				'per_page'   => 100,
-				'uuid'	   => wp_generate_uuid4(),
+				'uuid'       => wp_generate_uuid4(),
 				'product_id' => explode( '||', $connection['product_id'] ),
 			),
 			$categories_uri
@@ -138,7 +138,7 @@ class Gutenberghub_Template_Library_Controller extends WP_REST_Controller {
 		// Obtaining every category.
 		$query_args = array(
 			'per_page'   => $per_page,
-			'uuid'	   => wp_generate_uuid4(),
+			'uuid'       => wp_generate_uuid4(),
 			'product_id' => explode( '||', $connection['product_id'] ),
 		);
 

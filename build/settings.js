@@ -15805,6 +15805,10 @@ var EditorsKitSettings = /*#__PURE__*/function (_Component) {
         name: 'ek-blocks-manager',
         title: __('Blocks Manager', 'block-options'),
         className: 'ek-settings-blocks-manager'
+      }, {
+        name: 'ek-addons-manager',
+        title: __('Addons Manager', 'block-options'),
+        className: 'ek-settings-addons-manager'
       }];
       var EditorsKitSettingsPanel = function EditorsKitSettingsPanel() {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(TabPanel, {
@@ -15838,6 +15842,8 @@ var EditorsKitSettings = /*#__PURE__*/function (_Component) {
               }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_extensions_components_manager_components_manager__WEBPACK_IMPORTED_MODULE_7__["default"], null)));
             case 'ek-blocks-manager':
               return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Manage each individual blocks! You can enable or disable any blocks you want and it will be reflected on Gutenberg block manager settings. Just uncheck the box and it will automatically be saved.', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_block_manager___WEBPACK_IMPORTED_MODULE_8__["default"], null));
+            case 'ek-addons-manager':
+              return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Manage each individual addon! You can enable or disable any addon you want and it will be reflected on Gutenberg block manager settings. Just uncheck the box and it will automatically be saved.', 'block-options')));
           }
         });
       };

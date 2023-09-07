@@ -38,6 +38,11 @@ class EditorsKitSettings extends Component {
 				title: __('Blocks Manager', 'block-options'),
 				className: 'ek-settings-blocks-manager',
 			},
+			{
+				name: 'ek-addons-manager',
+				title: __('Addons Manager', 'block-options'),
+				className: 'ek-settings-addons-manager',
+			},
 		];
 
 		const EditorsKitSettingsPanel = () => (
@@ -92,6 +97,14 @@ class EditorsKitSettings extends Component {
 									<Fragment>
 										<p>{__('Manage each individual blocks! You can enable or disable any blocks you want and it will be reflected on Gutenberg block manager settings. Just uncheck the box and it will automatically be saved.', 'block-options')}</p>
 										<BlockManager />
+									</Fragment>
+
+								);
+							case 'ek-addons-manager':
+								return (
+									<Fragment>
+										<p>{__('Manage each individual addon! You can enable or disable any addon you want and it will be reflected on Gutenberg block manager settings. Just uncheck the box and it will automatically be saved.', 'block-options')}</p>
+										{/* <BlockManager /> */}
 									</Fragment>
 
 								);

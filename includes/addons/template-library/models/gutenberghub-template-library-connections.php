@@ -112,7 +112,7 @@ class Gutenberghub_Template_Library_Connections {
 
 		$ping_uri = add_query_arg(
 			array(
-				'uuid'			 => wp_generate_uuid4(),
+				'uuid'               => wp_generate_uuid4(),
 				'terracloud-details' => true,
 				'product_id'         => $product_id,
 				'terracloud-key'     => rawurlencode( $access_key ),

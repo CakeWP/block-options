@@ -138,9 +138,15 @@ if ( ! class_exists( 'EditorsKit' ) ) :
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-block-locking.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/notices/class-editorskit-support-notice.php';
 			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-plugin-shortcuts.php';
-			
-			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-addon-manager.php';
 
+			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-addon-manager.php';
+			// $addons_manager = new Editorskit_Addon_Manager();
+			// var_dump( $addons_manager->get_addon_settings() );
+			// wp_localize_script(
+			// 'editorskit-editor',
+			// 'editorskit_addons',
+			// $addons_manager->get_addon_settings()
+			// );
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 				require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-welcome.php';
 				require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-page-template-support.php';
