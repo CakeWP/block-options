@@ -2,7 +2,7 @@ import React from 'react';
 
 import { __ } from '@wordpress/i18n';
 import { ButtonGroup, Button } from '@wordpress/components';
-import { plusCircle } from '@wordpress/icons';
+import { plus } from '@wordpress/icons';
 import { useQuery } from 'react-query';
 
 import getConnections from '../services/get-connections';
@@ -47,7 +47,7 @@ function LibraryConnectionsSwitcher() {
 					);
 				} ) }
 				<Button
-					icon={ plusCircle }
+					icon={ plus }
 					isPressed={ isAddingNewConnection }
 					onClick={ () => {
 						setIsAddingNewConnection( true );

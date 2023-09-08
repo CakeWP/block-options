@@ -10,6 +10,7 @@ import Notices from './notices';
  * WordPress dependencies
  */
 import { starFilled } from '@wordpress/icons';
+import AddonsManager from './addons-manager';
 const { __, sprintf } = wp.i18n;
 const { registerCoreBlocks } = wp.blockLibrary;
 const { Fragment, Component, RawHTML, render } = wp.element;
@@ -39,9 +40,9 @@ class EditorsKitSettings extends Component {
 				className: 'ek-settings-blocks-manager',
 			},
 			{
-				name: 'ek-addons-manager',
-				title: __('Addons Manager', 'block-options'),
-				className: 'ek-settings-addons-manager',
+				name: 'ek-template-library',
+				title: __('Template Library', 'block-options'),
+				className: 'ek-settings-template-library',
 			},
 		];
 
@@ -100,11 +101,11 @@ class EditorsKitSettings extends Component {
 									</Fragment>
 
 								);
-							case 'ek-addons-manager':
+							case 'ek-template-library':
 								return (
 									<Fragment>
-										<p>{__('Manage each individual addon! You can enable or disable any addon you want and it will be reflected on Gutenberg block manager settings. Just uncheck the box and it will automatically be saved.', 'block-options')}</p>
-										{/* <BlockManager /> */}
+										<p>{__('Here you can enable/disable the integrated GutenbergHub\'s template library.', 'block-options')}</p>
+										<AddonsManager />
 									</Fragment>
 
 								);

@@ -13,13 +13,13 @@ function LibraryNoConnectionsFound() {
 		<div className="gutenberghub-template-library-no-connections">
 			<h2>
 				{ __(
-					'No Connections Found',
+					'No Cloud Found',
 					'gutenberghub-template-library'
 				) }
 			</h2>
 			<p>
 				{ __(
-					"You don't have any existing connection. Try creating a new connection.",
+					"You don't have any existing cloud. Try adding a new cloud.",
 					'gutenberghub-template-library'
 				) }
 			</p>
@@ -28,7 +28,7 @@ function LibraryNoConnectionsFound() {
 				onClick={ () => setIsAddingNewConnection( true ) }
 			>
 				{ __(
-					'Create New Connection',
+					'Add New Connection',
 					'gutenberghub-template-library'
 				) }
 			</Button>

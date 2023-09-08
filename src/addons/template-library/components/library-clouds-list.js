@@ -32,20 +32,10 @@ function LibraryCreateNewConnection() {
 	}
 
 	return (
-		<div className="gutenberghub-template-library-cloud-grid">
-			<ResponsiveMasonry
-				columnsCountBreakPoints={ {
-					350: 1,
-					750: 2,
-					900: 4,
-				} }
-			>
-				<Masonry gutter="15px">
-					{ cloudList?.map( ( item ) => {
-						return <LibraryCloud { ...item?.acf } />;
-					} ) }
-				</Masonry>
-			</ResponsiveMasonry>
+		<div className="gutenberghub-template-library-cloud__cloud-grid">
+			{ cloudList?.map( ( item ) => {
+				return <LibraryCloud { ...item?.acf } />;
+			} ) }
 		</div>
 	);
 }

@@ -8,7 +8,7 @@ import LibraryConnectionsSwitcher from './library-connections-switcher';
 function LibraryHeader( props ) {
 	return (
 		<div className="gutenberghub-template-library-header">
-			<h3>{ __( 'Library', 'gutenberghub-template-library' ) }</h3>
+			<h3>{ __( 'Template Library', 'gutenberghub-template-library' ) }</h3>
 
 			<LibraryConnectionsSwitcher />
 

@@ -112,23 +112,6 @@ $mobile : 736px;
 					margin-bottom: 16px;
 				}
 
-				button {
-					color: #0366d6;
-
-					&:hover {
-						text-decoration: underline;
-						box-shadow: none !important;
-						border: 0;
-						outline: none;
-					}
-
-					&:focus {
-						color: #0366d6;
-						outline-offset: -1px;
-						outline: 1px dotted #555d66;
-						box-shadow: none;
-					}
-				}
 
 				.editorskit-docs-items-wrapper {
 					display: flex;
@@ -411,5 +394,11 @@ $mobile : 736px;
 		&:not(:first-child):not(:nth-child(3n+1)) {
 			margin-left: 30px;
 		}
+	}
+}
+
+.editorskit-addon-manager {
+	.components-base-control {
+		margin-bottom: 0 !important;
 	}
 }

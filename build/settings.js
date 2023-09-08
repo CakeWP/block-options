@@ -208,6 +208,33 @@ module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/defineProperty.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/defineProperty.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+module.exports = _defineProperty;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js":
 /*!***************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/getPrototypeOf.js ***!
@@ -15122,6 +15149,54 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/admin/addons-manager/index.js":
+/*!*******************************************!*\
+  !*** ./src/admin/addons-manager/index.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _hooks_use_setting__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../hooks/use-setting */ "./src/admin/hooks/use-setting.js");
+
+/**
+ * WordPress Dependencies
+ */
+
+
+
+/**
+ * Custom Dependencies
+ */
+
+function AddonsManager() {
+  var _useSetting = Object(_hooks_use_setting__WEBPACK_IMPORTED_MODULE_3__["default"])('editorskit-addon-template-library'),
+    value = _useSetting.value,
+    status = _useSetting.status,
+    updateStatus = _useSetting.updateStatus,
+    onUpdate = _useSetting.onUpdate;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: "editorskit-addon-manager"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Card"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["CardBody"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["ToggleControl"], {
+    checked: value,
+    disabled: status.loading || updateStatus.loading,
+    onChange: function onChange(newStatus) {
+      return onUpdate(newStatus);
+    },
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Template Library', 'editorskit')
+  }))));
+}
+/* harmony default export */ __webpack_exports__["default"] = (AddonsManager);
+
+/***/ }),
+
 /***/ "./src/admin/block-manager/category.js":
 /*!*********************************************!*\
   !*** ./src/admin/block-manager/category.js ***!
@@ -15717,6 +15792,139 @@ var EditorsKitDocs = /*#__PURE__*/function (_Component) {
 
 /***/ }),
 
+/***/ "./src/admin/hooks/use-setting.js":
+/*!****************************************!*\
+  !*** ./src/admin/hooks/use-setting.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_4__);
+
+
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+
+
+
+
+/**
+ * A custom hook that allows fetching of wp settings easier.
+ *
+ * @param {string} key - Setting key.
+ *
+ * @return any - Setting value
+ */
+function useSetting(key) {
+  var onSuccess = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function () {
+    return null;
+  };
+  var onUpdateCallback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function () {
+    return null;
+  };
+  var _useState = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["useState"])(null),
+    _useState2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1___default()(_useState, 2),
+    fetchedSettings = _useState2[0],
+    setFetchedSettings = _useState2[1];
+  var _useState3 = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["useState"])({
+      loading: false,
+      error: false
+    }),
+    _useState4 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1___default()(_useState3, 2),
+    status = _useState4[0],
+    setStatus = _useState4[1];
+  var _useState5 = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["useState"])({
+      loading: false,
+      error: false
+    }),
+    _useState6 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1___default()(_useState5, 2),
+    updateStatus = _useState6[0],
+    setUpdateStatus = _useState6[1];
+  Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {
+    setStatus({
+      loading: true,
+      error: false
+    });
+    _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_4___default()({
+      path: "/wp/v2/settings"
+    }).then(function (settings) {
+      setFetchedSettings(settings);
+      onSuccess(settings[key]);
+      setStatus({
+        loading: false,
+        error: false
+      });
+    }).catch(function (error) {
+      setStatus({
+        loading: false,
+        error: true
+      });
+    });
+  }, []);
+  Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {
+    var watchUpdate = function watchUpdate(e) {
+      var _e$detail, _e$detail2;
+      setFetchedSettings(_objectSpread(_objectSpread({}, fetchedSettings), {}, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, key, (_e$detail = e.detail) === null || _e$detail === void 0 ? void 0 : _e$detail.value)));
+      onUpdateCallback((_e$detail2 = e.detail) === null || _e$detail2 === void 0 ? void 0 : _e$detail2.value);
+    };
+    window.addEventListener("gutenberghub-setting-".concat(key, "-updated"), watchUpdate);
+    return function () {
+      return window.removeEventListener("gutenberghub-setting-".concat(key, "-updated"), watchUpdate);
+    };
+  }, []);
+  var onUpdate = function onUpdate(newValue) {
+    setUpdateStatus({
+      loading: true,
+      error: false
+    });
+    _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_4___default()({
+      path: "wp/v2/settings",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-WP-Nonce": wpApiSettings.nonce
+      },
+      body: JSON.stringify(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, key, newValue))
+    }).then(function () {
+      setFetchedSettings(_objectSpread(_objectSpread({}, fetchedSettings), {}, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, key, newValue)));
+      window.dispatchEvent(new CustomEvent("gutenberghub-setting-".concat(key, "-updated"), {
+        detail: {
+          value: newValue
+        }
+      }));
+      setUpdateStatus({
+        loading: false,
+        error: false
+      });
+    }).catch(function () {
+      setUpdateStatus({
+        loading: false,
+        error: true
+      });
+    });
+  };
+  return {
+    value: Object(lodash__WEBPACK_IMPORTED_MODULE_2__["get"])(fetchedSettings, key, null),
+    status: status,
+    updateStatus: updateStatus,
+    onUpdate: onUpdate
+  };
+}
+/* harmony default export */ __webpack_exports__["default"] = (useSetting);
+
+/***/ }),
+
 /***/ "./src/admin/index.js":
 /*!****************************!*\
   !*** ./src/admin/index.js ***!
@@ -15743,6 +15951,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _block_manager___WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./block-manager/ */ "./src/admin/block-manager/index.js");
 /* harmony import */ var _notices__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./notices */ "./src/admin/notices.js");
 /* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/index.js");
+/* harmony import */ var _addons_manager__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./addons-manager */ "./src/admin/addons-manager/index.js");
 
 
 
@@ -15762,6 +15971,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 /**
  * WordPress dependencies
  */
+
 
 var _wp$i18n = wp.i18n,
   __ = _wp$i18n.__,
@@ -15806,9 +16016,9 @@ var EditorsKitSettings = /*#__PURE__*/function (_Component) {
         title: __('Blocks Manager', 'block-options'),
         className: 'ek-settings-blocks-manager'
       }, {
-        name: 'ek-addons-manager',
-        title: __('Addons Manager', 'block-options'),
-        className: 'ek-settings-addons-manager'
+        name: 'ek-template-library',
+        title: __('Template Library', 'block-options'),
+        className: 'ek-settings-template-library'
       }];
       var EditorsKitSettingsPanel = function EditorsKitSettingsPanel() {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(TabPanel, {
@@ -15842,8 +16052,8 @@ var EditorsKitSettings = /*#__PURE__*/function (_Component) {
               }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_extensions_components_manager_components_manager__WEBPACK_IMPORTED_MODULE_7__["default"], null)));
             case 'ek-blocks-manager':
               return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Manage each individual blocks! You can enable or disable any blocks you want and it will be reflected on Gutenberg block manager settings. Just uncheck the box and it will automatically be saved.', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_block_manager___WEBPACK_IMPORTED_MODULE_8__["default"], null));
-            case 'ek-addons-manager':
-              return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Manage each individual addon! You can enable or disable any addon you want and it will be reflected on Gutenberg block manager settings. Just uncheck the box and it will automatically be saved.', 'block-options')));
+            case 'ek-template-library':
+              return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Here you can enable/disable the integrated GutenbergHub\'s template library.', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_addons_manager__WEBPACK_IMPORTED_MODULE_11__["default"], null));
           }
         });
       };
@@ -16059,6 +16269,17 @@ var FeaturesManager = /*#__PURE__*/function (_Component) {
     }
   };
 }), withSpokenMessages])(FeaturesManager));
+
+/***/ }),
+
+/***/ "@wordpress/api-fetch":
+/*!******************************!*\
+  !*** external "wp.apiFetch" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = wp.apiFetch;
 
 /***/ }),
 

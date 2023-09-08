@@ -3,22 +3,56 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/admin/index.js:106
-msgid ""
-"Manage each individual addon! You can enable or disable any addon you want "
-"and it will be reflected on Gutenberg block manager settings. Just uncheck "
-"the box and it will automatically be saved."
+#: src/addons/template-library/app.js:32
+#: src/addons/template-library/components/library-header.js:11
+#: src/admin/addons-manager/index.js:24
+#: src/admin/addons-manager/index.js:26
+#: src/admin/addons-manager/index.js:27
+#: src/admin/addons-manager/index.js:25
+#: src/admin/addons-manager/index.js:23
+#: src/admin/addons-manager/index.js:18
+#: src/admin/addons-manager/index.js:17
+#: src/admin/addons-manager/index.js:16
+#: src/admin/addons-manager/index.js:14
+#: src/admin/addons-manager/index.js:13
+#: src/admin/addons-manager/index.js:11
+#: src/admin/index.js:44
+msgid "Template Library"
 msgstr ""
 
-#: src/admin/index.js:122
-msgid "Settings → EditorsKit"
+#: src/addons/template-library/components/library-connections-switcher.js:56
+msgid "Add a connection"
+msgstr ""
+
+#: src/addons/template-library/components/library-header.js:19
+msgid "Close Modal"
+msgstr ""
+
+#: src/addons/template-library/components/library-no-connections-found.js:15
+msgid "No Cloud Found"
+msgstr ""
+
+#: src/addons/template-library/components/library-no-connections-found.js:21
+msgid "You don't have any existing cloud. Try adding a new cloud."
+msgstr ""
+
+#: src/addons/template-library/components/library-no-connections-found.js:30
+msgid "Add New Connection"
+msgstr ""
+
+#: src/admin/index.js:107
+msgid "Here you can enable/disable the integrated GutenbergHub's template library."
 msgstr ""
 
 #: src/admin/index.js:123
-msgid "Getting Started with"
+msgid "Settings → EditorsKit"
 msgstr ""
 
 #: src/admin/index.js:124
+msgid "Getting Started with"
+msgstr ""
+
+#: src/admin/index.js:125
 msgid ""
 "Congratulations! You've just unlocked more Gutenberg block editor tools for "
 "easier editing and better workflow. Check more information about the plugin "
@@ -26,46 +60,42 @@ msgid ""
 "to learn more on how to use each available features."
 msgstr ""
 
-#: src/admin/index.js:134
+#: src/admin/index.js:135
 msgid "Buy me a Coffee"
 msgstr ""
 
-#: src/admin/index.js:142
+#: src/admin/index.js:143
 msgid "Leave a Review"
 msgstr ""
 
-#: src/admin/index.js:23
+#: src/admin/index.js:24
 msgid "Getting Started"
 msgstr ""
 
-#: src/admin/index.js:28
+#: src/admin/index.js:29
 msgid "Tutorial and Docs"
 msgstr ""
 
-#: src/admin/index.js:33
+#: src/admin/index.js:34
 msgid "Features Manager"
 msgstr ""
 
-#: src/admin/index.js:38
+#: src/admin/index.js:39
 msgid "Blocks Manager"
 msgstr ""
 
-#: src/admin/index.js:43
-msgid "Addons Manager"
-msgstr ""
-
-#: src/admin/index.js:60
+#: src/admin/index.js:61
 msgid ""
 "EditorsKit provides set of tools to extend the way you are building content "
 "on WordPress Gutenberg block editor. Designed and integrated to help users "
 "easily navigate; and control each block the way it should be."
 msgstr ""
 
-#: src/admin/index.js:63
+#: src/admin/index.js:64
 msgid "EditorsKit video preview"
 msgstr ""
 
-#: src/admin/index.js:68
+#: src/admin/index.js:69
 msgid ""
 "If you have any questions or suggestion, let us know through "
 "%1$sTwitter%4$s or our %2$sFacebook community %4$s. Also, %3$ssubscribe to "
@@ -73,7 +103,7 @@ msgid ""
 "upcoming at EditorsKit."
 msgstr ""
 
-#: src/admin/index.js:88
+#: src/admin/index.js:89
 msgid ""
 "All features are active by default but you have complete control over each "
 "one of them. Disable any features do not want to use and re-enable them "
@@ -81,7 +111,7 @@ msgid ""
 "editor. Just uncheck the box and it will automatically be saved."
 msgstr ""
 
-#: src/admin/index.js:98
+#: src/admin/index.js:99
 msgid ""
 "Manage each individual blocks! You can enable or disable any blocks you "
 "want and it will be reflected on Gutenberg block manager settings. Just "

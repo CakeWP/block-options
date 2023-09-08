@@ -172,3 +172,14 @@
 		max-width: 90% !important;
 	}
 }
+
+.gutenberghub-template-library-cloud__cloud-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: $grid-unit-30;
+
+	.gutenberghub-template-library-cloud-item {
+		border: 1px solid $black;
+		
+	}
+}

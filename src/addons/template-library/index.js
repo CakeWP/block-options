@@ -6,27 +6,37 @@ import { QueryClientProvider } from 'react-query';
 
 import queryClient from './query-client';
 
+import { get } from 'lodash';
+
 domReady(() => {
-	let observer = new MutationObserver( ( _, observer ) => {
-		let toolbarElement = document.querySelector(
-			'.edit-post-header__toolbar'
-		);
-		if ( toolbarElement ) {
-			let wrapper = document.createElement( 'div' );
-			wrapper.id = 'wpcloudify-toolbar-items';
-			wrapper.style.display = 'flex'; // TODO: move this somewhere else.
+	const isAddonActive = get(
+		window,
+		'editorskitInfo.addons.template_library',
+		false
+	);
 
-			toolbarElement.appendChild( wrapper );
-
-			render(
-				<QueryClientProvider client={ queryClient }>
-					<App />
-				</QueryClientProvider>,
-				wrapper
+	if (isAddonActive) {
+		let observer = new MutationObserver((_, observer) => {
+			let toolbarElement = document.querySelector(
+				'.edit-post-header__toolbar'
 			);
+			if (toolbarElement) {
+				let wrapper = document.createElement('div');
+				wrapper.id = 'wpcloudify-toolbar-items';
+				wrapper.style.display = 'flex'; // TODO: move this somewhere else.
 
-			observer.disconnect();
-		}
-	} );
-	observer.observe( document.body, { childList: true, attributes: true } );
-} );
+				toolbarElement.appendChild(wrapper);
+
+				render(
+					<QueryClientProvider client={queryClient}>
+						<App />
+					</QueryClientProvider>,
+					wrapper
+				);
+
+				observer.disconnect();
+			}
+		});
+		observer.observe(document.body, { childList: true, attributes: true });
+	}
+});

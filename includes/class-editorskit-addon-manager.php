@@ -15,13 +15,12 @@ if ( ! class_exists( 'Editorskit_Addon_Manager' ) ) {
 	 */
 	final class Editorskit_Addon_Manager {
 
-
 		/**
-		 * Editorskit Addons.
+		 * Editorskit Addon Settings Group.
 		 *
-		 * @var array $addons
+		 * @var string $settings_group
 		 */
-		public $addons = array();
+		public $settings_group = 'editorskit-addons';
 
 		/**
 		 * Constructor
@@ -29,56 +28,55 @@ if ( ! class_exists( 'Editorskit_Addon_Manager' ) ) {
 		 * @return void
 		 */
 		public function __construct() {
-			require_once EDITORSKIT_PLUGIN_ADDON_PATH . 'template-library/gutenberghub-template-library.php';
-
-			// add_action( 'init', array( $this, 'register_addon_settings' ) );
-
-			$this->addons = array(
-				'template_library' => array(
-					'title'       => __( 'Template Library', 'editor_plus' ),
-					'description' => __( 'This addons add template library.', 'editor_plus' ),
-				),
-			);
-			$this->get_addon_settings();
+			add_action( 'init', array( $this, 'register_addon_settings' ) );
+			$this->load_addons();
 		}
 
 		/**
-		 * Register the addons settings
+		 * Loads addons.
+		 *
+		 * @return void
+		 */
+		public function load_addons() {
+			require_once EDITORSKIT_PLUGIN_ADDON_PATH . 'template-library/gutenberghub-template-library.php';
+		}
+
+		/**
+		 * Obtains the addon status.
+		 *
+		 * @param string $key - Addon name.
+		 *
+		 * @return bool - True if active, otherwise false.
+		 */
+		public static function is_addon_active( $key ) {
+			$status = get_option( $key );
+
+			if ( true !== $status && '1' !== $status ) {
+				return false;
+			}
+
+			return true;
+		}
+
+		/**
+		 * Register the addons settings.
+		 *
+		 * @return void
 		 */
 		public function register_addon_settings() {
-			foreach ( $this->addons as $name => $data ) {
-				$slug        = 'editorskit_' . $name;
-				$enable_slug = 'editorskit_' . $name . '__enabled';
 
-				register_setting(
-					$slug,
-					$enable_slug,
-					array(
-						'type'         => 'boolean',
-						'show_in_rest' => true,
-						'default'      => true,
-					)
-				);
-			};
+			// Addon 1: Template Library.
+			register_setting(
+				$this->settings_group,
+				'editorskit-addon-template-library',
+				array(
+					'default'      => true,
+					'show_in_rest' => true,
+					'type'         => 'boolean',
+				)
+			);
 		}
-		/**
-		 * Get the all the registered settings with status by the extension manager
-		 *
-		 * @return array - Settings.
-		 */
-		public function get_addon_settings() {
-			$settings = array();
 
-			foreach ( $this->addons as $name => $data ) {
-				$slug        = 'editorskit_' . $name;
-				$enable_slug = 'editorskit_' . $name . '__enabled';
-
-				$settings[ $name ]['enabled'] = get_option( $enable_slug );
-			}
-			// var_dump( get_option( 'editorskit_template_library__enabled' ) );
-
-			return $settings;
-		}
 	}
 
 	new Editorskit_Addon_Manager();
