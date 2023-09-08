@@ -1,14 +1,11 @@
 import React from 'react';
 
-import { isEmpty } from 'lodash';
 import { __ } from '@wordpress/i18n';
 import { Spinner } from '@wordpress/components';
 
-import useLibrary from '../stores/library';
 import LibraryCloud from './library-cloud';
 import getCloudsList from '../services/get-clouds';
 import { useQuery } from 'react-query';
-import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 
 function LibraryCreateNewConnection() {
 	const { data: cloudList, isLoading, isError } = useQuery(

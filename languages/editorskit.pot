@@ -5,10 +5,10 @@ msgstr ""
 
 #: src/addons/template-library/app.js:32
 #: src/addons/template-library/components/library-header.js:11
+#: src/admin/addons-manager/index.js:25
 #: src/admin/addons-manager/index.js:24
 #: src/admin/addons-manager/index.js:26
 #: src/admin/addons-manager/index.js:27
-#: src/admin/addons-manager/index.js:25
 #: src/admin/addons-manager/index.js:23
 #: src/admin/addons-manager/index.js:18
 #: src/admin/addons-manager/index.js:17

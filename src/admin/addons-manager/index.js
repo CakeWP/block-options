@@ -9,6 +9,7 @@ import { ToggleControl, Card, CardBody } from '@wordpress/components';
  */
 import useSetting from '../hooks/use-setting'
 
+
 function AddonsManager() {
 
   const { value, status, updateStatus, onUpdate } = useSetting('editorskit-addon-template-library');
