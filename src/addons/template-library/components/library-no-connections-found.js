@@ -28,7 +28,7 @@ function LibraryNoConnectionsFound() {
 				onClick={ () => setIsAddingNewConnection( true ) }
 			>
 				{ __(
-					'Add New Connection',
+					'Add New Cloud',
 					'gutenberghub-template-library'
 				) }
 			</Button>

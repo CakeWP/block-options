@@ -15404,7 +15404,9 @@ function LibraryCloudActivation(_ref) {
     setActivating = _ref.setActivating,
     cloud_connection_uri = _ref.cloud_connection_uri,
     createEditedConnection = _ref.createEditedConnection;
-  return isActivating ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["TextControl"], {
+  return isActivating ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+    className: "library-cloud-activation"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["TextControl"], {
     value: accessKey,
     onChange: function onChange(newAccessKey) {
       setAccessKey(newAccessKey);
@@ -15428,7 +15430,12 @@ function LibraryCloudActivation(_ref) {
       return createEditedConnection();
     },
     disabled: isCreating || Object(lodash__WEBPACK_IMPORTED_MODULE_3__["isEmpty"])(cloud_connection_uri) || Object(lodash__WEBPACK_IMPORTED_MODULE_3__["isEmpty"])(accessKey)
-  }, isCreating ? Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Activating...', 'gutenberghub-template-library') : Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Activate', 'gutenberghub-template-library')))) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["ButtonGroup"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["Button"], {
+  }, isCreating ? Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Activating...', 'gutenberghub-template-library') : Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Activate', 'gutenberghub-template-library')))) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+    style: {
+      width: '100%',
+      textAlign: 'right'
+    }
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["ButtonGroup"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["Button"], {
     style: {
       margin: '0 4px'
     },
@@ -15436,12 +15443,7 @@ function LibraryCloudActivation(_ref) {
     onClick: function onClick() {
       return setActivating(true);
     }
-  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Activate', 'gutenberghub-template-library')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["Button"], {
-    variant: "primary",
-    style: {
-      boxShadow: 'none'
-    }
-  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Get Now', 'gutenberghub-template-library')));
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Activate', 'gutenberghub-template-library'))));
 }
 function LibraryCloud(props) {
   var _useState = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useState"])(''),
@@ -15458,7 +15460,8 @@ function LibraryCloud(props) {
     cloud_thumbnail = props.cloud_thumbnail,
     connection_access_key = props.connection_access_key,
     product_id = props.product_id,
-    product_public_key = props.product_public_key;
+    product_public_key = props.product_public_key,
+    get_now_link = props.get_now_link;
   var setActiveConnection = Object(_stores_library__WEBPACK_IMPORTED_MODULE_7__["default"])(function (state) {
     return state.setActiveConnection;
   });
@@ -15512,24 +15515,33 @@ function LibraryCloud(props) {
     cloud_connection_uri: cloud_connection_uri,
     createEditedConnection: createEditedConnection
   };
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
-    className: "gutenberghub-template-library-cloud-item"
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
-    className: "gutenberghub-template-library-cloud-item-image-wrapper"
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
+  var isActivated = !Object(lodash__WEBPACK_IMPORTED_MODULE_3__["isEmpty"])(addedConnection) && (addedConnection === null || addedConnection === void 0 ? void 0 : addedConnection.product_id) === product_id;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["Card"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["CardHeader"], {
+    className: "gutenberghub-template-library-cloud-item-title"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("h3", {
+    style: {
+      maxWidth: '75%',
+      margin: 0
+    }
+  }, cloud_title), !isActivated && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["Button"], {
+    variant: "primary",
+    style: {
+      boxShadow: 'none'
+    },
+    href: get_now_link,
+    target: "_blank"
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Get Now', 'gutenberghub-template-library'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["CardMedia"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
     className: "gutenberghub-template-library-cloud-item-image",
     width: "100%",
     src: cloud_thumbnail === null || cloud_thumbnail === void 0 ? void 0 : cloud_thumbnail.url
-  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
-    className: "gutenberghub-template-library-cloud-item-title"
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("h3", null, cloud_title)), !Object(lodash__WEBPACK_IMPORTED_MODULE_3__["isEmpty"])(addedConnection) && (addedConnection === null || addedConnection === void 0 ? void 0 : addedConnection.product_id) === product_id ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["Button"], {
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["CardFooter"], null, isActivated ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["Button"], {
     isDestructive: true,
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["trash"],
     variant: "secondary",
     disabled: isDeleting,
     isBusy: isDeleting,
     onClick: deleteCurrentConnection
-  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Deactivate', 'gutenberghub-template-library')) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(LibraryCloudActivation, libraryActivationProps));
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Deactivate', 'gutenberghub-template-library')) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(LibraryCloudActivation, libraryActivationProps)));
 }
 /* harmony default export */ __webpack_exports__["default"] = (LibraryCloud);
 
@@ -15840,7 +15852,7 @@ __webpack_require__.r(__webpack_exports__);
 function LibraryHeader(props) {
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: "gutenberghub-template-library-header"
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h3", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Template Library', 'gutenberghub-template-library')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_library_connections_switcher__WEBPACK_IMPORTED_MODULE_5__["default"], null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h3", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Library', 'gutenberghub-template-library')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_library_connections_switcher__WEBPACK_IMPORTED_MODULE_5__["default"], null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Button"], {
     showTooltip: true,
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["close"],
     onClick: props.onClose,
@@ -15885,7 +15897,7 @@ function LibraryNoConnectionsFound() {
     onClick: function onClick() {
       return setIsAddingNewConnection(true);
     }
-  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Add New Connection', 'gutenberghub-template-library')));
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Add New Cloud', 'gutenberghub-template-library')));
 }
 /* harmony default export */ __webpack_exports__["default"] = (LibraryNoConnectionsFound);
 
@@ -15940,6 +15952,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _wordpress_html_entities__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @wordpress/html-entities */ "@wordpress/html-entities");
+/* harmony import */ var _wordpress_html_entities__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_wordpress_html_entities__WEBPACK_IMPORTED_MODULE_9__);
+
 
 
 
@@ -16014,7 +16029,7 @@ function LibrarySidebar() {
       onClick: function onClick() {
         return setActiveCategory(category === null || category === void 0 ? void 0 : category.id);
       }
-    }, category === null || category === void 0 ? void 0 : category.name);
+    }, Object(_wordpress_html_entities__WEBPACK_IMPORTED_MODULE_9__["decodeEntities"])(category === null || category === void 0 ? void 0 : category.name));
   })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["SelectControl"], {
     className: "gutenberghub-template-library-menu-select-control",
     value: activeCategory,

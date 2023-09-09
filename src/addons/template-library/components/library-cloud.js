@@ -2,9 +2,9 @@ import React from 'react';
 
 import { isEmpty } from 'lodash';
 import { __ } from '@wordpress/i18n';
-import { trash } from '@wordpress/icons';
+import { trash, external } from '@wordpress/icons';
 import { useState } from '@wordpress/element';
-import { TextControl, Button, ButtonGroup } from '@wordpress/components';
+import { TextControl, Button, ButtonGroup, Card, CardBody, CardMedia, CardHeader, CardFooter } from '@wordpress/components';
 
 import useLibrary from '../stores/library';
 import getConnections from '../services/get-connections';
@@ -22,7 +22,7 @@ function LibraryCloudActivation( {
 	createEditedConnection,
 } ) {
 	return isActivating ? (
-		<>
+		<div className="library-cloud-activation">
 			<TextControl
 				value={ accessKey }
 				onChange={ ( newAccessKey ) => {
@@ -59,27 +59,21 @@ function LibraryCloudActivation( {
 						: __( 'Activate', 'gutenberghub-template-library' ) }
 				</Button>
 			</ButtonGroup>
-		</>
+		</div>
 	) : (
-		<ButtonGroup>
-			<Button
-				style={ {
-					margin: '0 4px',
-				} }
-				variant="secondary"
-				onClick={ () => setActivating( true ) }
-			>
-				{ __( 'Activate', 'gutenberghub-template-library' ) }
-			</Button>
-			<Button
-				variant="primary"
-				style={ {
-					boxShadow: 'none',
-				} }
-			>
-				{ __( 'Get Now', 'gutenberghub-template-library' ) }
-			</Button>
-		</ButtonGroup>
+		<div style={{width: '100%', textAlign: 'right'}}>
+			<ButtonGroup>
+				<Button
+					style={ {
+						margin: '0 4px',
+					} }
+					variant="secondary"
+					onClick={ () => setActivating( true ) }
+				>
+					{ __( 'Activate', 'gutenberghub-template-library' ) }
+				</Button>
+			</ButtonGroup>
+		</div>
 	);
 }
 
@@ -95,7 +89,9 @@ function LibraryCloud( props ) {
 		connection_access_key,
 		product_id,
 		product_public_key,
+		get_now_link
 	} = props;
+
 	const setActiveConnection = useLibrary(
 		( state ) => state.setActiveConnection
 	);
@@ -154,35 +150,55 @@ function LibraryCloud( props ) {
 		cloud_connection_uri,
 		createEditedConnection,
 	};
+
+	const isActivated = ! isEmpty( addedConnection ) &&
+				addedConnection?.product_id === product_id
+
 	return (
-		<div className="gutenberghub-template-library-cloud-item">
-			<div className="gutenberghub-template-library-cloud-item-image-wrapper">
+		<Card>
+			<CardHeader className="gutenberghub-template-library-cloud-item-title">
+				<h3 style={{ maxWidth: '75%', margin: 0 }}>{ cloud_title }</h3>
+				{
+					! isActivated && (
+						<Button
+							variant="primary"
+							style={ {
+								boxShadow: 'none',
+							} }
+							href={get_now_link}
+							target="_blank"
+						>
+						{ __( 'Get Now', 'gutenberghub-template-library' ) }
+						</Button>
+					)
+				}
+			</CardHeader>
+
+			<CardMedia>
 				<img
 					className="gutenberghub-template-library-cloud-item-image"
 					width="100%"
 					src={ cloud_thumbnail?.url }
 				/>
-			</div>
-			<div className="gutenberghub-template-library-cloud-item-title">
-				<h3>{ cloud_title }</h3>
-			</div>
+			</CardMedia>
 
-			{ ! isEmpty( addedConnection ) &&
-			addedConnection?.product_id === product_id ? (
-				<Button
-					isDestructive
-					icon={ trash }
-					variant="secondary"
-					disabled={ isDeleting }
-					isBusy={ isDeleting }
-					onClick={ deleteCurrentConnection }
-				>
-					{ __( 'Deactivate', 'gutenberghub-template-library' ) }
-				</Button>
-			) : (
-				<LibraryCloudActivation { ...libraryActivationProps } />
-			) }
-		</div>
+			<CardFooter>
+				{ isActivated ? (
+					<Button
+						isDestructive
+						icon={ trash }
+						variant="secondary"
+						disabled={ isDeleting }
+						isBusy={ isDeleting }
+						onClick={ deleteCurrentConnection }
+					>
+						{ __( 'Deactivate', 'gutenberghub-template-library' ) }
+					</Button>
+				) : (
+					<LibraryCloudActivation { ...libraryActivationProps } />
+				) }
+			</CardFooter>
+		</Card>
 	);
 }
 
