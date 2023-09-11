@@ -15967,7 +15967,6 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 
 
-
 /**
  * WordPress dependencies
  */
@@ -16026,6 +16025,7 @@ var EditorsKitSettings = /*#__PURE__*/function (_Component) {
           activeClass: "active-tab",
           tabs: tabs
         }, function (tab) {
+          var _editorskitData$block, _editorskitData, _editorskitData$templ, _editorskitData2;
           switch (tab.name) {
             case 'ek-getting-started':
               return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
@@ -16051,9 +16051,23 @@ var EditorsKitSettings = /*#__PURE__*/function (_Component) {
                 className: "editorskit-features-manager-items-wrapper"
               }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_extensions_components_manager_components_manager__WEBPACK_IMPORTED_MODULE_7__["default"], null)));
             case 'ek-blocks-manager':
-              return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Manage each individual blocks! You can enable or disable any blocks you want and it will be reflected on Gutenberg block manager settings. Just uncheck the box and it will automatically be saved.', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_block_manager___WEBPACK_IMPORTED_MODULE_8__["default"], null));
+              return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("a", {
+                href: "https://shop.gutenberghub.com/blocks/",
+                target: "_blank"
+              }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("img", {
+                width: "100%",
+                height: "100%",
+                src: (_editorskitData$block = (_editorskitData = editorskitData) === null || _editorskitData === void 0 ? void 0 : _editorskitData.blockBanner) !== null && _editorskitData$block !== void 0 ? _editorskitData$block : ""
+              })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Manage each individual blocks! You can enable or disable any blocks you want and it will be reflected on Gutenberg block manager settings. Just uncheck the box and it will automatically be saved.', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_block_manager___WEBPACK_IMPORTED_MODULE_8__["default"], null));
             case 'ek-template-library':
-              return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Here you can enable/disable the integrated GutenbergHub\'s template library.', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_addons_manager__WEBPACK_IMPORTED_MODULE_11__["default"], null));
+              return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("a", {
+                href: "https://shop.gutenberghub.com/patterns/",
+                target: "_blank"
+              }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("img", {
+                width: "100%",
+                height: "100%",
+                src: (_editorskitData$templ = (_editorskitData2 = editorskitData) === null || _editorskitData2 === void 0 ? void 0 : _editorskitData2.templateBanner) !== null && _editorskitData$templ !== void 0 ? _editorskitData$templ : ""
+              })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("p", null, __('Here you can enable/disable the integrated GutenbergHub\'s template library.', 'block-options')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_addons_manager__WEBPACK_IMPORTED_MODULE_11__["default"], null));
           }
         });
       };

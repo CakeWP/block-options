@@ -139,6 +139,7 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 
 			wp_add_inline_script( $this->slug . '-admin', 'window.editorskitSettings = ' . wp_json_encode( $global ) . ';', 'before' );
 			wp_add_inline_script( $this->slug . '-admin', 'window.editorskitInfo = ' . wp_json_encode( $global ) . ';', 'before' );
+			require_once EDITORSKIT_PLUGIN_DIR . 'includes/class-editorskit-plugin-images-links.php';
 		}
 
 		/**

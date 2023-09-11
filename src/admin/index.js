@@ -5,7 +5,6 @@ import EditorsKitDocs from './docs';
 import FeaturesManager from '../extensions/components/manager/components/manager';
 import BlockManager from './block-manager/';
 import Notices from './notices';
-
 /**
  * WordPress dependencies
  */
@@ -96,6 +95,9 @@ class EditorsKitSettings extends Component {
 							case 'ek-blocks-manager':
 								return (
 									<Fragment>
+										<a href='https://shop.gutenberghub.com/blocks/' target='_blank'>
+											<img width='100%' height='100%' src={editorskitData?.blockBanner ?? ""} />
+										</a>
 										<p>{__('Manage each individual blocks! You can enable or disable any blocks you want and it will be reflected on Gutenberg block manager settings. Just uncheck the box and it will automatically be saved.', 'block-options')}</p>
 										<BlockManager />
 									</Fragment>
@@ -104,12 +106,14 @@ class EditorsKitSettings extends Component {
 							case 'ek-template-library':
 								return (
 									<Fragment>
+										<a href='https://shop.gutenberghub.com/patterns/' target='_blank'>
+											<img width='100%' height='100%' src={editorskitData?.templateBanner ?? ""} />
+										</a>
 										<p>{__('Here you can enable/disable the integrated GutenbergHub\'s template library.', 'block-options')}</p>
 										<AddonsManager />
 									</Fragment>
 
 								);
-
 						}
 					}}
 			</TabPanel>
