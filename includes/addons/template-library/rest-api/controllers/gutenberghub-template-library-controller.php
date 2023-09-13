@@ -129,6 +129,7 @@ class Gutenberghub_Template_Library_Controller extends WP_REST_Controller {
 		$connection_id = $request->get_param( 'connection_id' );
 		$keywords      = $request->has_param( 'keywords' ) ? $request->get_param( 'keywords' ) : array();
 		$category_id   = $request->has_param( 'category' ) ? $request->get_param( 'category' ) : null;
+		$page          = $request->has_param( 'page' ) ? $request->get_param( 'page' ) : 1;
 		$per_page      = $request->has_param( 'per_page' ) ? $request->get_param( 'per_page' ) : 10;
 
 		$connection = Gutenberghub_Template_Library_Connections::get_connection( $connection_id );
@@ -138,6 +139,7 @@ class Gutenberghub_Template_Library_Controller extends WP_REST_Controller {
 		// Obtaining every category.
 		$query_args = array(
 			'per_page'   => $per_page,
+			'page'       => $page,
 			'uuid'       => wp_generate_uuid4(),
 			'product_id' => explode( '||', $connection['product_id'] ),
 		);

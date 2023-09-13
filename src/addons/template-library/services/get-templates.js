@@ -3,7 +3,12 @@ import apiFetch from '@wordpress/api-fetch';
 import { addQueryArgs } from '@wordpress/url';
 import { filter, isEmpty } from 'lodash';
 
-async function getTemplates( connectionId, keywords, categoryId, page = 1 ) {
+async function getTemplates( connectionId, keywords, categoryId, page = 1, signal = null ) {
+
+	if (!signal) {
+		signal = new AbortController();
+	}
+
 	let args = {
 		connection_id: connectionId,
 		keywords: filter( keywords, ( v ) => ! isEmpty( v ) ),
@@ -16,6 +21,7 @@ async function getTemplates( connectionId, keywords, categoryId, page = 1 ) {
 	}
 
 	const response = await apiFetch( {
+		signal: signal,
 		parse: false,
 		path: addQueryArgs(
 			'gutenberghub-template-library/v1/library/templates',

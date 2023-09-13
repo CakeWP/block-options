@@ -14,7 +14,6 @@ import { QueryErrorResetBoundary } from 'react-query';
 import { ErrorBoundary } from 'react-error-boundary';
 
 import LibraryContent from './library-content';
-import LibraryConnections from './library-connections';
 
 import { head } from 'lodash';
 
@@ -26,10 +25,12 @@ function Library( props ) {
 	const activeConnectionId = useLibrary(
 		( state ) => state.activeConnection
 	);
+
 	const { data: connections, isLoading, isError } = useQuery(
 		'connections',
 		() => getConnections(),
 		{
+			retryOnMount: false,
 			onSuccess: ( connections ) => {
 				const initialConnection = head( connections );
 				if ( initialConnection ) {
@@ -38,6 +39,7 @@ function Library( props ) {
 			},
 		}
 	);
+
 
 	const isAddingNewConnection = useLibrary(
 		( state ) => state.isAddingNewConnection
@@ -76,29 +78,31 @@ function Library( props ) {
 			<LibraryHeader onClose={ props.onRequestClose } />
 
 			<QueryErrorResetBoundary>
-				{ ( { reset } ) => (
-					<ErrorBoundary
-						onReset={ reset }
-						fallbackRender={ ( { resetErrorBoundary } ) => (
-							<LibraryError onReset={ resetErrorBoundary } />
-						) }
-					>
-						<div
-							className={ `gutenberghub-template-library-content${
-								isAddingNewConnection
-									? ' gutenberghub-template-library-connections'
-									: ''
-							}` }
-						>
-							{ connections.length === 0 &&
-							! isAddingNewConnection ? (
-								<LibraryNoConnectionsFound />
-							) : (
-								<LibraryCurrentContent />
+				{ ( { reset } ) => {
+					return (
+						<ErrorBoundary
+							onReset={ reset }
+							fallbackRender={ ( { resetErrorBoundary } ) => (
+								<LibraryError onReset={ resetErrorBoundary } />
 							) }
-						</div>
-					</ErrorBoundary>
-				) }
+						>
+							<div
+								className={ `gutenberghub-template-library-content${
+									isAddingNewConnection
+										? ' gutenberghub-template-library-connections'
+										: ''
+								}` }
+							>
+								{ connections.length === 0 &&
+								! isAddingNewConnection ? (
+									<LibraryNoConnectionsFound />
+								) : (
+									<LibraryCurrentContent />
+								) }
+							</div>
+						</ErrorBoundary>
+					)
+				} }
 			</QueryErrorResetBoundary>
 		</div>
 	);

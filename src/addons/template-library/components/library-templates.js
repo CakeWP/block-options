@@ -1,10 +1,11 @@
 import React from 'react';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import useLibrary from '../stores/library';
-import { useInfiniteQuery } from 'react-query';
+import { useInfiniteQuery, useQueryClient } from 'react-query';
 import { isEmpty, get } from 'lodash';
 import { __ } from '@wordpress/i18n';
-import { Button } from '@wordpress/components';
+import { useEffect } from '@wordpress/element';
+import { Button, Spinner } from '@wordpress/components';
 import { useDispatch } from '@wordpress/data';
 import { decodeEntities } from '@wordpress/html-entities';
 import { parse } from '@wordpress/blocks';
@@ -12,11 +13,15 @@ import getTemplates from '../services/get-templates';
 import LibraryNoTemplateFound from './library-no-template-found';
 
 function LibraryTemplates( props ) {
+
+	const queryClient = useQueryClient();
+
 	const connectionId = useLibrary( ( state ) => state.activeConnection );
 	const activeCategory = useLibrary( ( state ) => state.activeCategory );
 	const setVisible = useLibrary( ( state ) => state.setVisible );
 
 	const searchQuery = useLibrary( ( state ) => state.search );
+
 	const {
 		data,
 		isLoading,
@@ -25,25 +30,34 @@ function LibraryTemplates( props ) {
 		fetchNextPage,
 	} = useInfiniteQuery(
 		[ 'templates', searchQuery, connectionId, activeCategory ],
-		( { pageParam } ) =>
+		( { pageParam, signal } ) =>
 			getTemplates(
 				connectionId,
 				searchQuery.split( ' ' ),
 				activeCategory,
-				pageParam
+				pageParam,
+				signal
 			),
 		{
 			retry: false,
 			useErrorBoundary: true,
+			refetchOnMount: false,
 			enabled: ! isEmpty( connectionId ),
 			getNextPageParam: ( lastPageResponse, allPages ) => {
 				const currentPage = allPages.length;
+
 				return currentPage < lastPageResponse.totalPages
 					? currentPage + 1
 					: undefined;
 			},
 		}
 	);
+
+	useEffect(() => {
+		return () => {
+			queryClient.cancelQueries([ 'templates', searchQuery, connectionId, activeCategory ]);
+		}
+	}, [])
 
 	const { insertBlocks } = useDispatch( 'core/block-editor' );
 	const { createSuccessNotice } = useDispatch( 'core/notices' );
@@ -52,6 +66,10 @@ function LibraryTemplates( props ) {
 
 	const pages = get( data, 'pages', [] );
 	const hasData = pages.length > 0;
+
+	if ( isLoading ) {
+		return <Spinner />
+	}
 
 	return (
 		<>

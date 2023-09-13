@@ -76,7 +76,7 @@ import * as shareABlock from './blocks/shareablock';
 import './addons/template-library';
 
 export function registerBlocks() {
-	[importBlock, shareABloc].forEach((block) => {
+	[importBlock, shareABlock].forEach((block) => {
 		if (!block) {
 			return;
 		}

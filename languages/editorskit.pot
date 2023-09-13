@@ -3,84 +3,245 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/admin/index.js:101
+#: src/blocks/lorem/index.js:19
+msgid "Lorem Dev Tool"
+msgstr ""
+
+#: src/blocks/lorem/index.js:32
+msgid "Create lorem ipsum placeholder paragraph."
+msgstr ""
+
+#: src/blocks/shareablock/components/edit.js:183
+msgid "ShareABlock from EditorsKit"
+msgstr ""
+
+#: src/blocks/shareablock/components/edit.js:184
+msgid "Insert your downloads from shareablock.com at ease."
+msgstr ""
+
+#: src/blocks/shareablock/components/edit.js:192
+msgid "Invalid API or Access Token."
+msgstr ""
+
+#: src/blocks/shareablock/components/edit.js:210
+msgid "View Downloads"
+msgstr ""
+
+#: src/blocks/shareablock/components/edit.js:217
+msgid "API Settings"
+msgstr ""
+
+#: src/blocks/shareablock/components/edit.js:218
+msgid "Enter Public API Key…"
+msgstr ""
+
+#: src/blocks/shareablock/components/edit.js:225
+msgid "Enter Access Token…"
+msgstr ""
+
+#: src/blocks/shareablock/components/edit.js:236
+msgid "Apply & View Downloads"
+msgstr ""
+
+#: src/blocks/shareablock/components/edit.js:243
+msgid "Get API Key"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/acf/index.js:100
+msgid "Select Condition"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/acf/index.js:104
+msgid "Is Equal to"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/acf/index.js:108
+msgid "Is Not Equal to"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/acf/index.js:112
+msgid "Contains"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/acf/index.js:116
+msgid "Does Not Contain"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/acf/index.js:120
+msgid "Is Empty"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/acf/index.js:124
+msgid "Is Not Empty"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/acf/index.js:132
+msgid "Conditional Value"
+msgstr ""
+
+#: src/extensions/advanced-controls/options/acf/index.js:136
 msgid ""
-"Manage each individual blocks! You can enable or disable any blocks you "
-"want and it will be reflected on Gutenberg block manager settings. Just "
-"uncheck the box and it will automatically be saved."
+"Additional support for Advanced Custom Fields plugin. Will automatically "
+"show when you have the plugin installed and activated."
 msgstr ""
 
-#: src/admin/index.js:112
-msgid "Here you can enable/disable the integrated GutenbergHub's template library."
+#: src/extensions/advanced-controls/options/acf/index.js:49
+msgid "Select Field"
 msgstr ""
 
-#: src/admin/index.js:127
-msgid "Settings → EditorsKit"
+#: src/extensions/advanced-controls/options/acf/index.js:70
+msgid "Advanced Custom Fields"
 msgstr ""
 
-#: src/admin/index.js:128
-msgid "Getting Started with"
+#: src/extensions/advanced-controls/options/acf/index.js:75
+msgid "Select Visibility Option"
 msgstr ""
 
-#: src/admin/index.js:129
-msgid ""
-"Congratulations! You've just unlocked more Gutenberg block editor tools for "
-"easier editing and better workflow. Check more information about the plugin "
-"below and please make sure to navigate through \"Tutorials and Docs\" tab "
-"to learn more on how to use each available features."
+#: src/extensions/advanced-controls/options/acf/index.js:79
+msgid "Hide when Condition's met"
 msgstr ""
 
-#: src/admin/index.js:139
-msgid "Buy me a Coffee"
+#: src/extensions/advanced-controls/options/acf/index.js:83
+msgid "Show when Condition's met"
 msgstr ""
 
-#: src/admin/index.js:147
-msgid "Leave a Review"
+#: src/extensions/block-settings/clear-formatting/components/controls.js:32
+msgid "Clear Block Formatting"
 msgstr ""
 
-#: src/admin/index.js:23
-msgid "Getting Started"
+#: src/extensions/block-settings/set-as-featured/components/controls.js:28
+msgid "Remove as Featured Image"
 msgstr ""
 
-#: src/admin/index.js:28
-msgid "Tutorial and Docs"
+#: src/extensions/block-settings/set-as-featured/components/controls.js:29
+msgid "Set as Featured Image"
 msgstr ""
 
-#: src/admin/index.js:33
-msgid "Features Manager"
+#: src/extensions/block-settings/set-as-featured/components/controls.js:77
+msgid "Image Set as Featured."
 msgstr ""
 
-#: src/admin/index.js:38
-msgid "Blocks Manager"
+#: src/extensions/block-settings/set-as-featured/components/controls.js:88
+msgid "Featured Image Removed."
 msgstr ""
 
-#: src/admin/index.js:43
-msgid "Template Library"
+#: src/extensions/block-toolbar/media-text-card/components/toolbar.js:65
+msgid "Show media on top"
 msgstr ""
 
-#: src/admin/index.js:60
-msgid ""
-"EditorsKit provides set of tools to extend the way you are building content "
-"on WordPress Gutenberg block editor. Designed and integrated to help users "
-"easily navigate; and control each block the way it should be."
+#: src/extensions/block-toolbar/media-text-card/components/toolbar.js:73
+msgid "Show media on bottom"
 msgstr ""
 
-#: src/admin/index.js:63
-msgid "EditorsKit video preview"
+#: src/extensions/components/gradient-controls/components/controls.js:115
+msgid "Paste Gradient Value"
 msgstr ""
 
-#: src/admin/index.js:68
-msgid ""
-"If you have any questions or suggestion, let us know through "
-"%1$sTwitter%4$s or our %2$sFacebook community %4$s. Also, %3$ssubscribe to "
-"our newsletter%4$s if you want to stay up to date with what's new and "
-"upcoming at EditorsKit."
+#: src/extensions/components/gradient-controls/components/controls.js:133
+msgid "Apply"
 msgstr ""
 
-#: src/admin/index.js:88
-msgid ""
-"All features are active by default but you have complete control over each "
-"one of them. Disable any features do not want to use and re-enable them "
-"anytime on this page or under the \"EditorsKit Settings\" on Gutenberg "
-"editor. Just uncheck the box and it will automatically be saved."
+#: src/extensions/components/gradient-controls/components/controls.js:155
+msgid "Custom Gradient copied to your clipboard."
+msgstr ""
+
+#: src/extensions/components/gradient-controls/components/controls.js:165
+msgid "Custom Gradient applied to selected block."
+msgstr ""
+
+#: src/extensions/components/gradient-controls/components/controls.js:46
+msgid "Copy Gradient Value"
+msgstr ""
+
+#: src/extensions/components/gradient-controls/components/controls.js:58
+msgid "Paste Gradient"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/about.js:12
+msgid "About Gutenberg Block Editor"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/about.js:15
+msgid "Close"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/about.js:19
+msgid "Editor Version is"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/about.js:20
+msgid "WordPress Version is"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/about.js:22
+msgid "You are using the new block editor bundled on WordPress core %s"
+msgstr ""
+
+#: src/extensions/components/help-tips/components/about.js:23
+msgid "You are using the new block editor powered by the %sGutenberg Plugin%s."
+msgstr ""
+
+#: src/extensions/components/help-tips/components/about.js:25
+msgid " Want to help? %sGet involved or report an issue%s."
+msgstr ""
+
+#: src/extensions/components/help-tips/components/about.js:26
+msgid "EditorsKit %s"
+msgstr ""
+
+#: src/extensions/components/scroll-down/components/scrolldown.js:36
+msgid "View Custom Fields"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:108
+msgid "Open in New Tab"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:113
+msgid "No Follow"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:118
+msgid "Sponsored"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:123
+msgid "Hover Animation"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:139
+msgid "Edit link"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:140
+msgid "Insert link"
+msgstr ""
+
+#: src/extensions/components/url-popover/url-input-ui.js:172
+msgid "Remove link"
+msgstr ""
+
+#: src/extensions/formats/clear/controls.js:39
+msgid "Clear Formatting"
+msgstr ""
+
+#: src/extensions/formats/indent-increase/index.js:19
+msgid "Indent Increase"
+msgstr ""
+
+#: src/extensions/formats/justify/controls.js:29
+msgid "Justify"
+msgstr ""
+
+#: src/extensions/formats/link/components/utils.js:106
+#. accessibility label for external links, where the argument is the link text
+msgid "%s (opens in a new tab)"
+msgstr ""
+
+#: src/extensions/formats/nbsp/components/edit.js:56
+msgid "Nonbreaking space"
+msgstr ""
+
+#: src/extensions/formats/underline/index.js:48
+msgid "Underline"
 msgstr ""
