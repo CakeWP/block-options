@@ -4,7 +4,7 @@ const postcssPresetEnv = require( 'postcss-preset-env' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const IgnoreEmitPlugin = require( 'ignore-emit-webpack-plugin' );
 const OptimizeCSSAssetsPlugin = require( 'optimize-css-assets-webpack-plugin' );
-
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const camelCaseDash = ( string ) =>
 	string.replace( /-([a-z])/g, ( _match, letter ) => letter.toUpperCase() );
 
@@ -50,6 +50,8 @@ module.exports = {
 		admin: path.resolve( process.cwd(), 'src', 'admin.scss' ),
 		'template-library-addon': path.resolve( process.cwd(), 'src', 'addons', 'template-library', 'index.js' ), 
 		'template-library-addon-style': path.resolve( process.cwd(), 'src', 'addons', 'template-library', 'template-library-addon.scss' ), 
+		'styles-manager-addon': path.resolve( process.cwd(), 'src', 'addons', 'styles-manager', 'index.js' ), 
+		'styles-manager-addon-style': path.resolve( process.cwd(), 'src', 'addons', 'styles-manager', 'styles-manager.scss' ), 
 	},
 	optimization: {
 		...defaultConfig.optimization,
@@ -134,6 +136,14 @@ module.exports = {
 				preset: [ 'default', { discardComments: { removeAll: true } } ],
 			},
 		} ),
+		new CopyWebpackPlugin({
+			patterns: [
+				{
+					from: 'src/addons/styles-manager/style-manager/block.json',
+					to: 'styles-manager-block.json'
+				}
+			]
+		}),
 		new IgnoreEmitPlugin( [
 			'editor.js',
 			'style.js',
@@ -148,6 +158,8 @@ module.exports = {
 			'editor.build.css.map',
 			'style.build.css.map',
 			'admin.build.css.map',
+			'styles-manager-addon.js.map',
+			'template-library-addon.js.map',
 		] ),
 	],
 	externals: {

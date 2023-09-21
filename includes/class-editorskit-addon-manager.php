@@ -39,6 +39,10 @@ if ( ! class_exists( 'Editorskit_Addon_Manager' ) ) {
 		 */
 		public function load_addons() {
 			require_once EDITORSKIT_PLUGIN_ADDON_PATH . 'template-library/gutenberghub-template-library.php';
+
+			if ( $this->is_addon_active( 'editorskit-addon-styles-manager' ) ) {
+				require_once EDITORSKIT_PLUGIN_ADDON_PATH . 'styles-manager/gutenberghub-styles-manager-main.php';
+			}
 		}
 
 		/**
@@ -69,6 +73,16 @@ if ( ! class_exists( 'Editorskit_Addon_Manager' ) ) {
 			register_setting(
 				$this->settings_group,
 				'editorskit-addon-template-library',
+				array(
+					'default'      => true,
+					'show_in_rest' => true,
+					'type'         => 'boolean',
+				)
+			);
+			// Addon 1: Styles Manager.
+			register_setting(
+				$this->settings_group,
+				'editorskit-addon-styles-manager',
 				array(
 					'default'      => true,
 					'show_in_rest' => true,

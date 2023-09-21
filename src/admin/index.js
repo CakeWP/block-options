@@ -9,7 +9,7 @@ import Notices from './notices';
  * WordPress dependencies
  */
 import { starFilled } from '@wordpress/icons';
-import AddonsManager from './addons-manager';
+import { StylesManager, TemplateLibrary } from './addons-manager';
 const { __, sprintf } = wp.i18n;
 const { registerCoreBlocks } = wp.blockLibrary;
 const { Fragment, Component, RawHTML, render } = wp.element;
@@ -42,6 +42,11 @@ class EditorsKitSettings extends Component {
 				name: 'ek-template-library',
 				title: __('Template Library', 'block-options'),
 				className: 'ek-settings-template-library',
+			},
+			{
+				name: 'ek-styles-manager',
+				title: __('Styles Manager', 'block-options'),
+				className: 'ek-settings-styles-manager',
 			},
 		];
 
@@ -110,7 +115,15 @@ class EditorsKitSettings extends Component {
 											<img width='100%' height='100%' src={editorskitData?.templateBanner ?? ""} />
 										</a>
 										<p>{__('Here you can enable/disable the integrated GutenbergHub\'s template library.', 'block-options')}</p>
-										<AddonsManager />
+										<TemplateLibrary />
+									</Fragment>
+
+								);
+							case 'ek-styles-manager':
+								return (
+									<Fragment>
+										<p>{__('Here you can enable/disable the integrated GutenbergHub\'s styles manager.', 'block-options')}</p>
+										<StylesManager />
 									</Fragment>
 
 								);

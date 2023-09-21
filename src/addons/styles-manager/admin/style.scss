@@ -1,0 +1,190 @@
+@import "~@wordpress/base-styles/colors";
+@import "~@wordpress/base-styles/colors.native";
+@import "~@wordpress/base-styles/variables";
+@import "~@wordpress/base-styles/mixins";
+@import "~@wordpress/base-styles/breakpoints";
+@import "~@wordpress/base-styles/animations";
+@import "~@wordpress/base-styles/z-index";
+@import "~@wordpress/base-styles/default-custom-properties";
+
+#wpcontent {
+	padding-left: 0 !important;
+}
+
+.gsm-app-root {
+	.gsm-header {
+		background-color: $white;
+		border-bottom: 1px solid $gray-300;
+	}
+
+	.gsm-content {
+		display: grid;
+		grid-template-columns: 30% 70%;
+		background-color: $white;
+
+		.gsm-styles-grid {
+			display: grid;
+			margin-top: $grid-unit-20;
+			grid-gap: 15px;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+			&::-webkit-scrollbar {
+				width: 0px;
+			}
+
+			&::-webkit-scrollbar-thumb {
+				background: transparent;
+			}
+
+			& .gsm-card-wrapper {
+				text-align: center;
+
+				& .gsm-card-item {
+					min-height: 250px;
+					border: 1px solid #cccccc;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: space-between;
+					position: relative;
+
+					&:hover {
+						border: 1px solid $blue-60;
+					}
+
+					& .gsm-style-preview-iframe {
+						min-height: 200px;
+						width: 100%;
+						& iframe {
+							width: 100%;
+							height: 200px;
+						}
+					}
+
+					& .gsm-style-preview-title {
+						display: flex;
+						flex-direction: row;
+						align-items: center;
+
+						.components-toggle-control {
+							margin-bottom: 0 !important;
+						}
+
+						.components-spinner {
+							margin: 0;
+							margin-right: $grid-unit-10 !important;
+						}
+					}
+
+					& .gsm-info-wrapper {
+						display: flex;
+						width: 100%;
+						justify-content: space-between;
+						padding: $grid-unit-10 $grid-unit-10;
+						align-items: center;
+						box-sizing: border-box;
+						border-top: 1px solid $gray-300;
+
+						& .gsm-action-buttons-wrapper {
+							display: flex;
+							& a {
+								z-index: 50;
+								cursor: pointer;
+								color: #000000;
+								text-decoration: none;
+								display: flex;
+
+								&:last-child {
+									border-right: none;
+								}
+
+								&:focus {
+									outline: none;
+									box-shadow: none;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.gsm-sidebar {
+			padding-right: $grid-unit-30;
+
+			& .gsm-select-box {
+				display: none;
+			}
+
+			& .gsm-menu-wrapper {
+				overflow-x: hidden;
+				padding: 0px 5px;
+			}
+		}
+
+		.gsm-styles {
+			padding: $grid-unit-30;
+
+			.gsm-styles-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				h3 {
+					margin: 0;
+				}
+			}
+		}
+	}
+
+	.gsm-wrap {
+		padding: $grid-unit-20 $grid-unit-30;
+	}
+}
+
+.gsm-preview-wrapper {
+	width: 100%;
+	height: 100%;
+
+	& iframe {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+/******** Media Query **********/
+
+@media (max-width: 768px) {
+	.gsm-content {
+		grid-template-columns: repeat(1, 1fr) !important;
+
+		& .gsm-menu-wrapper {
+			height: auto !important;
+
+			& .gsm-menu-inner-wrapper {
+				display: none;
+			}
+		}
+
+		& .gsm-select-box {
+			display: block !important;
+		}
+	}
+}
+
+#wpfooter {
+	display: none !important;
+}
+
+#wpbody-content {
+	padding-bottom: 0px !important;
+}
+
+.gsm-notices-root {
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: $grid-unit-10;
+}

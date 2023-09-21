@@ -183,6 +183,7 @@ class EditorsKit_Block_Assets {
 			),
 			'addons'   => array(
 				'template_library' => Editorskit_Addon_Manager::is_addon_active( 'editorskit-addon-template-library' ),
+				'styles_manager'   => Editorskit_Addon_Manager::is_addon_active( 'editorskit-addon-styles-manager' ),
 			),
 		);
 
