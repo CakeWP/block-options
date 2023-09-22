@@ -32,6 +32,12 @@ class Gutenberghub_Styles_Manager_Block {
 				'render_callback' => array( $this, 'render' ),
 			)
 		);
+		wp_register_script(
+			'gutenberghub-styles-manager-block-script',
+			EDITORSKIT_PLUGIN_DIR . 'build/styles-manager-addon.js',
+			array(),
+			uniqid()
+		);
 	}
 
 

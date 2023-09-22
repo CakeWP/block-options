@@ -27,5 +27,5 @@
         "customClassName": false
     },
     "styles": [],
-    "editorScript": "file:./block.js"
+    "editorScript": "gutenberghub-styles-manager-block-script"
 }

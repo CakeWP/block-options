@@ -15009,7 +15009,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! exports provided: $schema, apiVersion, name, title, category, description, keywords, version, textdomain, attributes, supports, styles, editorScript, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"$schema\":\"https://json.schemastore.org/block.json\",\"apiVersion\":2,\"name\":\"gutenberghub/block-style-previewer\",\"title\":\"Style Previewer\",\"category\":\"text\",\"description\":\"A helper block that allows you to create block style\",\"keywords\":[],\"version\":\"1.0.0\",\"textdomain\":\"gutenberghub-styles-manager\",\"attributes\":{\"blockName\":{\"type\":\"string\",\"default\":\"\"},\"taxonomy\":{\"type\":\"string\",\"default\":\"\"},\"previewBlock\":{\"type\":\"string\",\"default\":\"\"}},\"supports\":{\"html\":false,\"customClassName\":false},\"styles\":[],\"editorScript\":\"file:./block.js\"}");
+module.exports = JSON.parse("{\"$schema\":\"https://json.schemastore.org/block.json\",\"apiVersion\":2,\"name\":\"gutenberghub/block-style-previewer\",\"title\":\"Style Previewer\",\"category\":\"text\",\"description\":\"A helper block that allows you to create block style\",\"keywords\":[],\"version\":\"1.0.0\",\"textdomain\":\"gutenberghub-styles-manager\",\"attributes\":{\"blockName\":{\"type\":\"string\",\"default\":\"\"},\"taxonomy\":{\"type\":\"string\",\"default\":\"\"},\"previewBlock\":{\"type\":\"string\",\"default\":\"\"}},\"supports\":{\"html\":false,\"customClassName\":false},\"styles\":[],\"editorScript\":\"gutenberghub-styles-manager-block-script\"}");
 
 /***/ }),
 
