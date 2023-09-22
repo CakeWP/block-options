@@ -78,8 +78,7 @@ class Gutenberghub_Styles_Manager_Admin {
 	 * @return void
 	 */
 	public function load_admin_assets( $hook_suffix ) {
-
-		if ( sprintf( 'toplevel_page_%1$s', Gutenberghub_Styles_Manager_Core::$menu_slug ) === $hook_suffix ) {
+		if ( sprintf( 'editorskit_page_%1$s', Gutenberghub_Styles_Manager_Core::$menu_slug ) === $hook_suffix ) {
 			wp_enqueue_script(
 				'gutenberghub-gsm-admin',
 				EDITORSKIT_PLUGIN_URL . 'build/styles-manager-addon.js',

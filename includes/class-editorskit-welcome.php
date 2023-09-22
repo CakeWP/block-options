@@ -146,14 +146,15 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 		 * Setup the admin menu.
 		 */
 		public function screen_page() {
-			add_submenu_page(
-				'options-general.php',
+			add_menu_page(
 				__( 'Getting started with EditorsKit', 'block-options' ),
 				__( 'EditorsKit', 'block-options' ),
 				apply_filters( 'blockopts_welcome_cap', 'manage_options' ),
 				'editorskit-getting-started',
-				array( $this, 'welcome_content' )
+				array( $this, 'welcome_content' ),
 			);
+
+			do_action( 'after_editorskit_menu_registration' );
 		}
 
 		/**

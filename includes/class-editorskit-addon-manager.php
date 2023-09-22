@@ -29,8 +29,10 @@ if ( ! class_exists( 'Editorskit_Addon_Manager' ) ) {
 		 */
 		public function __construct() {
 			add_action( 'init', array( $this, 'register_addon_settings' ) );
+
 			$this->load_addons();
 		}
+
 
 		/**
 		 * Loads addons.

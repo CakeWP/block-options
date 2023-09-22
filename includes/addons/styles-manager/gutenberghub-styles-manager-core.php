@@ -26,8 +26,7 @@ class Gutenberghub_Styles_Manager_Core {
 	 * Constructor method.
 	 */
 	public function __construct() {
-		// Hook into the 'admin_menu' action to add our custom menu.
-		add_action( 'admin_menu', array( $this, 'add_styles_manager_menu' ) );
+		add_action( 'after_editorskit_menu_registration', array( $this, 'add_styles_manager_menu' ) );
 	}
 
 	/**
@@ -36,14 +35,13 @@ class Gutenberghub_Styles_Manager_Core {
 	 * @since 1.0.0
 	 */
 	public function add_styles_manager_menu() {
-		add_menu_page(
+		add_submenu_page(
+			'editorskit-getting-started',
 			__( 'Styles Manager', 'gutenberghub-styles-manager' ),
 			__( 'Styles Manager', 'gutenberghub-styles-manager' ),
 			'manage_options',
-			self::$menu_slug,
+			static::$menu_slug,
 			array( $this, 'render_styles_manager_page' ),
-			'dashicons-admin-customizer',
-			20
 		);
 	}
 
