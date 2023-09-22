@@ -55,7 +55,7 @@ if ( ! class_exists( 'Editorskit_Addon_Manager' ) ) {
 		 * @return bool - True if active, otherwise false.
 		 */
 		public static function is_addon_active( $key ) {
-			$status = get_option( $key );
+			$status = get_option( $key, true );
 
 			if ( true !== $status && '1' !== $status ) {
 				return false;
