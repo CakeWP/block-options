@@ -3,14 +3,38 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/addons/styles-manager/admin/components/sidebar/index.js:103
-msgid "Search Block"
+#: src/addons/styles-manager/admin/components/header/index.js:15
+msgid "Styles"
 msgstr ""
 
-#: src/addons/styles-manager/admin/components/sidebar/index.js:78
-msgid "Namespace"
+#: src/addons/styles-manager/admin/components/header/index.js:19
+msgid "Import / Export"
 msgstr ""
 
-#: src/addons/styles-manager/admin/components/sidebar/index.js:90
-msgid "Block"
+#: src/addons/styles-manager/admin/components/header/index.js:25
+msgid "Styles Manager"
+msgstr ""
+
+#: src/addons/styles-manager/admin/components/import-export/exporter.js:32
+msgid "Export Styles"
+msgstr ""
+
+#: src/addons/styles-manager/admin/components/import-export/exporter.js:59
+msgid "Export"
+msgstr ""
+
+#: src/addons/styles-manager/admin/components/import-export/importer.js:22
+msgid "Something went wrong while importing. Please try again later!"
+msgstr ""
+
+#: src/addons/styles-manager/admin/components/import-export/importer.js:54
+msgid "Import Styles"
+msgstr ""
+
+#: src/addons/styles-manager/admin/components/import-export/importer.js:71
+msgid "Importing..."
+msgstr ""
+
+#: src/addons/styles-manager/admin/components/import-export/importer.js:72
+msgid "Import"
 msgstr ""

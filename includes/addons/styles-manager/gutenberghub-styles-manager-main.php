@@ -37,6 +37,8 @@ if ( ! class_exists( 'GMS_Gutenberghub_Styles_Manager' ) ) {
 				require_once EDITORSKIT_PLUGIN_ADDON_PATH . 'styles-manager/gutenberghub-styles-manager-core.php';
 				require_once EDITORSKIT_PLUGIN_ADDON_PATH . 'styles-manager/gutenberghub-styles-manager.php';
 				require_once EDITORSKIT_PLUGIN_ADDON_PATH . 'styles-manager/gutenberghub-styles-manager-blocks.php';
+				require_once EDITORSKIT_PLUGIN_ADDON_PATH . 'styles-manager/gutenberghub-styles-exporter.php';
+				require_once EDITORSKIT_PLUGIN_ADDON_PATH . 'styles-manager/gutenberghub-styles-importer.php';
 
 				// Blocks.
 				require_once EDITORSKIT_PLUGIN_ADDON_PATH . 'styles-manager/blocks/gutenberghub-styles-manager-block.php';

@@ -9,6 +9,8 @@ const useManager = create((set, get) => ({
 
 	namespace: 'core',
 	setActiveNamespace: (namespace) => set(() => ({ namespace })),
+	page: 'styles',
+	setPage: (slug) => set(() => ({ page: slug })),
 }));
 
 export default useManager;

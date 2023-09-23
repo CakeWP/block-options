@@ -1,0 +1,32 @@
+.gsm-import-export-manager {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: $grid-unit-20;
+}
+
+.gsm-importer {
+	.gsm-importer-body > form {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: $grid-unit-10;
+	}
+	.import-button {
+		background-color: $gray-300 !important;
+		height: calc($grid-unit-50 * 10);
+		border: 3px dashed $gray-400;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+}
+
+.gsm-exporter {
+	.gsm-export-block-list__item {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		padding: $grid-unit-10;
+		align-items: center;
+	}
+}

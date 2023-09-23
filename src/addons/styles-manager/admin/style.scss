@@ -7,6 +7,8 @@
 @import "~@wordpress/base-styles/z-index";
 @import "~@wordpress/base-styles/default-custom-properties";
 
+@import "./components/import-export/style.scss";
+
 #wpcontent {
 	padding-left: 0 !important;
 }
@@ -17,7 +19,7 @@
 		border-bottom: 1px solid $gray-300;
 	}
 
-	.gsm-content {
+	.gsm-content:not(.gsm-import-export-manager) {
 		display: grid;
 		grid-template-columns: 30% 70%;
 		background-color: $white;
@@ -137,8 +139,12 @@
 		}
 	}
 
-	.gsm-wrap {
+	.gsm-wrap:not(.gsm-header) {
 		padding: $grid-unit-20 $grid-unit-30;
+	}
+
+	.gsm-wrap.gsm-header {
+		padding: $grid-unit-20 $grid-unit-30 0 $grid-unit-30;
 	}
 }
 

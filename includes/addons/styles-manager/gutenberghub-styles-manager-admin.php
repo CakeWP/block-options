@@ -99,6 +99,8 @@ class Gutenberghub_Styles_Manager_Admin {
 				'gutenberghubStylesManager',
 				array(
 					'newPost'     => admin_url( 'post.php' ),
+					'exportNonce' => wp_create_nonce( 'gsm-export' ),
+					'importNonce' => wp_create_nonce( 'gsm-import' ),
 					'createStyle' => add_query_arg(
 						array(
 							'post_type' => static::$post_type,
