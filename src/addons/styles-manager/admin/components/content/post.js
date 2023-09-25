@@ -22,198 +22,190 @@ import deletePost from '../../services/delete-post';
 import togglePostStatus from '../../services/toggle-post-status';
 import useNotices from '../../store/notice.store';
 
-
-function Post( props ) {
-	const [ isFullScreen, setFullScreen ] = useState( false );
-	const [ askDelete, setAskDelete ] = useState( false );
+function Post(props) {
+	const [isFullScreen, setFullScreen] = useState(false);
+	const [askDelete, setAskDelete] = useState(false);
 
 	const currentPost = props.post;
-	const activeTerm = useManager( ( state ) => state.activeTerm );
-	const createNotice = useNotices( ( state ) => state.addNotice );
+	const activeTerm = useManager((state) => state.activeTerm);
+	const createNotice = useNotices((state) => state.addNotice);
 
-	const editPostLink = getEditPostLink( currentPost.id, activeTerm );
+	const editPostLink = getEditPostLink(currentPost.id, activeTerm);
 
 	// @ts-ignore
 	const isActive = currentPost.meta?.gsm_active ?? false;
 
 	const { mutate: deleteCurrentPost, isLoading: isDeleting } = useMutation(
 		() =>
-			deletePost( {
+			deletePost({
 				id: currentPost.id,
 				postType: 'gsm_styles',
-			} ),
+			}),
 		{
 			onSuccess: () => {
-				client.invalidateQueries( 'posts' );
-				setAskDelete( false );
+				client.invalidateQueries('posts');
+				setAskDelete(false);
 			},
 			onError: () => {
-				setAskDelete( false );
-				createNotice( {
+				setAskDelete(false);
+				createNotice({
 					status: 'error',
 					title: __(
 						'Something went wrong when deleting the style.',
 						'gutenberghub-styles-manager'
 					),
-				} );
+				});
 			},
 		}
 	);
 
 	const { mutate: toggleStatus, isLoading: isToggling } = useMutation(
 		() =>
-			togglePostStatus( {
+			togglePostStatus({
 				id: currentPost.id,
 				postType: 'gsm_styles',
 				currentStatus: isActive,
-			} ),
+			}),
 		{
 			onSuccess: () => {
-				client.invalidateQueries( [ 'posts' ] );
+				client.invalidateQueries(['posts']);
 			},
 
 			onError: () => {
-				createNotice( {
+				createNotice({
 					status: 'error',
 					title: __(
 						'Something went wrong when deactivate the style.',
 						'gutenberghub-styles-manager'
 					),
-				} );
+				});
 			},
 		}
 	);
 
-	const previewLink = addQueryArgs( currentPost.link, { preview: true } );
+	const previewLink = addQueryArgs(currentPost.link, { preview: true });
 
 	return (
 		<div className="gsm-card-wrapper">
 			<div className="gsm-card-item">
 				<div className="gsm-style-preview-iframe">
-					<iframe scrolling="no" src={ previewLink } />
+					<iframe scrolling="no" src={previewLink} />
 				</div>
 				<div className="gsm-info-wrapper">
 					<div className="gsm-style-preview-title">
-						{ isToggling ? (
+						{isToggling ? (
 							<Spinner />
 						) : (
 							<ToggleControl
-								label={ null }
-								checked={ isActive }
-								onChange={ () => toggleStatus() }
+								label={null}
+								checked={isActive}
+								onChange={() => toggleStatus()}
 							/>
-						) }
+						)}
 
 						<span>
-							{ truncate( currentPost.title.rendered, {
-								length: 20,
-								omission: '...',
-							} ) }
+							{!isEmpty(currentPost.title.rendered)
+								? truncate(currentPost.title.rendered, {
+										length: 20,
+										omission: '...',
+								  })
+								: __(
+										'Untitled Style',
+										'gutenberghub-styles-manager'
+								  )}
 						</span>
 					</div>
 					<div className="gsm-action-buttons-wrapper">
 						<Button
 							showTooltip
-							icon={ edit }
-							href={ editPostLink }
+							icon={edit}
+							href={editPostLink}
 							target="_blank"
-							label={ __(
-								'Edit',
-								'gutenberghub-styles-manager'
-							) }
+							label={__('Edit', 'gutenberghub-styles-manager')}
 						/>
 
 						<Button
-							icon={ fullscreen }
+							icon={fullscreen}
 							showTooltip
-							onClick={ () => setFullScreen( true ) }
-							label={ __(
+							onClick={() => setFullScreen(true)}
+							label={__(
 								'Fullscreen',
 								'gutenberghub-styles-manager'
-							) }
+							)}
 						/>
 
 						<DropdownMenu
-							icon={ moreVertical }
-							label={ __(
+							icon={moreVertical}
+							label={__(
 								'More Actions',
 								'gutenberghub-styles-manager'
-							) }
-							controls={ [
+							)}
+							controls={[
 								{
 									title: __(
 										'Delete',
 										'gutenberghub-styles-manager'
 									),
 									icon: trash,
-									onClick: () => setAskDelete( true ),
+									onClick: () => setAskDelete(true),
 								},
-							] }
+							]}
 						/>
 					</div>
 				</div>
 			</div>
 
-			{ isFullScreen && (
+			{isFullScreen && (
 				<Modal
 					//@ts-ignore
 					isFullScreen
-					title={ currentPost.title.rendered }
-					onRequestClose={ () => setFullScreen( false ) }
+					title={currentPost.title.rendered}
+					onRequestClose={() => setFullScreen(false)}
 				>
 					<div className="gsm-preview-wrapper">
-						<iframe scrolling="no" src={ currentPost.link } />
+						<iframe scrolling="no" src={currentPost.link} />
 					</div>
 				</Modal>
-			) }
+			)}
 
-			{ askDelete && (
+			{askDelete && (
 				<Modal
-					onRequestClose={ () => setAskDelete( false ) }
-					title={ __(
-						'Delete Style',
-						'gutenberghub-styles-manager'
-					) }
+					onRequestClose={() => setAskDelete(false)}
+					title={__('Delete Style', 'gutenberghub-styles-manager')}
 				>
 					<p>
-						{ __(
+						{__(
 							'You wont be able to recover this style, are you sure?',
 							'gutenberghub-styles-manager'
-						) }
+						)}
 					</p>
 
 					<div
-						style={ {
+						style={{
 							display: 'flex',
 							justifyContent: 'flex-end',
-						} }
+						}}
 					>
 						<Button
 							variant="secondary"
-							onClick={ () => setAskDelete( false ) }
+							onClick={() => setAskDelete(false)}
 						>
-							{ __( 'Cancel', 'gutenberghub-styles-manager' ) }
+							{__('Cancel', 'gutenberghub-styles-manager')}
 						</Button>
 						<Button
 							isDestructive
 							variant="primary"
-							isBusy={ isDeleting }
-							style={ { marginLeft: 5 } }
-							onClick={ () => deleteCurrentPost() }
+							isBusy={isDeleting}
+							style={{ marginLeft: 5 }}
+							onClick={() => deleteCurrentPost()}
 						>
-							{ isDeleting
-								? __(
-										'Deleting',
-										'gutenberghub-styles-manager'
-								  )
-								: __(
-										'Delete',
-										'gutenberghub-styles-manager'
-								  ) }
+							{isDeleting
+								? __('Deleting', 'gutenberghub-styles-manager')
+								: __('Delete', 'gutenberghub-styles-manager')}
 						</Button>
 					</div>
 				</Modal>
-			) }
+			)}
 		</div>
 	);
 }

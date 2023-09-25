@@ -61,10 +61,13 @@ class GSM_Styles_Exporter {
 			)
 		);
 
-		$export_data = array(
-			'term_details' => get_term_by( 'id', $term_id, Gutenberghub_Styles_Manager_Blocks::$taxonomy ),
+		$term_details = get_term_by( 'id', $term_id, Gutenberghub_Styles_Manager_Blocks::$taxonomy );
+		$export_data  = array(
+			'term_details' => $term_details,
 			'posts'        => array(),
 		);
+
+		$export_name = strtolower( $term_details->name ) . '.json';
 
 		if ( $query->have_posts() ) {
 			while ( $query->have_posts() ) {
@@ -85,7 +88,7 @@ class GSM_Styles_Exporter {
 
 		// Set the headers for a JSON file download.
 		header( 'Content-Type: application/json' );
-		header( 'Content-Disposition: attachment; filename=export.json' );
+		header( 'Content-Disposition: attachment; filename=' . $export_name );
 		echo json_encode( $export_data, JSON_PRETTY_PRINT );
 		exit;
 	}

@@ -100,7 +100,7 @@ class Gutenberghub_Styles_Manager {
 			}
 
 			// Step 5: Preparing css.
-			$selector = _wp_to_kebab_case( $style->post_title );
+			$selector = _wp_to_kebab_case( ! empty( $style->post_title ) ? $style->post_title : (string) $style->ID );
 
 			$css = str_replace( 'selector', '.is-style-' . $selector, $css );
 
@@ -109,7 +109,7 @@ class Gutenberghub_Styles_Manager {
 				array(
 					'inline_style' => $css,
 					'name'         => $selector,
-					'label'        => $style->post_title,
+					'label'        => empty( $style->post_title ) ? __( 'Untitled Style', 'block-options' ) : $style->post_title,
 				)
 			);
 		}

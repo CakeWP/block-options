@@ -14297,10 +14297,10 @@ function Post(props) {
     onChange: function onChange() {
       return toggleStatus();
     }
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("span", null, Object(lodash__WEBPACK_IMPORTED_MODULE_3__["truncate"])(currentPost.title.rendered, {
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("span", null, !Object(lodash__WEBPACK_IMPORTED_MODULE_3__["isEmpty"])(currentPost.title.rendered) ? Object(lodash__WEBPACK_IMPORTED_MODULE_3__["truncate"])(currentPost.title.rendered, {
     length: 20,
     omission: '...'
-  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+  }) : Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Untitled Style', 'gutenberghub-styles-manager'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
     className: "gsm-action-buttons-wrapper"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["Button"], {
     showTooltip: true,

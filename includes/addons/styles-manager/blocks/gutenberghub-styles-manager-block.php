@@ -65,7 +65,7 @@ class Gutenberghub_Styles_Manager_Block {
 			$block_name = $block_name[1];
 		}
 
-		$style_class = 'is-style-' . _wp_to_kebab_case( $current_post->post_title );
+		$style_class = 'is-style-' . _wp_to_kebab_case( ! empty( $current_post->post_title ) ? $current_post->post_title : (string) $current_post->ID );
 
 		$new_content = '';
 
