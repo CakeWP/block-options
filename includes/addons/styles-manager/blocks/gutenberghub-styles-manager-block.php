@@ -70,11 +70,22 @@ class Gutenberghub_Styles_Manager_Block {
 		$new_content = '';
 
 		foreach ( $block_instance->inner_blocks as $child_block ) {
-			$new_content .= gsm_str_replace_first(
-				'class="',
-				'class="' . $style_class . ' ',
-				$child_block->render()
-			);
+
+			// Using processor if found for better result.
+			$has_processor = class_exists( 'WP_HTML_Tag_Processor' );
+
+			if ( $has_processor ) {
+				$processor = new WP_HTML_Tag_Processor( $child_block->render() );
+				$processor->next_tag();
+				$processor->add_class( $style_class );
+				$new_content .= $processor->get_updated_html();
+			} else {
+				$new_content .= gsm_str_replace_first(
+					'class="',
+					'class="' . $style_class . ' ',
+					$child_block->render()
+				);
+			}
 		}
 
 		return $new_content;
