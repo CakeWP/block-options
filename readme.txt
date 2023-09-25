@@ -6,7 +6,7 @@ Tags: Gutenberg blocks, WordPress blocks, gutenberg, blocks, Gutenberg editor
 Requires at least: 5.0
 Tested up to: 6.3
 Requires PHP: 5.6
-Stable tag: 1.40.0
+Stable tag: 1.40.1
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -92,6 +92,9 @@ Provides the following additional styling for list block:
 * Starred
 * Dashed
 * None
+
+## Block Styles Manager (NEW)
+You can now easily create and manage all of your block styles with the new styles manager.
 
 ## Responsive Text Alignment
 Easily change text alignment per devices. This will help you provide different alignment view on mobile and tablet devices aside from the existing option for desktop.
@@ -190,6 +193,9 @@ e.g.
 10. Link rel attributes nofollow and sponsored option
 
 == Changelog ==
+
+= 1.40.1 =
+* New: Styles Manager for blocks
 
 = 1.40.0 =
 * New: Gutenberghub Template Library
