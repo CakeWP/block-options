@@ -14768,7 +14768,7 @@ function Sidebar() {
     className: "gsm-menu-inner-wrapper"
   }, namespacedTerms.map(function (term) {
     var isActive = term.slug === (activeTerm === null || activeTerm === void 0 ? void 0 : activeTerm.slug);
-    var isFiltered = Object(lodash__WEBPACK_IMPORTED_MODULE_5__["isEmpty"])(searchQuery) ? true : (term === null || term === void 0 ? void 0 : term.name.indexOf(searchQuery)) !== -1;
+    var isFiltered = Object(lodash__WEBPACK_IMPORTED_MODULE_5__["isEmpty"])(searchQuery) ? true : (term === null || term === void 0 ? void 0 : term.name.toLowerCase().indexOf(searchQuery.toLowerCase())) !== -1;
     return isFiltered && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["MenuItem"], {
       key: term.id,
       isPressed: isActive,

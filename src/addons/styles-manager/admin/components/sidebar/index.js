@@ -110,7 +110,11 @@ function Sidebar() {
 								const isActive = term.slug === activeTerm?.slug;
 								const isFiltered = isEmpty(searchQuery)
 									? true
-									: term?.name.indexOf(searchQuery) !== -1;
+									: term?.name
+											.toLowerCase()
+											.indexOf(
+												searchQuery.toLowerCase()
+											) !== -1;
 
 								return (
 									isFiltered && (
