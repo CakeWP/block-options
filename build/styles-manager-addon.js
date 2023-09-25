@@ -14510,7 +14510,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var react_query__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-query */ "./node_modules/react-query/es/index.js");
-/* harmony import */ var _services_import_data__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../services/import-data */ "./src/addons/styles-manager/admin/services/import-data.js");
+/* harmony import */ var _services_import_data__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/import-data */ "./src/addons/styles-manager/admin/services/import-data.js");
 /* harmony import */ var _store_notice_store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../store/notice.store */ "./src/addons/styles-manager/admin/store/notice.store.js");
 
 
@@ -14526,7 +14526,7 @@ function Importer() {
     return state.addNotice;
   });
   var _useMutation = Object(react_query__WEBPACK_IMPORTED_MODULE_5__["useMutation"])(function (data) {
-      return Object(_services_import_data__WEBPACK_IMPORTED_MODULE_8__["default"])(data);
+      return Object(_services_import_data__WEBPACK_IMPORTED_MODULE_6__["default"])(data);
     }, {
       onError: function onError(data) {
         addNotice({

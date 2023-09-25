@@ -152,6 +152,8 @@ if ( ! class_exists( 'EditorsKit_Welcome' ) ) {
 				apply_filters( 'blockopts_welcome_cap', 'manage_options' ),
 				'editorskit-getting-started',
 				array( $this, 'welcome_content' ),
+				'dashicons-edit',
+				50
 			);
 
 			do_action( 'after_editorskit_menu_registration' );
