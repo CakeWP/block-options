@@ -167,6 +167,16 @@ class Gutenberghub_Styles_Manager_Admin {
 			),
 		);
 
+		\register_setting(
+			'general',
+			'_ek_is_styles_manager_cpt_flashed',
+			array(
+				'default'      => false,
+				'show_in_rest' => false,
+				'type'         => 'boolean',
+			)
+		);
+
 		register_post_type( static::$post_type, $args );
 
 		// Adding necessary metadata.
@@ -205,6 +215,14 @@ class Gutenberghub_Styles_Manager_Admin {
 				// 'sanitize_callback' => 'sanitize_text_field',
 			)
 		);
+
+		// Flushing rewrite rules if we haven't already to address the issue where
+		// Custom Post Type redirects to 404 page.
+		if ( false === get_option( '_ek_is_styles_manager_cpt_flashed' ) ) {
+			// This is an expensive operation, so making sure that it only runs once.
+			flush_rewrite_rules( false );
+			update_option( '_ek_is_styles_manager_cpt_flashed', true );
+		}
 
 	}
 
