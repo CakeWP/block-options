@@ -51,113 +51,209 @@ class EditorsKitSettings extends Component {
 		];
 
 		const EditorsKitSettingsPanel = () => (
-			<TabPanel className="editorskit-settings-tab-panel"
+			<TabPanel
+				className="editorskit-settings-tab-panel"
 				activeClass="active-tab"
-				tabs={tabs}>
-				{
-					(tab) => {
-						switch (tab.name) {
-							case 'ek-getting-started':
-								return (
-									<Fragment>
-										<div className="editorskit-started-items-wrapper">
-											<div className="editorskit-started-item">
-												<p>{__('EditorsKit provides set of tools to extend the way you are building content on WordPress Gutenberg block editor. Designed and integrated to help users easily navigate; and control each block the way it should be.', 'block-options')}</p>
-											</div>
-											<div className="editorskit-started-item">
-												<iframe title={__('EditorsKit video preview', 'block-options')} width="560" height="380" src="https://www.youtube.com/embed/QWgO4lAJAlE" frameBorder="0" allowFullScreen></iframe>
-											</div>
-											<div className="editorskit-started-item">
-												<RawHTML>
-													{sprintf(
-														__('If you have any questions or suggestion, let us know through %1$sTwitter%4$s or our %2$sFacebook community %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what\'s new and upcoming at EditorsKit.', 'block-options'),
-														'<a href="https://twitter.com/editorskit" target="_blank">',
-														'<a href="https://www.facebook.com/groups/1306393256173179/" target="_blank">',
-														'<a href="https://editorskit.com/" target="_blank">',
-														'</a>'
-													)}
-												</RawHTML>
-											</div>
+				tabs={tabs}
+			>
+				{(tab) => {
+					switch (tab.name) {
+						case 'ek-getting-started':
+							return (
+								<Fragment>
+									<div className="editorskit-started-items-wrapper">
+										<div className="editorskit-started-item">
+											<p>
+												{__(
+													'EditorsKit provides set of tools to extend the way you are building content on WordPress Gutenberg block editor. Designed and integrated to help users easily navigate; and control each block the way it should be.',
+													'block-options'
+												)}
+											</p>
 										</div>
-									</Fragment>
-								);
-
-							case 'ek-docs':
-								return (
-									<EditorsKitDocs />
-								);
-
-							case 'ek-features-manager':
-								return (
-									<Fragment>
-										<p>{__('All features are active by default but you have complete control over each one of them. Disable any features do not want to use and re-enable them anytime on this page or under the "EditorsKit Settings" on Gutenberg editor. Just uncheck the box and it will automatically be saved.', 'block-options')}</p>
-										<div className="editorskit-features-manager-items-wrapper">
-											<FeaturesManager />
+										<div className="editorskit-started-item">
+											<iframe
+												title={__(
+													'EditorsKit video preview',
+													'block-options'
+												)}
+												width="560"
+												height="380"
+												src="https://www.youtube.com/embed/QWgO4lAJAlE"
+												frameBorder="0"
+												allowFullScreen
+											></iframe>
 										</div>
-									</Fragment>
-								);
+										<div className="editorskit-started-item">
+											<RawHTML>
+												{sprintf(
+													__(
+														"If you have any questions or suggestion, let us know through %1$sTwitter%4$s or our %2$sFacebook community %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what's new and upcoming at EditorsKit.",
+														'block-options'
+													),
+													'<a href="https://twitter.com/editorskit" target="_blank">',
+													'<a href="https://www.facebook.com/groups/1306393256173179/" target="_blank">',
+													'<a href="https://editorskit.com/" target="_blank">',
+													'</a>'
+												)}
+											</RawHTML>
+										</div>
+									</div>
+								</Fragment>
+							);
 
-							case 'ek-blocks-manager':
-								return (
-									<Fragment>
-										<a href='https://shop.gutenberghub.com/blocks/' target='_blank'>
-											<img width='100%' height='100%' src={editorskitData?.blockBanner ?? ""} />
-										</a>
-										<p>{__('Manage each individual blocks! You can enable or disable any blocks you want and it will be reflected on Gutenberg block manager settings. Just uncheck the box and it will automatically be saved.', 'block-options')}</p>
-										<BlockManager />
-									</Fragment>
+						case 'ek-docs':
+							return <EditorsKitDocs />;
 
-								);
-							case 'ek-template-library':
-								return (
-									<Fragment>
-										<a href='https://shop.gutenberghub.com/patterns/' target='_blank'>
-											<img width='100%' height='100%' src={editorskitData?.templateBanner ?? ""} />
-										</a>
-										<p>{__('Here you can enable/disable the integrated GutenbergHub\'s template library.', 'block-options')}</p>
-										<TemplateLibrary />
-									</Fragment>
+						case 'ek-features-manager':
+							return (
+								<Fragment>
+									<p>
+										{__(
+											'All features are active by default but you have complete control over each one of them. Disable any features do not want to use and re-enable them anytime on this page or under the "EditorsKit Settings" on Gutenberg editor. Just uncheck the box and it will automatically be saved.',
+											'block-options'
+										)}
+									</p>
+									<div className="editorskit-features-manager-items-wrapper">
+										<FeaturesManager />
+									</div>
+								</Fragment>
+							);
 
-								);
-							case 'ek-styles-manager':
-								return (
-									<Fragment>
-										<p>{__('Here you can enable/disable the integrated GutenbergHub\'s styles manager.', 'block-options')}</p>
-										<StylesManager />
-									</Fragment>
+						case 'ek-blocks-manager':
+							return (
+								<Fragment>
+									<a
+										href="https://shop.gutenberghub.com/blocks/"
+										target="_blank"
+									>
+										<img
+											width="100%"
+											height="100%"
+											src={
+												editorskitData?.blockBanner ??
+												''
+											}
+										/>
+									</a>
+									<p>
+										{__(
+											'Manage each individual blocks! You can enable or disable any blocks you want and it will be reflected on Gutenberg block manager settings. Just uncheck the box and it will automatically be saved.',
+											'block-options'
+										)}
+									</p>
+									<BlockManager />
+								</Fragment>
+							);
+						case 'ek-template-library':
+							return (
+								<Fragment>
+									<a
+										href="https://shop.gutenberghub.com/patterns/"
+										target="_blank"
+									>
+										<img
+											width="100%"
+											height="100%"
+											src={
+												editorskitData?.templateBanner ??
+												''
+											}
+										/>
+									</a>
+									<p>
+										{__(
+											"Here you can enable/disable the integrated GutenbergHub's template library.",
+											'block-options'
+										)}
+									</p>
+									<TemplateLibrary />
+								</Fragment>
+							);
+						case 'ek-styles-manager':
+							return (
+								<Fragment>
+									<p>
+										{__(
+											"Here you can enable/disable the integrated GutenbergHub's styles manager.",
+											'block-options'
+										)}
+									</p>
+									<StylesManager />
+									<br />
 
-								);
-						}
-					}}
+									<h1>
+										{__(
+											'How Style Manager Works',
+											'block-options'
+										)}
+									</h1>
+									<iframe
+										width="821"
+										height="462"
+										src="https://www.youtube.com/embed/SGEhm4_sXT4"
+										title="New Feature: Styles Manager - EditorsKit"
+										frameborder="0"
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+										allowfullscreen
+									></iframe>
+								</Fragment>
+							);
+					}
+				}}
 			</TabPanel>
 		);
 		const MainPanel = () => (
 			<Panel>
-				<PanelBody
-					opened={true}
-				>
+				<PanelBody opened={true}>
 					<div className="components-panel__header">
-						<p className="editorskit-panel__header-hint">{__('Settings → EditorsKit', 'block-options')}</p>
-						<h2>{__('Getting Started with', 'block-options')} <strong>EditorsKit</strong><code>{window.editorskitSettings?.version}</code></h2>
-						<p>{__('Congratulations! You\'ve just unlocked more Gutenberg block editor tools for easier editing and better workflow. Check more information about the plugin below and please make sure to navigate through "Tutorials and Docs" tab to learn more on how to use each available features.', 'block-options')}</p>
-						
+						<p className="editorskit-panel__header-hint">
+							{__('Settings → EditorsKit', 'block-options')}
+						</p>
+						<h2>
+							{__('Getting Started with', 'block-options')}{' '}
+							<strong>EditorsKit</strong>
+							<code>{window.editorskitSettings?.version}</code>
+						</h2>
+						<p>
+							{__(
+								'Congratulations! You\'ve just unlocked more Gutenberg block editor tools for easier editing and better workflow. Check more information about the plugin below and please make sure to navigate through "Tutorials and Docs" tab to learn more on how to use each available features.',
+								'block-options'
+							)}
+						</p>
+
 						<div style={{ display: 'flex', gap: 5 }}>
-							<Button 
-								target="__blank" 
-								variant="primary" 
-								href="https://www.buymeacoffee.com/munirkamal" 
-								style={{ backgroundColor: '#FEDD03', color: '#000000', fontWeight: 600, display: 'flex', gap: 5 }}
+							<Button
+								target="__blank"
+								variant="primary"
+								href="https://www.buymeacoffee.com/munirkamal"
+								style={{
+									backgroundColor: '#FEDD03',
+									color: '#000000',
+									fontWeight: 600,
+									display: 'flex',
+									gap: 5,
+								}}
 							>
-								<svg xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 256 256"><path fill="currentColor" d="M212 76H32a12 12 0 0 0-12 12v48a100.4 100.4 0 0 0 26.7 68H32a12 12 0 0 0 0 24h176a12 12 0 0 0 0-24h-14.7a101.5 101.5 0 0 0 20-32a44.1 44.1 0 0 0 42.7-44v-8a44 44 0 0 0-44-44ZM86 204a76.2 76.2 0 0 1-42-68v-36h152v36a75.9 75.9 0 0 1-2.8 20.3c-.1.2-.1.5-.2.7a76.3 76.3 0 0 1-39 47Zm146-76a20.1 20.1 0 0 1-12.6 18.6a94.2 94.2 0 0 0 .6-10.6v-34.3a19.9 19.9 0 0 1 12 18.3ZM68 48V24a12 12 0 0 1 24 0v24a12 12 0 0 1-24 0Zm40 0V24a12 12 0 0 1 24 0v24a12 12 0 0 1-24 0Zm40 0V24a12 12 0 0 1 24 0v24a12 12 0 0 1-24 0Z"/></svg>
-								{ __('Buy me a Coffee', 'block-options') }
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="1.3em"
+									height="1.3em"
+									viewBox="0 0 256 256"
+								>
+									<path
+										fill="currentColor"
+										d="M212 76H32a12 12 0 0 0-12 12v48a100.4 100.4 0 0 0 26.7 68H32a12 12 0 0 0 0 24h176a12 12 0 0 0 0-24h-14.7a101.5 101.5 0 0 0 20-32a44.1 44.1 0 0 0 42.7-44v-8a44 44 0 0 0-44-44ZM86 204a76.2 76.2 0 0 1-42-68v-36h152v36a75.9 75.9 0 0 1-2.8 20.3c-.1.2-.1.5-.2.7a76.3 76.3 0 0 1-39 47Zm146-76a20.1 20.1 0 0 1-12.6 18.6a94.2 94.2 0 0 0 .6-10.6v-34.3a19.9 19.9 0 0 1 12 18.3ZM68 48V24a12 12 0 0 1 24 0v24a12 12 0 0 1-24 0Zm40 0V24a12 12 0 0 1 24 0v24a12 12 0 0 1-24 0Zm40 0V24a12 12 0 0 1 24 0v24a12 12 0 0 1-24 0Z"
+									/>
+								</svg>
+								{__('Buy me a Coffee', 'block-options')}
 							</Button>
-							<Button 
-								variant="secondary" 
-								href="https://wordpress.org/support/plugin/block-options/reviews/#new-post" 
+							<Button
+								variant="secondary"
+								href="https://wordpress.org/support/plugin/block-options/reviews/#new-post"
 								target="__blank"
 							>
 								<Icon icon={starFilled} />
-								{ __('Leave a Review', 'block-options') }
+								{__('Leave a Review', 'block-options')}
 							</Button>
 						</div>
 					</div>

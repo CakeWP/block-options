@@ -21,6 +21,12 @@ You can now have better control, text formats, styling and workflow by simply ut
 = See for yourself =
 https://www.youtube.com/watch?v=QWgO4lAJAlE
 
+## New: Block Styles Manager
+
+https://www.youtube.com/watch?v=SGEhm4_sXT4
+
+You can now easily create and manage all of your block styles with the new styles manager.
+
 ## Rich Text Formats
 [EditorsKit](https://editorskit.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=editorskit) also adds the missing text formats for better content creation. The following rich text format are available upon plugin activation:
 
@@ -92,9 +98,6 @@ Provides the following additional styling for list block:
 * Starred
 * Dashed
 * None
-
-## Block Styles Manager (NEW)
-You can now easily create and manage all of your block styles with the new styles manager.
 
 ## Responsive Text Alignment
 Easily change text alignment per devices. This will help you provide different alignment view on mobile and tablet devices aside from the existing option for desktop.
