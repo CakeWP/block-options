@@ -28,9 +28,10 @@ class Gutenberghub_Styles_Manager {
 		add_filter(
 			'template_include',
 			function( $template ) {
-				global $post;
 
-				if ( Gutenberghub_Styles_Manager_Admin::$post_type === $post->post_type ) {
+				$post = isset( $GLOBALS['post'] ) ? $GLOBALS['post'] : null;
+
+				if ( ! is_null( $post ) && Gutenberghub_Styles_Manager_Admin::$post_type === $post->post_type ) {
 					return EDITORSKIT_PLUGIN_ADDON_PATH . 'styles-manager/templates/blank.php';
 				}
 
@@ -41,9 +42,10 @@ class Gutenberghub_Styles_Manager {
 		add_filter(
 			'show_admin_bar',
 			function( $show ) {
-				global $post;
 
-				if ( Gutenberghub_Styles_Manager_Admin::$post_type === $post->post_type ) {
+				$post = isset( $GLOBALS['post'] ) ? $GLOBALS['post'] : null;
+
+				if ( ! is_null( $post ) && Gutenberghub_Styles_Manager_Admin::$post_type === $post->post_type ) {
 					return false;
 				}
 

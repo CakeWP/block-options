@@ -3,46 +3,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/addons/styles-manager/admin/components/content/post.js:112
-msgid "Untitled Style"
-msgstr ""
-
-#: src/addons/styles-manager/admin/components/content/post.js:124
-msgid "Edit"
-msgstr ""
-
-#: src/addons/styles-manager/admin/components/content/post.js:131
-msgid "Fullscreen"
-msgstr ""
-
-#: src/addons/styles-manager/admin/components/content/post.js:139
-msgid "More Actions"
-msgstr ""
-
-#: src/addons/styles-manager/admin/components/content/post.js:174
-msgid "Delete Style"
-msgstr ""
-
-#: src/addons/styles-manager/admin/components/content/post.js:177
-msgid "You wont be able to recover this style, are you sure?"
-msgstr ""
-
-#: src/addons/styles-manager/admin/components/content/post.js:193
-msgid "Cancel"
-msgstr ""
-
-#: src/addons/styles-manager/admin/components/content/post.js:203
-msgid "Deleting"
-msgstr ""
-
-#: src/addons/styles-manager/admin/components/content/post.js:204
-msgid "Delete"
-msgstr ""
-
-#: src/addons/styles-manager/admin/components/content/post.js:53
-msgid "Something went wrong when deleting the style."
-msgstr ""
-
-#: src/addons/styles-manager/admin/components/content/post.js:77
-msgid "Something went wrong when deactivate the style."
+#: src/addons/styles-manager/style-manager/edit.js:85
+msgid "Use \"selector\" for selecting the block element."
 msgstr ""

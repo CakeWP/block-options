@@ -61,8 +61,8 @@ function edit(props) {
 	};
 
 	const selector = '.wp-block-' + blockName.split('/')[1];
-	const processedCSS = css.replace('selector', selector);
-	const blockProps = useBlockProps()
+	const processedCSS = css.replace(/(selector)/g, selector);
+	const blockProps = useBlockProps();
 
 	return (
 		<div {...blockProps}>
@@ -78,9 +78,7 @@ function edit(props) {
 					<CodeEditor
 						mode="css"
 						initialValue={css}
-						onChange={(newCode) =>
-							handleCodeChange('css', newCode)
-						}
+						onChange={(newCode) => handleCodeChange('css', newCode)}
 					/>
 					<PanelBody>
 						<Tip>
