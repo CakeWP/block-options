@@ -9,6 +9,7 @@ import save from './save';
 import { brush } from '@wordpress/icons';
 
 import './extensions/enforce-template-visibility';
+import './extensions/dashboard-button';
 
 registerBlockType(metadata, {
 	icon: brush,

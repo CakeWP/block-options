@@ -57,7 +57,7 @@ class Gutenberghub_Styles_Manager_Admin {
 
 		wp_enqueue_script(
 			'gutenberghub-gsm-manager',
-			EDITORSKIT_PLUGIN_URL . 'build/styles-manager-addon.js',
+			EDITORSKIT_PLUGIN_URL . 'build/styles-manager-addon-block.js',
 			array(
 				'wp-element',
 				'wp-api',
@@ -67,6 +67,14 @@ class Gutenberghub_Styles_Manager_Admin {
 			),
 			uniqid(),
 			true
+		);
+
+		wp_localize_script(
+			'gutenberghub-gsm-manager',
+			'gutenberghubStylesManager',
+			array(
+				'stylesManagerUrl' => admin_url( 'admin.php?page=gutenberghub-styles-manager' ),
+			)
 		);
 	}
 
@@ -81,7 +89,7 @@ class Gutenberghub_Styles_Manager_Admin {
 		if ( sprintf( 'editorskit_page_%1$s', Gutenberghub_Styles_Manager_Core::$menu_slug ) === $hook_suffix ) {
 			wp_enqueue_script(
 				'gutenberghub-gsm-admin',
-				EDITORSKIT_PLUGIN_URL . 'build/styles-manager-addon.js',
+				EDITORSKIT_PLUGIN_URL . 'build/styles-manager-addon-admin.js',
 				array(
 					'wp-element',
 					'wp-api',
@@ -112,19 +120,11 @@ class Gutenberghub_Styles_Manager_Admin {
 
 			wp_enqueue_style(
 				'gutenberghub-gsm-admin',
-				EDITORSKIT_PLUGIN_URL . 'build/styles-manager-addon-style.build.css',
+				EDITORSKIT_PLUGIN_URL . 'build/styles-manager-addon-admin-style.build.css',
 				array(
 					'wp-components',
 				),
 				uniqid(),
-			);
-
-			wp_enqueue_script(
-				'gutenberghub-gsm-block',
-				EDITORSKIT_PLUGIN_URL . 'build/styles-manager-addon.js',
-				array(),
-				uniqid(),
-				true
 			);
 
 		}
