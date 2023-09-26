@@ -8,6 +8,8 @@ import save from './save';
 
 import { brush } from '@wordpress/icons';
 
+import './extensions/enforce-template-visibility';
+
 registerBlockType(metadata, {
 	icon: brush,
 	apiVersion: 2,
