@@ -43,6 +43,12 @@ class Gutenberghub_Styles_Manager_Admin {
 	 */
 	public function load_block_editor_assets() {
 
+		$post = isset( $GLOBALS['post'] ) ? $GLOBALS['post'] : null;
+
+		if ( is_null( $post ) || static::$post_type !== $post->post_type ) {
+			return;
+		}
+
 		// Enqueue code editor and settings for manipulating the editor.
 		$settings = wp_enqueue_code_editor( array( 'type' => 'text/css' ) );
 		wp_enqueue_code_editor( array( 'type' => 'text/js' ) );
