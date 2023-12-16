@@ -104,6 +104,12 @@ class GutenbergHub_Styles_Import_Export_Controller extends WP_REST_Controller {
 			return new WP_REST_Response( array( 'message' => 'No file provided.' ), 400 );
 		}
 
+		$file_type = wp_check_filetype( $files['json']['name'] );
+
+		if ( 'json' !== $file_type['ext'] ) {
+			return new WP_REST_Response( array( 'message' => 'Invalid file type. Only JSON files are allowed.' ), 400 );
+		}
+
 		require_once ABSPATH . 'wp-admin/includes/file.php';
 
 		global $wp_filesystem;
