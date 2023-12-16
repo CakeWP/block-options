@@ -65,6 +65,7 @@ class Gutenberghub_Styles_Manager_Admin {
 			'gutenberghub-gsm-manager',
 			EDITORSKIT_PLUGIN_URL . 'build/styles-manager-addon-block.js',
 			array(
+				'lodash',
 				'wp-element',
 				'wp-api',
 				'wp-components',
@@ -97,6 +98,7 @@ class Gutenberghub_Styles_Manager_Admin {
 				'gutenberghub-gsm-admin',
 				EDITORSKIT_PLUGIN_URL . 'build/styles-manager-addon-admin.js',
 				array(
+					'lodash',
 					'wp-element',
 					'wp-api',
 					'wp-components',
