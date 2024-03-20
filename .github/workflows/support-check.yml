@@ -20,5 +20,5 @@ jobs:
         with:
           plugin-slug: block-options
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          random-assignees: farhan-shafi, muneebahmed0346
+          random-assignees: muneebahmed0346
           repo-name: block-options
