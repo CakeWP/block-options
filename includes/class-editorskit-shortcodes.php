@@ -40,10 +40,15 @@ class EditorsKit_Shortcodes {
 		if ( ! isset( $atts['display'] ) ) {
 			return $content;
 		}
-		$tag = 'div';
+
+		$tag          = 'div';
+		$allowed_tags = apply_filters( 'editorskit_allowed_shortcode_tags', array( 'div', 'span' ) );
 
 		if ( isset( $atts['tag'] ) ) {
-			$tag = $atts['tag'];
+			$requested_tag = sanitize_text_field( $atts['tag'] );
+			$is_allowed    = in_array( $requested_tag, $allowed_tags, true );
+
+			$tag = $is_allowed ? $atts['tag'] : 'div';
 		}
 
 		$content = '<' . $tag . ' class="editorskit-shortcode">';
@@ -123,13 +128,13 @@ class EditorsKit_Shortcodes {
 		}
 
 		if ( isset( $atts['before'] ) ) {
-			$returned_content .= $atts['before'];
+			$returned_content .= esc_html( $atts['before'] );
 		}
 
 		$returned_content .= $reading_time;
 
 		if ( isset( $atts['after'] ) ) {
-			$returned_content .= $atts['after'];
+			$returned_content .= esc_html( $atts['after'] );
 		}
 
 		return $returned_content;
